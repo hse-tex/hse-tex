@@ -81,7 +81,7 @@
 		\item
 		бесконечно малой последовательностью, если 
 
-		$\forall \eps > 0 \; \exists N(\eps): \; \forall n \geq N(\eps) \implies |x_n| < \eps|$
+		$\forall \eps > 0 \; \exists N(\eps): \; \forall n \geq N(\eps) \implies |x_n| < \eps$
 
 		\item
 		бесконечно большой последовательностью, если 
@@ -217,7 +217,7 @@
 		 \end{equation*}
 		 Положим $\eps = \dfrac{b - a}{2}$ и $N = max\{N_1(\eps), N_2(\eps)\}$. Тогда, $\forall n \geq N \implies  |x_n - a| < \eps \; \land \; |x_n - b| < \eps$. Возьмём $n \geq N$, тогда,
 		 \begin{equation*}
-		 	b - a = |b - a| = |b - x_n + x_n - a| \geq |x_n - b| + |x_n - a| < \dfrac{b - a}{2} + \dfrac{b - a}{2} = b - a
+		 	b - a = |b - a| = |b - x_n + x_n - a| \leq |x_n - b| + |x_n - a| < \dfrac{b - a}{2} + \dfrac{b - a}{2} = b - a
 		 \end{equation*}
 		 Пришли к противоречию ($b - a < b - a$).
 	\end{proof}
@@ -398,6 +398,7 @@
 
 	\subsubsubsection{Неопределенности.} 
 	\emph{Не очень понятно, что именно требуется в этом пункте}
+	
 	Основные виды неопределенностей: $\dfrac{0}{0}, \dfrac{\infty}{\infty}, 0 \cdot \infty, \infty - \infty, 1^{\infty}, 0^0, \infty^0$
 
 	Раскрывать неопределенность помогает:
@@ -419,7 +420,7 @@
 		Если $\lim\limits_{n \to \infty} a_n = a$, тогда $\forall \{a_{n_k}\}: \lim\limits_{k \to \infty} a_{n_k} = a$
 	\end{remark}
 
-	\subsubsubsection{Теорема Больцано-Вейерштрасса.} \label{ssss:bolzano}
+	\subsubsubsection{Теорема Больц\'{а}но-В\'{е}йерштрасса.} \label{ssss:bolzano}
 	\begin{theorem*}
 		Из любой ограниченной последовательности можно выделить сходящуюся подпоследовательность.
 	\end{theorem*}
@@ -433,7 +434,7 @@
 		Обозначим ее $[a_2; b_2]$. Выберем $x_{n_2} \in [a_2; b_2]$. Будем продолжать выполнять указанные действия.
 		Обозначим за $x_{n_k}$ число, полученное на $k$-ом шаге, т.е. $x_{n_k} \in [a_k; b_k]$.
 
-		$\{[a_k; b_k\}$ --- система стягивающихся отрезков. Тогда, существует единственное $c: \forall k \implies c \in [a_k; b_k]$.
+		$\{[a_k; b_k]\}$ --- система стягивающихся отрезков. Тогда, существует единственное $c: \forall k \implies c \in [a_k; b_k]$.
 
 		$\lim\limits_{k \to \infty} a_k = \lim\limits_{k \to \infty} b_k = c \implies \exists \lim\limits_{k \to \infty} x_{n_k} = c$ (по теореме о двух милиционерах)
 	\end{proof}
@@ -574,7 +575,7 @@
 	\subsubsubsection{Понятие равномерной непрерывности функции на множестве. [Не пройдено]} 
 	\subsubsubsection{Теорема Кантора [Не пройдено]}
 	\subsubsubsection{Система стягивающихся отрезков [В списке вопросов к коллоквиуму отсутствует]} \label{ssss:segments}
-	Множество отрезков $\{[a_n; b_n\}_{n=1}^{\infty}$ называется системой стягивающихся отрезков, если выполнено:
+	Множество отрезков $\{[a_n; b_n]\}_{n=1}^{\infty}$ называется системой стягивающихся отрезков, если выполнено:
 	\begin{enumerate}
 		\item
 		Каждый последовательный отрезок вложен в предыдущий, т.е. $a_1 \leq a_2 \leq ... \leq a_n \leq b_n \leq b_{n - 1} \leq \dots \leq b_1$
@@ -583,14 +584,14 @@
 		$\lim\limits_{n \to \infty} (b_n - a_n) = 0$
 	\end{enumerate}
 	\begin{lemma}
-		\textbf{(Коши-Кантора)} Для любой ССТ существует, причем единственная, точка $c$, принадлежащая всем отрезками данной системы, т. е. $\exists! c: \forall n \in \NN \implies c \in [a_n, b_n]$
+		\textbf{(Коши-Кантора)} Для любой ССО существует, причем единственная, точка $c$, принадлежащая всем отрезками данной системы, т. е. $\exists! c: \forall n \in \NN \implies c \in [a_n, b_n]$
 	\end{lemma}
 	\begin{proof}
 		\emph{Существование}. Используем аксиому полноты: если $a \leq b$, то $\exists c: a \leq c \leq b$.
 		\begin{equation*}
 			\exists c: \; \forall n \in \NN \implies c \in [a_n, b_n]
 		\end{equation*}
-		\emph{Единственность}. Предположим противное, пусть существуют две различные точки $c, c'$, принадлежащие всем отрезкам последовательности $\{[a_n; b_n\}_{n=1}^{\infty}$. Не теряя общности, предположим, что $c > c'$.
+		\emph{Единственность}. Предположим противное, пусть существуют две различные точки $c, c'$, принадлежащие всем отрезкам последовательности $\{[a_n; b_n]\}_{n=1}^{\infty}$. Не теряя общности, предположим, что $c > c'$.
 		
 		Тогда $\forall n \in \NN \implies a_n \leq c' < c \leq b_n \implies 0 \leq c - c' \leq b_n - a_n$. Т.к. $\lim\limits_{n \to \infty} (b_n - a_n) = 0 \implies 0 \leq c - c' \leq 0 \implies c - c' = 0 \implies c = c'$
 
