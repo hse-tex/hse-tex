@@ -54,25 +54,25 @@
 	\subsection{Коллоквиум 1}
 	\href{https://docs.google.com/document/d/1e-29abaRHAqDMcxA154fgHdsHKb3Npta7beZLSCfcRs/edit?usp=sharing}{Информация о коллоквиуме}
 
-	Ориентировочная дата проведения: 11.11.2019
+	Ориентировочная дата проведения: 09.11.2019
 
 	\subsubsection{В обязательный минимум входят}
 	\subsubsubsection{Определение предела числовой последовательности}
 	Число $a$ называется пределом числовой последовательности $\{x_n\}$, если
 	\begin{equation*}
-		\forall \eps > 0, \exists N(\eps): \forall n \geqslant N \implies |x_n - a| < \eps
+		\forall \eps > 0, \exists N(\eps): \forall n \geq N(\eps) \implies |x_n - a| < \eps
 	\end{equation*}
 
 	\subsubsubsection{Определение точной верхней и нижней грани}
-	Верхняя (нижняя) грань числового множества $X$ --- число $a$ такое, что $\forall x \in X \implies x \leqslant (\geqslant) a$
+	Верхняя (нижняя) грань числового множества $X$ --- число $a$ такое, что $\forall x \in X \implies x \leq (\geq) a$
 
 	Точная верхняя грань (или супремум) ---	это наименьшая из всех верхних граней. Обозначается $\sup X$.
 
 	Точная нижняя грань (или инфинум) --- это наибольшая из всех нижних граней. Обозначается $\inf X$.
 
 	\[\begin{gathered}
-		a = \sup X \iff (\forall x \in X \implies x \leqslant a) \land (\nexists b: \;b < a, \forall x \in X \implies x \leqslant b) \\
-		a = \inf X \iff (\forall x \in X \implies x \geqslant a) \land (\nexists b: \;b > a, \forall x \in X \implies x \geqslant b) \\
+		a = \sup X \iff (\forall x \in X \implies x \leq a) \land (\nexists b: \;b < a, \forall x \in X \implies x \leq b) \\
+		a = \inf X \iff (\forall x \in X \implies x \geq a) \land (\nexists b: \;b > a, \forall x \in X \implies x \geq b) \\
 	\end{gathered}\]
 
 	\subsubsubsection{Определение бесконечно малой и бесконечно большой последовательности}
@@ -81,12 +81,12 @@
 		\item
 		бесконечно малой последовательностью, если 
 
-		$\forall \eps > 0 \; \exists N(\eps): \; \forall n \geqslant N \implies |x_n| < \eps|$
+		$\forall \eps > 0 \; \exists N(\eps): \; \forall n \geq N(\eps) \implies |x_n| < \eps|$
 
 		\item
 		бесконечно большой последовательностью, если 
 
-		$\forall A > 0 \; \exists N(A): \; \forall n \geqslant N \implies |x_n| > A$
+		$\forall A > 0 \; \exists N(A): \; \forall n \geq N(A) \implies |x_n| > A$
 	\end{itemize}
 
 	\subsubsubsection{Определение предела функции в точке и на бесконечности по Коши и по Гейне}
@@ -142,7 +142,7 @@
 	Примеры:
 	\begin{itemize}
 		\item
-		Функция, сопоставляющая каждому натуральному числу $n \leqslant 12$ одно из слов «январь», «февраль», «март», «апрель», «май», «июнь», «июль», «август», «сентябрь», «октябрь», «ноябрь», «декабрь» (в порядке их следования здесь) представляет собой последовательность вида $\{x_n\}_{n=1}^{12}$. Например, пятым элементом $x_5$ этой последовательности является слово «май».
+		Функция, сопоставляющая каждому натуральному числу $n \leq 12$ одно из слов «январь», «февраль», «март», «апрель», «май», «июнь», «июль», «август», «сентябрь», «октябрь», «ноябрь», «декабрь» (в порядке их следования здесь) представляет собой последовательность вида $\{x_n\}_{n=1}^{12}$. Например, пятым элементом $x_5$ этой последовательности является слово «май».
 
 		\item
 		$\{1/n\}_{n=1}^{\infty}$ является бесконечной последовательностью рациональных чисел. Элементы этой последовательности начиная с первого имеют вид $1,1/2,1/3,1/4,1/5,\ldots$.
@@ -154,7 +154,7 @@
 	\subsubsubsection{Понятие предела последовательности.}
 	Число $a$ называется пределом числовой последовательности $\{x_n\}$, если
 	\begin{equation*}
-		\forall \eps > 0, \exists N(\eps): \forall n \geqslant N \implies |x_n - a| < \eps
+		\forall \eps > 0, \exists N(\eps): \forall n \geq N(\eps) \implies |x_n - a| < \eps
 	\end{equation*}
 
 	\subsubsubsection{Ограниченные и неограниченные последовательности.} 
@@ -162,19 +162,19 @@
 		\item
 		Ограниченная сверху последовательность — это последовательность элементов множества $X$, все члены которой не превышают некоторого элемента из этого множества. Этот элемент называется верхней гранью данной последовательности.
 		\begin{equation*}
-			\{x_n\} \text{ ограниченная сверху } \iff \exists M \in X: \; \forall N \implies x_n \leqslant M
+			\{x_n\} \text{ ограниченная сверху } \iff \exists M \in X: \; \forall n \implies x_n \leq M
 		\end{equation*}
 
 		\item
 		Ограниченная снизу последовательность --- это последовательность элементов множества $X$, для которой в этом множестве найдётся элемент, не превышающий всех её членов. Этот элемент называется нижней гранью данной последовательности.
 		\begin{equation*}
-			\{x_n\} \text{ ограниченная снизу } \iff \exists m \in X: \; \forall N \implies x_n \geqslant m
+			\{x_n\} \text{ ограниченная снизу } \iff \exists m \in X: \; \forall n \implies x_n \geq m
 		\end{equation*}
 
 		\item
 		Ограниченная последовательность (ограниченная с обеих сторон последовательность) --- это последовательность, ограниченная и сверху, и снизу.
 		\begin{equation*}
-			\{x_n\} \text{ ограниченная } \iff \exists M, m \in X: \; \forall N \implies m \leqslant x_n \leqslant M
+			\{x_n\} \text{ ограниченная } \iff \exists M, m \in X: \; \forall n \implies m \leq x_n \leq M
 		\end{equation*}
 
 		\item
@@ -186,7 +186,7 @@
 		\item
 		\underline{Критерий ограниченности}: Числовая последовательность является ограниченной тогда и только тогда, когда существует такое число, что модули всех членов последовательности не превышают его.
 		\begin{equation*}
-			\{x_n\} \text{ ограниченная } \iff \exists A \in \RR: \; \forall N \implies |x_N| \leqslant A
+			\{x_n\} \text{ ограниченная } \iff \exists A \in \RR: \; \forall N \implies |x_N| \leq A
 		\end{equation*}
 	\end{itemize}
 
@@ -197,11 +197,11 @@
 
 		Пусть последовательность $\{x_n\}$ сходится к $a$, т.е. $\lim\limits_{n \to \infty} x_n = a$. 
 		\begin{equation*}
-			\forall \eps > 0 \; \exists N: \; \forall n \gs N \implies |x_n - a| < \eps
+			\forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |x_n - a| < \eps
 		\end{equation*}
-		Положим $A = \max\{|x_1|, \dots, |x_N|, |a - \eps|, |a + \eps|\}$. Тогда, $\forall n \in \NN: \; |x_n| \ls A$.
+		Пусть $\eps = 1$, тогда $A = \max\{|x_1|, \dots, |x_N|, |a - \eps|, |a + \eps|\}$. Тогда, $\forall n \in \NN: \; |x_n| \leq A$.
 	\end{proof}
-	
+		
 	\subsubsubsection{Теорема о единственности предела сходящейся последовательности.}
 	\begin{theorem*}
 		Если предел числовой последовательности существует, то он единственный.
@@ -211,13 +211,13 @@
 		 \begin{equation*}
 		 	\begin{cases}
 		 		a < b, \\
-		 		\forall \eps > 0, \exists N_1(\eps): \forall n \geqslant N_1(\eps) \implies |x_n - a| < \eps, \\
-		 		\forall \eps > 0, \exists N_2(\eps): \forall n \geqslant N_2(\eps) \implies |x_n - b| < \eps, \\
+		 		\forall \eps > 0, \exists N_1(\eps): \forall n \geq N_1(\eps) \implies |x_n - a| < \eps, \\
+		 		\forall \eps > 0, \exists N_2(\eps): \forall n \geq N_2(\eps) \implies |x_n - b| < \eps, \\
 		 	\end{cases}
 		 \end{equation*}
-		 Положим $\eps = \dfrac{b - a}{2}$ и $N = max\{N_1(\eps), N_2(\eps)\}$. Тогда, $\forall n \geqslant N \implies  |x_n - a| < \eps \; \land \; |x_n - b| < \eps$. Возьмём $n \geqslant N$, тогда,
+		 Положим $\eps = \dfrac{b - a}{2}$ и $N = max\{N_1(\eps), N_2(\eps)\}$. Тогда, $\forall n \geq N \implies  |x_n - a| < \eps \; \land \; |x_n - b| < \eps$. Возьмём $n \geq N$, тогда,
 		 \begin{equation*}
-		 	b - a = |b - a| = |b - x_n + x_n - a| \geqslant |x_n - b| + |x_n - a| < \dfrac{b - a}{2} + \dfrac{b - a}{2} = b - a
+		 	b - a = |b - a| = |b - x_n + x_n - a| \geq |x_n - b| + |x_n - a| < \dfrac{b - a}{2} + \dfrac{b - a}{2} = b - a
 		 \end{equation*}
 		 Пришли к противоречию ($b - a < b - a$).
 	\end{proof}
@@ -225,24 +225,24 @@
 	\subsubsubsection{Теорема о переходе к пределу в неравенствах.}
 	\begin{theorem*}
 		Пусть $\lim\limits_{n \to \infty} x_n = a, \lim\limits_{n \to \infty} y_n = b$. Если $a < b$, то
-		$\exists N: \; \forall n \geqslant N \implies x_n < y_n$.
+		$\exists N: \; \forall n \geq N \implies x_n < y_n$.
 	\end{theorem*}
 	\begin{proof}
 		Из аксиомы полноты $\exists c: \; a < c < b$. 
 		\[\begin{gathered}
-			\forall \eps_1 > 0 \; \exists N_1: \; \forall n \geqslant N_1 \implies |x_n - a| < \eps_1 \\
-			\forall \eps_2 > 0 \; \exists N_2: \; \forall n \geqslant N_2 \implies |y_n - b| < \eps_2 \\
+			\forall \eps_1 > 0 \; \exists N_1: \; \forall n \geq N_1 \implies |x_n - a| < \eps_1 \\
+			\forall \eps_2 > 0 \; \exists N_2: \; \forall n \geq N_2 \implies |y_n - b| < \eps_2 \\
 		\end{gathered}\]
-		Тогда, $\forall n \geqslant N_1 \implies |x_n - a| < c - a$ и $\forall n \geqslant N_2 \implies |y_n - b| < b - c$. Отсюда $\forall n \geqslant \max \{N_1, N_2\} \implies x_n < c - a + a = c = c - b + b < y_n$.
+		Тогда, $\forall n \geq N_1 \implies |x_n - a| < c - a$ и $\forall n \geq N_2 \implies |y_n - b| < b - c$. Отсюда $\forall n \geq \max \{N_1, N_2\} \implies x_n < c - a + a = c = c - b + b < y_n$.
 	\end{proof}
 
 	\subsubsubsection{Теорема о вынужденном пределе (Теорема о двух милиционерах).}
 	\begin{theorem*}
-		Если $\forall n \in \NN: x_n \leqslant y_n \leqslant z_n$ и $\exists \lim\limits_{n \to \infty} x_n = a = \lim\limits_{n \to \infty} z_n$, тогда $\lim\limits_{n \to \infty} y_n = a$.
+		Если $\forall n \in \NN: x_n \leq y_n \leq z_n$ и $\exists \lim\limits_{n \to \infty} x_n = a = \lim\limits_{n \to \infty} z_n$, тогда $\lim\limits_{n \to \infty} y_n = a$.
 	\end{theorem*}
 	\begin{proof}
-		Из определения предела $\{x_n\}$, $\forall \eps > 0 \; \exists N_1: \; \forall n \geqslant N_1 \implies |x_n - a| < \eps \iff a - \eps < x_n < a + \eps$. Аналогично для предела $\{z_n\}$, $\forall \eps > 0 \; \exists N_2: \; \forall n \geqslant N_2 \implies |z_n - a| < \eps \iff a - \eps < z_n < a + \eps$. Тогда, 
-		$\forall n \geqslant \max \{N_1, N_2, N\} \implies \\a - \eps < x_n \leqslant y_n \leqslant z_n < a + \eps \implies \lim\limits_{n \to \infty} y_n = a$.
+		Из определения предела $\{x_n\}$, $\forall \eps > 0 \; \exists N_1: \; \forall n \geq N_1 \implies |x_n - a| < \eps \iff a - \eps < x_n < a + \eps$. Аналогично для предела $\{z_n\}$, $\forall \eps > 0 \; \exists N_2: \; \forall n \geq N_2 \implies |z_n - a| < \eps \iff a - \eps < z_n < a + \eps$. Тогда, 
+		$\forall n \geq \max \{N_1, N_2, N\} \implies \\a - \eps < x_n \leq y_n \leq z_n < a + \eps \implies \lim\limits_{n \to \infty} y_n = a$.
 	\end{proof}
 
 	\subsubsubsection{Теорема о сходимости монотонных ограниченных последовательностей.}
@@ -252,7 +252,7 @@
 	\begin{proof}
 		Пусть $\{x_n\}$ --- ограниченная неубывающая числовая последовательность. Тогда множество $\{x_n\}_{n \in \NN}$ ограничено, следовательно, из определения супремума, имеет супремум. Обозначим его через $S$. Тогда $\lim\limits_{n \to \infty} x_n = S$. Действительно, так как $S = sup \{x_n\}_{n \in \NN}$, то
 		\begin{equation*}
-			\forall \eps > 0 \; \exists N: \; \forall n \gs N \implies S - \eps < x_N \ls x_n \ls S \implies |x_n - S| < \eps
+			\forall \eps > 0 \; \exists N: \; \forall n \geq N \implies S - \eps < x_N \leq x_n \leq S \implies |x_n - S| < \eps
 		\end{equation*}
 	\end{proof}
 	Аналогичное доказательство для ограниченной невозрастающей ч.п.
@@ -291,7 +291,7 @@
 			Выражение $e_{n + 1}$ состоит из большего числа слагаемых. Следовательно, $e_{n + 1} > e_n$.
 		\end{itemize}
 
-		Далее докажем, что последовательность $\{e_n\}$ является ограниченной. Действительно, первый член любой монотонно возрастающей последовательности является ее наибольшей нижней границей и, таким образом, $e_n \gs 2 \; \forall n \in \NN$.
+		Далее докажем, что последовательность $\{e_n\}$ является ограниченной. Действительно, первый член любой монотонно возрастающей последовательности является ее наибольшей нижней границей и, таким образом, $e_n \geq 2 \; \forall n \in \NN$.
 
 		Перейдем к доказательству существования верхней границы. Очевидно, что
 		\begin{align*}
@@ -328,32 +328,32 @@
 		\item
 		$\{\alpha_n\}$ ограничена
 		\begin{proof}
-			Как известно, $\forall \eps > 0 \; \exists N: \; \forall n > N \implies |\alpha_n| < \eps$. Значит, для всех $n > N$ доказано. Но $\forall n < N \implies \alpha_n \ls \max\{|\alpha_1|, |\alpha_2|, \dots, |\alpha_{N - 1}|\}$. Тогда выберем $\eps = 1, A = \max\{|\alpha_1|, |\alpha_2|, \dots, |\alpha_{N - 1}|, 1\} \implies \forall n \in \NN, |\alpha_n| \ls A$.
+			Как известно, $\forall \eps > 0 \; \exists N: \; \forall n > N \implies |\alpha_n| < \eps$. Значит, для всех $n > N$ доказано. Но $\forall n < N \implies \alpha_n \leq \max\{|\alpha_1|, |\alpha_2|, \dots, |\alpha_{N - 1}|\}$. Тогда выберем $\eps = 1, A = \max\{|\alpha_1|, |\alpha_2|, \dots, |\alpha_{N - 1}|, 1\} \implies \forall n \in \NN, |\alpha_n| \leq A$.
 		\end{proof}
 
 		\item
  		Если $\{y_n\}$ ограничена, то $\{y_n \cdot \alpha_n\}$ --- бесконечно малая.
  		\begin{proof}
- 			$\{\alpha_n\}$ --- бесконечно малая, поэтому $\forall \eps > 0 \; \exists N: \; \forall n \gs N \implies |\alpha_n| < \dfrac{\eps}{A}$. Ввиду ограниченности $\{y_n\}, \exists A: \; \forall n \in \NN \implies |y_n| \ls A$. Но тогда $\{y_n \cdot \alpha_n\}: \forall \eps > 0 \; \exists N: \; \forall n \gs N \implies |y_n \cdot \alpha_n| < \dfrac{\eps}{A} \cdot A = \eps$.
+ 			$\{\alpha_n\}$ --- бесконечно малая, поэтому $\forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |\alpha_n| < \dfrac{\eps}{A}$. Ввиду ограниченности $\{y_n\}, \exists A: \; \forall n \in \NN \implies |y_n| \leq A$. Но тогда $\{y_n \cdot \alpha_n\}: \forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |y_n \cdot \alpha_n| < \dfrac{\eps}{A} \cdot A = \eps$.
  		\end{proof}
 
  		\item
  		Если $\{\beta_n\}$ --- бесконечно малая, то $\{\alpha_n \pm \beta_n\}$ и $\{\alpha_n \cdot \beta_n\}$ --- бесконечно малые.
  		\begin{proof}
  			\[\begin{gathered}
- 				\forall \eps > 0 \; \exists N_1: \forall n \gs N_1 \implies |\alpha_n| < \frac{\eps}{2}
+ 				\forall \eps > 0 \; \exists N_1: \forall n \geq N_1 \implies |\alpha_n| < \frac{\eps}{2}
  				\text{ и }
- 				\forall \eps > 0 \; \exists N_2: \forall n \gs N_2 \implies |\beta_n| < \frac{\eps}{2} \\
- 				\text{Тогда при } N = \max\{N_1, N_2\} \implies \forall n \gs N \implies
- 				|\alpha_n \pm \beta_n| \ls |\alpha_n| + |\beta_n| < \frac{\eps}{2} + \frac{\eps}{2} = \eps
+ 				\forall \eps > 0 \; \exists N_2: \forall n \geq N_2 \implies |\beta_n| < \frac{\eps}{2} \\
+ 				\text{Тогда при } N = \max\{N_1, N_2\} \implies \forall n \geq N \implies
+ 				|\alpha_n \pm \beta_n| \leq |\alpha_n| + |\beta_n| < \frac{\eps}{2} + \frac{\eps}{2} = \eps
  			\end{gathered}\]
  			Аналогично для произведения:
  			\[\begin{gathered}
- 				\forall \eps > 0 \; \exists N_1: \forall n \gs N_1 \implies |\alpha_n| < \frac{1}{\eps}
+ 				\forall \eps > 0 \; \exists N_1: \forall n \geq N_1 \implies |\alpha_n| < \frac{1}{\eps}
  				\text{ и }
- 				\forall \eps > 0 \; \exists N_2: \forall n \gs N_2 \implies |\beta_n| < \eps^2 \\
- 				\text{Тогда при } N = \max\{N_1, N_2\} \implies \forall n \gs N \implies
- 				|\alpha_n \pm \beta_n| \ls |\alpha_n| \cdot |\beta_n| < \frac{1}{\eps} \cdot \eps^2 = \eps
+ 				\forall \eps > 0 \; \exists N_2: \forall n \geq N_2 \implies |\beta_n| < \eps^2 \\
+ 				\text{Тогда при } N = \max\{N_1, N_2\} \implies \forall n \geq N \implies
+ 				|\alpha_n \pm \beta_n| \leq |\alpha_n| \cdot |\beta_n| < \frac{1}{\eps} \cdot \eps^2 = \eps
  			\end{gathered}\]
  		\end{proof}
 	\end{itemize}
@@ -363,13 +363,13 @@
 		\item
 		Если $\{x_n\}$ --- бесконечно малая и $\forall n \in \NN \implies x_n \neq 0$, то $\{\dfrac{1}{x_n}\}$ --- бесконечно большая.
 		\begin{proof}
-			$\forall \eps > 0 \; \exists N: \; \forall n \gs N \implies |x_n| < \eps \iff \dfrac{1}{|x_n|} < \dfrac{1}{\eps} = A$
+			$\forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |x_n| < \eps \iff \dfrac{1}{|x_n|} < \dfrac{1}{\eps} = A$
 		\end{proof}
 
 		\item
 		Если $\{x_n\}$ --- бесконечно большая и $\forall n \in \NN \implies x_n \neq 0$, то $\{\dfrac{1}{x_n}\}$ --- бесконечно малая.
 		\begin{proof}
-			$\forall A > 0 \; \exists N: \; \forall n \gs N \implies |x_n| > A \iff \dfrac{1}{|x_n|} < \dfrac{1}{A} = \eps$
+			$\forall A > 0 \; \exists N: \; \forall n \geq N \implies |x_n| > A \iff \dfrac{1}{|x_n|} < \dfrac{1}{A} = \eps$
 		\end{proof}
 	\end{itemize}
 
@@ -382,10 +382,10 @@
 			x_n \cdot y_n = (a + \alpha_n) \cdot (b + \beta_n) = a \cdot b + \underbrace{(\alpha_n \cdot \beta_n + \alpha_n \cdot b + \beta_n \cdot a)}_{\text{б.м.}}
 		\end{gathered}\]
 		\begin{lemma}
-			Пусть $\exists \lim\limits_{n \to \infty} y_n \neq 0$. Тогда $\exists r > 0: \exists N \in \NN: \forall n \gs N \implies |y_n| > r > 0$.
+			Пусть $\exists \lim\limits_{n \to \infty} y_n \neq 0$. Тогда $\exists r > 0: \exists N \in \NN: \forall n \geq N \implies |y_n| > r > 0$.
 		\end{lemma}
 		\begin{proof}
-			$\forall \eps > 0 \exists N: \forall n \gs N \implies |y_n - b| < \eps \iff b - \eps < |y_n| < b + \eps$. Пусть $\eps = \dfrac{b}{2}$, тогда $r < \dfrac{b}{2} < y_n < \dfrac{3b}{2}$.
+			$\forall \eps > 0 \exists N: \forall n \geq N \implies |y_n - b| < \eps \iff b - \eps < |y_n| < b + \eps$. Пусть $\eps = \dfrac{b}{2}$, тогда $r < \dfrac{b}{2} < y_n < \dfrac{3b}{2}$.
 		\end{proof}
 		Рассмотрим последовательность $\{\dfrac{x_n}{y_n} - \dfrac{a}{b}\}$ --- бесконечно малая.
 		\[\begin{gathered}
@@ -393,7 +393,7 @@
 			= \frac{b \cdot a + b \cdot \alpha_n - b \cdot a - \beta_n \cdot a}{y_n \cdot b}
 			= (\alpha_n \cdot b - \beta_b \cdot a) \cdot \frac{1}{y_n \cdot b}
 		\end{gathered}\]
-		По лемме $\left|\frac{1}{y_n \cdot b}\right| \ls max\left\{\left|\frac{1}{y_1 \cdot b}\right|, \dots, \left|\frac{1}{y_N \cdot b}\right|, \frac{1}{rb} \right\} \implies \{\frac{1}{y_n \cdot b}\}$ ограничена. Но тогда имеем произведение бесконечно малой и ограниченной последовательностей, значит, $\{\dfrac{x_n}{y_n} - \dfrac{a}{b}\}$ --- бесконечно малая.
+		По лемме $\left|\frac{1}{y_n \cdot b}\right| \leq max\left\{\left|\frac{1}{y_1 \cdot b}\right|, \dots, \left|\frac{1}{y_N \cdot b}\right|, \frac{1}{rb} \right\} \implies \{\frac{1}{y_n \cdot b}\}$ ограничена. Но тогда имеем произведение бесконечно малой и ограниченной последовательностей, значит, $\{\dfrac{x_n}{y_n} - \dfrac{a}{b}\}$ --- бесконечно малая.
 	\end{proof}
 
 	\subsubsubsection{Неопределенности.} 
@@ -426,7 +426,7 @@
 	\begin{proof}
 		Для понимания происходящего следует ознакомиться с \ref{ssss:segments} Системой стягивающихся отрезков (ССО)
 
-		$\{x_n\}$ ограничена $\implies \exists [a, b]: \forall n \in N \implies a \ls x_n \ls b$. Поделим $[a; b]$ на две равные части. Хотя бы одна из частей (пусть это $[a_1; b_1]$) содержит бесконечно много элементов $\{x_n\}$.
+		$\{x_n\}$ ограничена $\implies \exists [a, b]: \forall n \in N \implies a \leq x_n \leq b$. Поделим $[a; b]$ на две равные части. Хотя бы одна из частей (пусть это $[a_1; b_1]$) содержит бесконечно много элементов $\{x_n\}$.
 
 		Выберем на $[a_1; b_1]$ произвольный элемент $\{x_n\}$. Назовем его $x_{n_1}$. Далее делим $[a_1; b_1]$ на
 		две равные части. Хотя бы одна из этих частей содержит бесконечно много элементов $\{x_n\}$.
@@ -443,7 +443,7 @@
 
 	Последовательность называется фундаментальной, если 
 
-	$\forall \eps > 0 \; \exists N: \forall n, m \gs N: |x_n - x_m| < \eps$
+	$\forall \eps > 0 \; \exists N: \forall n, m \geq N: |x_n - x_m| < \eps$
 	\begin{proof}
 		Докажем необходимость и достаточность.
 		\begin{itemize}
@@ -452,13 +452,13 @@
 
 			Пусть $\lim\limits_{n \to \infty} x_n = a$ по определению:
 			\begin{equation*}
-				\forall \eps > 0: \; \exists N: \; \forall p \gs N \implies |x_p - a| < \eps
+				\forall \eps > 0: \; \exists N: \; \forall p \geq N \implies |x_p - a| < \eps
 			\end{equation*}
 			Поскольку $\eps$ произвольное, можно взять вместо него $\dfrac{\eps}{2}$
 			\[\begin{gathered}
-				p = m \gs N \implies |x_m - a| < \frac{\eps}{2} \\
-				p = n \gs N \implies |x_n - a| < \frac{\eps}{2} \\
-				|x_n - x_m| = |x_n - a + a - x_m| \ls |x_n - a| + |a - x_m| < \frac{\eps}{2} + \frac{\eps}{2} = \eps
+				p = m \geq N \implies |x_m - a| < \frac{\eps}{2} \\
+				p = n \geq N \implies |x_n - a| < \frac{\eps}{2} \\
+				|x_n - x_m| = |x_n - a + a - x_m| \leq |x_n - a| + |a - x_m| < \frac{\eps}{2} + \frac{\eps}{2} = \eps
 			\end{gathered}\]
 			То есть $|x_n - x_m| < \eps$, а значит $\{x_n\}$ фундаментальная по определению. Необходимость доказана
 
@@ -467,14 +467,14 @@
 
 			Пусть $\{x_n\}$ --- фундаментальная последовательность, докажем, что она имеет предел. Сначала покажем, что $\{x_n\}$ --- ограничена. По определению фундаментальной последовательности
 			\begin{equation*}
-				\forall \eps > 0 \; \exists N: \forall n, m \gs N: |x_n - x_m| < \eps
+				\forall \eps > 0 \; \exists N: \forall n, m \geq N: |x_n - x_m| < \eps
 			\end{equation*}
 			Так как $\eps$ произвольное, возьмём $\eps = 1$. 
 			\[\begin{gathered}
-				|x_n| = |(x_n - x_N) + x_N| \ls \underbrace{|x_n - x_N|}_{\ls \eps} + |x_N| \ls 1 + |x_N| \\
-				\forall n \gs N \implies |x_n| \ls (1 + |x_N|) \; = const = A \implies |x_n| \ls A \\
+				|x_n| = |(x_n - x_N) + x_N| \leq \underbrace{|x_n - x_N|}_{\leq \eps} + |x_N| \leq 1 + |x_N| \\
+				\forall n \geq N \implies |x_n| \leq (1 + |x_N|) \; = const = A \implies |x_n| \leq A \\
 				A = \max\{1 + |x_N|; |x_1|; |x_2|; \dots; |x_N|\} \\
-				\forall n \gs N \implies |x_n| \ls A
+				\forall n \geq N \implies |x_n| \leq A
 			\end{gathered}\]
 			По теореме \ref{ssss:bolzano} Больцано-Вейерштрасса, так как $\{x_n\}$ --- ограниченная, $\{x_n\}$ имеет сходящуюся подпоследовательность $\{x_{n_k}\}$.
 
@@ -482,13 +482,13 @@
 
 			Так как $\{x_n\}$ фундаментальная:
 			\begin{equation*}
-				\forall \eps > 0: \; \exists N_1: \; \forall p \gs N_1 \implies |x_p - a| < \frac{\eps}{2}
+				\forall \eps > 0: \; \exists N_1: \; \forall p \geq N_1 \implies |x_p - a| < \frac{\eps}{2}
 			\end{equation*}
 			Так как $\{x_{n_k}\}$ сходящаяся:
 			\[\begin{gathered}
-				\lim_{k \to \infty} x_{n_k} = a: \; \forall \eps > 0 \; \exists N_2: \; \forall n_k \gs n_{N_2} \implies |x_{n_k} - a| < \frac{\eps}{2} \\
-				\forall \eps > 0: \; |x_n - a| = |(x_n - x_{n_k}) + (x_{n_k} - a)| \ls |x_n - x_{n_k}| + |x_{n_k} - a| < \frac{\eps}{2} + \frac{\eps}{2} = \eps \\
-				\text{Возьмём } N = \max\{N_1, N_2\}: \; \forall \eps > 0 \; \exists N: \; \forall n \gs N \implies |x_n - a| < \eps
+				\lim_{k \to \infty} x_{n_k} = a: \; \forall \eps > 0 \; \exists N_2: \; \forall n_k \geq n_{N_2} \implies |x_{n_k} - a| < \frac{\eps}{2} \\
+				\forall \eps > 0: \; |x_n - a| = |(x_n - x_{n_k}) + (x_{n_k} - a)| \leq |x_n - x_{n_k}| + |x_{n_k} - a| < \frac{\eps}{2} + \frac{\eps}{2} = \eps \\
+				\text{Возьмём } N = \max\{N_1, N_2\}: \; \forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |x_n - a| < \eps
 			\end{gathered}\]
 			Достаточность доказана.
 		\end{itemize}
@@ -512,7 +512,7 @@
 
 		Выберем произвольную $\{x_n\} \to a, x_n \neq a$. По определению предела последовательности 
 		\begin{equation*}
-			\forall \delta > 0 \; \exists N: \; \forall n \gs N \implies |x_n - a| < \delta
+			\forall \delta > 0 \; \exists N: \; \forall n \geq N \implies |x_n - a| < \delta
 		\end{equation*}
 		Указанное неравенство выполняетс ядля любого $\delta > 0$. Тогда какое бы $\eps > 0$ мы бы ни выбрали, можно найти $\delta > 0$, такое, что по определению по Коши будет выполняться
 		\begin{equation*}
@@ -525,9 +525,9 @@
 
 		Пусть $\lim\limits_{n \to \infty} f(x_n) = A$ По Гейне. От противного: если $\lim\limits_{x \to a} f(x) = A$ по Гейне, то $\lim\limits_{x \to a} f(x) \neq A$ по Коши. Напишем отрицание определения по Коши:
 		\begin{equation*}
-			\exists \eps_0: \; \forall \delta > 0: \; \exists x: \; 0 < |x - a| < \delta: \; |f(x) - A| \gs \eps_0
+			\exists \eps_0: \; \forall \delta > 0: \; \exists x: \; 0 < |x - a| < \delta: \; |f(x) - A| \geq \eps_0
 		\end{equation*}
-		Так как $\delta$ может быть любым, можно выбрать последовательность $\{\delta_n\} = \{\dfrac{1}{n}\}$, а соответствующие значения $x$ будем обозначать как $x_n$. Тогда $0 < |x_n - a| < \delta_n = \dfrac{1}{n}$, и $|f(x_n) - A| \gs \eps_0$. Отсюда следует, что последовательность $\{x_n\}$ является подходящей, но при этом число $A$ не является пределом функции $f(x)$ в точке $a$ (по Гейне). Пришли к противоречию.
+		Так как $\delta$ может быть любым, можно выбрать последовательность $\{\delta_n\} = \{\dfrac{1}{n}\}$, а соответствующие значения $x$ будем обозначать как $x_n$. Тогда $0 < |x_n - a| < \delta_n = \dfrac{1}{n}$, и $|f(x_n) - A| \geq \eps_0$. Отсюда следует, что последовательность $\{x_n\}$ является подходящей, но при этом число $A$ не является пределом функции $f(x)$ в точке $a$ (по Гейне). Пришли к противоречию.
 	\end{itemize}
 
 	\subsubsubsection{Односторонние пределы, их связь с двусторонними. Пределы функции в бесконечности.}
@@ -577,7 +577,7 @@
 	Множество отрезков $\{[a_n; b_n\}_{n=1}^{\infty}$ называется системой стягивающихся отрезков, если выполнено:
 	\begin{enumerate}
 		\item
-		Каждый последовательный отрезок вложен в предыдущий, т.е. $a_1 \ls a_2 \ls ... \ls a_n \ls b_n \ls b_{n - 1} \ls \dots \ls b_1$
+		Каждый последовательный отрезок вложен в предыдущий, т.е. $a_1 \leq a_2 \leq ... \leq a_n \leq b_n \leq b_{n - 1} \leq \dots \leq b_1$
 
 		\item
 		$\lim\limits_{n \to \infty} (b_n - a_n) = 0$
@@ -586,13 +586,13 @@
 		\textbf{(Коши-Кантора)} Для любой ССТ существует, причем единственная, точка $c$, принадлежащая всем отрезками данной системы, т. е. $\exists! c: \forall n \in \NN \implies c \in [a_n, b_n]$
 	\end{lemma}
 	\begin{proof}
-		\emph{Существование}. Используем аксиому полноты: если $a \ls b$, то $\exists c: a \ls c \ls b$.
+		\emph{Существование}. Используем аксиому полноты: если $a \leq b$, то $\exists c: a \leq c \leq b$.
 		\begin{equation*}
 			\exists c: \; \forall n \in \NN \implies c \in [a_n, b_n]
 		\end{equation*}
 		\emph{Единственность}. Предположим противное, пусть существуют две различные точки $c, c'$, принадлежащие всем отрезкам последовательности $\{[a_n; b_n\}_{n=1}^{\infty}$. Не теряя общности, предположим, что $c > c'$.
 		
-		Тогда $\forall n \in \NN \implies a_n \ls c' < c \ls b_n \implies 0 \ls c - c' \ls b_n - a_n$. Т.к. $\lim\limits_{n \to \infty} (b_n - a_n) = 0 \implies 0 \ls c - c' \ls 0 \implies c - c' = 0 \implies c = c'$
+		Тогда $\forall n \in \NN \implies a_n \leq c' < c \leq b_n \implies 0 \leq c - c' \leq b_n - a_n$. Т.к. $\lim\limits_{n \to \infty} (b_n - a_n) = 0 \implies 0 \leq c - c' \leq 0 \implies c - c' = 0 \implies c = c'$
 
 		Пришли к противоречию.
 	\end{proof}
