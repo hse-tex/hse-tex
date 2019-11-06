@@ -65,11 +65,10 @@
 
 % расширенная матрица для СЛУ
 \newenvironment{amatrix}[2]{%
-  \left(\begin{array}{@{}*{#1}{c}|{#2}{c}}
+\left(\begin{array}{@{}*{#1}{c}|*{#2}{c}@{}}
 }{%
-  \end{array}\right)
+\end{array}\right)
 }
-
 
 % subsubsubsection
 \titleclass{\subsubsubsection}{straight}[\subsection]
