@@ -4,9 +4,13 @@
 %%% Работа с русским языком
 \usepackage{cmap}                   % поиск в PDF
 \usepackage{mathtext}               % русские буквы в фомулах
+\usepackage{indentfirst}            % Отступ первого параграфа
 \usepackage[T2A]{fontenc}           % кодировка
 \usepackage[utf8]{inputenc}         % кодировка исходного текста
 \usepackage[english,russian]{babel} % локализация и переносы
+
+%% Кастомизация списокв
+\usepackage{enumitem}
 
 %%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
@@ -20,19 +24,27 @@
 \usepackage{mathrsfs} % Красивый матшрифт
 
 %% Свои команды
-%%\DeclareMathOperator{\sgn}}{\mathop{\mathrm{sgn}}}
+\DeclareMathOperator{\tr}{\mathop{\mathrm{tr}}}
+\DeclareMathOperator{\sgn}{\mathop{\mathrm{sgn}}}
+\DeclareMathOperator{\diag}{\mathop{\mathrm{diag}}}
 
 %%% Теоремы
 \theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
 \newtheorem{theorem}{Теорема}[section]
 \newtheorem{proposition}[theorem]{Утверждение}
- 
+
 \theoremstyle{definition} % "Определение"
+\newtheorem*{definition}{Определение}
 \newtheorem{corollary}{Следствие}[theorem]
 \newtheorem{problem}{Задача}[section]
 \newtheorem{comment}{Замечание}[theorem]
+\newtheorem*{lemma}{Лемма}
  
 \theoremstyle{remark} % "Примечание"
+\newtheorem*{example}{Пример}
+
+%% Черный квадрат в доказательствах
+\renewcommand\qedsymbol{$\blacksquare$}
 
 %% Перенос знаков в формулах (по Львовскому)
 \newcommand*{\hm}[1]{#1\nobreak\discretionary{}
@@ -44,7 +56,10 @@
 \newcommand{\RomanNumeralCaps}[1]
     {\MakeUppercase{\romannumeral #1}}
 
+%% Сокращения для обозначения множеств
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\QQ}{\mathbb{Q}}

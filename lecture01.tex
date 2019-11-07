@@ -1,52 +1,64 @@
 \section{Лекция 7.09.2017}
 \subsection{Системы линейных уравнений.}
 
-Линейное уравнение: $a_1 x_1 + \cdots + a_n x_n = b$.
+\textit{Линейное уравнение}: $a_1 x_1 + \dots + a_n x_n = b$.
 
-$a_1, a_2, \cdots, a_n, b \in \RR$ -- заданные числа.
+$a_1, a_2, \dots, a_n, b \in \RR$ -- коэффициенты.
 
-$x_1, x_2, \cdots, x_n$ -- неизвестные.
+$x_1, x_2, \dots, x_n$ -- неизвестные.
 
 \bigskip
 Система линейных уравнений (СЛУ):
 \begin{equation*}
-	\left\{
-		\begin{aligned}
-        a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x = b_1 \\
-        a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x = b_2 \\
-        \hdots \hdots \hdots \hdots \hdots \hdots \hdots \hdots \hdots \hdots\\
-        a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x = b_m \\
-		\end{aligned}
-	\right.
+	\begin{cases}
+        \begin{aligned}
+            a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n &= b_1 \\
+            a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n &= b_2 \\
+            \hdotsfor{2} \\
+            a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n &= b_m \\
+        \end{aligned}
+	\end{cases}
 \end{equation*}
 m уравнений, n неизвестных
 
-\bigskip
-\textbf{Определение.} 1) \textit{Решение одного уравнения} -- это такой набор значений неизвестных $x_1, x_2, \cdots, x_n$, при подстановке которого в уравнение получаем тождество.
+\begin{definition}~
+    \begin{enumerate}
+    \item \textit{Решение одного уравнения} -- это такой набор значений неизвестных $x_1, x_2, \dots, x_n$, при подстановке которого в уравнение получаем тождество.
+    \item \textit{Решение СЛУ} -- такой набор значений неизвестных, который является решением каждого уравнения СЛУ.
+    \end{enumerate}
+\end{definition}
 
-2) \textit{Решение СЛУ} -- такой набор значений неизвестных, который является решением каждого уравнения СЛУ.
-
-\bigskip
 Основная задача: решить СЛУ, т.е. найти все решения.
 
 \bigskip
-Пример. $n = m = 1$
+\begin{example}
 
-$ax = b$, $a, b \in \RR$, x - неизвестная
+    $n = m = 1$
 
-1) $a \neq 0 \Rightarrow x = \frac{b}{a}$ -- единственное
+    $ax = b$, $a, b \in \RR$, x -- неизвестная
 
-2) $a = 0 \Rightarrow 0x = b$
+    \begin{enumerate}
+    \item $a \neq 0 \Rightarrow x = \frac{b}{a}$ -- единственное
 
-$b \neq 0 \Rightarrow$ решений нет.
+    \item $a = 0 \Rightarrow 0x = b$
 
-$b = 0 \Rightarrow$ x - любое $\Rightarrow$ бесконечно много решений.
+        $b \neq 0 \Rightarrow$ решений нет.
 
-\bigskip
-\textbf{Определение.} СЛУ называется \textit{совместной}, если у нее есть решение. СЛУ называется \textit{несовместной}, если у нее решений нет.
+        $b = 0 \Rightarrow$ x -- любое $\Rightarrow$ бесконечно много решений.
+    \end{enumerate}
+\end{example}
 
-\bigskip
-\textbf{Определение.} Две СЛУ от одних и тех же неизвестных называются \textit{эквивалетными}, когда у них совпадают множества решений.
+\begin{definition}
+    СЛУ называется 
+
+    -- \textit{совместной}, если у нее есть хотя бы одно решение
+
+    -- \textit{несовмествной}, если решений нет
+\end{definition}
+
+\begin{definition}
+    Две СЛУ от одних и тех же неизвестных называются \textit{эквивалетными}, если они имеют одинаковые множества решений.
+\end{definition}
 
 \bigskip
 Примеры.
