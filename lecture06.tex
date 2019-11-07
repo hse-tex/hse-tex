@@ -22,13 +22,13 @@ $i, j \in \{1, 2, \dots, n\} \ i \neq j$.
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}} $\rhd$ Пусть $\tau = \tau_{ij}$, можем считать, что $i < j$. Посчитаем инверсии
 
-\[\tau := \begin{pmatrix} 
+\begin{equation*}\tau := \begin{pmatrix} 
 	1 & \dots & i-1 & i & i + 1 & \dots & 
 	j - 1 & j & j + 1 & \dots \ n
 	\cr 
 	1 & \dots & i-1 & j & i + 1 & \dots & 
 	j - 1 & i & j + 1 & \dots \ n
-\end{pmatrix}\]
+\end{pmatrix}\end{equation*}
 
 Инверсии: $\{i, j\}$
 
@@ -50,11 +50,11 @@ $\Rightarrow$ всего инверсий $2(j-i-1) + 1 = 1 \ mod \ 2 \Rightarro
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}} $\rhd \ \sigma \in S_n$
 
-\[\sigma := 
+\begin{equation*}\sigma := 
 \begin{pmatrix} 
 	1 & 2 & \dots & n \\ 
 	\sigma (1) & \sigma (2) & \dots & \sigma (n)
-\end{pmatrix}\]
+\end{pmatrix}\end{equation*}
 
 Тогда $\sigma \tau_{i, i+1} = \begin{pmatrix} 
 	1 & 2 & \dots & i & i+1 & \dots & n \\ 
@@ -72,7 +72,7 @@ $A \in M_n$
 \vspace{\baselineskip}
 \textbf{Определение.} \textit{Определителем (квадратной) матрицы} $A$ называется число 
 
-\[ detA = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) a_{1, \sigma(1)} a_{2, \sigma(2)} \dots a_{n, \sigma(n)} \ (*)\]
+\begin{equation*} detA = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) a_{1, \sigma(1)} a_{2, \sigma(2)} \dots a_{n, \sigma(n)} \ (*)\end{equation*}
 ($\sum\limits_{\sigma \in S_n}$ -- сумма по всем подстановкам)
 
 \vspace{\baselineskip}
@@ -126,9 +126,9 @@ T) Свойство Т. $detA = detA^T$.
 \vspace{\baselineskip}
 1) Свойство 1. Если в А все элементы одной строки или одного столбца домножить на одно и то же число $\lambda$, то detA тоже умножается на $\lambda$
 
-\[
+\begin{equation*}
 \begin{vmatrix} * & * & \dots & * \\ \dots & \dots & \dots & \dots \\ \lambda * & \lambda * & \lambda * & \lambda * \\ \dots & \dots & \dots & \dots \\ * & * & \dots & * \end{vmatrix} = \lambda \begin{vmatrix} * & * & \dots & * \\ \dots & \dots & \dots & \dots \\  * &  * & * & * \\ \dots & \dots & \dots & \dots \\ * & * & \dots & * \end{vmatrix}
-\]
+\end{equation*}
 \textbf{\textit{Доказательство.}} $\rhd$ В силу Т достаточно доказать для строк. 
 
 $A_{(i)} \rightarrow \lambda A_{(i)} \Rightarrow a_{ij} \rightarrow \lambda a_{ij} \ \forall j \Rightarrow $ в (*) каждое слагаемое умножается на $\lambda \Rightarrow$ detA умножается на $\lambda. \lhd$
@@ -139,8 +139,8 @@ $A_{(i)} \rightarrow \lambda A_{(i)} \Rightarrow a_{ij} \rightarrow \lambda a_{i
 \vspace{\baselineskip}
 Пример:
 
-\[ \begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 + c_1 & b_2 + c_2 & b_3 + c_3 \\ d_1 & d_2 & d_3 \end{vmatrix} = \begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ d_1 & d_2 & d_3 \end{vmatrix} + \begin{vmatrix} a_1 & a_2 & a_3 \\ c_1 & c_2 & c_3 \\ d_1 & d_2 & d_3 \end{vmatrix}
-\]
+\begin{equation*} \begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 + c_1 & b_2 + c_2 & b_3 + c_3 \\ d_1 & d_2 & d_3 \end{vmatrix} = \begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ d_1 & d_2 & d_3 \end{vmatrix} + \begin{vmatrix} a_1 & a_2 & a_3 \\ c_1 & c_2 & c_3 \\ d_1 & d_2 & d_3 \end{vmatrix}
+\end{equation*}
 
 \vspace{\baselineskip}
 Аналогично, если $A^{(j)} = A^{(j)}_1 + A^{(j)}_2$, то $detA = det ( A^{(1)} \dots A^{(j)}_1 \dots A^{(n)} ) + det ( A^{(1)} \dots A^{(j)}_2 \dots A^{(n)})$.
@@ -162,13 +162,13 @@ $A_{(i)} \rightarrow \lambda A_{(i)} \Rightarrow a_{ij} \rightarrow \lambda a_{i
 
 Пусть $\tau = \tau_{pq}$.
 
-\[
+\begin{equation*}
 	b(i,j) = \begin{cases}
 		a_{ij}, &\text{если }  i \neq p, q  \\
 		a_{qj}, &\text{если } i=p \\
         a_{pj}, &\text{если } i = q
 	\end{cases}
-\]
+\end{equation*}
 
 \begin{multline} b_{ij} = a_{\tau (i), j} \ \forall \ i, j \Rightarrow a_{\tau (i), \sigma (i)} = a_{\tau (i), (\sigma \tau) (\tau (i))} \Rightarrow detB = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) b_{1, \sigma(1)} b_{2, \sigma(2)} \dots b_{n, \sigma(n)} = \\ = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) a_{\tau (1), \sigma(1)} a_{\tau (2), \sigma(2)} \dots a_{\tau (n), \sigma(n)} = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) a_{\tau (1), (\sigma \tau)(\tau (1))} a_{\tau (2), (\sigma \tau)(\tau (2))} \dots a_{\tau (n), (\sigma \tau)(\tau (n))} = \\ = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) a_{1, (\sigma \tau (1))} a_{2, (\sigma \tau (2))} \dots a_{n, (\sigma \tau (n))} = - \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma \tau) a_{1, (\sigma \tau (1))} a_{2, (\sigma \tau (2))} \dots a_{n, (\sigma \tau (n))} = \\ = | замена: \ \rho = \sigma \tau | = - \sum\limits_{\rho \in S_n} (\mathrm{sgn} \rho) a_{1, \rho (1)} a_{2, \rho (2)} \dots a_{n, \rho (n)} = -detA \lhd
 \end{multline}.

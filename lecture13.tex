@@ -48,21 +48,21 @@ $(A|0) \rightarrow (B|0)$ (элементарными преобразовани
 Пусть $r$ -- число ненулевых строк в $B$. Тогда будет $r$ главных неизвестных и $n-r$ свободных. Выполнив перенумерацию, будем считать, что $x_1, \dots, x_r$ -- главные неизвестные, $x_{r+1}, \dots, x_n$ -- свободные неизвестные.
 
 Тогда общее решение ОСЛУ (*) имеет вид
-\[
+\begin{equation*}
 \begin{cases}
 x_1 = c_{11} x_{r+1} + c_{12} x_{r+2} + \dots + c_{1, n-r} x_n \\
 x_2 = c_{21} x_{r+1} + c_{22} x_{r+2} + \dots + c_{2, n-r} x_n \\
 \cdots \\
 x_r = c_{r1} x_{r+1} + c_{r2} x_{r+2} + \dots + c_{r, n-r} x_n
 \end{cases}
-\]
+\end{equation*}
 
 Пусть 
-\[u_1 = \begin{pmatrix} c_{11} \\ c_{21} \\ \dots \\ c_{r1} \\ \hline
+\begin{equation*}u_1 = \begin{pmatrix} c_{11} \\ c_{21} \\ \dots \\ c_{r1} \\ \hline
  \\ 1 \\ 0 \\ \dots \\ 0 \end{pmatrix} , u_2 = \begin{pmatrix} c_{12} \\ c_{22} \\ \dots \\ c_{r2} \\ \hline
  \\ 0 \\ 1 \\ \dots \\ 0 \end{pmatrix}, \dots, u_k = \begin{pmatrix} c_{1k} \\ c_{2k} \\ \dots \\ c_{rk} \\ \hline
  \\ \dots \\ 1 \\ \dots \\ 0 \end{pmatrix}, \dots, u_{n-r} = \begin{pmatrix} c_{1, n-r} \\ c_{2, n-r} \\ \dots \\ c_{r, n-r} \\ \hline
- \\ 0 \\ 0 \\ \dots \\ 1 \end{pmatrix} \]
+ \\ 0 \\ 0 \\ \dots \\ 1 \end{pmatrix} \end{equation*}
  
 По построению, $u_1, \dots, u_{n-r} \in S$.
 

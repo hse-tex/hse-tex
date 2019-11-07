@@ -19,30 +19,30 @@ $\Rightarrow detA = -detA \Rightarrow detA = 0 \ \lhd$.
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}} $\rhd$ Свойство Т $\Rightarrow$ достаточно доказать для строк.
 
-\[A \rightarrow A' = \begin{pmatrix} \dots \\ A_{(i)} + \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} \]
+\begin{equation*}A \rightarrow A' = \begin{pmatrix} \dots \\ A_{(i)} + \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} \end{equation*}
 
-\[detA' = det \begin{pmatrix} \dots \\ A_{(i)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} + det \begin{pmatrix} \dots \\ \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} = detA + \lambda det \begin{pmatrix} \dots \\ A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} = det A + \lambda 0 = det A \ \lhd \].
+\begin{equation*}detA' = det \begin{pmatrix} \dots \\ A_{(i)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} + det \begin{pmatrix} \dots \\ \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} = detA + \lambda det \begin{pmatrix} \dots \\ A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} = det A + \lambda 0 = det A \ \lhd \end{equation*}.
 
 \vspace{\baselineskip}
 \textbf{Определение.} Матрица называется \textit{верхнетреугольной}, если $a_{ij} = 0 \ при \ i > j$, \textit{нижнетреугольной}, если $a_{ij} = 0 \ при \ i < j$. 
 
-\[\begin{pmatrix}
+\begin{equation*}\begin{pmatrix}
 		a_{11} & a_{12} & \cdots & a_{1n} \\
 		0 & a_{22} & \cdots & a_{2n} \\
         0 & 0 & \cdots & a_{3n} \\
        \vdots & \vdots & \vdots& \vdots \\ 
        0 & 0 & \cdots & a_{mn}
 	\end{pmatrix}
-\] -- верхнетреугольная 
+\end{equation*} -- верхнетреугольная 
 
-\[\begin{pmatrix}
+\begin{equation*}\begin{pmatrix}
 		a_{11} & 0 & \cdots & 0 \\
 		a_{21} & a_{22} & \cdots & 0 \\
         a_{31} & a_{32} & \cdots & 0 \\
        \vdots & \vdots & \vdots& \vdots \\ 
        a_{m1} & a_{m2} & \cdots & a_{mn}
 	\end{pmatrix}
-\] -- нижнетреугольная 
+\end{equation*} -- нижнетреугольная 
 
 \vspace{\baselineskip}
 \textbf{Предложение.} Если А -- верхнетреугольная (или нижнетреугольная) матрица, то 
@@ -88,7 +88,7 @@ $Э_3 (i, \lambda): detA$ умножается на $\lambda$.
 \vspace{\baselineskip}
 \textbf{Предложение.} (Определитель с углом нулей) 
 
-\[ A = 
+\begin{equation*} A = 
 \left(
 \begin{array}{c|c}
   P & Q \\
@@ -103,10 +103,10 @@ $Э_3 (i, \lambda): detA$ умножается на $\lambda$.
   Q & R
 \end{array}
 \right),\ P \in M_k, \ R \in M_{n-k} \Rightarrow detA = detP detR
-\]
+\end{equation*}
 
 Матрица с углом нулей:
-\[ 
+\begin{equation*} 
 \left(
 \begin{array}{c|ccc}
   * & * & * & * \\
@@ -116,10 +116,10 @@ $Э_3 (i, \lambda): detA$ умножается на $\lambda$.
   0 & * & * & *
 \end{array}
 \right)
-\]
+\end{equation*}
 
 НЕ матрица с углом нулей:
-\[ 
+\begin{equation*} 
 \left(
 \begin{array}{c|ccc}
   * & * & * & * \\
@@ -129,7 +129,7 @@ $Э_3 (i, \lambda): detA$ умножается на $\lambda$.
   0 & * & * & *
 \end{array}
 \right)
-\]
+\end{equation*}
 
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}} $\rhd$ Свойство Т $\Rightarrow$ достаточно доказать для первого типа.
@@ -181,7 +181,7 @@ $A', B'$ -- верхнетреугольные $\Rightarrow det(A'B') = detA' de
 \textbf{Лемма.} Пусть $a_{ik} = 0$ при всех $k \neq j$. Тогда $detA = a_{ij}A_{ij}$.
 
 \textbf{\textit{Доказательство.}}
-\[ \rhd A = 
+\begin{equation*} \rhd A = 
 \left(
 \begin{array}{ccc|c|ccc}
   & P & & U & & Q & \\
@@ -191,12 +191,12 @@ $A', B'$ -- верхнетреугольные $\Rightarrow det(A'B') = detA' de
   & R & & V & & S &
 \end{array}
 \right)
-\]
+\end{equation*}
 
 \vspace{\baselineskip}
 Переставляя соседние строки, вытолкнем i-ю строку наверх.
 
-\[ 
+\begin{equation*} 
 \left(
 \begin{array}{ccc|c|ccc}
 	0 & \dots & 0 & a_{ij} & 0 & \dots & 0 \\
@@ -206,12 +206,12 @@ $A', B'$ -- верхнетреугольные $\Rightarrow det(A'B') = detA' de
   & R & & V & & S &
 \end{array}
 \right)
-\]
+\end{equation*}
 
 \vspace{\baselineskip}
 Переставляя соседние столбцы, переместим j-й столбец на первое место. 
 
-\[ A' = 
+\begin{equation*} A' = 
 \left(
 \begin{array}{ccc|c|ccc}
 	 & a_{ij} &  & 0  & 0 & \dots & 0 \\
@@ -221,7 +221,7 @@ $A', B'$ -- верхнетреугольные $\Rightarrow det(A'B') = detA' de
   & V & & R & & S &
 \end{array}
 \right)
-\]
+\end{equation*}
 
 \vspace{\baselineskip}
 $detA' = a_{ij}det \left(

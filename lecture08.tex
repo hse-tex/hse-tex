@@ -25,8 +25,8 @@ $A_{(i)} = (a_{i1} 00 \dots 0) + (0 a_{i2} 0 \dots 0) + \dots + (0 \dots 0 a_{in
 Пусть $B \in M_n$ -- матрица, полученная из А заменой $k$-ой строки на $i$-ую.
 
 \vspace{\baselineskip}
-\[B = \begin{pmatrix} A_{(1)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(n)} \end{pmatrix}
-\]
+\begin{equation*}B = \begin{pmatrix} A_{(1)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(n)} \end{pmatrix}
+\end{equation*}
 
 В $B$ есть две одинаковые строки $\Rightarrow$ $detB = 0$. Разлагая $detB$ по $k$-ой строке, получаем $detB = \sum\limits_{j = 1}^n b_{kj}B_{kj} = \sum\limits_{j = 1}^n a_{ij}A_{kj} \ \lhd$.
 
@@ -59,8 +59,8 @@ $A \in M_n$
 \textbf{Определение.} \textit{Присоединенной к А матрицей} называется матрица $\widehat{A} = (A_{ij})^T$.
 
 \vspace{\baselineskip}
-\[\widehat{A} = \begin{pmatrix} A_{11} & A_{21} & \dots & A_{n1} \\ A_{12} & A_{22} & \dots & A_{n2} \\ \dots & \dots & \dots & \dots \\ A_{1n} & A_{2n} & \dots & A_{nn} \end{pmatrix}
-\]
+\begin{equation*}\widehat{A} = \begin{pmatrix} A_{11} & A_{21} & \dots & A_{n1} \\ A_{12} & A_{22} & \dots & A_{n2} \\ \dots & \dots & \dots & \dots \\ A_{1n} & A_{2n} & \dots & A_{nn} \end{pmatrix}
+\end{equation*}
 
 \vspace{\baselineskip}
 \textbf{Теорема.} A обратима $(\exists A^{-1})$ $\Leftrightarrow$ A невырождена $(detA \neq 0)$, при этом $A^{-1} = \frac{1}{detA} \widehat{A}$.
@@ -70,22 +70,22 @@ $A \in M_n$
 
 $\Leftarrow$ Пусть $detA \neq 0$. Покажем, что $\frac{1}{detA} \widehat{A} = A^{-1}$. Для этого достаточно доказать, что $A \widehat{A} = \widehat{A} A = (detA) E$. Для $X = A \widehat{A}$ имеем
 
-\[
+\begin{equation*}
 	x_{ij} = \sum\limits_{k = 1}^n a_{ik} A_{jk} = \begin{cases}
 		detA, &\text{при }  i = j  \\
 		0, &\text{при } i \neq j \\
 	\end{cases}
-\]
+\end{equation*}
 
 \vspace{\baselineskip}
 Для $Y = \widehat{A} A$ имеем 
 
-\[
+\begin{equation*}
 	y_{ij} = \sum\limits_{k = 1}^n A_{ki} a_{kj} = \begin{cases}
 		detA, &\text{при }  i = j  \\
 		0, &\text{при } i \neq j \\
 	\end{cases} \lhd
-\]
+\end{equation*}
 
 \vspace{\baselineskip}
 \textbf{Следствие 1.} Если $AB = E$, то $BA = E$ (и тогда $A = B^{-1}, \ B = A^{-1}$).
@@ -143,8 +143,8 @@ $(A|E) \rightarrow (E|B) \Rightarrow B = A^{-1}$.
 \vspace{\baselineskip}
 Пусть есть СЛУ $AX = b$, где $A \in M_n$. 
 
-\[x = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} \in R^n
-\] -- столбец неизвестных.
+\begin{equation*}x = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} \in R^n
+\end{equation*} -- столбец неизвестных.
 
 $\forall \ i = 1, \dots, n$ пусть $A_i$ -- матрица, полученная из A заменой $i$-ого столбца на $b$.
 

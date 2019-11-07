@@ -30,7 +30,7 @@ $trX = \sum\limits_{i = 1}^m x_{ii} = \sum\limits_{i = 1}^m \sum\limits_{j = 1}^
 \vspace{\baselineskip}
 Пример.
 
-\[A = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}, B = \begin{pmatrix} 4 \\ 5 \\ 6 \end{pmatrix} \]
+\begin{equation*}A = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}, B = \begin{pmatrix} 4 \\ 5 \\ 6 \end{pmatrix} \end{equation*}
 
 $trAB = 1 \cdot 4 + 2 \cdot 5 + 3 \cdot 6 = 32$
 
@@ -53,8 +53,8 @@ $(4 \ 3 \ 2 \ 1) \in P_4$
 \vspace{\baselineskip}
 \textbf{Определение.} \textit{Подстановка из n элементов} -- это биективное (=взаимнооднозначное) отображение множества $\{ 1, 2, \dots, n \} $ в себя.
 
-Запись: \[\begin{pmatrix} 1 & 2 & 3 & \dots & n \\
-i_1 & i_2 & i_3 & \dots & i_n \end{pmatrix} \]
+Запись: \begin{equation*}\begin{pmatrix} 1 & 2 & 3 & \dots & n \\
+i_1 & i_2 & i_3 & \dots & i_n \end{pmatrix} \end{equation*}
 
 $\sigma : \{ 1, 2, \dots, n \} \rightarrow \{ 1, 2, \dots, n \}$
 
@@ -76,8 +76,8 @@ $(i_1, i_2, \dots, i_n)$ -- перестановка
 \vspace{\baselineskip}
 Можно записывать еще и так:
 
-\[ \sigma : \begin{pmatrix} i_1 & i_2 & \dots & i_n \\ j_1 & j_2 & \dots & j_n \end{pmatrix}, \ где \ (i_1, i_2, \dots, i_n) \in \mathbb{R}
-\]
+\begin{equation*} \sigma : \begin{pmatrix} i_1 & i_2 & \dots & i_n \\ j_1 & j_2 & \dots & j_n \end{pmatrix}, \ где \ (i_1, i_2, \dots, i_n) \in \mathbb{R}
+\end{equation*}
 
 $j_1 = \sigma (i_1), j_2 = \sigma (i_2), \dots, j_n = \sigma (i_n)$
 
@@ -87,7 +87,7 @@ $j_1 = \sigma (i_1), j_2 = \sigma (i_2), \dots, j_n = \sigma (i_n)$
 \vspace{\baselineskip}
 Пример.
 
-\[ \sigma : \begin{pmatrix} 1 & 2 & 3 & 4 \\ 4 & 3 & 2 & 1 \end{pmatrix} = (4 \ 3 \ 2 \ 1) \]
+\begin{equation*} \sigma : \begin{pmatrix} 1 & 2 & 3 & 4 \\ 4 & 3 & 2 & 1 \end{pmatrix} = (4 \ 3 \ 2 \ 1) \end{equation*}
 
 \vspace{\baselineskip}
 Пусть $\sigma \in S_n, \ i, j \in {1, 2, \dots, n}, \ i \neq j$
@@ -175,26 +175,26 @@ $id(i) = i \ \forall \ i=1, 2, \dots, n$
 \textbf{Доказательство.} $\rhd$ Для каждой пары $i < j$ введем следующие числа:
 
 
-\[
+\begin{equation*}
 	a(i,j) = \begin{cases}
 		1, &\text{если }  \{i, j \} \text{образует инверсию в } \rho \\
 		0, &\text{иначе}
 	\end{cases}
-\]
+\end{equation*}
 
-\[
+\begin{equation*}
 	b(i,j) = \begin{cases}
 		1, &\text{если }  \{i, j \} \text{ образует инверсию в } \sigma \\
 		0, &\text{иначе}
 	\end{cases}
-\]
+\end{equation*}
 
-\[
+\begin{equation*}
 	c(i,j) = \begin{cases}
 		1, &\text{если }  \{i, j \} \text{ образует инверсию в } \sigma \rho \\
 		0, &\text{иначе}
 	\end{cases}
-\]
+\end{equation*}
 
 \vspace{\baselineskip}
 $1 \rightarrow \rho (1) \rightarrow \sigma \rho (1)$

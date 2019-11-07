@@ -18,8 +18,8 @@
 
 Пусть доказано для $<n$, докажем для $n$. Пусть векторы $e'_1, \dots, e'_{n-1}$ уже построены (В базисе ($e'_1, \dots, e'_{n-1}, e'_n))$
 
-\[ \begin{pmatrix} \delta_1 & 0 & 0 & \dots & 0 & * \\ 0 & \frac{\beta_2}{\beta_1} & 0 & \dots & 0 & * \\ 0 & 0 & \frac{\beta_3}{\beta_2} & \dots & 0 & * \\ \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & \frac{\beta_n}{\beta_{n-1}} & * \\ * & * & * & \dots & * & * \end{pmatrix}
-\]
+\begin{equation*} \begin{pmatrix} \delta_1 & 0 & 0 & \dots & 0 & * \\ 0 & \frac{\beta_2}{\beta_1} & 0 & \dots & 0 & * \\ 0 & 0 & \frac{\beta_3}{\beta_2} & \dots & 0 & * \\ \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & \frac{\beta_n}{\beta_{n-1}} & * \\ * & * & * & \dots & * & * \end{pmatrix}
+\end{equation*}
 
 \vspace{\baselineskip}
 Ищем $e'_n$ в виде $e'_n \in e_n + <e_1, \dots, e_{n-1}> = e_n + <e'_1, \dots, e'_{n-1}>$, т.е. $e'_n = e_n + \lambda_1 e'_1 + \lambda_2 e'_2 + \dots + \lambda_{n-1} e'_{n-1}$
@@ -33,8 +33,8 @@ $\beta(e'_n, e'_k) = \beta(e_n, e'_k) + \lambda_1 \beta(e'_1, e'_k) + \dots + \l
 \vspace{\baselineskip}
 Тогда $\beta(e'_n, e'_k) = 0 \Leftrightarrow \lambda_k = -\beta(e_n, e'_k) \cdot \frac{\delta_{k-1}}{\delta_{k}}$. Теперь в базисе $e' = (e'_1, \dots, e'_n)$.
 
-\[ B(Q, e') = \begin{pmatrix} \delta_1 & 0 & 0 & \dots & 0 & 0 \\ 0 & \frac{\beta_2}{\beta_1} & 0 & \dots & 0 & 0 \\ 0 & 0 & \frac{\beta_3}{\beta_2} & \dots & 0 & 0 \\ \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & \frac{\beta_{n-1}}{\beta_{n-2}} & 0 \\ 0 & 0 & 0 & \dots & 0 & ? \end{pmatrix}
-\]
+\begin{equation*} B(Q, e') = \begin{pmatrix} \delta_1 & 0 & 0 & \dots & 0 & 0 \\ 0 & \frac{\beta_2}{\beta_1} & 0 & \dots & 0 & 0 \\ 0 & 0 & \frac{\beta_3}{\beta_2} & \dots & 0 & 0 \\ \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & \frac{\beta_{n-1}}{\beta_{n-2}} & 0 \\ 0 & 0 & 0 & \dots & 0 & ? \end{pmatrix}
+\end{equation*}
 
 \vspace{\baselineskip}
 По лемме имеем $\delta_n = \delta'_n \Rightarrow \delta_n = \delta'_n = \delta_1 \frac{\delta_2}{\delta_1} \dots \frac{\delta_{n-1}}{\delta_{n-2}} \cdot ? = \delta_{n-1} \cdot ? \Rightarrow ? = \frac{\delta_n}{\delta_{n-1}}$.

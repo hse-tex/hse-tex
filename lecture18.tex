@@ -77,12 +77,12 @@ $v_1, v_2 \in V$, пусть $\varphi (v_1) = \varphi(v_2)$. Тогда $0 = \va
 \vspace{\baselineskip}
 \textbf{Следствие.}  
 
-\[
+\begin{equation*}
 	\varphi - изоморфизм \Leftrightarrow \begin{cases}
 		Ker \varphi = \{0\} \\
 		Im \varphi = W
 	\end{cases}
-\]
+\end{equation*}
 
 \vspace{\baselineskip}
 \textbf{Предложение.} $\varphi : V \rightarrow W$ -- линейное отображение, $U \subseteq V$ -- подпространство, $(e_1, \dots, e_k)$ -- базис $U \Rightarrow \varphi (U) = < \varphi(e_1), \dots, \varphi (e_k)>$. В частности, $dim \varphi (U) \leq dim U, \ dim Im \varphi \leq dim V$
@@ -135,7 +135,7 @@ $e = (e_1, \dots, e_n)$ -- базис $V$, $f = (f_1, \dots, f_m)$ -- базис
 \vspace{\baselineskip}
 \textbf{Предложение.} $\varphi: V \rightarrow W$ -- линейное отображение, $dim V = n, dim W = m$, $rk \varphi = r \Rightarrow \exists$ базис $e$ в $V$ и базис $f$ в $W$ такие, что 
 
-\[ A(\varphi, e, f) = \bordermatrix{ 
+\begin{equation*} A(\varphi, e, f) = \bordermatrix{ 
     	 & & & r & & & & n \cr
     	 & 1 & \cdots & 0 & \dots & \cdots & \cdots & 0 \cr 
          & 0 & \ddots & 0 & \dots & \cdots & \cdots & 0 \cr
@@ -144,14 +144,14 @@ $e = (e_1, \dots, e_n)$ -- базис $V$, $f = (f_1, \dots, f_m)$ -- базис
         & 0 & 0 & 0 & \dots & 0 & 0 & 0  \cr
         & 0 & 0 & 0 & \dots & 0 & 0 & 0  \cr
        m & 0 & 0 & 0 & \dots  & 0 & 0 & 0 }
-\]
+\end{equation*}
 
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}} $\rhd \ dimKer \varphi = dim V - rk \varphi = n - r$. Пусть $(e_{r+1}, \dots, e_n)$ -- базис $Ker \varphi$, дополним его векторами $e_1, \dots, e_r$  до базиса всего $V$, положим $e = (e_1, \dots, e_n)$. Положим $f_1 = \varphi(e_1), \dots, f_r = \varphi(e_r)$. Тогда $(f_1, \dots, f_r)$ -- базис $Im \varphi$. Дополним его до базиса $f = (f_1, \dots, f_m)$ всего пространства $W$. Тогда $e$ и $f$ искомые базисы $\lhd$.
 
 \vspace{\baselineskip}
 \textbf{Предложение.} $A \in Mat_{m \times n}, rkA = r \Rightarrow \exists C \in M_n, D \in M_m, detC \neq 0, detD \neq 0$, такие что $D^{(-1)} A C = B$, где 
-\[ B = \bordermatrix{ 
+\begin{equation*} B = \bordermatrix{ 
     	 & & & r & & & & n \cr
     	 & 1 & \cdots & 0 & \dots & \cdots & \cdots & 0 \cr 
          & 0 & \ddots & 0 & \dots & \cdots & \cdots & 0 \cr
@@ -160,7 +160,7 @@ $e = (e_1, \dots, e_n)$ -- базис $V$, $f = (f_1, \dots, f_m)$ -- базис
         & 0 & 0 & 0 & \dots & 0 & 0 & 0  \cr
         & 0 & 0 & 0 & \dots & 0 & 0 & 0  \cr
        m & 0 & 0 & 0 & \dots  & 0 & 0 & 0 }
-\]
+\end{equation*}
 
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}} Реализуем $A$ как матрицу линейного отображения $\varphi : F^n \rightarrow F^m$ в какой-нибудь паре базисов. Тогда $\exists$ другая пара базисов, в которой матрица будет $B$ (см. предложение), по формуле изменения матрицы линейного отображения при замене базисов имеем $B = D^{(-1)} A C \ \lhd$.

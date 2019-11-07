@@ -80,7 +80,7 @@ $x_3 = 6 - 5x_4$
 
 $x_2 = t_1, x_4 = t_2$ -- параметры
 
-\[ \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} 4 - 2t_1 + 3t_2 \\ t_1 \\ 6 - 5t_2 \\ t_2 \end{pmatrix} = \begin{pmatrix} 4 \\ 0 \\ 6 \\ 0 \end{pmatrix} + t_1 \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} + t_2 \begin{pmatrix} 3 \\ 0 \\ -5 \\ 1 \end{pmatrix} \], где $\begin{pmatrix} 4 \\ 0 \\ 6 \\ 0 \end{pmatrix}$ -- частное решение, а $ t_1 \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} + t_2 \begin{pmatrix} 3 \\ 0 \\ -5 \\ 1 \end{pmatrix} $ -- решение ОСЛУ.
+\begin{equation*} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} 4 - 2t_1 + 3t_2 \\ t_1 \\ 6 - 5t_2 \\ t_2 \end{pmatrix} = \begin{pmatrix} 4 \\ 0 \\ 6 \\ 0 \end{pmatrix} + t_1 \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} + t_2 \begin{pmatrix} 3 \\ 0 \\ -5 \\ 1 \end{pmatrix} \end{equation*}, где $\begin{pmatrix} 4 \\ 0 \\ 6 \\ 0 \end{pmatrix}$ -- частное решение, а $ t_1 \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} + t_2 \begin{pmatrix} 3 \\ 0 \\ -5 \\ 1 \end{pmatrix} $ -- решение ОСЛУ.
 
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}}
@@ -112,15 +112,15 @@ $ \begin{pmatrix} & & & \Diamond \\ & & \Diamond & \\ & \Diamond & & \\ \Diamond
 \vspace{\baselineskip}
 \textbf{Определение.} Матрица $A \in M_n$ называется \textit{диагональной}, если все элементы вне ее главной диагонали равны 0 (т.е. $a_{ij} = 0 \ \forall i \neq j$). 
 
-\[A =  \begin{pmatrix} a_1 & 0 & \dots & 0 \\ 0 & a_2 & \dots & 0  \\ 0 & 0 & \dots & 0 \\ \dots & \dots & \dots & \dots \\ 0 & 0 & \dots & a_n \end{pmatrix} = diag(a_1, a_2, \dots , a_n) \]
+\begin{equation*}A =  \begin{pmatrix} a_1 & 0 & \dots & 0 \\ 0 & a_2 & \dots & 0  \\ 0 & 0 & \dots & 0 \\ \dots & \dots & \dots & \dots \\ 0 & 0 & \dots & a_n \end{pmatrix} = diag(a_1, a_2, \dots , a_n) \end{equation*}
 
 \begin{comment}
 	В дальнейшем понятие \glqq диагональной матрицы\grqq \  будет использоваться также и для неквадратных матриц, условие то же: $a_{ij} = 0 \ \forall  i \neq j$
 \end{comment}
 
-\[A =  \begin{pmatrix} a_1 & 0 & \dots & \dots & 0 \\ 0 & a_2 & \dots & \dots & 0  \\ \dots & \dots & \dots & \dots & \dots \\ 0 & 0 & \dots & a_n & 0 \end{pmatrix} = diag(a_1, a_2, \dots , a_n) \]
+\begin{equation*}A =  \begin{pmatrix} a_1 & 0 & \dots & \dots & 0 \\ 0 & a_2 & \dots & \dots & 0  \\ \dots & \dots & \dots & \dots & \dots \\ 0 & 0 & \dots & a_n & 0 \end{pmatrix} = diag(a_1, a_2, \dots , a_n) \end{equation*}
 
-\[A =  \begin{pmatrix} a_1 & 0 & \dots & 0 \\ 0 & a_2 & \dots & 0  \\ \dots & \dots & \dots & \dots \\ 0 & 0 & \dots & a_n \\ 0 & 0 & 0 & 0 \end{pmatrix} = diag(a_1, a_2, \dots , a_n) \]
+\begin{equation*}A =  \begin{pmatrix} a_1 & 0 & \dots & 0 \\ 0 & a_2 & \dots & 0  \\ \dots & \dots & \dots & \dots \\ 0 & 0 & \dots & a_n \\ 0 & 0 & 0 & 0 \end{pmatrix} = diag(a_1, a_2, \dots , a_n) \end{equation*}
 
 \vspace{\baselineskip}
 \textbf{Лемма.} Пусть $A = diag(a_1, a_2, \dots, a_n) \in M_n$.
@@ -135,7 +135,7 @@ $ \begin{pmatrix} & & & \Diamond \\ & & \Diamond & \\ & \Diamond & & \\ \Diamond
 
 $\rhd$ (1)
 
-\[\begin{pmatrix} a_1 & 0 & 0 & \dots & 0 \\
+\begin{equation*}\begin{pmatrix} a_1 & 0 & 0 & \dots & 0 \\
 0 & a_2 & 0 & \dots & 0 \\
 0 & 0 & a_3 & \dots & 0 \\
 \dots & \dots & \dots & \dots & \dots \\
@@ -148,17 +148,17 @@ b_{n1} & b_{n2} & b_{n3} & \dots & b_{np}
 a_2 b_{21} & a_2 b_{22} & a_2 b_{23} & \dots & a_2 b_{2p} \\
 \dots & \dots & \dots & \dots & \dots \\
 a_n b_{n1} & a_n b_{n2} & a_n b_{n3} & \dots & a_n b_{np}
-\end{pmatrix} = \]
-\[ = \begin{pmatrix} a_1 B_{(1)} \\ a_2 B_{(2)} \\ \dots \\ a_n B_{(n)} \end{pmatrix} \]
+\end{pmatrix} = \end{equation*}
+\begin{equation*} = \begin{pmatrix} a_1 B_{(1)} \\ a_2 B_{(2)} \\ \dots \\ a_n B_{(n)} \end{pmatrix} \end{equation*}
 (2) Аналогично. $\lhd$
 
 \vspace{\baselineskip}
 \textbf{Определение.} Матрица $E = E_n = diag(1, 1, \dots, 1)$ называется \textit{единичной матрицей порядка n}.
-\[ E = \begin{pmatrix} 1 & 0 & \dots & 0 \\ 
+\begin{equation*} E = \begin{pmatrix} 1 & 0 & \dots & 0 \\ 
 0 & 1 & \dots & 0 \\
 \dots & \dots & \dots & \dots \\
 0 & 0 & \dots & 1 
-\end{pmatrix} \]
+\end{pmatrix} \end{equation*}
 
 \vspace{\baselineskip}
 \textbf{Следствия из леммы}
@@ -173,7 +173,7 @@ a_n b_{n1} & a_n b_{n2} & a_n b_{n3} & \dots & a_n b_{np}
 \textbf{Утверждение.} Всякое элементарное преобразование строк матрицы $A \in Mat_{m \times n}$ представимо при помощи умножения слева на подходящую матрицу. А именно:
 
 $Э_1(i, j, \lambda): A \rightarrow U_1(i, j, \lambda) A$, где
-\[ U_1(i, j, \lambda) = \bordermatrix{ 
+\begin{equation*} U_1(i, j, \lambda) = \bordermatrix{ 
     	 & & & & & & j & &  \cr
     	 & 1 & \cdots & 0 & 0 & \cdots & \cdots & 0 \cr 
           & 0 & 1 & 0 & 0 & \cdots & \cdots & 0 \cr
@@ -182,12 +182,12 @@ $Э_1(i, j, \lambda): A \rightarrow U_1(i, j, \lambda) A$, где
         & 0 & 0 & 0 & \cdots & 1 & 0 & 0  \cr
         & 0 & 0 & 0 & \cdots & 0 & 1 & 0  \cr
         & 0 & 0 & 0 & \cdots & 0 & 0 & 1 }
-\]
+\end{equation*}
 (на диагонали стоят единицы, на $i$--ом $j$--ом месте стоит $\lambda$, остальные элементы нули)
 
 \vspace{\baselineskip}
 $Э_2(i, j): A \rightarrow U_2(i, j) A$, где
-\[ U_2(i, j) = \bordermatrix{ 
+\begin{equation*} U_2(i, j) = \bordermatrix{ 
     	 & & & i & & & j & &  \cr
     	 & 1 & \cdots & 0 & 0 & \cdots & \cdots & 0 \cr 
           & 0 & 1 & 0 & 0 & \cdots & \cdots & 0 \cr
@@ -196,12 +196,12 @@ $Э_2(i, j): A \rightarrow U_2(i, j) A$, где
         & 0 & 0 & 0 & \cdots & 1 & 0 & 0  \cr
         j & 0 & 0 & 1 & \cdots & 0 & 0 & 0  \cr
         & 0 & 0 & 0 & \cdots & 0 & 0 & 1 }
-\]
+\end{equation*}
 (на диагонали стоят единицы, кроме $i$--ого и $j$-ого столбца (там нули), на $i$--ом $j$--ом и $j$--ом $i$--ом местах стоят 1, остальные элементы нули)
 
 \vspace{\baselineskip}
 $Э_1(i, \lambda): A \rightarrow U_3(i, \lambda) A$, где
-\[ U_3(i,\lambda) = \bordermatrix{ 
+\begin{equation*} U_3(i,\lambda) = \bordermatrix{ 
     	 & & & i & & & & &  \cr
     	 & 1 & \cdots & 0 & 0 & \cdots & \cdots & 0 \cr 
           & 0 & 1 & 0 & 0 & \cdots & \cdots & 0 \cr
@@ -213,7 +213,7 @@ $Э_1(i, \lambda): A \rightarrow U_3(i, \lambda) A$, где
         \bordermatrix{
         & & & & i & & \cr
         & 1, & \dots, & 1, & \lambda, & 1, & \dots, & 1}
-\]
+\end{equation*}
 (на диагонали стоят единицы, кроме $i$-ого столбца -- там $\lambda$, остальные элементы нули)
 
 \vspace{\baselineskip}

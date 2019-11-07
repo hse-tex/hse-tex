@@ -29,7 +29,7 @@ $\Rightarrow \varphi$ -- отражение относительно $l$
 $(\varphi(x), y) = (x, \varphi^*(y)) = (x, \varphi^{-1}(x)) = (\overbrace{x}^{\in U^{\bot}}, \overbrace{\psi^{-1}(y)}^{\in U}) = 0 \ \lhd$
 
 \vspace{\baselineskip}
-\textbf{Теорема.} $\forall$ ортогонального линейного оператора $\varphi \in L(E) \ \exists$ ортонормированный базис $e$, такой что \[A(\varphi, e) = \left(
+\textbf{Теорема.} $\forall$ ортогонального линейного оператора $\varphi \in L(E) \ \exists$ ортонормированный базис $e$, такой что \begin{equation*}A(\varphi, e) = \left(
 \begin{array}{c|c|c|c|c|c|c|c|c|c}
   П(\alpha_1) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\
   \hline
@@ -51,7 +51,7 @@ $(\varphi(x), y) = (x, \varphi^*(y)) = (x, \varphi^{-1}(x)) = (\overbrace{x}^{\i
   \hline
   0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
 \end{array}
-\right) (*)\]
+\right) (*)\end{equation*}
 
 $П(\alpha) = \begin{pmatrix} \cos \alpha && -\sin \alpha \\ \sin \alpha && \cos \alpha \end{pmatrix}$
 
@@ -88,7 +88,7 @@ $\begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} = П(\pi) \lhd$
 
 $V, W$ -- векторные пространства над $F$, $\varphi: V \rightarrow W$ -- линейное отображение, $dim V = n, dim W = m$, $rk \varphi = r \Rightarrow \exists$ базис $e$ в $V$ и базис $f$ в $W$ такие, что 
 
-\[ A(\varphi, e, f) = \bordermatrix{ 
+\begin{equation*} A(\varphi, e, f) = \bordermatrix{ 
     	 & & & r & & & & n \cr
     	 & 1 & \cdots & 0 & \dots & \cdots & \cdots & 0 \cr 
          & 0 & \ddots & 0 & \dots & \cdots & \cdots & 0 \cr
@@ -97,7 +97,7 @@ $V, W$ -- векторные пространства над $F$, $\varphi: V \r
         & 0 & 0 & 0 & \dots & 0 & 0 & 0  \cr
         & 0 & 0 & 0 & \dots & 0 & 0 & 0  \cr
        m & 0 & 0 & 0 & \dots  & 0 & 0 & 0 }, r = rk \varphi = dim Im \varphi
-\]
+\end{equation*}
 
 \vspace{\baselineskip}
 $E$ -- евклидово пространство со скалярным произведением $(\cdot, \cdot), dimE = n$
@@ -105,7 +105,7 @@ $E$ -- евклидово пространство со скалярным пр�
 $E'$ -- евклидово пространство со скалярным произведением $(\cdot, \cdot)', dimE = m$
 
 \vspace{\baselineskip}
-\textbf{Теорема о сингулярных базисах.} $\varphi: E \rightarrow E'$ -- линейное отображение, $r = rk \varphi \Rightarrow \exists$ ортонормированный базис $e$ в $E$ и ортонормированный базис $e'$ в $E'$, такой что \[A(\varphi, e, f) = \begin{pmatrix} \sigma_1 & 0 & 0 & 0 & 0 & 0 & 0 \\  0 & \sigma_2 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & \ddots & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & \sigma_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0  \end{pmatrix}\], где $\sigma_1 \geqslant \sigma_2 \geqslant \dots \geqslant \sigma_r > 0$
+\textbf{Теорема о сингулярных базисах.} $\varphi: E \rightarrow E'$ -- линейное отображение, $r = rk \varphi \Rightarrow \exists$ ортонормированный базис $e$ в $E$ и ортонормированный базис $e'$ в $E'$, такой что \begin{equation*}A(\varphi, e, f) = \begin{pmatrix} \sigma_1 & 0 & 0 & 0 & 0 & 0 & 0 \\  0 & \sigma_2 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & \ddots & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & \sigma_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0  \end{pmatrix}\end{equation*}, где $\sigma_1 \geqslant \sigma_2 \geqslant \dots \geqslant \sigma_r > 0$
 
 Более того, числа $\sigma_1, \dots, \sigma_r$ определены однозначно.
 
