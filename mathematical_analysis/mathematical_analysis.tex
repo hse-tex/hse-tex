@@ -23,7 +23,7 @@
 		&\lim_{x \to 0} \dfrac{\tg x}{x} = 1 \\
 		&\lim_{x \to 0} \dfrac{\arcsin x}{x} = 1 \\
 		&\lim_{x \to 0} \dfrac{\arctg x}{x} = 1 \\
-	\end{align*}
+	\end{align*}	
 
 	\subsection{Следствия второго замечательного предела}
 	\begin{align*}
@@ -402,7 +402,7 @@
 		По лемме $\left|\dfrac{1}{y_n \cdot b}\right| \leq max\left\{\left|\dfrac{1}{y_1 \cdot b}\right|, \dots, \left|\dfrac{1}{y_N \cdot b}\right|, \dfrac{1}{rb} \right\} \implies \left\{\dfrac{1}{y_n \cdot b}\right\}$ ограничена. Но тогда имеем произведение бесконечно малой и ограниченной последовательностей, значит, $\left\{\dfrac{x_n}{y_n} - \dfrac{a}{b}\right\}$ --- бесконечно малая.
 	\end{proof}
 
-	\subsubsection{Неопределенности.} 
+	\subsubsection{Неопределенности. [В списке вопросов к коллоквиуму отсутствует]} 
 	\emph{Не очень понятно, что именно требуется в этом пункте}
 	
 	Основные виды неопределенностей: $\dfrac{0}{0}, \dfrac{\infty}{\infty}, 0 \cdot \infty, \infty - \infty, 1^{\infty}, 0^0, \infty^0$
@@ -479,7 +479,7 @@
 			Так как $\eps$ произвольное, возьмём $\eps = 1$. 
 			\[\begin{gathered}
 				|x_n| = |(x_n - x_N) + x_N| \leq \underbrace{|x_n - x_N|}_{\leq \eps} + |x_N| \leq 1 + |x_N| \\
-				\forall n \geq N \implies |x_n| \leq (1 + |x_N|) \; = const = A \implies |x_n| \leq A \\
+				\forall n \geq N \implies |x_n| \leq (1 + |x_N|) \; = const \leq A \implies |x_n| \leq A \\
 				A = \max\{1 + |x_N|; |x_1|; |x_2|; \dots; |x_N|\} \\
 				\forall n \geq N \implies |x_n| \leq A
 			\end{gathered}\]
@@ -489,7 +489,7 @@
 
 			Так как $\{x_n\}$ фундаментальная:
 			\begin{equation*}
-				\forall \eps > 0: \; \exists N_1: \; \forall p \geq N_1 \implies |x_p - a| < \frac{\eps}{2}
+				\forall \eps > 0: \; \exists N_1: \; \forall m, n \geq N_1 \implies |x_m - x_n| < \frac{\eps}{2}
 			\end{equation*}
 			Так как $\{x_{n_k}\}$ сходящаяся:
 			\[\begin{gathered}
@@ -537,7 +537,7 @@
 		Так как $\delta$ может быть любым, можно выбрать последовательность $\{\delta_n\} = \{\dfrac{1}{n}\}$, а соответствующие значения $x$ будем обозначать как $x_n$. Тогда $0 < |x_n - a| < \delta_n = \dfrac{1}{n}$, и $|f(x_n) - A| \geq \eps_0$. Отсюда следует, что последовательность $\{x_n\}$ является подходящей, но при этом число $A$ не является пределом функции $f(x)$ в точке $a$ (по Гейне). Пришли к противоречию.
 	\end{itemize}
 
-	\subsubsection{Односторонние пределы, их связь с двусторонними. Пределы функции в бесконечности.}
+	\subsubsection{Односторонние пределы, их связь с двусторонними. Пределы функции в бесконечности. [В списке вопросов к коллоквиуму отсутствует]}
 	Назовём число $A$ левым (правым) пределом $f$ по Коши, если:
 	\begin{equation*}
 		\forall \eps > 0 \; \exists \delta > 0: \; \forall x \in (a - \delta; a) (x \in (a; a + \delta)) \implies |f(x) - a| < A
