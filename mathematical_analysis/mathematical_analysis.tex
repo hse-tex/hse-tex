@@ -369,7 +369,7 @@
 		\item
 		Если $\{x_n\}$ --- бесконечно малая и $\forall n \in \NN \implies x_n \neq 0$, то $\left\{\dfrac{1}{x_n}\right\}$ --- бесконечно большая.
 		\begin{proof}
-			$\forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |x_n| < \eps \iff \dfrac{1}{|x_n|} < \dfrac{1}{\eps} = A$
+			$\forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |x_n| < \eps \iff \dfrac{1}{|x_n|} > \dfrac{1}{\eps} = A$
 		\end{proof}
 
 		\item
@@ -383,23 +383,23 @@
 	Если $\exists \lim\limits_{n \to \infty} x_n = a, \lim\limits_{n \to \infty} y_n = b$, то $\exists \lim\limits_{n \to \infty} (x_n \pm y_n) = a \pm b, \lim\limits_{n \to \infty} (x_n \cdot y_n) = a \cdot b$, а также $\lim\limits_{n \to \infty} \dfrac{x_n}{y_n} = \dfrac{a}{b}$, если $b \neq 0$.
 	\begin{proof}
 		\[\begin{gathered}
-			\lim_{n \to \infty} x_n = a, \lim_{n \to \infty} y_n \iff x_n = a + \alpha_n, y_n = b + \beta_n, \text{ где } \{\alpha_n\} \{\beta_n\} \text{--- бесконечно малые.} \\
+			\lim_{n \to \infty} x_n = a, \lim_{n \to \infty} y_n = b \iff x_n = a + \alpha_n, y_n = b + \beta_n, \text{ где } \{\alpha_n\} \{\beta_n\} \text{--- бесконечно малые.} \\
 			x_n \pm y_n = (a + \alpha_n) \pm (b + \beta_n) = (a \pm b) + \underbrace{(\alpha_n \pm \beta_n)}_{\text{б. м.}} \\
 			x_n \cdot y_n = (a + \alpha_n) \cdot (b + \beta_n) = a \cdot b + \underbrace{(\alpha_n \cdot \beta_n + \alpha_n \cdot b + \beta_n \cdot a)}_{\text{б.м.}}
 		\end{gathered}\]
 		\begin{lemma}
-			Пусть $\exists \lim\limits_{n \to \infty} y_n \neq 0$. Тогда $\exists r > 0: \exists N \in \NN: \forall n \geq N \implies |y_n| > r > 0$.
+			Пусть $\exists \lim\limits_{n \to \infty} y_n = b \neq 0$. Тогда $\exists r > 0: \exists N \in \NN: \forall n \geq N \implies |y_n| > r > 0$.
 		\end{lemma}
 		\begin{proof}
-			$\forall \eps > 0 \exists N: \forall n \geq N \implies |y_n - b| < \eps \iff b - \eps < |y_n| < b + \eps$. Пусть $\eps = \dfrac{b}{2}$, тогда $r < \dfrac{b}{2} < y_n < \dfrac{3b}{2}$.
+			$\forall \eps > 0 \exists N: \forall n \geq N \implies |y_n - b| < \eps \implies b - \eps < y_n < b + \eps$. Пусть $\eps = \dfrac{b}{2}$, тогда $r < \left|\dfrac{b}{2}\right| < |y_n| < \left|\dfrac{3b}{2}\right|$.
 		\end{proof}
-		Рассмотрим последовательность $\{\dfrac{x_n}{y_n} - \dfrac{a}{b}\}$ --- бесконечно малая.
+		Рассмотрим последовательность $\left\{\dfrac{x_n}{y_n} - \dfrac{a}{b}\right\}$ --- бесконечно малая.
 		\[\begin{gathered}
 			\frac{x_n}{y_n} - \frac{a}{b} = \frac{a + \alpha_n}{b + \beta_n} - \frac{a}{b}
 			= \frac{b \cdot a + b \cdot \alpha_n - b \cdot a - \beta_n \cdot a}{y_n \cdot b}
 			= (\alpha_n \cdot b - \beta_b \cdot a) \cdot \frac{1}{y_n \cdot b}
 		\end{gathered}\]
-		По лемме $\left|\dfrac{1}{y_n \cdot b}\right| \leq max\left\{\left|\dfrac{1}{y_1 \cdot b}\right|, \dots, \left|\dfrac{1}{y_N \cdot b}\right|, \dfrac{1}{rb} \right\} \implies \left\{\dfrac{1}{y_n \cdot b}\right\}$ ограничена. Но тогда имеем произведение бесконечно малой и ограниченной последовательностей, значит, $\{\dfrac{x_n}{y_n} - \dfrac{a}{b}\}$ --- бесконечно малая.
+		По лемме $\left|\dfrac{1}{y_n \cdot b}\right| \leq max\left\{\left|\dfrac{1}{y_1 \cdot b}\right|, \dots, \left|\dfrac{1}{y_N \cdot b}\right|, \dfrac{1}{rb} \right\} \implies \left\{\dfrac{1}{y_n \cdot b}\right\}$ ограничена. Но тогда имеем произведение бесконечно малой и ограниченной последовательностей, значит, $\left\{\dfrac{x_n}{y_n} - \dfrac{a}{b}\right\}$ --- бесконечно малая.
 	\end{proof}
 
 	\subsubsection{Неопределенности.} 
