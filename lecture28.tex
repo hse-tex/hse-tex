@@ -24,35 +24,35 @@ $\varphi \in L(V)$
 
 Предел мечтаний: найти такой базис $e$, в котором $A(\varphi, e)$ диагональна (увы, это не всегда возможно).
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Вектор $v \in V$ называется \textit{собственным вектором} линейного оператора $\varphi$, если $v \neq 0$ и $\varphi(v) = \lambda v$ для некотрого $\lambda$. 
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Элемент $\lambda \in F$ называется \textit{собственным значением} линейного оператора $\varphi$, если $\exists v \in V$, такой что $v \neq 0$ и $\varphi(v) = \lambda v$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Множество собственных значений линейного оператора $\varphi$ называется его \textit{спектром}.
 
 Обозначение: $Spec(\varphi)$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} В ситуации $\varphi(v) = \lambda v, \ v \neq 0$, говорят:
 
 1) $v$ -- собственный вектор, отвечающий собственному значению $\lambda$
 
 2) $\lambda$ -- собственное значение, отвечающее собственному вектору $v$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $0 \neq v \in V$ является собственным для линейного оператора $\varphi \Leftrightarrow <v>$ -- $\varphi$-инвариантное подпространство.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd \ (\Rightarrow) \varphi(v) = \lambda v \Rightarrow w \in <v> \Rightarrow w = \mu v, \mu in F$
 
 $\varphi(w) = \varphi(\mu v) = \mu \varphi(v) = \mu \lambda v \in <v>$
 
 $(\Leftarrow)$ Имеем $\varphi(v) \in <v> \Rightarrow \varphi(v) = \lambda v$ для некоторого $\lambda in F \ \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 Примеры.
 
 1) $\varphi = \lambda \cdot Id$ -- скалярный оператор
@@ -79,16 +79,16 @@ $f$ -- собственный вектор $\Leftrightarrow f = const$
 
 собственное значение 0
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Линейный оператор $\varphi$ называется \textit{диагонализуемым}, если $\exists$ базис $e$ пространства $V$, такой что матрица $A(\varphi, e)$ диагональна.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} Линейный оператор $\varphi$ диагонализуем $\Leftrightarrow$ в $V \ \exists$ базис, состоящий из собственных векторов для $\varphi$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd \ e = (e_1, \dots, e_n)$ -- базис $V \Rightarrow A(\varphi, e) = diag(\lambda_1, \dots, \lambda_n) = \begin{pmatrix} \lambda_1 & 0 & \dots & 0 \\ 0 & \lambda_2 & \dots & 0 \\ \vdots & \vdots & \vdots & \vdots \\ \ 0 & 0 & \dots & \lambda_n \end{pmatrix} \Leftrightarrow \varphi(e_1) = \lambda_1 e_1, \dots, \varphi(e_n) = \lambda_n e_n \Leftrightarrow e_1, \dots, e_n$ -- собственные векторы
 
-\vspace{\baselineskip}
+\bigskip
 Примеры выше.
 
 1) $\varphi$ уже диагонализован, т.к. $\forall$ вектор $\neq 0$ является собственным
@@ -101,44 +101,44 @@ $A(\varphi, e) = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$
 
 4) $\varphi$ диагонализуем $\Rightarrow n = 0$
 
-\vspace{\baselineskip}
+\bigskip
 $\varphi \in L(V), \lambda \in F$
 
 $V_{\lambda} (\varphi) := \{v \in V \ | \ \varphi(v) = \lambda v \}$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Упражнение.}} $V_{\lambda} (\varphi)$ -- подпространство в $V$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Лемма.}} $V_{\lambda} (\varphi) \neq 0 \Leftrightarrow \lambda \in Spec(\varphi)$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} Следует из определения.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} $\lambda \in Spec(\varphi) \Rightarrow V_{\lambda} (\varphi)$ называется \textit{собственным подпространством}, отвечающим собственному значению $\lambda$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} $V_{\lambda} (\varphi)$ -- $\varphi$-инвариантное подпространство
 
 $\varphi |_{V_{\lambda} (\varphi)} = \lambda \cdot Id |_{V_{\lambda} (\varphi)}$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $\lambda \in F \Rightarrow V_{\lambda} (\varphi) = Ker(\varphi - \lambda \cdot Id)$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd \ v \in V_{\lambda} (\varphi) \Leftrightarrow \varphi (v) = \lambda v \Leftrightarrow \varphi(v) - \lambda v = 0 \Leftrightarrow (\varphi - \lambda \cdot Id) v = 0 \Leftrightarrow v \in Ker(\varphi - \lambda \cdot Id) \ \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} $\lambda \in Spec(\varphi) \Leftrightarrow det(\varphi - \lambda \cdot Id) = 0$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd \ \lambda \in Spec(\varphi) \Leftrightarrow V_{\lambda} (\varphi) \neq \{0\} \Leftrightarrow Ker(\varphi - \lambda \cdot Id) \neq 0 \Leftrightarrow det (\varphi - \lambda \cdot Id) = 0 \ \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Многочлен $\chi_{\varphi} (t) = (-1)^n det (\varphi - t \cdot Id)$ называется $\textit{характеристическим многочленом}$ линейного оператора $\varphi$.
 
-\vspace{\baselineskip}
+\bigskip
 Если $e$ -- какой-либо базис $V$, $A = (a_{ij}) = A(\varphi, e)$, то
 
 $\chi_{\varphi} (t) = (-1)^n det (A - t \cdot E) = (-1)^n \begin{vmatrix} a_{11} - t & a_{12} & a_{13} & \dots & a_{1n} \\
@@ -147,38 +147,38 @@ a_{31} & a_{32} & a_{33} - t & \dots & a_{3n} \\
 \vdots & \vdots & \vdots & \vdots & \vdots \\
 a_{n1} & a_{n2} & a{n3} & \dots & a_{nn} - t \end{vmatrix}$
 
-\vspace{\baselineskip}
+\bigskip
 $\chi_{\varphi} (t) = t^n + c_{n-1} t^{n-1} + \dots + c_1 t + c_0, \ c_0 = (-1)^n det \varphi, \ c_{n-1} = -tr \varphi$
 
-\vspace{\baselineskip}
+\bigskip
 Вывод из разобранного выше:
 
 \textbf{Утверждение.} $\lambda \in Spec(\varphi) \Leftrightarrow \chi_{\varphi} (\lambda) = 0$, т.е. $\lambda$ -- корень характеристического многочлена
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} $|Spec(\varphi)| \leq n$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} $F = \CC \Rightarrow \forall \ \varphi \in L(V) \ \exists$ собственный вектор
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd \ \chi_{\varphi} (t)$ имеет корень по основной теореме алгебры комплексных чисел $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 $\lambda \in Spec(\varphi)$
 
 $k_\lambda$ -- кратность $\lambda$ как корня многочлена $\chi_{\varphi} (t)$, т.е. $\chi_{\varphi} (t)$ делится на $(t - \lambda)^{k_{\lambda}}$, но не делится на большую степень
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Число $k_{\lambda}$ называется \textit{алгебраической кратностью} собственного значения $\lambda$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Число $dim V_{\lambda} (\varphi)$ называется $\textit{геометрической кратностью}$ собственного значения $\lambda$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $\lambda \in Spec(\varphi) \Rightarrow$ (геометрическая кратность $\lambda$) $\leq$ (алгебраическая кратность $\lambda$)
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Положим $m_{\lambda} = dim V_{\lambda} (\varphi)$, т.е. $m_{\lambda}$ -- геометрическая кратность для $\lambda$. Пусть $(e_1, \dots, e_{m_\lambda})$ -- базис $V_{\lambda} (\varphi)$. Дополним его до базиса $e = (e_1, \dots, e_n)$ всего $V$.
 
 Тогда $A(\varphi, e) = \left( \begin{array}{c|c}

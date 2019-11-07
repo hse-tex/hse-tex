@@ -2,10 +2,10 @@
 
 \subsection{Векторное пространство}
 
-\vspace{\baselineskip}
+\bigskip
 Пусть $F$ -- поле (например, $F = \RR$ или $F = \CC$).
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Множество $V$ называется \textit{векторным (линейным) пространством над полем $F$}, если на $V$ заданы две операции: "сложение" ($V \times V \rightarrow V$, $(a,b) \rightarrow a+b$) и "умножение на скаляр" ($F \times V \rightarrow V$, $(\alpha, X) \rightarrow \alpha x$), причем $\forall \ x, y, z \in V$ и $\alpha, \beta \in F$ выполнены следующие свойства (называемые \textit{аксиомами векторного пространства}):
 
 (1) $x + y = y + x$ (коммутативность сложения)
@@ -26,10 +26,10 @@ $\uparrow$ абелева группа $\uparrow$
 
 (8) $ 1 \cdot x = x $ (единица)
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Элементы векторного пространства называются (абстрактными) \textit{вЕкторами}.
 
-\vspace{\baselineskip}
+\bigskip
 Примеры. 
 
 1) $\RR$ над $\RR$ (или $F$ над $F$)
@@ -42,7 +42,7 @@ $\uparrow$ абелева группа $\uparrow$
 
 5) $F[x]$, $F[x]_{\leq n}$ -- векторное пространство над $F$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Простейшие следствия из аксиом:}}
 
 1) элемент $\overrightarrow{0}$ единственный: если $\overrightarrow{0'}$ -- другой такой, что $0' = 0' + 0 = 0$. 
@@ -57,7 +57,7 @@ $\uparrow$ абелева группа $\uparrow$
 
 6) $(-1)x = -x \ \forall x \in V$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Подмножество $U$ векторного пространства $V$ называется \textit{подпространством}, если
 
 1) $0 \in U$
@@ -66,20 +66,20 @@ $\uparrow$ абелева группа $\uparrow$
 
 3) $x \in U, \alpha \in F \Rightarrow \alpha x \in U$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} Подпространство само является векторным пространством.
 
-\vspace{\baselineskip}
+\bigskip
 Примеры.
 
 1) $\{0\}$ и $V$ - всегда подпространства, они называются \textit{несобственными подпространствами}.
 
 2) Множество всех диагональных (верхнетреугольных, нижнетреугольных) матриц в $M_n (F)$ -- подпространство
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} Множество решений однородной системы линейных уравнений $Ax = 0$ является подпространством в $F^n$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Пусть $S \subseteq F^n$ -- множество решений ОСЛУ $Ax = 0$
 
 1) $0 = \begin{pmatrix} 0 \\ 0 \\ \dots \\ 0 \end{pmatrix}, A0 = 0 \Rightarrow 0 \in S$
@@ -88,27 +88,27 @@ $\uparrow$ абелева группа $\uparrow$
 
 3) $x \in S, \alpha \in F \Rightarrow A(\alpha x) = \alpha (Ax) = \alpha 0 = 0 \Rightarrow \alpha x \in S \ \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 Пусть $V$ -- векторное пространство над полем $F$, $v_1, v_2, \dots, v_n$ --  набор векторов
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Всякий вектор $v \in V$ вида $v = \alpha_1 v_1 + \dots + \alpha_m x_m$ $(\alpha_i \in F)$ называется \textit{линейной комбинацией} векторов $v_1, v_2, \dots, v_n$.
 
-\vspace{\baselineskip}
+\bigskip
 Пусть $S \subseteq V$ -- произвольное подмножество
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Множество всевозможных линейных комбинаций (конечных) векторов из $S$ называется \textit{линейной оболочкой} множества $S$.
 
 \textit{Обозначение:} $<S>$
 
-\vspace{\baselineskip}
+\bigskip
 Если $S = \{v_1, \dots, v_n\}$, то пишут просто $<v_1, \dots, v_n>$ и говорят "линейная оболочка векторов $v_1, \dots, v_n$".
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Соглашение.} $<\varnothing> = \{0\}$
 
-\vspace{\baselineskip}
+\bigskip
 Примеры.
 
 0) $<\varnothing> = \{0\}$
@@ -121,7 +121,7 @@ $\uparrow$ абелева группа $\uparrow$
 
 $x = \begin{pmatrix} x_1 \\ x_2 \\ \dots \\ x_n \end{pmatrix} \in \RR^n \Rightarrow x = x_1 e_1 + x_2 e_2 + \dots + x_n e_n$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $S \subseteq V$ -- подмножество $\Rightarrow <S>$ -- подпространство в $V$
 
 1) Если $S = \varnothing$, то $<S> = \{0\} \Rightarrow 0 \in <S>$
@@ -136,16 +136,16 @@ $x = \alpha_1 v_1 + \dots + \alpha_m v_m$, $\alpha_i \in F, v_i \in S$
 
 $\alpha x = (\alpha \alpha_1)v_1 + \dots + (\alpha \alpha_m) v_m \in <S>$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} Еще говорят, что $<S>$ -- подпространство, натянутое на $S$, или подпространство, порожденное множеством $<S>$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Линейная комбинация $\alpha_1 v_1 + \dots + \alpha_m v_m$ называется \textit{тривиальной}, если $\alpha_1 = \dots = \alpha_m = 0$, и \textit{нетривиальной} иначе (т.е. $\exists i: \alpha_i \neq 0$).
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Векторы $v_1, \dots, v_m \in V$ называются \textit{линейно зависимыми}, если $\exists$ их нетривиальная линейная комбинация, равная 0 (т.е. $\exists (\alpha_1, \dots, \alpha_m) \neq (0, \dots, 0)$, такая что $\alpha_1 v_1 + \dots + \alpha_m v_m = 0$), и \textit{линейно независимыми} иначе (т.е. из условия $\alpha_1 v_1 + \dots + \alpha_m v_m = 0$ следует $\alpha_1 = \dots = \alpha_m = 0$).
 
-\vspace{\baselineskip}
+\bigskip
 Примеры.
 
 0) $\overrightarrow{0}$ линейно зависим, $1 \cdot \overrightarrow{0} = \overrightarrow{0}$
@@ -162,7 +162,7 @@ $0 = \lambda^{-1} 0 = \lambda^{-1} (\lambda v) = (\lambda^{-1} \lambda) v = 1 \c
 
 $\lambda_1 v_1 + \lambda_2 v_2 = \overrightarrow{0}$ (нетривиальная линейная комбинация). Если $\lambda_1 \neq 0$, то $v_1 = -\frac{\lambda_2}{\lambda_1} v_2$, аналогично при $\lambda_2 \neq 0 \ \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 3) $\{v, \dots, -v\}$ -- линейно зависимы, т.к. $1 \cdot v + 1 \cdot (-v) = \overrightarrow{0}$.
 
 4) $S' \subseteq S, S'$ линейно зависимо $\Rightarrow S$ тоже линейно зависимо.

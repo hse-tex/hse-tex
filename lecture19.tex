@@ -6,7 +6,7 @@ $V$ -- векторное пространство
 
 Обозначение:$V^{*} := Hom(V, F)$ -- множество всех линейных функций на $V$
 
-\vspace{\baselineskip}
+\bigskip
 Примеры:
 
 1) $\alpha : F^n \rightarrow F, \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \rightarrow \alpha_1 x_1 + \dots + \alpha_n x_n$, где $\alpha_1, \dots, \alpha_n \in F$ -- фиксированные скаляры
@@ -17,7 +17,7 @@ $V$ -- векторное пространство
 
 4) $\alpha: M_n(F) \rightarrow F, A \rightarrow trA$
 
-\vspace{\baselineskip}
+\bigskip
 Далее считаем, что $dimV = n < \infty$
 
 Из общей теории линейных отображений:
@@ -30,7 +30,7 @@ $V$ -- векторное пространство
 
 \textbf{Следствие.} $dimV^* = dimV (\Rightarrow V^{*} \simeq V)$
 
-\vspace{\baselineskip}
+\bigskip
 Фиксируем базис $e = (e_1, \dots, e_n)$ в $V$
 
 $\forall i = 1, \dots, n$ рассмотрим линейную функцию $\varepsilon_i \in V^*$, такую что $\varepsilon_i(e_j) = \delta_{ij}$ (символ Кронекера) $\delta_{ij} = \begin{cases}
@@ -38,37 +38,37 @@ $\forall i = 1, \dots, n$ рассмотрим линейную функцию $
 		0, i \neq j
 	\end{cases}$
 
-\vspace{\baselineskip}
+\bigskip
 Соответствующая строка в $Mat_{1 \times n}(F)$ есть $
 \bordermatrix{ 
 & & & & i & & & &  \cr 
 & 0 & \dots & 0 & 1 & 0 & \dots & 0} $
 
-\vspace{\baselineskip}
+\bigskip
 Линейные функции $\varepsilon_i, i = 1, \dots, n$ образуют базис в $V^*$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Базис $(\varepsilon_1, \dots, \varepsilon_n)$ пространства $V*$ называется \textit{двойственным к базису} $(e_1, \dots, e_n)$
 
 Имеем: $\begin{pmatrix} \varepsilon_1 \\ \vdots \\ \varepsilon_n \end{pmatrix} (e_1, \dots, e_n) = (\varepsilon_i(e_j)) = E$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} Всякий базис $V^*$ двойствен некоторому базису пространства $V$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Пусть $\varepsilon = (\varepsilon_1, \dots, \varepsilon_n)$ -- данный базис в $V^*$
 
 Выберем в $V$ произвольный базис $e' = (e_1, \dots, e_n)$
 
 Пусть $\varepsilon' = (\varepsilon'_1, \dots, \varepsilon'_n)$ -- двойственный ему базис в $V*$
 
-\vspace{\baselineskip}
+\bigskip
 Тогда $\begin{pmatrix} \varepsilon_1 \\ \vdots \\ \varepsilon_n \end{pmatrix} = C \cdot \begin{pmatrix} \varepsilon'_1 \\ \vdots \\ \varepsilon'_n \end{pmatrix}$ для некоторой $C \in M_n(F), detC \neq 0$. Положим $e = (e'_1, \dots, e'_n) \cdot C^{-1}$. Тогда $\begin{pmatrix} \varepsilon_1 \\ \vdots \\ \varepsilon_n \end{pmatrix} (e_1, \dots, e_n) = C \cdot \begin{pmatrix} \varepsilon'_1 \\ \vdots \\ \varepsilon'_n \end{pmatrix} (e'_1, \dots, e'_n) \cdot C^{-1} = CEC^{-1} = E \ \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Упражнение.}} Базис $e$ на самом деле определен однозначно.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} \textit{Билинейной формой (или функцией) на} $V$ называется всякое отображение $\beta: V \times V \rightarrow F$, которое билинейно, т.е. линейно по каждому аргументу:
 
 1) $\beta(x_1 + x_2, y) = \beta(x_1, y) + \beta(x_2, y) \ \forall x_1, x_2, y \in V$
@@ -77,10 +77,10 @@ $\forall i = 1, \dots, n$ рассмотрим линейную функцию $
 
 3) $\beta(\lambda x, y) = \lambda \beta(x, y) = \beta(x, \lambda y) \ \forall x, y \in V, \lambda \in F$
 
-\vspace{\baselineskip}
+\bigskip
 По факту: $\beta (\sum\limits_{i=1}^p \lambda_i v_i, \sum\limits_{j=1}^q \mu_j w_j) = \sum\limits_{i=1}^p \sum\limits_{j=1}^q \lambda_i \mu_j \beta(v_i, w_j) \ \forall v_i, w_j \in V, \lambda_i, m_j \in F$
 
-\vspace{\baselineskip}
+\bigskip
 Примеры: 1) $V = F^n, \beta(x, y):= x_1 y_1 + \dots + x_n y_n$, где $x = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, y = \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}$
 
 2) $V = F^2$, $\beta \left(\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}, \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} \right) = det \begin{pmatrix} x_1 & y_1 \\ x_2 & y_2 \end{pmatrix} = x_1 y_2 - x_2 y_1$
@@ -89,52 +89,52 @@ $\forall i = 1, \dots, n$ рассмотрим линейную функцию $
 
 4) $V = Mat_{m \times n} (F), \beta (A, B) := tr(A^T \cdot B)$
 
-\vspace{\baselineskip}
+\bigskip
 $dimV = n < \infty; \beta: V \times V \rightarrow F$ -- билинейная форма
 
 Фиксируем базис в $V \ e = (e_1, \dots, e_n)$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Матрица $B = (b_{ij})$, где $b_{ij} = \beta(e_i, e_j)$ , называется \textit{матрицей билинейной формы} $\beta$ в базисе $e$.
 
 Обозначение: $B(\beta, e)$
 
-\vspace{\baselineskip}
+\bigskip
 Пусть $x = x_1e_1 + \dots + x_n e_n, \ y = y_1 e_1 + \dots + y_n e_n$, $B = B(\beta, e)$
 
-\vspace{\baselineskip}
+\bigskip
 $\beta(x, y) = \beta(\sum\limits_{i=1}^n x_i e_i, \sum\limits_{j=1}^n y_j e_j) = \sum\limits_{i=1}^n \sum\limits_{j=1}^n x_i y_j \beta(e_i, e_j) = \sum\limits_{i=1}^n \sum\limits_{j=1}^n x_i b_{ij} y_j = (x_1, \dots, x_n) B \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}$ -- (*) формула вычисления значения билинейной формы на паре векторов
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} 1) Всякая билинейная форма однозначно определяется своей матрицей в базисе $e$
 
 2) $\forall B \in M_n (F) \exists !$ билинейная форма $\beta$, такая что $B(\beta, e) = B$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ 1) следует из (*)
 
 2) единственность из 1)
 
 существование: Определим $\beta$ по формуле (*), получится билинейная форма. $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 Из предыдущих примеров.
 
 1) $e$ -- стандартный базис $\Rightarrow B(\beta, e) = E$
 
 2) $e$ -- стандартный базис $\Rightarrow B(\beta, e) = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} $
 
-\vspace{\baselineskip}
+\bigskip
 Пусть $e = (e_1, \dots, e_n)$ и $e' = (e'_1, \dots, e'_n)$ -- два базиса $V$, $e' = e \cdot C$
 
 $\beta : V \times V \rightarrow F$ -- билинейная форма на $V$
 
 $B = B(\beta, e), B' = B(\beta, e')$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $B' = C^{T} BC$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $x = x_1 e_1 + \dots x_n e_n = x'_1 e'_1 + \dots + x'_n e'_n, \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = C \begin{pmatrix} x'_1 \\ \vdots \\ x'_n \end{pmatrix}$
 
 $y = y_1 e_1 + \dots y_n e_n = y'_1 e'_1 + \dots + y'_n e'_n, \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix} = C \begin{pmatrix} y'_1 \\ \vdots \\ y'_n \end{pmatrix}$
@@ -151,24 +151,24 @@ $\beta(x,y) = (x_1, \dots, x_n) B \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmat
 & 0  \cr
 } $
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} Число $rkB(\beta, e)$ не зависит от выбора базиса.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Число $rk B(\beta, e)$ называется \textit{рангом билинейной формы} $\beta$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Билинейная форма называется симметричной, если $\beta(x, y) = \beta(y, x) \ \forall x, y \in V$.
 
-\vspace{\baselineskip}
+\bigskip
 Пусть $e = (e_1, \dots, e_n)$ -- фиксированный базис $V$
 
 $B = B(\beta, e)$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $\beta$ симметрична $\Leftrightarrow B$ симметрична (т.е. $B^T = B$).
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$  $\beta$ симметрична $\Rightarrow B$ симметрична: $b_{ij} = \beta(e_i, e_j) = \beta(e_j, e_i) = b_{ji} \Rightarrow B^T = B$.
 
 $\beta$ симметрична $\Leftarrow B$ симметрична: $x = x_1 e_1 + \dots + x_n e_n, y = y_1 e_1 + \dots + y_n e_n$, $\beta(x, y) = (x_1, \dots, x_n) B \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} =$ $= \left[ (x_1, \dots, x_n) B \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} \right]^T = (y_1, \dots, y_n) B^T \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = (y_1, \dots, y_n) B \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = \beta(y, x) \ \lhd $

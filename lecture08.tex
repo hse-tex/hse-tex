@@ -4,68 +4,68 @@
 
 $A = (a_{ij}) \in M_n$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Теорема (разложение определителя по строке/столбцу).} При $\forall$ фиксированном $i \in \{1, 2, \dots, n\} detA = a_{i1}A_{i1} + a_{i2}A_{i2} + \dots + a_{in}A_{in}$ (разложение по $i$-ой строке) = $\sum\limits_{j = 1}^n a_{ij}A_{ij}$.
 
 Аналогично, для $\forall$ фиксированного $j \in \{1, 2, \dots, n\} \ detA = a_{1j}A_{1j} + a_{2j}A_{2j} + \dots + a_{nj}A_{nj}$ (разложение по $j$-ому столбцу) = $\sum\limits_{i = 1}^n a_{ij}A_{ij}$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Свойство Т $\Rightarrow$ достаточно для строк. 
 
 $A_{(i)} = (a_{i1} 00 \dots 0) + (0 a_{i2} 0 \dots 0) + \dots + (0 \dots 0 a_{in})$. 
 
 Требуемое следует из свойства 2 определителей и леммы $\lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Лемма о фальшивом разложении определителя.} При $\forall \ i, k \in \{1, 2, \dots, n\}, i \neq k: \ \sum\limits_{j = 1}^n a_{ij}A_{kj} = 0$. При $\forall \ j, k \in \{1, 2, \dots, n\}, j \neq k \ \sum\limits_{i = 1}^n a_{ij}A_{ik} = 0$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Доказательство.} $\rhd$ Свойство Т $\Rightarrow$ достаточно для строк.
 
 Пусть $B \in M_n$ -- матрица, полученная из А заменой $k$-ой строки на $i$-ую.
 
-\vspace{\baselineskip}
+\bigskip
 \begin{equation*}B = \begin{pmatrix} A_{(1)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(n)} \end{pmatrix}
 \end{equation*}
 
 В $B$ есть две одинаковые строки $\Rightarrow$ $detB = 0$. Разлагая $detB$ по $k$-ой строке, получаем $detB = \sum\limits_{j = 1}^n b_{kj}B_{kj} = \sum\limits_{j = 1}^n a_{ij}A_{kj} \ \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 \subsection{Обратная матрица}
 
 $A \in M_n$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Матрица $B \in M_n$ называется \textit{обратной к A}, если $AB = BA = E$.
 
 Обозначение: $A^{-1}$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Лемма 1.} Если $A^{-1} \ \exists$, то она единственна.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Пусть $B, B'$ -- две матрицы, обратные к A. Тогда $B = BE = B(AB') = (BA)B' = EB' = B' \Rightarrow B = B' \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Матрица $A \in M_n$ называется \textit{невырожденной}, если $detA \neq 0$, и \textit{вырожденной}, если $detA = 0$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Лемма 2.} Если $\exists A^{-1}$, то $detA \neq 0$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ $AA^{-1} = E \Rightarrow det(AA^{-1}) = detE \Rightarrow detA det(A^{-1}) = 1 \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} \textit{Присоединенной к А матрицей} называется матрица $\widehat{A} = (A_{ij})^T$.
 
-\vspace{\baselineskip}
+\bigskip
 \begin{equation*}\widehat{A} = \begin{pmatrix} A_{11} & A_{21} & \dots & A_{n1} \\ A_{12} & A_{22} & \dots & A_{n2} \\ \dots & \dots & \dots & \dots \\ A_{1n} & A_{2n} & \dots & A_{nn} \end{pmatrix}
 \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Теорема.} A обратима $(\exists A^{-1})$ $\Leftrightarrow$ A невырождена $(detA \neq 0)$, при этом $A^{-1} = \frac{1}{detA} \widehat{A}$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\Rightarrow$ Из леммы 2.
 
 $\Leftarrow$ Пусть $detA \neq 0$. Покажем, что $\frac{1}{detA} \widehat{A} = A^{-1}$. Для этого достаточно доказать, что $A \widehat{A} = \widehat{A} A = (detA) E$. Для $X = A \widehat{A}$ имеем
@@ -77,7 +77,7 @@ $\Leftarrow$ Пусть $detA \neq 0$. Покажем, что $\frac{1}{detA} \w
 	\end{cases}
 \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 Для $Y = \widehat{A} A$ имеем 
 
 \begin{equation*}
@@ -87,21 +87,21 @@ $\Leftarrow$ Пусть $detA \neq 0$. Покажем, что $\frac{1}{detA} \w
 	\end{cases} \lhd
 \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие 1.} Если $AB = E$, то $BA = E$ (и тогда $A = B^{-1}, \ B = A^{-1}$).
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ $AB = E \Rightarrow detA detB = 1 \Rightarrow detA \neq 0 \Rightarrow \exists A^{-1} \Rightarrow A^{-1}(AB) = A^{-1} \Rightarrow B = A^{-1} \Rightarrow BA = E \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие 2.} $A, B \in M_n \Rightarrow AB$ обратима $\Leftrightarrow$ обе A, B обратимы. При этом $(AB)^{-1} = B^{-1} A^{-1}$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ $\Leftrightarrow$ следует из $det(AB) = detA detB$.
 
 $(B^{-1} A^{-1})AB = B^{-1} (A^{-1} A) B = B^{-1} B = E \Rightarrow (AB)^{-1} = B^{-1} A^{-1} \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 $A \in M_n, \ detA \neq 0, \ B \in Mat_{n \times m}, \ C \in Mat_{m \times n}$
 
 Рассмотрим матричные уравнения:
@@ -110,7 +110,7 @@ $AX = B \ (1) \ X \in Mat_{n \times m}$
 
 $YA = C \ (2) \ Y \in Mat_{m \times n}$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} При $m=1:$ (1) есть СЛУ
 
 (2) $\Leftrightarrow A^T Y^T = C^T \leftarrow$ тип 1.
@@ -119,28 +119,28 @@ $detA \neq 0 \Rightarrow \exists A^{-1} \Rightarrow AX = B \Leftrightarrow A^{-1
 
 Решить (1) $\Leftrightarrow$ решить $m$ СЛУ $AX^{(1)} = B^{(1)}, \dots, AX^{(m)} = B^{(m)}$.
 
-\vspace{\baselineskip}
+\bigskip
 Метод Гаусса: $(A|B) \rightarrow (A'|B')$ (улучшенный ступенчатый вид).
 
 $detA \neq 0 \Rightarrow detA' \neq 0 \Rightarrow A' = E$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $B' = A^{-1}B$ -- искомое решение (1).
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ $A' = U_s \dots U_2 U_1 A$, $B' = U_s \dots U_2 U_1 B$, где $U_1, \dots, U_s$ -- матрицы элементарных преобразований.
 
 $A' = E \Rightarrow U_s \cdot \cdots \cdot U_2 \cdot U_1 = A^{-1} \Rightarrow B' = A^{-1}B \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие (метод поиска обратной матрицы).} $A \in M_n, det A \neq 0$.
 
 $(A|E) \rightarrow (E|B) \Rightarrow B = A^{-1}$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $A^{-1}$ -- решение уравнения $AX=E$.
 
-\vspace{\baselineskip}
+\bigskip
 Пусть есть СЛУ $AX = b$, где $A \in M_n$. 
 
 \begin{equation*}x = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} \in R^n
@@ -148,9 +148,9 @@ $(A|E) \rightarrow (E|B) \Rightarrow B = A^{-1}$.
 
 $\forall \ i = 1, \dots, n$ пусть $A_i$ -- матрица, полученная из A заменой $i$-ого столбца на $b$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Теорема (формулы Крамера).} Если $detA \neq 0$, то единственное решение СЛУ можно найти по формулам $x_i = \frac{detA_i}{detA}$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Пусть $(x_1, x_2, \dots, x_n)$ -- то самое единственное решение СЛУ. Тогда $b = A \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = A^{(1)}x_1 + A^{(2)}x_2 + \dots + A^{(n)}x_n \Rightarrow det A_i = det (A^{(1)}, \dots, b, \dots, A^{(n)}) = det (A^{(1)}, \dots, A^{(1)}x_1 + A^{(2)}x_2 + \dots + A^{(n)}x_n, \dots, A^{(n)}) = x_1 det(A^{(1)}, \dots, A^{(1)}, \dots, A^{(n)})$ (равно 0 при $i \neq 1$) $\\ + x_2 det(A^{(1)}, \dots, A^{(2)}, \dots, A^{(n)})$ (равно 0 при $i \neq 2$) $\\ + \dots + x_n det(A^{(1)}, \dots, A^{(n)}, \dots, A^{(n)})$ (равно 0 при $i \neq n$) $= x_i detA \Rightarrow x_i = \frac{detA_i}{detA} \lhd$.
 

@@ -8,50 +8,50 @@ $E$ -- евклидово пространство
 
 -- \textit{ортонормированной}, если $(v_i, v_j) = 0 \ \forall i \neq j$ и $(v_i, v_i) = 1 \ \forall \ i \ (|v_i| = 1)$ (т.е. $G(v_1, \dots, v_k) = E$)
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} Всякая ортогональная система векторов линейно независима (т.к. $det G(v_1, \dots, v_k) = |v_1|^2 \cdot \dots \cdot |v_k|^2 \neq 0$). В частности, всякая ортонормированная система векторов линейно независима.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Базис $(e_1, \dots, e_n)$ пространства $E$ называется \textit{ортогональным (соответственно ортонормированным)}, если система векторов $(e_1, \dots, e_n)$ ортогональна (соответсвенно ортонормированна).
 
-\vspace{\baselineskip}
+\bigskip
 Пример. 
 $E = \RR^n$ со стандартным скалярным произведением. Тогда стандартный базис $e_1 = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, e_2 = \begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}, \dots, e_n = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}$ является ортонормированным.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Теорема.} Во всяком (конечномерном) евклидовом пространстве есть ортонормированный базис.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Следует из теоремы о нормальном виде для квадратичной формы $(x, x) \ \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} Всякую ортогональную (ортонормированную) систему векторов $e_1, \dots, e_k$  можно дополнить до ортогонального (ортонормированного) базиса в $E$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Достаточно взять ортогональный (ортонормированный) базис в подпространстве $<e_1, \dots, e_k>^{\bot} \ \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 $(e_1, \dots, e_n)$ -- ортогональный базис
 
 $(e'_1, \dots, e'_n)$ -- другой базис
 
 $(e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C$ -- матрица перехода
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} Базис $(e'_1, \dots, e'_n)$ ортонормированный $\Leftrightarrow C^T C = E$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Имеем $G^T G(e_1, \dots, e_n) C = C^T C$ $(G(e_1, \dots, e_n) = E)$
 
 $(e'_1, \dots, e'_n)$ ортонормированный $\Leftrightarrow G(e'_1, \dots, e'_n) = E \ \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Матрица $C \in M_n (\RR)$ называется \textit{ортогональной}, если $C^T C = E$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} $C^T C = E \Leftrightarrow C^T = C^{-1} \Leftrightarrow C C^T = E$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Свойства:}}
 
 1) $(C^{(i)}, C^{(j)}) = \delta_{ij}$ (т.е. столбцы $C$ -- это ортонормированная система в $\RR^n$)
@@ -62,7 +62,7 @@ $(e'_1, \dots, e'_n)$ ортонормированный $\Leftrightarrow G(e'_1
 
 3) $(det C)^2 = 1 \Leftrightarrow detC = \pm 1$
 
-\vspace{\baselineskip}
+\bigskip
 Пример.
 
 $n = 2$
@@ -73,18 +73,18 @@ $\begin{pmatrix} \cos \varphi & - \sin \varphi \\
 $\begin{pmatrix} \cos \varphi & \sin \varphi \\
 \sin \varphi & - \cos \varphi \end{pmatrix}, det = -1$
 
-\vspace{\baselineskip}
+\bigskip
 $S \subseteq E$ -- подпространство, $(e_1, \dots, e_k)$ -- ортогональный базис в $S$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $v \in E \Rightarrow pr_S v = \sum\limits_{i=1}^k \frac{(v, e_i)}{(e_i, e_i)} e_i$. Если $(e_1, \dots, e_k)$ ортонормированный, то $pr_S v = \sum\limits_{i=1}^k (v, e_i) e_i$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd \ v = pr_S v + ort_S v \Rightarrow \forall \ i = 1, \dots, k \ (v, e_i) = (pr_S v, e_i)$
 
 $pr_S v = \sum\limits_{j = 1}^k \lambda_j e_j \Rightarrow (v, e_i) = (pr_S v, e_i) = \sum\limits_{j = 1}^n \lambda_j (e_i, e_i) = \lambda_i (e_i, e_i) \Rightarrow \lambda_i = \frac{(v, e_i)}{(e_i, e_i)} \ \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 $(e_1, \dots, e_k)$  -- линейно независимая система векторов
 
 Метод Якоби $\Rightarrow \exists!$ ортогональная система $(f_1, \dots, f_k)$, такая что
@@ -99,7 +99,7 @@ $(e_1, \dots, e_k)$  -- линейно независимая система в�
 	\end{cases}
 \end{equation*}  
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $\forall \ i = 1, \dots, k$
 
 1) $f_i = ort_{<e_1, \dots, e_{i-1}>} e_i$
@@ -108,7 +108,7 @@ $(e_1, \dots, e_k)$  -- линейно независимая система в�
 
 3) $det G(e_1, \dots, e_i) = det G(f_1, \dots, f_i)$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Знаем, что $<e_1, \dots, e_i> = <f_1, \dots, f_i>$
 
 $f_i \in e_i + <e_1, \dots, e_{i-1}> = e_i + <f_1, \dots, f_{i-1}> \Rightarrow f_i = e_i + h_i$, где $h_i \in <f_1, \dots, f_{i-1}> \Rightarrow e_i = f_i - h_i$. Т.к. $f_i \in <f_1, \dots, f_{i-1}>^{\bot}$, то $f_i = ort_{<f_1, \dots, f_{i-1}>} e_i = ort_{<e_1, \dots, e_{i-1}>} e_i$.
@@ -117,40 +117,40 @@ $f_i \in e_i + <e_1, \dots, e_{i-1}> = e_i + <f_1, \dots, f_{i-1}> \Rightarrow f
 
 3) Было $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 Процесс простроения ортогонального базиса $f_1, \dots, f_k$ по формулам (**) называется \textit{процессом (или методом) ортогонализации Грама-Шмидта}.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Упражнение.}} Модифицировать метод ортогонализации Грама-Шмидта для случая линейно зависимой системы векторов.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение (теорема Пифагора).} $x, y \in E, (x, y) = 0 \Rightarrow |x+y|^2 = |x|^2 + |y|^2$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd \ |x+y|^2 = (x+y, x+y) = (x,x) + (x,y) + (y,x) + (y,y) = |x|^2 + |y|^2 \ \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} \textit{Расстоянием между векторами} $x, y \in E$ называется число $\rho (x, y) := |x - y|$. 
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение (неравенство треугольника).} $\forall \ a, b, c \in E \rho(a, b) + \rho(b, c) \geq \rho(a, c)$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Положим $x = a - b, y = b - c$, тогда $a - c = x + y \Rightarrow$  надо доказать $|x| + |y| \geq |x + y|$
 
 $|x + y|^2 = (x+y, x+y) = (x,x) + 2(x,y) + (y,y) \leq |x|^2 + 2 |x| |y| + |y|^2 \leq (|x| + |y|)^2 \ \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 $P, Q \subseteq E$ -- два непустых подмножества
 
 \textbf{Определение.} \textit{Расстояние между} $P$ и $Q$ -- это $\rho(P, Q) := inf \rho (x, y), x \in P, y \in Q$
 
-\vspace{\baselineskip}
+\bigskip
 Пусть $v \in E$ и $S \subseteq E$ -- подпространство
 
 \textbf{Теорема.} $\rho (v, S) = |ort_S v|$, причем $pr_S v$ есть единственный ближайший к $v$ вектор из $S$. 
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Пусть $z = ort_S v, u = pr_S v$.
 
 Тогда $v = z + y$. Пусть $y' \in S, y' \neq 0$. Тогда $\rho (v, y + y')^2 = |v - y - y'|^2 = |z - y'|^2 =$ (теорема Пифагора) $= |z|^2 + |y'|^2 > |z|^2 = |v - y|^2 = \rho (v, y)^2 \ \lhd$.

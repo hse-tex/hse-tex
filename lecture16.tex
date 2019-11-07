@@ -6,7 +6,7 @@ $(e_1, e_2, \dots, e_n)$ -- фиксированный базис
 
 $(e'_1, e'_2, \dots, e'_n)$ -- какой-то набор из $n$ векторов
 
-\vspace{\baselineskip}
+\bigskip
 $e'_1 = c_{11} e_1 + c_{21} e_2 + \dots + c_{n1} e_n$
 
 $e'_2 = c_{12} e_1 + c_{22} e_2 + \dots + c_{n2} e_n$
@@ -15,7 +15,7 @@ $\vdots$
 
 $e'_n = c_{1n} e_1 + c_{2n} e_2 + \dots + c_{nn} e_n$
 
-\vspace{\baselineskip}
+\bigskip
 $(e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C$, где 
 
 \begin{equation*} C = \begin{pmatrix} 
@@ -27,26 +27,26 @@ c_{n1} & c_{n2} & \dots & c_{nn} \end{pmatrix}
 
 $C^{(i)}$ -- столбец координат вектора $e'_i$ в базисе $(e_1, \dots, e_n)$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $(e'_1, \dots, e'_n)$ -- базис в $V \Leftrightarrow C$ невырожденна ($detC \neq 0$).
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} Пусть $(e'_1, \dots, e'_n)$ -- базис $\Rightarrow \exists C' \in M_n$, такие что $(e_1, \dots, e_n) = (e'_1, \dots, e'_n) \cdot C' = (e_1, \dots, e_n) \cdot C \cdot C'$. Т.к. $e_1, \dots, e_n$ линейно независимы, то отсюда следует $C \cdot C' = E \Rightarrow detC \neq 0$.
 
 Пусть $detC \neq 0$. Покажем, что $(e'_1, \dots, e'_n)$ -- базис. Достаточно доказать, что $e'_1, \dots, e'_n$ линейно независимы. Пусть $\lambda_1, \dots, \lambda_n \in F$ таковы, что $\lambda_1 e'_1 + \dots + \lambda_n e'_n = 0$. Тогда $0 = (e'_1, \dots, e'_n) \begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_n \end{pmatrix} = (e_1, \dots, e_n) C \begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_n \end{pmatrix}$. Т.к. $e_1, \dots, e_n$ линейно независимы, то $C \cdot \begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_n \end{pmatrix} = 0$. Домножая слева на $C^{-1}$, получаем $\begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_n \end{pmatrix} = 0$.
 
-\vspace{\baselineskip}
+\bigskip
 Пусть $e = (e_1, \dots, e_n)$ и $e' = (e'_1, \dots, e'_n)$ -- два базиса в $V$.
 
 $(e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Матрица $C$ называется \textit{матрицей перехода от базиса $e$ к базису $e'$}.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} Матрицей перехода от $e'$ к $e$ -- это $C^{-1}$. 
 
-\vspace{\baselineskip}
+\bigskip
 $v \in V \rightarrow v = x_1 e_1 + \dots + x_n e_n = (e_1, \dots, e_n) \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}$
 
 $\rightarrow v = x'_1 e'_1 + \dots + x'_n e'_n = (e'_1, \dots, e'_n) \begin{pmatrix} x'_1 \\ \vdots \\ x'_n \end{pmatrix}$
@@ -62,17 +62,17 @@ $v = (e_1, \dots, e_n) \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}$
 \subsection{Линейные отображения}
 $V, W$ -- векторные пространства
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Отображение $\varphi: V \rightarrow W$ называется \textit{линейным}, если 
 
 (1) $\varphi(v_1 + v_2) = \varphi(v_1) + \varphi(v_2) \ \forall \ v_1, v_2 \in V$
 
 (2) $\varphi(\lambda v) = \lambda \varphi(v) \ \forall \ v \in V, \lambda \in F$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Упражнение.} 1) \& 2) эквивалентно тому, что $\varphi(\lambda_1 v_1 + \lambda_2 v_2) = \lambda_1 \varphi(v_1) + \lambda_2 \varphi(v_2) \ \forall v_1, v_2 \in V, \lambda_1, \lambda_2 \in F$
 
-\vspace{\baselineskip}
+\bigskip
 Примеры.
 
 0) Нулевое отображение $\varphi (v) = 0 \ \forall \ v \in V$
@@ -109,7 +109,7 @@ $\varphi(v + w) = \begin{pmatrix} x_1 + y_1 \\ \vdots \\ x_n + y_n \end{pmatrix}
 
 Аналогично, $\varphi(\lambda v) = \lambda \varphi (v) \Rightarrow \varphi$ -- линейное отображение, биективно!
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Простейшие свойства линейного отображения}}
 
 1) $\varphi(0_v) = 0_w$
@@ -120,12 +120,12 @@ $\varphi(0_v) = \varphi(0 \cdot 0_v) = 0 \cdot \varphi(0_v) = 0_w$
 
 $\varphi(v) + \varphi(-v) = \varphi(v - v) = \varphi(0_v) = 0_w \Rightarrow \varphi(-v) = -\varphi(v)$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Отображение $\varphi: V \rightarrow W$ называется \textit{изоморфизмом}, если оно линейно и биективно.
 
 Обозначение: $\varphi: V \iso W$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Примеры}
 
 0) Изоморфизм $\Leftrightarrow$ Оба $V, W$ есть $\{0\}$
@@ -140,10 +140,10 @@ $\varphi(v) + \varphi(-v) = \varphi(v - v) = \varphi(0_v) = 0_w \Rightarrow \var
 
 5) да
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение 1.} $\varphi: V \rightarrow W$ -- изоморфизм $\Rightarrow$ обратное отображение $\varphi^{-1}: W \rightarrow V$ -- тоже изоморфизм
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Доказательство.} $\rhd \ \varphi^{-1}$ биективно, остается проверить линейность.
 
 $w_1, w_2 \in W \Rightarrow \exists ! v_1, v_2 \in V$, такой что $w_1 = \varphi (v_1), w_2 = \varphi(v_2) \Rightarrow v_1 = \varphi^{-1} (w_1), v_2 = \varphi^{-1} (w_2)$.
@@ -154,45 +154,45 @@ $w_1, w_2 \in W \Rightarrow \exists ! v_1, v_2 \in V$, такой что $w_1 = 
 
 $\varphi^{-1} (\lambda w_1) = \varphi^{-1}( \lambda \varphi(v_1)) = \varphi^{-1} (\varphi (\lambda v)) = \lambda v_1 = \lambda \varphi^{-1}(w_1) \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 $U \rightarrow^{\hspace{-4mm}^{\varphi}} V \rightarrow^{\hspace{-4mm}^{\psi}} W$ 
 
 $\psi \circ \varphi(u)= \psi (\varphi (u))$ 
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение 2.} 1) Если $\varphi, \psi$ линейны, то $\psi \circ \varphi$ тоже линейна
 
 2) Если $\varphi, \psi$ -- изоморфизмы, то $\psi \circ \varphi$ тоже изоморфизм
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} 1) $\rhd (\psi \circ \varphi) (u_1 + u_2) = \psi (\varphi(u_1 + u_2) = \psi(\varphi(u_1) + \varphi(u_2)) = \psi(\varphi(u_1) + \psi (\varphi(u_2)) = (\psi \circ \varphi) (u_1) + (\psi \circ \varphi) (u_2)$ 
 
 2) $(\psi \circ \varphi) (\lambda u) = \psi (\varphi (\lambda u) = \psi (\lambda \varphi (u)) = \lambda \psi (\varphi(u)) = \lambda (\psi \circ \varphi) (u))$
 
-\vspace{\baselineskip}
+\bigskip
 2) следует из 1) и того факта, что композиция биективных отображений биективна $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Два векторных пространства называются \textit{изоморфными}, если существует изоморфизм $\varphi : V \iso W$. 
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Теорема.} Изоморфность -- это отношение эквивалентности на множестве всех векторных пространств.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ 1) Рефлексивность: $Id: V \iso V$
 
 2) Симметричность: $V \simeq W \Rightarrow W \simeq V$ (предложение 1)
 
 3) Транзитивность: $U \simeq V, V \simeq W \Rightarrow U \simeq W$ (предложение 2) $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Классы эквивалентности называются \textit{классами изоморфизма} векторных пространств.
 
-\vspace{\baselineskip}
+\bigskip
 Пример. 
 
 $F^n \simeq P_{n-1}$
 
 $\begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix} \rightarrow a_1 + a_2 x + \dots + a_n x^{n-1}$ изоморфизм
 
-\vspace{\baselineskip}
+\bigskip

@@ -4,22 +4,22 @@
 
 $i, j \in \{1, 2, \dots, n\} \ i \neq j$.
 
-\vspace{\baselineskip}
+\bigskip
 Пусть $\tau_{ij} \in S_n$ -- подстановка, такая что $\tau_{ij}(i) = j, \tau_{ij}(j) = i, \tau_{ij}(k) = k \ \forall k \neq i,j$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Подстановки вида $\tau_{ij}$ называются \textit{транспозициями}.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Подстановки вида $\tau_{i, i+1}$ называются \textit{элементарными траспозициями}.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} $\tau$ -- траспозиция $\Rightarrow \tau^2 = id, \tau^{-1} = \tau$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Лемма.} $\tau \in S_n$ -- транспозиция $\Rightarrow \mathrm{sgn}(\tau) = -1$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Пусть $\tau = \tau_{ij}$, можем считать, что $i < j$. Посчитаем инверсии
 
 \begin{equation*}\tau := \begin{pmatrix} 
@@ -38,16 +38,16 @@ $\{k, j\}$ при $i + 1 \leq k \leq j -1$, всего =  $j-i-1$
 
 $\Rightarrow$ всего инверсий $2(j-i-1) + 1 = 1 \ mod \ 2 \Rightarrow \mathrm{sgn}(\tau) = -1 \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} При $n \geq 2$ отображение $\sigma \rightarrow \sigma \tau_{12}$ является биекцией между множеством четных подстановок в $S_n$ и множеством нечетных подстановок в $S_n$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} При $n \geq 2$ количество нечетных подстановок в $S_n$ равно количеству четных подстановок в $S_n$ и равно $n!/2$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Теорема.} Всякая подстановка $\sigma \in S_n$ может быть разложена в произведение конечного числа элементарных транспозиций.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd \ \sigma \in S_n$
 
 \begin{equation*}\sigma := 
@@ -69,16 +69,16 @@ $\Rightarrow$ всего инверсий $2(j-i-1) + 1 = 1 \ mod \ 2 \Rightarro
 
 $A \in M_n$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} \textit{Определителем (квадратной) матрицы} $A$ называется число 
 
 \begin{equation*} detA = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) a_{1, \sigma(1)} a_{2, \sigma(2)} \dots a_{n, \sigma(n)} \ (*)\end{equation*}
 ($\sum\limits_{\sigma \in S_n}$ -- сумма по всем подстановкам)
 
-\vspace{\baselineskip}
+\bigskip
 Другие обозначения: $|A|, \begin{vmatrix} a_{11} & a_{12} & \dots & a_{1n} \\ \dots & \dots & \dots & \dots \\ a_{n1} & a_{n2} & \dots & a_{nn} \end{vmatrix}$ 
  
-\vspace{\baselineskip}
+\bigskip
 Примеры: 
 
 1) $n = 2$ 
@@ -87,7 +87,7 @@ $S_2 = \left\{ \begin{pmatrix} 1 & 2 \\ 1 & 2 \end{pmatrix}, \begin{pmatrix} 1 &
 
 $A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} \Rightarrow detA = (+1) a_{11} a_{22} + (-1) a_{12} a_{21} = a_{11} a_{22} - a_{12} a_{21}$
 
-\vspace{\baselineskip}
+\bigskip
 2)$n = 3$
 
 $S_3 = \left\{ 
@@ -100,30 +100,30 @@ $S_3 = \left\{
 
 $|A| = \begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{vmatrix} = a_{11} a_{22} a_{33} + a_{12} a_{23} a_{31} + a_{13} a_{21} a_{32} - a_{13} a_{22} a_{31} - a_{12} a_{21} a_{33} - a_{11} a_{23} a_{32} $
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} Каждое слагаемое в (*) содержит ровно 1 элемент из каждой строки и ровно 1 элемент из каждого столбца.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Свойства определителей:}
 
-\vspace{\baselineskip}
+\bigskip
 T) Свойство Т. $detA = detA^T$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$
 Пусть $B = A^T$, тогда $b_{ij} = a_{ji}$. 
 
 \begin{multline} detB = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) b_{1, \sigma(1)} b_{2, \sigma(2)} \dots b_{n, \sigma(n)} = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) a_{\sigma(1), 1} a_{\sigma(2), 2} \dots a_{\sigma(n), n} = \\ = | заметим: \ a_{\sigma (1) , 1} a_{\sigma (2), 2} \dots a_{\sigma (n), n} = a_{1, \sigma^{-1} (1)} a_{2, \sigma^{-1} (2)} \dots a_{n, \sigma^{-1} (n)}; \mathrm{sgn}(\sigma) = \mathrm{sgn}(\sigma^{-1}) | = \\ = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma^{-1}) a_{1, \sigma^{-1}(1)} a_{2, \sigma^{-1}(2)} \dots a_{n, \sigma^{-1}(n)} = |замена: \ \rho = \sigma^{-1} | = \sum\limits_{\rho \in S_n} (\mathrm{sgn} \rho) a_{1, \rho(1)} a_{2, \rho(2)} \dots a_{n, \rho(n)} \end{multline}
 
-\vspace{\baselineskip}
+\bigskip
 0) Свойство 0. Если в А есть нулевая строка или нулевой стобец, то det A = 0.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ В силу свойства Т достаточно доказать для строк.
 
 Т.к. в каждом слагаемом (*) присутствует элемент из каждой строки, то все слагаемые в (*) равны 0 $\Rightarrow detA = 0 \ \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 1) Свойство 1. Если в А все элементы одной строки или одного столбца домножить на одно и то же число $\lambda$, то detA тоже умножается на $\lambda$
 
 \begin{equation*}
@@ -133,29 +133,29 @@ T) Свойство Т. $detA = detA^T$.
 
 $A_{(i)} \rightarrow \lambda A_{(i)} \Rightarrow a_{ij} \rightarrow \lambda a_{ij} \ \forall j \Rightarrow $ в (*) каждое слагаемое умножается на $\lambda \Rightarrow$ detA умножается на $\lambda. \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 2) Свойство 2. Если $A_{(i)} = A_{(i)}^1 + A_{(i)}^2$, то $detA = det \begin{pmatrix} A_{(1)} \\ \dots \\ A_{(i)}^1 \\ \dots \\ A_{(n)} \end{pmatrix} + det \begin{pmatrix} A_{(1)} \\ \dots \\ A_{(i)}^2 \\ \dots \\ A_{(n)} \end{pmatrix}$.
 
-\vspace{\baselineskip}
+\bigskip
 Пример:
 
 \begin{equation*} \begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 + c_1 & b_2 + c_2 & b_3 + c_3 \\ d_1 & d_2 & d_3 \end{vmatrix} = \begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ d_1 & d_2 & d_3 \end{vmatrix} + \begin{vmatrix} a_1 & a_2 & a_3 \\ c_1 & c_2 & c_3 \\ d_1 & d_2 & d_3 \end{vmatrix}
 \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 Аналогично, если $A^{(j)} = A^{(j)}_1 + A^{(j)}_2$, то $detA = det ( A^{(1)} \dots A^{(j)}_1 \dots A^{(n)} ) + det ( A^{(1)} \dots A^{(j)}_2 \dots A^{(n)})$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Свойство Т $\Rightarrow$ достаточно доказать для строк.
 
 Пусть $A_{(i)}^1 = (a_{i1}' a_{i2}' \dots a_{in}'), \ A_{(i)}^2 = (a_{i1}'' a_{i2}'' \dots a_{in}'') \Rightarrow a_{ij} = a_{ij}' + a_{ij}''$
 
 \begin{multline} detA = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) a_{1, \sigma(1)} a_{2, \sigma(2)} \dots a_{n, \sigma(n)} = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) a_{1, \sigma(1)} a_{2, \sigma(2)} \dots (a_{i, \sigma (i)}' + a_{i, \sigma (i)}'') \dots a_{n, \sigma(n)} = \\ = \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) a_{1, \sigma(1)} a_{2, \sigma(2)} \dots a_{i, \sigma (i)}' \dots a_{n, \sigma(n)} + \sum\limits_{\sigma \in S_n} (\mathrm{sgn} \sigma) a_{1, \sigma(1)} a_{2, \sigma(2)} \dots a_{i, \sigma (i)}'' \dots a_{n, \sigma(n)} = detA_1 + detA_2 \end{multline}. $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 Свойство 3. Если в А поменять местами две строки или два столбца, то $detA$ поменяет знак.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Свойство Т $\Rightarrow$ достаточно доказать для строк.
 
 Пусть $A = (a_{ij}) \in M_n, B = (b_{ij}) \in M_n $ -- матрица, полученная из А перестановкой $p$-ой и $q$-ой строк.

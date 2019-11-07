@@ -2,7 +2,7 @@
 
 \subsection{Матрицы}
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} \textit{Матрица размера $m \times n$} (или $(m \times n)$-матрица) -- это прямоугольная таблица высоты m и ширины n, заполненная числами (m строк, n столбцов).
 
 \begin{equation*}
@@ -15,25 +15,25 @@
     = A
 \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 $a_{ij}$ -- элемент на пересечении i-ой строки и j-ого столбца.
 
 Краткая запись: $A = (a_{ij})$.
 
-\vspace{\baselineskip}
+\bigskip
 \textit{Множество всех матриц размера} $m \times n$ (с коэффициентами из $\RR$) обозначается $Mat_{m\times n}(\RR)$. 
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Матрицы $A \in Mat_{m\times n}$ и $B \in Mat_{k\times l}$ называются равными, если:
 
 1) $m = k$, $n = l$ (размер один и тот же)
 
 2) $a_{ij} = b_{ij} \ \forall i, j$
 
-\vspace{\baselineskip}
+\bigskip
 \subsection{Операции над матрицами}
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Сложение.} $A, B \in Mat_{m\times n}, A = (a_{ij}), B = (b_{ij})$
 
 \begin{equation*}A + B = (a_{ij} + b_{ij}) = 
@@ -55,7 +55,7 @@ $a_{ij}$ -- элемент на пересечении i-ой строки и j-
 \end{pmatrix} \in Mat_{m\times n}
 \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Свойства сложения и умножения на скаляр}
 
 $\forall A, B, C \in Mat_{m\times n}$ и $\forall \lambda, \mu \in \RR$
@@ -80,24 +80,24 @@ $\forall A, B, C \in Mat_{m\times n}$ и $\forall \lambda, \mu \in \RR$
 
 8) $1 \times A = A$
 
-\vspace{\baselineskip}
+\bigskip
 \textit{Упражнение на дом:} \textbf{\textit{Доказательство свойств.}}
 
-\vspace{\baselineskip}
+\bigskip
 \begin{comment}
 	Свойства (1)-(8) означают, что $Mat_{m\times n}$ является             векторным пространством.
 \end{comment}
 
-\vspace{\baselineskip}
+\bigskip
 \subsection{Декартово произведение множеств}
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Стандартный способ задания множества.}
 
-\vspace{\baselineskip}
+\bigskip
 $M = \{$ какие элементы $|$ условие, которому удовлетворяют элементы $\}$.
 
-\vspace{\baselineskip}
+\bigskip
 $X, Y$ -- множества $\Rightarrow$ их декартово произедение есть множество $X \times Y := \{ (x, y) \ | \ x \in X, y \in Y\}$ (упорядоченные пары).
 
 $X_1, X_2, \dots, X_n$ -- множества.
@@ -108,7 +108,7 @@ $X_1 \times X_2 \times \dots \times X_n := \{(x_1, x_2, \dots, x_n) \ | \ x_i \i
 
 $\RR^n = \{ (x_1, x_2, \dots, x_n) \ | \ x_i \in \RR \  \forall i = 1, 2, \dots, n \}$
 
-\vspace{\baselineskip}
+\bigskip
 Договоримся элементы из $\RR^n$ записывать в виде столбцов (не строк):
 
 \begin{equation*} \RR^n = \left\{ \begin{pmatrix}
@@ -149,7 +149,7 @@ x_n + y_n
 
 Выполняются свойства (1)--(8).
 
-\vspace{\baselineskip}
+\bigskip
 \subsection{Транспонирование}
 
 $A \in Mat_{m \times n}, A = (a_{ij})$
@@ -173,7 +173,7 @@ $A \in Mat_{m \times n}, A = (a_{ij})$
 \end{equation*} 
 -- транспонированная к А матрица.
 
-\vspace{\baselineskip}
+\bigskip
 Примеры:
 
 1) $(x_1 x_2 \dots x_n)^T = \begin{pmatrix} x_1 \\ x_2 \\ \dots \\ x_n \end{pmatrix}$
@@ -182,7 +182,7 @@ $A \in Mat_{m \times n}, A = (a_{ij})$
 
 3) $\begin{pmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{pmatrix}^T = \begin{pmatrix} 1 & 3 & 5 \\ 2 & 4 & 6 \end{pmatrix}$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Свойства транспонирования.}
 
 1) $(A+B)^T = A^T + B^T$
@@ -191,7 +191,7 @@ $A \in Mat_{m \times n}, A = (a_{ij})$
 
 3) $(A^T)^T = A$
 
-\vspace{\baselineskip}
+\bigskip
 $A = (a_{ij}) \in Mat_{m \times n}$
 
 $A_{(i)} = (a_{i1}\ a_{i2}\ \dots a_{in})$ -- $i$-ая строка матрицы A
@@ -203,7 +203,7 @@ $A^{(j)} = \begin{pmatrix}
     a_{nj}
 	\end{pmatrix}$ -- $j$-ый столбец матрицы А
 
-\vspace{\baselineskip}
+\bigskip
 \subsection{Умножение матриц}
 
 1) \textit{Частный случай:} умножение строки на столбец той же длины
@@ -216,7 +216,7 @@ $A \in Mat_{m \times n}$ (размер $m \times \underline{n}$)
 
 $B \in Mat_{n \times p}$ (размер $\underline{n} \times p$) -- соответствие размеров
 
-\vspace{\baselineskip}
+\bigskip
 Тогда AB -- такая матрица $C \in Mat_{m \times p}$, что $c_{ij} := A_{(i)}B^{(j)} = \sum\limits_{k=1}^n a_{ik} b_{kj}$.
 
 Примеры:
@@ -256,22 +256,22 @@ x_n y_1 & x_n y_2 & \dots & x_n y_n
 
 Ax = b, где А -- матрица коэфициентов, $x \in \RR^n$ -- столбец неизвестных, $b \in \RR^m$ -- столбец правых частей.
 
-\vspace{\baselineskip}
+\bigskip
 \subsection{Отступление} 
 
 $s_p, s_{p+1}, \dots, s_q$ -- последовательность чисел
 
 $\sum\limits_{i=p}^q s_i := s_p + s_{p+1} + \dots + s_q$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Свойства суммирования: }
 
 1) $\lambda \sum\limits_{i=1}^n s_i = \sum\limits_{i=1}^n \lambda s_i$
 
-\vspace{\baselineskip}
+\bigskip
 2) $\sum\limits_{i=1}^n s_i + \sum\limits_{i=1}^n t_i = \sum\limits_{i=1}^n (s_i + t_i)$
 
-\vspace{\baselineskip}
+\bigskip
 3) $\sum\limits_{i=1}^m ( \sum\limits_{j=1}^n s_{ij}) = \sum\limits_{j=1}^n ( \sum\limits_{i=1}^m s_{ij})$
 
 Обе части равенства представляют собой сумму всех элементов матрицы 
@@ -281,6 +281,6 @@ s_{21} & s_{22} & \dots & s_{2n} \\
 \dots & \dots & \dots & \dots \\
 s_{n1} & s_{n2} & \dots & s_{nn} \end{pmatrix}$ 
 
-\vspace{\baselineskip}
+\bigskip
 В левой части мы сначала суммируем элементы в каждой строке, а потом складываем полученные суммы в столбце. В правой части мы сначала суммируем элементы в каждом столбце, а после -- полученные суммы в строке.
 

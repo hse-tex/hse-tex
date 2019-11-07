@@ -6,28 +6,28 @@
 
 Обозначение: $trA$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Свойства:}}
 
 1) $tr(A + B) = trA + trB \ \forall \ A, B \in M_n$
 
-\vspace{\baselineskip}
+\bigskip
 2) $tr(\lambda A) = \lambda trA \ \forall \lambda \in \RR \ A \in M_n$
 
-\vspace{\baselineskip}
+\bigskip
 3) $tr(A^T) = trA$
 
-\vspace{\baselineskip}
+\bigskip
 4) $tr(AB) = tr(BA) \ \forall \ A \in Mat_{m \times n}, B \in Mat_{n \times m}$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ (1) - (3) из определения.
 
 (4) $AB = X, BA = Y$
 
 $trX = \sum\limits_{i = 1}^m x_{ii} = \sum\limits_{i = 1}^m \sum\limits_{j = 1}^n a_{ij} b_{ji} = \sum\limits_{j = 1}^n \sum\limits_{i = 1}^m b_{ji} a_{ij} = \sum\limits_{j = 1} y_{jj} = trY \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 Пример.
 
 \begin{equation*}A = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}, B = \begin{pmatrix} 4 \\ 5 \\ 6 \end{pmatrix} \end{equation*}
@@ -42,15 +42,15 @@ $trBA = 4 + 10 + 18 = 32$
 
 Обозначение: $P_n$ -- множество всех перестановок множества $\{ 1, 2, \dots, n \} $. 
 
-\vspace{\baselineskip}
+\bigskip
 Пример. 
 
 $(4 \ 3 \ 2 \ 1) \in P_4$ 
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Факт.} $|P_n| = n!$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} \textit{Подстановка из n элементов} -- это биективное (=взаимнооднозначное) отображение множества $\{ 1, 2, \dots, n \} $ в себя.
 
 Запись: \begin{equation*}\begin{pmatrix} 1 & 2 & 3 & \dots & n \\
@@ -58,22 +58,22 @@ i_1 & i_2 & i_3 & \dots & i_n \end{pmatrix} \end{equation*}
 
 $\sigma : \{ 1, 2, \dots, n \} \rightarrow \{ 1, 2, \dots, n \}$
 
-\vspace{\baselineskip}
+\bigskip
 $i_j = \sigma (j)$ 
 
-\vspace{\baselineskip}
+\bigskip
 $\sigma (1) = i_1$
 
 $\dots$
 
 $\sigma (n) = i_n$
 
-\vspace{\baselineskip}
+\bigskip
 $\sigma$ -- подстановка
 
 $(i_1, i_2, \dots, i_n)$ -- перестановка
 
-\vspace{\baselineskip}
+\bigskip
 Можно записывать еще и так:
 
 \begin{equation*} \sigma : \begin{pmatrix} i_1 & i_2 & \dots & i_n \\ j_1 & j_2 & \dots & j_n \end{pmatrix}, \ где \ (i_1, i_2, \dots, i_n) \in \RR
@@ -81,27 +81,27 @@ $(i_1, i_2, \dots, i_n)$ -- перестановка
 
 $j_1 = \sigma (i_1), j_2 = \sigma (i_2), \dots, j_n = \sigma (i_n)$
 
-\vspace{\baselineskip}
+\bigskip
 Обозначение: $S_n$ -- множество всех подстановок из n элементов.
 
-\vspace{\baselineskip}
+\bigskip
 Пример.
 
 \begin{equation*} \sigma : \begin{pmatrix} 1 & 2 & 3 & 4 \\ 4 & 3 & 2 & 1 \end{pmatrix} = (4 \ 3 \ 2 \ 1) \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 Пусть $\sigma \in S_n, \ i, j \in {1, 2, \dots, n}, \ i \neq j$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Пара $\{i, j\}$ (неупорядоченная) \textit{образует инверсию} в $\sigma$, если числа $i-j$ и $\sigma (i) - \sigma (j)$ имеют разный знак, т.е. либо $i < j$ и $\sigma (i) > \sigma (j)$, либо $i > j$ и $\sigma (i) < \sigma (j)$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} \textit{Знак подстановки} $\sigma$ -- это  число $\mathrm{sgn} (\sigma) = (-1) ^{<число \ инверсий \ в \ \sigma>}$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Если $\mathrm{sgn}(\sigma) = 1$, то $\sigma$ называется \textit{четной} (число инверсий четное), если $\mathrm{sgn}(\sigma) = -1$, то $\sigma$ называется \textit{нечетной} (число инверсий нечетное).
 
-\vspace{\baselineskip}
+\bigskip
 Примеры.
 
 \begin{table}[!ht]
@@ -130,10 +130,10 @@ $j_1 = \sigma (i_1), j_2 = \sigma (i_2), \dots, j_n = \sigma (i_n)$
 
 \textbf{Замечание.} $\sigma \in S_n :$ число инверсий $\leq C_n^2 = \frac{n(n-1)}{2}$, равенство достигается при $\sigma = \begin{pmatrix} 1 & 2 & \dots & n \\ n & n-1 & \dots & 1 \end{pmatrix}$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} \textit{Произведением (или композицией) двух подстановок} $\sigma, \rho \in S_n$ называется постановка $\sigma \rho$, такая что $(\sigma \rho)(i) = \sigma (\rho (i)) \ \forall i=1, \dots, n$.
 
-\vspace{\baselineskip}
+\bigskip
 Пример.
 
 $\sigma = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 4 & 3 & 2 & 1 \end{pmatrix},\ \rho = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 3 & 4 & 1 & 2 \end{pmatrix}$
@@ -144,34 +144,34 @@ $\rho \sigma = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 1 & 3 & 4 \end{pmatrix}$
 
 $\Rightarrow \sigma \rho \neq \rho \sigma \Rightarrow$ умножение подстановок не обладает свойством коммутативности.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Утверждение.} Умножение подстановок ассоциативно, т.е. $\sigma (\tau \pi) = (\sigma \tau) \pi \ \forall \ \sigma, \tau, \pi \in S_n$. 
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd \forall \ i \in 1, 2, \dots, n$ имеем
 
 $[\sigma (\tau \pi)](i) = \sigma ((\tau \pi)(i)) = \sigma (\tau (\pi (i)))$
 
 $[(\sigma \tau) \pi] (i) = (\sigma \tau) (\pi(i)) = \sigma (\tau (\pi(i))) \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Подстановка $id = \begin{pmatrix} 1 & 2 & \dots & n \\ 1 & 2 & \dots & n \end{pmatrix} \in S_n$ называется \textit{тождественной}.
 
 $id(i) = i \ \forall \ i=1, 2, \dots, n$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Свойства:} $id \cdot \sigma = \sigma \cdot id = \sigma$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} $\sigma \in S_n, \ \sigma = \begin{pmatrix} 1 & 2 & \dots & n \\ \sigma (1) & \sigma (2) & \dots & \sigma (n) \end{pmatrix} \Rightarrow$ подстановка $\sigma^{-1} := \begin{pmatrix} \sigma (1) & \sigma (2) & \dots & \sigma (n) \\ 1 & 2 & \dots & n \end{pmatrix}$ называется \textit{обратной к} $\sigma$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Свойства:} $\sigma \cdot \sigma^{-1} = id = \sigma^{-1} \cdot \sigma$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Теорема.} $\sigma, \rho \in S_n \Rightarrow \mathrm{sgn}(\sigma \rho) = \\mathrm{sgn} \sigma \cdot \\mathrm{sgn} \rho$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Доказательство.} $\rhd$ Для каждой пары $i < j$ введем следующие числа:
 
 
@@ -196,7 +196,7 @@ $id(i) = i \ \forall \ i=1, 2, \dots, n$
 	\end{cases}
 \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 $1 \rightarrow \rho (1) \rightarrow \sigma \rho (1)$
 
 $2 \rightarrow \rho (2) \rightarrow \sigma \rho (2)$
@@ -205,18 +205,18 @@ $\dots$
 
 $n \rightarrow \rho (n) \rightarrow \sigma \rho (n)$
 
-\vspace{\baselineskip}
+\bigskip
 <число инверсий в $\rho$> $= \sum\limits_{1 \leq i < j \leq n} a(i, j) $
 
-\vspace{\baselineskip}
+\bigskip
 
 <число инверсий в $\sigma$> $= \sum\limits_{1 \leq i < j \leq n} b(i, j) $
 
-\vspace{\baselineskip}
+\bigskip
 
 <число инверсий в $\sigma \rho$> $= \sum\limits_{1 \leq i < j \leq n} c(i, j) $
 
-\vspace{\baselineskip}
+\bigskip
 Зависимость $c(i,j)$ от $a(i,j)$ и $b(i,j)$:
 
 \begin{table}[!ht]
@@ -233,12 +233,12 @@ $n \rightarrow \rho (n) \rightarrow \sigma \rho (n)$
 
 Тогда $\mathrm{sgn}(\sigma \rho) = (-1)^{\sum c(i,j)} = (-1)^{\sum b(i,j) + \sum a(i,j)} = (-1)^{\sum b(i,j)} \cdot (-1)^{\sum a(i,j)} = \mathrm{sgn} \sigma \cdot \mathrm{sgn} \rho. \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} $\sigma \in S_n \Rightarrow \mathrm{sgn} (\sigma^{-1}) = \mathrm{sgn}(\sigma)$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd 1 = \mathrm{sgn}(id) = \mathrm{sgn}(\sigma \cdot \sigma^{-1}) = \mathrm{sgn} \sigma \cdot \mathrm{sgn} \sigma^{-1} \Rightarrow \mathrm{sgn} \sigma^{-1} = \mathrm{sgn} \sigma. \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Упражнение на дом:}} $\forall \sigma \in S_n:$ <число инверсий в $\sigma$> = <число инверсий в $\sigma^{-1}$>.
 

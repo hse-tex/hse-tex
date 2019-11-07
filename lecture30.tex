@@ -2,34 +2,34 @@
 
 Пусть теперь $E' = E, \varphi: E \rightarrow E$ -- линейный оператор $\Rightarrow \ \exists!$ линейный оператор $\varphi^*: E \rightarrow E$, такой что $(\varphi(x), y) = (x, \varphi^*(y)) \ \forall \ x, y \in E$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} $\varphi^*$ называется \textit{сопряженным} к $\varphi$ линейным оператором.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Линейный оператор $\varphi$ называется \textit{самомпряженным (или симметрическим)}, если $\varphi = \varphi^*$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} $e$ -- ортогональный базис в $E, A_{\varphi} = A(\varphi, e), A_{\varphi^*} = A(\varphi^*, e) \Rightarrow A_{\varphi^*} = (A_{\varphi})^T$
 
 $\varphi = \varphi^* \Leftrightarrow A_{\varphi} = (A_{\varphi})^T$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $\varphi = \varphi^*, U \subseteq E$ -- $\varphi$-инвариантное подпространство $\Rightarrow U^{\bot}$ тоже $\varphi$-инвариантное
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Имеем $\varphi(U) \subseteq U$, хотим $\varphi(U^{\bot}) \subseteq U^{\bot}$
 
 $\forall x \in U^{\bot}, y \in U: (\varphi(x), y) = (x, \varphi^* (y)) = (\overbrace{x}^{\in U^{\bot}}, \overbrace{\varphi(y)}^{\in U}) = 0 \ \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $\varphi = \varphi^* \Rightarrow \exists$ собственный вектор для $\varphi$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Два случая: 1) $\exists$ 1-мерное $\varphi$-инвариантное подпространство
 
 2) $\exists$ 2-мерное $\varphi$-инвариантное подпространство
 
-\vspace{\baselineskip}
+\bigskip
 1) Очевидно
 
 2) Пусть $U \subseteq E$ -- 2-мерное $\varphi$-инвариантное подпространство. Положим $\psi := \varphi|_U$
@@ -43,10 +43,10 @@ a- t & b \\ b & c - t \end{vmatrix} = t^2 - (a + c) t + ac - b^2$
 
 $D = (a+c)^2 - 4 (ac - b^2) = (a-c)^2 +4b^2 \geq 0 \Rightarrow \chi_{\psi} (t)$ имеет корни в $\RR \Rightarrow \psi$ имеет собственный вектор $\Rightarrow \varphi$ имеет собственный вектор $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Теорема.} $\varphi = \varphi^* \Rightarrow \exists$ ортонормированный базис, состоящий из собственных векторов для $\varphi$. В частности, $\varphi$ диагонализуем над $\RR$, $\chi_{\varphi} (t)$ разлагается на линейные множители над $\RR$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} Индукция по $n = dim E$.
 
 $n = 1 \Rightarrow$ очевидно
@@ -61,10 +61,10 @@ $U = <e_1> \Rightarrow U$ $\varphi$-инвариантно $\Rightarrow U^{\bot}
 
 $dim U^{\bot} = n - 1 \Rightarrow$ по предположению индукции в $U^{\bot}$  $\exists$ ортонормированный базис $(e_2, \dots, e_n)$ из собственных векторов, $e_1 \bot (e_2, \dots, e_n)$. Тогда $(e_1, \dots, e_n)$ -- искомый базис $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} $\varphi = \varphi^*, \ \lambda, \mu \in Spec(\varphi), \lambda \neq \mu \Rightarrow E_{\lambda} (\varphi) \bot E_{\mu} (\varphi)$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} \textbf{Первый способ.}
 
 Пусть $e = (e_1, \dots, e_n)$ -- ортономированный базис из собственных векторов
@@ -75,7 +75,7 @@ $v = x_1 e_1 + \dots + x_n e_n \in E$
 
 $\varphi(v) = x_1 \lambda_1 e_1 + \dots + x_n \lambda_n e_n$. Тогда $\varphi (v) = \lambda v \Leftrightarrow v \in <e_i \ | \ \lambda_i = \lambda> \Rightarrow E_{\lambda} (\varphi) = <e_i \ | \ \lambda_i = \lambda > \Rightarrow E_{\lambda} (\varphi) \bot E_{\mu} (\varphi)$ при $\lambda \neq \mu$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Второй способ.}
 
 $\lambda \neq \mu, x \in E_{\lambda} (\varphi), y \in E_{\mu} (\varphi)$
@@ -84,10 +84,10 @@ $\lambda(x, y) = (\lambda x, y) = (\varphi(x), y) = (x, \varphi(y)) = (x, \mu y)
 
 Т.к. $\lambda \neq \mu$, то $(x, y) = 0 \ \lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Теорема (приведение квадратичной формы к главным осям).} $Q: E \rightarrow \RR$ -- квадратичная форма $\Rightarrow \exists$ ортономированный базис $e = (e_1, \dots, e_n)$, в котором $Q$ принимает канонический вид $Q(x) = \lambda_1 x_1^2 + \dots + \lambda_n x_n^2$, причем числа $\lambda_1, \dots, \lambda_n$ определены однозначно с точностью до перестановки. \textit{Главные оси} -- это $\RR e_1, \dots, \RR e_n$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Пусть $f = (f_1, \dots, f_n)$ -- какой-то ортонормированный базис, $B = B(Q, f)$.
 
 Пусть $\varphi: E \rightarrow E$ -- линейный оператор, такой что $A(\varphi, f) = B$
@@ -98,24 +98,24 @@ $\forall \ x = x_1 f_1 + \dots + x_n f_n \in E$ имеем $Q(x) = (x_1, \dots, 
 
 Итого: $Q(x) = (x, \varphi(x)) \ \forall \ x \in E$ (*)
 
-\vspace{\baselineskip}
+\bigskip
 Знаем: $\exists$ ортонормированный базис $e= (e_1, \dots, e_n)$, состоящий из собственных векторов для $\varphi \Rightarrow A(\varphi, e) = diag (\lambda_1, \dots, \lambda_n)$
 
 Но тогда $\forall \ x = x_1 e_1 + \dots + x_n e_n \ Q(x) = (x, \varphi(x)) = (x_1, \dots, x_n) D \begin{pmatrix}
 x_1 \\ \vdots \\ x_n \end{pmatrix} = \lambda_1 x_1^2 + \dots + \lambda_n x_n^2$
 
-\vspace{\baselineskip}
+\bigskip
 Единственность: $\lambda_1, \dots, \lambda_n$ -- это в точности собственные значения линейного оператора $\varphi$
 
 В свою очередь, $\varphi$ однозначно определяется из условия (*) $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} $A \in M_n(\RR), A = A^T \Rightarrow \exists$ ортогональная матрица $C \in M_n$, такая что $C^{-1} A C = C^T A C = diag(\lambda_1, \dots, \lambda_n)$, причем $\lambda_1, \dots, \lambda_n$ -- это в точности собственные значения матрицы $A$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Линейный оператор называется \textit{ортогональным}, если $\forall \ x, y \in E: (\varphi(x), \varphi(y)) = (x, y)$ (т.е. $\varphi$ сохраняет скалярное произведение)
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} Для $\varphi \in L(E)$ следуюущие условия эквивалентны:
 
 1) $\varphi$ ортогональный
@@ -128,26 +128,26 @@ x_1 \\ \vdots \\ x_n \end{pmatrix} = \lambda_1 x_1^2 + \dots + \lambda_n x_n^2$
 
 5) $\forall$ ортонормированного базиса $e$ $(\varphi(e_1), \dots, \varphi(e_n))$ -- тоже ортонормированный базис
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ $1) \Rightarrow 2) \ |\varphi(x)| = \sqrt[]{(\varphi(x), \varphi(x))} = \sqrt[]{(x, x)} = |x|$
 
-\vspace{\baselineskip}
+\bigskip
 $2) \Rightarrow 1) \ (\varphi(x), \varphi(y)) = \frac{1}{2} (|\varphi(x) + \varphi(y)|^2 - |\varphi(x)|^2 - |\varphi(y)|^2) = \frac{1}{2} (|x+y|^2 - |x|^2 - |y|^2) = (x, y)$
 
-\vspace{\baselineskip}
+\bigskip
 $1) \& 2) \Rightarrow 3) \ \varphi(x) = 0 \Rightarrow |\varphi(x)| = 0 \Rightarrow |x| = 0 \Rightarrow x = 0 \Rightarrow Ker \varphi = \{0\} \Rightarrow \varphi$ невырожден (т.е. $\exists \ \varphi^{-1}$)
 
 $(\varphi^{-1}(x), y) = (\varphi(\varphi^{-1}(x)), \varphi(y)) = (x, \varphi(y)) \Rightarrow \varphi^{-1} = \varphi^*$
 
-\vspace{\baselineskip}
+\bigskip
 $3) \Rightarrow 4) \ e$ -- ортонормированный базис, $A = A(\varphi, e)$
 
 $\begin{cases} A(\varphi^*, e) = A^T \\ A(\varphi^{-1}, e) = A^{-1} \end{cases} \Rightarrow A^T = A^{-1}$
 
-\vspace{\baselineskip}
+\bigskip
 $4) \Rightarrow 5) \ e$ -- ортонормированный базис, $A = A(\varphi, e) \Rightarrow (\varphi(e_1), \dots, \varphi(e_n)) = (e_1, \dots, e_n) A$ (где $A$ ортогональная) $\Rightarrow (\varphi(e_1), \dots, \varphi(e_n))$ -- ортонормированный базис
 
-\vspace{\baselineskip}
+\bigskip
 $5) \Rightarrow 1) \ e$ -- ортонормированный базис, $x = \sum\limits_{i=1}^n x_i e_i, y = \sum\limits_{j=1}^n y_j e_j$
 
 $(\varphi(x), \varphi(y)) = (\varphi(\sum\limits_{i=1}^n x_i e_i), \varphi(\sum\limits_{j=1}^n y_j e_j)) = \sum\limits_{i=1}^n\sum\limits_{j=1}^n x_i y_j \overbrace{(\varphi(e_i), \varphi(e_j))}^{\delta_{ij}} = \sum\limits_{i=1}^n\sum\limits_{j=1}^n x_i y_j (e_i, e_j) = (\sum\limits_{i=1}^n x_i e_i, \sum\limits_{j=1}^n y_i e_j) = (x, y) \ \lhd$

@@ -4,7 +4,7 @@
 
 Свойство 4. Если в А есть две одинаковые строки (столбца), то $detA = 0$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ При перестановке двух одинаковых строк (столбцов):
 
 -- А не изменится $\Rightarrow$ detA не изменится
@@ -13,17 +13,17 @@
 
 $\Rightarrow detA = -detA \Rightarrow detA = 0 \ \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 Свойство 5. Если к строке (столбцу) прибавить другую строку (столбец), умноженный на скаляр, то $detA$ не изменится.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Свойство Т $\Rightarrow$ достаточно доказать для строк.
 
 \begin{equation*}A \rightarrow A' = \begin{pmatrix} \dots \\ A_{(i)} + \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} \end{equation*}
 
 \begin{equation*}detA' = det \begin{pmatrix} \dots \\ A_{(i)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} + det \begin{pmatrix} \dots \\ \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} = detA + \lambda det \begin{pmatrix} \dots \\ A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} = det A + \lambda 0 = det A \ \lhd \end{equation*}.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Матрица называется \textit{верхнетреугольной}, если $a_{ij} = 0 \ при \ i > j$, \textit{нижнетреугольной}, если $a_{ij} = 0 \ при \ i < j$. 
 
 \begin{equation*}\begin{pmatrix}
@@ -44,12 +44,12 @@ $\Rightarrow detA = -detA \Rightarrow detA = 0 \ \lhd$.
 	\end{pmatrix}
 \end{equation*} -- нижнетреугольная 
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} Если А -- верхнетреугольная (или нижнетреугольная) матрица, то 
 
 $detA = a_{11} a_{22} \dots a_{nn}$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Свойство Т $\Rightarrow$ достаточно доказать для верхнетреугольной.
 
 Выясним, какие слагаемые в (*) могут быть отличны от нуля.
@@ -64,28 +64,28 @@ $a_{n-1, \sigma(n - 1)} \neq 0 \Rightarrow \sigma (n - 1) \in \{n, n - 1 \}$ н�
 
 Вывод: в (*) может быть не равно нулю ровно 1 слагаемое $a_{11} a_{22} \dots a_{nn}$, оно входит со знаком + $\Rightarrow detA  = a_{11} a_{22} \dots a_{nn} \ \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} 1) $det(diag(a_1, a_2, \dots, a_n)) = a_1 a_2 \dots a_n$.
 
 2) $detE = +1$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} Всякая (квадратная) ступенчатая матрица верхнетреугольна.
 
-\vspace{\baselineskip}
+\bigskip
 \subsection{Вычисление определителей при помощи элементарных преобразований}
 
-\vspace{\baselineskip}
+\bigskip
 $Э_1 (i, j, \lambda): detA$ не меняется.
 
 $Э_2 (i, j): detA$ меняет знак.
 
 $Э_3 (i, \lambda): detA$ умножается на $\lambda$.
 
-\vspace{\baselineskip}
+\bigskip
 \textit{Алгоритм.} Элементарными преобразованиями строк А приводится к ступенчатому  ($\Rightarrow$ верхнетреугольному) виду, в котором $det$ легко считается.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} (Определитель с углом нулей) 
 
 \begin{equation*} A = 
@@ -131,7 +131,7 @@ $Э_3 (i, \lambda): detA$ умножается на $\lambda$.
 \right)
 \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Свойство Т $\Rightarrow$ достаточно доказать для первого типа.
 
 1) Элементарными преобразованиями строк приведем матрицу $(P|Q)$ к виду $(P'|Q')$, в котором P ступечатая ($\Rightarrow$ верхнетреугольная) $\Rightarrow$ detP и detA умножатся на одно и то же число $\alpha \neq 0$. 
@@ -142,16 +142,16 @@ A' -- верхнетреугольная $\Rightarrow$ det A' = det P' det R'
 
 $\alpha \beta det A = det A' = det P' det R' = (\alpha det P) (\beta det R) = \alpha \beta det P det R \Rightarrow det A = det P det R \ \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Теорема.} $A, B \in M_n \Rightarrow det(AB) = detA detB$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ 1) A, B верхнетреугольная $\Rightarrow$ AB -- верхнетреугольная.
 
 
 $det(AB) = a_1 b_1 a_2 b_2 \dots a_n b_n = (a_1 a_2 \dots a_n)(b_1 b_2 \dots b_n) = det A det B$.
 
-\vspace{\baselineskip}
+\bigskip
 2) Элементраное преобразование строк А $\rightarrow$ то же элементарное преобразование в AB.
 
 $A \rightarrow UA \Rightarrow AB \rightarrow UA(B) = U(AB)$
@@ -160,24 +160,24 @@ $A \rightarrow UA \Rightarrow AB \rightarrow UA(B) = U(AB)$
 
 $B \rightarrow BV \Rightarrow AB \rightarrow A(BV) = (AB)V$
 
-\vspace{\baselineskip}
+\bigskip
 Элементарным преобразованием строк приведем А к верхнетреугольному виду. При этом detA и det(AB) умножатся на одно и то же число $\alpha \neq 0$.
 
 Элементарным преобразованием столбцов приведем B к верхнетрегольному виду. При этом detB и det(AB) умножатся на одно и то же число $\beta \neq 0$.
 
 
-\vspace{\baselineskip}
+\bigskip
 $A', B'$ -- верхнетреугольные $\Rightarrow det(A'B') = detA' detB' = \alpha \beta detAB = detA'B' = detA' det B' = (\alpha det A)(\beta bet B) = \alpha \beta det A det B \Rightarrow detAB = detA detB \ \lhd$.
 
-\vspace{\baselineskip}
+\bigskip
 Пусть $A \in M_n$.
 
 \textbf{Определение.} \textit{Дополнительным минором к элементу} $a_{ij}$ называется определитель $(n-1) \times (n-1)$ -- матрицы, получающейся из А вычеркиванием i-ой строки и j-ого столбца. Обозначение: $\overline{M_{ij}}$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} \textit{Алгебраическим дополнением к элементу} $a_{ij}$ называется число $A_{ij} = (-1)^{i+j} \overline{M_{ij}}$.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Лемма.} Пусть $a_{ik} = 0$ при всех $k \neq j$. Тогда $detA = a_{ij}A_{ij}$.
 
 \textbf{\textit{Доказательство.}}
@@ -193,7 +193,7 @@ $A', B'$ -- верхнетреугольные $\Rightarrow det(A'B') = detA' de
 \right)
 \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 Переставляя соседние строки, вытолкнем i-ю строку наверх.
 
 \begin{equation*} 
@@ -208,7 +208,7 @@ $A', B'$ -- верхнетреугольные $\Rightarrow det(A'B') = detA' de
 \right)
 \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 Переставляя соседние столбцы, переместим j-й столбец на первое место. 
 
 \begin{equation*} A' = 
@@ -223,7 +223,7 @@ $A', B'$ -- верхнетреугольные $\Rightarrow det(A'B') = detA' de
 \right)
 \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 $detA' = a_{ij}det \left(
 \begin{array}{c|c}
   P & Q \\
@@ -232,6 +232,6 @@ $detA' = a_{ij}det \left(
 \end{array}
 \right) = a_{ij} \overline{M_{ij}}$.
 
-\vspace{\baselineskip}
+\bigskip
 $det A = (-1)^{i-1+j-1} det A' = (-1)^{i+j} a_{ij}\overline{M_{ij}} = a_{ij} A_{ij} \ \lhd$.
 

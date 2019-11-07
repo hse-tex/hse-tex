@@ -2,36 +2,36 @@
 
 \subsection{Свойства умножения матриц}
 
-\vspace{\baselineskip}
+\bigskip
 1) $A (B + C) = AB + AC$ (левая дистрибутивность)
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}}
 
 $\rhd$ размеры: $m \times n \ ( n \times p + n \times p) = m \times n \ n \times p + m \times n \ n \times p = m \times p$
 
 $x_{ij} = A_{(i)} (B + C)^{(j)} = \sum\limits_{k=1}^n a_{ik} (b_{kj} + c_{kj}) = \sum\limits_{k=1}^n (a_{ik} b_{kj} + a_{ik} c_{kj}) = \sum\limits_{k=1}^n a_{ik} b_{kj} + \sum\limits_{k=1}^n a_{ik} c_{kj} = (AB)_{ij} + (AC)_{ij} = y_{ij} \Rightarrow X = Y$. $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 1') $(A + B)C = AC + BC$ (правая дистрибутивность)
 
-\vspace{\baselineskip}
+\bigskip
 2) $\lambda \in \RR \Rightarrow \lambda(AB) = (\lambda A) B = A(\lambda B)$
 
-\vspace{\baselineskip}
+\bigskip
 3) A(BC) = (AB)C (ассоциативность)
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}}
 
 $\rhd$A(BC) = AU = X, (AB)C = VC = Y.
 
 $x_{ij} = \sum\limits_{k=1}^n a_{ik} u_{kj} = \sum\limits_{k=1}^n a_{ik} (\sum\limits_{l=1}^p b_{kl} c_{lj}) = \sum\limits_{k=1}^n (\sum\limits_{l=1}^p a_{ik} b_{kl} c_{lj}) = \sum\limits_{l=1}^p (\sum\limits_{k=1}^n a_{ik} b_{kl} c_{lj}) = \sum\limits_{l=1}^p(\sum\limits_{k=1}^n (a_{ik} b_{kl}) c_{lj} = \sum\limits_{l=1}^p v_{il} c_{lj} = y_{ij} \Rightarrow X = Y. \lhd $
 
-\vspace{\baselineskip}
+\bigskip
 4) $(AB)^T = B^T A^T$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} 
 
 $ \rhd (AB)^T = X, B^T = C, A^T = D, B^T A^T = Y$
@@ -52,28 +52,28 @@ $AB = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$
 $BA = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}$
 $\Rightarrow AB \neq BA$
 
-\vspace{\baselineskip}
+\bigskip
 \subsection{Приложение к СЛУ}
 
 СЛУ $Ax = b (*), A \in Mat_{m \times n}, x \in \RR^n$ -- столбец неизвестных, $b \in \RR^m$
 
-\vspace{\baselineskip}
+\bigskip
 Если СЛУ (*) совместна, то ее \textit{частное решение} -- какое-либо одно ее решение.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Утверждение.} Пусть $Ax = b$ (*) -- совместная СЛУ, $Ax = \begin{pmatrix} 0 \\ 0 \\ \dots \\ 0 \end{pmatrix}$ (**) -- соответствующая ОСЛУ.
 
 Пусть $L \subseteq  \RR^n$ -- множество решений СЛУ(*), $S \subseteq \RR^n$ -- частное решение ОСЛУ(**), $x_0 \in L$ -- частное решение СЛУ(*).
 
 Тогда $L = x_0 + S$, где $x_0 + S = \{ x_0 + v \ | \ v \in S \}$.
 
-\vspace{\baselineskip}
+\bigskip
 Пример.
 
-\vspace{\baselineskip}
+\bigskip
 $\begin{pmatrix} 1 & 2 & 0 & -3 & \vline & 4 \\ 0 & 0 & 1 & 5 & \vline & 6 \end{pmatrix}$
 
-\vspace{\baselineskip}
+\bigskip
 $x_1 = 4 - 2x_2 + 3x_4$
 
 $x_3 = 6 - 5x_4$
@@ -82,7 +82,7 @@ $x_2 = t_1, x_4 = t_2$ -- параметры
 
 \begin{equation*} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} 4 - 2t_1 + 3t_2 \\ t_1 \\ 6 - 5t_2 \\ t_2 \end{pmatrix} = \begin{pmatrix} 4 \\ 0 \\ 6 \\ 0 \end{pmatrix} + t_1 \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} + t_2 \begin{pmatrix} 3 \\ 0 \\ -5 \\ 1 \end{pmatrix} \end{equation*}, где $\begin{pmatrix} 4 \\ 0 \\ 6 \\ 0 \end{pmatrix}$ -- частное решение, а $ t_1 \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} + t_2 \begin{pmatrix} 3 \\ 0 \\ -5 \\ 1 \end{pmatrix} $ -- решение ОСЛУ.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}}
 
 $\rhd x_0$ -- частное решение $\Rightarrow Ax_0 = b$.
@@ -96,12 +96,12 @@ $Av = A(u - x_0) = Au - Ax_0 = b - b = \begin{pmatrix} 0 \\ \dots \\ 0  \end{pma
 $1) \& 2) \Rightarrow L = x_0 + S$.
 
 \subsection{}
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Матрица $A \in Mat_{m \times n}$ называется \textit{квадратной}, если m = n. При этом число n называется \textit{порядком этой матрицы}.
 
 Обозначение: $Mat_{n \times m} =: M_n$
 
-\vspace{\baselineskip}
+\bigskip
 $A \in M_n$ 
 
 $ \begin{pmatrix} \Diamond & & & \\ & \Diamond & & \\ & & \Diamond & \\ & & & \Diamond \end{pmatrix} $ -- главная диагональ
@@ -109,7 +109,7 @@ $ \begin{pmatrix} \Diamond & & & \\ & \Diamond & & \\ & & \Diamond & \\ & & & \D
 
 $ \begin{pmatrix} & & & \Diamond \\ & & \Diamond & \\ & \Diamond & & \\ \Diamond & & & \end{pmatrix} $ -- побочная диагональ
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Матрица $A \in M_n$ называется \textit{диагональной}, если все элементы вне ее главной диагонали равны 0 (т.е. $a_{ij} = 0 \ \forall i \neq j$). 
 
 \begin{equation*}A =  \begin{pmatrix} a_1 & 0 & \dots & 0 \\ 0 & a_2 & \dots & 0  \\ 0 & 0 & \dots & 0 \\ \dots & \dots & \dots & \dots \\ 0 & 0 & \dots & a_n \end{pmatrix} = diag(a_1, a_2, \dots , a_n) \end{equation*}
@@ -122,13 +122,13 @@ $ \begin{pmatrix} & & & \Diamond \\ & & \Diamond & \\ & \Diamond & & \\ \Diamond
 
 \begin{equation*}A =  \begin{pmatrix} a_1 & 0 & \dots & 0 \\ 0 & a_2 & \dots & 0  \\ \dots & \dots & \dots & \dots \\ 0 & 0 & \dots & a_n \\ 0 & 0 & 0 & 0 \end{pmatrix} = diag(a_1, a_2, \dots , a_n) \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Лемма.} Пусть $A = diag(a_1, a_2, \dots, a_n) \in M_n$.
 
-\vspace{\baselineskip}
+\bigskip
 (1) Если $B \in Mat_{n \times p}$, то AB = $\begin{pmatrix} a_1 B_{(1)} \\ a_2 B_{(2)} \\ \dots \\ a_n B_{(n)} \end{pmatrix} $(т.е. i-я строка унмножается на $a_i$).
 
-\vspace{\baselineskip}
+\bigskip
 (2) Если $B \in Mat_{m \times n}$, то $BA = (a_1 B^{(1)} \ a_2 B^{(2)} \dots a_n B^{(n)})$ (т.е. i-ый столбец умножается на $a_i$).
 
 \textbf{\textit{Доказательство.}}
@@ -152,7 +152,7 @@ a_n b_{n1} & a_n b_{n2} & a_n b_{n3} & \dots & a_n b_{np}
 \begin{equation*} = \begin{pmatrix} a_1 B_{(1)} \\ a_2 B_{(2)} \\ \dots \\ a_n B_{(n)} \end{pmatrix} \end{equation*}
 (2) Аналогично. $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Определение.} Матрица $E = E_n = diag(1, 1, \dots, 1)$ называется \textit{единичной матрицей порядка n}.
 \begin{equation*} E = \begin{pmatrix} 1 & 0 & \dots & 0 \\ 
 0 & 1 & \dots & 0 \\
@@ -160,7 +160,7 @@ a_n b_{n1} & a_n b_{n2} & a_n b_{n3} & \dots & a_n b_{np}
 0 & 0 & \dots & 1 
 \end{pmatrix} \end{equation*}
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствия из леммы}
 
 1) $EA = A \ \forall \ A \in Mat_{n \times p}$
@@ -169,7 +169,7 @@ a_n b_{n1} & a_n b_{n2} & a_n b_{n3} & \dots & a_n b_{np}
 
 3) $AE = EA = A \ \forall \ A \in Mat_n$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Утверждение.} Всякое элементарное преобразование строк матрицы $A \in Mat_{m \times n}$ представимо при помощи умножения слева на подходящую матрицу. А именно:
 
 $Э_1(i, j, \lambda): A \rightarrow U_1(i, j, \lambda) A$, где
@@ -185,7 +185,7 @@ $Э_1(i, j, \lambda): A \rightarrow U_1(i, j, \lambda) A$, где
 \end{equation*}
 (на диагонали стоят единицы, на $i$--ом $j$--ом месте стоит $\lambda$, остальные элементы нули)
 
-\vspace{\baselineskip}
+\bigskip
 $Э_2(i, j): A \rightarrow U_2(i, j) A$, где
 \begin{equation*} U_2(i, j) = \bordermatrix{ 
     	 & & & i & & & j & &  \cr
@@ -199,7 +199,7 @@ $Э_2(i, j): A \rightarrow U_2(i, j) A$, где
 \end{equation*}
 (на диагонали стоят единицы, кроме $i$--ого и $j$-ого столбца (там нули), на $i$--ом $j$--ом и $j$--ом $i$--ом местах стоят 1, остальные элементы нули)
 
-\vspace{\baselineskip}
+\bigskip
 $Э_1(i, \lambda): A \rightarrow U_3(i, \lambda) A$, где
 \begin{equation*} U_3(i,\lambda) = \bordermatrix{ 
     	 & & & i & & & & &  \cr
@@ -216,7 +216,7 @@ $Э_1(i, \lambda): A \rightarrow U_3(i, \lambda) A$, где
 \end{equation*}
 (на диагонали стоят единицы, кроме $i$-ого столбца -- там $\lambda$, остальные элементы нули)
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Упражнение на дом:}} Доказательство.
 
 \textbf{\textit{Упражнение на дом:}} Сформулировать и доказать аналогичное утверждение для элементарных преобразований столбцов.

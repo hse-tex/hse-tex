@@ -4,10 +4,10 @@ $V$ -- векторное пространство над $F$, $dimV = n$
 
 $\varphi \in L(V)$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} Пусть $\{\lambda_1, \dots, \lambda_s\} \subseteq Spec(\varphi), \ \lambda_i \neq \lambda_j \ \forall \ i \neq j$, тогда подпространства $V_{\lambda_1} (\varphi), \dots, V_{\lambda_s} (\varphi)$ линейно независимы.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Индукция по $s$.
 
 $s = 1$ -- нечего доказывать
@@ -20,20 +20,20 @@ $s = 1$ -- нечего доказывать
 
 Вычтем отсюда (*)$\cdot \lambda_s$: $(\lambda_1 - \lambda_s) v_1 + \dots + (\lambda_{s-1} - \lambda_s) v_{s - 1} = 0$, по предположению индукции получаем отсюда $v_1 = \dots = v_s = 0$. Тогда $v_s = 0 \ \lhd$ 
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} Если $\chi_{\varphi}(t)$ имеет ровно $n$ различных корней, то $\varphi$ диагонализуем.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Пусть $Spec (\varphi) = \{\lambda_1, \dots, \lambda_n\}, \lambda_i \neq \lambda_j \ \forall \ i \neq j$. $\forall \ i = 1, \dots, n$ выберем ненулевой вектор $v_i \in V_{\lambda_i} (\varphi)$. Тогда $v_1, \dots, v_n$ линейно независимы по предыдущему предложению $\Rightarrow (v_1, \dots, v_n)$ -- базис из сосбтвенных векторов $\Rightarrow \varphi$ диагонализуем $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Теорема (критерий диагонализуемости).} Линейный оператор $\varphi \in L(V)$ диагонализуем $\Leftrightarrow$ выполнены следующие условия:
 
 1) $\chi_{\varphi} (t)$ разлагается на линейные множители
 
 2) $\forall \ \lambda \in Spec(\varphi)$ (геометрическая кратность $\lambda$) = (алгебраическая кратность $\lambda$)
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ $(\Rightarrow)$ Пусть $(e_1, \dots, e_n)$ -- базис, такой что $A(\varphi, e) = \begin{pmatrix} \mu_1 & 0 & \dots & 0 \\ 0 & \mu_2 & \dots & 0 \\ \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & \dots & \mu_n \end{pmatrix}$
 
 Тогда $\chi_{\varphi} (t) = (-1)^n \begin{vmatrix} \mu_1 - t & 0 & \dots & 0 \\ 0 & \mu_2 - t & \dots & 0 \\ \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & \dots & \mu_n - t \end{vmatrix} = (-1)^n (t - \mu_1) (t - \mu_2) \dots (t - \mu_n) \Rightarrow 1)$ выполнено
@@ -42,14 +42,14 @@ $s = 1$ -- нечего доказывать
 
 $\forall \ i = 1, \dots, s$ имеем $V_{\lambda_i} (\varphi) \supseteq <e_j \ | \ \mu_j = \lambda_i > \Rightarrow dim V_{\lambda_i} (\varphi) \geq k_i$ (уже знаем $dim V_{\lambda_i} (\varphi) \leq k_i$) $\Rightarrow dim V_{\lambda_i} (\varphi) = k_i$
 
-\vspace{\baselineskip}
+\bigskip
 $(\Leftarrow)$ Пусть $\chi_{\varphi} (t) = (t - \lambda_1)^{k_1} \cdots  (t - \lambda_s)^{k_s}, \lambda_i \neq \lambda_j$ при $i \neq j$
 
 Т.к. $V_{\lambda_1} (\varphi), \dots, V_{\lambda_s} (\varphi)$ линейно независимы, то $dim (V_{\lambda_1} (\varphi) + \dots + V_{\lambda_s} (\varphi)) = dim V_{\lambda_1} (\varphi) + \dots + dim V_{\lambda_s} (\varphi) = k_1 + \dots + k_s = n \Rightarrow V = V_{\lambda_1} (\varphi) \oplus \dots \oplus V_{\lambda_s} (\varphi)$
 
 $\forall i = 1, \dots, s$ выберем в $V_{\lambda_i} (\varphi)$ базис $e_i$ и положим $e = e_1 \cup e_2 \cup \dots \cup e_s$. Тогда $e$ -- базис $V$, состоящий из собственных векторов $\lhd$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Замечание.} Если выполнено 1), то линейный оператор $\varphi$ можно привести к \textit{жордановой нормальной форме}, т.е. $\exists$ базис $e$ в $V$, такой что $A(\varphi, e) = \left(
 \begin{array}{c|c|c|c|c}
   J^{m_1}_{M_1} & 0 & 0 & \dots & 0  \\
@@ -67,13 +67,13 @@ $\forall i = 1, \dots, s$ выберем в $V_{\lambda_i} (\varphi)$ базис
 где $J^{m_i}_{M_i} = \begin{pmatrix} M_i & 1 & 0 & \dots & 0 \\ 0 & M_i & 1 & \dots & 0 \\ 0 & 0 & M_i & \dots & 0
 \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & M_i \end{pmatrix}$ -- Жорданова клетка порядка $m_i$ с собственным значением $M_i$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Следствие.} Если $F = \CC$, то $\forall \ \varphi \in L(V)$ можно привести к жордановой нормальной форме.
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} Условие 1) выполняется по основной теореме алгебры комплексных чисел.
 
-\vspace{\baselineskip}
+\bigskip
 Примеры.
 
 1) $\varphi = \lambda \cdot Id \Rightarrow \chi_{\varphi} (t) = (t - \lambda)^n$
@@ -109,10 +109,10 @@ $Spec (\varphi) = \{0\}$, алгебраическая кратность = $n +
 
 $f = (1, x, \frac{x^2}{2}, \dots, \frac{x^n}{n!}) \Rightarrow A(\varphi, f) = \begin{pmatrix} 0 & 1 & 0 & \dots & 0 \\ 0 & 0 & 1 & \dots & 0 \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & 1 \\ 0 & 0 & 0 & \dots & 0 \end{pmatrix} = J_0^{n+1}$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} $F = \RR \Rightarrow \ \forall \ \varphi \in L(V)$, $\exists$ либо одномерное, либо двумерное $\varphi$-инвариантное подпространство
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ Если $\chi_{\varphi} (t)$ имеет действительный корень, то тогда у $\varphi$ есть собственный вектор $\Rightarrow$ есть 1-мерное инвариантное подпространство. Пусть $\chi_{\varphi} (t)$ не имеет корней в $\RR$, возьмем какой-нибудь комплексный корень $\lambda + i \mu$, где $\lambda, \mu \in \RR, \mu \neq 0$. Фиксируем базис $e = (e_1, \dots, e_n)$ в $V$, пусть $A = A(\varphi, e)$. 
 
 Тогда для $A$ над $C$ $\exists$ собственный вектор с собстсвенным значением $\lambda + i \mu$. То есть $\exists \ u, v \in \RR^n, u + i v \neq 0$, такой что $A \cdot (u + iv) = (\lambda + i \mu) (u + iv) = (\lambda u - \mu v) + i (\lambda v + \mu u) \Rightarrow \begin{cases}
@@ -132,12 +132,12 @@ $E'$ -- евклидово пространство (другое), $dim E' = m,
 
 Обозначение: $\varphi^*$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{Предложение.} 1) $\psi$ существует и единственно
 
 2) Если $e$ и $f$ -- ортонормированные базисы в $E$ и $E'$ соответственно, $A_{\varphi} = A(\varphi, e, f), A_{\psi} = A(\psi, f, e) \Rightarrow A_{\psi} = A_{\varphi}^T$
 
-\vspace{\baselineskip}
+\bigskip
 \textbf{\textit{Доказательство.}} $\rhd$ 1) Фиксируем произвольный базис $e$ в $E$ и произвольный базис $f$ в $E'$, $A_{\varphi} = A(\varphi, e, f), A_{\psi} = A(\psi, f, e), G = G(e), G' = G(f)$
 
 $x \in E, x = x_1 e_1 + \dots + x_n e_n$
