@@ -1,0 +1,242 @@
+\section{Лекция 14.06.2018}
+
+$V$ -- векторное пространство над $F$
+
+$\varphi: V \rightarrow V$ -- линейный оператор
+
+$\chi_{\varphi} (t) = (t - \lambda_1)^{k_1} \dots (t - \lambda_s)^{k_s}$
+
+$i \in \{1, \dots, s\} \Rightarrow V^{\lambda_i} (\varphi)$ -- корневое подпространство
+
+$dim V^{\lambda_i} (\varphi) = k_i$
+
+$V = V^{\lambda_1} (\varphi) \oplus \dots \oplus V^{\lambda_s} (\varphi)$
+
+$\varphi_i = (\varphi - \lambda_i \cdot Id) | _{V^{\lambda_i} (\varphi)}$
+
+$Spec \varphi_i = \{0\}$
+
+$\varphi_i^{k_i} = 0$
+
+\vspace{\baselineskip}
+\textbf{Определение.} Линейный оператор $\varphi$ называется \textit{нильпотентным}, если $\exists \ m \in \mathbb{N}$, такой что $\varphi^m > 0$.
+
+\vspace{\baselineskip}
+Пусть $m \in \mathbb{N}$ наименьшее с таким свойством.
+
+$\{0\} = Ker \varphi \subsetneqq Ker \varphi^1 \subsetneqq Ker \varphi^2 \subsetneqq \dots \subsetneqq Ker \varphi^m = V$
+
+$d_i = dim Ker \varphi^i$
+
+$0 = d_0 < d_1 < d_2 < \dots < d_m = n = dim V$
+
+$v \in V, ht(v) = k$
+
+\vspace{\baselineskip}
+\textbf{Лемма.} Векторы $v, \varphi(v), \dots, \varphi^{k-1}(v)$ линейно независимы.
+
+\vspace{\baselineskip}
+$C(v) = <v, \varphi(v), \dots, \varphi^{k-1} (v)>$
+
+\vspace{\baselineskip}
+\textbf{Определение.} $C(v)$ называется \textit{циклическим подпространством}, порожденным вектором $v$.
+
+\vspace{\baselineskip}
+$C(v) \ \varphi$-инвариантно
+
+\vspace{\baselineskip}
+$B(v) = (\varphi^{k-1} (\varphi), \dots, \varphi(v), v)$ -- базис в $C(v)$
+
+\vspace{\baselineskip}
+Матрица линейного оператора $\varphi|_{C(v)}$ в базисе $B(v)$ равна \[\begin{pmatrix} 0 & 1 & 0 & \dots & 0 & 0 \\ 0 & 0 & 1 & \dots & 0 & 0 \\ 0 & 0 & 1 & \dots & 0 & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & 0 & 1 \\ 0 & 0 & 0 & \dots & 0 & 0 \\ \end{pmatrix}\]
+
+Вывод: достаточно разложить $V$ в прямую сумму циклических подпространств.
+
+\subsection{Метод построения жорданова базиса}
+
+\vspace{\baselineskip}
+\includegraphics[width=10cm,height=15cm,keepaspectratio]{example7.jpg}
+
+\vspace{\baselineskip}
+\underline{Шаг 1.} Выберем линейно независимый набор $e_m \subseteq Ker \varphi^m$, такой что $Ker \varphi^m = <e_m> \oplus Ker \varphi^{m-1}$
+
+Положим $f_m = e_m$
+
+\vspace{\baselineskip}
+\underline{Шаг 2.} Выберем линейно независимый набор $e_{m - 1} \subseteq Ker \varphi^{m-1}$, такой что $Ker \varphi^{m-1} = <\varphi(f_m)> \oplus <e_{m-1}> \oplus Ker \varphi^{m-2}$
+
+Положим $f_{m-1} = \varphi(f_m) \cup e_{m-1}$
+
+\vspace{\baselineskip}
+(и так далее)
+
+\vspace{\baselineskip}
+\underline{Шаг $m$.} Выберем линейно независимый набор $e_1 \subseteq Ker \varphi$, такой что $Ker \varphi = <\varphi(f_2)> \oplus <e_1>$
+
+\vspace{\baselineskip}
+На выходе получаем наборы $e_m, \dots, e_1$
+
+Положим $e = e_m \cup \dots \cup e_1$
+
+\vspace{\baselineskip}
+\textbf{Теорема.} 1) $V = \oplus_{e' \in e} C(e')$
+
+2) $\cup_{e' \in e} B(e')$ -- жорданов базис для $\varphi$
+
+\vspace{\baselineskip}
+Пусть $c_k$ число жордановых клеток размера $k$
+
+$c_k = |e_k|$
+
+$Ker \varphi^k = <\varphi(f_{k+1})> \oplus <e_k> \oplus Ker \varphi^{k-1}$
+
+$d_k = \overbrace{|\varphi(f_{k+1})|}^{= d_{k+1} - d_k} + c_k + d_{k-1}$
+
+$d_k = d_{k+1} - d_k + c_k + d_{k - 1}$
+
+$c_k = 2d_k - d_{k-1} - d_{k+1}$
+
+\subsection{Полуторалинейные формы и эрмитовы пространства}
+
+\vspace{\baselineskip}
+билинейная форма
+
+$\downarrow$
+
+симметричная билинейная форма
+
+$\downarrow$
+
+квадратичная форма
+
+$\downarrow$
+
+положительно определенная квадратичная форма (над $\mathbb{R}$)
+
+$\downarrow$
+
+евклидово пространство (над $\mathbb{R}$)
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Полуторалинейная форма (1,5-линейная)} на векторном пространстве $V$ над $\mathbb{C}$ -- это отображение $\beta: V \times V \rightarrow \mathbb{C}$, такое что
+
+1) Полулинейность по первому аргументу
+
+$\beta(\alpha_1 x_1 + \alpha_2 x_2, y) = \overline{\alpha_1} \beta (x_1, y) + \overline{\alpha_2} \beta (x_2, y)$
+
+2) Линейность по второму аргументу
+
+\vspace{\baselineskip}
+В координатах $x = \begin{pmatrix} x_1 \\ \vdots \\ x_{n} \end{pmatrix}, y = \begin{pmatrix} y_1 \\ \vdots \\ y_{n} \end{pmatrix}$
+
+$\beta(x, y) = (\overline{x_1}, \dots, \overline{x_n}) B \begin{pmatrix} y_1 \\ \vdots \\ y_{n} \end{pmatrix}$
+
+\vspace{\baselineskip}
+Формула изменения матрицы 1,5-линейной формы:
+
+$B' = C^* B C$
+
+$C^* = \overline{C}^T = (\overline{c_{ji}})$
+
+\vspace{\baselineskip}
+\textbf{Определение.} 1,5-линейная форма называется \textit{эрмитовой}, если $\beta(y, x) = \overline{\beta(x, y)}$
+
+\vspace{\baselineskip}
+$\beta(x, x) = \overline{\beta(x, x)} \Rightarrow \beta(x, x) \in \mathbb{R}$
+
+$Q(x) = \beta(x, x)$ -- эрмитова квадратичная форма
+
+\vspace{\baselineskip}
+$Q:V \rightarrow R$
+
+\textbf{Теорема о нормальном виде.} $Q$ -- эрмитова квадратичная форма $\Rightarrow \exists$ базис, такой что $Q(x) = |x_1|^2 + \dots + |x_k|^2 - |x_{k+1}|^2 - \dots - |x_{k + s}|^2$
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Эрмитово пространство} -- это векторное пространство над $\mathbb{C}$, на котором задано скалярное произведение, то есть положительно определенная эрмитова 1,5-линейная форма.
+
+\vspace{\baselineskip}
+1,5-линейная форма
+
+$\downarrow$
+
+эрмитова форма
+
+$\downarrow$
+
+эрмитова квадратичная форма
+
+$\downarrow$
+
+положительно определенная эрмитова квадратичная форма (над $\mathbb{C}$)
+
+$\downarrow$
+
+эрмитово пространство (над $\mathbb{C}$)
+
+\vspace{\baselineskip}
+Длина: $|x| = \sqrt[]{(x, x)}$
+
+Неравенство Коши-Буняковского
+
+Неравенство треугольника
+
+Ортогональность
+
+Ортогональное дополнение
+
+$U$ -- подпространство в $V \Rightarrow V = U \oplus U^{\bot}$
+
+Ортонормированный базис
+
+\vspace{\baselineskip}
+$e, e'$ -- два ортогональных базиса, $e' = e \cdot C$
+
+$C$ -- унитарная матрица
+
+$C^{-1} = C^*$
+
+\vspace{\baselineskip}
+\textbf{Линейный операторы в эрмитовых пространствах}
+
+1) самосопряженный $(\varphi(x), y) = (x, \varphi(y))$
+
+2) унитарный $(\varphi(x), \varphi(y)) = \varphi(x, y)$
+
+\vspace{\baselineskip}
+\textbf{Теорема.} 1) $\varphi$ -- самосопряженный $\Rightarrow \exists$ ортонормированный базис из собственных векторов; $Spec \varphi \subseteq \mathbb{R}$
+
+2) $\varphi$ -- унитарный оператор $\Rightarrow \exists$ ортонормированный базис из собственных векторов
+
+$\lambda \in Spec f \Rightarrow |\lambda| = 1$
+
+\vspace{\baselineskip}
+Аналогичное сингулярное разложение
+
+\vspace{\baselineskip}
+$A \in Mat_{m \times n} (\mathbb{C}) \Rightarrow \exists$ унитарная матрица $U \in M_m(\mathbb{C}), V \in M_n (\mathbb{C})$, такие что $A = U \Sigma V^*$
+
+$\Sigma = \begin{pmatrix} \sigma_1 & 0 & 0 & 0 & 0 & 0 & 0 \\  0 & \sigma_2 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & \ddots & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & \sigma_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}, \sigma_i \in \mathbb{R}, \sigma_1 \geqslant \dots \geqslant \sigma_r > 0, \sigma_i$ определено однозначно 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

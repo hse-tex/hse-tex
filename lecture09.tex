@@ -1,0 +1,186 @@
+\section{Лекция 9.11.2017}
+
+\subsection{Поля}
+
+\textbf{Определение.} \textit{Полем} называется множество F, на котором заданы две операции "сложение" ( $(a,b) \rightarrow a+b$) и "умножение" ($(a,b) \rightarrow ab$), причем $\forall \ a, b, c \in F$ и выполнены следующие условия:
+
+(1) $a+b = b+a$ (коммутативность сложения)
+
+(2) $(a+b)+c = a+(b+c)$ (ассициативность сложения)
+
+(3) $\exists 0 \in F: 0 + a = a+ 0 = a \ \forall \ a \in F$ (нулевой элемент)
+
+(4) $\exists -a \in F: a+(-a)=(-a)+a=0$ (противоположный элемент)
+
+$\uparrow$ абелева группа $\uparrow$
+
+(5) $a(b+c) = ab + ac$ (дистрибутивность)
+
+(6) $ab=ba$ (коммутативность умножения)
+
+(7) $(ab)c=a(bc)$ (ассоциативность умножения)
+
+(8) $ \exists 1 \in F \backslash \{0\} : 1a=a1=a$ (единица)
+
+(9) если $a \neq 0, \exists a^{-1} \in F: aa^{-1} = a^{-1} a = 1$ (обратный элемент)
+
+\vspace{\baselineskip}
+Примеры. 
+
+$\mathbb{R}, \mathbb{Q}$.
+
+$\{0, 1\}$ сложение $mod \ 2$, умножение $mod \ 2$
+
+\vspace{\baselineskip}
+Неформально: $\mathbb{C}$ -- это наименьшее поле со следующими свойствами:
+
+(c1) $\mathbb{C} \supset \mathbb{R}$
+
+(c2) уравнение $x^2 + 1 = 0$ имеет решение в $\mathbb{C}$, т.е. $\exists i \in \mathbb{C}: i^2 = -1$.
+
+\vspace{\baselineskip}
+\subsection{Формальная конструкция поля $\mathbb{C}$}
+
+\vspace{\baselineskip}
+$\mathbb{C} := \{(a,b) | a, b \in \mathbb{R}\}$
+
+\vspace{\baselineskip}
+$(a_1, b_1) + (a_2, b_2) = (a_1 + a_2, b_1 + b_2)$
+
+$(a_1, b_1) (a_2, b_2) = (a_1 a_2 - b_1 b_2, a_1 b_2 + b_1 a_2)$
+
+$(a, b) \leftrightarrow a + bi$
+
+$(a_1, b_1) + (a_2, b_2) \leftrightarrow (a_1 + b_1 i) + (a_2 + b_2 i) = (a_1 + a_2) + (b_1 + b_2)i$
+
+$(a_1, b_1) (a_2, b_2) \leftrightarrow (a_1 + b_1 i) (a_2 + b_2 i) = a_1 a_2 + a_1 b_2 i + a_2 b_1 i + b_1 b_2 i^2 = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1)i$
+
+\vspace{\baselineskip}
+Проверка свойств (1)-(9):
+
+(1)-(4) выполнены в $\mathbb{R}^2$.
+
+$0 = (0,0), \ -(a, b) = (-a, -b)$
+
+(5) $\textit{Упражнение на дом.}$
+
+(6) Из явного вида формулы для умножения
+
+(7) $((a_1, b_1) (a_2, b_2)) (a_3, b_3) = (a_1 a_2 - b_1 b_2, a_1 b_2 + b_1 a_2) (a_3, b_3) = (a_1 a_2 a_3 - b_1 b_2 a_3 - a_1 b_2 b_3 - b_1 a_2 b_3, a_1 a_2 b_3 - b_1 b_2 b_3 + a_1 b_2 a_3 + b_1 a_2 a_3) = (a_1, b_1)(a_2 a_3 - b_2 b_3, a_2 b_3 + b_2 a_3) = (a_1, b_1) ((a_2, b_2)(a_3, b_3))$.
+
+(8) $1 = (1, 0)$
+
+$(1,0)(a, b) = (a, b) = (a, b)(1, 0)$
+
+(9) $(a, b) \neq (0,0) \Rightarrow a^2 + b^2 \neq 0$. Тогда $(a, b)^{-1} = (\frac{a}{a^2 + b^2}, \frac{-b}{a^2 + b^2})$
+
+$(a, b) (\frac{a}{a^2 + b^2}, \frac{-b}{a^2 + b^2}) = (\frac{a^2}{a^2 + b^2} + \frac{b^2}{a^2 + b^2}, \frac{-ab}{a^2 + b^2} + \frac{ba}{a^2 + b^2}) = (1, 0)$.
+
+\vspace{\baselineskip}
+Итак, $\mathbb{C}$ - поле.
+
+Проверка (c1):
+$a \in R \leftrightarrow (a, 0)$
+
+$ab \leftrightarrow (a, 0)(b, 0) = (ab, 0)$
+
+$a+b \leftrightarrow (a, 0) + (b, 0) = (a+b, 0)$
+
+$\Rightarrow \mathbb{R}$ отождествляется $\mathbb{C}$
+
+$\{(a, 0) | a \in R \} \subseteq C$.
+
+\vspace{\baselineskip}
+Проверка (c2): $i = (0, 1) \Rightarrow i^2 = (0, 1)(0, 1) = (-1, 0) = -1$
+
+$\forall (a, b) \in C$
+
+$(a, b) = (a, 0) + (0, b) = (a, 0) + (b, 0) (0, 1) i = a + bi, \ a, b \in \mathbb{R}$
+
+\vspace{\baselineskip}
+\textbf{Определение.} Представление числа $z \in \mathbb{C}$ в виде  $z = a + bi$, где $a, b \in \mathbb{R}$, называется его \textit{алгебраической формой}. Число $i$ называется \textit{мнимой единицей}.
+
+$a =: Re(z)$ -- \textit{действительная часть} числа $z$
+
+$b =: Im(z)$ -- \textit{мнимая часть} числа $z$
+
+\vspace{\baselineskip}
+Числа вида $b_i$, где $b \in R$, называются \textit{чисто мнимыми}.
+
+\vspace{\baselineskip}
+\textbf{Определение.} Число $\overline{z} := a - bi$ называется \textit{комплексно сопряженным к числу} $z=a+bi \in \mathbb{C}$.
+
+Операция $z \rightarrow \overline{z}$ называется \textit{комплексным сопряжением}.
+
+\vspace{\baselineskip}
+\textbf{\textit{Свойства:}}
+
+1) $\overline{\overline{z}} = z$
+
+2) $\overline{z + w} = \overline{z} + \overline{w} \ \forall z, w \in C$
+
+3) $\overline{z \cdot w} = \overline{z} \cdot \overline{w} \ \forall z, w \in C$
+
+Доказательство -- прямая проверка (\textit{упражнение на дом}).
+
+\vspace{\baselineskip}
+\textit{Геометрическая модель комплексных чисел} $z = a + bi \leftrightarrow$ точка (или вектор) на плоскости $\mathbb{R}^2$ с координатами $(a, b)$. Сумма $z + w \leftrightarrow$ сумма соответствующих векторов. $\overline{z} \leftrightarrow$ отражение $z$ относительно действительной оси.
+
+\vspace{\baselineskip}
+\textbf{Определение.} Число $|z| = \sqrt[]{a^2 + b^2}$ называется \textit{модулем числа} $z = a + bi \in \mathbb{C}$ ($|z|$ - длина соответствующего вектора).
+
+\vspace{\baselineskip}
+\textbf{\textit{Свойства.}} 
+
+1) $|z| \geq 0$, причем $|z| = 0 \Leftrightarrow z = 0$.
+
+2) $ |z + w| \leq |z| + |w|$ (неравенство треугольника)
+
+3) $z \overline{z} = |z|^2$
+
+4) $|zw| = |z||w| \ \ |zw|^2 = zw(\overline{zw}) = zw \overline{z} \overline{w} =  |z|^2 |w|^2$
+
+\vspace{\baselineskip}
+\textbf{Замечание.} Из 3) следует, что для $z \neq 0$
+
+$z^{-1} = \frac{\overline{z}}{|z|^2}$, т.е. $(a + bi)^{-1} = \frac{a-bi}{a^2 + b^2}$
+
+\vspace{\baselineskip}
+$z = a + bi \in \mathbb{C}, z \neq 0$
+
+$z = |z| (\frac{a}{|z|} + \frac{b}{|z|}i)$
+
+$(\frac{a}{|z|})^2 + (\frac{b}{|z|}i)^2 = 1$
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Аргументом числа} $z = a + bi \in \mathbb{C} \backslash \{0\}$ называется число $\varphi \in \mathbb{R}$, такое что $\cos \varphi = \frac{a}{|z|} = \frac{a} {\sqrt[]{a^2 + b^2}}$, $\sin \varphi = \frac{b}{|z|} = \frac{b}{\sqrt[]{a^2 + b^2}}$.
+
+В геометрических терминах, $\varphi$ есть угол между осью ОХ и соответсвующим вектором.
+
+\vspace{\baselineskip}
+\textbf{Замечание.} 
+
+1) Если $z = 0$, то аргумент не определен.
+
+2) Если $z \neq 0$, то аргумент определен с точностью до $2 \pi k, k \in \mathbb{Z}$.
+
+\vspace{\baselineskip}
+$Arg(z) :=$ множество всех аргументов числа $z$.
+
+$arg(z)$ - это единственное значение из $Arg(z)$, лежащее в $[0;2 \pi]$.
+
+$Arg(z) = \{ \varphi \in \mathbb{R} \ | \ \cos \varphi = \frac{a}{|z|}, \\sin \varphi = \frac{b}{|z|} \}$
+
+$Arg(z) = arg(z) + 2 \pi \mathbb{Z}$
+
+$z = |z| (\frac{a}{|z|} + \frac{b}{|z|} i) = |z| (\cos \varphi + i \\sin \varphi)$, где $\varphi \in Arg(z)$.
+
+\vspace{\baselineskip}
+\textbf{Определение.} Представление числа $z \in \mathbb{C} \backslash \{0 \}$ в виде $z = |z|(\cos \varphi + i \sin \varphi)$ называется его \textit{тригонометрической формой}.
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $z_1 = |z_1| (\cos \varphi_1 + i \sin \varphi_1)$, $z_2 = |z_2| (\cos \varphi_2 + i \sin \varphi_2) \Rightarrow z_1 z_2 = |z_1| |z_2| (\cos (\varphi_1 + \varphi_2) + i \sin(\varphi_1 + \varphi_2)$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ z_1 z_2 = |z_1||z_2|(\cos \varphi_1 + i \sin \varphi_1)(\cos \varphi_2 + i \sin \varphi_2) = |z_1||z_2|((\cos \varphi_1 \cos \varphi_2 - \sin \varphi_1 \sin \varphi_2) + i(\cos \varphi_1 \sin \varphi_2 + \sin \varphi_1 \cos \varphi_2)) = |z_1| |z_2| (\cos (\varphi_1 + \varphi_2) + i \sin(\varphi_1 + \varphi_2) \ \lhd$.
+

@@ -1,0 +1,176 @@
+\section{Лекция 25.01.2017}
+
+\textbf{Теорема.} Пусть $V, W$ -- два конечномерных векторных пространства. Тогда $V \simeq W \Leftrightarrow dimV = dimW$.
+
+\vspace{\baselineskip}
+\textbf{Лемма 1.} Пусть $dimV = n$. Тогда $V \simeq F^n$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Фиксируем базис $(e_1, e_2, \dots, e_n)$ и рассмотрим отображение $\varphi: V \Rightarrow F^n$ из примера 5, т.е. $\varphi (x_1 e_1 + \dots + x_n e_n) = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}$. Знаем, что $\varphi$ -- изоморфизм $\lhd$.
+
+\vspace{\baselineskip}
+\textbf{Лемма 2.} Пусть $\varphi : V \iso W$ -- изоморфизм, $(e_1, e_2, \dots, e_n)$ -- базис $V$. Тогда $(\varphi (e_1), \dots, \varphi (e_n))$ -- базис $W$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ w \in W$, пусть $v := \varphi^{-1} (w)$.
+
+$v = x_1 e_1 + \dots + x_n e_n$, где $x_i \in F \Rightarrow w = \varphi (v) = x_1 \varphi(e_1) + \dots + x_n \varphi (e_n) \Rightarrow w = <\varphi(e_1), \dots, \varphi(e_n)>$.
+
+Докажем, что $\varphi(e_1), \dots, \varphi(e_n)$ линейно независимы. Пусть $\alpha_1 \varphi(e_1) + \dots + \alpha_n \varphi(e_n) = 0$. Тогда $\varphi (\alpha_1 e_1 + \dots + \alpha_n e_n) = 0$. Применим $\varphi^{-1}$, получим $\alpha_1 e_1 + \dots + \alpha_n e_n = \varphi^{-1}(0) = 0$. Т.к. $(e_1, \dots, e_n)$ -- базис $V$, то $\alpha_1=\dots=\alpha_n = 0 \ \lhd$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство теоремы.}} $\rhd \ dimV = dimW = n \Rightarrow V \simeq F^n$ и $W \simeq F^n \Rightarrow V \simeq W$ (лемма 1).
+
+$V \iso W$. Фиксируем изоморфизм $\varphi : V \iso W$ и базис $(e_1, \dots, e_n)$ в $V$. Тогда $(\varphi(e_1), \dots, \varphi(e_n))$ -- базис $W$ (лемма 2) $\Rightarrow dimW = n = dimV \ \lhd$.
+
+\vspace{\baselineskip}
+$V$ -- векторное пространство
+
+$(e_1, \dots, e_n)$ -- базис
+
+\vspace{\baselineskip}
+\textbf{Предложение.} 1) Всякое линейное отображение $\varphi : V \rightarrow W$ однозначно определяется векторами $\varphi(e_1), \dots, \varphi(e_n)$.
+
+2) $\forall$ набора векторов $w_1, \dots, w_n \in W \ \exists !$ линейное отображение $\varphi : V \rightarrow W$, т. что $\varphi(e_1) = w_1, \dots, \varphi(e_n) = w_n$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} 1) $v \in V, v = x_1 e_1 + \dots + x_n e_n \Rightarrow \varphi(v) = x_1 \varphi (e_1) + \dots + x_n \varphi (e_n)$.
+
+2) $v \in V, v = x_1 e_1 + \dots + x_n e_n$. Положим $\varphi (v) = x_1 w_1 + \dots + x_n w_n$. $\varphi$ линейно (упражнение), единственно по 1).
+
+\vspace{\baselineskip}
+\textbf{Следствие 1.} Если $dimV = dimW = n$, то $\forall$ базиса $(f_1, \dots, f_n)$ в $W \ \exists !$ изоморфизм $\varphi : V \iso W$, такой что $\varphi (e_i) = f_i \ \forall i$.
+
+\vspace{\baselineskip}
+\textbf{Следствие 2.} $\exists$ биекция между базисами $V$ и изоморфизмами $F^n \iso V$ (а тогда и изоморфизмами $V \iso F^n$) стандартный базис в $F^n \rightarrow$ данный базис в $V$.
+
+\vspace{\baselineskip}
+$V, W$ -- векторные пространства
+
+$dimV = n$, фиксированный базис $e = (e_1, \dots, e_n)$.
+
+$dimW = m$, фиксированный базис $f = (f_1, \dots, f_m)$.
+
+$\varphi : V \rightarrow W$ -- линейное отображение
+
+$\varphi(e_j) = a_{1j} f_1 + \dots + a_{mj} f_m = (f_1, \dots, f_m) \begin{pmatrix} a_{1j} \\ \vdots \\ a_{mj} \end{pmatrix}$
+
+\vspace{\baselineskip}
+\textbf{Определение.} Матрица $A = (a_{ij}) \in Mat_{n \times m}$ называется \textit{матрицей линейного отображения в базисах $e$ и $f$ (или по отношению к базисам)}.
+
+Обозначение: $A = A (\varphi, e, f)$.
+
+Обозначение: $Hom(V, W)$ -- множество всех линейных отображений из $V$ в $W$
+
+\vspace{\baselineskip}
+\textbf{Следствие 3.} При фиксированном $e$ и $f$ отображение $Hom(V, W) \rightarrow Mat_{n \times m} (F) \ \varphi \rightarrow A(\varphi, e, f)$ является биекцией.
+
+\vspace{\baselineskip}
+$(\varphi (e_1), \dots, \varphi(e_n)) = (f_1, \dots, f_m) \cdot A$, где $A = A(\varphi, e, f)$.
+
+В $j$-- столбце этой матрице стоят координаты вектора $\varphi(e_j)$  в базисе $f$.
+
+\vspace{\baselineskip}
+Примеры.
+
+0) Нулевое отображение $\rightarrow$ нулевая матрица в любой паре базисов.
+
+1) $\varphi : \mathbb{R}^3 \rightarrow \mathbb{R}^2$ -- проекция на $Oxy$
+
+$e = (e_1, e_2, e_3), f = (e_1, e_2)$
+
+$A(\varphi, e, f) = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix}$
+
+2) $\triangle : R[x]_{\leq n} \rightarrow R[x]_{\leq n-1}$
+
+$f \rightarrow f'$
+
+$e = (1, x, x^2, \dots, x^n), \ f = (1, x, x^2, \dots, x^{n-1})$
+
+$A(\varphi, e, f) = \begin{pmatrix} 0 & 1 & 0 & 0 & \dots & 0 \\ 0 & 0 & 2 & 0 & \dots & 0 \\ 0 & 0 & 0 & 3 & \dots & 0 \\ \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & 0 & \dots & n \end{pmatrix} \in Mat_{n \times (n-1)}$
+
+3) $\varphi : F^n \rightarrow F^m$
+
+$x \rightarrow Ax$, $A \in Man_{m \times n} (F)$
+
+$e$ -- стандартный базис $F^n$
+
+$f$ -- стандартный базис $F^m$
+
+$A(\varphi, e, f) = A$
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $\varphi : V \rightarrow W$ -- линейное отображение. $e$ -- базис $V$, $f$ -- базис $W$, $A = A(\varphi, e, f)$.
+
+$v \in V, v = x_1 e_1 + \dots + x_n e_n, \varphi(v) = y_1 f_1 + \dots + y_m f_m$
+
+$\Rightarrow \begin{pmatrix} y_1 \\ \vdots \\ y_m \end{pmatrix} = A \cdot \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ v = (e_1, e_2, \dots, e_n) \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}$
+
+$\varphi(v) = (\varphi(e_1), \dots, \varphi(e_n)) \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} = (f_1, \dots, f_n) \cdot A \cdot \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} = (f_1, \dots, f_n) \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{pmatrix} \Rightarrow \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{pmatrix} = A \cdot \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \ \lhd$
+
+\vspace{\baselineskip}
+Пусть $e'$ -- другой базис в $V$, $e' = e \cdot C$
+
+$f'$ -- другой базис в $W$, $f' = f \cdot D$
+
+$A = A(\varphi, e, f)$
+
+$A' = A(\varphi, e', f')$
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $A' = D^{-1} \cdot A \cdot C$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ (e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C \Rightarrow (\varphi(e'_1), \dots, \varphi(e'_n)) = (\varphi(e_1), \dots, \varphi(e_n)) \cdot C = (f_1, \dots, f_m) \cdot A \cdot C$ и $(\varphi(e'_1), \dots, \varphi(e'_n)) = (f'_1, \dots, f'_m) \cdot A' = (f_1, \dots, f_m) \cdot D \cdot A' \Rightarrow AC = DA' \Rightarrow A' = D^{-1} \cdot A \cdot C \ \lhd$ 
+
+\vspace{\baselineskip}
+$\varphi, \psi \in Hom(V, W)$
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Суммой линейных отображений} $\varphi$ и $\psi$ называется отображение $\varphi + \psi$, такое что $\forall \ v \in V \ (\varphi + \psi) (v) := \varphi(v) + \psi(v)$ 
+
+\vspace{\baselineskip}
+\textbf{Определение.} $\lambda \in F \Rightarrow$ Произведение  $\varphi$ на $\lambda$ -- это отображение $\lambda \cdot \varphi$, такое что $(\lambda \cdot \varphi) (v) := \lambda \cdot \varphi (v)$
+
+\vspace{\baselineskip}
+\textbf{\textit{Упражнение.}} $\varphi + \psi, \lambda \varphi \in Hom(V, W)$
+
+\vspace{\baselineskip}
+\textbf{\textit{Упражнение.}} $Hom(V, W)$ -- это векторное пространство с такими операциями.
+
+\vspace{\baselineskip}
+$\varphi, \psi \in Hom(V, W)$
+
+\textbf{Предложение.} $e$ -- базис $V$, $f$ -- базис $W$
+
+$A_{\varphi} = A(\varphi, e, f)$
+
+$A_{\psi} = A(\psi, e, f)$
+
+$A_{\varphi + \psi} = A(\varphi + \psi, e, f)$
+
+$A_{\lambda \varphi} = A(\lambda \varphi, e, f)$
+
+$\Rightarrow A_{\varphi + \psi} = A_{\varphi} + A_{\psi}$, $A_{\lambda \varphi} = \lambda A_{\varphi}$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ ((\varphi + \psi)e_1, \dots, (\varphi + \psi)e_n) = (\varphi (e_1), \dots, \varphi (e_n)) + \\ + (\psi (e_1), \dots, \psi (e_n)) = (f_1, \dots, f_m) A_{\varphi} + (f_1, \dots, f_m) A_{\psi} = (f_1, \dots, f_m) (A_{\varphi} + A_{\psi}) $ 
+
+$((\varphi + \psi)e_1, \dots, (\varphi + \psi)e_n) = (f_1, \dots, f_m) A_{\varphi + \psi}$
+
+$\Rightarrow A_{\varphi + \psi} = A_{\varphi} + A_{\psi}$
+
+$A_{\lambda \varphi} = \lambda A_{\varphi}$ аналогично $\lhd$
+
+\vspace{\baselineskip}
+\textbf{Следствие 1.} При фиксированном $e$ и $f$ отображение $Hom(V, W) \rightarrow Mat_{m \times n} (F)$, $\varphi \rightarrow A(\varphi, e, f)$ является изоморфизмом векторных пространств.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} Это отображение биективно (уже знаем), линейно по предложению.
+
+\vspace{\baselineskip}
+\textbf{Следствие 2.} $dimV = n, \ dimW = m \Rightarrow dim Hom(V, W) = nm$.
+

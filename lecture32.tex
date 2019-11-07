@@ -1,0 +1,146 @@
+\section{Лекция 24.05.2018}
+
+$e, f$ -- сингулярные базисы для $\varphi$
+
+$\sigma_1, \dots, \sigma_r$ -- сингулярные значения
+
+\vspace{\baselineskip}
+\textbf{\textit{Свойства:}}
+
+1) $\varphi(e_i) = \begin{cases} \sigma_i f_i, i \leqslant r \\ 0, i > r \end{cases}$
+
+$\varphi^*(f_j) = \begin{cases} \sigma_j f_j, j \leqslant r \\ 0, j > r \end{cases}$
+
+\vspace{\baselineskip}
+2) $\forall \ i = 1, \dots, n \ e_i$ -- собственный вектор линейного оператора $\varphi^* \varphi \in L(E)$ с собственным значением $\sigma_i^2$ (полагаем $\sigma_i = 0$ при $i > r$) 
+
+$\forall \ j = 1, \dots, m \ f_j$ -- собственный вектор линейного оператора $\varphi \varphi^* \in L(E')$ с собственным значением $\sigma_j^2$ (полагаем $\sigma_j = 0$ при $j > r$) 
+
+\vspace{\baselineskip}
+3) $\sigma_1^2, \dots, \sigma_r^2$ -- в точности все ненулевые собственные значения линейного оператора $\varphi^* \varphi$, а также линейного оператора $\varphi \varphi^*$
+
+\vspace{\baselineskip}
+\textbf{Следствие (SVD).} $A \in Mat_{m \times n} (\mathbb{R}), rkA = r \Rightarrow \exists$ ортогональные матрицы $U \in M_m(\mathbb{R})$ и $V \in M_n(\mathbb{R})$, такие что $A = U \Sigma V^T$, где \[\Sigma = \begin{pmatrix} \sigma_1 & 0 & 0 & 0 & 0 & 0 & 0 \\  0 & \sigma_2 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & \ddots & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & \sigma_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}\]
+
+$\sigma_1 > \sigma_2 > \dots > \sigma_r > 0, \sigma_i$ определена однозначно
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} Применить теорему о сингулярных базисах к линейному оператору $\mathbb{R}^n \rightarrow \mathbb{R}^m, x \rightarrow Ax$ ($\exists$ ортогональные $U, V$, такие что $U^{-1} A V = \Sigma \Rightarrow A = U \Sigma V^{-1} = U \Sigma V^T$)
+
+\vspace{\baselineskip}
+\textbf{Замечание.} Столбцы матрицы $U$ называются \textit{левыми сингулярными векторами} для $A$, столбцы матрицы $V$ называются \textit{правыми сингулярными векторами}. $\sigma_1, \dots, \sigma_r$ -- сингулярные значения матрицы $A$.
+
+\vspace{\baselineskip}
+$A = U \Sigma V^T$ -- сингулярное разложение
+
+$u_i = U^{(i)}, v_j = V^{(j)}$
+
+\vspace{\baselineskip}
+\textbf{Предложение.} а) $m \leqslant n \Rightarrow A = \overbrace{\hat{A}}^{m \times m} \overbrace{\hat{\Sigma}}^{m \times m} \overbrace{\hat{V}^T}^{m \times n}$, где $\hat{U} = U, \hat{\Sigma} = diag(\sigma_1, \dots, \sigma_r, 0, \dots, 0) \in M_m(\mathbb{R}), \hat{V} = (v_1, \dots, v_m)$
+
+б) $m \geqslant n \Rightarrow A = \overbrace{\hat{A}}^{m \times n} \overbrace{\hat{\Sigma}}^{n \times n} \overbrace{\hat{V}^T}^{n \times n}$, где $\hat{U} = (u_1, \dots, u_n), \hat{\Sigma} = diag(\sigma_1, \dots, \sigma_r, 0, \dots, 0) \in M_n(\mathbb{R}), \hat{V} = V$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} а) $\Sigma V^T = \hat{\Sigma} \hat{V}^T$ -- прямая проверка
+
+б) $U \Sigma = \hat{U }\hat{\Sigma}$ -- прямая проверка
+
+\vspace{\baselineskip}
+\textbf{Определение.} Разложение $A = \hat{U} \hat{\Sigma} \hat{V}^T$ называется \textit{усеченным сингулярным разложением} матрицы $A$.
+
+\vspace{\baselineskip}
+$A = U \Sigma V^T$ -- как выше
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $A = \overbrace{u_1 \sigma_1 v_1^T}^{rk = 1} + u_2 \sigma_2 v_2^T + \dots + u_r \sigma_r v_r^T (*)$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ A = \hat{U} \hat{\Sigma} \hat{V}^T = \hat{U} \begin{pmatrix} \sigma_1 & 0 & 0 & 0 & 0 & 0 & 0 \\  0 & \sigma_2 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & \ddots & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & \sigma_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix} \hat{V}^T = \hat{U} \begin{pmatrix} \sigma_1 & 0 & 0 & 0 \\  0 & 0 & 0 & 0 \\ 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \hat{V}^T + \hat{U} \begin{pmatrix} 0 & 0 & 0 & 0 \\  0 & \sigma_2 & 0 & 0 \\ 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \hat{V}^T + \dots + \hat{U} \begin{pmatrix} 0 & 0 & 0 & 0 & 0 & 0 \\  0 & \ddots & 0 & 0 & 0 & 0\\ 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & \sigma_r & 0 & 0 \\ 0 & 0 & 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix} \hat{V}^T = \hat{U} \begin{pmatrix} \sigma_1 v_1^T \\ 0 \\ \vdots \\ 0 \end{pmatrix} + \hat{U} \begin{pmatrix} 0 \\ \sigma_2 v_2^T \\ \vdots \\ 0 \end{pmatrix} + \dots + \hat{U} \begin{pmatrix} 0 \\ \vdots \\ 0 \\ \sigma_r v_r^T \\ 0 \\ \vdots \\ 0 \end{pmatrix} = u_1 \sigma_1 v_1^T + u_2 \sigma_2 v_2^T + \dots + u_r \sigma_r v_r^T \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Замечание.} Если $r$ "мало" \ по сравнению с $m, n$, то матрицу $A$ можно хранить в виде $(*)$, на это требуется $r(m + n + 1) << mn$.
+
+\vspace{\baselineskip}
+\textbf{Напоминание.} Пространство $Mat_{m \times n} (\mathbb{R})$ является евклидовым пространством относительно скалярного произведения $(A, B) = tr(A^T B)$. В этом пространстве длина матрицы $A$ называется ее \textit{нормой Фробениуса (или фробениусовой нормой)}.
+
+Обозначение: $||A||$
+
+$||A|| = \sqrt[]{tr(A^T A)} = \sqrt[]{\sum\limits_{i=1}^m \sum\limits_{j=1}^n a_{ij}^2}$
+
+\vspace{\baselineskip}
+\textbf{Предложение.} Пусть $A \in Mat_{m \times n} (\mathbb{R})$. Тогда
+
+а) $\forall \ U \in M_m(\mathbb{R})$ -- ортогональная
+
+$||UA|| = ||A||$
+
+б) $\forall \ V \in M_n(\mathbb{R})$ -- ортогональная
+
+$||AV|| = ||A||$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ a) $\forall \ x \in \mathbb{R}^m: |Ux| = |x|$, т.к. умножение на ортогональную матрицу -- это ортогональный оператор в $\mathbb{R}^m$
+
+$||A||^2 = |A^{(1)}|^2 + |A^{(2)}|^2 + \dots + |A^{(n)}|^2 = |UA^{(1)}|^2 + |UA^{(2)}|^2 + \dots + |UA^{(n)}|^2 = |(UA)^{(1)}|^2 + |(UA)^{(2)}|^2 + \dots + |(UA)^{(n)}|^2 = ||UA||^2$
+
+б) Аналогично $\lhd$
+
+\vspace{\baselineskip}
+\textbf{Теорема о низкоранговом приближении.} Пусть $A \in Mat_{m \times n} (\mathbb{R})$ и $A = U \Sigma V^T$ -- ее сингулярное разложение, $\Sigma = \begin{pmatrix} \sigma_1 & 0 & 0 & 0 & 0 & 0 & 0 \\  0 & \sigma_2 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & \ddots & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & \sigma_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}$
+
+Пусть $k < r$ и $\Sigma_k = \begin{pmatrix} \sigma_1 & 0 & 0 & 0 & 0 & 0 & 0 \\  0 & \sigma_2 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & \ddots & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & \sigma_k & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}$
+
+Тогда минимум величины $||A - B||$ среди всех матриц $B$ достигается при $B = U \Sigma_k V^T$.
+
+\vspace{\baselineskip}
+\textbf{Лемма 1.} Пусть $a_1, \dots, a_p$ -- ортонормированная система в евклидовом пространстве $E$,
+
+$S = <a_1, \dots, a_p>$. Тогда $\forall \ b \in E: |pr_S b|^2 = (a_1, b)^2 + \dots + (a_p, b)^2$
+
+Если $b \in S$, то $|b|^2 = (a_1, b)^2 + \dots + (a_p, b)^2$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ |pr_S b|^2 = |\sum\limits_{i=1}^p (a_i, b) a_i|^2 = \sum\limits_{i=1}^p |(a_i, b) a_i|^2 = \sum\limits_{i=1}^p (a_i, b)^2$
+
+Если $b \in S \Rightarrow b = pr_S b \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Лемма 2.} $s_1, \dots, s_r, t_1, \dots, t_r \in \mathbb{R}$, $s_1 \geqslant \dots \geqslant s_r \geqslant 0, 0 \leqslant t_i \leqslant 1, t_1 + \dots + t_r \geqslant r - k$ для некоторого $k \leqslant r \Rightarrow s_1 t_1 + \dots + s_r t_r \geqslant s_{k+1} + \dots + s_r$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство: упражнение}}
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство теоремы.}} $\rhd$ В силу предложения достаточно доказать утверждение для $A = \Sigma$.
+
+При $B = \Sigma_k: ||A - B|| = \sigma_{k+1}^2 + \dots + \sigma_r^2$
+
+\vspace{\baselineskip}
+Теперь пусть $B$ -- проивзольная матрица ранга $\leqslant k$
+
+$\overline{\Sigma} = diag(\sigma_1, \dots, \sigma_r) \in M_r (\mathbb{R})$
+
+$\overline{B}$ -- левый верхний блок $r \times r$ в $B$
+
+\vspace{\baselineskip}
+Тогда $||\Sigma - B||^2 \geqslant ||\overline{\Sigma} - \overline{B}||^2$
+
+$rk \overline{B} \leqslant rkB \leqslant k$
+
+\vspace{\baselineskip}
+Положим $S = <\overline{B}^{(1)}, \dots, \overline{B}^{(r)}>, d = dimS \leqslant k$
+
+Выберем в $S$ ортонормированный базис $(f_1, \dots, f_d)$ и дополним его до ортонормированного базиса $(f_1, \dots, f_r)$ в $\mathbb{R}^r$
+
+$(e_1, \dots, e_r)$ -- стандартный базис в $\mathbb{R}^n$
+
+\vspace{\baselineskip}
+$||\overline{\Sigma} - \overline{B}||^2 = \sum\limits_{i=1}^r |\overline{\Sigma}^{(i)} - \overline{B}^{(i)}|^2 \geqslant \sum\limits_{i=1}^r |ort_S \Sigma^{(i)}|^2 = \sum\limits_{i=1}^r |ort_S \sigma_i e_i|^2 = \sum\limits_{i=1}^r \sigma_i^2 |ort_S e_i|^2$
+
+\vspace{\baselineskip}
+$t_i = |ort_S e_i|^2$
+
+$0 \leqslant t_i \leqslant 1$
+
+$\sum\limits_{i=1}^r t_i = \sum\limits_{i=1}^r |ort_S e_i|^2 = \sum\limits_{i=1}^r |pr_{S^{\bot}} e_i|^2 =$ (лемма 1) $ = \sum\limits_{i=1}^r \sum\limits_{j=d + 1}^r (e_i, f_j)^2 = \sum\limits_{j=d + 1}^r \sum\limits_{i=1}^r (e_i, f_j)^2 = \sum\limits_{j=d + 1}^r \overbrace{|f_j|^2}^{=1} = r - d \geqslant r - k \Rightarrow ||\overline{\Sigma} - \overline{B}||^2 \geqslant \sigma_{k+1}^2 + \dots + \sigma_r^2 \ \lhd$
+

@@ -1,0 +1,192 @@
+\section{Лекция 22.03.2018}
+
+\subsection{Элементы аналитической геометрии в $\mathbb{R}^3$}
+
+$E =\mathbb{R}^3$ со стандартным скалярным произведением, фиксируем ориентацию 
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Векторным произведением} двух векторов $a, b \in \mathbb{R}^3$ называется вектор $c \in \mathbb{R}^3$, удовлетворяющий следующим условиям:
+
+1) $c \ \bot <a, b>$
+
+2) $|c| = vol (P(a, b))$
+
+3) $Vol(a, b, c) \geq 0$
+
+Обозначение: $[a, b]$ или $a \times b$
+
+\vspace{\baselineskip}
+\textbf{Замечание.} Определение корректно, т.е. $\forall \ a, b \ \exists! \ c$,  удовлетворяющий 1)-3)
+
+$a, b$ пропорциональны $\Rightarrow |c| = 0$ из 2) $\Rightarrow c = 0$
+
+$a, b$ не пропорциональны $\Rightarrow$ 1) задает прямую, 2) задает $|c|$, 3) выбирает один из двух оставшихся вариантов
+
+\vspace{\baselineskip}
+\textbf{\textit{Критерий коллинеарности:}}
+
+$a, b$ коллинеарны (= пропорциональны, = линейно зависимы) $\Leftrightarrow [a, b] = 0$
+
+\vspace{\baselineskip}
+Пример. $(e_1, e_2, e_3)$ -- положительно ориентированный ортонормированный базис
+
+\vspace{\baselineskip}
+\begin{tabular}{c|c|c|c}
+$[e_i, e_j]$ & $e_1$ & $e_2$ & $e_3$ \\
+\hline
+$e_1$ & 0 & $e_3$ & $-e_2$  \\
+\hline
+$e_2$ & $-e_3$ & 0 & $e_1$   \\
+\hline
+$a_3$ & $e_2$ & $-e_1$ & 0   \\
+\hline
+\end{tabular}
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Смешанным произведением трех векторов} $a, b, c \in \mathbb{R}^3$ называется число $(a, b, c) := (a, [b, c])$.
+
+\vspace{\baselineskip}
+\textbf{Теорема.} $(a, b, c) = Vol(a, b, c)$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ 1) $b, c$ пропорциональны $\Rightarrow$ обе части равны 0
+
+2) $b, c$ не пропорциональны. Положим $d = [b, c]$. 
+
+$(a, [b, c]) = (a, d) = (pr_{<d>} a, d) = (ort_{<b, c>}a, d) = \begin{cases}
+		|ort_{<b, c>} a| \cdot |d|, \ если \ Vol(a, b, c) \geq 0 \\
+		-|ort_{<b, c>} a| \cdot |d|, \ если \ Vol(a, b, c) \leq 0 \\
+	\end{cases} = Vol(a, b, c)$
+
+$\left[Vol(a, b, c) = Vol(pr_{<b, c>}a + ort_{<b, c>}a, b, c) = Vol(ort_{<b>}a, b, c)\right] \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Следствие (свойства смешанного произведения).}
+
+1) $(a, b, c) > 0 \Leftrightarrow a, b, c$ образуют положительно ориентированный базис 
+
+$(a, b, c) < 0 \Leftrightarrow a, b, c$ образуют отрицательно ориентированный базис
+
+\vspace{\baselineskip}
+\textbf{\textit{Критерий компланарности:}} $a, b, c$ компланарны (=линейно зависимы) $\Leftrightarrow (a, b, c) = 0$
+
+2) $(a, b, c)$ линейно по каждому аргументу
+
+3) $(a, b, c)$ кососимметрично
+
+4) Если $e_1, e_2, e_3$ -- положительно ориентированный ортонормированный базис 
+
+$a = a_1 e_1 + a_2 e_2 + a_3 e_3$
+
+$b = b_1 e_1 + b_2 e_2 + b_3 e_3$
+
+$c = c_1 e_1 + c_2 e_2 + c_3 e_3$
+
+$\Rightarrow (a, b, c) = \begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{vmatrix}$
+
+\vspace{\baselineskip}
+\textit{\textbf{Доказательство.}} Следует из свойств функции $Vol$.
+
+\vspace{\baselineskip}
+\textbf{Следствие.} $(a, [b, c]) = ([a, b], c)$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ (a, [b, c]) = (a, b, c) = (c, a, b) = (c, [a, b]) = ([a, b], c) \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Предложение.} 1) $[a, b] = -[b, a]$ (антикоммутативность)
+
+2) $[\cdot, \cdot]$ линейно по каждому аргументу
+
+$[\lambda_1 a_1 + \lambda_2 a_2, b] = \lambda_1 [a_1, b] + \lambda_2 [a_2, b]$
+
+$[a, \mu_1 b_1 + \mu_2 b_2] = \mu_1 [a, b_1] + \mu_2 [a, b_2]$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ 1) из определения
+
+2) $u = [\lambda_1 a_1 + \lambda_2 a_2, b]$
+
+$v = \lambda_1 [a_1, b] + \lambda_2 [a_2, b]$
+
+$\forall x \in \mathbb{R}^3 : \ (x, u) = (x, \lambda_1 a_1 + \lambda_2 a_2, b) = \lambda_1 (a, a_1, b) + \lambda_2 (x, a_2, b) = \lambda_1 (x, [a_1, b]) + \lambda_2 (x, [a_2, b]) = (x, v) \Rightarrow u = v \ (e_1, e_2, e_3$ -- ортонормированный базис $\Rightarrow \ \forall \ y \in \mathbb{R}^3 : \ y = (y_1, e_1) e_1 + (y_2, e_2) e_2 + (y_3, e_3) e_3)$
+
+Аналогично линейность по второму аргументу $\lhd$.
+
+\vspace{\baselineskip}
+\textbf{Предложение (двойное векторное произведение).} $[a, [b, c]] = (a, c) b - (a, b) c$ ($= (b (a, c) - c (a, b)$ БАЦ-ЦАБ)
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ 1) $b, c$ пропорциональны, пусть $c = \lambda b \Rightarrow [a, [b, c]] = 0$
+
+$(a, c)b - (a, b) c = (a, \lambda b)b - (a, b) \lambda b = 0$
+
+2) $b, c$ не пропорциональны
+
+Выберем положительно ориентированный ортонормированный базис в $\mathbb{R}^3$ так, что $e_1 \in <b>, e_2 \in <b, c>$. Тогда $b = \beta e_1, \ c = \gamma_1 e_1 + \gamma_2 e_2, \ a = \alpha_1 e_1 + \alpha_2 e_2 + \alpha_3 e_3$
+
+$[b, c] = \beta \gamma_2 e_3$
+
+$[a, [b, c]] = [\alpha_1 e_1 + \alpha_2 e_2 + \alpha_3 e_3, \beta \gamma_2 e_3] = -\alpha_1 \beta \gamma_2 e_2 + \alpha_2 \beta \gamma_2 e_1$
+
+$(a, c) b - (a, b) c = (\alpha_1 \gamma_1 + \alpha_2 \gamma_2) \beta e_1 - \alpha_1 \beta (\gamma_1 e_1 + \gamma_2 e_2) = \alpha_2 \gamma_2 \beta e_1 - \alpha_1 \beta \gamma_2 e_2 \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Следствие (тождество Якоби).} $[a, [b, c]] + [b, [a, c]] + [c, [a, b]] = 0$
+
+\vspace{\baselineskip}
+\textbf{Предложение.} Пусть $e_1, e_2, e_3$ -- положительно ориентированный ортонормированный базис в $\mathbb{R}^3$
+
+$a = a_1 e_1 + a_2 e_2 + a_3 e_3$
+
+$b = b_1 e_1 + b_2 e_2 + b_3 e_3$
+
+Тогда $[a, b] = \begin{vmatrix} e_1 & e_2 & e_3 \\ a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \end{vmatrix} = (a_2 b_3 - a_3 b_2) e_1 + (a_3 b_1 - a_1 b_3) e_2 + (a_1 b_2 - a_2 b_1) e_3 = \begin{vmatrix} a_2 & a_3 \\ b_2 & b_3 \end{vmatrix} e_1 - \begin{vmatrix} a_1 & a_3 \\ b_1 & b_3 \end{vmatrix} e_2 - \begin{vmatrix} a_1 & a_2 \\ b_1 & b_2 \end{vmatrix} e_3 $
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} Воспользоваться билинейностью и таблицей значений $[e_i, e_j]$.
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Линейным многообразием} в $\mathbb{R}^n$ называется множество решений совместной СЛУ $Ax = b, \ \varnothing \neq L \subseteq \mathbb{R}^n$
+
+\vspace{\baselineskip}
+Было:
+\textbf{Лемма.} $L = x_0 + S$, где $x_0$ -- частное решение (= какое-то одно), $S$ -- пространство решений ОСЛУ $Ax = 0$
+
+\vspace{\baselineskip}
+\textbf{Предложение.} Множество $L \subseteq \mathbb{R}^n$ является линейным многообразием $\Leftrightarrow L = v_0 + S$, где $S \subseteq \mathbb{R}^n$ -- подпространство
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ (\Rightarrow)$ следует из леммы
+
+$(\Leftarrow)$ Знаем, что $S$ -- множество решений некоторой ОСЛУ $Ax = 0$. Тогда $L$ -- множество решений СЛУ $Ax = A v_0$ -- из леммы $\lhd$
+
+\vspace{\baselineskip}
+\textbf{Предложение.} Пусть $L_1 = v_1 + S_1$ и $L_2 = v_2 + S_2$. Тогда $L_1 = L_2 \Leftrightarrow \begin{cases} S_1 = S_2 (= S) \\ v_1 - v_2 \in S \end{cases}$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ (\Leftarrow)$ очевидно
+
+$(\Rightarrow) v_1 = v_1 + 0 \in L_1$ и $v_1 + 0 \in v_2 + S_2 \Rightarrow v_1 - v_2 \in S_2$
+
+$v \in S_1 \Rightarrow v_1 + v \in v_2 + S_2 \Rightarrow v \in (v_2 - v_1) + S_2 \subseteq S_2 \Rightarrow S_1 \subseteq S_2$
+
+Аналогично $S_2 \subseteq S_1 \Rightarrow S_1 = S_2 (=S) \Rightarrow v_1 - v_2 \in S \ \lhd$
+
+\vspace{\baselineskip}
+$L = v_0 + S$ -- линейное многообразие $\Rightarrow S$ однозначно определяет пространство в $\mathbb{R}^n$
+
+\vspace{\baselineskip}
+\textbf{Определение.} $S$ называется \textit{направляющим подпространством} линейного многообразия $L$.
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Размерностью} линейного многообразия называется размерность его направляющего подпространства.
+
+Линейные многообразия размерности 0 -- это точки
+
+Линейные многообразия размерности 1 называются прямые
+
+Линейные многообразия размерности 2 называются плоскостями
+
+Линейные многообразия размерности k называются k-мерными плоскостями
+

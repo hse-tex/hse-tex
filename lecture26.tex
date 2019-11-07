@@ -1,0 +1,198 @@
+\section{Лекция 5.04.2017}
+
+$\mathbb{R}^n \supseteq L \neq \varnothing$
+
+$L$ -- линейное многообразие $\Leftrightarrow L = v_0 + S$, где $v_0 \in L, S \subseteq \mathbb{R}^n$ -- подпространство
+
+\vspace{\baselineskip}
+$L$ -- линейное многообразие
+
+$S$ -- направляющее подпространство
+
+Фиксируем $v_0 \in L$ и $(e_1, \dots, e_k)$ -- базис в $S$
+
+\vspace{\baselineskip}
+\textbf{Определение.} Набор $(v_0; e_1, \dots, e_k)$ назывался \textit{репЕром} линейного многообразия $L$.
+
+\vspace{\baselineskip}
+Всякий репер $(v_0; e_1, \dots, e_k)$ задает на $L$ \textit{афинную систему кординат} $\forall \ v \in L \exists! \ \alpha_1, \dots, \alpha_k \in \mathbb{R}$, такие что $v = v_0 + \alpha_1 e_1 + \dots + \alpha_k e_k$
+
+\vspace{\baselineskip}
+Числа $\alpha_1, \dots, \alpha_k$ называются координатами точки $v$ в данном репере.
+
+\vspace{\baselineskip}
+\textbf{Теорема.} a) Через любые $k+1$ точек в $\mathbb{R}^n$ проходит плоскость размерности $\leq k$
+
+б) Если эти точки не содержатся в плоскости размерности $<k$, то тогда через них проходит единственная плоскость размерности $k$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Пусть $v_0, v_1, \dots, v_k$ -- заданные точки. 
+
+a) Пусть $P = v_0 + <v_1 - v_0, \dots, v_k - v_0>$, тогда $P \ni v_0, v_1, \dots, v_k$ и $dimP \leq k$
+
+б) Из условия следует, что $dimP = k \Rightarrow v_1 - v_0, \dots, v_k - v_0$ линейно независимы.
+
+Пусть $P' = v_0 + S$ -- другая плоскость размерности $k$, содержащая $v_0, v_1, \dots, v_k$
+
+Тогда $v_1 - v_0, 'dots, v_k - v_0 \in S \Rightarrow S = <v_1 - v_0, \dots, v_k - v_0> \Rightarrow P' = P \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Следствие.} 1) Через любые две различные точки в $\mathbb{R}^n$ проходит ровно одна прямая
+
+2) Через любые три точки в $\mathbb{R}^n$, не лежащих на одной прямой, проходит ровно одна плоскость
+
+\subsection{Взаимное расположение двух линейных многообразий в $\mathbb{R}^n$}
+
+$L_1, L_2 \in \mathbb{R}^n$ -- два линейных многообразия
+
+$S_1, S_2$ -- направляющие подпространства
+
+\vspace{\baselineskip}
+$L_1 \cap L_2 \neq \varnothing$
+
+1) $L_1, L_2$ совпадают
+
+2) $L_1 \supseteq L_2$ ($\Leftrightarrow S_1 \supseteq S_2$) или $L_1 \subseteq L_2$ ($\Leftrightarrow S_1 \subseteq S_2$)
+
+3) Остальное
+
+\vspace{\baselineskip}
+$L_1 \cap L_2 = \varnothing$
+
+1) $L_1, L_2$ параллельны $\Leftrightarrow S_1 \subseteq S_2$ или $S_1 \supseteq S_2$
+
+2) $L_1, L_2$ скрещиваются $\Leftrightarrow S_1 \cap S_2 = \{0\}$
+
+3) Остальное
+
+\subsection{Линейные многообразия в $\mathbb{R}^2$}
+
+Нетривиальный случай: $dim = 1$ (прямые)
+
+\textbf{Способы задания:}
+
+1) $Ax + By = C$, где $(A, B) \neq (0, 0)$, $(A, B)$ -- нормаль
+
+2) $v_0 \in l$, $a$ -- направляющий вектор
+
+$v \in l \Leftrightarrow [v - v_0, a] = 0$
+
+Если $v_0 \in l, n$ -- нормаль, то $v \in l \Leftrightarrow (v - v_0, n) = 0$
+
+3) Параметрическое уравнение
+
+$v_0 \in l, a$ -- направляющий вектор
+
+$v = v_0 + at, t \in \mathbb{R}$
+
+$\begin{cases} x = x_0 + a_1 t \\ y = y_0 + a_2 t \end{cases}$
+
+\vspace{\baselineskip}
+\textbf{Уравнение прямой, проходящей через 2 различные точки $v_0 = (x_0, y_0)$ и $v_1 = (x_1, y_1)$}
+
+$\begin{vmatrix} x - x_0 & y - y_0 \\ x_1 - x_0 & y_1 - y_0 \end{vmatrix} = 0 \Leftrightarrow \frac{x - x_0}{x_1 - x_0} = \frac{y - y_0}{y_1 - y_0}$
+
+\vspace{\baselineskip}
+Если $x_1 = x_0$, то уравнение есть $x = x_0$
+
+$y_1 = y_0 \Rightarrow y = y_0$
+
+\subsection{Линейные многообразия в $\mathbb{R}^3$}
+
+Плоскости в $\mathbb{R}^3$ ($dim = 2$)
+
+\textbf{Способы задания:}
+
+1) $Ax + By + Cz = D, (A, B, C) \neq (0, 0, 0), (A, B, C)$ -- нормаль
+
+2) Векторное уравнение $(v - v_0, n) = 0, v_0$ -- точка, $n$ -- нормаль
+
+3) Параметрическое уравнение
+
+$v_0$ -- точка, $a, b$ -- базис в направляющем подпространстве
+
+$v = v_0 + ta + sb, \ t, s \in \mathbb{R}$
+
+В координатах: $\begin{cases} x = x_0 + a_1 t + b_1 s \\ y = y_0 + a_2 t + b_2 s \\ z = z_0 + a_3 t + b_3 s \end{cases}$
+
+Если $a_1 = 0 \Rightarrow \frac{x - x_0}{a_1}$ не пишут, вместо этого $x = x_0$
+
+\vspace{\baselineskip}
+\textbf{Уравнение плоскости, проходящей через 3 точки $v_0 = (x_0, y_0, z_0), v_1 = (x_1, y_1, z_1)$ и $v_2 = (x_2, y_2, z_2)$}
+
+$\begin{vmatrix} x - x_0 & y - y_0 & z - z_0 \\ x_1 - x_0 & y_1 - y_0 & z_1 - z_0 \\ x_2 - x_0 & y_2 - y_0 & z_2 - z_0 \end{vmatrix} = 0$
+
+\vspace{\baselineskip}
+Прямые в $\mathbb{R}^3 (dim = 1)$
+
+\textbf{Способы задания:}
+
+1) $\begin{cases} A_1 x + B_1 y + C_1 = D_1 \\ A_2 x + B_2 y + C_2 z = D_2 \end{cases} \Rightarrow rk \begin{pmatrix} A_1 & B_1 & C_1 \\ A_2 & B_2 & C_2 \end{pmatrix} = 2$
+
+2) Векторное уравнение:
+
+$[v - v_0, a] = 0, \ v_0$ -- точка, $a$ -- направляющий вектор
+
+3) Параметрическое уравнение
+
+$v = v_0 + at, \ t \in \mathbb{R}, \ v_0$ -- точка, $a$ -- направляющий вектор
+
+$\begin{cases} x = x_0 + a_1 t \\ y = y_0 + a_2 t \\ z = z_0 + a_3 t \end{cases}$
+
+\vspace{\baselineskip}
+\textbf{Уравнение прямой, проходящей через 2 различные точки в $\mathbb{R}^3$ $v_0 = (x_0, y_0, z_0)$ и $v_1 = (x_1, y_1, z_1)$}
+
+$\frac{x - x_0}{x_1 - x_0} = \frac{y - y_0}{y_1 - y_0} = \frac{z - z_0}{z_1 - z_0}$
+
+\subsection{Взаимное расположение двух линейных многообразий в $\mathbb{R}^3$}
+
+1) Две плоскости ($n_1, n_2$ -- нормали плоскостей):
+
+(1) совпадают ($[n_1, n_2] = 0$)
+
+(2) параллельны ($[n_1, n_2] = 0$)
+
+(3) пересекаются по прямой
+
+\vspace{\baselineskip}
+2) Две прямые($a_1, a_2$ -- направляющие векторы, $v_1, v_2$ -- точки):
+
+(1) совпадают ($[a_1, a_2] = 0$) + ($l_1, l_2$ лежат в одной плоскости $\Leftrightarrow (a_1, a_2, v_2 - v_1)$)
+
+(2) параллельны ($[a_1, a_2] = 0$) + ($l_1, l_2$ лежат в одной плоскости $\Leftrightarrow (a_1, a_2, v_2 - v_1)$)
+
+(3) пересекаются ($l_1, l_2$ лежат в одной плоскости $\Leftrightarrow (a_1, a_2, v_2 - v_1)$)
+
+(4) скрещиваются
+
+\vspace{\baselineskip}
+3) Прямая и плоскость
+
+$l$ -- прямая
+
+$P$ -- плоскость
+
+(1) $l \subseteq P$
+
+(2) $l \ || \ P$
+
+(3) $l \cap P$ -- точка
+
+\vspace{\baselineskip}
+4) Три попарно различных плоскости в $\mathbb{R}^3$
+
+$P_1, P_2, P_3, \ P_i \neq P_j \ \forall \ i \neq j$
+
+$n_i$ -- нормаль к $P_i$
+
+(1) Все параллельны
+
+(2) Две параллельны, третья их пересекает
+
+(3) $P_1, P_2, P_3$ пересекаются по общей прямой
+
+(4) Прямые пересечения параллельны
+
+(5) Пересекаются в одной точке
+
+

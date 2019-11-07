@@ -1,0 +1,237 @@
+\section{Лекция 19.10.2017}
+
+\subsection{}
+
+Свойство 4. Если в А есть две одинаковые строки (столбца), то $detA = 0$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ При перестановке двух одинаковых строк (столбцов):
+
+-- А не изменится $\Rightarrow$ detA не изменится
+
+-- по свойству 3: $detA$ меняет знак
+
+$\Rightarrow detA = -detA \Rightarrow detA = 0 \ \lhd$.
+
+\vspace{\baselineskip}
+Свойство 5. Если к строке (столбцу) прибавить другую строку (столбец), умноженный на скаляр, то $detA$ не изменится.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Свойство Т $\Rightarrow$ достаточно доказать для строк.
+
+\[A \rightarrow A' = \begin{pmatrix} \dots \\ A_{(i)} + \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} \]
+
+\[detA' = det \begin{pmatrix} \dots \\ A_{(i)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} + det \begin{pmatrix} \dots \\ \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} = detA + \lambda det \begin{pmatrix} \dots \\ A_{(j)} \\ \dots \\ A_{(j)} \\ \dots \end{pmatrix} = det A + \lambda 0 = det A \ \lhd \].
+
+\vspace{\baselineskip}
+\textbf{Определение.} Матрица называется \textit{верхнетреугольной}, если $a_{ij} = 0 \ при \ i > j$, \textit{нижнетреугольной}, если $a_{ij} = 0 \ при \ i < j$. 
+
+\[\begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1n} \\
+		0 & a_{22} & \cdots & a_{2n} \\
+        0 & 0 & \cdots & a_{3n} \\
+       \vdots & \vdots & \vdots& \vdots \\ 
+       0 & 0 & \cdots & a_{mn}
+	\end{pmatrix}
+\] -- верхнетреугольная 
+
+\[\begin{pmatrix}
+		a_{11} & 0 & \cdots & 0 \\
+		a_{21} & a_{22} & \cdots & 0 \\
+        a_{31} & a_{32} & \cdots & 0 \\
+       \vdots & \vdots & \vdots& \vdots \\ 
+       a_{m1} & a_{m2} & \cdots & a_{mn}
+	\end{pmatrix}
+\] -- нижнетреугольная 
+
+\vspace{\baselineskip}
+\textbf{Предложение.} Если А -- верхнетреугольная (или нижнетреугольная) матрица, то 
+
+$detA = a_{11} a_{22} \dots a_{nn}$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Свойство Т $\Rightarrow$ достаточно доказать для верхнетреугольной.
+
+Выясним, какие слагаемые в (*) могут быть отличны от нуля.
+
+$a_{1, \sigma(1)} a_{2, \sigma(2)} \dots a_{n, \sigma(n)} \neq 0:$
+
+$a_{n, \sigma(n)} \neq 0 \Rightarrow \sigma (n) = n$
+
+$a_{n-1, \sigma(n - 1)} \neq 0 \Rightarrow \sigma (n - 1) \in \{n, n - 1 \}$ но $n$ уже занято $\Rightarrow \sigma (n - 1) = n - 1$.
+
+Рассуждаем аналогично, получаем: $\sigma (k) = k \ \forall \ k = n, n-1, n-2, \dots, 1 \Rightarrow \sigma = id$.
+
+Вывод: в (*) может быть не равно нулю ровно 1 слагаемое $a_{11} a_{22} \dots a_{nn}$, оно входит со знаком + $\Rightarrow detA  = a_{11} a_{22} \dots a_{nn} \ \lhd$.
+
+\vspace{\baselineskip}
+\textbf{Следствие.} 1) $det(diag(a_1, a_2, \dots, a_n)) = a_1 a_2 \dots a_n$.
+
+2) $detE = +1$.
+
+\vspace{\baselineskip}
+\textbf{Замечание.} Всякая (квадратная) ступенчатая матрица верхнетреугольна.
+
+\vspace{\baselineskip}
+\subsection{Вычисление определителей при помощи элементарных преобразований}
+
+\vspace{\baselineskip}
+$Э_1 (i, j, \lambda): detA$ не меняется.
+
+$Э_2 (i, j): detA$ меняет знак.
+
+$Э_3 (i, \lambda): detA$ умножается на $\lambda$.
+
+\vspace{\baselineskip}
+\textit{Алгоритм.} Элементарными преобразованиями строк А приводится к ступенчатому  ($\Rightarrow$ верхнетреугольному) виду, в котором $det$ легко считается.
+
+\vspace{\baselineskip}
+\textbf{Предложение.} (Определитель с углом нулей) 
+
+\[ A = 
+\left(
+\begin{array}{c|c}
+  P & Q \\
+  \hline
+  0 & R
+\end{array}
+\right) \ или \ A = 
+\left(
+\begin{array}{c|c}
+  P & 0 \\
+  \hline
+  Q & R
+\end{array}
+\right),\ P \in M_k, \ R \in M_{n-k} \Rightarrow detA = detP detR
+\]
+
+Матрица с углом нулей:
+\[ 
+\left(
+\begin{array}{c|ccc}
+  * & * & * & * \\
+  \hline
+  0 & * & * & * \\
+  0 & * & * & * \\
+  0 & * & * & *
+\end{array}
+\right)
+\]
+
+НЕ матрица с углом нулей:
+\[ 
+\left(
+\begin{array}{c|ccc}
+  * & * & * & * \\
+  * & * & * & * \\
+  \hline
+  0 & * & * & * \\
+  0 & * & * & *
+\end{array}
+\right)
+\]
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Свойство Т $\Rightarrow$ достаточно доказать для первого типа.
+
+1) Элементарными преобразованиями строк приведем матрицу $(P|Q)$ к виду $(P'|Q')$, в котором P ступечатая ($\Rightarrow$ верхнетреугольная) $\Rightarrow$ detP и detA умножатся на одно и то же число $\alpha \neq 0$. 
+
+2) Элементарными преобразованиями строк приведем матрицу $(0|R)$ к виду $(0|R')$, в котором R ступечатая ($\Rightarrow$ верхнетреугольная) $\Rightarrow$ detA и detR умножатся на одно и то же число $\beta \neq 0$. 
+
+A' -- верхнетреугольная $\Rightarrow$ det A' = det P' det R'
+
+$\alpha \beta det A = det A' = det P' det R' = (\alpha det P) (\beta det R) = \alpha \beta det P det R \Rightarrow det A = det P det R \ \lhd$.
+
+\vspace{\baselineskip}
+\textbf{Теорема.} $A, B \in M_n \Rightarrow det(AB) = detA detB$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ 1) A, B верхнетреугольная $\Rightarrow$ AB -- верхнетреугольная.
+
+
+$det(AB) = a_1 b_1 a_2 b_2 \dots a_n b_n = (a_1 a_2 \dots a_n)(b_1 b_2 \dots b_n) = det A det B$.
+
+\vspace{\baselineskip}
+2) Элементраное преобразование строк А $\rightarrow$ то же элементарное преобразование в AB.
+
+$A \rightarrow UA \Rightarrow AB \rightarrow UA(B) = U(AB)$
+
+Элементарное преобразовнаие столбцов матрицы $B \rightarrow$ то же элементарное преобразование в AB.
+
+$B \rightarrow BV \Rightarrow AB \rightarrow A(BV) = (AB)V$
+
+\vspace{\baselineskip}
+Элементарным преобразованием строк приведем А к верхнетреугольному виду. При этом detA и det(AB) умножатся на одно и то же число $\alpha \neq 0$.
+
+Элементарным преобразованием столбцов приведем B к верхнетрегольному виду. При этом detB и det(AB) умножатся на одно и то же число $\beta \neq 0$.
+
+
+\vspace{\baselineskip}
+$A', B'$ -- верхнетреугольные $\Rightarrow det(A'B') = detA' detB' = \alpha \beta detAB = detA'B' = detA' det B' = (\alpha det A)(\beta bet B) = \alpha \beta det A det B \Rightarrow detAB = detA detB \ \lhd$.
+
+\vspace{\baselineskip}
+Пусть $A \in M_n$.
+
+\textbf{Определение.} \textit{Дополнительным минором к элементу} $a_{ij}$ называется определитель $(n-1) \times (n-1)$ -- матрицы, получающейся из А вычеркиванием i-ой строки и j-ого столбца. Обозначение: $\overline{M_{ij}}$.
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Алгебраическим дополнением к элементу} $a_{ij}$ называется число $A_{ij} = (-1)^{i+j} \overline{M_{ij}}$.
+
+\vspace{\baselineskip}
+\textbf{Лемма.} Пусть $a_{ik} = 0$ при всех $k \neq j$. Тогда $detA = a_{ij}A_{ij}$.
+
+\textbf{\textit{Доказательство.}}
+\[ \rhd A = 
+\left(
+\begin{array}{ccc|c|ccc}
+  & P & & U & & Q & \\
+  \hline
+  0 & \dots & 0 & a_{ij} & 0 & \dots & 0 \\
+  \hline
+  & R & & V & & S &
+\end{array}
+\right)
+\]
+
+\vspace{\baselineskip}
+Переставляя соседние строки, вытолкнем i-ю строку наверх.
+
+\[ 
+\left(
+\begin{array}{ccc|c|ccc}
+	0 & \dots & 0 & a_{ij} & 0 & \dots & 0 \\
+  \hline
+  & P & & U & & Q & \\
+  \hline
+  & R & & V & & S &
+\end{array}
+\right)
+\]
+
+\vspace{\baselineskip}
+Переставляя соседние столбцы, переместим j-й столбец на первое место. 
+
+\[ A' = 
+\left(
+\begin{array}{ccc|c|ccc}
+	 & a_{ij} &  & 0  & 0 & \dots & 0 \\
+  \hline
+  & U & & P & & Q & \\
+  \hline
+  & V & & R & & S &
+\end{array}
+\right)
+\]
+
+\vspace{\baselineskip}
+$detA' = a_{ij}det \left(
+\begin{array}{c|c}
+  P & Q \\
+  \hline
+  R & S
+\end{array}
+\right) = a_{ij} \overline{M_{ij}}$.
+
+\vspace{\baselineskip}
+$det A = (-1)^{i-1+j-1} det A' = (-1)^{i+j} a_{ij}\overline{M_{ij}} = a_{ij} A_{ij} \ \lhd$.
+

@@ -1,0 +1,168 @@
+\section{Лекция 16.11.2017}
+
+\subsection{}
+
+\textbf{Следствие.} В условиях предложения, если $z_2 \neq 0$, то $\frac{z_1}{z_2} = \frac{|z_1|}{|z_2|} (\cos (\varphi_1 - \varphi_2) + i \sin(\varphi_1 - \varphi_2))$.
+
+\vspace{\baselineskip}
+В частности, $\frac{1}{|z_2|}(\cos(- \varphi_2) + i\sin(- \varphi_2)) = \frac{1}{|z_2|}(\cos \varphi_2 - i \sin \varphi_2) = \frac{\overline{z_2}}{|z_2|^2}$.
+
+\vspace{\baselineskip}
+\textbf{Следствие 2.} Пусть $z = |z|(\cos \varphi + i \sin \varphi)$. Тогда $\forall n \in \mathbb{Z}$
+
+\vspace{\baselineskip}
+$z^n = |z|^n (\cos(n \varphi) + i \sin(n \varphi))$ -- формула Муавра
+
+\vspace{\baselineskip}
+\textbf{Замечание.} В комплексном анализе функция $\exp: \mathbb{R} \rightarrow \mathbb{R}, \ x \rightarrow e^x$, доопределяется до функции $\exp: \mathbb{C} \rightarrow \mathbb{C}, \ z \rightarrow e^z$ с сохранением всех привычных свойств. Доказывается $e^{i \varphi} = \cos \varphi + i \sin \varphi \ \forall \ \varphi \in \mathbb{C}$ -- формула Эйлера. Тогда $\forall \ z \in \mathbb{C}$ представляется в виде $z = |z| e^{i \varphi}$, где $\varphi \in Arg(z)$ -- показательная форма.
+
+\vspace{\baselineskip}
+Пусть $z \in \mathbb{C}, n \geq 2$.
+
+\textbf{Определение.} \textit{Корнем степени n (или корнем n-й степени) из числа} $z$ называется всякое число $w \in \mathbb{C}$, что $w^n = z$.
+
+Положим $\sqrt[n]{z} := \{w \in \mathbb{C} \ | \ w^n = z \}$.
+
+\vspace{\baselineskip}
+Опишем множество $\sqrt[n]{z}$.
+$w^n \Rightarrow |w|^n = |z|$.
+
+Если $z = 0$, то $|z| = 0 \Rightarrow |w| = 0 \Rightarrow w = 0 \Rightarrow \sqrt[n]{0} = \{ 0 \}$. 
+
+Далее считаем, что $z \neq 0$.
+
+$z = |z|(\cos \varphi + i \sin \varphi)$
+
+$w = |w|(\cos \psi + i \sin \psi)$
+
+$z = w^n = |w|^n (\cos (n \psi) + i \sin (n \psi))$
+
+Отсюда $z = w^n \Leftrightarrow$ \[
+	\left\{
+		\begin{aligned}
+			|z| = |w|^n  \\
+			n \psi = \varphi + 2 \pi k, k \in \mathbb{Z} 
+		\end{aligned}
+	\right. \Leftrightarrow \left\{
+		\begin{aligned}
+			|w| = \sqrt[n]{|z|}  \\
+			\psi = \frac{\varphi + 2 \pi k}{n}, k \in \mathbb{Z}
+		\end{aligned}
+	\right.
+\]
+
+$\frac{\varphi + 2 \pi k}{n} = \frac{\varphi}{n} + \frac{2 \pi}{n} k$
+
+С точностью до $2 \pi l, \ l \in \mathbb{Z}$, получается ровно $n$ различных значений для $\psi$, при $k = 0,1, \dots, n-1$.
+
+В результате $\sqrt[n]{z} = \{w_0, w_1, \dots, w_{n-1} \}$, где при $k = 0, 1, \dots, n-1$ 
+
+$|w_k| = \sqrt[n]{|z|}$
+
+$\psi_k = \frac{\varphi + 2 \pi k}{n}$
+
+\vspace{\baselineskip}
+$\sqrt[n]{z} := \left\{ \sqrt[n]{|z|} \left( \cos \frac{\varphi + 2 \pi k}{n} + i \sin \frac{\varphi + 2 \pi k}{n} \right) | \ k = 0, 1, \dots, n-1  \right\}$.
+
+\vspace{\baselineskip}
+\textbf{Замечание.} Числа $w_0, w_1, \dots, w_{n-1}$ лежат в вершинах правильного n-угольника.
+
+\vspace{\baselineskip}
+Примеры. 
+
+$\sqrt[]{1} = \{\pm 1\}$
+
+$\sqrt[]{-1} = \{\pm i\}$
+
+$\sqrt[3]{1} = \{1, -\frac{1}{2} \pm i \frac{\sqrt[]{3}}{2} \}$
+
+$\sqrt[4]{1} = \{ \pm 1, \pm i \}$
+
+\vspace{\baselineskip}
+$\sqrt[n]{z} = \{$ корни многочлена $x^n - z \}$.
+
+\vspace{\baselineskip}
+\textbf{Основная теорема алгебры комплексных чисел}. Всякий многочлен степени $\geq 1$ с комплексными коэффициентами имеет комплексный корень.
+
+\vspace{\baselineskip}
+\textbf{Замечание.} Свойство поля $\mathbb{C}$, сформулированное в теореме, называется \textit{алгебраической замкнутостью}.
+
+\subsection{Отступление про многочлены}
+
+$F$ -- поле
+
+$F[x] :=$ множество всех многочленов от переменной x с коэффициентами в $F$
+
+$f(x) \in F[x] \Rightarrow f(x) = a_n x^n + a_{n-1} x^{n-1}+ \dots + a_1 x + a_0, \ a_i \in F, a_n \neq 0$
+
+$deg f := n$ -- степень многочлена $f$
+
+$f, g \in F[x] \Rightarrow deg(f \cdot g) = degf + deg g$
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Многочлен $f(x)$ делится на} $g(x)$, если $\exists h(x)$, такой что $f(x) = g(x) h(x)$.
+
+\textit{Обознаение:} $f(x) \vdots g(x)$.
+
+Если $f(x)$ не делится на $g(x)$, то можно поделить с остатком.
+
+\vspace{\baselineskip}
+\textbf{Предложение (деление с остатком).} Если $f(x), g(x) \in F[x], g(x) \neq 0$, то $\exists ! q(x), r(x) \in F[x]$, такие что
+
+\[
+	\left\{
+		\begin{aligned}
+			f(x) = q(x) g(x) + r(x)  \\
+			либо \ r(x) = 0, \ либо \ degr(x) < degg(x) 
+		\end{aligned}
+	\right.
+\]
+
+\vspace{\baselineskip}
+Пример.
+
+$f(x) = x^3 - 2x, g(x) = x + 1$
+
+$f(x) = (x^2 - x - 1)(x + 1) + 1, (x^2 - x - 1) = q(x), 1 = r(x)$
+
+\vspace{\baselineskip}
+Частный случай предложения: $deg g(x) = 1, \ g(x) = x - c$.
+
+$f(x) = q(x) (x - c) + r(x)$
+
+$deg r(x) < deg (x - c) = 1 \Rightarrow r(x) = r = const \in F$
+
+\vspace{\baselineskip}
+\textbf{Теорема Безу.} $r = f(c)$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Имеем $f(x) = q(x)(x - c) + r(x)$. Подставляя $x=c$, получаем $f(c) = r \ \lhd$.
+
+\vspace{\baselineskip}
+\textbf{Следствие.} Если $c$ -- корень многочлена $f(x)$, то $f(x) \vdots x - c$.
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Кратностью корня $c$ многочлена $f(x)$} называется наибольшее $k \in \mathbb{Z}$, такое что $f(x) \vdots (x - c)^k$.
+
+$f(x) = (x - c)^k h(x), \ h(c) \neq 0$.
+
+\vspace{\baselineskip}
+\textbf{Следствие основной теоремы алгебры комплексных чисел.} $\forall f(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 \in \mathbb{C}[x], deg f(x) = n$, имеется разложение $f(x) = a_n (x - c_1)^k_1
+\dots (x - c_s)^k_s$, ($c_1, \dots, c_s$ -- корни, $k_1, \dots, k_s$ -- их кратности, $k_1 + \dots + k_n = n$).
+
+\vspace{\baselineskip}
+Иными словами, $f(x)$ имеет ровно $n$ корней с учетом кратностей.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Индукция по $n$.
+
+\textit{База индукции.} $n = 1$, $f(x) = ax + b = a (x + \frac{b}{a})$.
+
+\textit{Шаг.} Пусть верно для $<n$, докажем для $n$.
+
+Основная теорема алгебры комплексных чисел $\Rightarrow \exists c \in \mathbb{C}$, такое что $f(c) = 0$.
+
+Следствие из теоремы Безу $\Rightarrow f(x) \vdots x - c \Rightarrow \exists h(x) \in \mathbb{C}[x]$, такой что $f(x) = (x-c)h(x)$. $degh(x) = n-1 < n$.
+
+Остается применить предположение индукции к $h(x) \ \lhd$.
+

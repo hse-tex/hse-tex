@@ -1,0 +1,167 @@
+\section{Лекция 1.02.2018}
+
+$Hom(V, W) \iso Mat_{m \times n}$
+
+$V, W, U$ -- векторные пространства над $F$
+
+\vspace{\baselineskip}
+$U \rightarrow^{\hspace{-4mm}^{\varphi}} V \rightarrow^{\hspace{-4mm}^{\psi}} W$ -- цепочка линейных отображений
+
+$e = (e_1, \dots, e_n)$ -- базис $V$ \ $A_{\varphi} = A(\varphi, e, f)$
+
+$f = (f_1, \dots, f_m)$ -- базис $W$ \ $A_{\psi} = A(\psi, f, g)$
+
+$g = (g_1, \dots, g_k)$ -- базис $U$ \ $A_{\psi \cdot \varphi} = A(\psi \cdot \varphi, e, g)$
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $A_{\psi \cdot \varphi} = A_{\psi} \cdot A_{\varphi}$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ (\varphi(e_1), \dots, \varphi(e_n)) = (f_1, \dots, f_m) \cdot A_{\varphi}$
+
+$((\psi \varphi) (e_1), \dots, (\psi \varphi) (e_n)) = (\psi(f_1), \dots, \psi(f_m)) A_{\varphi} = (g_1, \dots, g_k) \cdot A_{\psi} \cdot A_{\varphi}$
+
+$((\psi \varphi) (e_1), \dots, (\psi \varphi) (e_n)) = (g_1, \dots, g_k) A_{\psi \varphi}$
+
+Т.к. $g_1, \dots, g_k$ линейно независимы, то $A_{\psi \cdot \varphi} = A_{\psi} \cdot A_{\varphi} \ \lhd$.
+
+\vspace{\baselineskip}
+$V, W$ -- векторные пространства
+
+$\varphi: V \rightarrow W$ -- линейное отображение
+
+\textbf{Определение.} \textit{Ядро линейного отображения} $\varphi$ -- это множество $Ker \varphi := \{v \in V \ | \ \varphi(v) = 0 \} \subseteq V$
+
+\textbf{Определение.} \textit{Образ линейного отображения} $\varphi$ -- это множество $Im \varphi := \varphi(V) = \{\varphi(v) \ | \ v \in V\} \subseteq W$
+
+\vspace{\baselineskip}
+Пример. 
+
+$\triangle : P_n \rightarrow P_n, f \rightarrow f' \Rightarrow Ker \triangle = \{f \ | \ f = const \}, \ Im \triangle = P_{n-1}$
+
+\vspace{\baselineskip}
+\textbf{Предложение.} (а) $Ker \varphi$ -- это подпространство в $V$
+
+(б) $Im \varphi$ -- это подпространство в $W$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ (а) 1) $\varphi (0_V) = 0_W \Rightarrow 0_V \in Ker \varphi$
+
+2) $v_1, v_2 \in Ker \varphi \Rightarrow \varphi (v_1 + v_2) = \varphi(v_1) + \varphi(v_2) = 0 + 0 = 0 \Rightarrow v_1 + v_2 \in Ker \varphi$
+
+3) $v \in Ker \varphi, \ \alpha \in F \Rightarrow \varphi (\alpha v) = \alpha \varphi (v) = \alpha 0 = 0 \Rightarrow \alpha v \in Ker \varphi$
+
+\vspace{\baselineskip}
+(б) 1) $0_W = \varphi (0_v) \Rightarrow 0_W \in Im \varphi$
+
+2) $w_1, w_2 \in Im \varphi \Rightarrow \exists v_1, v_2 \in V$, такие что $w_1 = \varphi (v_1), w_2 = \varphi(v_2) \Rightarrow w_1 + w_2 = \varphi (v_1) + \varphi (v_2) = \varphi (v_1 + v_2) \Rightarrow w_1 + w_2 \in Im \varphi$
+
+3) $w \in Im \varphi, \ \alpha \in F \Rightarrow \exists v \in V$ : $\varphi (v) = w \Rightarrow \alpha w = \alpha \varphi (v) = \varphi (\alpha v) \Rightarrow \alpha x \in Im \varphi \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Предложение.} (а) $\varphi$ инъективно $\Leftrightarrow Ker \varphi = \{0\}$
+
+(б) $\varphi$ сюръективно $\Leftrightarrow Im \varphi = W$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ (б) Просто по определению
+
+(а) $\varphi$ инъективно $\Rightarrow Ker \varphi = \{0\}$ очевидно
+
+$Ker \varphi = \{0\} \Rightarrow \varphi$ инъективно
+
+Пусть $Ker \varphi = \{0\}$
+
+$v_1, v_2 \in V$, пусть $\varphi (v_1) = \varphi(v_2)$. Тогда $0 = \varphi(v_1) - \varphi(v_2) = \varphi(v_1 - v_2) \Rightarrow v_1 - v_2 \in Ker \varphi \Rightarrow v_1 - v_2 = 0 \Rightarrow v_1 = v_2 \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Следствие.}  
+
+\[
+	\varphi - изоморфизм \Leftrightarrow \begin{cases}
+		Ker \varphi = \{0\} \\
+		Im \varphi = W
+	\end{cases}
+\]
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $\varphi : V \rightarrow W$ -- линейное отображение, $U \subseteq V$ -- подпространство, $(e_1, \dots, e_k)$ -- базис $U \Rightarrow \varphi (U) = < \varphi(e_1), \dots, \varphi (e_k)>$. В частности, $dim \varphi (U) \leq dim U, \ dim Im \varphi \leq dim V$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} Упражнение.
+
+\vspace{\baselineskip}
+$e = (e_1, \dots, e_n)$ -- базис $V$, $f = (f_1, \dots, f_m)$ -- базис $W$, $A = A(\varphi, e, f)$
+
+\vspace{\baselineskip}
+\textbf{Теорема 1.} $rkA = dim Im \varphi$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $Im \varphi = <\varphi(e_1), \dots, \varphi(e_n)>$ -- по предложению
+
+Координаты вектора $\varphi(e_j)$ в базисе $f$ записаны в $A^{(j)} \Rightarrow \alpha_1 \varphi(e_1) + \dots + \alpha_n \varphi(e_n) = 0 \Leftrightarrow \alpha_1 A^{(1)} + \dots + \alpha_n A^{(n)} = 0 \Rightarrow rkA = rk \{\varphi(e_1), \dots, \varphi(e_n) \} = dim <\varphi(e_1), \dots, \varphi(e_n)> = dim Im \varphi \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Определение.} Число $rkA = dim Im \varphi$ называется \textit{рангом линейного отображения} $\varphi$.
+
+Обозначение: $rk \varphi$.
+
+\vspace{\baselineskip}
+\textbf{Следствие.} Число $rkA$ не зависит от выбора базисов $e$ и $f$.
+
+\vspace{\baselineskip}
+\textbf{Следствие.} $A \in Mat_{m \times n} \Rightarrow rkA$ не меняется при умножении $A$ на невырожденную матрицу слева или справа.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Пусть $C \in M_n, D \in M_n, detC \neq 0, detD \neq 0$. Тогда $A$ и $D^{-1} A C$ -- это матрицы одного и того же линейного отображения в разных парах базисов $\Rightarrow rkA = rk (D^{-1} A C) \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Упражнение.} $A \in Mat_{m \times n}, B \in Mat_{n \times p} \Rightarrow rk(AB) \leq min\{rk A, rkB\}$.
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $\varphi: V \rightarrow W$ -- линейное отображение и $(e_1, \dots, e_n)$ -- базис $V$ такой, что $(e_1, \dots, e_k)$ -- базис $Ker \varphi \Rightarrow \varphi(e_{k+1}), \dots, \varphi(e_n)$ -- базис $Im \varphi$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ $Im \varphi = <\varphi(e_1) = 0, \dots, \varphi(e_k) = 0, \varphi(e_{k+1}), \dots, \varphi(e_n)> = <\varphi(e_{k+1}), \dots, \varphi(e_n)>$.
+
+Покажем, что $\varphi(e_{k+1}), \dots, \varphi(e_n)$ линейно независимы. Пусть $\alpha_{k+1}, \dots, \alpha_n \in F$ таковы, что $\alpha_{k+1} \varphi(e_{k+1}) + \dots + \alpha_n \varphi(e_n) = 0$. Тогда $\varphi(\alpha_{k+1} e_{k+1} + \dots + \alpha_n e_n) = 0 \Rightarrow \alpha_{k+1} e_{k+1} + \dots + \alpha_n e_n \in Ker \varphi \Rightarrow \ \exists \ \beta_1, \dots, \beta_k \in F$, такие что $\alpha_{k+1} e_{k+1} + \dots + \alpha_n e_n = \beta_1 e_1 + \dots + \beta_k e_k$. Т.к. $(e_1, \dots, e_n)$ -- базис $V$, то $\beta_1 = \dots = \beta_k = \alpha_{k+1} = \dots = \alpha_n = 0 \ \lhd$.
+
+\vspace{\baselineskip}
+\textbf{Теорема 2.} $dimV = dim Ker \varphi + dim Im \varphi$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Пусть $(e_1, \dots, e_k)$ -- базис $Ker \varphi$. Дополним его векторами $e_{k+1}, \dots, e_n$ до базиса $V$. Тогда $\varphi(e_{k+1}), \dots, \varphi(e_n)$ -- базис $Im \varphi$ по предложению $\Rightarrow dim Im \varphi = n - k = dim V - dim Ker \varphi \ \lhd$.
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $\varphi: V \rightarrow W$ -- линейное отображение, $dim V = n, dim W = m$, $rk \varphi = r \Rightarrow \exists$ базис $e$ в $V$ и базис $f$ в $W$ такие, что 
+
+\[ A(\varphi, e, f) = \bordermatrix{ 
+    	 & & & r & & & & n \cr
+    	 & 1 & \cdots & 0 & \dots & \cdots & \cdots & 0 \cr 
+         & 0 & \ddots & 0 & \dots & \cdots & \cdots & 0 \cr
+		r & 0 & \cdots & 1 & \dots & 0 & 0 & 0  \cr
+         & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \cr
+        & 0 & 0 & 0 & \dots & 0 & 0 & 0  \cr
+        & 0 & 0 & 0 & \dots & 0 & 0 & 0  \cr
+       m & 0 & 0 & 0 & \dots  & 0 & 0 & 0 }
+\]
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ dimKer \varphi = dim V - rk \varphi = n - r$. Пусть $(e_{r+1}, \dots, e_n)$ -- базис $Ker \varphi$, дополним его векторами $e_1, \dots, e_r$  до базиса всего $V$, положим $e = (e_1, \dots, e_n)$. Положим $f_1 = \varphi(e_1), \dots, f_r = \varphi(e_r)$. Тогда $(f_1, \dots, f_r)$ -- базис $Im \varphi$. Дополним его до базиса $f = (f_1, \dots, f_m)$ всего пространства $W$. Тогда $e$ и $f$ искомые базисы $\lhd$.
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $A \in Mat_{m \times n}, rkA = r \Rightarrow \exists C \in M_n, D \in M_m, detC \neq 0, detD \neq 0$, такие что $D^{(-1)} A C = B$, где 
+\[ B = \bordermatrix{ 
+    	 & & & r & & & & n \cr
+    	 & 1 & \cdots & 0 & \dots & \cdots & \cdots & 0 \cr 
+         & 0 & \ddots & 0 & \dots & \cdots & \cdots & 0 \cr
+		r & 0 & \cdots & 1 & \dots & 0 & 0 & 0  \cr
+         & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \cr
+        & 0 & 0 & 0 & \dots & 0 & 0 & 0  \cr
+        & 0 & 0 & 0 & \dots & 0 & 0 & 0  \cr
+       m & 0 & 0 & 0 & \dots  & 0 & 0 & 0 }
+\]
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} Реализуем $A$ как матрицу линейного отображения $\varphi : F^n \rightarrow F^m$ в какой-нибудь паре базисов. Тогда $\exists$ другая пара базисов, в которой матрица будет $B$ (см. предложение), по формуле изменения матрицы линейного отображения при замене базисов имеем $B = D^{(-1)} A C \ \lhd$.
+

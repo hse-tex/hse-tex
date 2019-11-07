@@ -1,0 +1,182 @@
+\section{Лекция 12.04.2018}
+
+\subsection{Метрические задачи в $\mathbb{R}^3$}
+
+\textbf{Расстояние от точки $v$ до прямой $l = \{v_0 + at\}$} 
+
+$\rho(v, l) = |ort_{<a>} (v - v_0)| = \frac{|[v-v_0, a]|}{|a|}$
+
+\vspace{\baselineskip}
+\textbf{Расстояние от точки $v$ до плоскости $P$ c нормалью $n$ и точкой $v_0$, $S$ -- направляющее пространство для $P$}
+
+$\rho(v, P) = |ort_S (v-v_0)| = |pr_{<n>} (v-v_0)| = |\frac{(v - v_0, n)}{(n, n)} n| = \frac{|(v - v_0, n)|}{|n|}$
+
+\vspace{\baselineskip}
+\textbf{Расстояние между двумя скрещивающимися прямыми $l_1 = \{v_1 + a_1 t\}$ и $l_2 = \{v_2 + a_2 t\}$}
+
+$P_1 = v_1 + <a_1, a_2>$
+
+$P_2 = v_2 + <a_1, a_2>$
+
+$P_1 || P_2$
+
+$\rho (l_1, l_2) = \rho (P_1, P_2) = \frac{|(a_1, a_2, v_2 - v_1)|}{|[a_1, a_2]|}$
+
+\vspace{\baselineskip}
+\textbf{Угол между двумя прямыми $l_1 = \{v_1 + a_1 t\}$ и $l_2 = \{v_2 + a_2 t\}$}
+
+$\angle (l_1, l_2):= min( \angle (a_1, a_2), \angle (a_1, -a_2))$
+
+\vspace{\baselineskip}
+\textbf{Угол между прямой $l = \{v_1 + a_1 t\}$ и плоскостью  $P$ с нормалью $n$}
+
+$\angle (l, P) := \frac{\pi}{2} - \angle (l, <n>)$
+
+\vspace{\baselineskip}
+\textbf{Угол между двумя плоскостями $P_1$ и $P_2$ с нормалями $n_1, n_2$}
+
+$\angle (P_1, P_2) := \angle (<n_1>, <n_2>)$
+
+\subsection{Линейные операторы}
+
+$V$ -- векторное пространство над полем $F$
+
+\textbf{Определение.} \textit{Линейным оператором (или линейным преобразованием)} в(на) $V$ называется всякое линейное отображение $\varphi: V \rightarrow V$ (т.е. из $V$ в себя).
+
+\vspace{\baselineskip}
+$L(H) := Hom(V, V) = $ {все линейные операторы $V \rightarrow V$}
+
+$e = (e_1, \dots, e_n)$ -- базис $V \Rightarrow (\varphi(e_1), \dots, \varphi(e_n)) = (e_1, \dots, e_n) A$
+
+$A$ называется матрицей линейного оператора $\varphi$ в базисе $e$
+
+Столбец $A^{(i)}$ состоит из координат вектора $\varphi(e_i)$ в базисе $e$.
+
+\vspace{\baselineskip}
+Примеры.
+
+1) $\lambda \in F, \ \varphi: V \rightarrow V, \varphi(v) = \lambda v$ (скалярный оператор)
+
+В любом базисе имеет матрицу $\lambda E$
+
+2) $\varphi: \mathbb{R}^2 \rightarrow \mathbb{R}^2$ -- поворот на угол $\alpha$
+
+$e$ -- положительно ориентированный ортогональный базис $\Rightarrow A(\varphi, e) = \begin{pmatrix} cos \alpha & -sin \alpha \\ sin \alpha & cos \alpha \end{pmatrix}$
+
+3) $V = \mathbb{R}[x]_{\leq n}, \varphi: V \rightarrow V, f \rightarrow f', e = (1, x, x^2, \dots, x^n) \Rightarrow A(\varphi, e) = \begin{pmatrix} 0 & 1 & 0 & \dots & 0 \\ 0 & 0 & 2 & \dots & 0 \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & n \\ 0 & 0 & 0 & \dots & 0 \end{pmatrix}$
+
+\vspace{\baselineskip}
+\textbf{Следствия общих фактов о линейных отображениях}
+
+1) $\varphi \in L(V), e$ -- базис $V \Rightarrow$ отображение $L(V) \rightarrow M_n(F), \varphi \rightarrow A(\varphi, e)$ является изоморфизмом векторных пространств
+
+1а) Всякий линейный оператор $\varphi \in L(V)$ однозначно определяется своей матрицей в любом фиксированном базисе
+
+1б) $e$ -- произвольный базис, $A \in M_n(F) \Rightarrow ! \exists$ линейный оператор $\varphi \in L(V)$, такой что $A(\varphi, e) = A$
+
+2) $e = (e_1, \dots, e_n)$ -- базис, $x = x_1 e_1 + \dots + x_n e_n, \varphi (x) = y_1 e_1 + \dots + y_n e_n \Rightarrow \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix} = A \begin{pmatrix} x_1 \\ \vdots \\ x_n
+\end{pmatrix}$
+
+3) $e' = (e'_1, \dots, e'_n)$ -- другой базис в $V$
+
+$(e'_1, \dots, e'_n) = (e_1, \dots, e_n) C$ -- матрица перехода
+
+$A = A(\varphi, e)$
+
+$A' = A(\varphi, e')$
+
+$A' = C^{-1}AC$
+
+\vspace{\baselineskip}
+\textbf{Следствия из 3)} а) $det A$ не зависит от выбора базиса
+
+б) $tr A$ не зависит от выбора базиса
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ а) $det (C^{-1} A C) = det C^{-1} det A det C = det A$
+
+б) $tr(C^{-1} AC) = tr (AC C^{-1}) = tr A \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Замечание.} $det$ и $tr$ являются инвариантами самого линейного оператора $\varphi$, а не его матрицы
+
+Обозначение: $det \varphi, tr \varphi$
+
+\vspace{\baselineskip}
+\textbf{Определение.} Две матрицы $A, A' \in M_n(F)$ называются \textit{подобными}, если $\exists C \in M_n(F), detC \neq 0$, такая что $A' = C^{-1} A C$. Отношение подобия является отношением эквивалентности на $M_n(F) \Rightarrow M_n(F)$ разбивается на классы подобных матриц
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $\varphi \in L(V) \Rightarrow$ следующие условия эквивалентны
+
+1) $Ker \varphi = {0}$
+
+2) $Im \varphi = V$
+
+3) $\varphi$ обратим (т.е. $\varphi$ -- изоморфизм пространства $V$ на себя)
+
+4) $det \varphi \neq 0$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ 1) $\Leftrightarrow$ 2), т.к. $dim V = dim Ker \varphi + dim Im \varphi$
+
+1) $\&$ 2) $\Leftrightarrow$ 3) было для линейного отображения
+
+2) $\Leftrightarrow$ 4) $Im \varphi = V \Leftrightarrow rk \varphi = dim V \Leftrightarrow det \varphi \neq 0 \ \lhd$
+
+\vspace{\baselineskip}
+\textbf{Определение.} Линейный оператор $\varphi \in L(V)$ называется \textit{невырожденным}, если $det \varphi \neq 0$, и \textit{вырожденным} иначе.
+
+\vspace{\baselineskip}
+$\varphi \in L(V)$
+
+\textbf{Определение.} Подпространство $U \subseteq V$ называется \textit{инвариантным относительно $\varphi$ (или $\varphi$-инвариантным)}, если $\varphi(U) \subseteq U$ (т.е. $\forall \ u \in U: \varphi(u) \in U$).
+
+В этой ситуации корректно определен оператор $\varphi |_u : U \rightarrow U, u \rightarrow \varphi(u)$, он называется \textit{ограничением} линейного оператора $\varphi$ на подпространство $U$.
+
+\vspace{\baselineskip}
+Примеры.
+
+1) $\{0\}$ и $V \varphi$-инвариантны $\forall \ \varphi \in L(V)$
+
+2) $Ker \varphi$ $\varphi$-инвариантно, т.к. $\varphi(Ker \varphi) = \{0\} \subseteq Ker \varphi$
+
+3) $Im \varphi$ $\varphi$-инвариантно, т.к. $\varphi (Im \varphi) \subseteq \varphi (V) = Im \varphi$
+
+\subsection{Наблюдения}
+
+1) $U \subseteq V$ -- $\varphi$-инвариантное подпространство, $(e_1, \dots, e_k)$ -- базис $U$, дополним его до базиса $(e_1, \dots, e_n)$ всего $V$, тогда $A(\varphi, e) = \left(
+\begin{array}{c|c}
+  A & B  \\
+  \hline
+  0 & C  \\
+\end{array}
+\right), A \in M_k, B \in Mat_{k \times (n - k)}, C \in M_{n-k} (*)$
+
+При этом:
+
+если $U = Ker \varphi$, то $A = 0$
+
+если $U = Im \varphi$, то $C = 0$
+
+Обратно, если в некотром базисе $(e_1, \dots, e_n) \ A(\varphi, e)$ имеет вид (*), то $<e_1, \dots, e_k>$ -- это $\varphi$-инвариантное подпространство
+
+\vspace{\baselineskip}
+2) Последние $k$ векторов базиса $e$ порождают $\varphi$-инвариантное подпространство $\Leftrightarrow A(\varphi, e) = \left(
+\begin{array}{c|c}
+  A & 0  \\
+  \hline
+  B & C  \\
+\end{array}
+\right), A \in M_{n-k}, B \in Mat_{k \times (n - k)}, C \in M_k$
+
+\vspace{\baselineskip}
+3) $V = U_1 \oplus U_2, U_1 = <e_1, \dots, e_k>, U_2 = <e_{k+1}, \dots, e_n>$
+
+$U_1, U_2$ $\varphi$-инвариантны $\Leftrightarrow A(\varphi, e) = \left(
+\begin{array}{c|c}
+  A & 0  \\
+  \hline
+  0 & B  \\
+\end{array}
+\right), A \in M_k, B \in M_{n-k}$
+

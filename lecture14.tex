@@ -1,0 +1,162 @@
+\section{Лекция 14.12.2017}
+
+$F$ -- поле
+
+$A \in Mat_{m \times n} (F)$
+
+столбцовый ранг: $rkA = rk\{A^{(1)}, \dots, A^{(n)}\}$
+
+строковый ранг: $rkA^T = rk\{A_{(1)}, \dots, A_{(n)}\}$
+
+Было: (\#) $rkA$ и $rkA^T$ не меняются при элеметарных преобразованиях строк и столбцов.
+
+\vspace{\baselineskip}
+\textbf{Предложение.} Если $A$ имеет улучшенный ступенчатый вид, то оба числа $rkA$ и $rkA^T$ равны между собой и равны числу ненулевых строк в $A$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Пусть $r$ -- число ненулевых строк в $A$. Тогда $\{A^{(1)}, \dots, A^{(n)}\} \supseteq \{e_1, e_2, \dots, e_r\}$, кроме того, $A^{(1)}, \dots, A^{(n)} \in <e_1, e_2, \dots, e_r> \Rightarrow <A^{(1)}, \dots, A^{(n)}> = <e_1, e_2, \dots, e_r> \Rightarrow rkA = r$.
+
+\vspace{\baselineskip}
+Докажем, что $rkA^T = r$. Покажем, что $A_{(1)}, \dots, A_{(r)}$ линейно независимы. $\lambda_1 A_{(1)} + \dots + \lambda_r A_{(r)} = 0, \ \lambda_i \in F$. Пусть $1 \leq i_1 \leq \dots \leq i_r \leq n$ -- номера столбцов, содержащих ведущие элементы.
+
+Тогда $\forall k = 1, \dots, r \ i_k$-я компонента левой части (*) равна $\lambda_k \Rightarrow \lambda_k = 0 \Rightarrow A_{(1)}, \dots, A_{(r)}$ линейно независимы $\Rightarrow rkA^T = r \ \lhd$.
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $A \in Mat_{m \times n} (F) \Rightarrow rkA = rkA^T$, причем оба числа равны числу ненулевых строк в ступенчатом виде матрицы $A$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ rkA = rkA^T$ следует из (\#), предыдущего предложения и теоремы о приведении к улучшенному ступенчатому виду. Последнее утверждение следует из того, что при переходе от ступенчатого вида к улучшенному ступенчатому виду число ненулевых строк не меняется.
+
+\vspace{\baselineskip}
+\textbf{Следствие.} $A \in M_n (F) \Rightarrow$
+
+(1) $rkA = n \Leftrightarrow detA \neq 0$
+
+(2) $rkA < n \Leftrightarrow detA = 0$
+
+\vspace{\baselineskip}
+\textbf{Доказательство.} $\rhd$ При элементарных преобразованиях строк ранг не меняется, условия $detA \neq 0$ и $detA = 0$ сохраняются $\Rightarrow$ доказательство сводится к случаю, когда $A$ имеет ступенчатый вид. В этом случае $rkA = n \Leftrightarrow$ нет нулевых строк $\Leftrightarrow detA \neq 0$; $rkA < n \Leftrightarrow$ есть нулевые строки $\Leftrightarrow detA = 0 \ \lhd$.
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Подматрицей матрицы $A$} называется всякая матрица, полученная из $A$ вычеркиванием каких-то строк и/или столбцов.
+
+\vspace{\baselineskip}
+\textbf{Лемма.} $S$ -- подматрица в $A \Rightarrow rkS \leq rkA$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательтво.}} $\rhd$ Если какие-то столбцы в $S$ линейно независимы, то соответствующие столбцы в $A$ и подавно линейно независимы $\lhd$.
+
+\vspace{\baselineskip}
+$A \in Mat_{m \times n} (F)$
+
+\textbf{Определение.} \textit{Минором матрицы $A$} называется определитель всякой квадратной подматрицы в $A$.
+
+\vspace{\baselineskip}
+Примеры. $A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}$
+
+Миноров порядка 1: 6 штук
+
+Миноров порядка 2: 3 штуки
+
+$\begin{vmatrix} 2 & 3 \\ 5 & 6 \end{vmatrix}, \begin{vmatrix} 1 & 3 \\ 4 & 6 \end{vmatrix}, \begin{vmatrix} 1 & 2 \\ 4 & 5 \end{vmatrix}$
+
+\vspace{\baselineskip}
+\textbf{Теорема о ранге матрицы.} 
+
+$A \in Mat_{m \times n} (F) \Rightarrow$ следующие три числа равны:
+
+(1) $rkA$
+
+(2) $rkA^T$
+
+(3) Наибольший порядок ненулевого минора в $А$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ (1) = (2) уже знаем.
+
+Пусть $S$ -- квадратная подматрица в $A$, причем ее $detS \neq 0$.
+
+\vspace{\baselineskip}
+Теперь пусть $rkA = r$. Найдем в $A$ ненулевой минор порядка $r$. По определению $rkA$, в $A$ есть $r$ линейно независимых столбцов $A^{(i_1)}, \dots, A^{(i_r)}$. Пусть $B$ - подматрица в $A$, составленная из этих столбцов. Тогда $rkB = r$. Тогда в $B$ есть $r$ линейно незавсимых строк. Пусть $S$ -- подматрица в $B$, составленная из этих строк.
+
+$S \in M_r(F), rkS = r \Rightarrow detS \neq 0 \Rightarrow$ (3) $\geq$ (1) $\lhd$.
+
+\vspace{\baselineskip}
+\textbf{Замечание.} Ненулевые миноры максимального порядка называют \textit{базисными минорами}.
+
+\vspace{\baselineskip}
+\textbf{Приложения ранга матрицы к СЛУ}
+
+$Ax=b$ (*) $A \in Mat_{m \times n} (F), x \in F^n, b \in F^m$
+
+(A|b) -- расширенная матрица
+
+\vspace{\baselineskip}
+\textbf{Теорема Кронекера-Капелли}
+
+СЛУ (*) совместна $\Leftrightarrow rkA = rk(A|b)$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ При элементарных преобразованиях строк:
+
+- ранг матрицы не меняется
+
+- множество решений СЛУ (*) не меняется
+
+$\Rightarrow$ вопрос сводится к ситуации, когда $(A|b)$ имеет улучшенный ступенчатый вид. В этом случае СЛУ(*) совместна $\Leftrightarrow$ в $(A|b)$ имеет ступенчатый вид. В этом случае СЛУ(*) совместна $\Leftrightarrow$ в $(A|b)$ нет строки вида $(0...0|*) \Leftrightarrow$ в $A$ и $(A|b)$ одно и то же число ненулевых строк $\Leftrightarrow rkA = rk(A|b)$.
+
+\vspace{\baselineskip}
+\textbf{Теорема.} Пусть СЛУ(*) совместна. Тогда она имеет единственное решение $\Leftrightarrow rkA = n$ ($n$ -- число неизвестных). 
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} Все снова сводится к ситуации, когда $(A|b)$ имеет ступенчатой вид. В этом случае СЛУ (*) имеет единственное решение $\Leftrightarrow$ нет свободных неизвестных $\Leftrightarrow$ в $A$ ровно $n$ ненулевых строк $\Leftrightarrow rkA = n \ \lhd$.
+
+\vspace{\baselineskip}
+Пусть теперь $A$-- квадратная матрица порядка $n$.
+
+\vspace{\baselineskip}
+\textbf{Теорема.} СЛУ(*) имеет единственное решение $\Leftrightarrow detA \neq 0$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd (\Leftarrow)$ уже было.
+
+$(\Rightarrow)$ единственное решение $\Rightarrow rkA = n$ по предыдущей теореме $\Rightarrow detA \neq 0 \ \lhd$.
+
+
+\vspace{\baselineskip}
+Пусть теперь СЛУ(*) однородна. $Ax = 0, S \subseteq F^n$ -- множество ее решений
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $dimS = n - rkA$
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd \ (A|0) \rightarrow (B|0)$ (элементарными преобразованиями строк к ступенчатому виду)
+
+\vspace{\baselineskip}
+$r$ -- число ненулевых строк в $B$. Тогда $r = rkA$. В прошлый раз строили базис (ФСР) из $n-r$ векторов $\lhd$.
+
+\vspace{\baselineskip}
+$b_1, \dots, b_p \in F^n$
+
+Пусть $B = (b_1, \dots, b_p) \in Mat_{n \times p}$.
+
+Пусть $a_1, \dots, a_q$ -- ФСР для ОСЛУ $B^T x = 0$.
+
+Пусть $A = (a_1, \dots, a_q) \in Mat_{n \times q}$.
+
+\vspace{\baselineskip}
+\textbf{Предложение.} $<b_1, \dots, b_p> =$ множество решений ОСЛУ $A^T x = 0$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Пусть $S = \{x \in F^n | A^Tx = 0\}$ -- множество решений для $A^Tx = 0$. Из условия следует, что $B^T a_i = 0 \ \forall i = 1, \dots, q \Rightarrow B^T A = 0 \Rightarrow A^T B = 0 \Rightarrow A^T b_j = 0 \ \forall j = 1, \dots, p \Rightarrow b_j \in S \Rightarrow <b_1, \dots, b_p> \subseteq S$.
+
+Пусть $r = rk \{b_1, \dots, b_p\} = dim <b_1, \dots, b_p> = rkB$. Тогда $q = n - r$. Но тогда $q = rkA$. Тогда $dimS = n - rkA = n - q = r$.
+
+Итог: $dim<b_1, \dots, b_p> = dim S \Rightarrow <b_1, \dots, b_p> = S \ \lhd$.
+
+\vspace{\baselineskip}
+\textbf{Следствие.} Всякое подпространство в $F^n$ является множеством решений некоторой ОСЛУ.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Если $S$ -- подпространство в $F^n$, то $\exists b_1, \dots, b_p \in F^n$, такой что $S = <b_1, \dots, b_p>$ (в качестве $b_1, \dots, b_p$ можно взять базис $S$). Осталось применить предложение $\lhd$.
+

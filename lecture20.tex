@@ -1,0 +1,150 @@
+\section{Лекция 15.02.2018}
+
+$V$ -- векторное пространство над $F$, $dimV=n < \infty$
+
+\vspace{\baselineskip}
+\textbf{Определение.} Пусть $\beta: V \times V \rightarrow F$ -- билинейная форма. \textit{Квадратичной формой, ассоциируемой с билинейной формой} $\beta$, называется отображение $Q_\beta : V \rightarrow F$, такое что $Q_\beta(x) = \beta(x, x)$.
+
+\vspace{\baselineskip}
+Пусть $e = (e_1, \dots, e_n)$ -- базис $V$
+
+$x = x_1 e_1 + \dots + x_n e_n \in V$
+
+$Q_\beta(x) = \beta(x, x) = (x_1, \dots, x_n) B \begin{pmatrix} x_1 \\ \vdots \\ x_n \end {pmatrix}$, где $B = B(\beta, e)$. Имеем $Q_\beta(x) = \sum\limits_{i=1}^n \sum\limits_{j=1}^n b_{ij} x_i x_j = \sum\limits_{i=1}^n b_{ii} x_i^2 + \sum\limits_{1 \leq i < j \leq n} (b_{ij} + b_{ji}) x_i x_j$
+
+\vspace{\baselineskip}
+Примеры.
+
+1) $V = F^n$, $x = x_1 y_1 + \dots + x_n y_n$
+
+$Q_\beta(x) = x_1^2 + \dots + x_n^2$
+
+2) $V = F^n$, $\beta(x, y) = 2x_1 y_2$
+
+$B = \begin{pmatrix} 0 & 2 \\ 0 & 0 \end{pmatrix}$
+
+$Q_\beta (x) = 2x_1 x_2$
+
+3) $V = F^n$, $\beta(x, y) = x_1 y_2 + x_2 y_1$
+
+$B = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$
+
+$Q_\beta(x) = 2x_1 x_2$
+
+\vspace{\baselineskip}
+\textbf{Теорема.} Пусть в поле $F$ выполнено условие $1+1 \neq 0$ (т.е. $2 \neq 0$). Тогда отображение $\beta \rightarrow Q_\beta$ является биекцией между множеством симметричных билинейных форм на $V$ и множеством квадратичных форм на $V$.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство.}} $\rhd$ Сюръективность. Пусть $Q: V \rightarrow F$ -- квадратичная форма, $Q = Q_\beta$ для некоторой билинейной формы $\beta$. Положим $\sigma(x, y) = \frac{1}{2} (\beta(x,y) + \beta(y,x))$. Тогда $\sigma(x,y)$ -- это симметричная билинейная форма, причем $Q_\sigma (x) = \sigma(x, x) = \beta(x, x) = Q(x)$.
+
+Инъективность. Пусть $Q:V \rightarrow F$ -- квадратичная форма, $Q = Q_\beta$ для симметричной билинейной формы.
+
+$Q(x+y) = \beta(x+y, x+y) = \beta(x,x) + \beta(x,y) + \beta(y,x) + \beta(y,y) = Q(x) + Q(y) + 2\beta(x, y) \Rightarrow \beta(x,y) = \frac{1}{2} \left[ Q(x+y) - Q(x) - Q(y) \right] \Rightarrow \beta$ однозначно определяется по $Q \ \lhd$.
+
+\vspace{\baselineskip}
+\textbf{Замечание.} 1) Билинейная форма $\sigma(x,y) = \frac{1}{2} (\beta(x,y) + \beta(y,x))$ называется \textit{симметризацией билинейной формы} $\beta$. Если $B$ и $S$ -- матрицы билинейной формы $\beta$ и $\sigma$ в каком-либо базисе, то $S = \frac{1}{2} (B + B^T)$.
+
+2) Симметричная билинейная форма $\beta(x,y) = \frac{1}{2} \left[ Q(x+y) - Q(x) - Q(y) \right]$ называется \textit{поляризацией квадратичной формы} $Q$. 
+
+\vspace{\baselineskip}
+Далее считаем, что $1+1 \neq 0$ в поле $F$.
+
+\vspace{\baselineskip}
+\textbf{Определение.} \textit{Матрицей квадратичной формы} $Q$ в базисе $e$ называется матрица соответствующей симметричной билинейной формы.
+
+Обозначение: $B (Q, e)$.
+
+\vspace{\baselineskip}
+Пример. $Q(x_1, x_2) = x_1^2 + x_1 x_2 + x_2^2$
+
+Матрица: $\begin{pmatrix} 1 & 1/2 \\ 1/2 & 1 \end{pmatrix} \Rightarrow (x_1, x_2) \begin{pmatrix} 1 & 1/2 \\ 1/2 & 1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} $
+
+\vspace{\baselineskip}
+\textbf{Определение.} Говорят, что квадратичная форма $Q$ \textit{имеет в базисе $e$ канонический вид}, если $B(Q, e) = diag(b_1,\dots, b_n)$, т.е. в координатах $Q(x_1, \dots, x_n) = b_1 x_1^2 + \dots + b_n x_n^2$.
+
+\vspace{\baselineskip}
+\textbf{Теорема 1.} $\forall$ квадратичной формы $Q: V \rightarrow F$ $\exists$ базис,  в котором $Q$ имеет канонический вид.
+
+\vspace{\baselineskip}
+\textbf{\textit{Доказательство (метод Лагранжа).}} $\rhd$ Индукция по $n$: $n=1 \Rightarrow Q(x_1) = b x_1^2$ -- уже канонический вид. Пусть утверждение доказано для $<n$, докажем для $n$. В исходном базисе: $Q(x_1, \dots, x_n) = \sum\limits_{i=1}^n b_{ii} x_i^2 + \sum\limits_{1 \leq i < j \leq n} 2b_{ij} x_i x_j$.
+
+Случай 0: $b_{ij} = 0 \ \forall \ i,j$ -- доказывать нечего
+
+Случай 1: $\exists i : b_{ii} \neq 0$. Перенумеровав переменные, считаем $b_{11} \neq 0$.
+
+$Q(x_1, \dots, x_n) = b_{11} x_1^2 + 2b_{12} x_1 x_2 + \dots + 2b_n x_1 x_n + Q_1(x_2, \dots, x_n) = b_{11}(x_1^2 + 2x_1(\frac{b_{12}}{b_{11}} x_2 + \dots + \frac{b_{1n}}{b_{11}} x_n )) + Q_1(x_2, \dots, x_n) = b_{11} (x_1 + \frac{b{12}}{b_{11}} x_2 + \dots + \frac{b_{1n}}{b_{11}} x_n)^2 - b_{11} (\frac{b_{12}}{b_{11}} x_2 + \dots + \frac{b_{12}}{b_{11}} + \dots + \frac{b_{1n}}{b_{11}} x_n) ^2 + Q_1(x_2, \dots, x_n)$
+
+Делаем замену координат
+
+\[
+ \begin{cases}
+		x'_1 = x_1 + \frac{b_{12}}{b_{11}} x_2 + \dots + \frac{b_{1n}}{b_{11}} x_n \\
+		x'_2 = x_2 \\
+        \vdots \\
+        x'_n = x_n
+	\end{cases} \Leftrightarrow \begin{cases}
+		x_1 = x'_1 - \frac{b_{12}}{b_{11}} x'_2 - \dots - \frac{b_{1n}}{b_{11}} x'_n \\
+		x_2 = x'_2 \\
+        \vdots \\
+        x_n = x'_n
+	\end{cases}
+\]
+
+В новых координатах имеем $Q(x'_1, \dots, x'_n) = b_{11}x_1^2 + Q_2 (x'_2, \dots, x'_n)$. По предложению индукции $Q_2(x'_2, \dots, x'_n)$ можно привести в какноническому виду.
+
+Случай 2: $b_{ii} = 0 \ \forall \ i$, но $i \neq j$, такие что $\exists i, j$, такие что $b_{ij} \neq 0$.
+
+Перенумеровав переменные, будем считать $b_{12} \neq 0$. Делаем замену 
+
+\[
+\begin{cases}
+		x_1 = x'_1 + x'_2 \\
+		x_2 = x'_1 - x'_2 \\
+        x_3 = x'_3 \\
+        \vdots \\
+        x'_n = x_n
+	\end{cases}
+\]
+
+$\Rightarrow$ В новых координатах $Q(x'_1, \dots, x'_n) = b_{12} (x'_1)^2 - b_{12} {x'_2}^2 + Q'_1(x'_1, \dots, x'_n)$, в $Q_1$ нет квадратов $\Rightarrow$ попадаем в случай 1. $\lhd$
+
+\vspace{\baselineskip}
+\textbf{Замечание.} Базис, в котором квадратичная форма имеет канонический вид, а также сам этот вид определены неоднозначно.
+
+\vspace{\baselineskip}
+Пример. $e = (e_1, e_2), B(Q, e) = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$, т.е. $Q(x_1, x_2) = x_1^2 + x_2^2$, $e' = (2e_1, 2e_2), B(Q, e') = \begin{pmatrix} 4 & 0 \\ 0 & 4 \end{pmatrix}$
+
+$Q(x'_1, x'_2) = 4{x'_1}^2 + 4{x'_2}^2$
+
+\vspace{\baselineskip}
+$e = (e_1, \dots, e_n)$ -- базис $V$. Рассмотрим векторы $e'_1, \dots, e'_n$, такие что  
+
+\[
+(*) \begin{cases}
+		e'_1 = e_1 \\
+		e'_2 \in e_2 + <e_1> \\
+        e'_3 \in e_3 + <e_1, e_2> \\
+        \vdots \\
+        e'_n \in e_n + <e_1, \dots, e_{n-1}>
+	\end{cases}
+\]  
+
+$\forall \ k = 1, \dots, n$ имеем $(e'_1, \dots, e'_k) = (e_1, \dots, e_k) C_k$, где $C_k = \begin{pmatrix} 1 & * & * & \dots & * \\ 0 & 1 & * & \dots & * \\ 0 & 0 & 1 & \dots & * \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & 1 \end{pmatrix} \in M_k(F)$
+
+$det C_k \neq 0 \Rightarrow e'_1, \dots, e'_k$ -- линейно независимые $\Rightarrow <e_1, \dots, e_k> = <e'_1, \dots, e'_k>$
+
+В частности, $(e'_1, \dots, e'_n)$ -- базис $V$
+
+$C_k$ -- это левый верхний $k \times k$ блок в $C_n$
+
+\vspace{\baselineskip}
+$Q: V \rightarrow F$ -- квадратичная форма
+
+$B = B(Q, e)$
+
+$B_k = B_k(Q, e)$ -- левый верхний блок $k \times k$ в $B$
+
+$k$-ый угловой минор матрицы $B$: $\delta_k = \delta_k(Q, e) := detB_k$
+
+$\delta_0 := 1$
+
