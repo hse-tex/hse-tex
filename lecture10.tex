@@ -8,20 +8,20 @@
 В частности, $\frac{1}{|z_2|}(\cos(- \varphi_2) + i\sin(- \varphi_2)) = \frac{1}{|z_2|}(\cos \varphi_2 - i \sin \varphi_2) = \frac{\overline{z_2}}{|z_2|^2}$.
 
 \vspace{\baselineskip}
-\textbf{Следствие 2.} Пусть $z = |z|(\cos \varphi + i \sin \varphi)$. Тогда $\forall n \in \mathbb{Z}$
+\textbf{Следствие 2.} Пусть $z = |z|(\cos \varphi + i \sin \varphi)$. Тогда $\forall n \in \ZZ$
 
 \vspace{\baselineskip}
 $z^n = |z|^n (\cos(n \varphi) + i \sin(n \varphi))$ -- формула Муавра
 
 \vspace{\baselineskip}
-\textbf{Замечание.} В комплексном анализе функция $\exp: \mathbb{R} \rightarrow \mathbb{R}, \ x \rightarrow e^x$, доопределяется до функции $\exp: \mathbb{C} \rightarrow \mathbb{C}, \ z \rightarrow e^z$ с сохранением всех привычных свойств. Доказывается $e^{i \varphi} = \cos \varphi + i \sin \varphi \ \forall \ \varphi \in \mathbb{C}$ -- формула Эйлера. Тогда $\forall \ z \in \mathbb{C}$ представляется в виде $z = |z| e^{i \varphi}$, где $\varphi \in Arg(z)$ -- показательная форма.
+\textbf{Замечание.} В комплексном анализе функция $\exp: \RR \rightarrow \RR, \ x \rightarrow e^x$, доопределяется до функции $\exp: \CC \rightarrow \CC, \ z \rightarrow e^z$ с сохранением всех привычных свойств. Доказывается $e^{i \varphi} = \cos \varphi + i \sin \varphi \ \forall \ \varphi \in \CC$ -- формула Эйлера. Тогда $\forall \ z \in \CC$ представляется в виде $z = |z| e^{i \varphi}$, где $\varphi \in Arg(z)$ -- показательная форма.
 
 \vspace{\baselineskip}
-Пусть $z \in \mathbb{C}, n \geq 2$.
+Пусть $z \in \CC, n \geq 2$.
 
-\textbf{Определение.} \textit{Корнем степени n (или корнем n-й степени) из числа} $z$ называется всякое число $w \in \mathbb{C}$, что $w^n = z$.
+\textbf{Определение.} \textit{Корнем степени n (или корнем n-й степени) из числа} $z$ называется всякое число $w \in \CC$, что $w^n = z$.
 
-Положим $\sqrt[n]{z} := \{w \in \mathbb{C} \ | \ w^n = z \}$.
+Положим $\sqrt[n]{z} := \{w \in \CC \ | \ w^n = z \}$.
 
 \vspace{\baselineskip}
 Опишем множество $\sqrt[n]{z}$.
@@ -41,19 +41,19 @@ $z = w^n = |w|^n (\cos (n \psi) + i \sin (n \psi))$
 	\left\{
 		\begin{aligned}
 			|z| = |w|^n  \\
-			n \psi = \varphi + 2 \pi k, k \in \mathbb{Z} 
+			n \psi = \varphi + 2 \pi k, k \in \ZZ 
 		\end{aligned}
 	\right. \Leftrightarrow \left\{
 		\begin{aligned}
 			|w| = \sqrt[n]{|z|}  \\
-			\psi = \frac{\varphi + 2 \pi k}{n}, k \in \mathbb{Z}
+			\psi = \frac{\varphi + 2 \pi k}{n}, k \in \ZZ
 		\end{aligned}
 	\right.
 \end{equation*}
 
 $\frac{\varphi + 2 \pi k}{n} = \frac{\varphi}{n} + \frac{2 \pi}{n} k$
 
-С точностью до $2 \pi l, \ l \in \mathbb{Z}$, получается ровно $n$ различных значений для $\psi$, при $k = 0,1, \dots, n-1$.
+С точностью до $2 \pi l, \ l \in \ZZ$, получается ровно $n$ различных значений для $\psi$, при $k = 0,1, \dots, n-1$.
 
 В результате $\sqrt[n]{z} = \{w_0, w_1, \dots, w_{n-1} \}$, где при $k = 0, 1, \dots, n-1$ 
 
@@ -85,7 +85,7 @@ $\sqrt[n]{z} = \{$ корни многочлена $x^n - z \}$.
 \textbf{Основная теорема алгебры комплексных чисел}. Всякий многочлен степени $\geq 1$ с комплексными коэффициентами имеет комплексный корень.
 
 \vspace{\baselineskip}
-\textbf{Замечание.} Свойство поля $\mathbb{C}$, сформулированное в теореме, называется \textit{алгебраической замкнутостью}.
+\textbf{Замечание.} Свойство поля $\CC$, сформулированное в теореме, называется \textit{алгебраической замкнутостью}.
 
 \subsection{Отступление про многочлены}
 
@@ -142,12 +142,12 @@ $deg r(x) < deg (x - c) = 1 \Rightarrow r(x) = r = const \in F$
 \textbf{Следствие.} Если $c$ -- корень многочлена $f(x)$, то $f(x) \vdots x - c$.
 
 \vspace{\baselineskip}
-\textbf{Определение.} \textit{Кратностью корня $c$ многочлена $f(x)$} называется наибольшее $k \in \mathbb{Z}$, такое что $f(x) \vdots (x - c)^k$.
+\textbf{Определение.} \textit{Кратностью корня $c$ многочлена $f(x)$} называется наибольшее $k \in \ZZ$, такое что $f(x) \vdots (x - c)^k$.
 
 $f(x) = (x - c)^k h(x), \ h(c) \neq 0$.
 
 \vspace{\baselineskip}
-\textbf{Следствие основной теоремы алгебры комплексных чисел.} $\forall f(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 \in \mathbb{C}[x], deg f(x) = n$, имеется разложение $f(x) = a_n (x - c_1)^k_1
+\textbf{Следствие основной теоремы алгебры комплексных чисел.} $\forall f(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 \in \CC[x], deg f(x) = n$, имеется разложение $f(x) = a_n (x - c_1)^k_1
 \dots (x - c_s)^k_s$, ($c_1, \dots, c_s$ -- корни, $k_1, \dots, k_s$ -- их кратности, $k_1 + \dots + k_n = n$).
 
 \vspace{\baselineskip}
@@ -160,9 +160,9 @@ $f(x) = (x - c)^k h(x), \ h(c) \neq 0$.
 
 \textit{Шаг.} Пусть верно для $<n$, докажем для $n$.
 
-Основная теорема алгебры комплексных чисел $\Rightarrow \exists c \in \mathbb{C}$, такое что $f(c) = 0$.
+Основная теорема алгебры комплексных чисел $\Rightarrow \exists c \in \CC$, такое что $f(c) = 0$.
 
-Следствие из теоремы Безу $\Rightarrow f(x) \vdots x - c \Rightarrow \exists h(x) \in \mathbb{C}[x]$, такой что $f(x) = (x-c)h(x)$. $degh(x) = n-1 < n$.
+Следствие из теоремы Безу $\Rightarrow f(x) \vdots x - c \Rightarrow \exists h(x) \in \CC[x]$, такой что $f(x) = (x-c)h(x)$. $degh(x) = n-1 < n$.
 
 Остается применить предположение индукции к $h(x) \ \lhd$.
 

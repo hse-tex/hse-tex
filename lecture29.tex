@@ -68,7 +68,7 @@ $\forall i = 1, \dots, s$ выберем в $V_{\lambda_i} (\varphi)$ базис
 \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & M_i \end{pmatrix}$ -- Жорданова клетка порядка $m_i$ с собственным значением $M_i$
 
 \vspace{\baselineskip}
-\textbf{Следствие.} Если $F = \mathbb{C}$, то $\forall \ \varphi \in L(V)$ можно привести к жордановой нормальной форме.
+\textbf{Следствие.} Если $F = \CC$, то $\forall \ \varphi \in L(V)$ можно привести к жордановой нормальной форме.
 
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}} Условие 1) выполняется по основной теореме алгебры комплексных чисел.
@@ -80,7 +80,7 @@ $\forall i = 1, \dots, s$ выберем в $V_{\lambda_i} (\varphi)$ базис
 
 $Spec(\varphi) = \{\lambda\}$, алгебраическая кратность $\lambda$ = геометрической кратности $\lambda$ = $n$
 
-2) $\varphi: \mathbb{R}^2 \rightarrow \mathbb{R}^2$ -- ортогональная проекция на прямую $l \rightarrow 0$
+2) $\varphi: \RR^2 \rightarrow \RR^2$ -- ортогональная проекция на прямую $l \rightarrow 0$
 
 $e_1 \in l \setminus \{0\}, e_2 \in l^{\bot} \setminus \{0\}, e = (e_1, e_2) \Rightarrow A(\varphi, e) = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$
 
@@ -88,13 +88,13 @@ $\chi_{\varphi} (t) = t (t - 1)$
 
 $Spec(\varphi) = \{0, 1\}, \lambda \in \{0, 1\} \Rightarrow$ алгебраическая кратность = геометрической кратности = 1
 
-3) $\varphi: \mathbb{R}^2 \rightarrow \mathbb{R}^2$ -- поворот на угол $\alpha \neq \pi k$
+3) $\varphi: \RR^2 \rightarrow \RR^2$ -- поворот на угол $\alpha \neq \pi k$
 
 $e = (e_1, e_2)$ -- положительно ориентированный ортогональный базис $\Rightarrow A(\varphi, e) = \begin{pmatrix} \cos \alpha & \ - \sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}$
 
 $\chi_{\varphi} (t) = \begin{vmatrix} \cos \alpha - t & \ -\sin \alpha \\ \sin \alpha & \cos \alpha - t \end{vmatrix} = t^2 - 2 \cos \alpha t + 1$
 
-$D/4 = \cos^2 \alpha - 1 = -\sin^2 \alpha < 0 \Rightarrow$ нет корней в $\mathbb{R} \Rightarrow 1)$ не выполняется $\Rightarrow \varphi$ не (над $\mathbb{C} \varphi$ диагонализуем) 
+$D/4 = \cos^2 \alpha - 1 = -\sin^2 \alpha < 0 \Rightarrow$ нет корней в $\RR \Rightarrow 1)$ не выполняется $\Rightarrow \varphi$ не (над $\CC \varphi$ диагонализуем) 
 
 4) $V = F[x]_{\leq n}, \ \varphi: f \rightarrow f'$
 
@@ -110,12 +110,12 @@ $Spec (\varphi) = \{0\}$, алгебраическая кратность = $n +
 $f = (1, x, \frac{x^2}{2}, \dots, \frac{x^n}{n!}) \Rightarrow A(\varphi, f) = \begin{pmatrix} 0 & 1 & 0 & \dots & 0 \\ 0 & 0 & 1 & \dots & 0 \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & 1 \\ 0 & 0 & 0 & \dots & 0 \end{pmatrix} = J_0^{n+1}$
 
 \vspace{\baselineskip}
-\textbf{Предложение.} $F = \mathbb{R} \Rightarrow \ \forall \ \varphi \in L(V)$, $\exists$ либо одномерное, либо двумерное $\varphi$-инвариантное подпространство
+\textbf{Предложение.} $F = \RR \Rightarrow \ \forall \ \varphi \in L(V)$, $\exists$ либо одномерное, либо двумерное $\varphi$-инвариантное подпространство
 
 \vspace{\baselineskip}
-\textbf{\textit{Доказательство.}} $\rhd$ Если $\chi_{\varphi} (t)$ имеет действительный корень, то тогда у $\varphi$ есть собственный вектор $\Rightarrow$ есть 1-мерное инвариантное подпространство. Пусть $\chi_{\varphi} (t)$ не имеет корней в $\mathbb{R}$, возьмем какой-нибудь комплексный корень $\lambda + i \mu$, где $\lambda, \mu \in \mathbb{R}, \mu \neq 0$. Фиксируем базис $e = (e_1, \dots, e_n)$ в $V$, пусть $A = A(\varphi, e)$. 
+\textbf{\textit{Доказательство.}} $\rhd$ Если $\chi_{\varphi} (t)$ имеет действительный корень, то тогда у $\varphi$ есть собственный вектор $\Rightarrow$ есть 1-мерное инвариантное подпространство. Пусть $\chi_{\varphi} (t)$ не имеет корней в $\RR$, возьмем какой-нибудь комплексный корень $\lambda + i \mu$, где $\lambda, \mu \in \RR, \mu \neq 0$. Фиксируем базис $e = (e_1, \dots, e_n)$ в $V$, пусть $A = A(\varphi, e)$. 
 
-Тогда для $A$ над $C$ $\exists$ собственный вектор с собстсвенным значением $\lambda + i \mu$. То есть $\exists \ u, v \in \mathbb{R}^n, u + i v \neq 0$, такой что $A \cdot (u + iv) = (\lambda + i \mu) (u + iv) = (\lambda u - \mu v) + i (\lambda v + \mu u) \Rightarrow \begin{cases}
+Тогда для $A$ над $C$ $\exists$ собственный вектор с собстсвенным значением $\lambda + i \mu$. То есть $\exists \ u, v \in \RR^n, u + i v \neq 0$, такой что $A \cdot (u + iv) = (\lambda + i \mu) (u + iv) = (\lambda u - \mu v) + i (\lambda v + \mu u) \Rightarrow \begin{cases}
         Au = \lambda u - \mu v \\
         Av = \lambda v + \mu u
 \end{cases} \Rightarrow A <u, v> \subseteq <u, v> \Rightarrow$ векторы с коэффициентами $u, v$ порождают $\varphi$-инвариантное подпространство размерности $\leq 2 \ \lhd$
@@ -148,7 +148,7 @@ $(\varphi(x), y)' = \left(A_{\varphi} \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{
 
 $(x, \psi(y)) = (x_1, \dots, x_n) G A_{\psi} \begin{pmatrix} y_1 \\ \vdots \\ y_m \end{pmatrix}$
 
-$\forall \ B \in Mat_{n \times m} (\mathbb{R}):$
+$\forall \ B \in Mat_{n \times m} (\RR):$
 
 $b_{ij} = (0 \dots 01^i0 \dots 0) B \begin{pmatrix} 0 \\ \vdots \\ 0 \\ 1_j \\ 0 \\ \vdots \\ 0 \end{pmatrix}$
 

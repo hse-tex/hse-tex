@@ -21,7 +21,7 @@ $a_{ij}$ -- элемент на пересечении i-ой строки и j-
 Краткая запись: $A = (a_{ij})$.
 
 \vspace{\baselineskip}
-\textit{Множество всех матриц размера} $m \times n$ (с коэффициентами из $\mathbb{R}$) обозначается $Mat_{m\times n}(\mathbb{R})$. 
+\textit{Множество всех матриц размера} $m \times n$ (с коэффициентами из $\RR$) обозначается $Mat_{m\times n}(\RR)$. 
 
 \vspace{\baselineskip}
 \textbf{Определение.} Матрицы $A \in Mat_{m\times n}$ и $B \in Mat_{k\times l}$ называются равными, если:
@@ -45,7 +45,7 @@ $a_{ij}$ -- элемент на пересечении i-ой строки и j-
 \end{pmatrix} \in Mat_{m\times n}
 \end{equation*}
 
-\textbf{Умножение на скаляр.} $A \in Mat_{m\times n}, \lambda \in \mathbb{R} \Rightarrow$
+\textbf{Умножение на скаляр.} $A \in Mat_{m\times n}, \lambda \in \RR \Rightarrow$
 \begin{equation*} \lambda A = (\lambda a_{ij}) = 
 \begin{pmatrix}
 		\lambda a_{11} & \lambda a_{12} & \cdots & \lambda a_{1n} \\
@@ -58,7 +58,7 @@ $a_{ij}$ -- элемент на пересечении i-ой строки и j-
 \vspace{\baselineskip}
 \textbf{Свойства сложения и умножения на скаляр}
 
-$\forall A, B, C \in Mat_{m\times n}$ и $\forall \lambda, \mu \in \mathbb{R}$
+$\forall A, B, C \in Mat_{m\times n}$ и $\forall \lambda, \mu \in \RR$
 
 1) $A + B = B + A$ (коммутативность)
 
@@ -104,20 +104,20 @@ $X_1, X_2, \dots, X_n$ -- множества.
 
 $X_1 \times X_2 \times \dots \times X_n := \{(x_1, x_2, \dots, x_n) \ | \ x_i \in X_i\}$
 
-Пространство $\mathbb{R}^n$ -- это $\mathbb{R} \times \mathbb{R} \times \cdots \times \mathbb{R}$ (n штук).
+Пространство $\RR^n$ -- это $\RR \times \RR \times \cdots \times \RR$ (n штук).
 
-$\mathbb{R}^n = \{ (x_1, x_2, \dots, x_n) \ | \ x_i \in \mathbb{R} \  \forall i = 1, 2, \dots, n \}$
+$\RR^n = \{ (x_1, x_2, \dots, x_n) \ | \ x_i \in \RR \  \forall i = 1, 2, \dots, n \}$
 
 \vspace{\baselineskip}
-Договоримся элементы из $\mathbb{R}^n$ записывать в виде столбцов (не строк):
+Договоримся элементы из $\RR^n$ записывать в виде столбцов (не строк):
 
-\begin{equation*} \mathbb{R}^n = \left\{ \begin{pmatrix}
+\begin{equation*} \RR^n = \left\{ \begin{pmatrix}
     x_1 \\
     x_2 \\
     x_3 \\
     \cdots \\
     x_n
-	\end{pmatrix} | \ x_i \in \mathbb{R} \ \forall i = 1, 2, \dots , n \right\} = Mat_{n \times 1}
+	\end{pmatrix} | \ x_i \in \RR \ \forall i = 1, 2, \dots , n \right\} = Mat_{n \times 1}
 \end{equation*}
 
 \begin{equation*}x = \begin{pmatrix}
@@ -125,12 +125,12 @@ x_1 \\
 x_2 \\
 \cdots \\
 x_n
-\end{pmatrix} \in \mathbb{R}^n, \ y = \begin{pmatrix}
+\end{pmatrix} \in \RR^n, \ y = \begin{pmatrix}
 y_1 \\
 y_2 \\
 \cdots \\
 y_n
-\end{pmatrix} \in \mathbb{R}^n \end{equation*}
+\end{pmatrix} \in \RR^n \end{equation*}
 \begin{equation*}x+y:= \begin{pmatrix}
 x_1 + y_1 \\
 x_2 + y_2 \\
@@ -139,7 +139,7 @@ x_n + y_n
 \end{pmatrix}
 \end{equation*}
 
-\begin{equation*}\lambda \in \mathbb{R} \Rightarrow \lambda x := \begin{pmatrix}
+\begin{equation*}\lambda \in \RR \Rightarrow \lambda x := \begin{pmatrix}
 \lambda x_1 \\
 \lambda x_2 \\
 \cdots \\
@@ -254,7 +254,7 @@ x_n y_1 & x_n y_2 & \dots & x_n y_n
 СЛУ с расширенной матрицей (A | b), $A \in Mat_{m \times n}
 \Rightarrow$ \textit{матричная форма записи}:
 
-Ax = b, где А -- матрица коэфициентов, $x \in \mathbb{R}^n$ -- столбец неизвестных, $b \in \mathbb{R}^m$ -- столбец правых частей.
+Ax = b, где А -- матрица коэфициентов, $x \in \RR^n$ -- столбец неизвестных, $b \in \RR^m$ -- столбец правых частей.
 
 \vspace{\baselineskip}
 \subsection{Отступление} 

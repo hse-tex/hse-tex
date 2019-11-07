@@ -1,8 +1,8 @@
 \section{Лекция 22.02.2017}
 
-$V$ -- векторное пространство над $\mathbb{R}$, $dimV = n < \infty$
+$V$ -- векторное пространство над $\RR$, $dimV = n < \infty$
 
-$Q: V \rightarrow \mathbb{R}$ -- квадратичная форма
+$Q: V \rightarrow \RR$ -- квадратичная форма
 
 Фиксированный базис $e = (e_1, \dots, e_n)$ в $V$
 
@@ -20,7 +20,7 @@ $\delta_k = det B_k$ -- $k$-ый угловой минор матрицы $B$
 
 Метод Якоби $\Rightarrow \exists$ базис, в котором $Q$ записывается в виде $\delta_1 x_1^2 + \frac{\delta_2}{\delta_1} x_2^2 + \dots + \frac{\delta_n}{\delta_{n-1}} x_n^2 \Rightarrow Q > 0$.
 
-$(\Rightarrow) Q > 0 \Rightarrow \exists C \in M_n(\mathbb{R}), detC \neq 0$, такая что $C^T B C = E \Rightarrow det(C^T) det B det C = 1 \Rightarrow \delta_n = det B = \frac{1}{(det C)^2} > 0 \Rightarrow \delta_n > 0 \ \forall k = 1, \dots, n-1$ ограничение квадратичной формы $Q$ на подпространство $<e_1, \dots, e_k>$ тоже положительно определено, матрица этого ограничения в базисе $(e_1, \dots, e_k)$ есть $B_k$.
+$(\Rightarrow) Q > 0 \Rightarrow \exists C \in M_n(\RR), detC \neq 0$, такая что $C^T B C = E \Rightarrow det(C^T) det B det C = 1 \Rightarrow \delta_n = det B = \frac{1}{(det C)^2} > 0 \Rightarrow \delta_n > 0 \ \forall k = 1, \dots, n-1$ ограничение квадратичной формы $Q$ на подпространство $<e_1, \dots, e_k>$ тоже положительно определено, матрица этого ограничения в базисе $(e_1, \dots, e_k)$ есть $B_k$.
 
 Тогда по предыдущему рассуждению получаем $\delta_k = det B_k > 0 \ \lhd$
 
@@ -34,7 +34,7 @@ $(\Rightarrow) Q > 0 \Rightarrow \exists C \in M_n(\mathbb{R}), detC \neq 0$, т
 \vspace{\baselineskip}
 \subsection{Евклидовы пространства}
 
-\textbf{Определение.} \textit{Евклидово пространство} -- это векторное пространство над $\mathbb{R}$, на котором задана симметричная положительно определенная ($\Leftrightarrow (x, x) > 0$) билинейная форма $(\cdot, \cdot)$.
+\textbf{Определение.} \textit{Евклидово пространство} -- это векторное пространство над $\RR$, на котором задана симметричная положительно определенная ($\Leftrightarrow (x, x) > 0$) билинейная форма $(\cdot, \cdot)$.
 
 Билинейная форма $( \cdot, \cdot)$ называется \textit{скалярным произведением}.
 
@@ -47,7 +47,7 @@ $(x, y) = x_1 y_1 + \dots + x_n y_n$
 
 $(x, x) = x_1^2 + \dots + x_n^2 > 0$
 
-2) $Mat_{m \times n} (\mathbb{R})$ со скалярным произведением
+2) $Mat_{m \times n} (\RR)$ со скалярным произведением
 
 $(A, B) := tr (A^T B)$
 
@@ -96,7 +96,7 @@ $v_1, \dots, v_k \in E$
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}} $\rhd$ 1) $v_1, \dots, v_k$ линейно независимые. Тогда $v_1, \dots, v_k$ -- базис в $<v_1, \dots, v_k>$. Рассмотрим $(\cdot, \cdot)|_{<v_1, \dots, v_k>}$ и, применяя критерий Сильвестра, получаем $detG(v_1, \dots, v_k) > 0$.
 
-2) $v_1, \dots, v_k$ линейно зависимы. Пусть $\alpha_1 v_1 + \dots + \alpha_k v_k = 0$, где $\alpha_1, \dots, \alpha_k \in \mathbb{R}^k \setminus \{0\}$. $\forall \ j = 1, \dots, k$ имеем $(\alpha_1 v_1 + \dots + \alpha_k v_k, v_j) = 0 \Rightarrow \alpha_1 (v_1, v_j) + \dots + \alpha_k (v_k, v_j) = 0 \Rightarrow \alpha_1 G_{(1)} + \dots + \alpha_k G_{(k)} = 0$, где $G = G(v_1, \dots, v_k) \Rightarrow detG = 0 \ \lhd$.
+2) $v_1, \dots, v_k$ линейно зависимы. Пусть $\alpha_1 v_1 + \dots + \alpha_k v_k = 0$, где $\alpha_1, \dots, \alpha_k \in \RR^k \setminus \{0\}$. $\forall \ j = 1, \dots, k$ имеем $(\alpha_1 v_1 + \dots + \alpha_k v_k, v_j) = 0 \Rightarrow \alpha_1 (v_1, v_j) + \dots + \alpha_k (v_k, v_j) = 0 \Rightarrow \alpha_1 G_{(1)} + \dots + \alpha_k G_{(k)} = 0$, где $G = G(v_1, \dots, v_k) \Rightarrow detG = 0 \ \lhd$.
 
 \vspace{\baselineskip}
 $E$ -- евклидово пространство
@@ -159,13 +159,13 @@ $y$ называется \textit{ортогональной составляющ
 $v = pr_S v + ort_S v$
 
 \vspace{\baselineskip}
-Пусть $E = \mathbb{R}^n$, со стандартным скалярным произведением
+Пусть $E = \RR^n$, со стандартным скалярным произведением
 
-$U \subseteq \mathbb{R}^n$ -- подпространство
+$U \subseteq \RR^n$ -- подпространство
 
 $(a_1, \dots, a_k)$ -- базис $U$
 
-Образуем матрицу $A = (a_1, \dots, a_k) \in Mat_{n \times k} (\mathbb{R})$
+Образуем матрицу $A = (a_1, \dots, a_k) \in Mat_{n \times k} (\RR)$
 
 \vspace{\baselineskip}
 \textbf{Теорема.} $v \in E \Leftrightarrow pr_U v = A (A^T A)^{-1} A^T v$
@@ -177,7 +177,7 @@ $(a_1, \dots, a_k)$ линейно независимые $\Rightarrow det A^T A
 
 Пусть $v \in E, v = x + y$, где $x = pr_U v, y = ort_U v$
 
-$x \in U \Rightarrow x \in <a_1, \dots, a_k> \Rightarrow x  = A \begin{pmatrix} \alpha_1 \\ \alpha_2 \\ \vdots \\ \alpha_k \end{pmatrix}$, где $\alpha_i \in \mathbb{R}$
+$x \in U \Rightarrow x \in <a_1, \dots, a_k> \Rightarrow x  = A \begin{pmatrix} \alpha_1 \\ \alpha_2 \\ \vdots \\ \alpha_k \end{pmatrix}$, где $\alpha_i \in \RR$
 
 $y \in U^{\bot} \Rightarrow A^T y = 0$
 

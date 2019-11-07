@@ -16,7 +16,7 @@ $x_{ij} = A_{(i)} (B + C)^{(j)} = \sum\limits_{k=1}^n a_{ik} (b_{kj} + c_{kj}) =
 1') $(A + B)C = AC + BC$ (правая дистрибутивность)
 
 \vspace{\baselineskip}
-2) $\lambda \in \mathbb{R} \Rightarrow \lambda(AB) = (\lambda A) B = A(\lambda B)$
+2) $\lambda \in \RR \Rightarrow \lambda(AB) = (\lambda A) B = A(\lambda B)$
 
 \vspace{\baselineskip}
 3) A(BC) = (AB)C (ассоциативность)
@@ -55,7 +55,7 @@ $\Rightarrow AB \neq BA$
 \vspace{\baselineskip}
 \subsection{Приложение к СЛУ}
 
-СЛУ $Ax = b (*), A \in Mat_{m \times n}, x \in \mathbb{R}^n$ -- столбец неизвестных, $b \in \mathbb{R}^m$
+СЛУ $Ax = b (*), A \in Mat_{m \times n}, x \in \RR^n$ -- столбец неизвестных, $b \in \RR^m$
 
 \vspace{\baselineskip}
 Если СЛУ (*) совместна, то ее \textit{частное решение} -- какое-либо одно ее решение.
@@ -63,7 +63,7 @@ $\Rightarrow AB \neq BA$
 \vspace{\baselineskip}
 \textbf{Утверждение.} Пусть $Ax = b$ (*) -- совместная СЛУ, $Ax = \begin{pmatrix} 0 \\ 0 \\ \dots \\ 0 \end{pmatrix}$ (**) -- соответствующая ОСЛУ.
 
-Пусть $L \subseteq  \mathbb{R}^n$ -- множество решений СЛУ(*), $S \subseteq \mathbb{R}^n$ -- частное решение ОСЛУ(**), $x_0 \in L$ -- частное решение СЛУ(*).
+Пусть $L \subseteq  \RR^n$ -- множество решений СЛУ(*), $S \subseteq \RR^n$ -- частное решение ОСЛУ(**), $x_0 \in L$ -- частное решение СЛУ(*).
 
 Тогда $L = x_0 + S$, где $x_0 + S = \{ x_0 + v \ | \ v \in S \}$.
 

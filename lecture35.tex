@@ -19,10 +19,10 @@ $Spec \varphi_i = \{0\}$
 $\varphi_i^{k_i} = 0$
 
 \vspace{\baselineskip}
-\textbf{Определение.} Линейный оператор $\varphi$ называется \textit{нильпотентным}, если $\exists \ m \in \mathbb{N}$, такой что $\varphi^m > 0$.
+\textbf{Определение.} Линейный оператор $\varphi$ называется \textit{нильпотентным}, если $\exists \ m \in \NN$, такой что $\varphi^m > 0$.
 
 \vspace{\baselineskip}
-Пусть $m \in \mathbb{N}$ наименьшее с таким свойством.
+Пусть $m \in \NN$ наименьшее с таким свойством.
 
 $\{0\} = Ker \varphi \subsetneqq Ker \varphi^1 \subsetneqq Ker \varphi^2 \subsetneqq \dots \subsetneqq Ker \varphi^m = V$
 
@@ -111,14 +111,14 @@ $\downarrow$
 
 $\downarrow$
 
-положительно определенная квадратичная форма (над $\mathbb{R}$)
+положительно определенная квадратичная форма (над $\RR$)
 
 $\downarrow$
 
-евклидово пространство (над $\mathbb{R}$)
+евклидово пространство (над $\RR$)
 
 \vspace{\baselineskip}
-\textbf{Определение.} \textit{Полуторалинейная форма (1,5-линейная)} на векторном пространстве $V$ над $\mathbb{C}$ -- это отображение $\beta: V \times V \rightarrow \mathbb{C}$, такое что
+\textbf{Определение.} \textit{Полуторалинейная форма (1,5-линейная)} на векторном пространстве $V$ над $\CC$ -- это отображение $\beta: V \times V \rightarrow \CC$, такое что
 
 1) Полулинейность по первому аргументу
 
@@ -142,7 +142,7 @@ $C^* = \overline{C}^T = (\overline{c_{ji}})$
 \textbf{Определение.} 1,5-линейная форма называется \textit{эрмитовой}, если $\beta(y, x) = \overline{\beta(x, y)}$
 
 \vspace{\baselineskip}
-$\beta(x, x) = \overline{\beta(x, x)} \Rightarrow \beta(x, x) \in \mathbb{R}$
+$\beta(x, x) = \overline{\beta(x, x)} \Rightarrow \beta(x, x) \in \RR$
 
 $Q(x) = \beta(x, x)$ -- эрмитова квадратичная форма
 
@@ -152,7 +152,7 @@ $Q:V \rightarrow R$
 \textbf{Теорема о нормальном виде.} $Q$ -- эрмитова квадратичная форма $\Rightarrow \exists$ базис, такой что $Q(x) = |x_1|^2 + \dots + |x_k|^2 - |x_{k+1}|^2 - \dots - |x_{k + s}|^2$
 
 \vspace{\baselineskip}
-\textbf{Определение.} \textit{Эрмитово пространство} -- это векторное пространство над $\mathbb{C}$, на котором задано скалярное произведение, то есть положительно определенная эрмитова 1,5-линейная форма.
+\textbf{Определение.} \textit{Эрмитово пространство} -- это векторное пространство над $\CC$, на котором задано скалярное произведение, то есть положительно определенная эрмитова 1,5-линейная форма.
 
 \vspace{\baselineskip}
 1,5-линейная форма
@@ -167,11 +167,11 @@ $\downarrow$
 
 $\downarrow$
 
-положительно определенная эрмитова квадратичная форма (над $\mathbb{C}$)
+положительно определенная эрмитова квадратичная форма (над $\CC$)
 
 $\downarrow$
 
-эрмитово пространство (над $\mathbb{C}$)
+эрмитово пространство (над $\CC$)
 
 \vspace{\baselineskip}
 Длина: $|x| = \sqrt[]{(x, x)}$
@@ -203,7 +203,7 @@ $C^{-1} = C^*$
 2) унитарный $(\varphi(x), \varphi(y)) = \varphi(x, y)$
 
 \vspace{\baselineskip}
-\textbf{Теорема.} 1) $\varphi$ -- самосопряженный $\Rightarrow \exists$ ортонормированный базис из собственных векторов; $Spec \varphi \subseteq \mathbb{R}$
+\textbf{Теорема.} 1) $\varphi$ -- самосопряженный $\Rightarrow \exists$ ортонормированный базис из собственных векторов; $Spec \varphi \subseteq \RR$
 
 2) $\varphi$ -- унитарный оператор $\Rightarrow \exists$ ортонормированный базис из собственных векторов
 
@@ -213,9 +213,9 @@ $\lambda \in Spec f \Rightarrow |\lambda| = 1$
 Аналогичное сингулярное разложение
 
 \vspace{\baselineskip}
-$A \in Mat_{m \times n} (\mathbb{C}) \Rightarrow \exists$ унитарная матрица $U \in M_m(\mathbb{C}), V \in M_n (\mathbb{C})$, такие что $A = U \Sigma V^*$
+$A \in Mat_{m \times n} (\CC) \Rightarrow \exists$ унитарная матрица $U \in M_m(\CC), V \in M_n (\CC)$, такие что $A = U \Sigma V^*$
 
-$\Sigma = \begin{pmatrix} \sigma_1 & 0 & 0 & 0 & 0 & 0 & 0 \\  0 & \sigma_2 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & \ddots & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & \sigma_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}, \sigma_i \in \mathbb{R}, \sigma_1 \geqslant \dots \geqslant \sigma_r > 0, \sigma_i$ определено однозначно 
+$\Sigma = \begin{pmatrix} \sigma_1 & 0 & 0 & 0 & 0 & 0 & 0 \\  0 & \sigma_2 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & \ddots & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & \sigma_r & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}, \sigma_i \in \RR, \sigma_1 \geqslant \dots \geqslant \sigma_r > 0, \sigma_i$ определено однозначно 
 
 
 

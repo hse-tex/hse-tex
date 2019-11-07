@@ -1,6 +1,6 @@
 \section{Лекция 31.05.2018}
 
-Аффинная система координат в $\mathbb{R}^n$ определяется репЕром $(p, a_1, \dots, a_n)$, где $p \in \mathbb{R}^n$ -- точка, $(e_1, \dots, e_n)$ -- базис $\mathbb{R}^n$ (как векторного пространства).
+Аффинная система координат в $\RR^n$ определяется репЕром $(p, a_1, \dots, a_n)$, где $p \in \RR^n$ -- точка, $(e_1, \dots, e_n)$ -- базис $\RR^n$ (как векторного пространства).
 
 \vspace{\baselineskip}
 Любая точка $x$ определяется однозначно своими координатами $(x_1, \dots, x_n)$ в этой аффинной системе координат (= в этом репере).
@@ -10,7 +10,7 @@ $x = p + x_1 e_1 + \dots + x_n e_n$
 \vspace{\baselineskip}
 Пусть теперь $(p', e'_1, \dots, e'_n)$ -- другой репер
 
-$(e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C, C \in M_n (\mathbb{R})$ -- матрицы перехода
+$(e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C, C \in M_n (\RR)$ -- матрицы перехода
 
 $p' = p + \alpha_1 e_1 + \dots + \alpha_n e_n$
 
@@ -32,9 +32,9 @@ $x = p' + (e'_1, \dots, e'_n) \begin{pmatrix} x'_1 \\ \vdots \\ x'_n \end{pmatri
 \vspace{\baselineskip}
 \textbf{Замечание.} Если есть ПДСК с репером $(p, e_1, \dots, e_n)$ и другая аффинная система координат с репером $(p', e'_1, \dots, e'_n)$, то вторая аффинная система координат будет ПДСК $\Leftrightarrow C$ ортогональная, где $(e'_1, \dots, e_n) = (e_1, \dots, e_n) C$
 
-\subsection{Метрическая классификация гиперповерхностей второго порядка в $\mathbb{R}^n$}
+\subsection{Метрическая классификация гиперповерхностей второго порядка в $\RR^n$}
 
-\textbf{Определение.} Множество $X \subseteq \mathbb{R}^n$ называется \textit{квадрикой (или гиперповерхностью второго порядка)}, если в какой-либо аффинной системе координат она задается уравнением \begin{equation*}\overbrace{\sum\limits_{i=1}^n a_{ii} x_i^2 + \sum\limits_{1 \leqslant i < j \leqslant n} 2 a_{ij} x_i x_j}^{Q(x) \ квадратичная \ форма} + \overbrace{\sum\limits_{i=1} b_i x_i}^{l(x) \ линейная \ форма} + c = 0 (*)\end{equation*}
+\textbf{Определение.} Множество $X \subseteq \RR^n$ называется \textit{квадрикой (или гиперповерхностью второго порядка)}, если в какой-либо аффинной системе координат она задается уравнением \begin{equation*}\overbrace{\sum\limits_{i=1}^n a_{ii} x_i^2 + \sum\limits_{1 \leqslant i < j \leqslant n} 2 a_{ij} x_i x_j}^{Q(x) \ квадратичная \ форма} + \overbrace{\sum\limits_{i=1} b_i x_i}^{l(x) \ линейная \ форма} + c = 0 (*)\end{equation*}
 
 \vspace{\baselineskip}
 \textbf{Замечание.} $n = 2 \Rightarrow$ "коники" \ (от слова конус) или "кривые второго порядка"
@@ -45,7 +45,7 @@ $n = 3 \Rightarrow$ "поверхности второго порядка"
 \textbf{Основная задача:} Найти новую ПДСК, в которой уравнение $(*)$ имеет простой вид.
 
 \vspace{\baselineskip}
-\textbf{Теорема.} $\forall$ гиперповерхности второго порядка в $\mathbb{R}^n \ \exists$ ПДСК, в которой уравнение $(*)$ имеет один из следующих видов:
+\textbf{Теорема.} $\forall$ гиперповерхности второго порядка в $\RR^n \ \exists$ ПДСК, в которой уравнение $(*)$ имеет один из следующих видов:
 
 \vspace{\baselineskip}
 \RomanNumeralCaps{1} (невырожденный случай)
@@ -83,7 +83,7 @@ x''_n = \ \ \  \ \ \ \ \ \ \ базиса
 
 В результате получаем \RomanNumeralCaps{2}б $\lhd$
 
-\subsection{Канонические виды кривых второго порядка в $\mathbb{R}^2$}
+\subsection{Канонические виды кривых второго порядка в $\RR^2$}
 
 1) $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1, a\geqslant b > 0$ -- эллипс
 
@@ -116,7 +116,7 @@ x''_n = \ \ \  \ \ \ \ \ \ \ базиса
 
 \includegraphics[width=19cm,height=15cm,keepaspectratio]{example2.jpg}
 
-\subsection{Канонические виды поверхностей второго порядка в $\mathbb{R}^3$}
+\subsection{Канонические виды поверхностей второго порядка в $\RR^3$}
 
 1) $\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1, a \geqslant b \geqslant c > 0$ -- эллипсоид
 

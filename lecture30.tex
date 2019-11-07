@@ -41,10 +41,10 @@ $\forall x \in U^{\bot}, y \in U: (\varphi(x), y) = (x, \varphi^* (y)) = (\overb
 $\chi_{\psi} (t) = (-1)^2 \begin{vmatrix}
 a- t & b \\ b & c - t \end{vmatrix} = t^2 - (a + c) t + ac - b^2$
 
-$D = (a+c)^2 - 4 (ac - b^2) = (a-c)^2 +4b^2 \geq 0 \Rightarrow \chi_{\psi} (t)$ имеет корни в $\mathbb{R} \Rightarrow \psi$ имеет собственный вектор $\Rightarrow \varphi$ имеет собственный вектор $\lhd$
+$D = (a+c)^2 - 4 (ac - b^2) = (a-c)^2 +4b^2 \geq 0 \Rightarrow \chi_{\psi} (t)$ имеет корни в $\RR \Rightarrow \psi$ имеет собственный вектор $\Rightarrow \varphi$ имеет собственный вектор $\lhd$
 
 \vspace{\baselineskip}
-\textbf{Теорема.} $\varphi = \varphi^* \Rightarrow \exists$ ортонормированный базис, состоящий из собственных векторов для $\varphi$. В частности, $\varphi$ диагонализуем над $\mathbb{R}$, $\chi_{\varphi} (t)$ разлагается на линейные множители над $\mathbb{R}$.
+\textbf{Теорема.} $\varphi = \varphi^* \Rightarrow \exists$ ортонормированный базис, состоящий из собственных векторов для $\varphi$. В частности, $\varphi$ диагонализуем над $\RR$, $\chi_{\varphi} (t)$ разлагается на линейные множители над $\RR$.
 
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}} Индукция по $n = dim E$.
@@ -85,7 +85,7 @@ $\lambda(x, y) = (\lambda x, y) = (\varphi(x), y) = (x, \varphi(y)) = (x, \mu y)
 Т.к. $\lambda \neq \mu$, то $(x, y) = 0 \ \lhd$
 
 \vspace{\baselineskip}
-\textbf{Теорема (приведение квадратичной формы к главным осям).} $Q: E \rightarrow \mathbb{R}$ -- квадратичная форма $\Rightarrow \exists$ ортономированный базис $e = (e_1, \dots, e_n)$, в котором $Q$ принимает канонический вид $Q(x) = \lambda_1 x_1^2 + \dots + \lambda_n x_n^2$, причем числа $\lambda_1, \dots, \lambda_n$ определены однозначно с точностью до перестановки. \textit{Главные оси} -- это $\mathbb{R} e_1, \dots, \mathbb{R} e_n$.
+\textbf{Теорема (приведение квадратичной формы к главным осям).} $Q: E \rightarrow \RR$ -- квадратичная форма $\Rightarrow \exists$ ортономированный базис $e = (e_1, \dots, e_n)$, в котором $Q$ принимает канонический вид $Q(x) = \lambda_1 x_1^2 + \dots + \lambda_n x_n^2$, причем числа $\lambda_1, \dots, \lambda_n$ определены однозначно с точностью до перестановки. \textit{Главные оси} -- это $\RR e_1, \dots, \RR e_n$.
 
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}} $\rhd$ Пусть $f = (f_1, \dots, f_n)$ -- какой-то ортонормированный базис, $B = B(Q, f)$.
@@ -110,7 +110,7 @@ x_1 \\ \vdots \\ x_n \end{pmatrix} = \lambda_1 x_1^2 + \dots + \lambda_n x_n^2$
 В свою очередь, $\varphi$ однозначно определяется из условия (*) $\lhd$
 
 \vspace{\baselineskip}
-\textbf{Следствие.} $A \in M_n(\mathbb{R}), A = A^T \Rightarrow \exists$ ортогональная матрица $C \in M_n$, такая что $C^{-1} A C = C^T A C = diag(\lambda_1, \dots, \lambda_n)$, причем $\lambda_1, \dots, \lambda_n$ -- это в точности собственные значения матрицы $A$.
+\textbf{Следствие.} $A \in M_n(\RR), A = A^T \Rightarrow \exists$ ортогональная матрица $C \in M_n$, такая что $C^{-1} A C = C^T A C = diag(\lambda_1, \dots, \lambda_n)$, причем $\lambda_1, \dots, \lambda_n$ -- это в точности собственные значения матрицы $A$.
 
 \vspace{\baselineskip}
 \textbf{Определение.} Линейный оператор называется \textit{ортогональным}, если $\forall \ x, y \in E: (\varphi(x), \varphi(y)) = (x, y)$ (т.е. $\varphi$ сохраняет скалярное произведение)

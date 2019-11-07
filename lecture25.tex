@@ -1,11 +1,11 @@
 \section{Лекция 22.03.2018}
 
-\subsection{Элементы аналитической геометрии в $\mathbb{R}^3$}
+\subsection{Элементы аналитической геометрии в $\RR^3$}
 
-$E =\mathbb{R}^3$ со стандартным скалярным произведением, фиксируем ориентацию 
+$E =\RR^3$ со стандартным скалярным произведением, фиксируем ориентацию 
 
 \vspace{\baselineskip}
-\textbf{Определение.} \textit{Векторным произведением} двух векторов $a, b \in \mathbb{R}^3$ называется вектор $c \in \mathbb{R}^3$, удовлетворяющий следующим условиям:
+\textbf{Определение.} \textit{Векторным произведением} двух векторов $a, b \in \RR^3$ называется вектор $c \in \RR^3$, удовлетворяющий следующим условиям:
 
 1) $c \ \bot <a, b>$
 
@@ -43,7 +43,7 @@ $a_3$ & $e_2$ & $-e_1$ & 0   \\
 \end{tabular}
 
 \vspace{\baselineskip}
-\textbf{Определение.} \textit{Смешанным произведением трех векторов} $a, b, c \in \mathbb{R}^3$ называется число $(a, b, c) := (a, [b, c])$.
+\textbf{Определение.} \textit{Смешанным произведением трех векторов} $a, b, c \in \RR^3$ называется число $(a, b, c) := (a, [b, c])$.
 
 \vspace{\baselineskip}
 \textbf{Теорема.} $(a, b, c) = Vol(a, b, c)$
@@ -109,7 +109,7 @@ $[a, \mu_1 b_1 + \mu_2 b_2] = \mu_1 [a, b_1] + \mu_2 [a, b_2]$
 
 $v = \lambda_1 [a_1, b] + \lambda_2 [a_2, b]$
 
-$\forall x \in \mathbb{R}^3 : \ (x, u) = (x, \lambda_1 a_1 + \lambda_2 a_2, b) = \lambda_1 (a, a_1, b) + \lambda_2 (x, a_2, b) = \lambda_1 (x, [a_1, b]) + \lambda_2 (x, [a_2, b]) = (x, v) \Rightarrow u = v \ (e_1, e_2, e_3$ -- ортонормированный базис $\Rightarrow \ \forall \ y \in \mathbb{R}^3 : \ y = (y_1, e_1) e_1 + (y_2, e_2) e_2 + (y_3, e_3) e_3)$
+$\forall x \in \RR^3 : \ (x, u) = (x, \lambda_1 a_1 + \lambda_2 a_2, b) = \lambda_1 (a, a_1, b) + \lambda_2 (x, a_2, b) = \lambda_1 (x, [a_1, b]) + \lambda_2 (x, [a_2, b]) = (x, v) \Rightarrow u = v \ (e_1, e_2, e_3$ -- ортонормированный базис $\Rightarrow \ \forall \ y \in \RR^3 : \ y = (y_1, e_1) e_1 + (y_2, e_2) e_2 + (y_3, e_3) e_3)$
 
 Аналогично линейность по второму аргументу $\lhd$.
 
@@ -123,7 +123,7 @@ $(a, c)b - (a, b) c = (a, \lambda b)b - (a, b) \lambda b = 0$
 
 2) $b, c$ не пропорциональны
 
-Выберем положительно ориентированный ортонормированный базис в $\mathbb{R}^3$ так, что $e_1 \in <b>, e_2 \in <b, c>$. Тогда $b = \beta e_1, \ c = \gamma_1 e_1 + \gamma_2 e_2, \ a = \alpha_1 e_1 + \alpha_2 e_2 + \alpha_3 e_3$
+Выберем положительно ориентированный ортонормированный базис в $\RR^3$ так, что $e_1 \in <b>, e_2 \in <b, c>$. Тогда $b = \beta e_1, \ c = \gamma_1 e_1 + \gamma_2 e_2, \ a = \alpha_1 e_1 + \alpha_2 e_2 + \alpha_3 e_3$
 
 $[b, c] = \beta \gamma_2 e_3$
 
@@ -135,7 +135,7 @@ $(a, c) b - (a, b) c = (\alpha_1 \gamma_1 + \alpha_2 \gamma_2) \beta e_1 - \alph
 \textbf{Следствие (тождество Якоби).} $[a, [b, c]] + [b, [a, c]] + [c, [a, b]] = 0$
 
 \vspace{\baselineskip}
-\textbf{Предложение.} Пусть $e_1, e_2, e_3$ -- положительно ориентированный ортонормированный базис в $\mathbb{R}^3$
+\textbf{Предложение.} Пусть $e_1, e_2, e_3$ -- положительно ориентированный ортонормированный базис в $\RR^3$
 
 $a = a_1 e_1 + a_2 e_2 + a_3 e_3$
 
@@ -147,14 +147,14 @@ $b = b_1 e_1 + b_2 e_2 + b_3 e_3$
 \textbf{\textit{Доказательство.}} Воспользоваться билинейностью и таблицей значений $[e_i, e_j]$.
 
 \vspace{\baselineskip}
-\textbf{Определение.} \textit{Линейным многообразием} в $\mathbb{R}^n$ называется множество решений совместной СЛУ $Ax = b, \ \varnothing \neq L \subseteq \mathbb{R}^n$
+\textbf{Определение.} \textit{Линейным многообразием} в $\RR^n$ называется множество решений совместной СЛУ $Ax = b, \ \varnothing \neq L \subseteq \RR^n$
 
 \vspace{\baselineskip}
 Было:
 \textbf{Лемма.} $L = x_0 + S$, где $x_0$ -- частное решение (= какое-то одно), $S$ -- пространство решений ОСЛУ $Ax = 0$
 
 \vspace{\baselineskip}
-\textbf{Предложение.} Множество $L \subseteq \mathbb{R}^n$ является линейным многообразием $\Leftrightarrow L = v_0 + S$, где $S \subseteq \mathbb{R}^n$ -- подпространство
+\textbf{Предложение.} Множество $L \subseteq \RR^n$ является линейным многообразием $\Leftrightarrow L = v_0 + S$, где $S \subseteq \RR^n$ -- подпространство
 
 \vspace{\baselineskip}
 \textbf{\textit{Доказательство.}} $\rhd \ (\Rightarrow)$ следует из леммы
@@ -174,7 +174,7 @@ $v \in S_1 \Rightarrow v_1 + v \in v_2 + S_2 \Rightarrow v \in (v_2 - v_1) + S_2
 Аналогично $S_2 \subseteq S_1 \Rightarrow S_1 = S_2 (=S) \Rightarrow v_1 - v_2 \in S \ \lhd$
 
 \vspace{\baselineskip}
-$L = v_0 + S$ -- линейное многообразие $\Rightarrow S$ однозначно определяет пространство в $\mathbb{R}^n$
+$L = v_0 + S$ -- линейное многообразие $\Rightarrow S$ однозначно определяет пространство в $\RR^n$
 
 \vspace{\baselineskip}
 \textbf{Определение.} $S$ называется \textit{направляющим подпространством} линейного многообразия $L$.

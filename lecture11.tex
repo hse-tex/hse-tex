@@ -3,7 +3,7 @@
 \subsection{Векторное пространство}
 
 \vspace{\baselineskip}
-Пусть $F$ -- поле (например, $F = \mathbb{R}$ или $F = \mathbb{C}$).
+Пусть $F$ -- поле (например, $F = \RR$ или $F = \CC$).
 
 \vspace{\baselineskip}
 \textbf{Определение.} Множество $V$ называется \textit{векторным (линейным) пространством над полем $F$}, если на $V$ заданы две операции: "сложение" ($V \times V \rightarrow V$, $(a,b) \rightarrow a+b$) и "умножение на скаляр" ($F \times V \rightarrow V$, $(\alpha, X) \rightarrow \alpha x$), причем $\forall \ x, y, z \in V$ и $\alpha, \beta \in F$ выполнены следующие свойства (называемые \textit{аксиомами векторного пространства}):
@@ -32,13 +32,13 @@ $\uparrow$ абелева группа $\uparrow$
 \vspace{\baselineskip}
 Примеры. 
 
-1) $\mathbb{R}$ над $\mathbb{R}$ (или $F$ над $F$)
+1) $\RR$ над $\RR$ (или $F$ над $F$)
 
-2) $\mathbb{R}^n$ над $\mathbb{R}$ (или $\mathbb{F}^n$ над $\mathbb{F}$), реализованное как пространство столбцов (или иногда пространство строк)
+2) $\RR^n$ над $\RR$ (или $\FF^n$ над $\FF$), реализованное как пространство столбцов (или иногда пространство строк)
 
 3) $Mat_{m \times n} (F)$ над $F$
 
-4) Пространство функций $f: M \rightarrow \mathbb{R}$ (где $M$ -- некоторое множество): сложение $(f_1 + f_2)(x) := f_1(x) + f_2(x)$, умножение на скаляр $(\alpha f)(x) := \alpha f(x)$. Это векторное пространство над $\mathbb{R}$
+4) Пространство функций $f: M \rightarrow \RR$ (где $M$ -- некоторое множество): сложение $(f_1 + f_2)(x) := f_1(x) + f_2(x)$, умножение на скаляр $(\alpha f)(x) := \alpha f(x)$. Это векторное пространство над $\RR$
 
 5) $F[x]$, $F[x]_{\leq n}$ -- векторное пространство над $F$
 
@@ -113,13 +113,13 @@ $\uparrow$ абелева группа $\uparrow$
 
 0) $<\varnothing> = \{0\}$
 
-1) $V \in \mathbb{R}^2, v \neq 0 \Rightarrow <v>$ -- прямая, натянутая на $v$
+1) $V \in \RR^2, v \neq 0 \Rightarrow <v>$ -- прямая, натянутая на $v$
 
-2) $V = \mathbb{R}^3, v_1, v_2$ не коллинеарны $\Rightarrow <v_1, v_2>$ -- плоскость, натянутая на $v_1, v_2$
+2) $V = \RR^3, v_1, v_2$ не коллинеарны $\Rightarrow <v_1, v_2>$ -- плоскость, натянутая на $v_1, v_2$
 
-3) $V = \mathbb{R}^n, e_1 = \begin{pmatrix} 1 \\ 0 \\ \dots \\ 0 \end{pmatrix}, e_1 = \begin{pmatrix} 0 \\ 1 \\ \dots \\ 0 \end{pmatrix}, \dots, e_n = \begin{pmatrix} 0 \\ 0 \\ \dots \\ 1 \end{pmatrix}$, $<e_1, \dots, e_n> = \mathbb{R}^n$
+3) $V = \RR^n, e_1 = \begin{pmatrix} 1 \\ 0 \\ \dots \\ 0 \end{pmatrix}, e_1 = \begin{pmatrix} 0 \\ 1 \\ \dots \\ 0 \end{pmatrix}, \dots, e_n = \begin{pmatrix} 0 \\ 0 \\ \dots \\ 1 \end{pmatrix}$, $<e_1, \dots, e_n> = \RR^n$
 
-$x = \begin{pmatrix} x_1 \\ x_2 \\ \dots \\ x_n \end{pmatrix} \in \mathbb{R}^n \Rightarrow x = x_1 e_1 + x_2 e_2 + \dots + x_n e_n$
+$x = \begin{pmatrix} x_1 \\ x_2 \\ \dots \\ x_n \end{pmatrix} \in \RR^n \Rightarrow x = x_1 e_1 + x_2 e_2 + \dots + x_n e_n$
 
 \vspace{\baselineskip}
 \textbf{Предложение.} $S \subseteq V$ -- подмножество $\Rightarrow <S>$ -- подпространство в $V$
