@@ -94,6 +94,7 @@
 	\end{itemize}
 
 	\subsubsection{Определение предела функции в точке и на бесконечности по Коши и по Гейне}
+	Предел функции в точке:
 	\begin{itemize}
 		\item
 		По Коши: $A$ --- предел функции $f(x)$ в точке $a$ ($\lim_{x \to a} f(x) = A$), если 
@@ -102,6 +103,24 @@
 
 		\item
 		По Гейне: $A$ называется пределом функции $f(x)$ в точке $a$, если $\forall \{x_n\} \to a, x_n \neq a$ (т.е. $\lim_{n \to \infty} x_n = a$), соответствующая последовательность значений $f(x_n) \to A$ (т.е. $\lim_{n \to \infty} f(x_n) = A$)
+	\end{itemize}
+
+	Предел функции на бесконечности:
+	\begin{itemize}
+		\item
+		По Коши:
+		\begin{equation*}
+			\lim_{x \to \infty} f(x) = A \iff
+			\forall \eps > 0 \; \exists \delta > 0: \; \forall x \in D(f): \; |x| > \delta \implies |f(x) - A| < \eps
+		\end{equation*}
+
+		\item
+		По Гейне:
+		\begin{equation*}
+			\lim_{x \to \infty} f(x) = A \iff
+			\forall \{x_n\}: \; \lim_{n \to \infty} x_n = \infty \implies
+			\lim_{n \to \infty} f(x) = A
+		\end{equation*}
 	\end{itemize}
 
 	\subsubsection{Определение фундаментальной последовательности, критерий Коши сходимости последовательности}
@@ -551,7 +570,7 @@
 		\begin{equation*}
 			\exists \eps_0: \; \forall \delta > 0: \; \exists x: \; 0 < |x - a| < \delta: \; |f(x) - A| \geq \eps_0
 		\end{equation*}
-		Так как $\delta$ может быть любым, можно выбрать последовательность $\{\delta_n\} = \{\dfrac{1}{n}\}$, а соответствующие значения $x$ будем обозначать как $x_n$. Тогда $0 < |x_n - a| < \delta_n = \dfrac{1}{n}$, и $|f(x_n) - A| \geq \eps_0$. Отсюда следует, что последовательность $\{x_n\}$ является подходящей, но при этом число $A$ не является пределом функции $f(x)$ в точке $a$ (по Гейне). Пришли к противоречию.
+		Так как $\delta$ может быть любым, можно выбрать последовательность $\{\delta_n\} = \left\{\dfrac{1}{n}\right\}$, а соответствующие значения $x$ будем обозначать как $x_n$. Тогда $0 < |x_n - a| < \delta_n = \dfrac{1}{n}$, и $|f(x_n) - A| \geq \eps_0$. Отсюда следует, что последовательность $\{x_n\}$ является подходящей, но при этом число $A$ не является пределом функции $f(x)$ в точке $a$ (по Гейне). Пришли к противоречию.
 	\end{itemize}
 
 	\subsubsection{Односторонние пределы, их связь с двусторонними. Пределы функции в бесконечности. [В списке вопросов к коллоквиуму отсутствует]}
@@ -574,15 +593,27 @@
 	существует предел в точке $a$. В кванторах это значит следующее:
 	\[\begin{gathered}
 		\exists \lim_{x \to a} f(x) = A \iff \exists f(a - 0) = f(a + 0) = A \\
-		(\text\{т. к. \} \forall x: \; a - \delta < x < a \; \text{ и } \forall x: \; a < x < a + \delta \iff
+		(\text{т. к. } \forall x: \; a - \delta < x < a \; \text{ и } \forall x: \; a < x < a + \delta \iff
 		\forall x: \; 0 < |x - a| < \delta)
 	\end{gathered}\]
 
 	Предел функции на бесконечности:
-	\begin{equation*}
-		\lim_{x \to \infty} f(x) = A \iff
-		\forall \eps > 0 \; \exists \delta > 0: \; \forall x \in D(f): \; |x| > \delta \implies |f(x) - A| < \eps
-	\end{equation*}
+	\begin{itemize}
+		\item
+		По Коши:
+		\begin{equation*}
+			\lim_{x \to \infty} f(x) = A \iff
+			\forall \eps > 0 \; \exists \delta > 0: \; \forall x \in D(f): \; |x| > \delta \implies |f(x) - A| < \eps
+		\end{equation*}
+
+		\item
+		По Гейне:
+		\begin{equation*}
+			\lim_{x \to \infty} f(x) = A \iff
+			\forall \{x_n\}: \; \lim_{n \to \infty} x_n = \infty \implies
+			\lim_{n \to \infty} f(x) = A
+		\end{equation*}
+	\end{itemize}
 
 	\subsubsection{Неопределенности. Теоремы о переходе к пределу в неравенствах, о вынужденном пределе. [Не пройдено]}
 	\subsubsection{Теорема о пределе сложной функции. [Не пройдено]} 
