@@ -10,7 +10,7 @@
 \usepackage[english,russian]{babel} % локализация и переносы
 
 %% Кастомизация списокв
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 
 %%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
@@ -51,10 +51,16 @@
 {\hbox{$\mathsurround=0pt #1$}}{}}
 
 \newcommand\iso{\xrightarrow{
-   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+    \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
    
 \newcommand{\RomanNumeralCaps}[1]
     {\MakeUppercase{\romannumeral #1}}
+
+\newenvironment{amatrix}[2]{%
+    \left(\begin{array}{@{}*{#1}{c}|*{#2}{c}@{}}
+}{%
+    \end{array}\right)
+}
 
 %% Сокращения для обозначения множеств
 \newcommand{\NN}{\mathbb{N}}
