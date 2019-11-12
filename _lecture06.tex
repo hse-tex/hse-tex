@@ -1,0 +1,245 @@
+\section{Лекция 26.09.2019 \\ Определитель транспонированной матрицы. Определитель матрицы со строкой (столбцом) нулей. Поведение определителя при умножении строки (столбца) на число и при разложении строки (столбца) в сумму двух строк (столбцов). Определитель матрицы с двумя одинаковыми строками (столбцами). Поведение определителя при прибавлении к строке (столбцу) другой, умноженной на число. Изменение знака определителя при перестановке двух строк (столбцов). Верхнетреугольные и нижнетреугольные матрицы, их определители.}
+
+Напомним что такое определитель:
+
+\begin{equation}
+    \label{det:sum}
+    \tag{$\star$}
+    \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a_{n\sigma(n)}
+.\end{equation}
+
+\setcounter{theorem}{1}
+\begin{comment}
+    Каждое слагаемое содержит ровно 1 элемент из каждой строки и ровно 1 элемент из каждого столбца.
+\end{comment}
+
+% TODO Сделать красивые \ref на свойства определителей.
+
+\subsection{Свойства определителей}
+\begin{description}
+\item[Свойство T]
+    $\det A = \det A^T$.
+
+    \begin{proof}
+        Пусть $B = A^T$, тогда $b_{ij} = a_{ji}$.
+        \begin{align*}
+            \det A^T
+            = \det B
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) b_{1\sigma(1)} b_{2 \sigma(2)} \dots b_{n\sigma(n)}
+            = \sum_{\sigma \in S_n} \sgn(\sigma) a_{\sigma(1) 1} a_{\sigma(2) 2} \dots a_{\sigma(n)} \\
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)^{-1}} a_{2\sigma(2)^{-1}} \dots a_{n\sigma(n)^{-1}}
+            \quad \text{ /\!/ замена } \sigma^{-1} = p \text{ /\!/} \\
+            &= \sum_{p \in S_n} a_{1p(1)} a_{2p(2)} \dots a_{np(n)} = \det A
+        .\end{align*}
+    \end{proof}
+
+\item[Свойство 0]
+    Если в $A$ есть нулевая строка или нулевой столбец, то $\det A = 0$.
+
+    \begin{proof}
+        В силу свойства T достаточно доказать для строк.
+
+        Так как в каждом слагаемом \eqref{det:sum} присутствует элемент из каждой строки, то все слагаемые в \eqref{det:sum} равны 0 $\implies detA = 0$.
+    \end{proof}
+
+\item[Свойство 1]
+    Если в $A$ все элементы одной строки или одного столбца домножить на одно и то же число $\lambda$, то $\det A$ тоже умножается на $\lambda$.
+
+    \begin{equation*}
+        \begin{vmatrix} * & * & \dots & * \\ \dots & \dots & \dots & \dots \\ \lambda * & \lambda * & \lambda * & \lambda * \\ \dots & \dots & \dots & \dots \\ * & * & \dots & * \end{vmatrix} = \lambda \begin{vmatrix} * & * & \dots & * \\ \dots & \dots & \dots & \dots \\  * &  * & * & * \\ \dots & \dots & \dots & \dots \\ * & * & \dots & * \end{vmatrix}
+    \end{equation*}
+
+    \begin{proof}
+        В силу свойства T достаточно доказать для строк.
+
+        $A_{(i)} \to \lambda A_{(i)} \implies a_{ij} \to \lambda a_{ij} \ \forall j \implies $ в \eqref{det:sum} каждое слагаемое умножается на $\lambda \implies \det A$ умножается на $\lambda$.
+    \end{proof}
+
+\item[Свойство 2]
+    Если $A_{(i)} = A_{(i)}^1 + A_{(i)}^2$, то $\det A = \det \begin{pmatrix}
+        A_{(1)} \\ \vdots \\ A_{(i)}^1 \\ \vdots \\ A_{(n)}
+    \end{pmatrix} + \det \begin{pmatrix}
+        A_{(1)} \\ \vdots \\ A_{(i)}^2 \\ \vdots \\ A_{(n)}
+    \end{pmatrix}$.
+
+    \bigskip
+    Пример:
+
+    \begin{equation*}
+        \begin{vmatrix}
+            a_1 & a_2 & a_3 \\
+            b_1 + c_1 & b_2 + c_2 & b_3 + c_3 \\
+            d_1 & d_2 & d_3
+        \end{vmatrix} = \begin{vmatrix}
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3 \\
+            d_1 & d_2 & d_3
+        \end{vmatrix} + \begin{vmatrix}
+            a_1 & a_2 & a_3 \\
+            c_1 & c_2 & c_3 \\
+            d_1 & d_2 & d_3
+        \end{vmatrix}
+    \end{equation*}
+
+    Аналогично, если $A^{(j)} = A^{(j)}_1 + A^{(j)}_2$, то $\det A = \det (A^{(1)} \cdots A^{(j)}_1 \cdots A^{(n)}) + \det (A^{(1)} \cdots A^{(j)}_2 \cdots A^{(n)})$.
+
+    \begin{proof}
+        В силу свойства T достаточно доказать для строк.
+
+        Пусть $A_{(i)}^1 = (a_{i1}' a_{i2}' \cdots a_{in}')$, $A_{(i)}^2 = (a_{i1}'' a_{i2}'' \dots a_{in}'') \implies a_{ij} = a_{ij}' + a_{ij}''$.
+        \begin{align*}
+            \det A
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a_{n\sigma(n)} \\
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots (a'_{i\sigma(i)} + a''_{i\sigma(i)}) \dots a_{n \sigma(n)} \\
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a'_{i\sigma(i)} \dots a_{n\sigma(n)} + \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a''_{i\sigma(i)} \dots a_{n\sigma(n)} \\
+            &= \det A_1 + \det A_2
+        \end{align*}
+    \end{proof}
+
+\item[Свойство 3]
+    Если в $A$ поменять местами две строки или два столбца, то $\det A$ поменяет знак.
+
+    \begin{proof}
+        В силу свойства T достаточно доказать для строк.
+
+        Пусть $A = (a_{ij}) \in M_n$, $B = (b_{ij}) \in M_n $ -- матрица, полученная из А перестановкой $p$-ой и $q$-ой строк.
+
+        Пусть $\tau = \tau_{pq}$.
+
+        \begin{equation*}
+            b(i,j) = a_{\tau(i)j} = \begin{cases}
+                a_{ij}, &\text{если }  i \neq p, q  \\
+                a_{qj}, &\text{если } i=p \\
+                a_{pj}, &\text{если } i = q
+            \end{cases}
+        \end{equation*}
+        \begin{align*}
+            b_{ij} = a_{\tau(i)j} \ \forall i, j \implies a_{\tau(i)\sigma(i)} = a_{\tau(i),(\sigma\tau)(\tau(i))}
+        \end{align*}
+        \begin{align*}
+            \det B
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) b_{1\sigma(1)} b_{2\sigma(2)} \dots b_{n\sigma(n)} \\
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{\tau(1), \sigma(1)} a_{\tau(2), \sigma(2)} \dots a_{\tau(n), \sigma(n)} \\
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{\tau(1),(\sigma\tau)(\tau(1))} a_{\tau(2),(\sigma\tau)(\tau(2))} \dots a_{\tau(n),(\sigma\tau)(\tau(n))} \\
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1, (\sigma\tau(1))} a_{2, (\sigma\tau(2))} \dots a_{n,(\sigma\tau(n))} \\
+            &= -\sum_{\sigma \in S_n} \sgn(\sigma\tau) a_{1, (\sigma\tau(1))} a_{2, (\sigma\tau(2))} \dots a_{n,(\sigma\tau(n))}
+            \quad \text{ /\!/ замена } \rho = \sigma\tau \text{ /\!/} \\
+            &= -\sum_{\rho \in S_n} \sgn(p) a_{1, \rho(1)} a_{2, \rho(2)} \dots a_{n, \rho(n)} \\
+            &= -\det A
+        .\end{align*}
+    \end{proof}
+
+\item[Свойство 4]
+    Если к строке (столбцу) прибавить другую строку (столбец), умноженный на скаляр, то $\det A$ не изменится.
+
+    \begin{proof}
+        В силу свойства T достаточно доказать для строк.
+
+        \begin{equation*}
+            A \to A' = \begin{pmatrix}
+                \dots \\ A_{(i)} + \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots
+            \end{pmatrix}
+        \end{equation*}
+
+        \begin{equation*}
+            |A'| = \begin{vmatrix}
+                \dots \\ A_{(i)} \\ \dots \\ A_{(j)} \\ \dots
+            \end{vmatrix} + \begin{vmatrix}
+                \dots \\ \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots
+            \end{vmatrix} = |A| + \lambda \begin{vmatrix}
+                \dots \\ A_{(j)} \\ \dots \\ A_{(j)} \\ \dots
+            \end{vmatrix} = |A| + \lambda 0 = |A|
+        \end{equation*}.
+    \end{proof}
+
+\item[Свойство 5]
+    Если в А есть две одинаковые строки (столбца), то $\det A = 0$.
+    \begin{proof}
+        В силу свойства T достаточно доказать для строк.
+
+        При перестановке двух одинаковых строк (столбцов):
+
+        -- А не изменится $\implies \det A$ не изменится
+
+        -- по свойству 3: $\det A$ меняет знак
+
+        Значит, $\det A = -\det A \implies \det A = 0$.
+    \end{proof}
+\end{description}
+
+
+\begin{definition}
+    Матрица называется \textit{верхнетреугольной}, если $a_{ij} = 0$ при $i > j$, \textit{нижнетреугольной}, если $a_{ij} = 0$ $i < j$.
+\end{definition}
+\begin{equation*}
+    \begin{pmatrix}
+        a_{11} & a_{12} & a_{13} & \dots & a_{1n} \\
+        0 & a_{22} & a_{23} & \dots & a_{2n} \\
+        0 & 0 & a_{33} & \dots & a_{3n} \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & 0 & \dots & a_{mn}
+	\end{pmatrix} \text{ -- верхнетреугольная}
+\end{equation*}
+
+\begin{equation*}
+    \begin{pmatrix}
+        a_{11} & 0 & 0 & \dots & 0 \\
+        a_{21} & a_{22} & 0 & \cdots & 0 \\
+        a_{31} & a_{32} & a_{33} & \cdots & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & a_{m3} & \cdots & a_{mn}
+    \end{pmatrix} \text{ -- нижнетреугольная}
+\end{equation*}
+
+\begin{comment}
+    Всякая ступенчатая квадратная матрица верхнетреугольна.
+\end{comment}
+
+\begin{description}[resume]
+\item[Свойство 6]
+    Если $A$ верхнетреугольная или нижнетреугольная, то $\det A = a_{11} a_{22} \dots a_{nn}$.
+
+    \begin{proof}
+        В силу свойства T достаточно доказать для верхнетреугольной.
+
+        Выделим в \eqref{det:sum} слагаемые, которые могут быть отличны от нуля.
+        \begin{equation*}
+            a_{1, \sigma(1)} \dots a_{n - 1, \sigma(n - 1)} a_{n, \sigma(n)} \neq 0
+        \end{equation*}
+        \begin{equation*}
+            \implies a_{n\sigma(n) \neq 0} \implies \sigma(n) = n
+        .\end{equation*}
+        \begin{equation*}
+            \implies a_{n - 1, \sigma(n - 1)} \neq 0 \implies \sigma(n - 1) \in \{n - 1, n\},
+        \end{equation*}
+
+        но $n$ уже занято, значит $\sigma(n - 1) = n - 1$, и так далее.
+
+        Рассуждая аналогично, получаем $\sigma(k) = k \ \forall k \implies \sigma = id$ -- это единственное слагаемое в \eqref{det:sum}, которое может быть не равно 0.
+
+        \begin{equation*}
+            \sgn(id) = +1 \implies \det A = a_{11} a_{22} \dots a_{nn}
+        .\end{equation*}
+    \end{proof}
+
+    \begin{corollary}
+        $\det \text{diag}(a_1, a_2, \dots, a_n) = a_1 a_2 \dots a_4$.
+    \end{corollary}
+
+    \begin{corollary}
+        $\det E = 1$
+    \end{corollary}
+\end{description}
+
+
+\subsection{Поведение определителя при элементарных преобразованиях строк (столбцов)}
+
+$\text{Э}_1 (i, j, \lambda)$: $\det A$ не меняется.
+
+$\text{Э}_2 (i, j)$: $\det A$ меняет знак.
+
+$\text{Э}_3 (i, \lambda)$: $\det A$ умножается на $\lambda$.
+
+
+\bigskip
+\textit{Алгоритм.} Элементарными преобразованиями строк А приводится к ступенчатому ($\to$ верхнетреугольному) виду, в котором $\det A$ легко считается.
