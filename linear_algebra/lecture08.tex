@@ -1,0 +1,197 @@
+\section{Лекция 2.11.2019}
+
+
+\subsection{Следствия из критерия обратимости квадратной матрицы}
+
+\begin{corollary}
+    Если $AB = E$, то $BA = E$ (и тогда $A = B^{-1}$, $B = A^{-1}$).
+\end{corollary}
+
+\begin{proof}
+    \begin{equation*}
+        AB = E \implies \det A \det B = 1 \implies \det A \neq 0 \implies \exists A^{-1}
+    .\end{equation*}
+    \begin{equation*}
+        BA = EBA = (A^{-1}A)BA = A^{-1}(AB)A = A^{-1}A = E
+    .\end{equation*}
+\end{proof}
+
+\begin{corollary}
+    $A, B \in M_n \implies AB$ обратима $\iff$ обе $A$, $B$ обратимы. При этом $(AB)^{-1} = B^{-1} A^{-1}$.
+\end{corollary}
+
+\begin{proof}
+    Эквивалентность ($\iff$) следует из условия $\det AB = \det A \det B$.
+
+    \begin{equation*}
+        (AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = A A^{-1} = E
+    .\end{equation*}
+\end{proof}
+
+\subsection{Формулы Крамера}
+
+Пусть есть СЛУ $Ax = b (\star)$, $A \in M_n$, $x = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} \in \RR^n$, $b = \begin{pmatrix} b_1 \\ \dots \\ b_n \end{pmatrix} \in \RR^n$.
+
+Также, $\forall i \in \{1, 2, \dots, n\}$, $A_i = (A^{(1)}, \dots, A^{(i - 1)}, b, A^{(i + 1)}, \dots, A^{(n)})$.
+
+\begin{theorem}
+    Если $\det A \neq 0$, то СЛУ ($\star$) имеет единственное решение и его можно найти по формулам:
+    \begin{equation*}
+        x_i = \frac{\det A_i}{\det A}
+    .\end{equation*}
+\end{theorem}
+
+\begin{proof}
+    $\det A \neq 0 \implies \exists A^{-1} \implies (\star) \iff x = A^{-1}b$ -- единственное решение.
+
+    \begin{equation*}
+        b = A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = x_1 A^{(1)} + x_2 A^{(2)} + \dots + x_n A^{(n)}
+    .\end{equation*}
+    \begin{align*}
+        \det A_i &= \det \left(A^{(1)}, \dots, A^{(i - 1)}, x_1 A^{(1)} + \dots + x_n A^{(n)}, A^{(i + 1)}, \dots, A^{(n)}\right) \\
+                 &= x_1 \det \left(A^{(1)}, \dots, A^{(i - 1)}, A^{(1)}, A^{(i + 1}), \dots A^{(n)}\right) \\
+                 & \quad + x_2 \det \left(A^{(1)}, \dots, A^{(i - 1)}, A^{(2)}, A^{(i + 1)}, \dots, A^{(n)}\right) \\
+                 & \quad + \dots + \\
+                 & \quad+ x_n \det \left(A^{(1)}, \dots, A^{(i - 1)}, A^{(n)}, A^{(i + 1)}, \dots, A^{(n)}\right) \\
+                 &= x_i \det A \quad \text{ /\!/ Все слагаемые кроме i-го равны 0}
+    .\end{align*}
+\end{proof}
+
+
+\subsection{Понятие поля.}
+
+\begin{definition}
+    \textit{Полем} называется множество $F$, на котором заданы две операции ``сложение'' ($(a, b) \to a + b$) и ``умножение'' ($(a, b) \to a \cdot b$), причем $\forall a, b, c \in F$ выполнены следующие условия:
+
+    \begin{enumerate}[nosep]
+        \item $a + b = b + a$ (коммутативность сложения)
+        \item $(a + b) + c = a + (b + c)$ (ассоциативность сложения)
+        \item $\exists 0 \in F : 0 + a = a + 0 = a$ (нулевой элемент)
+        \item $\exists (-a) \in F: a+(-a)=(-a)+a=0$ (противоположный элемент)
+
+            $\uparrow$ абелева группа $\uparrow$
+        \item $a(b+c) = ab + ac$ (дистрибутивность)
+        \item $ab=ba$ (коммутативность умножения)
+        \item $(ab)c=a(bc)$ (ассоциативность умножения)
+        \item $\exists 1 \in F \setminus \{0\} : 1 a = a 1 = a$ (единица)
+        \item Если $a \neq 0$, $\exists a^{-1} \in F : a a^{-1} = a^{-1} a = 1$ (обратный элемент)
+    \end{enumerate}
+\end{definition}
+
+
+\subsection{Простейшие примеры.}
+
+$\QQ$ -- Рациональные числа.
+
+$\RR$ -- Действительные числа.
+
+$F_2 = \{0, 1\}$, сложение и умножение по модулю 2.
+
+
+\subsection{Построение поля комплексных чисел.}
+
+Ближайшая цель --- построить поле $\CC$ комплексных чисел.
+
+Неформально, $\CC$ -- это наименьшее поле со следующими свойставми:
+\begin{enumerate}
+\item $\CC \supset \RR$.
+\item Многочлен $x^2 + 1$ имеет корень, то есть $\exists i : i^2 = -1$.
+\end{enumerate}
+
+
+\subsubsection{Формальная конструкция поля $\CC$}
+
+\begin{equation*}
+    \CC = \RR^2 = \{(a, b) \mid a, b \in \RR\}
+.\end{equation*}
+
+\begin{itemize}
+\item $(a_1, b_1) + (a_2, b_2) = (a_1 + a_2, b_1 + b_2)$
+\item $(a_1, b_1) (a_2, b_2) = (a_1 a_2 - b_1 b_2, a_1 b_2 + a_2 b_1)$
+\end{itemize}
+
+Неформально, каждой такой паре $(a, b)$ соответствует комплексное число $a + bi$:
+\begin{itemize}
+\item $(a, b) \iff a + bi$
+\item $(a_1 + b_1 i) + (a_2 + b_2 i) = (a_1 + a_2) + (b_1 + b_2)i$
+\item $(a_1 + b_1 i) (a_2 + b_2 i) = a_1 a_2 + a_1 b_2 i + a_2 b_1 i + b_1 b_2 \underbrace{i^2}_{= -1} = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1) i$
+\end{itemize}
+
+\subsubsection{Проверка аксиом}
+
+\begin{enumerate}
+\item[1, 2.] Очевидны.
+\setcounter{enumi}{2}
+\item $0 = (0, 0)$.
+\item $-(a, b) = (-a, -b)$.
+\item Дистрибутивность -- \textit{Упражнение на дом}.
+\item Из явного вида формулы для умножения.
+\item
+    \begin{align*}
+        (a_1, b_1)(a_2, b_2)(a_3, b_3)
+        &= (a_1 a_2 - b_1 b_2, a_1 b_2 + a_2 b_1) (a_3, b_3) \\
+        &= (a_1 a_2 a_3 - b_1 b_2 a_3 - a_1 b_2 b_3 - b_1 a_2 b_3, a_1 a_2 b_3 - b_1 b_2 b_3 + a_1 b_2 a_3 + b_1 a_2 a_3) \\
+        &= (a_1, b_1)(a_2 a_3 - b_2 b_3, a_2 b_3 + b_2 a_3) \\
+        &= (a_1, b_1)(a_2, b_2)(a_3, b_3)
+    .\end{align*}
+
+\item $1 = (1, 0)$.
+
+\item $(a, b) \neq 0 \implies a^2 + b^2 \neq 0$. Тогда, $(a, b)^{-1} = \left(\frac{a}{a^2 + b^2}, -\frac{b}{a^2 + b^2}\right)$.
+
+    $(a, b) (\frac{a}{a^2 + b^2}, \frac{-b}{a^2 + b^2}) = (\frac{a^2}{a^2 + b^2} + \frac{b^2}{a^2 + b^2}, \frac{-ab}{a^2 + b^2} + \frac{ba}{a^2 + b^2}) = (1, 0)$.
+\end{enumerate}
+
+Итак, $\CC$ -- поле.
+
+\bigskip
+Проверка свойств:
+\begin{enumerate}
+\item $a \in \RR \leftrightarrow (a, 0) \in \CC$.
+
+    $a + b \leftrightarrow (a, 0) + (b, 0) = (a + b, 0)$.
+
+    $ab \leftrightarrow (a, 0)(b, 0) = (ab, 0)$
+
+    Значит, $\RR$ отождествляется в $\CC$.
+
+\item
+    $i = (0, 1) \implies i^2 = (0, 1)(0, 1) = (-1, 0) = -1$.
+\end{enumerate}
+
+
+\subsection{Алгебраическая форма комплексного числа, его действительная и мнимая части.}
+
+\begin{definition}
+    Представление числа $z \in \CC$ в виде $a + bi$, где $a, b \in \RR$ называется его \textit{алгебраической формой}.
+    Число $i$ называется \textit{мнимой единицей}.
+
+    $a =: Re(z)$ -- \textit{действительная} часть числа $z$.
+    $b =: Im(z)$ -- \textit{мнимая} часть числа $z$.
+\end{definition}
+
+Числа вида $bi$, где $b \in \RR \setminus \{0\}$, называются \textit{чисто мнимыми}.
+
+\subsection{Комплексное сопряжение.}
+
+\begin{definition}
+    Число $\overline{z} := a - bi$ называется \textit{комплексно сопряженным} к числу $z = a + bi$.
+
+    Операция $z \to \overline{z}$ называется \textit{комплексным сопряжением}.
+\end{definition}
+
+\subsubsection{Свойства комплексного сопряжения}
+
+\begin{itemize}[nosep]
+\item $\overline{\overline{z}} = z$.
+\item $\overline{z + w} = \overline{z} + \overline{w}$.
+\item $\overline{zw} = \overline{z} \cdot \overline{w}$.
+\end{itemize}
+
+Доказательство -- прямая проверка (\textit{упражнение на дом}).
+
+\subsection{Геометрическая модель комплексных чисел, интерпретация сложения и сопряжения в этой модели.}
+
+Числу $z = a + bi$ соответствует точка (или вектор) на плоскости $\RR^2$ с координатами $(a, b)$.
+Сумме $z + w$ соответствует сумма соответствующих векторов.
+Сопряжение $z \to \overline{z}$ -- это отражение $z$ относительно действительной оси.
