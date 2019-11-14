@@ -1,0 +1,139 @@
+\section{Лекция 30.11.2017}
+
+\subsection{}
+
+\bigskip
+\textbf{Лемма.} $v_1, \dots, v_n \in V, \ i \in \{1, 2, \dots, n\} \Rightarrow$ следующие условия эквивалентны:
+
+(1) $\exists (\alpha_1, \dots, \alpha_n) \in F^n$, такой что $\alpha_i \neq 0$ и $\alpha_1 v_1 + \dots + \alpha_m v_m = 0$
+
+(2) $v_i \in <v_1, \dots, v_{i-1}, v_{i + 1}, \dots , v_m>$
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ $(1) \Rightarrow (2) \ \alpha_i \neq 0 \Rightarrow v_i = \frac{\alpha_1}{\alpha_i} v_1 - \dots - \frac{\alpha_{i-1}}{\alpha{i}} v_{i - 1} - \frac{\alpha_{i+1}}{\alpha{i}} v_{i + 1} - \dots - \frac{\alpha_{m}}{\alpha{i}} v_m$.
+
+$(2) \Rightarrow (1) \ v_i = \beta_1 v_1 + \dots + \beta_{i - 1} v_{i - 1} + \beta_{i + 1} v_{i + 1} + \dots + \beta_{i - 1} v_{i - 1} \Rightarrow \beta_i v_i + \dots + \beta_{i-1} v_{i-1} - v_i + \beta_{i+1} v_{i+1} + \dots + \beta_{m} v_{m} = 0 \ \lhd$
+
+\bigskip
+\textbf{Следствие.} $v_1, v_2, \dots, v_m \in V$ линейно зависимы $\Leftrightarrow \exists i \in \{1, 2, \dots, m\}$, такой что $v_i$ является линейной комбинацией остальных векторов (т.е. $v_1, \dots, v_{i-1}, v_{i+1}, \dots, v_m$).
+
+\bigskip
+Пример. $v_1, v_2$ линейно независимы $\Rightarrow v_1, -v_1, v_2$ линейно зависимы
+
+\bigskip
+\textbf{Основная лемма о линейной зависимости.} Пусть $v_1, \dots, v_m$ и $w_1, \dots, w_n$ -- две системы векторов в $V$, причем $m < n$. Предположим, что $w_i \in <v_1, \dots, v_m> \ \forall i \in \{1, 2, \dots, n\}$. Тогда $w_1, \dots, w_n$ линейно зависимы.
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ Имеем:
+
+$w_1 = a_{11}v_1 + \dots + a_{m1} v_m = \sum\limits_{i = 1}^m a_{i1} v_i$
+
+$\dots$
+
+$w_j = a_{1j}v_1 + \dots + a_{mj} v_m = \sum\limits_{i = 1}^m a_{ij} v_i$
+
+$\dots$
+
+$w_n = a_{1n}v_1 + \dots + a_{mn} v_m = \sum\limits_{i = 1}^m a_{in} v_i$
+
+$a_{ij} \in F$
+
+\bigskip
+Покажем, что $\exists (x_1, \dots, x_n) \in F^n \backslash \{0, 0, \dots, 0\}$, такой что $x_1 w_1 + \dots + x_n w_n = 0$
+
+Допустим $a_{i1} x_1 + \dots + a_{in} w_n = 0 \ \forall i = 1, \dots, m$.
+
+Получаем ОСЛУ $AX = 0$, где $A = (a_{ij}) \in Mat_{m \times n} (F)$.
+
+Т. к. $m < n$, то эта ОСЛУ имеет ненулевое решение. $\lhd$
+\textbf{(проверить на опечатки, какой-то несходанс)}
+
+\bigskip
+\textbf{Определение.} Подмножество (система векторов) $S \subseteq V$ называется \textit{базисом векторного пространства $V$}, если 
+
+(1) $S$ линейно независимо
+
+(2) $<S> = V$
+
+\bigskip
+\textbf{Замечание.} Всякая линейно независимая система векторов является базисом своей линейной оболочки.
+
+\bigskip
+Пример. $V = F^n$
+
+$e_1 = \begin{pmatrix} 1 \\ 0 \\ \dots \\ 0  \end{pmatrix}, e_2 = \begin{pmatrix} 0 \\ 1 \\ \dots \\ 0  \end{pmatrix}, \dots, e_n = \begin{pmatrix} 0 \\ 0 \\ \dots \\ 1 \end{pmatrix}$
+
+Было: $<e_1, \dots, e_n> = F^n$
+
+$\alpha_1 e_1 + \dots + \alpha_n e_n = 0 = \alpha_1 \begin{pmatrix} 1 \\ 0 \\ \dots \\ 0  \end{pmatrix} + \alpha_2 \begin{pmatrix} 0 \\ 1 \\ \dots \\ 0  \end{pmatrix} + \dots + \alpha_n \begin{pmatrix} 0 \\ 0 \\ \dots \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ \dots \\ 0  \end{pmatrix} \Rightarrow \begin{pmatrix} \alpha_1 \\ \alpha_2 \\ \dots \\ \alpha_n  \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ \dots \\ 0  \end{pmatrix} \Rightarrow \alpha_1 = \dots = \alpha_n = 0 \Rightarrow e_1, \dots, e_n$ линейно независимы $\Rightarrow$ базис в $F^n$.
+
+\bigskip
+\textbf{Определение.} Векторное пространство называется \textit{конечномерным}, если в нем есть конечный базис, и \textit{бесконечномерным} иначе.
+
+Далее считаем, что $V$ конечномерно. 
+
+\bigskip
+Пример. $F^n$ конечномерно.
+
+\bigskip
+\textbf{Предложение.} Любые два базиса конечномерного векторного пространства содержат одно и то же число векторов.
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ $V$ конечномерно $\Rightarrow$ в $V$ есть конечный базис $e_1, e_2, \dots, e_n$. Пусть $S \subseteq V$ -- другой базис, $<e_1, e_2, \dots, e_n> = V \supseteq S \Rightarrow S \subseteq <e_1, \dots, e_n>$.
+
+\bigskip
+По основной лемме о линейной зависимости получаем, что $S$ конечно и содержит $\leq n$ векторов.
+
+Пусть $S = \{e_1' \dots, e_m'\}, m \leq n, e_1', \dots, e_m'$ -- тоже базис $\Rightarrow e_1, \dots, e_n \in <e_1', \dots, e_m'>$
+
+По основной лемме о линейной зависимости $n \leq m \Rightarrow n = m \ \lhd$.
+
+\bigskip
+\textbf{Определение.} \textit{Размерностью конечномерного векторного пространства} называется число векторов в (любом) базисе.
+
+Обозначение: $dim V$.
+
+Примеры: 1) $dim F^n = n$
+
+2) Если $V = \{0\}$, то $dimV = 0$, базис - $\varnothing$
+
+\bigskip
+\textbf{Предложение.} $e_1, \dots, e_n$ -- базис пространства $V \Rightarrow \forall v \in V$ единственным образом представим в виде $v = x_1 e_1 + \dots + x_n e_n$, где $x_i \in F$.
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ Пусть есть два различных представления
+
+$v = x_1 e_1 + \dots + x_n e_n$
+
+$v = x'_1 e_1 + \dots + x'_n e_n$
+
+Тогда $0 = (x_1 - x'_1) e_1 + \dots + (x_n - x'_n) e_n$, т.к. $e_1, \dots, e_n$ линейно независимы, то $x_1 - x'_1 = \dots = x_n - x'_n = 0 \Rightarrow x_i = x'_i \ \forall \ i \ \lhd$.
+
+\bigskip
+\textbf{Предложение.} Из всякой конечной системы векторов $S \subseteq V$ можно выделить конечную подсистему, являющуюся базисом линейной оболочки.
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ Пусть $S = \{v_1, \dots, v_m\}$. Докажем индукцией по $m$.
+
+$m = 1$ $S = \{v_1\}$. Если $v_1 = 0$, то $<S> = \{0\} \Rightarrow$ можно выделить $\varnothing$ в качестве базиса. Если $v_1 \neq 0$, то $v_1$ линейно независим $\Rightarrow \{v_1\}$ -- базис в $<S> = <v_1>$.
+
+Теперь пусть $m > 1$ и для $<m$ утверждение доказано. Если $v_1, \dots, v_m$ линейно независимы, то они уже образуют базис в $<S>$. Если $v_1, \dots, v_m$ линейно зависимы, то сущетсвует $i: \ v_i \in <v_1, \dots, v_{i-1}, v_{i+1}, \dots, v_m>$, $S' = S \setminus \{v_i\}$. Тогда $<S> = <S'>$. По предположению индукции в $S'$  можно выбрать базис в $<S'> = <S> \ \lhd$.
+
+\bigskip
+\textbf{Предложение.} Всякую конечную линейно независимую систему векторов в $V$ можно дополнить до базиса пространства $V$.
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ Пусть $v_1, \dots, v_m$ -- линейно независимая система в $V$. Т.к. $V$ конечномерно, то в нем есть базис $e_1, \dots, e_n$.
+
+Рассмотрим систему векторов $v_1, \dots, v_m, e_1, \dots, e_n$. Пройдемся по этой системе слева направо и на каждом шаге сделаем следущее: если очередной вектор является линейной комбинацией предыдущих, то выкинем его. При этом:
+
+(1) Линейная оболочка системы не меняется и равна $<e_1, \dots, e_n> = V$.
+
+(2) векторы $v_1, \dots, v_m$ останутся в системе, т.к. они линейно независимы $\Rightarrow$ в итоге останется система вида $v_1, \dots, v_m, e_{i1}, \dots, e_{it}$.
+
+Покажем, что эта система есть базис в $V$.
+
+$v_1, \dots, v_m, e_{i1}, \dots, e_{it}> = V$  -- уже знаем. Осталось показать, что $v_1, \dots, v_m, e_{i1}, \dots, e_{it}$ линейно независимы. Пусть есть ненулевой набор $(\alpha_1, \dots, \alpha_m, \beta_1, \dots, \beta_t)$, такой что $\alpha_1 v_1 + \dots + \alpha_m v_m + \beta_1 e_{i1} + \dots + \beta_t e_{it} = 0$.
+
+Т. к. $v_1, \dots, v_m$ линейно независимы, то $\exists k: \ \beta_k \neq 0$. Среди всех $k$ выберем максимальное. Но тогда $e_{ik}$ выражается через предыдущие $\Rightarrow$ его должны были выкинуть -- противоречие. $\lhd$
+

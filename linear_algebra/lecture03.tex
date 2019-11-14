@@ -1,0 +1,277 @@
+\section{Лекция 14.09.2019}
+
+\subsection{Расширенная матрицы системы линейных уравнений}
+
+$Ax = b$, $A \in \text{Mat}_{m \times n}$, $b \in \RR^m$
+
+Полная информация о СЛУ содержится в её \textit{расширенной матрице}.
+\begin{equation*}
+    \begin{pmatrix} A \mid b \end{pmatrix} = \begin{amatrix}{4}{1}
+    a_{11} & a_{12} & \dots & a_{1n} & b_1 \\
+    a_{21} & a_{22} & \dots & a_{2n} & b_2 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \dots & a_{mn} & b_m
+    \end{amatrix}
+\end{equation*}
+
+\subsection{Эквивалентные системы}
+\begin{definition}
+    Две системы уравнений от одних и тех же неизвестных называются \textit{эквивалентными}, если они имеют одинаковые множества решений.
+\end{definition}
+
+\begin{example}
+    Рассмотрим несколько СЛУ
+
+    \begin{enumerate}[label=\Alph*)]
+    \item
+        $\begin{cases}
+            x_1 + x_2 = 1 \\
+            x_1 - x_2 = 0
+        \end{cases} \iff \begin{amatrix}{2}{1}
+            1 & 1 & 1 \\
+            1 & -1 & 0
+        \end{amatrix}$
+
+    \item
+        $\begin{cases}
+            2x_1 = 1 \\
+            2x_2 = 1
+        \end{cases} \iff \begin{amatrix}{2}{1}
+            2 & 0 & 1 \\
+            0 & 2 & 1
+        \end{amatrix}$
+
+    \item
+        $x_1 + x_2 = 1 \iff \begin{amatrix}{2}{1} 1 & 1 & 1 \end{amatrix}$
+    \end{enumerate}
+
+    A и B эквиваленты, так как обе имеют единственное решение $\left(\frac{1}{2}, \frac{1}{2}\right)$.
+    
+    A и C не эквивалентны, так как C имеет бесконечно много решений.
+\end{example}
+
+\subsection{Как решить СЛУ?}
+
+\textbf{Идея}: выполнить преобразование СЛУ, сохраняющее множество её решений, и привести её к такому виду, в котором СЛУ легко решается.
+
+\begin{example}
+    $\begin{pmatrix}
+        1 & 0 & \dots & 0 \\
+        0 & 1 & \dots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \dots & 1
+    \end{pmatrix} \leftrightarrow \begin{cases}
+        x_1 = b_1 \\
+        x_2 = b_2 \\ 
+        \vdots \\ 
+        x_n = b_n
+    \end{cases}$
+\end{example}
+
+\subsubsection{Элементарные преобразования СЛУ и соответствующие преобразования строк её расширенной матрицы}
+
+\begin{tabular}{c|c|c}
+    тип & СЛУ & расширенная матрица \\
+    \hline
+    1. & K $i$-му уравнению прибавить $j$-ое, умноженное на $\lambda \in \RR \ (i \neq j)$ & $\text{Э}_1(i, j, \lambda)$ \\
+    2. & Переставить $i$-е и $j$-е уравнения $(i \neq j)$ & $\text{Э}_2(i, j)$ \\
+    3. & Умножить $i$-ое уравнение на $\lambda \neq 0$ & $\text{Э}_3(i, \lambda)$
+\end{tabular}
+
+\begin{enumerate}
+\item
+    $\text{Э}_1(i, j, \lambda)$: к $i$-ой строке прибавить $j$-ую, умноженную на $\lambda$ (покомпонентно), 
+
+    $a_{ik} \mapsto a_{ik} + \lambda a_{jk} \ \forall k = 1, \dots, n$,
+    
+    $b_i \mapsto b_i + \lambda b_j$.
+    
+\item
+    $\text{Э}_2(i, j)$: переставить i-ую и j-ую строки.
+
+\item
+    $\text{Э}_3(i, \lambda)$: умножить i-ю строку на $\lambda$ (покомпонентно).
+\end{enumerate}
+
+$\text{Э}_1, \text{Э}_2, \text{Э}_3$ называются \textit{элементарными преобразованиями строк расширенной матрицы}.
+
+
+\subsubsection{Сохранение множества решений системы линейных уравнений при элементарных преобразованиях}
+\begin{lemma}
+    Элементарные преобразования СЛУ не меняют множество решений
+\end{lemma}
+
+\begin{proof}
+    Пусть мы получили СЛУ$(\star\star)$ из СЛУ($\star$) путем применения элементарных преобразований.
+
+    \begin{enumerate}[nosep]
+    \item
+        Всякое решение системы $(\star)$ является решением $(\star\star)$.
+    \item
+        $(\star)$ получается из $(\star\star)$ путем элементарных преобразований.
+
+        \begin{tabular}{c|c|}
+            $(\star) \to (\star\star)$ & $(\star\star) \to (\star)$ \\
+            \hline
+            $\text{Э}_1(i, j, \lambda)$ & $\text{Э}_1(i, j, -\lambda)$ \\
+            $\text{Э}_2(i, j)$ & $\text{Э}_2(i, j)$ \\
+            $\text{Э}_3(i, \lambda)$ & $\text{Э}_3(i, \frac{1}{\lambda})$
+        \end{tabular}
+    \end{enumerate} 
+
+    Следовательно, всякое решение ($\star\star$) является решением ($\star$) $\implies$ множества решений совпадают.
+\end{proof}
+
+
+\subsection{Ступенчатые матрицы}
+
+\begin{definition}
+    Строка $(a_1, a_2, \dots, a_n)$ называется \textit{нулевой}, если $a_1 = a_2 = \dots = a_n = 0$ и \textit{ненулевой} иначе ($\exists i : a_i \neq 0$).
+\end{definition}
+
+\begin{definition}
+    \textit{Ведущим элементом} ненулевой строки называется первый её ненулевой элемент.
+\end{definition}
+
+\begin{definition}
+    Матрица $M \in \text{Mat}_{m \times n}$ называется \textit{ступенчатой}, или имеет ступенчатый вид, если:
+    \begin{enumerate}
+    \item Номера ведущих элементов её ненулевых строк строго возрастают.
+    \item Все нулевые строки стоят в конце.
+    \end{enumerate}
+\end{definition}
+\begin{equation*}
+    M = \begin{pmatrix}
+        0 & \dots & 0 & \diamond & * & * & * & * & * & * \\
+        0 & \dots & 0 & 0 & \dots & \diamond & * & * & * & * \\
+        0 & \dots & 0 & 0 & \dots & 0 & 0 & \diamond & * & * \\
+        \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+        0 & \dots & 0 & 0 & \dots & 0 & 0 & 0 & \diamond & * \\
+        0 & \dots & 0 & 0 & \dots & 0 & 0 & 0 & 0 & \diamond \\
+        0 & \dots & 0 & 0 & \dots & 0 & 0 & 0 & 0 & 0
+    \end{pmatrix}
+,\end{equation*}
+где $\diamond \neq 0$, $*$ -- что угодно. 
+
+
+\subsubsection{Улучшенный ступенчатый вид матрицы}
+\begin{definition}
+    M имеет \textit{улучшенный ступенчатый вид}, если:
+
+    \begin{enumerate}[nosep]
+    \item M имеет обычный ступенчатый вид.
+    \item Все ведущие элементы равны 1.
+    \item В одном столбце с любым ведущим элементом стоят только нули.
+    \end{enumerate}
+\end{definition}
+
+\begin{equation*}
+    M = \begin{pmatrix}
+        0 & \dots & 0 & 1 & * & 0 & * & 0 & 0 & * \\
+        0 & \dots & 0 & 0 & \dots & 1 & * & 0 & 0 & * \\
+        0 & \dots & 0 & 0 & \dots & 0 & 0 & 1 & 0 & * \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+        0 & 0 & 0 & \dots & \dots & \dots & \dots & 0 & 1 & * \\
+        0 & 0 & 0 & \dots & 0 & 0 & 0 & 0 & 0 & 0
+    \end{pmatrix}
+.\end{equation*}
+
+\begin{theorem}
+    \begin{enumerate}[label=\arabic*),nosep]
+    \item Всякую матрицу элементарными преобразованиями можно привести к ступенчатому виду. 
+    \item Всякую ступенчатую матрицу элементарными преобразованиями строк можно привести к улучшенному ступенчатому виду.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    Всякую матрицу элементарными преобразованиями строк можно привести к \textbf{улучшенному} ступенчатому виду.
+\end{corollary}
+
+\begin{proof}~
+    \begin{enumerate}
+    \item
+        Алгоритм. Если M - нулевая, то конец. Иначе:
+        \begin{enumerate}[label=Шаг \arabic*:]
+        \item Ищем первый ненулевой столбец, пусть $j$ --- его номер.
+        \item Переставляем строки, если нужно, добиваемся того, что $a_{1j} \neq 0$
+        \item 
+            Зануляем элементы в этом столбце используя первую строку --  $\text{Э}_1(2, 1, -\frac{a_{2j}}{a_{1j}}), \dots, \text{Э}_1(m, 1, -\frac{a_{mj}}{a_{1j}})$.
+
+            В результате $a_{ij} = 0$ при $i = 2, 3, \dots m$.
+        \end{enumerate}
+        Дальше повторяем все шаги для подматрицы $M'$ (без первой строки и столбцов $1, \dots, j$).
+    \item 
+        Алгоритм. Пусть $a_{1j_1}, a_{2j_2}, \dots, a_{rj_r}$ -- ведущие элементы ступенчатой матрицы.
+        \begin{enumerate}[label=Шаг \arabic*:]
+        \item Выполняем $\text{Э}_3(1, \frac{1}{a_{1j_1}}), \dots, \text{Э}_3(r, \frac{1}{a_{rj_r}})$, в результате все ведущие элементы равны 1.
+        \item Выполняем $\text{Э}_1(r - 1, r, -a_{r - 1, \; j_r}), \text{Э}_1(r - 2, r, -a_{r - 2, \; j_r}), \dots, \text{Э}_1(1, r, -a_{1, \; j_r})$. В результате все элементы над $a_{r j_r}$ равны 0.
+            
+            Аналогично обнуляем элементы над всеми остальными ведущими.
+        \end{enumerate}
+    \end{enumerate}
+    Итог: матрица имеет улучшенный ступенчатый вид.
+\end{proof}
+
+
+\subsection{Реализация элементарных преобразований строк матрицы при помощи умножения слева на подходящую матрицу}
+
+Всякое элементарное преобразование строк матрицы реализуется умножением как умножение слева на подходящую ``элементарную матрицу''.
+
+\begin{itemize}
+\item 
+    $\text{Э}_1(i, j, \lambda)$: $A \mapsto U_1(i, j, \lambda)A$, где
+    \begin{equation*}
+        U_1(i, j, \lambda) = \bordermatrix{
+            &   &   &   &   &   & j &   \cr
+            & 1 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+          i & 0 & 1 & 0 & \dots & 0 & \lambda & 0 \cr
+            & 0 & 0 & 1 & \dots & 0 & 0 & 0 \cr
+            & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \cr
+            & 0 & 0 & 0 & \dots & 1 & 0 & 0 \cr
+            & 0 & 0 & 0 & \dots & 0 & 1 & 0 \cr
+            & 0 & 0 & 0 & \dots & 0 & 0 & 1
+        }
+    \end{equation*}
+
+    (на диагонали стоят единицы, на $i$-м $j$-м месте стоит $\lambda$, остальные элементы нули)
+
+\item
+
+    $\text{Э}_2(i, j)$: $A \mapsto U_2(i, j)A$, где
+    \begin{equation*}
+        U_2(i, j) = \bordermatrix{
+            &   & i &   &   &   & j &   \cr
+            & 1 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+          i & 0 & 0 & 0 & \dots & 0 & 1 & 0 \cr
+            & 0 & 0 & 1 & \dots & 0 & 0 & 0 \cr
+            & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \cr
+            & 0 & 0 & 0 & \dots & 1 & 0 & 0 \cr
+          j & 0 & 1 & 0 & \dots & 0 & 0 & 0 \cr
+            & 0 & 0 & 0 & \dots & 0 & 0 & 1
+        }
+    \end{equation*}
+
+    (на диагонали стоят единицы, кроме $i$-го и $j$-го столбца (на $i$-м $j$-м и $j$-м $i$-м местах стоит 1, остальные нули)
+
+\item 
+    $\text{Э}_3(i, \lambda)$: $A \mapsto U_3(i, \lambda)A$, где
+    \begin{equation*}
+        U_3(i, \lambda) = \bordermatrix{    
+            &   & i &   &   &   &   &   \cr
+            & 1 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+          i & 0 & \lambda & 0 & \dots & 0 & 0 & 0 \cr
+            & 0 & 0 & 1 & \dots & 0 & 0 & 0 \cr
+            & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \cr
+            & 0 & 0 & 0 & \dots & 1 & 0 & 0 \cr
+            & 0 & 0 & 0 & \dots & 0 & 1 & 0 \cr
+            & 0 & 0 & 0 & \dots & 0 & 0 & 1
+        }
+    \end{equation*}
+
+    (на диагонали стоят единицы, кроме i-го столбца, там $\lambda$, остальные элементы нули)
+\end{itemize}
+
+Элементарные преобразования столбцов --- умножение на соответствующую матрицу справа.
+
+\bigskip
+\textit{\textbf{Упражнение на дом.}} Доказательство.

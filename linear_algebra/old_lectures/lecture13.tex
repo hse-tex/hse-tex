@@ -1,0 +1,143 @@
+\section{Лекция 7.12.2017}
+
+\subsection{}
+
+\textbf{Лемма.} $v_1, \dots, v_m \in V$ -- линейно независимая система и $v \in V \Rightarrow$
+
+либо $v_1, \dots, v_m, v$ линейно независимы,
+
+либо $v \in <v1, \dots, v_m>$
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ Пусть $v_1, \dots, v_m, v$ линейно зависимы. Тогда $\exists (\alpha_1, \dots, \alpha_m, \alpha) \neq (0, \dots, 0, 0)$, такой что $\alpha_1 v_1 + \dots + \alpha_m v_m + \alpha v = 0$.
+
+Т.к. $v_1, \dots, v_m$ линейно независимы, то $\alpha \neq 0$. Значит, $v \in <v1, \dots, v_m> \ \lhd$.
+
+$dimV < \infty$
+
+\bigskip
+\textbf{Предложение.} $U \subseteq V$ -- подпространство $\Rightarrow U$ конечномерно, причем $dim U \leq dim V$, кроме того, $dimU = dimV \Leftrightarrow U = V$.
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\lhd$ Пусть $dimV = n$.
+
+Если $U = \{0\}$, то верно.
+
+Далее считаем, что $U \neq \{0\}$. Построим в $U$ конечный базис. Возьмем $v_1 \in U \backslash \{0\}$. Если $<v_1> = U$, то конец. Если нет, то выберем $v_2 \in U \backslash <v_1>$. $v_1, v_2$ линейно независимые по лемме. Если $<v_1, v_2> = U$, то конец. Иначе выберем $v_3 \in U \backslash <v_1, v_2>$, $v_1, v_2, v_3$ линейно независимы и т.д.
+
+\bigskip
+По основной лемме о линейной зависимости процесс закончится не позднее шага $n \Rightarrow U$ конечномерно и $dimU \leq dimV$. Если $dimU = n$, то $U = V$ по следствию $\lhd$. 
+
+\bigskip
+Рассмотрим ОСЛУ $Ax = 0$(*), $A \in Mat_{m \times n} (F), x \in F^n$
+
+Пусть $S \subseteq F^n$ -- множество ее решений. Уже знаем, что $S$ -- подпространство в $F^n$.
+
+\bigskip
+\textbf{Определение.} \textit{Фундаментальной системой решений для ОСЛУ(*)} называется всякий базис в пространстве $S$.
+
+\bigskip
+\textbf{Замечание.} У ОСЛУ (*) может быть много разных ФСР.
+
+Метод построения одной конкретной.
+
+ФСР для (*)
+
+$(A|0) \rightarrow (B|0)$ (элементарными преобразованиями строк к улучшенному ступенчатому виду).
+
+Пусть $r$ -- число ненулевых строк в $B$. Тогда будет $r$ главных неизвестных и $n-r$ свободных. Выполнив перенумерацию, будем считать, что $x_1, \dots, x_r$ -- главные неизвестные, $x_{r+1}, \dots, x_n$ -- свободные неизвестные.
+
+Тогда общее решение ОСЛУ (*) имеет вид
+\begin{equation*}
+\begin{cases}
+x_1 = c_{11} x_{r+1} + c_{12} x_{r+2} + \dots + c_{1, n-r} x_n \\
+x_2 = c_{21} x_{r+1} + c_{22} x_{r+2} + \dots + c_{2, n-r} x_n \\
+\cdots \\
+x_r = c_{r1} x_{r+1} + c_{r2} x_{r+2} + \dots + c_{r, n-r} x_n
+\end{cases}
+\end{equation*}
+
+Пусть 
+\begin{equation*}u_1 = \begin{pmatrix} c_{11} \\ c_{21} \\ \dots \\ c_{r1} \\ \hline
+ \\ 1 \\ 0 \\ \dots \\ 0 \end{pmatrix} , u_2 = \begin{pmatrix} c_{12} \\ c_{22} \\ \dots \\ c_{r2} \\ \hline
+ \\ 0 \\ 1 \\ \dots \\ 0 \end{pmatrix}, \dots, u_k = \begin{pmatrix} c_{1k} \\ c_{2k} \\ \dots \\ c_{rk} \\ \hline
+ \\ \dots \\ 1 \\ \dots \\ 0 \end{pmatrix}, \dots, u_{n-r} = \begin{pmatrix} c_{1, n-r} \\ c_{2, n-r} \\ \dots \\ c_{r, n-r} \\ \hline
+ \\ 0 \\ 0 \\ \dots \\ 1 \end{pmatrix} \end{equation*}
+ 
+По построению, $u_1, \dots, u_{n-r} \in S$.
+
+\bigskip
+\textbf{Предложение.} $u_1, \dots, u_{n-r}$ -- это ФСР для ОСЛУ (*).
+
+\bigskip
+\textbf{\textit{Доказательство.}} 1) линейная независимость. Пусть набор $(\alpha_1, \dots, \alpha_{n-r}) \neq (0, 0, \dots, 0)$ таков, что $\alpha_1 u_1 + \dots + \alpha_{n-r} u_{n-r} = 0$
+
+При любом $k = 1, \dots, n-r$, $(r + k)$-ая координата левой части равна $\alpha_k \Rightarrow \alpha_1 = \dots = \alpha_{n-r} = 0$.
+
+2) $<u_1, \dots, u_{n-r}> = S$. Пусть $u \in S, \ u = \begin{pmatrix} * \\ * \\ \dots \\ * \\ \hline
+ \\ \alpha_1 \\ \alpha_2 \\ \dots \\ \alpha_{n-r} \end{pmatrix}$. Тогда рассмотрим $v = u - \alpha_1 u_1 - \dots - \alpha_{n-r} u_{n - r}$, имеем $v \in S$. С другой стороны, $v = \begin{pmatrix} * \\ * \\ \dots \\ * \\ \hline
+ \\ 0 \\ 0 \\ \dots \\ 0 \end{pmatrix}$, т.е. в $v$ $x_{r+1} = \dots = x_n = 0$. Но тогда из формул для общего решения следует, что $x_1 = \dots = x_r = 0 \Rightarrow v = 0 \Rightarrow u = \alpha_1 u_1 + \dots + \alpha_{n-r} u _{n-r} \in <u_1, \dots, u_{n-r} \ \lhd$.
+
+\bigskip
+$V$ -- векторное пространство, $dimV < \infty$
+
+$S = \{v_1, \dots, v_m\} \subseteq V$ -- конечная система векторов
+
+\bigskip
+\textbf{Определение.} \textit{Рангом конечной системы векторов} $S \subseteq V$  называется число $rkS$, равное наибольшему числу векторов в линейно независимой подсистеме системы $S$.
+
+$rkS = max\{|S'| \ | \ S' \subseteq S$ - линейно независимая подсистема $\}$.
+
+\bigskip
+\textbf{Предложение.} $rkS = dim <S>$.
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ Пусть $rkS = r \Rightarrow \exists$ линейено независимый набор $v_1, \dots, v_r \in S$. Тогда $S \subseteq <v_1, \dots, v_r> \Rightarrow <S> = <v_q, \dots, v_r> \Rightarrow rkS = r = dim <v_1, \dots, v_r> = dim <S> \ \lhd$.
+
+\bigskip
+Пусть $A \in Mat_{m \times n} (F)$.
+
+\bigskip
+\textbf{Определение.} \textit{Столбцовым рангом} (или просто \textit{рангом) матрицы} $A$ называется число $rkA$, равное рангу системы ее столбцов $\{A^{(1)}, \dots, A^{(n)}\} \subseteq F^n$. \textit{Строковым рангом матрицы} $A$ называется число $rkA^T$, равное рангу системы ее строк $\{A_{(1)}, \dots, A_{(n)}\} \subseteq F^n$.
+
+\bigskip
+Пример. $A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}$
+
+$A^{(1)} + A^{(3)} - 2A^{(2)} = 0 \Rightarrow rkA \leq 2$.
+
+$A^{(1)}, A^{(2)}$ не пропорциональны $\Rightarrow$ линейно независимы $\Rightarrow rkA = 2$.
+
+\bigskip
+\textbf{Лемма.} При элементарных преобразованиях строк матрицы сохраняется линейная независимость между столбцами.
+
+$A, B \in Mat_{m \times n} (F)$ 
+
+$A \rightarrow B$ (элементарными преобразованиями строк)
+
+$1 \leq i_1 \leq \dots \leq i_k \leq n$
+
+$\alpha_1 A^{(i_1)} + \dots + \alpha_k A^{(i_k)} = 0 \Rightarrow \alpha_1 B^{(i_1)} + \dots + \alpha_k B^{(i_k)} = 0$. В частности, $A^{(i_1)}, \dots, A^{(i_k)}$ линейной независимы $\Leftrightarrow B^{(i_1)}, \dots, B^{(i_k)}$ линейно независимы.
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ Пусть $A' = ( A^{(i_1)}, \dots, A^{(i_k)}) \in Mat_{m \times k} (F)$, $B' = (B^{(i_1)}, \dots, B^{(i_k)}) \in Mat_{m \times k} (F)$.
+
+$\alpha_1 A^{(i_1)} + \dots + \alpha_k A^{(i_k)} = 0 \Leftrightarrow A' \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_k \end{pmatrix} = 0 \Leftrightarrow \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_k \end{pmatrix} $ -- решение ОСЛУ $A'x = 0 \Leftrightarrow \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_k \end{pmatrix} $ -- решение ОСЛУ $B'x = 0 \Leftrightarrow B' \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_k \end{pmatrix} = 0 \Leftrightarrow \alpha_1 B^{(i_1)} + \dots + \alpha_k B^{(i_k)} = 0 \ \lhd .$
+
+\bigskip
+\textbf{Следствие.} Столбцовый ранг матрицы не меняется при элементарных преобразованиях строк.
+
+\bigskip
+\textbf{Предложение.} Столбцовый ранг матрицы не меняется при элементарных преобразованиях столбцов.
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ $A, B \in Mat_{m \times n} (F)$
+
+$A \rightarrow B$ (одно элементарное преобразование столбцов)
+
+$B^{(1)}, \dots, B^{(n)} \subseteq <A^{(1)}, \dots, A^{(n)}> \Rightarrow <B^{(1)}, \dots, B^{(n)}> \subseteq <A^{(1)}, \dots, A^{(n)}> \Rightarrow rkB \leq rkA$.
+
+Т.к. элементарные преобразования обратимы, то $rkA = rkB \Rightarrow rkA = rkB \ \lhd$.
+
+\bigskip
+\textbf{Следствие.} Строковый ранг матрицы не меняется при элементарных преобразованиях строк и столбцов.
+

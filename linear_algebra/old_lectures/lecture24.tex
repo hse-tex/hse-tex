@@ -1,0 +1,178 @@
+\section{Лекция 15.03.2018}
+
+$E$ -- евклидово пространство, $dimE = n$
+
+$x \in E, S \subseteq E$ -- подпространство
+
+\bigskip
+\subsection{Метод наименьших квадратов}
+
+$(*) Ax = b$, $A \in Mat_{m \times n}, \ x \in \RR^n$ -- столбец неизвестных, $b \in \RR^m$ -- столбец правых частей
+
+$x$ -- решение СЛУ (*) $\Leftrightarrow Ax = b \Leftrightarrow |Ax - b| = 0 \Leftrightarrow \rho (Ax, b) = 0$
+
+\bigskip
+\textbf{Определение.} Если СЛУ(*) несовместна, то $x_0 \in \RR^n$ называется ее \textit{псевдорешением}, если $\rho(Ax_0, b) = min (\rho(Ax, b))$ (иначе говоря, $x_0$ -- решение задачи оптимизации $\rho(Ax, b) \rightarrow min$)
+
+\bigskip
+Пусть $S \subseteq \RR^m$ -- подпространство, натянутое на столбцы матрицы $A$, т.е. $S = <A^{(1)}, \dots, A^{(n)}>$, $c := pr_S b$.
+
+\bigskip
+\textbf{Предложение.} 1) $x_0$ -- псевдорешение для (*) $\Leftrightarrow Ax_0 = c$
+
+2) Если столбцы $A^{(1)}, \dots, A^{(n)}$ линейно независимы, то $x_0$ можно найти по формуле $x_0 = (A^T A)^{-1} A^T b$
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ 1) $x \in \RR^n \Rightarrow Ax = x_1 A^{(1)} + \dots + x_n A^{(n)}$
+
+$x = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \Rightarrow Ax = S$
+
+$min( \rho (Ax, b)) = \rho (S, b)$
+
+\bigskip
+По предыдущей теореме получаем, что $x_0$ -- псведорешение $\Leftrightarrow Ax_0 = c$
+
+\bigskip
+2) т.к. столбцы $A$ линейно независимы, то $x_0$ единственный. Знаем, что $c = A (A^T A)^{-1} A^T b$. Но тогда $x_0 = (A^T A)^{-1} A^T b$ является решением СЛУ $Ax = c \ \lhd$
+
+\bigskip
+Пример.
+
+СЛУ $\begin{cases}
+		x = 0 \\
+		x = 1
+	\end{cases}$, $A = \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \ b = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$
+
+\bigskip
+$x_0 = (A^T A)^{-1} A^T b = \frac{1}{2}$
+
+\bigskip
+$S \subseteq E$ - подпространство, $x \in E$
+
+$e_1, \dots, e_k$ -- базис $S$
+
+\bigskip
+\textbf{Теорема.} $\rho (x, S)^2 = \frac{det G(e_1, \dots, e_k, x)}{det G(e_1, \dots, e_k)}$
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ 1) $x \in S \Rightarrow \rho (x, S) = 0, \ det G(e_1, \dots, e_k, x) = 0$, т.к. $e_1, \dots, e_k, x$ линейно независимы
+
+\bigskip
+2) $x \notin S$. Пусть $z = ort_S x$, тогда $\rho(x, s)^2 = |z|^2$.
+
+Применив процесс ортогонализации к системе $e_1, \dots, e_k, x$, получим ортогональную систему $f_1, \dots, f_k, z$. При ортогонализации определитель матрицы Грама не меняется $\Rightarrow \frac{det G(e_1, \dots, e_k, x)}{det G(e_1, \dots, e_k)} = \frac{det G(f_1, \dots, f_k, z)}{det G(f_1, \dots, f_k)} = \frac{|f_1|^2 |f_2|^2 \dots |f_k|^2 |z|^2}{|f_1|^2 |f_2|^2 \dots |f_k|^2} = |z|^2 \ \lhd$
+
+\bigskip
+\textbf{Определение.} \textit{$k$-мерный параллелепипед, натянутый на векторы $a_1, \dots, a_k \in E$} -- это множество $P(a_1, \dots, a_k) = \{ x_1 a_1 + \dots + x_k a_k \ | \ 0 \leq x_i \leq 1 \}$. 
+
+\bigskip
+Примеры.
+
+1) $k = 1$  отрезок
+
+2) $k = 2$ параллелограм
+
+3) $k = 3$ параллелепипед
+
+\bigskip
+$P(a_1, \dots, a_k)$ -- $k$-мерный параллелепипед
+
+Основание: $P(a_1, \dots, a_{k-1})$
+
+Высота: $h = ort_{<a_1, \dots, a_{k-1}>} a_k$
+
+\bigskip
+\textbf{Определение.} \textit{$k$-мерный объем $k$-мерного параллелепипеда} $P(a_1, \dots, a_k)$ -- это величина \\ $vol(P(a_1, \dots, a_k))$, определяемая индуктивно по $k$.
+
+\bigskip
+$k = 1 \Rightarrow vol(P(a_1)) := |a_1|$
+
+$k > 1 \Rightarrow vol(P(a_1, \dots, a_k)) := vol(P(a_1, \dots, a_{k-1})) \cdot |h|$
+
+\bigskip
+\textbf{Теорема.} $(vol(P(a_1, \dots, a_k)))^2 = det G(a_1, \dots, a_k)$
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ Индукция по $k$. 
+
+1) $k = 1: |a_1|^2 = (a_1, a_1)$ -- верно
+
+2) $k > 1$
+
+$(vol(P(a_1, \dots, a_k)))^2 = (vol(P(a_1, \dots, a_{k-1})))^2 \cdot |h|^2 = det G(a_1, \dots, a_{k-1}) \cdot |h|^2 = (*)$
+
+Если $a_1, \dots, a_{k-1}$ линейно зависимы, то $det G(a_1, \dots, a_{k-1}) = 0 \Rightarrow (*) = 0$. Тогда $a_1, \dots, a_k$ тоже линейно зависимы $\Rightarrow det G(a_1, \dots, a_k) = 0$.
+
+Если $a_1, \dots, a_{k-1}$ линейно независимы, то $|h|^2 = \frac{det G(a_1, \dots, a_{k-1}, a_k}{det G(a_1, \dots, a_{k-1}} \Rightarrow (*) = det G(a_1, \dots, a_k) \ \lhd$
+
+\bigskip
+\textbf{Следствие.} Объем $k$-мерного параллелепипеда не зависит от выбора его основания.
+
+\bigskip
+Пример.
+
+Прямоугольный параллелепипед: $a_i \bot a_j \ \forall \ i \neq j$
+
+$(vol(P(a_1, \dots, a_k)))^2 = det G(a_1, \dots, a_k) = |a_1|^2 |a_2|^2 \dots |a_k|^2 \Rightarrow vol(P(a_1, \dots, a_k)) = |a_1||a_2| \dots |a_k|$
+
+\bigskip
+$(e_1, \dots, e_n)$ -- ортогональный базис в $E$
+
+$a_1, \dots, a_n \in E$
+
+$(a_1, \dots, a_n) = (e_1, \dots, e_n) \cdot A, \ A \in M_n (\RR)$
+
+\bigskip
+\textbf{Теорема.} $vol P(a_1, \dots, a_n) = |det A|$
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd \ (vol(P(a_1, \dots, a_n)))^2 = det G(a_1, \dots, a_n) = det (A^T A) = (det A)^2 \ \lhd$
+
+\bigskip
+$e = (e_1, \dots, e_n)$ и $e' = (e'_1, \dots, e'_n)$ -- два базиса в $E$
+
+$e' = e \cdot C, \ detc \neq 0$
+
+\bigskip
+\textbf{Определение.} Базисы $e$ и $e'$ называются \textit{одинаково ориентированными}, если $detC > 0$.
+
+\bigskip
+\textbf{Предложение.} 1) Отношение одинаковой ориентированности является отношением эквивалентности на множестве всех базисов в $E$
+
+2) Имеется ровно 2 класса эквивалентности для этого отношения
+
+\bigskip
+\textbf{\textit{Доказательство: упражнение.}}
+
+\bigskip
+\textbf{Определение.} Говорят, что в $E$ задана ориентация, если все базисы одного класса объявлены положительно ориентированными, а все базисы второго класса объявлены отрицательно ориентированными.
+
+\bigskip
+Базовый пример ориентации в $\RR^3$:
+
+-- положительно ориентированы "правые тройки векторов"
+
+-- отрицательно ориентированы "левые тройки векторов"
+
+\bigskip
+Фиксируем ориентацию в $E$
+
+$(e_1, \dots, e_n)$ -- положительно ориентированный базис в $E$
+
+\bigskip
+$a_1, \dots, a_n \in E$
+
+$(a_1, \dots, a_n) = (e_1, \dots, e_n) \cdot A, \ A \in M_n(\RR)$
+
+\bigskip
+\textbf{Определение.} \textit{Ориентированным объемом параллелепипеда} $P(a_1, \dots, a_n)$ называется величина $Vol(P(a_1, \dots, a_n)) = det A$. Информация об объеме + ориентации векторов $a_1, \dots, a_n$.
+
+\bigskip
+\textbf{Следствие.} 1) $Vol(P(a_1, \dots, a_n)) > 0 \Leftrightarrow (a_1, \dots, a_n)$ -- положительно ориентированный базис $E$
+
+$Vol(P(a_1, \dots, a_n)) < 0 \Leftrightarrow (a_1, \dots, a_n)$ -- отрицательно ориентированный базис $E$
+
+2) $Vol(P(a_1, \dots, a_n))$ линеен по каждому аргументу (полилинеен)
+
+3) Кососимметричность (при перестановке двух аргументов меняется знак)
+

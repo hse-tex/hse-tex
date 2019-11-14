@@ -1,0 +1,244 @@
+\section{Лекция 5.10.2017}
+
+\subsection{След матрицы}
+
+\textbf{Определение.} \textit{Следом квадратной матрицы} A называется сумма всех элементов на ее главной диагонали.
+
+Обозначение: $trA$.
+
+\bigskip
+\textbf{\textit{Свойства:}}
+
+1) $tr(A + B) = trA + trB \ \forall \ A, B \in M_n$
+
+\bigskip
+2) $tr(\lambda A) = \lambda trA \ \forall \lambda \in \RR \ A \in M_n$
+
+\bigskip
+3) $tr(A^T) = trA$
+
+\bigskip
+4) $tr(AB) = tr(BA) \ \forall \ A \in Mat_{m \times n}, B \in Mat_{n \times m}$
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd$ (1) - (3) из определения.
+
+(4) $AB = X, BA = Y$
+
+$trX = \sum\limits_{i = 1}^m x_{ii} = \sum\limits_{i = 1}^m \sum\limits_{j = 1}^n a_{ij} b_{ji} = \sum\limits_{j = 1}^n \sum\limits_{i = 1}^m b_{ji} a_{ij} = \sum\limits_{j = 1} y_{jj} = trY \lhd$
+
+\bigskip
+Пример.
+
+\begin{equation*}A = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}, B = \begin{pmatrix} 4 \\ 5 \\ 6 \end{pmatrix} \end{equation*}
+
+$trAB = 1 \cdot 4 + 2 \cdot 5 + 3 \cdot 6 = 32$
+
+$trBA = 4 + 10 + 18 = 32$
+
+\subsection{Перестановки и подстановки}
+
+\textbf{Определение.} \textit{Перестановкой множества} $\{ 1, 2, \dots, n \} $ называется упорядоченный набор $(i_1, i_2, \dots, i_n)$, в котором каждое число от 1 до n встречается ровно один раз.
+
+Обозначение: $P_n$ -- множество всех перестановок множества $\{ 1, 2, \dots, n \} $. 
+
+\bigskip
+Пример. 
+
+$(4 \ 3 \ 2 \ 1) \in P_4$ 
+
+\bigskip
+\textbf{Факт.} $|P_n| = n!$
+
+\bigskip
+\textbf{Определение.} \textit{Подстановка из n элементов} -- это биективное (=взаимнооднозначное) отображение множества $\{ 1, 2, \dots, n \} $ в себя.
+
+Запись: \begin{equation*}\begin{pmatrix} 1 & 2 & 3 & \dots & n \\
+i_1 & i_2 & i_3 & \dots & i_n \end{pmatrix} \end{equation*}
+
+$\sigma : \{ 1, 2, \dots, n \} \rightarrow \{ 1, 2, \dots, n \}$
+
+\bigskip
+$i_j = \sigma (j)$ 
+
+\bigskip
+$\sigma (1) = i_1$
+
+$\dots$
+
+$\sigma (n) = i_n$
+
+\bigskip
+$\sigma$ -- подстановка
+
+$(i_1, i_2, \dots, i_n)$ -- перестановка
+
+\bigskip
+Можно записывать еще и так:
+
+\begin{equation*} \sigma : \begin{pmatrix} i_1 & i_2 & \dots & i_n \\ j_1 & j_2 & \dots & j_n \end{pmatrix}, \ где \ (i_1, i_2, \dots, i_n) \in \RR
+\end{equation*}
+
+$j_1 = \sigma (i_1), j_2 = \sigma (i_2), \dots, j_n = \sigma (i_n)$
+
+\bigskip
+Обозначение: $S_n$ -- множество всех подстановок из n элементов.
+
+\bigskip
+Пример.
+
+\begin{equation*} \sigma : \begin{pmatrix} 1 & 2 & 3 & 4 \\ 4 & 3 & 2 & 1 \end{pmatrix} = (4 \ 3 \ 2 \ 1) \end{equation*}
+
+\bigskip
+Пусть $\sigma \in S_n, \ i, j \in {1, 2, \dots, n}, \ i \neq j$
+
+\bigskip
+\textbf{Определение.} Пара $\{i, j\}$ (неупорядоченная) \textit{образует инверсию} в $\sigma$, если числа $i-j$ и $\sigma (i) - \sigma (j)$ имеют разный знак, т.е. либо $i < j$ и $\sigma (i) > \sigma (j)$, либо $i > j$ и $\sigma (i) < \sigma (j)$.
+
+\bigskip
+\textbf{Определение.} \textit{Знак подстановки} $\sigma$ -- это  число $\mathrm{sgn} (\sigma) = (-1) ^{<число \ инверсий \ в \ \sigma>}$.
+
+\bigskip
+\textbf{Определение.} Если $\mathrm{sgn}(\sigma) = 1$, то $\sigma$ называется \textit{четной} (число инверсий четное), если $\mathrm{sgn}(\sigma) = -1$, то $\sigma$ называется \textit{нечетной} (число инверсий нечетное).
+
+\bigskip
+Примеры.
+
+\begin{table}[!ht]
+		\begin{tabular}{c|c|c}
+    	n = 2 & $\begin{pmatrix} 1 & 2 \\ 1 & 2 \end{pmatrix}$ & $\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$ \\
+        \hline
+       число инверсий & 0 & 1 \\
+       \hline
+          $\mathrm{sgn} (\sigma)$ & 1 & -1 \\
+          \hline
+        четность & четная & нечетная
+		\end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+		\begin{tabular}{c|c|c|c|c|c|c}
+    	n = 3 & $\begin{pmatrix} 1 & 2 & 3 \\ 1 & 2 & 3 \end{pmatrix}$ & $\begin{pmatrix} 1 & 2 & 3 \\ 2 & 1 & 3 \end{pmatrix}$ & $\begin{pmatrix} 1 & 2 & 3 \\ 2 & 3 & 1 \end{pmatrix}$ & $\begin{pmatrix} 1 & 2 & 3 \\ 3 & 2 & 1 \end{pmatrix}$ & $\begin{pmatrix} 1 & 2 & 3 \\ 3 & 1 & 2 \end{pmatrix}$ & $\begin{pmatrix} 1 & 2 & 3 \\ 1 & 3 & 2 \end{pmatrix}$ \\
+        \hline
+       число инверсий & 0 & 1 & 2 & 3 & 2 & 1\\
+       \hline
+          $\mathrm{sgn} (\sigma)$ & 1 & -1 & 1 & -1 & 1 & -1 \\
+          \hline
+        четность & четная & нечетная & четная & нечетная & четная & нечетная
+		\end{tabular}
+\end{table}
+
+\textbf{Замечание.} $\sigma \in S_n :$ число инверсий $\leq C_n^2 = \frac{n(n-1)}{2}$, равенство достигается при $\sigma = \begin{pmatrix} 1 & 2 & \dots & n \\ n & n-1 & \dots & 1 \end{pmatrix}$
+
+\bigskip
+\textbf{Определение.} \textit{Произведением (или композицией) двух подстановок} $\sigma, \rho \in S_n$ называется постановка $\sigma \rho$, такая что $(\sigma \rho)(i) = \sigma (\rho (i)) \ \forall i=1, \dots, n$.
+
+\bigskip
+Пример.
+
+$\sigma = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 4 & 3 & 2 & 1 \end{pmatrix},\ \rho = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 3 & 4 & 1 & 2 \end{pmatrix}$
+
+$\sigma \rho = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 1 & 4 & 3 \end{pmatrix}$
+
+$\rho \sigma = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 1 & 3 & 4 \end{pmatrix}$
+
+$\Rightarrow \sigma \rho \neq \rho \sigma \Rightarrow$ умножение подстановок не обладает свойством коммутативности.
+
+\bigskip
+\textbf{Утверждение.} Умножение подстановок ассоциативно, т.е. $\sigma (\tau \pi) = (\sigma \tau) \pi \ \forall \ \sigma, \tau, \pi \in S_n$. 
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd \forall \ i \in 1, 2, \dots, n$ имеем
+
+$[\sigma (\tau \pi)](i) = \sigma ((\tau \pi)(i)) = \sigma (\tau (\pi (i)))$
+
+$[(\sigma \tau) \pi] (i) = (\sigma \tau) (\pi(i)) = \sigma (\tau (\pi(i))) \lhd$
+
+\bigskip
+\textbf{Определение.} Подстановка $id = \begin{pmatrix} 1 & 2 & \dots & n \\ 1 & 2 & \dots & n \end{pmatrix} \in S_n$ называется \textit{тождественной}.
+
+$id(i) = i \ \forall \ i=1, 2, \dots, n$
+
+\bigskip
+\textbf{Свойства:} $id \cdot \sigma = \sigma \cdot id = \sigma$.
+
+\bigskip
+\textbf{Определение.} $\sigma \in S_n, \ \sigma = \begin{pmatrix} 1 & 2 & \dots & n \\ \sigma (1) & \sigma (2) & \dots & \sigma (n) \end{pmatrix} \Rightarrow$ подстановка $\sigma^{-1} := \begin{pmatrix} \sigma (1) & \sigma (2) & \dots & \sigma (n) \\ 1 & 2 & \dots & n \end{pmatrix}$ называется \textit{обратной к} $\sigma$.
+
+\bigskip
+\textbf{Свойства:} $\sigma \cdot \sigma^{-1} = id = \sigma^{-1} \cdot \sigma$
+
+\bigskip
+\textbf{Теорема.} $\sigma, \rho \in S_n \Rightarrow \mathrm{sgn}(\sigma \rho) = \\mathrm{sgn} \sigma \cdot \\mathrm{sgn} \rho$.
+
+\bigskip
+\textbf{Доказательство.} $\rhd$ Для каждой пары $i < j$ введем следующие числа:
+
+
+\begin{equation*}
+	a(i,j) = \begin{cases}
+		1, &\text{если }  \{i, j \} \text{образует инверсию в } \rho \\
+		0, &\text{иначе}
+	\end{cases}
+\end{equation*}
+
+\begin{equation*}
+	b(i,j) = \begin{cases}
+		1, &\text{если }  \{i, j \} \text{ образует инверсию в } \sigma \\
+		0, &\text{иначе}
+	\end{cases}
+\end{equation*}
+
+\begin{equation*}
+	c(i,j) = \begin{cases}
+		1, &\text{если }  \{i, j \} \text{ образует инверсию в } \sigma \rho \\
+		0, &\text{иначе}
+	\end{cases}
+\end{equation*}
+
+\bigskip
+$1 \rightarrow \rho (1) \rightarrow \sigma \rho (1)$
+
+$2 \rightarrow \rho (2) \rightarrow \sigma \rho (2)$
+
+$\dots$
+
+$n \rightarrow \rho (n) \rightarrow \sigma \rho (n)$
+
+\bigskip
+<число инверсий в $\rho$> $= \sum\limits_{1 \leq i < j \leq n} a(i, j) $
+
+\bigskip
+
+<число инверсий в $\sigma$> $= \sum\limits_{1 \leq i < j \leq n} b(i, j) $
+
+\bigskip
+
+<число инверсий в $\sigma \rho$> $= \sum\limits_{1 \leq i < j \leq n} c(i, j) $
+
+\bigskip
+Зависимость $c(i,j)$ от $a(i,j)$ и $b(i,j)$:
+
+\begin{table}[!ht]
+		\begin{tabular}{c|c|c|c|c}
+    	a(i,j) & 0 & 0 & 1 & 1 \\
+        \hline
+       b(i,j) & 0 & 1 & 0 & 1 \\
+       \hline
+          c(i,j) & 0 & 1 & 1 & 0 \\
+		\end{tabular}
+\end{table}
+
+Вывод: $c(i,j) = (a(i,j) + b(i,j))\ mod\ 2$
+
+Тогда $\mathrm{sgn}(\sigma \rho) = (-1)^{\sum c(i,j)} = (-1)^{\sum b(i,j) + \sum a(i,j)} = (-1)^{\sum b(i,j)} \cdot (-1)^{\sum a(i,j)} = \mathrm{sgn} \sigma \cdot \mathrm{sgn} \rho. \lhd$
+
+\bigskip
+\textbf{Следствие.} $\sigma \in S_n \Rightarrow \mathrm{sgn} (\sigma^{-1}) = \mathrm{sgn}(\sigma)$.
+
+\bigskip
+\textbf{\textit{Доказательство.}} $\rhd 1 = \mathrm{sgn}(id) = \mathrm{sgn}(\sigma \cdot \sigma^{-1}) = \mathrm{sgn} \sigma \cdot \mathrm{sgn} \sigma^{-1} \Rightarrow \mathrm{sgn} \sigma^{-1} = \mathrm{sgn} \sigma. \lhd$
+
+\bigskip
+\textbf{\textit{Упражнение на дом:}} $\forall \sigma \in S_n:$ <число инверсий в $\sigma$> = <число инверсий в $\sigma^{-1}$>.
+
