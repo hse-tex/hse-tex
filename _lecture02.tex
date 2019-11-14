@@ -1,4 +1,4 @@
-\section{Лекция 12.09.2019 \\ Основные свойства умножения матриц. Система линейных уравнений}
+\section{Лекция 12.09.2019}
 
 \subsection{Отступление о суммах}
 
@@ -18,7 +18,7 @@
     \item $\sum_{i=1}^m \sum_{j=1}^n S_{ij} = \sum_{j=1}^n \sum_{i=1}^m S_{ij}$ --- сумма всех элементов матрицы $S = (S_{ij})$
 \end{enumerate}
 
-\subsection{Свойства умножения матриц}
+\subsection{Основные свойства умножения матриц}
 
 Пусть $A \in \text{Mat}_{m \times n}, \ B \in \text{Mat}_{n \times p}$
 
@@ -81,7 +81,7 @@ BA = \begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}$
 
 $A \in M_n$
 
-\bigskip
+\subsection{Диагональные матрицы}
 \begin{definition}
     Матрица $A \in M_n$ называется \textit{диагональной} если все ее элементы вне главной диагонали равны нулю ($a_{ij} = 0$ при $i \neq j$)
 \end{definition}
@@ -117,6 +117,7 @@ $A \in M_n$
     \end{enumerate}
 \end{proof}
 
+\subsection{Единичная матрица и её свойства}
 \begin{definition}
     Матрица $E = E_n = diag(1, 1, \dots, 1)$ называется \textit{единичной матрицей} порядка $n$. 
 
@@ -137,6 +138,7 @@ $A \in M_n$
     \item $AE = EA = A \quad \forall A \in M_n$
 \end{enumerate}
 
+\subsection{След квадратной матрицы и его свойства}
 \begin{definition}
     \textit{Следом} матрицы $A \in M_n$ называется число $trA = a_{11} + a_{22} + \dots + a_{nn} = \sum_{i=1}^n a_{ii}$ 
 \end{definition}
@@ -222,6 +224,7 @@ m уравнений, n неизвестных
     \end{enumerate}
 \end{example}
 
+\subsubsection{Совместные и несовместные системы}
 \begin{definition}
     СЛУ называется 
 
@@ -230,7 +233,7 @@ m уравнений, n неизвестных
     -- \textit{несовместной}, если решений нет
 \end{definition}
 
-\subsubsection*{Матричная форма записи СЛУ}
+\subsubsection{Матричная форма записи СЛУ}
 
 $AX = B$.
 \begin{equation*}

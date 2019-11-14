@@ -1,5 +1,6 @@
 \section{Лекция 23.09.2019}
 
+\subsection{Инверсии в перестановке}
 Обозначение: $S_n$ -- множество всех подстановок из n элементов.
 
 \bigskip
@@ -9,6 +10,7 @@
     Пара $\{i, j\}$ (неупорядоченная) образует \textit{инверсию} в $\sigma$, если числа $i - j$ и $\sigma(i) - \sigma(j)$ имеют разный знак (то есть либо $i < j$ и $\sigma(i) > \sigma(j)$, либо $i > j$ и $\sigma(i) < \sigma(j)$).
 \end{definition}
 
+\subsection{Знак и чётность перестановки}
 \begin{definition}
     \textit{Знак} подстановки $\sigma$ -- это  число $\sgn(\sigma) = (-1)^{<\text{число инверсий в }\sigma>}$.
 \end{definition}
@@ -50,6 +52,8 @@
     \end{pmatrix}$
 \end{comment}
 
+
+\subsection{Произведение перестановок}
 \begin{definition}
     \textit{Произведением} (или \textit{композицией}) двух подстановок $\sigma, \rho \in S_n$ называется такая постановка $\sigma \rho \in S_n$, что $(\sigma \rho)(x) := \sigma (\rho (x))$ $\forall x \in \{1, \dots, n\}$.
 \end{definition}
@@ -76,6 +80,7 @@ $\rho \sigma = \begin{pmatrix}
 
 Видно, что $\sigma \rho \neq \rho \sigma \implies$ произведение подстановок не обладает свойством коммутативности.
 
+\subsection{Ассоциативность произведения перестановок}
 \begin{proposition}
     Умножение подстановок ассоциативно, то есть $\sigma (\tau \pi) = (\sigma \tau) \pi \ \forall \sigma, \tau, \pi \in S_n$.
 \end{proposition}
@@ -89,6 +94,7 @@ $\rho \sigma = \begin{pmatrix}
 \end{proof}
 
 
+\subsection{Тождественная перестановка}
 \begin{definition}
     Подстановка $id = \begin{pmatrix}
         1 & 2 & \dots & n \\
@@ -102,6 +108,8 @@ $\forall \sigma \in S_n \quad id \cdot \sigma = \sigma \cdot id = \sigma$.
 
 $\sgn(id) = 1$.
 
+
+\subsection{Обратная перестановка и её знак}
 \begin{definition}
     $\sigma \in S_n$, $\sigma = \begin{pmatrix}
         1 & 2 & \dots & n \\
@@ -115,6 +123,7 @@ $\sgn(id) = 1$.
 \textbf{Свойства:}
 $\sigma \cdot \sigma^{-1} = id = \sigma^{-1} \cdot \sigma$
 
+\subsection{Теорема о знаке произведения перестановок}
 \begin{theorem}
     $\sigma, \rho \in S_n \implies \sgn(\sigma \rho) = \sgn \sigma \cdot \sgn \rho$.
 \end{theorem}
@@ -181,7 +190,7 @@ $\sigma \cdot \sigma^{-1} = id = \sigma^{-1} \cdot \sigma$
 
 \textit{\textbf{Упражнение на дом:} Показать, что число инверсий в $\sigma^{-1}$ такое же, как в $\sigma$}.
 
-\subsection{Транспозиции}
+\subsection{Транспозиции, знак транспозиции}
 
 Пусть $i, j \in \{1, 2, \dots, n\}$, $i \neq j$.
 
@@ -201,8 +210,9 @@ $\tau_{ij}(k) = k \ \forall k \neq i, j$.
     $\tau$ -- траспозиция $\implies \tau^2 = id, \tau^{-1} = \tau$.
 \end{comment}
 
-\bigskip
-\textbf{Определение.} Подстановки вида $\tau_{i, i+1}$ называются \textit{элементарными траспозициями}.
+\begin{definition}
+    Подстановки вида $\tau_{i, i+1}$ называются \textit{элементарными траспозициями}.
+\end{definition}
 
 \begin{lemma}
     $\tau \in S_n$ -- транспозиция $\implies \sgn(\tau) = -1$.
@@ -267,7 +277,7 @@ $\tau_{ij}(k) = k \ \forall k \neq i, j$.
     Теперь, домножая справа на $\tau_k \tau_{k-1} \dots \tau_1$, получим $\sigma = \tau_k \tau_{k-1} \dots \tau_1$.
 \end{proof}
 
-\subsection{Определители}
+\subsection{Определитель квадратной матрицы}
 
 \begin{definition}
     Определителем матрицы $A \in M_n$ называется число
@@ -281,10 +291,9 @@ $\tau_{ij}(k) = k \ \forall k \neq i, j$.
 \bigskip
 Другие обозначения: $|A|, \begin{vmatrix} a_{11} & a_{12} & \dots & a_{1n} \\ \dots & \dots & \dots & \dots \\ a_{n1} & a_{n2} & \dots & a_{nn} \end{vmatrix}$
 
-\bigskip
-Примеры:
 
-\begin{enumerate}
+\subsection{Определители порядков 2 и 3}
+\begin{itemize}
 \item
     $n = 2$
 
@@ -304,4 +313,4 @@ $\tau_{ij}(k) = k \ \forall k \neq i, j$.
     \begin{pmatrix} 1 & 2 & 3 \\ 1 & 3 & 2 \end{pmatrix} \right\}$
 
     $\det A = \begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{vmatrix} = a_{11} a_{22} a_{33} + a_{12} a_{23} a_{31} + a_{13} a_{21} a_{32} - a_{13} a_{22} a_{31} - a_{12} a_{21} a_{33} - a_{11} a_{23} a_{32}$.
-\end{enumerate}
+\end{itemize}
