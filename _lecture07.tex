@@ -1,0 +1,351 @@
+\section{Лекция 30.09.2019}
+
+\subsection{Определитель с углом нулей}
+
+\textbf{Предложение.}
+\begin{equation*}
+    A = \left(
+        \begin{array}{c|c}
+            P & Q \\
+            \hline
+            0 & R
+        \end{array}
+    \right) \text{ или } A =
+    \left(
+        \begin{array}{c|c}
+            P & 0 \\
+            \hline
+            Q & R
+        \end{array}
+    \right), \ P \in M_k, \ R \in M_{n-k} \implies \det A = \det P \det R
+.\end{equation*}
+
+Матрица с углом нулей:
+\begin{equation*}
+\left(
+\begin{array}{c|ccc}
+  * & * & * & * \\
+  \hline
+  0 & * & * & * \\
+  0 & * & * & * \\
+  0 & * & * & *
+\end{array}
+\right)
+\end{equation*}
+
+НЕ матрица с углом нулей:
+\begin{equation*}
+\left(
+\begin{array}{c|ccc}
+  * & * & * & * \\
+  * & * & * & * \\
+  \hline
+  0 & * & * & * \\
+  0 & * & * & *
+\end{array}
+\right)
+\end{equation*}
+
+\begin{proof}
+    В силу свойства T достаточно доказать для строк.
+
+    \begin{enumerate}
+    \item
+        Элементарными преобразованиями строк в $A$, приведем $(P \mid Q)$ к виду $(P' \mid Q')$, в котором $P'$ имеет ступенчатый вид. При этом $\det A$ и $\det P$ умножаются на один и тот же скаляр $\alpha \neq 0$.
+
+    \item
+        Элементарными преобразованиями строк в $A$, приведем $(0 \mid R)$ к виду $(0 \mid R')$, в котором $R'$ имеет ступенчатый вид. При этом $\det A$ и $\det R$ умножаются на один и тот же скаляр $\beta \neq 0$.
+    \end{enumerate}
+
+    $\begin{pmatrix} P' & Q' \\ 0 & R' \end{pmatrix} $ -- верхнетреугольная $\implies \det \begin{pmatrix} P' & Q' \\ 0 & R' \end{pmatrix} = \det P' \det R'$.
+
+    \begin{equation*}
+        \alpha \beta \det A = \det \begin{pmatrix} P' & Q' \\ 0 & R' \end{pmatrix} = \det P' \det R' = (\alpha \det P) (\beta \det R) = \alpha \beta \det P \det R
+    .\end{equation*}
+\end{proof}
+
+
+\subsection{Определитель произведения матриц}
+\begin{theorem}
+    $A, B \in M_n \implies \det(AB) = \det A \det B$.
+\end{theorem}
+
+\begin{proof}
+
+    Выполним с матрицей $A$ одно элементарное преобразование строк, получим матрицу $A'$.
+    \begin{equation*}
+        A \leadsto A' = U A
+    .\end{equation*}
+
+    Такое же преобразование строк с $AB$.
+    \begin{equation*}
+        AB \leadsto U(AB) = (UA)B = A'B
+    .\end{equation*}
+
+    Таким образом, сначала выполнив элементарное преобразование и домножив на матрицу $B$, либо домножив на $B$ и затем применив элементарное преобразование, получим тот же результат.
+
+    Тогда, цепочка элементарных преобразований строк:
+    \begin{equation*}
+        A \leadsto C \text{ -- улучшенный ступенчатый вид}
+    .\end{equation*}
+
+    Так же цепочка для $AB$:
+    \begin{equation*}
+        AB \leadsto CB
+    .\end{equation*}
+
+    При этом, $\det A$ и $\det AB$ умножились на один и тот же скаляр $\alpha \neq 0$
+    \begin{equation*}
+        \det C = \alpha \det A
+    .\end{equation*}
+    \begin{equation*}
+        \det CB = \alpha \det AB
+    .\end{equation*}
+
+    \begin{description}
+    \item[Случай 1]
+        Последняя строка состоит из нулей:
+        \begin{align*}
+            &C_{(n)} = (0 \dots 0) \\
+            &\implies [CB]_{(n)} = C_{(n)} B = (0 \dots 0) \\
+            &\implies \det CB = 0 = 0 \cdot \det B = \det C \det B
+        .\end{align*}
+
+    \item[Случай 2]
+        Последняя строка ненулевая:
+        \begin{equation*}
+            \tag{$star$}
+            C_{(n)} \implies C = E
+        ,\end{equation*}
+        так как матрица $C$ имеет улучшенный ступенчатый вид.
+
+        Значит,
+        \begin{equation*}
+            \det CB = \det B = 1 \cdot \det B = \det C \cdot \det B
+        .\end{equation*}
+    \end{description}
+
+    Из этих двух случаем следует, что $\det CB = \det C \det B$.
+
+    Сокращая $\alpha$ получаем,
+    \begin{equation*}
+        \det CB = \det C \det B \implies \det AB = \det A \det B
+    .\end{equation*}
+\end{proof}
+
+\begin{comment}
+    Пусть $A \in M_n$, $A_{\text{ул}}$ -- её улучшенный ступенчатый вид.
+    \begin{equation*}
+        \det A \neq 0 \iff A_{\text{ул}} = E
+    .\end{equation*}
+\end{comment}
+
+
+\subsection{Дополнительные миноры и алгебраические дополнения к элементам квадратной матрицы}
+\begin{definition}
+    \textit{Дополнительным минором} к элементу $a_{ij}$ называется определитель $(n-1) \times (n-1)$ матрицы, получающейся из $А$ вычеркиванием $i$-ой строки и $j$-го столбца.
+
+    Обозначение: $\overline{M}_{ij}$.
+\end{definition}
+
+\begin{definition}
+    \textit{Алгебраическим дополнением к} элементу $a_{ij}$ называется число $A_{ij} = (-1)^{i+j} \overline{M}_{ij}$.
+\end{definition}
+
+
+\subsection{Лемма об определителе матрицы, содержащей ровно один ненулевой элемент в некоторой строке}
+\begin{lemma}
+    Пусть $a_{ik} = 0$ при всех $k \neq j$. Тогда $\det A = a_{ij} \cdot A_{ij}$.
+\end{lemma}
+
+\begin{proof}
+    \begin{equation*}
+        A = \left(
+            \begin{array}{c|c|c}
+              P & U & Q \\
+              \hline
+              0 \dots 0 & a_{ij} & 0 \dots 0 \\
+              \hline
+              R & V & S
+            \end{array}
+        \right)
+    .\end{equation*}
+
+    Переставляя соседние строки $i - 1$ раз, вытолкнем $i$-ю строку наверх.
+
+    \begin{equation*}
+        A' = \left(
+            \begin{array}{c|c|c}
+                0 \dots 0 & a_{ij} & 0 \dots 0 \\
+                \hline
+                P & U & Q \\
+                \hline
+                R & V & S
+            \end{array}
+        \right)
+    \end{equation*}
+
+    Переставляя соседние столбцы $j - 1$ раз, переместим $j$-й столбец на первое место.
+
+    \begin{equation*}
+        A'' = \left(
+            \begin{array}{c|c|c}
+                a_{ij} & 0 \dots 0 & 0 \dots 0 \\
+                \hline
+                U & P & Q \\
+                \hline
+                V & R & S
+            \end{array}
+        \right)
+    \end{equation*}
+
+    $\det A'' = a_{ij} \det \left(
+        \begin{array}{c|c}
+            P & Q \\
+            \hline
+            R & S
+        \end{array}
+    \right) = a_{ij} \overline{M}_{ij}$.
+
+    \bigskip
+    $\implies det A = (-1)^{i - 1 + j - 1} \det A'' = (-1)^{i + j} a_{ij} \overline{M}_{ij} = a_{ij} A_{ij}$.
+
+\end{proof}
+
+
+\subsection{Разложение определителя по строке (столбцу)}
+\begin{theorem}
+    При любом фиксированном $i \in \{1, 2, \dots, n\}$,
+    \begin{equation*}
+        \det A = a_{i1} A_{i1} + a_{i2} A_{i2} + \dots + a_{in} A_{in} = \sum_{j = 1}^n a_{ij} A_{ij} \text{ -- разложение по i-й строке}
+    .\end{equation*}
+
+    Аналогично, для любого фиксированного $j \in \{1, 2, \dots, n\}$,
+    \begin{equation*}
+        \det A = a_{1j} A_{1j} + a_{2j} A_{2j} + \dots + a_{nj} A_{nj} = \sum_{i = 1}^{n} a_{ij} A_{ij} \text{ -- разложение по j-у столбцу}
+    .\end{equation*}
+\end{theorem}
+
+\begin{proof}
+    В силу свойства T достаточно доказать для строк.
+    \begin{equation*}
+        A_{(i)} = (a_{i1}, 0, \dots, 0) + (0, a_{i2}, 0, \dots, 0) + \dots + (0, \dots, 0, a_{in})
+    .\end{equation*}
+
+    Требуемое следует из свойства 2 определителей и леммы.
+\end{proof}
+
+
+\subsection{Лемма о фальшивом разложении определителя}
+\begin{lemma}~
+    \begin{enumerate}
+    \item
+        При любых $i, k \in \{1, 2, \dots, n\} : i \neq k \implies \sum_{j = 1}^n a_{ij} A_{kj} = 0$.
+    \item
+        При любых $j, k \in \{1, 2, \dots, n\} : j \neq k \implies \sum_{i = 1}^n a_{ij} A_{ik} = 0$
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    В силу свойства T достаточно доказать для строк.
+
+    Пусть $B \in M_n$ -- матрица, полученная из $A$ заменой $k$-й строки на $i$-ю.
+
+    \begin{equation*}
+        B = \begin{pmatrix}
+            A_{(1)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(n)}
+        \end{pmatrix}
+    \end{equation*}
+
+    В $B$ есть две одинаковые строки $\implies \det B = 0$.
+
+    Разлагая $\det B$ по $k$-й строке, получаем
+    \begin{equation*}
+        \det B = \sum_{j = 1}^n b_{kj} B_{kj} = \sum_{j = 1}^n a_{ij} A_{kj}
+    .\end{equation*}
+\end{proof}
+
+
+\subsection{Обратная матрица, её единственность}
+
+Пусть дана $A \in M_n$.
+
+\begin{definition}
+    Матрица $B \in M_n$ называется \textit{обратной} к $A$, если $AB = BA = E$.
+
+    Обозначение: $A^{-1}$.
+\end{definition}
+
+
+\begin{lemma}
+    Если $\exists A^{-1}$, то она единственна.
+\end{lemma}
+
+\begin{proof}
+    Пусть $B, C \in M_n$ такие, что $AB = BA = E$ и $AC = CA = E$. Тогда,
+    \begin{equation*}
+        B = BE = B(AC) = (BA)C = EC = C \Rightarrow B = B'
+    .\end{equation*}
+\end{proof}
+
+
+\subsection{Невырожденные матрицы}
+\begin{definition}
+    Матрица $A \in M_n$ называется \textit{невырожденной}, если $\det A \neq 0$, и \textit{вырожденной} иначе (то есть $\det A = 0$).
+\end{definition}
+
+
+\subsection{Определитель обратной матрицы}
+\begin{lemma}
+    Если $\exists A^{-1}$, то $\det A \neq 0$.
+\end{lemma}
+
+\begin{proof}
+    $AA^{-1} = E \implies \det(AA^{-1}) = \det E \implies \det A \det(A^{-1}) = 1$.
+\end{proof}
+
+
+\subsection{Присоединённая матрица}
+\begin{definition}
+    \textit{Присоединенной} к А матрицей называется матрица $\widehat{A} = (A_{ij})^T$.
+\end{definition}
+
+\begin{equation*}
+    \widehat{A} = \begin{pmatrix}
+        A_{11} & A_{21} & \dots & A_{n1} \\
+        A_{12} & A_{22} & \dots & A_{n2} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        A_{1n} & A_{2n} & \dots & A_{nn}
+    \end{pmatrix}
+\end{equation*}
+
+
+\subsection{Критерий обратимости квадратной матрицы, явная формула для обратной матрицы}
+\begin{theorem}
+    $A$ обратима (то есть $\exists A^{-1}$) $\iff$ $A$ невырождена ($\det A \neq 0$), при этом $A^{-1} = \frac{1}{\det A} \widehat{A}$.
+\end{theorem}
+
+\begin{proof}
+    Утверждение в одну сторону следует из леммы 2.
+
+    \bigskip
+    Пусть $\det A \neq 0$. Покажем, что $\frac{1}{detA} \widehat{A} = A^{-1}$.
+    Для этого достаточно доказать, что $A \widehat{A} = \widehat{A} A = \det(A) \cdot E$.
+
+    Для $X = A \widehat{A}$ имеем
+    \begin{equation*}
+        x_{ij} = \sum_{k = 1}^n a_{ik} [\widehat{A}]_{kj} = \sum_{k = 1}^n a_{ik} A_{jk} = \begin{cases}
+            detA, &\text{при }  i = j  \\
+            0, &\text{при } i \neq j \\
+        \end{cases}
+    .\end{equation*}
+
+    Для $Y = \widehat{A} A$ имеем
+
+    \begin{equation*}
+        y_{ij} = \sum_{k = 1}^n [\widehat{A}]_{ik} a_{kj} = \sum_{k = 1}^n A_{ki} a_{kj} = \begin{cases}
+            detA, &\text{при }  i = j  \\
+            0, &\text{при } i \neq j \\
+        \end{cases}
+    .\end{equation*}
+\end{proof}
