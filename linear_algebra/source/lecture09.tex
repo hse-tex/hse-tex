@@ -72,11 +72,12 @@ $Arg(z) = \{\phi \in \RR \mid \cos \phi = \frac{a}{|z|}, \sin \phi = \frac{b}{|z
 
 \subsection{Умножение и деление комплексных чисел в тригонометрической форме}
 
-\textbf{Предложение}
-Пусть $z_1 = |z_1| (\cos \phi_1 + i \sin \phi_1)$ и $z_2 = |z_2| (\cos \phi_2 + i \sin \phi_2)$, тогда
-\begin{equation*}
-    z_1 z_2 = |z_1| |z_2| (\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2))
-.\end{equation*}
+\begin{proposal}
+    Пусть $z_1 = |z_1| (\cos \phi_1 + i \sin \phi_1)$ и $z_2 = |z_2| (\cos \phi_2 + i \sin \phi_2)$, тогда
+    \begin{equation*}
+        z_1 z_2 = |z_1| |z_2| (\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2))
+    .\end{equation*}
+\end{proposal}
 
 \begin{proof}
     \begin{align*}
@@ -202,21 +203,21 @@ $\deg(f \cdot g) = \deg f + \deg g$.
 
 Если $f(x)$ не делится на $g(x)$, то можно поделить с остатком.
 
-\bigskip
-\textbf{Предложение (деление с остатком).} Если $f(x), g(x) \in F[x]$, $g(x) \neq 0$, то $\exists! q(x), r(x) \in F[x]$, такие что
-\begin{equation*}
-    \begin{cases}
-        f(x) = q(x) g(x) + r(x) \\
-        \text{либо } r(x) = 0 \text{, либо } \deg r(x) < \deg g(x)
-    \end{cases}
-\end{equation*}
+\begin{proposal}[деление с остатком]
+    Если $f(x), g(x) \in F[x]$, $g(x) \neq 0$, то $\exists! q(x), r(x) \in F[x]$, такие что
+    \begin{equation*}
+        \begin{cases}
+            f(x) = q(x) g(x) + r(x) \\
+            \text{либо } r(x) = 0 \text{, либо } \deg r(x) < \deg g(x)
+        \end{cases}
+    \end{equation*}
+\end{proposal}
 
-\bigskip
-Пример.
+\begin{example}
+    $f(x) = x^3 - 2x$, $g(x) = x + 1$.
 
-$f(x) = x^3 - 2x$, $g(x) = x + 1$.
-
-$f(x) = (x^2 - x - 1)(x + 1) + 1$, $q(x) = (x^2 - x - 1)$, $r(x) = 1$.
+    $f(x) = (x^2 - x - 1)(x + 1) + 1$, $q(x) = (x^2 - x - 1)$, $r(x) = 1$.
+\end{example}
 
 
 \subsection{Теорема Безу}
