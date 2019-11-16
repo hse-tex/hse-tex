@@ -12,11 +12,6 @@
 %% Кастомизация списокв
 \usepackage[inline]{enumitem}
 
-\usepackage{epigraph}
-\usepackage{blkarray}
-\usepackage[unicode=true, colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
-\usepackage{nameref}
-
 %%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
 \usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
@@ -25,8 +20,11 @@
 \mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
 
 %% Шрифты
-\usepackage{euscript}    % Шрифт Евклид
+\usepackage{euscript} % Шрифт Евклид
 \usepackage{mathrsfs} % Красивый матшрифт
+
+\usepackage{epigraph}
+\usepackage[unicode=true, colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
 
 %% Свои команды
 \DeclareMathOperator{\tr}{\mathop{\mathrm{tr}}}
@@ -54,6 +52,9 @@
 %% Красивые <= и >=
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\leq}{\leqslant}
+
+%% Более привычные греческие буквы
+\renewcommand{\phi}{\varphi}
 
 %% Перенос знаков в формулах (по Львовскому)
 \newcommand*{\hm}[1]{#1\nobreak\discretionary{}
