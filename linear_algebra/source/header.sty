@@ -23,8 +23,25 @@
 \usepackage{euscript} % Шрифт Евклид
 \usepackage{mathrsfs} % Красивый матшрифт
 
+%% Эпиграф
 \usepackage{epigraph}
+
+%% Оглавление с ссылками и ссылки на разные вещи
 \usepackage[unicode=true, colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
+\usepackage{nameref}
+
+%% Ссылки на пункты description
+\makeatletter
+\let\orgdescriptionlabel\descriptionlabel
+\renewcommand*{\descriptionlabel}[1]{%
+  \let\orglabel\label
+  \let\label\@gobble
+  \phantomsection
+  \protected@edef\@currentlabel{#1\unskip}%
+  \let\label\orglabel
+  \orgdescriptionlabel{#1}%
+}
+\makeatother
 
 %% Свои команды
 \DeclareMathOperator{\tr}{\mathop{\mathrm{tr}}}
