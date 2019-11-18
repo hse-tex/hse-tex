@@ -1,5 +1,5 @@
 \documentclass[a4paper]{article}
-\usepackage{../source/header}
+\usepackage{header}
 
 
 \newcommand\enumtocitem[3]{\item\textbf{#1}\addtocounter{#2}{1}\addcontentsline{toc}{#2}{\protect{\numberline{#3}} #1}}
@@ -39,58 +39,62 @@
 
         Для любых $A, B \in \text{Mat}_{m \times n}$
         \begin{itemize}
-            \item \emph{Сложение} $A + B := (a_{ij} + b_{ij})$
-            \item \emph{Умножение на скаляр} $\alpha \in \RR \implies \lambda A := (\lambda a_{ij})$
+            \item \emph{Сложение} $A + B := (a_{ij} + b_{ij}) = \begin{pmatrix}
+                    a_{11} + b_{11} & a_{12} + b_{12} & \dots & a_{1n} + b_{1n} \\
+                    a_{21} + b_{21} & a_{22} + b_{22} & \dots & a_{2n} + b_{2n} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    a_{m1} + b_{m1} & a_{m2} + b_{m2} & \dots & a_{mn} + b_{mn}
+                \end{pmatrix}$
+            \item \emph{Умножение на скаляр} $\lambda \in \RR \implies \lambda A := (\lambda a_{ij}) = \begin{pmatrix}
+                    \lambda a_{11} & \lambda a_{12} & \dots & \lambda a_{1n} \\
+                    \lambda a_{21} & \lambda a_{22} & \dots & \lambda a_{2n} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    \lambda a_{m1} & \lambda a_{m2} & \dots & \lambda a_{mn}
+                \end{pmatrix}$
         \end{itemize}
 
     % Лекция 1
-    \defitem{Транспонированная матрица} 
-
-        $A \in \text{Mat}_{m \times n} = \begin{pmatrix}
-            a_{11} & a_{12} & \dots & a_{1n} \\
-            a_{21} & a_{22} & \dots & a_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{m1} & a_{m2} & \dots & a_{mn}
-        \end{pmatrix} \leadsto A^T \in \text{Mat}_{n \times m} := \begin{pmatrix}
-            a_{11} & a_{21} & \dots & a_{m1} \\
-            a_{12} & a_{22} & \dots & a_{m2} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{1n} & a_{2n} & \dots & a_{mn}
-        \end{pmatrix}$
-
-        $A^T$ ---  \textit{транспонированная матрица}
+    \defitem{Транспонированная матрица}
+        \begin{align*}
+            A \in \text{Mat}_{m \times n} = &\begin{pmatrix}
+                a_{11} & a_{12} & \dots & a_{1n} \\
+                a_{21} & a_{22} & \dots & a_{2n} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                a_{m1} & a_{m2} & \dots & a_{mn}
+            \end{pmatrix} \\
+            A^T \in \text{Mat}_{n \times m} := &\begin{pmatrix}
+                a_{11} & a_{21} & \dots & a_{m1} \\
+                a_{12} & a_{22} & \dots & a_{m2} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                a_{1n} & a_{2n} & \dots & a_{mn}
+            \end{pmatrix} \text{ --- \textit{транспонированная матрица}}
+        .\end{align*}
 
     % Лекция 1
     \defitem{Произведение двух матриц}
-
-        Пусть $A = (a_{ij}) \in \text{Mat}_{m \times n}$
-
-        \bigskip
-
-        $A_{(i)} = \begin{pmatrix} a_{i1}, a_{i2}, \dots, a_{in} \end{pmatrix} $ --- $i$-я строка матрицы $A$
-
-        $A^{(j)} = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mn} \end{pmatrix} $ --- $j$-й  столбец матрицы $A$
-
         \begin{enumerate}[label=\arabic*)]
-            \item 
+            \item
                 Частный случай: умножение строки на столбец той же длинны
-            
-                $\underbrace{(x_1, \dots, x_n)}_{1 \times n} 
+
+                $\underbrace{(x_1, \dots, x_n)}_{1 \times n}
                 \underbrace{\begin{pmatrix}
                     y_1 \\ \vdots \\ y_n
-                \end{pmatrix}}_{n \times 1} 
+                \end{pmatrix}}_{n \times 1}
                 = x_1 \cdot y_1 + \dots + x_n \cdot y_n$
-                
+
             \item
                 Общий случай:
 
                 $A$ - матрица размера $m \times \underline{n}$
-                
+
                 $B$ - матрица размера $\underline{n} \times p$
-                
-                Количество строк матрицы $A$ равно количеству столбцов матрицы $B$ --- условие согласованности матриц
-                
-                $AB := C \in \text{Mat}_{m \times p}$, где $C_{ij} = A_{(i)} B^{(j)}$
+
+                $AB := C \in \text{Mat}_{m \times p}$, где
+                \begin{equation*}
+                    C_{ij} = A_{(i)} B^{(j)} = \sum_{k = 1}^{n} a_{ik} \cdot b_{kj}
+                .\end{equation*}
+
+                Количество строк матрицы $A$ равно количеству столбцов матрицы $B$ --- условие согласованности матриц.
         \end{enumerate}
 
     % Лекция 2
@@ -107,11 +111,11 @@
                     a_1 B_{(1)} \\
                     a_2 B_{(2)} \\
                     \vdots \\
-                    a_n B_{(n)} 
+                    a_n B_{(n)}
                 \end{pmatrix}$
-            \item $\forall B \in \text{Mat}_{m \times n} \implies BA = \begin{pmatrix} 
+            \item $\forall B \in \text{Mat}_{m \times n} \implies BA = \begin{pmatrix}
                     a_1 B^{(1)} & a_2 B^{(2)} & \dots & a_n B^{(n)}
-                \end{pmatrix}$ 
+                \end{pmatrix}$
             \end{enumerate}
         \end{lemma}
 
@@ -119,15 +123,15 @@
     \defitem{Единичная матрица, её свойства}
 
         \begin{definition}
-            Матрица $E = E_n = diag(1, 1, \dots, 1)$ называется \textit{единичной матрицей} порядка $n$. 
+            Матрица $E = E_n = diag(1, 1, \dots, 1)$ называется \textit{единичной матрицей} порядка $n$.
 
             \begin{equation*}
-                E = \begin{pmatrix} 
+                E = \begin{pmatrix}
                     1 & 0 & \dots & 0 \\
                     0 & 1 & \dots & 0 \\
                     \vdots & \vdots & \ddots & \vdots \\
                     0 & 0 & \dots & 1
-                \end{pmatrix} 
+                \end{pmatrix}
             \end{equation*}
         \end{definition}
 
@@ -142,7 +146,7 @@
     \defitem{След квадратной матрицы и его поведение при сложении матриц, умножении матрицы на скаляр и транспонировании}
 
         \begin{definition}
-            \textit{Следом} матрицы $A \in M_n$ называется число $trA = a_{11} + a_{22} + \dots + a_{nn} = \sum_{i=1}^n a_{ii}$ 
+            \textit{Следом} матрицы $A \in M_n$ называется число $trA = a_{11} + a_{22} + \dots + a_{nn} = \sum_{i=1}^n a_{ii}$
         \end{definition}
 
         \textbf{Свойства}:
@@ -163,7 +167,7 @@
     \defitem{Совместные и несовместные системы линейных уравнений}
 
         \begin{definition}
-            СЛУ называется 
+            СЛУ называется
 
             -- \textit{совместной}, если у нее есть хотя бы одно решение
 
@@ -180,9 +184,19 @@
     % Лекция 3
     \defitem{Расширенная матрица системы линейных уравнений}
 
-        $Ax = b$, $A \in \text{Mat}_{m \times n}$, $b \in \RR^m$
+        Для СЛУ
+        \begin{equation*}
+            \begin{cases}
+                \begin{aligned}
+                    a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n &= b_1 \\
+                    a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n &= b_2 \\
+                    \hdotsfor{2} \\
+                    a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n &= b_m \\
+                \end{aligned}
+            \end{cases}
+        \end{equation*}
 
-        Полная информация о СЛУ содержится в её \textit{расширенной матрице}.
+        её \textit{расширенной матрицей} называется матрица
         \begin{equation*}
             \begin{pmatrix} A \mid b \end{pmatrix} = \begin{amatrix}{4}{1}
             a_{11} & a_{12} & \dots & a_{1n} & b_1 \\
@@ -205,12 +219,12 @@
 
         \begin{enumerate}
         \item
-            $\text{Э}_1(i, j, \lambda)$: к $i$-ой строке прибавить $j$-ую, умноженную на $\lambda$ (покомпонентно), 
+            $\text{Э}_1(i, j, \lambda)$: к $i$-ой строке прибавить $j$-ую, умноженную на $\lambda$ (покомпонентно),
 
             $a_{ik} \mapsto a_{ik} + \lambda a_{jk} \ \forall k = 1, \dots, n$,
-            
+
             $b_i \mapsto b_i + \lambda b_j$.
-            
+
         \item
             $\text{Э}_2(i, j)$: переставить i-ую и j-ую строки.
 
@@ -222,6 +236,14 @@
 
     % Лекция 3
     \defitem{Ступенчатый вид матрицы}
+
+        \begin{definition}
+            Строка $(a_1, a_2, \dots, a_n)$ называется \textit{нулевой}, если $a_1 = a_2 = \dots = a_n = 0$ и \textit{ненулевой} иначе ($\exists i : a_i \neq 0$).
+        \end{definition}
+
+        \begin{definition}
+            \textit{Ведущим элементом} ненулевой строки называется первый её ненулевой элемент.
+        \end{definition}
 
         \begin{definition}
             Матрица $M \in \text{Mat}_{m \times n}$ называется \textit{ступенчатой}, или имеет ступенчатый вид, если:
@@ -241,7 +263,7 @@
                 0 & \dots & 0 & 0 & \dots & 0 & 0 & 0 & 0 & 0
             \end{pmatrix}
         ,\end{equation*}
-        где $\diamond \neq 0$, $*$ -- что угодно. 
+        где $\diamond \neq 0$, $*$ -- что угодно.
 
     % Лекция 3
     \defitem{Улучшенный ступенчатый вид матрицы}
@@ -272,7 +294,7 @@
 
         \begin{theorem}~
             \begin{enumerate}[label=\arabic*),nosep]
-            \item Всякую матрицу элементарными преобразованиями можно привести к ступенчатому виду. 
+            \item Всякую матрицу элементарными преобразованиями можно привести к ступенчатому виду.
             \item Всякую ступенчатую матрицу элементарными преобразованиями строк можно привести к улучшенному ступенчатому виду.
             \end{enumerate}
         \end{theorem}
@@ -282,16 +304,31 @@
         \end{corollary}
 
     % Лекция 4
-    \defitem{Общее решение совместной системы линейных уравнений} 
-        % TODO
+    \defitem{Общее решение совместной системы линейных уравнений}
+
+        \begin{definition}
+            \textit{Общим решением исходной СЛУ} называется выражение главных неизвестных через свободные.
+        \end{definition}
 
     % Лекция 4
-    \defitem{Сколько может быть решений у системы линейных уравнений с действительными коэффициентами?} 
-        % TODO
+    \defitem{Сколько может быть решений у системы линейных уравнений с действительными коэффициентами?}
+
+        \begin{definition}
+            Всякая СЛУ с действительными коэффициентами:
+            \begin{itemize}
+            \item либо не умеет решений (несовместна)
+            \item либо имеет ровно одно решение
+            \item либо имеет бесконечно много решений
+            \end{itemize}
+        \end{definition}
 
     % Лекция 4
     \defitem{Однородная система линейных уравнений. Что можно сказать про её множество решений?}
-        
+
+        \begin{definition}
+            СЛУ называется однородной (ОСЛУ), если все её правые части равны 0. Расширенная матрица: $(A \mid 0)$
+        \end{definition}
+
         \begin{fact}
             Всякая ОСЛУ имеет нулевое решение $(x_1 = x_2 = \dots = x_n = 0)$.
         \end{fact}
@@ -302,17 +339,13 @@
 
     % Лекция 4
     \defitem{Свойство однородной системы линейных уравнений, у которой число неизвестных больше числа уравнений}
-        
+
         \begin{corollary}
             Всякая ОСЛУ, у которой число неизвестных больше числа уравнений, имеет ненулевое решение
         \end{corollary}
 
     % Лекция 4
     \defitem{Связь между множеством решений совместной системы линейных уравнений и множеством решений соответствующей ей однородной системы}
-
-        Пусть дана совместная СЛУ $Ax = b$
-
-        Частное решение СЛУ --- это какое-то одно её решение.
 
         \begin{proposition}
             Пусть $Ax = b$ -- совместная СЛУ.
@@ -339,7 +372,7 @@
     \defitem{Перестановки множества $\{1, 2, . . . , n\}$}
 
         \begin{definition}
-            \textit{Перестановкой множества} $\{1, 2, \dots, n\}$ называется упорядоченный набор $(i_1, i_2, \dots, i_n)$, в котором каждое число от 1 до $n$ встречается ровно один раз. 
+            \textit{Перестановкой множества} $\{1, 2, \dots, n\}$ называется упорядоченный набор $(i_1, i_2, \dots, i_n)$, в котором каждое число от 1 до $n$ встречается ровно один раз.
         \end{definition}
 
         Обозначение: $P_n$ -- множество всех перестановок множества $\{1, 2, \dots, n\}$.
@@ -466,7 +499,7 @@
 
             $S_2 = \left\{ \begin{pmatrix} 1 & 2 \\ 1 & 2 \end{pmatrix}, \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix} \right\}$
 
-            $A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} \implies \det A = (+1) a_{11} a_{22} + (-1) a_{12} a_{21} = a_{11} a_{22} - a_{12} a_{21}$
+            $\det A = \begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix} = a_{11} a_{22} - a_{12} a_{21}$
 
         \item
             $n = 3$
@@ -489,7 +522,7 @@
             A_{(1)} \\ \vdots \\ A_{(i)}^1 \\ \vdots \\ A_{(n)}
         \end{pmatrix} + \det \begin{pmatrix}
             A_{(1)} \\ \vdots \\ A_{(i)}^2 \\ \vdots \\ A_{(n)}
-        \end{pmatrix}$.        
+        \end{pmatrix}$.
 
         \bigskip
         Пример:
@@ -625,7 +658,7 @@
             \textit{Дополнительным минором} к элементу $a_{ij}$ называется определитель $(n-1) \times (n-1)$ матрицы, получающейся из $А$ вычеркиванием $i$-ой строки и $j$-го столбца.
 
             Обозначение: $\overline{M}_{ij}$.
-        \end{definition}        
+        \end{definition}
 
     % Лекция 7
     \defitem{Алгебраическое дополнение к элементу квадратной матрицы}
@@ -688,7 +721,10 @@
         $A^{-1} = \frac{1}{\det A} \widehat{A}$
 
     \defitem{Критерий обратимости произведения двух матриц. Матрица, обратная к произведению двух матриц}
-        % TODO
+        \begin{corollary}
+            $A, B \in M_n \implies AB$ обратима $\iff$ обе $A$, $B$ обратимы. При этом $(AB)^{-1} = B^{-1} A^{-1}$.
+        \end{corollary}
+
 
     % Лекция 8
     \defitem{Формулы Крамера}
@@ -733,8 +769,15 @@
             Число $i$ называется \textit{мнимой единицей}.
 
             $a =: Re(z)$ -- \textit{действительная} часть числа $z$.
+
             $b =: Im(z)$ -- \textit{мнимая} часть числа $z$.
         \end{definition}
+
+        \begin{description}
+        \item[Сложение] $(a_1 + b_1 i) + (a_2 + b_2 i) = (a_1 + a_2, b_1 + b_2)$
+        \item[Умножение] $(a_1 + b_1 i) (a_2 + b_2 i) = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1)i$
+        \item[Деление] $\dfrac{a_1 + b_1 i}{a_2 + b_2 i} = \dfrac{a_1 a_2 + b_1 b_2}{a_2^2 + b_2^2} + \dfrac{a_2 b_1 - a_1 b_2}{a_2^2 + b_2^2}i$
+        \end{description}
 
     % Лекция 8
     \defitem{Комплексное сопряжение и его свойства: сопряжение суммы и произведения двух комплексных чисел}
@@ -745,13 +788,13 @@
             Операция $z \to \overline{z}$ называется \textit{комплексным сопряжением}.
         \end{definition}
 
-        \subsubsection{Свойства комплексного сопряжения}
+        \paragraph{Свойства комплексного сопряжения}
 
         \begin{itemize}[nosep]
         \item $\overline{\overline{z}} = z$.
         \item $\overline{z + w} = \overline{z} + \overline{w}$.
         \item $\overline{zw} = \overline{z} \cdot \overline{w}$.
-        \end{itemize}        
+        \end{itemize}
 
     % Лекция 8
     \defitem{Геометрическая модель комплексных чисел, интерпретация в ней сложения и сопряжения}
@@ -772,11 +815,7 @@
         \item $|z| \geq 0$, причем $|z| = 0 \iff z = 0$.
         \item $|z + w| \leq |z| + |w|$ (неравенство треугольника).
         \item $z \overline{z} = |z|^2$.
-
-            $z \overline{z} = (a + bi)(a - bi) = a^2 - b^2i = a^2 + b^2 = |z|^2$
-        \item $|zw| = |z||w|$
-
-            $|zw|^2 = (zw) \cdot (\overline{zw}) = z \cdot w \cdot \overline{z} \cdot \overline{w} = |z|^2 |w|^2$
+        \item $|zw| = |z||w|$.
         \end{enumerate}
 
     % Лекция 9
@@ -813,21 +852,16 @@
             В условиях предложения, предположим, что $z_2 \neq 0$.
 
             Тогда $\frac{z_1}{z_2} = \frac{|z_1|}{|z_2|} (\cos (\phi_1 - \phi_2) + i \sin(\phi_1 - \phi_2))$.
-
-            В частности, $\frac{1}{|z_2|}(\cos(- \phi_2) + i\sin(- \phi_2)) = \frac{1}{|z_2|}(\cos \phi_2 - i \sin \phi_2) = \frac{\overline{z}_2}{|z_2|^2}$.
         \end{corollary}
 
     % Лекция 9
     \defitem{Формула Муавра}
 
-        \begin{corollary}
-            Пусть $z = |z|(\cos \phi + i \sin \phi)$. Тогда $\forall n \in \ZZ$,
+        Пусть $z = |z|(\cos \phi + i \sin \phi)$. Тогда $\forall n \in \ZZ$,
 
-            \begin{equation*}
-                z^n = |z|^n (\cos(n \phi) + i \sin(n \phi)) \text{ -- формула Муавра}
-            .\end{equation*}
-
-        \end{corollary}
+        \begin{equation*}
+            z^n = |z|^n (\cos(n \phi) + i \sin(n \phi)) \text{ -- формула Муавра}
+        .\end{equation*}
 
     % Лекция 9
     \defitem{Извлечение корней из комплексных чисел}
@@ -838,41 +872,7 @@
             \textit{Корнем степени n} (или \textit{корнем n-й степени)} из числа $z$ называется всякое число $w \in \CC$, что $w^n = z$.
         \end{definition}
 
-        Положим $\sqrt[n]{z} := \{w \in \CC \ | \ w^n = z \}$.
-
-        \bigskip
-        Опишем множество $\sqrt[n]{z}$.
-
-        $w = \sqrt[n]{z} \implies w^n = z \implies |w|^n = |z|$.
-
-        Если $z = 0$, то $|z| = 0 \implies |w| = 0 \implies w = 0 \implies \sqrt[n]{0} = \{0\}$.
-
-        \bigskip
-        Далее считаем, что $z \neq 0$.
-
-        $z = |z|(\cos \phi + i \sin \phi)$
-
-        $w = |w|(\cos \psi + i \sin \psi)$
-
-        $z = w^n = |w|^n (\cos (n \psi) + i \sin (n \psi))$
-
-        Отсюда,
-        \begin{equation*}
-            z = w^n \iff
-            \begin{cases}
-                |z| = |w|^n  \\
-                n \psi = \phi + 2 \pi k \text{, для некоторого } k \in \ZZ
-            \end{cases}
-            \iff
-            \begin{cases}
-                |w| = \sqrt[n]{|z|}  \\
-                \psi = \frac{\phi + 2 \pi k}{n} \text{, для некоторого } k \in \ZZ
-            \end{cases}
-        \end{equation*}
-
-        С точностью до $2 \pi l$, $l \in \ZZ$, получается ровно $n$ различных значений для $\psi$, при $k = 0, 1, \dots, n-1$.
-
-        В результате $\sqrt[n]{z} = \{w_0, w_1, \dots, w_{n-1} \}$, где $w_m = \sqrt[n]{|z|}\left(\cos \frac{\phi + 2 \pi k}{n} + i \sin \frac{\phi + 2 \pi k}{n}\right)$
+        $\sqrt[n]{z} = \{w_0, w_1, \dots, w_{n-1} \}$, где $w_m = \sqrt[n]{|z|}\left(\cos \frac{\phi + 2 \pi k}{n} + i \sin \frac{\phi + 2 \pi k}{n}\right)$
 
         \begin{comment}
             Числа $w_0, w_1, \dots, w_{n-1}$ лежат в вершинах правильного n-угольника с центром в начале координат.
@@ -916,59 +916,1195 @@
     \subsection{Операции над матрицами}
     \begin{colloq}
         \proofitem{Дистрибутивность произведения матриц по отношению к сложению}
+
+            $\underbracket{A(B + C)}_x = \underbracket{AB + AC}_y$ --- левая дистрибутивность.
+
+            \begin{proof}
+                \begin{align*}
+                    x_{ij} = A_{(i)} (B + C)^{(j)}
+                    &= \sum_{k = 1}^{n} a_{ik} (b_{kj} + c_{kj}) \\
+                    &= \sum_{k = 1}^{n} (a_{ik} b_{kj} + a_{ik} c_{kj}) \\
+                    &= \sum_{k = 1}^{n} a_{ik} b_{kj} + \sum_{k = 1}^{n} a_{ik} c_{kj} \\
+                    &= A_{(i)} B^{(j)} + A_{(i)} C^{(j)} = y_{ij}
+                .\end{align*}
+            \end{proof}
+
+            Правая дистрибутивность доказывается аналогично.
+
         \proofitem{Ассоциативность произведения матриц}
+
+            $(AB)C = A(BC)$
+
+            \begin{proof}
+                $\underbracket{(AB)}_u C = x, A\underbracket{(BC)}_v = y$
+
+                \begin{align*}
+                    x_{ij}
+                    &= \sum_{k = 1}^{n} u_{ik} \cdot c_{kj}
+                    = \sum_{k = 1}^{n} \left(\sum_{l = 1}^{p} a_{il} b_{lk}\right) c_{kj}
+                    = \sum_{k = 1}^{n} \sum_{l = 1}^{p} \left(a_{il} b_{lk} c_{kj}\right) \\
+                    &= \sum_{l = 1}^{p} \sum_{k = 1}^{n} \left(a_{il} b_{lk} c_{kj}\right)
+                    = \sum_{l = 1}^{p} a_{il} \sum_{k = 1}^{n} \left(b_{lk} c_{kj}\right)
+                    = \sum_{l = 1}^{p} a_{il} v_{lj} = y_{ij}
+                .\end{align*}
+            \end{proof}
+
         \proofitem{Некоммутативность произведения матриц}
+
+            Умножение матриц не коммутативно
+
+            $A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},
+            B = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$
+
+            $AB = \begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix},
+            BA = \begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}$
+
         \proofitem{Транспонирование произведения двух матриц}
+
+            $\underbracket{(AB)^T}_x = \underbracket{B^T A^T}_y$
+
+            \begin{proof}
+                    $x_{ij} = [AB]_{ji} = A_{(j)} B^{(i)} = B^T_{(i)} (A^T)^{(j)} = y_{ij}$
+            \end{proof}
+
         \proofitem{Умножение на диагональную матрицу слева и справа}
+
+            \begin{lemma}
+                $A = diag(a_1, \dots, a_n) \in M_n \implies$
+                \begin{enumerate}
+                \item $\forall B \in \text{Mat}_{n \times p} \implies AB = \begin{pmatrix}
+                        a_1 B_{(1)} \\
+                        a_2 B_{(2)} \\
+                        \vdots \\
+                        a_n B_{(n)}
+                    \end{pmatrix}$
+                \item $\forall B \in \text{Mat}_{m \times n} \implies BA = \begin{pmatrix}
+                        a_1 B^{(1)} & a_2 B^{(2)} & \dots & a_n B^{(n)}
+                    \end{pmatrix}$
+                \end{enumerate}
+            \end{lemma}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item $[AB]_{ij} = \begin{pmatrix} 0 & \dots & 0 & a_i & 0 & \dots & 0\end{pmatrix} \begin{pmatrix} b_{1j} \\ b_{2j} \\ \vdots \\ b_{nj} \end{pmatrix} = a_i b_{ij} $
+                \item $[BA]_{ij} = \begin{pmatrix} b_{i1} & b_{i2} & \dots & b_{im} \end{pmatrix} \begin{pmatrix} \vdots \\ 0 \\ a_j \\ 0 \\ \vdots \end{pmatrix} = b_{ij} a_j$
+                \end{enumerate}
+            \end{proof}
+
         \proofitem{След произведения двух матриц}
+
+            $\tr(AB) = \tr(BA)$
+
+            $\forall A \in \text{Mat}_{m \times n}, B \in \text{Mat}_{n \times m}$
+
+            \begin{proof}
+                $AB = x \in M_m$, $BA = y \in M_n$
+
+                \begin{align*}
+                    \tr x
+                    = \sum_{i = 1}^{m} x_{ii}
+                    &= \sum_{i = 1}^{m} \sum_{j = 1}^{n} \left(a_{ij} b_{ji}\right) \\
+                    &= \sum_{j = 1}^{n} \sum_{i = 1}^{m} \left(b_{ji} a_{ij}\right)
+                    = \sum_{j = 1}^{n} y_{jj}
+                    = \tr y
+                .\end{align*}
+            \end{proof}
     \end{colloq}
 
     \subsection{Системы линейных уравнений}
     \begin{colloq}
-        \proofitem{Эквивалентность систем линейных уравнений, получаемых друг из друга пут м элементарных преобразований строк расширенной матрицы}
+        \proofitem{Эквивалентность систем линейных уравнений, получаемых друг из друга путём элементарных преобразований строк расширенной матрицы}
+
+            \begin{lemma}
+                Элементарные преобразования СЛУ не меняют множество решений
+            \end{lemma}
+
+            \begin{proof}
+                Пусть мы получили СЛУ$(\star\star)$ из СЛУ($\star$) путем применения элементарных преобразований.
+
+                \begin{enumerate}[nosep]
+                \item
+                    Всякое решение системы $(\star)$ является решением $(\star\star)$.
+                \item
+                    $(\star)$ получается из $(\star\star)$ путем элементарных преобразований.
+
+                    \begin{tabular}{c|c|}
+                        $(\star) \to (\star\star)$ & $(\star\star) \to (\star)$ \\
+                        \hline
+                        $\text{Э}_1(i, j, \lambda)$ & $\text{Э}_1(i, j, -\lambda)$ \\
+                        $\text{Э}_2(i, j)$ & $\text{Э}_2(i, j)$ \\
+                        $\text{Э}_3(i, \lambda)$ & $\text{Э}_3(i, \frac{1}{\lambda})$
+                    \end{tabular}
+                \end{enumerate}
+
+                Следовательно, всякое решение ($\star\star$) является решением ($\star$) $\implies$ множества решений совпадают.
+            \end{proof}
+
         \proofitem{Теорема о приведении матрицы к ступенчатому и улучшенному ступенчатому виду при помощи элементарных преобразований строк}
+
+            \begin{theorem}
+                \begin{enumerate}[label=\arabic*),nosep]
+                \item Всякую матрицу элементарными преобразованиями можно привести к ступенчатому виду.
+                \item Всякую ступенчатую матрицу элементарными преобразованиями строк можно привести к улучшенному ступенчатому виду.
+                \end{enumerate}
+            \end{theorem}
+
+            \begin{corollary}
+                Всякую матрицу элементарными преобразованиями строк можно привести к \textbf{улучшенному} ступенчатому виду.
+            \end{corollary}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item
+                    Алгоритм. Если M - нулевая, то конец. Иначе:
+                    \begin{enumerate}[label=Шаг \arabic*:]
+                    \item Ищем первый ненулевой столбец, пусть $j$ --- его номер.
+                    \item Переставляем строки, если нужно, добиваемся того, что $a_{1j} \neq 0$
+                    \item
+                        Зануляем элементы в этом столбце используя первую строку --  $\text{Э}_1(2, 1, -\frac{a_{2j}}{a_{1j}}), \dots, \text{Э}_1(m, 1, -\frac{a_{mj}}{a_{1j}})$.
+
+                        В результате $a_{ij} = 0$ при $i = 2, 3, \dots m$.
+                    \end{enumerate}
+                    Дальше повторяем все шаги для подматрицы $M'$ (без первой строки и столбцов $1, \dots, j$).
+                \item
+                    Алгоритм. Пусть $a_{1j_1}, a_{2j_2}, \dots, a_{rj_r}$ -- ведущие элементы ступенчатой матрицы.
+                    \begin{enumerate}[label=Шаг \arabic*:]
+                    \item Выполняем $\text{Э}_3(1, \frac{1}{a_{1j_1}}), \dots, \text{Э}_3(r, \frac{1}{a_{rj_r}})$, в результате все ведущие элементы равны 1.
+                    \item Выполняем $\text{Э}_1(r - 1, r, -a_{r - 1, \; j_r}), \text{Э}_1(r - 2, r, -a_{r - 2, \; j_r}), \dots, \text{Э}_1(1, r, -a_{1, \; j_r})$. В результате все элементы над $a_{r j_r}$ равны 0.
+
+                        Аналогично обнуляем элементы над всеми остальными ведущими.
+                    \end{enumerate}
+                \end{enumerate}
+                Итог: матрица имеет улучшенный ступенчатый вид.
+            \end{proof}
+
         \proofitem{Реализация элементарных преобразований строк матрицы при помощи умножения на подходящую матрицу}
+
+            Всякое элементарное преобразование строк матрицы реализуется умножением как умножение слева на подходящую ``элементарную матрицу''.
+
+            \begin{itemize}
+            \item
+                $\text{Э}_1(i, j, \lambda)$: $A \mapsto U_1(i, j, \lambda)A$, где
+                \begin{equation*}
+                    U_1(i, j, \lambda) = \bordermatrix{
+                        &   &   &   &   &   & j &   \cr
+                        & 1 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+                      i & 0 & 1 & 0 & \dots & 0 & \lambda & 0 \cr
+                        & 0 & 0 & 1 & \dots & 0 & 0 & 0 \cr
+                        & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \cr
+                        & 0 & 0 & 0 & \dots & 1 & 0 & 0 \cr
+                        & 0 & 0 & 0 & \dots & 0 & 1 & 0 \cr
+                        & 0 & 0 & 0 & \dots & 0 & 0 & 1
+                    }
+                \end{equation*}
+
+                (на диагонали стоят единицы, на $i$-м $j$-м месте стоит $\lambda$, остальные элементы нули)
+
+            \item
+
+                $\text{Э}_2(i, j)$: $A \mapsto U_2(i, j)A$, где
+                \begin{equation*}
+                    U_2(i, j) = \bordermatrix{
+                        &   & i &   &   &   & j &   \cr
+                        & 1 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+                      i & 0 & 0 & 0 & \dots & 0 & 1 & 0 \cr
+                        & 0 & 0 & 1 & \dots & 0 & 0 & 0 \cr
+                        & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \cr
+                        & 0 & 0 & 0 & \dots & 1 & 0 & 0 \cr
+                      j & 0 & 1 & 0 & \dots & 0 & 0 & 0 \cr
+                        & 0 & 0 & 0 & \dots & 0 & 0 & 1
+                    }
+                \end{equation*}
+
+                (на диагонали стоят единицы, кроме $i$-го и $j$-го столбца (на $i$-м $j$-м и $j$-м $i$-м местах стоит 1, остальные нули)
+
+            \item
+                $\text{Э}_3(i, \lambda)$: $A \mapsto U_3(i, \lambda)A$, где
+                \begin{equation*}
+                    U_3(i, \lambda) = \bordermatrix{
+                        &   & i &   &   &   &   &   \cr
+                        & 1 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+                      i & 0 & \lambda & 0 & \dots & 0 & 0 & 0 \cr
+                        & 0 & 0 & 1 & \dots & 0 & 0 & 0 \cr
+                        & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \cr
+                        & 0 & 0 & 0 & \dots & 1 & 0 & 0 \cr
+                        & 0 & 0 & 0 & \dots & 0 & 1 & 0 \cr
+                        & 0 & 0 & 0 & \dots & 0 & 0 & 1
+                    }
+                \end{equation*}
+
+                (на диагонали стоят единицы, кроме i-го столбца, там $\lambda$, остальные элементы нули)
+            \end{itemize}
+
+            Элементарные преобразования столбцов --- умножение на соответствующую матрицу справа.
+
         \proofitem{Метод Гаусса решения систем линейных уравнений}
+
+            Дана СЛУ с расширенной матрицей $(A \mid b)$.
+
+            Прямой ход метода Гаусса.
+
+            Выполняя элементарные преобразования строк в $(A | b)$, приведем $A$ к ступенчатому виду:
+
+            \begin{equation*}
+                \begin{amatrix}{7}{1}
+                    0 & \dots & 0 & a_{ij_1} & * & \dots & \dots & b_1 \\
+                    0 & \dots & 0 & 0 & a_{2j_2} & * & \dots & b_2 \\
+                    \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+                    0 & \dots & 0 & 0 & 0 & 0 & a_{rj_r} & b_r \\
+                    0 & \dots & 0 & 0 & 0 & 0 & 0 & b_{r + 1} \\
+                    0 & \dots & 0 & 0 & 0 & 0 & 0 & 0
+                \end{amatrix}
+            .\end{equation*}
+
+            \begin{description}
+            \item[Случай 1]
+                $\exists i \geq r + 1 : b_i \neq 0$ (в $A$ есть нулевая строка с $b_i \neq 0$)
+
+                Тогда в новой СЛУ $i$-е уравнение $0 \cdot x_1 + \dots + 0 \cdot x_n = b_i$, т.е. $0 = b_i \implies $ СЛУ несовместна.
+
+            \item[Случай 2]
+                либо $r = m$, либо $b_i = 0 \quad \forall i \geq r + 1$
+
+                Выполняя элементарные преобразования строк приводим матрицу к улучшенному ступенчатому виду -- обратный ход метода Гаусса
+                \begin{equation*}
+                    \begin{amatrix}{9}{1}
+                        0 & \dots & 0 & 1 & * & 0 & * & 0 & 0 & b_1 \\
+                        0 & \dots & 0 & 0 & \dots & 1 & * & 0 & 0 & b_2 \\
+                        0 & \dots & 0 & 0 & \dots & 0 & 0 & 1 & 0 & b_3 \\
+                        \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+                        0 & \dots & 0 & 0 & \dots & 0 & 0 & 0 & 1 & b_r \\
+                        0 & \dots & 0 & 0 & \dots & 0 & 0 & 0 & 0 & 0
+                    \end{amatrix}
+                \end{equation*}
+
+                Неизвестные $x_{j_1}$, $x_{j_2}$, $\dots$, $x_{j_r}$ называются \textit{главными}, а остальные \textit{свободными},
+                где $j_i$ -- индексы столбцов с ведущими элементами.
+
+                \begin{description}
+                \item[Подслучай 2.1] $r = n$, т.е. все неизвестные -- главные
+
+                    \begin{equation*}
+                        \begin{pmatrix}
+                            1 & 0 & \dots & 0 & b_1 \\
+                            0 & 1 & \dots & 0 & b_2 \\
+                            \vdots & \vdots & \ddots & \vdots & \vdots \\
+                            0 & 0 & \dots & 1 & b_r \\
+                            0 & 0 & \dots & 0 & 0
+                        \end{pmatrix} \leftrightarrow \begin{cases}
+                            \begin{aligned}
+                                x_1 &= b_1 \\
+                                x_2 &= b_2 \\
+                                \vdots \\
+                                x_r &= b_r
+                            \end{aligned}
+                        \end{cases} \text{ --- единственное решение}
+                    .\end{equation*}
+                \item[Подслучай 2.2] $r < n$, т.е. есть хотя бы одна свободная неизвестная
+
+                    Перенесем в каждом уравнении все члены со свободными неизвестными в правую часть, получаем выражения всех главных неизвестных через свободные, эти выражения называется \textit{общим решением исходной СЛУ}.
+                \end{description}
+            \end{description}
+
         \proofitem{Связь между множеством решений совместной системы линейных уравнений и множеством решений соответствующей ей однородной системы}
+
+            Пусть дана совместная СЛУ $Ax = b$
+
+            Частное решение СЛУ --- это какое-то одно её решение.
+
+            \begin{proposition}
+                Пусть $Ax = b$ -- совместная СЛУ.
+
+                $x_0$ -- частное решение $Ax + b$
+
+                $S \subset \RR^n$ -- множество решений ОСЛУ $Ax = 0$
+
+                $L \subset \RR^n $ -- множество решений $Ax = b$.
+
+                Тогда, $L = x_0 + S$, где $x_0 + S = \{x_0 + v \mid v \in S\}$
+            \end{proposition}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item
+                    Пусть $u \in L$ ($u$ -- решение $Ax = b$), положим $v = u - x_0$
+
+                    Тогда, $Av = A(u - x_0) = Au - Ax_0 = b - b = 0 \implies v \in S \implies L \subseteq x_0 + S$
+
+                \item
+                    Пусть $v \in S$ ($v$ -- решение $Ax = 0$), положим $u = x_0 + v$.
+
+                    Тогда, $Au = A(x_0 + v) = Ax_0 + Av = b + 0 = b \implies u \in L \implies x_0 + S \subseteq L$
+                \end{enumerate}
+
+                Значит, $x_0 + S = L$.
+            \end{proof}
+
         \proofitem{Общий метод решения матричных уравнений вида AX = B и XA = B}
+
+            Два типа матричных уравнений:
+            \begin{enumerate}
+            \item $AX = B$
+
+                A и B известны,
+                X -- неизвестная матрица
+
+            \item $XA = C$
+
+                A и C известны,
+                X -- неизвестная матрица
+            \end{enumerate}
+
+            Из второго типа получается первый транспонированием матриц: $XA = C \iff A^T X^T = B^T$, то есть достаточно уметь решать только уравнения первого типа.
+
+            $\underset{n \times m}{A} \underset{m \times p}{X} = \underset{n \times p}{B}$ -- это уравнение равносильно системе
+            \begin{equation*}
+                \begin{cases}
+                    \begin{aligned}
+                        AX^{(1)} &= B^{(1)} \\
+                        AX^{(2)} &= B^{(2)} \\
+                        &\vdots \\
+                        AX^{(p)} &= B^{(p)} \\
+                    \end{aligned}
+                \end{cases}
+            \end{equation*}
+
+            Этот набор СЛУ надо решать одновременно методом Гаусса.
+
+            Записываем матрицу $(A \mid B)$ и элементарными преобразованиями строк с ней приводим $A$ к улучшенному ступенчатому виду.
+
+            Получаем $(A' \mid B')$, где $A'$ имеет улучшенный ступенчатый вид.
+
+            Остается выписать общее решение для каждой СЛУ
+            \begin{equation*}
+                \begin{cases}
+                    \begin{aligned}
+                        A' x^{(1)} &= B'^{(1)} \\
+                        A' x^{(2)} &= B'^{(2)} \\
+                        &\vdots \\
+                        A' x^{(p)} &= B'^{(p)}
+                    \end{aligned}
+                \end{cases}
+            \end{equation*}
+
         \proofitem{Вычисление обратной матрицы при помощи элементарных преобразований}
+
+            Факты:
+            \begin{enumerate}
+            \item Если $\exists A^{-1}$, то она определена однозначно
+
+                \begin{proof}
+                    Пусть $B, B'$ -- две матрицы, обратные к $A$. Тогда $B = B(AB') = (BA)B' = B'$.
+                \end{proof}
+
+            \item Если $AB = E$ для некоторой $B \in M_n$, то $BA = E$ автоматически и тогда $B = A^{-1}$
+
+                \begin{proof}
+                    \begin{equation*}
+                        AB = E \implies \det A \det B = 1 \implies \det A \neq 0 \implies \exists A^{-1}
+                    .\end{equation*}
+                    \begin{equation*}
+                        BA = EBA = (A^{-1}A)BA = A^{-1}(AB)A = A^{-1}A = E \qedhere
+                    .\end{equation*}
+                \end{proof}
+            \end{enumerate}
+
+            \begin{corollary}
+                $A^{-1}$ является решение матричного уравнения $AX = E$ (если решение существует)
+            \end{corollary}
+
     \end{colloq}
-    
+
     \subsection{Перестановки}
     \begin{colloq}
         \proofitem{Ассоциативность произведения перестановок}
+
+            \begin{proposition}
+                Умножение подстановок ассоциативно, то есть $\sigma (\tau \pi) = (\sigma \tau) \pi \ \forall \sigma, \tau, \pi \in S_n$.
+            \end{proposition}
+
+            \begin{proof}
+                $\forall i \in \{1, 2, \dots, n\}$ имеем
+
+                $[\sigma(\tau \pi)](i) = \sigma((\tau \pi)(i)) = \sigma(\tau(\pi(i)))$
+
+                $[(\sigma \tau) \pi](i) = (\sigma \tau)(\pi(i)) = \sigma(\tau(\pi(i)))$
+            \end{proof}
+
         \proofitem{Некоммутативность произведения перестановок}
+
+            $\sigma = \begin{pmatrix}
+                1 & 2 & 3 & 4 \\
+                4 & 3 & 2 & 1
+            \end{pmatrix}$, $\rho = \begin{pmatrix}
+                1 & 2 & 3 & 4 \\
+                3 & 4 & 1 & 2
+            \end{pmatrix}$
+
+            $\sigma \rho = \begin{pmatrix}
+                1 & 2 & 3 & 4 \\
+                2 & 1 & 4 & 3
+            \end{pmatrix}$
+
+            $\rho \sigma = \begin{pmatrix}
+                1 & 2 & 3 & 4 \\
+                2 & 1 & 3 & 4
+            \end{pmatrix}$
+
         \proofitem{Теорема о знаке произведения двух перестановок}
+
+            \begin{theorem}
+                $\sigma, \rho \in S_n \implies \sgn(\sigma \rho) = \sgn \sigma \cdot \sgn \rho$.
+            \end{theorem}
+
+            \begin{proof}
+                Для каждой пары $i < j$ введем следующие числа:
+
+                \begin{equation*}
+                    \alpha(i,j) = \begin{cases}
+                        1, &\text{если } \{i, j\} \text{ образует инверсию в } \rho \\
+                        0, &\text{иначе}
+                    \end{cases}
+                \end{equation*}
+                \begin{equation*}
+                    \beta(i,j) = \begin{cases}
+                        1, &\text{если }  \{\rho(i), \rho(j)\} \text{ образует инверсию в } \sigma \\
+                        0, &\text{иначе}
+                    \end{cases}
+                \end{equation*}
+                \begin{equation*}
+                    \gamma(i,j) = \begin{cases}
+                        1, &\text{если }  \{i, j\} \text{ образует инверсию в } \sigma \rho \\
+                        0, &\text{иначе}
+                    \end{cases}
+                \end{equation*}
+
+                \everymath{\displaystyle}
+
+                ``число инверсий в $\rho$'' $= \sum_{1 \leq i < j \leq n} \alpha(i, j) $
+
+                ``число инверсий в $\sigma \rho$'' $= \sum_{1 \leq i < j \leq n} \gamma(i, j) $
+
+                ``число инверсий в $\sigma$'' $= \sum_{1 \leq i < j \leq n} \beta(i, j)$ -- Почему?
+
+                Когда $\{i, j\}$ пробегает все неупорядоченные пары в $\{1, 2, \dots, n\}$, пара $\{\rho(i), \rho(j)\}$ тоже пробегает все неупорядоченные пары в $\{1, 2, \dots, n\}$.
+
+                \bigskip
+                Зависимость $\gamma(i,j)$ от $\alpha(i,j)$ и $\beta(i,j)$:
+                \begin{table}[!ht]
+                    \begin{center}
+                        \begin{tabular}{c|c|c|c|c}
+                            $\alpha(i,j)$ & 0 & 0 & 1 & 1 \\
+                            \hline
+                            $\beta(i,j)$ & 0 & 1 & 0 & 1 \\
+                            \hline
+                            $\gamma(i,j)$ & 0 & 1 & 1 & 0 \\
+                        \end{tabular}
+                    \end{center}
+                \end{table}
+
+                Вывод: $ \alpha(i, j) + \beta(i, j) \equiv \gamma(i,j) \pmod{2}$.
+
+                \bigskip
+                Тогда $\sgn(\sigma \rho) = (-1)^{\sum \gamma(i,j)} = (-1)^{\sum \beta(i,j) + \sum \alpha(i,j)} = (-1)^{\sum \alpha(i,j)} \cdot (-1)^{\sum \beta(i,j)} = \sgn \sigma \cdot \sgn \rho$.
+            \end{proof}
+
         \proofitem{Знак обратной перестановки}
-        \proofitem{Знак транспозиции}   
+
+            \begin{corollary}
+                $\sigma \in S_n \implies \sgn (\sigma^{-1}) = \sgn(\sigma)$.
+            \end{corollary}
+
+            \begin{proof}
+                $\sigma \sigma^{-1} = id \implies \sgn(\sigma \sigma^{-1}) = \sgn(id) \implies \sgn \sigma \sgn \sigma^{-1} \implies \sgn \sigma = \sgn \sigma^{-1}$.
+            \end{proof}
+
+        \proofitem{Знак транспозиции}
+
+            \begin{lemma}
+                $\tau \in S_n$ -- транспозиция $\implies \sgn(\tau) = -1$.
+            \end{lemma}
+
+            \begin{proof}
+                Пусть $\tau = \tau_{ij}$, можем считать, что $i < j$.
+                \begin{equation*}
+                    \tau := \begin{pmatrix}
+                        1 & \dots & i-1 & i & i + 1 & \dots &
+                        j - 1 & j & j + 1 & \dots \ n
+                        \cr
+                        1 & \dots & i-1 & j & i + 1 & \dots &
+                        j - 1 & i & j + 1 & \dots \ n
+                    \end{pmatrix}
+                \end{equation*}
+
+                Посчитаем инверсии:
+
+                $\{i, j\}$
+
+                $\{i, k\}$ при $i + 1 \leq k \leq j -1$, всего = $j-i-1$
+
+                $\{k, j\}$ при $i + 1 \leq k \leq j -1$, всего = $j-i-1$
+
+                Значит, всего инверсий $2(j-i-1) + 1 \equiv 1 \pmod{2} \implies \sgn(\tau) = -1$.
+            \end{proof}
+
     \end{colloq}
- 
+
     \subsection{Определители}
+
+    \begin{equation}
+        \label{det:sum}
+        \tag{$\star$}
+        \det A = \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a_{n\sigma(n)}
+    .\end{equation}
+
     \begin{colloq}
         \proofitem{Определитель транспонированной матрицы}
+
+            $\det A = \det A^T$.
+
+            \begin{proof}
+                Пусть $B = A^T$, тогда $b_{ij} = a_{ji}$.
+                \begin{align*}
+                    \det A^T
+                    = \det B
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) b_{1\sigma(1)} b_{2 \sigma(2)} \dots b_{n\sigma(n)}
+                    = \sum_{\sigma \in S_n} \sgn(\sigma) a_{\sigma(1) 1} a_{\sigma(2) 2} \dots a_{\sigma(n)} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)^{-1}} a_{2\sigma(2)^{-1}} \dots a_{n\sigma(n)^{-1}}
+                    \quad \text{ /\!/ замена } \sigma^{-1} = p \text{ /\!/} \\
+                    &= \sum_{p \in S_n} a_{1p(1)} a_{2p(2)} \dots a_{np(n)} = \det A
+                .\end{align*}
+            \end{proof}
+
         \proofitem{Поведение определителя при умножении строки (столбца) на скаляр}
+
+            Если в $A$ все элементы одной строки или одного столбца домножить на одно и то же число $\lambda$, то $\det A$ тоже умножается на $\lambda$.
+
+            \begin{equation*}
+                \begin{vmatrix} * & * & \dots & * \\ \dots & \dots & \dots & \dots \\ \lambda * & \lambda * & \lambda * & \lambda * \\ \dots & \dots & \dots & \dots \\ * & * & \dots & * \end{vmatrix} = \lambda \begin{vmatrix} * & * & \dots & * \\ \dots & \dots & \dots & \dots \\  * &  * & * & * \\ \dots & \dots & \dots & \dots \\ * & * & \dots & * \end{vmatrix}
+            \end{equation*}
+
+            \begin{proof}
+                В связи со свойством T можно доказать только для строк.
+
+                $A_{(i)} \to \lambda A_{(i)} \implies a_{ij} \to \lambda a_{ij} \ \forall j \implies $ в \eqref{det:sum} каждое слагаемое умножается на $\lambda \implies \det A$ умножается на $\lambda$.
+            \end{proof}
+
         \proofitem{Поведение определителя при разложении строки (столбца) в сумму двух}
+
+            Если $A_{(i)} = A_{(i)}^1 + A_{(i)}^2$, то $\det A = \det \begin{pmatrix}
+                A_{(1)} \\ \vdots \\ A_{(i)}^1 \\ \vdots \\ A_{(n)}
+            \end{pmatrix} + \det \begin{pmatrix}
+                A_{(1)} \\ \vdots \\ A_{(i)}^2 \\ \vdots \\ A_{(n)}
+            \end{pmatrix}$.
+
+            \bigskip
+            Пример:
+            \begin{equation*}
+                \begin{vmatrix}
+                    a_1 & a_2 & a_3 \\
+                    b_1 + c_1 & b_2 + c_2 & b_3 + c_3 \\
+                    d_1 & d_2 & d_3
+                \end{vmatrix} = \begin{vmatrix}
+                    a_1 & a_2 & a_3 \\
+                    b_1 & b_2 & b_3 \\
+                    d_1 & d_2 & d_3
+                \end{vmatrix} + \begin{vmatrix}
+                    a_1 & a_2 & a_3 \\
+                    c_1 & c_2 & c_3 \\
+                    d_1 & d_2 & d_3
+                \end{vmatrix}
+            \end{equation*}
+
+            Аналогично, если $A^{(j)} = A^{(j)}_1 + A^{(j)}_2$, то $\det A = \det (A^{(1)} \cdots A^{(j)}_1 \cdots A^{(n)}) + \det (A^{(1)} \cdots A^{(j)}_2 \cdots A^{(n)})$.
+
+            \begin{proof}
+                В связи со \hyperref[det:prop_t]{свойством T} можно доказать только для строк.
+
+                Пусть $A_{(i)}^1 = (a_{i1}' a_{i2}' \cdots a_{in}')$, $A_{(i)}^2 = (a_{i1}'' a_{i2}'' \dots a_{in}'') \implies a_{ij} = a_{ij}' + a_{ij}''$.
+                \begin{align*}
+                    \det A
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a_{n\sigma(n)} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots (a'_{i\sigma(i)} + a''_{i\sigma(i)}) \dots a_{n \sigma(n)} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a'_{i\sigma(i)} \dots a_{n\sigma(n)} + \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a''_{i\sigma(i)} \dots a_{n\sigma(n)} \\
+                    &= \det A_1 + \det A_2
+                \end{align*}
+            \end{proof}
+
         \proofitem{Определитель матрицы с двумя одинаковыми строками (столбцами)}
+
+            Если в А есть две одинаковые строки (столбца), то $\det A = 0$.
+            \begin{proof}
+                В связи со \hyperref[det:prop_t]{свойством T} можно доказать только для строк.
+
+                При перестановке двух одинаковых строк (столбцов):
+
+                -- А не изменится $\implies \det A$ не изменится
+
+                -- по свойству 3: $\det A$ меняет знак
+
+                Значит, $\det A = -\det A \implies \det A = 0$.
+            \end{proof}
+
         \proofitem{Поведение определителя при прибавлении к строке (столбцу) другой, умноженной на скаляр}
+
+            Если к строке (столбцу) прибавить другую строку (столбец), умноженный на скаляр, то $\det A$ не изменится.
+
+            \begin{proof}
+                В связи со \hyperref[det:prop_t]{свойством T} можно доказать только для строк.
+
+                \begin{equation*}
+                    A \to A' = \begin{pmatrix}
+                        \dots \\ A_{(i)} + \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots
+                    \end{pmatrix}
+                \end{equation*}
+
+                \begin{equation*}
+                    |A'| = \begin{vmatrix}
+                        \dots \\ A_{(i)} \\ \dots \\ A_{(j)} \\ \dots
+                    \end{vmatrix} + \begin{vmatrix}
+                        \dots \\ \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots
+                    \end{vmatrix} = |A| + \lambda \begin{vmatrix}
+                        \dots \\ A_{(j)} \\ \dots \\ A_{(j)} \\ \dots
+                    \end{vmatrix} = |A| + \lambda 0 = |A|
+                \end{equation*}.
+            \end{proof}
+
         \proofitem{Поведение определителя при перестановке двух строк (столбцов)}
+
+            Если в $A$ поменять местами две строки или два столбца, то $\det A$ поменяет знак.
+
+            \begin{proof}
+                В связи со \hyperref[det:prop_t]{свойством T} можно доказать только для строк.
+
+                Пусть $A = (a_{ij}) \in M_n$, $B = (b_{ij}) \in M_n $ -- матрица, полученная из А перестановкой $p$-ой и $q$-ой строк.
+
+                Пусть $\tau = \tau_{pq}$.
+
+                \begin{equation*}
+                    b(i,j) = a_{\tau(i)j} = \begin{cases}
+                        a_{ij}, &\text{если }  i \neq p, q  \\
+                        a_{qj}, &\text{если } i=p \\
+                        a_{pj}, &\text{если } i = q
+                    \end{cases}
+                \end{equation*}
+                \begin{align*}
+                    b_{ij} = a_{\tau(i)j} \ \forall i, j \implies a_{\tau(i)\sigma(i)} = a_{\tau(i),(\sigma\tau)(\tau(i))}
+                \end{align*}
+                \begin{align*}
+                    \det B
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) b_{1\sigma(1)} b_{2\sigma(2)} \dots b_{n\sigma(n)} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{\tau(1), \sigma(1)} a_{\tau(2), \sigma(2)} \dots a_{\tau(n), \sigma(n)} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{\tau(1),(\sigma\tau)(\tau(1))} a_{\tau(2),(\sigma\tau)(\tau(2))} \dots a_{\tau(n),(\sigma\tau)(\tau(n))} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1, (\sigma\tau(1))} a_{2, (\sigma\tau(2))} \dots a_{n,(\sigma\tau(n))} \\
+                    &= -\sum_{\sigma \in S_n} \sgn(\sigma\tau) a_{1, (\sigma\tau(1))} a_{2, (\sigma\tau(2))} \dots a_{n,(\sigma\tau(n))}
+                    \quad \text{ /\!/ замена } \rho = \sigma\tau \text{ /\!/} \\
+                    &= -\sum_{\rho \in S_n} \sgn(p) a_{1, \rho(1)} a_{2, \rho(2)} \dots a_{n, \rho(n)} \\
+                    &= -\det A
+                .\end{align*}
+            \end{proof}
+
         \proofitem{Определитель верхнетреугольной (нижнетреугольной) матрицы}
+
+            Если $A$ верхнетреугольная или нижнетреугольная, то $\det A = a_{11} a_{22} \dots a_{nn}$.
+
+            \begin{proof}
+                В связи со \hyperref[det:prop_t]{свойством T} можно доказать только для строк.
+
+                Выделим в \eqref{det:sum} слагаемые, которые могут быть отличны от нуля.
+                \begin{equation*}
+                    a_{1, \sigma(1)} \dots a_{n - 1, \sigma(n - 1)} a_{n, \sigma(n)} \neq 0
+                \end{equation*}
+                \begin{equation*}
+                    \implies a_{n\sigma(n) \neq 0} \implies \sigma(n) = n
+                .\end{equation*}
+                \begin{equation*}
+                    \implies a_{n - 1, \sigma(n - 1)} \neq 0 \implies \sigma(n - 1) \in \{n - 1, n\},
+                \end{equation*}
+
+                но $n$ уже занято, значит $\sigma(n - 1) = n - 1$, и так далее.
+
+                Рассуждая аналогично, получаем $\sigma(k) = k \ \forall k \implies \sigma = id$ -- это единственное слагаемое в \eqref{det:sum}, которое может быть не равно 0.
+
+                \begin{equation*}
+                    \sgn(id) = +1 \implies \det A = a_{11} a_{22} \dots a_{nn}
+                .\end{equation*}
+            \end{proof}
+
         \proofitem{Определитель с углом нулей}
+
+            \begin{proposal}
+                \begin{equation*}
+                    A = \left(
+                        \begin{array}{c|c}
+                            P & Q \\
+                            \hline
+                            0 & R
+                        \end{array}
+                    \right) \text{ или } A =
+                    \left(
+                        \begin{array}{c|c}
+                            P & 0 \\
+                            \hline
+                            Q & R
+                        \end{array}
+                    \right), \ P \in M_k, \ R \in M_{n-k} \implies \det A = \det P \det R
+                .\end{equation*}
+            \end{proposal}
+
+            % TODO Форматирование матриц
+            Матрица с углом нулей:
+            \begin{equation*}
+            \left(
+            \begin{array}{c|ccc}
+              * & * & * & * \\
+              \hline
+              0 & * & * & * \\
+              0 & * & * & * \\
+              0 & * & * & *
+            \end{array}
+            \right)
+            \end{equation*}
+
+            НЕ матрица с углом нулей:
+            \begin{equation*}
+            \left(
+            \begin{array}{c|ccc}
+              * & * & * & * \\
+              * & * & * & * \\
+              \hline
+              0 & * & * & * \\
+              0 & * & * & *
+            \end{array}
+            \right)
+            \end{equation*}
+
+            \begin{proof}
+                В силу свойства T достаточно доказать для строк.
+
+                \begin{enumerate}
+                \item
+                    Элементарными преобразованиями строк в $A$, приведем $(P \mid Q)$ к виду $(P' \mid Q')$, в котором $P'$ имеет ступенчатый вид. При этом $\det A$ и $\det P$ умножаются на один и тот же скаляр $\alpha \neq 0$.
+
+                \item
+                    Элементарными преобразованиями строк в $A$, приведем $(0 \mid R)$ к виду $(0 \mid R')$, в котором $R'$ имеет ступенчатый вид. При этом $\det A$ и $\det R$ умножаются на один и тот же скаляр $\beta \neq 0$.
+                \end{enumerate}
+
+                $\begin{pmatrix} P' & Q' \\ 0 & R' \end{pmatrix} $ -- верхнетреугольная $\implies \det \begin{pmatrix} P' & Q' \\ 0 & R' \end{pmatrix} = \det P' \det R'$.
+
+                \begin{equation*}
+                    \alpha \beta \det A = \det \begin{pmatrix} P' & Q' \\ 0 & R' \end{pmatrix} = \det P' \det R' = (\alpha \det P) (\beta \det R) = \alpha \beta \det P \det R
+                .\end{equation*}
+            \end{proof}
+
         \proofitem{Определитель произведения двух матриц}
+
+            \begin{theorem}
+                $A, B \in M_n \implies \det(AB) = \det A \det B$.
+            \end{theorem}
+
+            \begin{proof}
+                Выполним с матрицей $A$ одно элементарное преобразование строк, получим матрицу $A'$.
+                \begin{equation*}
+                    A \leadsto A' = U A
+                .\end{equation*}
+
+                Такое же преобразование строк с $AB$.
+                \begin{equation*}
+                    AB \leadsto U(AB) = (UA)B = A'B
+                .\end{equation*}
+
+                Таким образом, сначала выполнив элементарное преобразование и домножив на матрицу $B$, либо домножив на $B$ и затем применив элементарное преобразование, получим тот же результат.
+
+                Тогда, цепочка элементарных преобразований строк:
+                \begin{equation*}
+                    A \leadsto C \text{ -- улучшенный ступенчатый вид}
+                .\end{equation*}
+
+                Так же цепочка для $AB$:
+                \begin{equation*}
+                    AB \leadsto CB
+                .\end{equation*}
+
+                При этом, $\det A$ и $\det AB$ умножились на один и тот же скаляр $\alpha \neq 0$
+                \begin{equation*}
+                    \det C = \alpha \det A
+                .\end{equation*}
+                \begin{equation*}
+                    \det CB = \alpha \det AB
+                .\end{equation*}
+
+                \begin{description}
+                \item[Случай 1]
+                    Последняя строка состоит из нулей:
+                    \begin{align*}
+                        &C_{(n)} = (0 \dots 0) \\
+                        &\implies [CB]_{(n)} = C_{(n)} B = (0 \dots 0) \\
+                        &\implies \det CB = 0 = 0 \cdot \det B = \det C \det B
+                    .\end{align*}
+
+                \item[Случай 2]
+                    Последняя строка ненулевая:
+                    \begin{equation*}
+                        \tag{$star$}
+                        C_{(n)} \implies C = E
+                    ,\end{equation*}
+                    так как матрица $C$ имеет улучшенный ступенчатый вид.
+
+                    Значит,
+                    \begin{equation*}
+                        \det CB = \det B = 1 \cdot \det B = \det C \cdot \det B
+                    .\end{equation*}
+                \end{description}
+
+                Из этих двух случаем следует, что $\det CB = \det C \det B$.
+
+                Сокращая $\alpha$ получаем,
+                \begin{equation*}
+                    \det CB = \det C \det B \implies \det AB = \det A \det B
+                .\end{equation*}
+            \end{proof}
+
         \proofitem{Разложение определителя по строке (столбцу)}
+
+            \begin{theorem}
+                При любом фиксированном $i \in \{1, 2, \dots, n\}$,
+                \begin{equation*}
+                    \det A = a_{i1} A_{i1} + a_{i2} A_{i2} + \dots + a_{in} A_{in} = \sum_{j = 1}^n a_{ij} A_{ij} \text{ -- разложение по i-й строке}
+                .\end{equation*}
+
+                Аналогично, для любого фиксированного $j \in \{1, 2, \dots, n\}$,
+                \begin{equation*}
+                    \det A = a_{1j} A_{1j} + a_{2j} A_{2j} + \dots + a_{nj} A_{nj} = \sum_{i = 1}^{n} a_{ij} A_{ij} \text{ -- разложение по j-у столбцу}
+                .\end{equation*}
+            \end{theorem}
+
+            \begin{proof}
+                В силу свойства T достаточно доказать для строк.
+                \begin{equation*}
+                    A_{(i)} = (a_{i1}, 0, \dots, 0) + (0, a_{i2}, 0, \dots, 0) + \dots + (0, \dots, 0, a_{in})
+                .\end{equation*}
+
+                Требуемое следует из \hyperref[det:prop_2]{свойства 2} определителей и леммы.
+            \end{proof}
+
         \proofitem{Лемма о фальшивом разложении определителя}
+
+            \begin{lemma}~
+                \begin{enumerate}
+                \item
+                    При любых $i, k \in \{1, 2, \dots, n\} : i \neq k \implies \sum_{j = 1}^n a_{ij} A_{kj} = 0$.
+                \item
+                    При любых $j, k \in \{1, 2, \dots, n\} : j \neq k \implies \sum_{i = 1}^n a_{ij} A_{ik} = 0$
+                \end{enumerate}
+            \end{lemma}
+
+            \begin{proof}
+                В силу свойства T достаточно доказать для строк.
+
+                Пусть $B \in M_n$ -- матрица, полученная из $A$ заменой $k$-й строки на $i$-ю.
+
+                \begin{equation*}
+                    B = \begin{pmatrix}
+                        A_{(1)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(n)}
+                    \end{pmatrix}
+                \end{equation*}
+
+                В $B$ есть две одинаковые строки $\implies \det B = 0$.
+
+                Разлагая $\det B$ по $k$-й строке, получаем
+                \begin{equation*}
+                    \det B = \sum_{j = 1}^n b_{kj} B_{kj} = \sum_{j = 1}^n a_{ij} A_{kj}
+                .\end{equation*}
+            \end{proof}
+
         \proofitem{Единственность обратной матрицы}
+
+            Пусть дана $A \in M_n$.
+
+            \begin{definition}
+                Матрица $B \in M_n$ называется \textit{обратной} к $A$, если $AB = BA = E$.
+
+                Обозначение: $A^{-1}$.
+            \end{definition}
+
+
+            \begin{lemma}
+                Если $\exists A^{-1}$, то она единственна.
+            \end{lemma}
+
+            \begin{proof}
+                Пусть $B, C \in M_n$ такие, что $AB = BA = E$ и $AC = CA = E$. Тогда,
+                \begin{equation*}
+                    B = BE = B(AC) = (BA)C = EC = C \Rightarrow B = B'
+                .\end{equation*}
+            \end{proof}
+
         \proofitem{Определитель обратной матрицы}
+
+            \begin{lemma}
+                Если $\exists A^{-1}$, то $\det A \neq 0$.
+            \end{lemma}
+
+            \begin{proof}
+                $AA^{-1} = E \implies \det(AA^{-1}) = \det E \implies \det A \det(A^{-1}) = 1$.
+            \end{proof}
+
         \proofitem{Критерий обратимости квадратной матрицы и явная формула для обратной матрицы}
+
+            \begin{theorem}
+                $A$ обратима (то есть $\exists A^{-1}$) $\iff$ $A$ невырождена ($\det A \neq 0$), при этом $A^{-1} = \frac{1}{\det A} \widehat{A}$.
+            \end{theorem}
+
+            \begin{proof}
+                Утверждение в одну сторону следует из леммы 2.
+
+                \bigskip
+                Пусть $\det A \neq 0$. Покажем, что $\frac{1}{detA} \widehat{A} = A^{-1}$.
+                Для этого достаточно доказать, что $A \widehat{A} = \widehat{A} A = \det(A) \cdot E$.
+
+                Для $X = A \widehat{A}$ имеем
+                \begin{equation*}
+                    x_{ij} = \sum_{k = 1}^n a_{ik} [\widehat{A}]_{kj} = \sum_{k = 1}^n a_{ik} A_{jk} = \begin{cases}
+                        detA, &\text{при }  i = j  \\
+                        0, &\text{при } i \neq j \\
+                    \end{cases}
+                .\end{equation*}
+
+                Для $Y = \widehat{A} A$ имеем
+
+                \begin{equation*}
+                    y_{ij} = \sum_{k = 1}^n [\widehat{A}]_{ik} a_{kj} = \sum_{k = 1}^n A_{ki} a_{kj} = \begin{cases}
+                        detA, &\text{при }  i = j  \\
+                        0, &\text{при } i \neq j \\
+                    \end{cases}
+                .\end{equation*}
+            \end{proof}
+
         \proofitem{Матрица, обратная к произведению двух матриц}
+
+            \begin{corollary}
+                $A, B \in M_n \implies AB$ обратима $\iff$ обе $A$, $B$ обратимы. При этом $(AB)^{-1} = B^{-1} A^{-1}$.
+            \end{corollary}
+
+            \begin{proof}
+                Эквивалентность ($\iff$) следует из условия $\det AB = \det A \det B$.
+
+                \begin{equation*}
+                    (AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = A A^{-1} = E
+                .\end{equation*}
+            \end{proof}
+
         \proofitem{Формулы Крамера}
+
+            Пусть есть СЛУ $Ax = b (\star)$, $A \in M_n$, $x = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} \in \RR^n$, $b = \begin{pmatrix} b_1 \\ \dots \\ b_n \end{pmatrix} \in \RR^n$.
+
+            Также, $\forall i \in \{1, 2, \dots, n\}$, $A_i = (A^{(1)}, \dots, A^{(i - 1)}, b, A^{(i + 1)}, \dots, A^{(n)})$.
+
+            \begin{theorem}
+                Если $\det A \neq 0$, то СЛУ ($\star$) имеет единственное решение и его можно найти по формулам:
+                \begin{equation*}
+                    x_i = \frac{\det A_i}{\det A}
+                .\end{equation*}
+            \end{theorem}
+
+            \begin{proof}
+                $\det A \neq 0 \implies \exists A^{-1} \implies (\star) \iff x = A^{-1}b$ -- единственное решение.
+
+                \begin{equation*}
+                    b = A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = x_1 A^{(1)} + x_2 A^{(2)} + \dots + x_n A^{(n)}
+                .\end{equation*}
+                \begin{align*}
+                    \det A_i &= \det \left(A^{(1)}, \dots, A^{(i - 1)}, x_1 A^{(1)} + \dots + x_n A^{(n)}, A^{(i + 1)}, \dots, A^{(n)}\right) \\
+                             &= x_1 \det \left(A^{(1)}, \dots, A^{(i - 1)}, A^{(1)}, A^{(i + 1}), \dots A^{(n)}\right) \\
+                             & \quad + x_2 \det \left(A^{(1)}, \dots, A^{(i - 1)}, A^{(2)}, A^{(i + 1)}, \dots, A^{(n)}\right) \\
+                             & \quad + \dots + \\
+                             & \quad+ x_n \det \left(A^{(1)}, \dots, A^{(i - 1)}, A^{(n)}, A^{(i + 1)}, \dots, A^{(n)}\right) \\
+                             &= x_i \det A \quad \text{ /\!/ Все слагаемые кроме i-го равны 0}
+                .\end{align*}
+            \end{proof}
     \end{colloq}
- 
+
     \subsection{Комплексные числа}
     \begin{colloq}
         \proofitem{Построение поля комплексных чисел}
+
+            Цель --- построить поле $\CC$ комплексных чисел.
+
+            Неформально, $\CC$ -- это наименьшее поле со следующими свойставми:
+            \begin{enumerate}
+            \item $\CC \supset \RR$.
+            \item Многочлен $x^2 + 1$ имеет корень, то есть $\exists i : i^2 = -1$.
+            \end{enumerate}
+
+
+            \paragraph{Формальная конструкция поля $\CC$}
+            \begin{equation*}
+                \CC = \RR^2 = \{(a, b) \mid a, b \in \RR\}
+            .\end{equation*}
+
+            \begin{itemize}
+            \item $(a_1, b_1) + (a_2, b_2) = (a_1 + a_2, b_1 + b_2)$
+            \item $(a_1, b_1) (a_2, b_2) = (a_1 a_2 - b_1 b_2, a_1 b_2 + a_2 b_1)$
+            \end{itemize}
+
+            Неформально, каждой такой паре $(a, b)$ соответствует комплексное число $a + bi$:
+            \begin{itemize}
+            \item $(a, b) \iff a + bi$
+            \item $(a_1 + b_1 i) + (a_2 + b_2 i) = (a_1 + a_2) + (b_1 + b_2)i$
+            \item $(a_1 + b_1 i) (a_2 + b_2 i) = a_1 a_2 + a_1 b_2 i + a_2 b_1 i + b_1 b_2 \underbrace{i^2}_{= -1} = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1) i$
+            \end{itemize}
+
+            \paragraph{Проверка аксиом}
+
+            \begin{enumerate}
+            \item[1, 2.] Очевидны.
+            \setcounter{enumi}{2}
+            \item $0 = (0, 0)$.
+            \item $-(a, b) = (-a, -b)$.
+            \item Дистрибутивность -- \textit{Упражнение на дом}.
+            \item Из явного вида формулы для умножения.
+            \item
+                \begin{align*}
+                    (a_1, b_1)(a_2, b_2)(a_3, b_3)
+                    &= (a_1 a_2 - b_1 b_2, a_1 b_2 + a_2 b_1) (a_3, b_3) \\
+                    &= (a_1 a_2 a_3 - b_1 b_2 a_3 - a_1 b_2 b_3 - b_1 a_2 b_3, a_1 a_2 b_3 - b_1 b_2 b_3 + a_1 b_2 a_3 + b_1 a_2 a_3) \\
+                    &= (a_1, b_1)(a_2 a_3 - b_2 b_3, a_2 b_3 + b_2 a_3) \\
+                    &= (a_1, b_1)(a_2, b_2)(a_3, b_3)
+                .\end{align*}
+
+            \item $1 = (1, 0)$.
+
+            \item $(a, b) \neq 0 \implies a^2 + b^2 \neq 0$. Тогда, $(a, b)^{-1} = \left(\frac{a}{a^2 + b^2}, -\frac{b}{a^2 + b^2}\right)$.
+
+                $(a, b) (\frac{a}{a^2 + b^2}, \frac{-b}{a^2 + b^2}) = (\frac{a^2}{a^2 + b^2} + \frac{b^2}{a^2 + b^2}, \frac{-ab}{a^2 + b^2} + \frac{ba}{a^2 + b^2}) = (1, 0)$.
+            \end{enumerate}
+
+            Итак, $\CC$ -- поле.
+
+            \paragraph{Проверка свойств}
+            \begin{enumerate}
+            \item $a \in \RR \leftrightarrow (a, 0) \in \CC$.
+
+                $a + b \leftrightarrow (a, 0) + (b, 0) = (a + b, 0)$.
+
+                $ab \leftrightarrow (a, 0)(b, 0) = (ab, 0)$
+
+                Значит, $\RR$ отождествляется в $\CC$.
+
+            \item
+                $i = (0, 1) \implies i^2 = (0, 1)(0, 1) = (-1, 0) = -1$.
+            \end{enumerate}
+
         \proofitem{Свойства комплексного сопряжения (для суммы и произведения)}
+
+            \begin{itemize}[nosep]
+            \item $\overline{\overline{z}} = z$.
+            \item $\overline{z + w} = \overline{z} + \overline{w}$.
+            \item $\overline{zw} = \overline{z} \cdot \overline{w}$.
+            \end{itemize}
+
+            Доказательство -- прямая проверка (\textit{упражнение на дом}).
+
         \proofitem{Свойства модуля комплексного числа: неотрицательность, неравенство треугольника (алгебраическое доказательство), модуль произведения двух комплексных чисел}
+
+            \begin{definition}
+                Число $|z| = \sqrt{a^2 + b^2}$ называется \textit{модулем числа} $z = a + bi \in \CC$ (то есть длина соответствующего вектора).
+            \end{definition}
+
+            \textbf{Свойства}
+            \begin{enumerate}
+            \item $|z| \geq 0$, причем $|z| = 0 \iff z = 0$.
+            \item $|z + w| \leq |z| + |w|$ (неравенство треугольника).
+            \item $z \overline{z} = |z|^2$.
+
+                $z \overline{z} = (a + bi)(a - bi) = a^2 - b^2i = a^2 + b^2 = |z|^2$
+            \item $|zw| = |z||w|$
+
+                $|zw|^2 = (zw) \cdot (\overline{zw}) = z \cdot w \cdot \overline{z} \cdot \overline{w} = |z|^2 |w|^2$
+            \end{enumerate}
+
         \proofitem{Умножение, деление и возведение в степень комплексных чисел в тригонометрической форме, формула Муавра}
+
+            \begin{proposal}
+                Пусть $z_1 = |z_1| (\cos \phi_1 + i \sin \phi_1)$ и $z_2 = |z_2| (\cos \phi_2 + i \sin \phi_2)$, тогда
+                \begin{equation*}
+                    z_1 z_2 = |z_1| |z_2| (\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2))
+                .\end{equation*}
+            \end{proposal}
+
+            \begin{proof}
+                \begin{align*}
+                    z_1 z_2 &= |z_1||z_2|(\cos \phi_1 + i \sin \phi_1)(\cos \phi_2 + i \sin \phi_2)  \\
+                            &= |z_1||z_2|((\cos \phi_1 \cos \phi_2 - \sin \phi_1 \sin \phi_2) + i(\cos \phi_1 \sin \phi_2 + \sin \phi_1 \cos \phi_2)) \\
+                            &= |z_1||z_2|(\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2))
+                .\end{align*}
+            \end{proof}
+
+            \begin{corollary}
+                В условиях предложения, предположим, что $z_2 \neq 0$.
+
+                Тогда $\frac{z_1}{z_2} = \frac{|z_1|}{|z_2|} (\cos (\phi_1 - \phi_2) + i \sin(\phi_1 - \phi_2))$.
+
+                В частности, $\frac{1}{|z_2|}(\cos(- \phi_2) + i\sin(- \phi_2)) = \frac{1}{|z_2|}(\cos \phi_2 - i \sin \phi_2) = \frac{\overline{z}_2}{|z_2|^2}$.
+            \end{corollary}
+
+            \paragraph{Возведение в степень комплексных чисел в тригонометрической форме, формула Муавра}
+
+            \begin{corollary}
+                Пусть $z = |z|(\cos \phi + i \sin \phi)$. Тогда $\forall n \in \ZZ$,
+
+                \begin{equation*}
+                    z^n = |z|^n (\cos(n \phi) + i \sin(n \phi)) \text{ -- формула Муавра}
+                .\end{equation*}
+            \end{corollary}
+
         \proofitem{Извлечение корней из комплексных чисел}
+
+            Пусть $z \in \CC$, $n \in \NN$, $n \geq 2$.
+
+            \begin{definition}
+                \textit{Корнем степени n} (или \textit{корнем n-й степени)} из числа $z$ называется всякое число $w \in \CC$, что $w^n = z$.
+            \end{definition}
+
+            Положим $\sqrt[n]{z} := \{w \in \CC \ | \ w^n = z \}$.
+
+            \bigskip
+            Опишем множество $\sqrt[n]{z}$.
+
+            $w = \sqrt[n]{z} \implies w^n = z \implies |w|^n = |z|$.
+
+            Если $z = 0$, то $|z| = 0 \implies |w| = 0 \implies w = 0 \implies \sqrt[n]{0} = \{0\}$.
+
+            \bigskip
+            Далее считаем, что $z \neq 0$.
+
+            $z = |z|(\cos \phi + i \sin \phi)$
+
+            $w = |w|(\cos \psi + i \sin \psi)$
+
+            $z = w^n = |w|^n (\cos (n \psi) + i \sin (n \psi))$
+
+            Отсюда,
+            \begin{equation*}
+                z = w^n \iff
+                \begin{cases}
+                    |z| = |w|^n  \\
+                    n \psi = \phi + 2 \pi k \text{, для некоторого } k \in \ZZ
+                \end{cases}
+                \iff
+                \begin{cases}
+                    |w| = \sqrt[n]{|z|}  \\
+                    \psi = \frac{\phi + 2 \pi k}{n} \text{, для некоторого } k \in \ZZ
+                \end{cases}
+            \end{equation*}
+
+            С точностью до $2 \pi l$, $l \in \ZZ$, получается ровно $n$ различных значений для $\psi$, при $k = 0, 1, \dots, n-1$.
+
+            В результате $\sqrt[n]{z} = \{w_0, w_1, \dots, w_{n-1} \}$, где $w_m = \sqrt[n]{|z|}\left(\cos \frac{\phi + 2 \pi k}{n} + i \sin \frac{\phi + 2 \pi k}{n}\right)$
+
+            \begin{comment}
+                Числа $w_0, w_1, \dots, w_{n-1}$ лежат в вершинах правильного n-угольника с центром в начале координат.
+            \end{comment}
     \end{colloq}
 \end{document}
