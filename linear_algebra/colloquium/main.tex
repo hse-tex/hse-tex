@@ -369,7 +369,7 @@
         \end{definition}
 
     % Лекция 4
-    \defitem{Перестановки множества $\{1, 2, . . . , n\}$}
+    \defitem{Перестановки множества $\{1, 2, \dots , n\}$}
 
         \begin{definition}
             \textit{Перестановкой множества} $\{1, 2, \dots, n\}$ называется упорядоченный набор $(i_1, i_2, \dots, i_n)$, в котором каждое число от 1 до $n$ встречается ровно один раз.
@@ -926,7 +926,7 @@
                     &= \sum_{k = 1}^{n} (a_{ik} b_{kj} + a_{ik} c_{kj}) \\
                     &= \sum_{k = 1}^{n} a_{ik} b_{kj} + \sum_{k = 1}^{n} a_{ik} c_{kj} \\
                     &= A_{(i)} B^{(j)} + A_{(i)} C^{(j)} = y_{ij}
-                .\end{align*}
+                .\qedhere\end{align*}
             \end{proof}
 
             Правая дистрибутивность доказывается аналогично.
@@ -946,7 +946,7 @@
                     &= \sum_{l = 1}^{p} \sum_{k = 1}^{n} \left(a_{il} b_{lk} c_{kj}\right)
                     = \sum_{l = 1}^{p} a_{il} \sum_{k = 1}^{n} \left(b_{lk} c_{kj}\right)
                     = \sum_{l = 1}^{p} a_{il} v_{lj} = y_{ij}
-                .\end{align*}
+                .\qedhere\end{align*}
             \end{proof}
 
         \proofitem{Некоммутативность произведения матриц}
@@ -1007,7 +1007,7 @@
                     &= \sum_{j = 1}^{n} \sum_{i = 1}^{m} \left(b_{ji} a_{ij}\right)
                     = \sum_{j = 1}^{n} y_{jj}
                     = \tr y
-                .\end{align*}
+                .\qedhere\end{align*}
             \end{proof}
     \end{colloq}
 
@@ -1042,7 +1042,7 @@
 
         \proofitem{Теорема о приведении матрицы к ступенчатому и улучшенному ступенчатому виду при помощи элементарных преобразований строк}
 
-            \begin{theorem}
+            \begin{theorem}~
                 \begin{enumerate}[label=\arabic*),nosep]
                 \item Всякую матрицу элементарными преобразованиями можно привести к ступенчатому виду.
                 \item Всякую ступенчатую матрицу элементарными преобразованиями строк можно привести к улучшенному ступенчатому виду.
@@ -1207,10 +1207,6 @@
             \end{description}
 
         \proofitem{Связь между множеством решений совместной системы линейных уравнений и множеством решений соответствующей ей однородной системы}
-
-            Пусть дана совместная СЛУ $Ax = b$
-
-            Частное решение СЛУ --- это какое-то одно её решение.
 
             \begin{proposition}
                 Пусть $Ax = b$ -- совместная СЛУ.
@@ -1473,7 +1469,7 @@
                     &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)^{-1}} a_{2\sigma(2)^{-1}} \dots a_{n\sigma(n)^{-1}}
                     \quad \text{ /\!/ замена } \sigma^{-1} = p \text{ /\!/} \\
                     &= \sum_{p \in S_n} a_{1p(1)} a_{2p(2)} \dots a_{np(n)} = \det A
-                .\end{align*}
+                .\qedhere\end{align*}
             \end{proof}
 
         \proofitem{Поведение определителя при умножении строки (столбца) на скаляр}
@@ -1519,7 +1515,7 @@
             Аналогично, если $A^{(j)} = A^{(j)}_1 + A^{(j)}_2$, то $\det A = \det (A^{(1)} \cdots A^{(j)}_1 \cdots A^{(n)}) + \det (A^{(1)} \cdots A^{(j)}_2 \cdots A^{(n)})$.
 
             \begin{proof}
-                В связи со \hyperref[det:prop_t]{свойством T} можно доказать только для строк.
+                В связи со свойством T можно доказать только для строк.
 
                 Пусть $A_{(i)}^1 = (a_{i1}' a_{i2}' \cdots a_{in}')$, $A_{(i)}^2 = (a_{i1}'' a_{i2}'' \dots a_{in}'') \implies a_{ij} = a_{ij}' + a_{ij}''$.
                 \begin{align*}
@@ -1528,14 +1524,14 @@
                     &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots (a'_{i\sigma(i)} + a''_{i\sigma(i)}) \dots a_{n \sigma(n)} \\
                     &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a'_{i\sigma(i)} \dots a_{n\sigma(n)} + \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a''_{i\sigma(i)} \dots a_{n\sigma(n)} \\
                     &= \det A_1 + \det A_2
-                \end{align*}
+                .\qedhere\end{align*}
             \end{proof}
 
         \proofitem{Определитель матрицы с двумя одинаковыми строками (столбцами)}
 
             Если в А есть две одинаковые строки (столбца), то $\det A = 0$.
             \begin{proof}
-                В связи со \hyperref[det:prop_t]{свойством T} можно доказать только для строк.
+                В связи со свойством T можно доказать только для строк.
 
                 При перестановке двух одинаковых строк (столбцов):
 
@@ -1551,7 +1547,7 @@
             Если к строке (столбцу) прибавить другую строку (столбец), умноженный на скаляр, то $\det A$ не изменится.
 
             \begin{proof}
-                В связи со \hyperref[det:prop_t]{свойством T} можно доказать только для строк.
+                В связи со свойством T можно доказать только для строк.
 
                 \begin{equation*}
                     A \to A' = \begin{pmatrix}
@@ -1567,7 +1563,7 @@
                     \end{vmatrix} = |A| + \lambda \begin{vmatrix}
                         \dots \\ A_{(j)} \\ \dots \\ A_{(j)} \\ \dots
                     \end{vmatrix} = |A| + \lambda 0 = |A|
-                \end{equation*}.
+                .\end{equation*}
             \end{proof}
 
         \proofitem{Поведение определителя при перестановке двух строк (столбцов)}
@@ -1575,7 +1571,7 @@
             Если в $A$ поменять местами две строки или два столбца, то $\det A$ поменяет знак.
 
             \begin{proof}
-                В связи со \hyperref[det:prop_t]{свойством T} можно доказать только для строк.
+                В связи со свойством T можно доказать только для строк.
 
                 Пусть $A = (a_{ij}) \in M_n$, $B = (b_{ij}) \in M_n $ -- матрица, полученная из А перестановкой $p$-ой и $q$-ой строк.
 
@@ -1601,7 +1597,7 @@
                     \quad \text{ /\!/ замена } \rho = \sigma\tau \text{ /\!/} \\
                     &= -\sum_{\rho \in S_n} \sgn(p) a_{1, \rho(1)} a_{2, \rho(2)} \dots a_{n, \rho(n)} \\
                     &= -\det A
-                .\end{align*}
+                .\qedhere\end{align*}
             \end{proof}
 
         \proofitem{Определитель верхнетреугольной (нижнетреугольной) матрицы}
@@ -1609,7 +1605,7 @@
             Если $A$ верхнетреугольная или нижнетреугольная, то $\det A = a_{11} a_{22} \dots a_{nn}$.
 
             \begin{proof}
-                В связи со \hyperref[det:prop_t]{свойством T} можно доказать только для строк.
+                В связи со свойством T можно доказать только для строк.
 
                 Выделим в \eqref{det:sum} слагаемые, которые могут быть отличны от нуля.
                 \begin{equation*}
@@ -1628,7 +1624,7 @@
 
                 \begin{equation*}
                     \sgn(id) = +1 \implies \det A = a_{11} a_{22} \dots a_{nn}
-                .\end{equation*}
+                .\qedhere\end{equation*}
             \end{proof}
 
         \proofitem{Определитель с углом нулей}
@@ -1652,31 +1648,30 @@
                 .\end{equation*}
             \end{proposal}
 
-            % TODO Форматирование матриц
             Матрица с углом нулей:
             \begin{equation*}
-            \left(
-            \begin{array}{c|ccc}
-              * & * & * & * \\
-              \hline
-              0 & * & * & * \\
-              0 & * & * & * \\
-              0 & * & * & *
-            \end{array}
-            \right)
+                \left(
+                    \begin{array}{c|ccc}
+                        * & * & * & * \\
+                        \hline
+                        0 & * & * & * \\
+                        0 & * & * & * \\
+                        0 & * & * & *
+                    \end{array}
+                \right)
             \end{equation*}
 
             НЕ матрица с углом нулей:
             \begin{equation*}
-            \left(
-            \begin{array}{c|ccc}
-              * & * & * & * \\
-              * & * & * & * \\
-              \hline
-              0 & * & * & * \\
-              0 & * & * & *
-            \end{array}
-            \right)
+                \left(
+                    \begin{array}{c|ccc}
+                        * & * & * & * \\
+                        * & * & * & * \\
+                        \hline
+                        0 & * & * & * \\
+                        0 & * & * & *
+                    \end{array}
+                \right)
             \end{equation*}
 
             \begin{proof}
@@ -1694,7 +1689,7 @@
 
                 \begin{equation*}
                     \alpha \beta \det A = \det \begin{pmatrix} P' & Q' \\ 0 & R' \end{pmatrix} = \det P' \det R' = (\alpha \det P) (\beta \det R) = \alpha \beta \det P \det R
-                .\end{equation*}
+                .\qedhere\end{equation*}
             \end{proof}
 
         \proofitem{Определитель произведения двух матриц}
@@ -1762,7 +1757,7 @@
                 Сокращая $\alpha$ получаем,
                 \begin{equation*}
                     \det CB = \det C \det B \implies \det AB = \det A \det B
-                .\end{equation*}
+                .\qedhere\end{equation*}
             \end{proof}
 
         \proofitem{Разложение определителя по строке (столбцу)}
@@ -1785,7 +1780,7 @@
                     A_{(i)} = (a_{i1}, 0, \dots, 0) + (0, a_{i2}, 0, \dots, 0) + \dots + (0, \dots, 0, a_{in})
                 .\end{equation*}
 
-                Требуемое следует из \hyperref[det:prop_2]{свойства 2} определителей и леммы.
+                Требуемое следует из свойства 2 определителей и леммы.
             \end{proof}
 
         \proofitem{Лемма о фальшивом разложении определителя}
@@ -1815,7 +1810,7 @@
                 Разлагая $\det B$ по $k$-й строке, получаем
                 \begin{equation*}
                     \det B = \sum_{j = 1}^n b_{kj} B_{kj} = \sum_{j = 1}^n a_{ij} A_{kj}
-                .\end{equation*}
+                .\qedhere\end{equation*}
             \end{proof}
 
         \proofitem{Единственность обратной матрицы}
@@ -1837,7 +1832,7 @@
                 Пусть $B, C \in M_n$ такие, что $AB = BA = E$ и $AC = CA = E$. Тогда,
                 \begin{equation*}
                     B = BE = B(AC) = (BA)C = EC = C \Rightarrow B = B'
-                .\end{equation*}
+                .\qedhere\end{equation*}
             \end{proof}
 
         \proofitem{Определитель обратной матрицы}
@@ -1878,7 +1873,7 @@
                         detA, &\text{при }  i = j  \\
                         0, &\text{при } i \neq j \\
                     \end{cases}
-                .\end{equation*}
+                .\qedhere\end{equation*}
             \end{proof}
 
         \proofitem{Матрица, обратная к произведению двух матриц}
@@ -1892,7 +1887,7 @@
 
                 \begin{equation*}
                     (AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = A A^{-1} = E
-                .\end{equation*}
+                .\qedhere\end{equation*}
             \end{proof}
 
         \proofitem{Формулы Крамера}
@@ -1921,7 +1916,7 @@
                              & \quad + \dots + \\
                              & \quad+ x_n \det \left(A^{(1)}, \dots, A^{(i - 1)}, A^{(n)}, A^{(i + 1)}, \dots, A^{(n)}\right) \\
                              &= x_i \det A \quad \text{ /\!/ Все слагаемые кроме i-го равны 0}
-                .\end{align*}
+                .\qedhere\end{align*}
             \end{proof}
     \end{colloq}
 
@@ -1962,9 +1957,21 @@
             \setcounter{enumi}{2}
             \item $0 = (0, 0)$.
             \item $-(a, b) = (-a, -b)$.
-            \item Дистрибутивность -- \textit{Упражнение на дом}.
-            \item Из явного вида формулы для умножения.
-            \item
+            \item Дистрибутивность
+                \begin{align*}
+                    (a_1 + b_1 i) ((a_2 + b_2 i) + (a_3 + b_3 i))
+                    &= (a_1 + b_1 i) ((a_2 + a_3) + (b_2 + b_3) i) \\
+                    &= (a_1 (a_2 + a_3) - b_1 (b_2 + b_3)) + (a_1 (b_2 + b_3) + b_1 (a_2 + a_3)) i \\
+                    &= a_1 a_2 + a_1 a_3 - b_1 b_2 - b_1 b_3 + (a_1 b_2 + a_1 b_3 + b_1 a_2 + b_1 a_3) i \\
+                    &= ((a_1 a_2 - b_1 b_2) + (a_1 b_2 + b_1 a_2)i) + ((a_1 a_3 + b_1 b_3) + (b_1 a_3 + a_1 b_3) i) \\
+                    &= (a_1 + b_1 i)(a_2 + b_2 i) + (a_1 + b_1 i)(a_3 + b_3 i)
+                \end{align*}
+            \item Коммутативность умножения -- из явного вида формулы.
+                \begin{equation*}
+                    (a_1 + b_1 i) (a_2 + b_2 i) = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1) i
+                \end{equation*}
+
+            \item Ассоциативность умножения
                 \begin{align*}
                     (a_1, b_1)(a_2, b_2)(a_3, b_3)
                     &= (a_1 a_2 - b_1 b_2, a_1 b_2 + a_2 b_1) (a_3, b_3) \\
@@ -1977,7 +1984,7 @@
 
             \item $(a, b) \neq 0 \implies a^2 + b^2 \neq 0$. Тогда, $(a, b)^{-1} = \left(\frac{a}{a^2 + b^2}, -\frac{b}{a^2 + b^2}\right)$.
 
-                $(a, b) (\frac{a}{a^2 + b^2}, \frac{-b}{a^2 + b^2}) = (\frac{a^2}{a^2 + b^2} + \frac{b^2}{a^2 + b^2}, \frac{-ab}{a^2 + b^2} + \frac{ba}{a^2 + b^2}) = (1, 0)$.
+                $(a, b) \left(\frac{a}{a^2 + b^2}, \frac{-b}{a^2 + b^2}\right) = \left(\frac{a^2}{a^2 + b^2} + \frac{b^2}{a^2 + b^2}, \frac{-ab}{a^2 + b^2} + \frac{ba}{a^2 + b^2}\right) = (1, 0)$.
             \end{enumerate}
 
             Итак, $\CC$ -- поле.
@@ -2004,7 +2011,13 @@
             \item $\overline{zw} = \overline{z} \cdot \overline{w}$.
             \end{itemize}
 
-            Доказательство -- прямая проверка (\textit{упражнение на дом}).
+            \begin{proof}~
+                \begin{itemize}
+                \item $\overline{\overline{z}} = \overline{\overline{a + bi}} = \overline{a - bi} = a + bi = z$.
+                \item $\overline{z + w} = \overline{(a_1 + b_1 i) + (a_2 + b_2 i)} = \overline{(a_1 + a_2) + (b_1 + b_2) i} = (a_1 + a_2) - (b_1 + b_2)i = (a_1 - b_1 i) + (a_2 - b_2 i) = \overline{z} + \overline{w}$.
+                \item $\overline{z} \cdot \overline{w} = (a_1 - b_1 i) (a_2 - b_2 i) = (a_1 a_2 - b_1 b_2) - (a_1 b_2 + a_2 b_1) i = \overline{zw}$. \qedhere
+                \end{itemize}
+            \end{proof}
 
         \proofitem{Свойства модуля комплексного числа: неотрицательность, неравенство треугольника (алгебраическое доказательство), модуль произведения двух комплексных чисел}
 
@@ -2037,7 +2050,7 @@
                 \begin{align*}
                     z_1 z_2 &= |z_1||z_2|(\cos \phi_1 + i \sin \phi_1)(\cos \phi_2 + i \sin \phi_2)  \\
                             &= |z_1||z_2|((\cos \phi_1 \cos \phi_2 - \sin \phi_1 \sin \phi_2) + i(\cos \phi_1 \sin \phi_2 + \sin \phi_1 \cos \phi_2)) \\
-                            &= |z_1||z_2|(\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2))
+                            &= |z_1||z_2|(\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2)) \qedhere
                 .\end{align*}
             \end{proof}
 
@@ -2045,15 +2058,12 @@
                 В условиях предложения, предположим, что $z_2 \neq 0$.
 
                 Тогда $\frac{z_1}{z_2} = \frac{|z_1|}{|z_2|} (\cos (\phi_1 - \phi_2) + i \sin(\phi_1 - \phi_2))$.
-
-                В частности, $\frac{1}{|z_2|}(\cos(- \phi_2) + i\sin(- \phi_2)) = \frac{1}{|z_2|}(\cos \phi_2 - i \sin \phi_2) = \frac{\overline{z}_2}{|z_2|^2}$.
             \end{corollary}
 
             \paragraph{Возведение в степень комплексных чисел в тригонометрической форме, формула Муавра}
 
             \begin{corollary}
                 Пусть $z = |z|(\cos \phi + i \sin \phi)$. Тогда $\forall n \in \ZZ$,
-
                 \begin{equation*}
                     z^n = |z|^n (\cos(n \phi) + i \sin(n \phi)) \text{ -- формула Муавра}
                 .\end{equation*}
