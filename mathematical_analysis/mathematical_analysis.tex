@@ -1,6 +1,6 @@
 \documentclass[12pt, a4paper]{article}
 
-\usepackage{../header}
+\usepackage{header}
 
 \title{Математический анализ}
 \author{
@@ -651,4 +651,212 @@
 
 		Пришли к противоречию.
 	\end{proof}
+
+
+	\section{Лекции}
+	\setcounter{subsection}{6}
+	\subsection{Лекция от 11 ноября 2019}
+	\begin{equation*}
+		\begin{tabular}{|c|}
+			\hline
+				$e = \lim\limits_{n \to \infty} \left(1 + \dfrac{1}{n}\right)^n$\\
+			\hline
+		\end{tabular}
+	\end{equation*}
+
+	\subsubsection{Теорема о вынужденной сходимости}
+	\begin{theorem*}[о вынужденной сходимости]
+		Пусть существует $\lim\limits_{x \to x_0 (\pm \infty)} f(x) = a; \quad \lim\limits_{x \to x_0} \psi(x) = a;$ и $\exists \delta > 0: \; \forall x \in (x_0 - \delta; x_0 + \delta) \implies f(x) \leq g(x) \leq \psi(x)$. Тогда $\exists \lim\limits_{x \to x_0} g(x) = a$
+	\end{theorem*}
+
+	\subsubsection{Предел в точке функции слева и справа}
+	\begin{definition}[Определение предела в точке функции справа по Коши]
+		$\lim\limits_{x \to x_0 + 0} f(x) = a$, если $\forall \eps > 0 \; \exists \delta > 0: \forall x \implies x_0 < x < x_0 + \delta \implies |f(x) - a)| < \eps$
+	\end{definition}
+
+	\begin{definition}[Определение предела в точке функции слева по Коши]
+		$\lim\limits_{x \to x_0 - 0} f(x) = a$, если $\forall \eps > 0 \; \exists \delta > 0: \forall x \implies x_0 - \delta < x < x_0 \implies |f(x) - a)| < \eps$
+	\end{definition}
+
+	\[\begin{gathered}
+		f(x) = sign(x) = \begin{cases}
+			1, &x > 0 \\
+			0, &x = 0 \\
+			-1, &x < 0 \\
+		\end{cases} \\
+		sign(x) = \dfrac{2}{\pi} 	\lim_{n \to \infty} \arctg nx
+	\end{gathered}\]
+	У данной функции есть предел справа и слева
+	\[\begin{gathered}
+		\lim_{x \to 0 + 0} sign(x) = 1 \\
+		\lim_{x \to 0 - 0} sign(x) = -1 \\
+	\end{gathered}\]
+	
+	\subsubsection{Второй замечательный предел}
+	\begin{statement}
+		\[\begin{gathered}
+			\lim_{x \to +\infty} \left(1 + \dfrac{1}{x}\right)^x = e \\
+		\end{gathered}\]
+	\end{statement}
+	\begin{proof}
+		Будем пользоваться тем фактом, что $e = \lim\limits_{n \to \infty} \left(1 + \dfrac{1}{n}\right)^n$ (тут $n \in \NN$, а $x$ в утверждении --- может быть не целым)
+
+		$[x]$ --- целая часть от числа $x$. Тогда
+		\[\begin{gathered}
+			[x] \leq x \leq [x + 1] = [x] + 1 \\
+			\dfrac{1}{[x] + 1} \leq \dfrac{1}{x} \leq \dfrac{1}{[x]} \\
+			1 + \dfrac{1}{[x] + 1} \leq 1 + \dfrac{1}{x} \leq 1 + \dfrac{1}{[x]} \\
+			\left(1 + \dfrac{1}{[x] + 1}\right)^{[x]} \leq \left(1 + \dfrac{1}{x}\right)^{[x]} \leq \left(1 + \dfrac{1}{[x]}\right)^{[x]} \\
+			\left(1 + \dfrac{1}{[x] + 1}\right)^{[x]} \leq \left(1 + \dfrac{1}{x}\right)^{x} \leq \left(1 + \dfrac{1}{[x]}\right)^{[x] + 1} \\
+		\end{gathered}\]
+		Воспользуемся теоремой о вынужденной сходимости
+		\[\begin{gathered}
+			\left(1 + \dfrac{1}{[x]}\right)^{[x] + 1} = \left(1 + \dfrac{1}{n}\right)^{n + 1} \rightarrow e \\
+			\left(1 + \dfrac{1}{[x] + 1}\right)^{[x]} = \left(1 + \dfrac{1}{[x] + 1}\right)^{[x] + 1 - 1} = \left(1 + \dfrac{1}{n}\right)^{n - 1} \rightarrow e \\
+			\text{Пояснение: } \lim_{n \to \infty} \left(1 + \dfrac{1}{n}\right)^{n + 1} = \lim_{n \to \infty} \left(1 + \dfrac{1}{n}\right)^n \cdot \left(1 + \dfrac{1}{n}\right) = e \cdot 1 = e
+		\end{gathered}\]
+	\end{proof}
+	Рассмотрим похожее утверждение
+	\begin{statement}
+		\[\begin{gathered}
+			\lim_{x \to -\infty} \left(1 + \dfrac{1}{x}\right)^x = e \\
+		\end{gathered}\]
+	\end{statement}
+	\begin{proof}
+		\[\begin{gathered}
+			y = -x \\
+			x \to -\infty \iff y \to \infty \\
+			\lim_{x \to -\infty} \left(1 + \dfrac{1}{x}\right)^x \iff \lim_{y \to +\infty} \left(1 - \dfrac{1}{y}\right)^{-y} = \lim_{y \to +\infty} \left(\dfrac{y - 1}{y}\right)^{-y} = \\
+			= \lim_{y \to +\infty} \left(\dfrac{y - 1 + 1}{y - 1}\right)^y
+			= \lim_{y \to +\infty} \left(1 + \dfrac{1}{y - 1}\right)^{y - 1 + 1} = e
+		\end{gathered}\]
+	\end{proof}
+
+	\subsubsection{Непрерывность функций}
+	\begin{definition}
+		Функция $f(x)$ называется непрерывной в точке $x_0$ (функция должна быть определена в $x_0$), если
+		\begin{equation*}
+			\exists \lim_{x \to x_0} f(x) = f(x_0)
+		\end{equation*}
+	\end{definition}
+	Например, $P_n(x) = a_0 + a_1 x + a_2 x^2 + \dots + a_n x^n$ непрерывна.
+
+	\[\begin{gathered}
+		f(x) = x^2 \\
+		x^2 - x_0^2 = (x - x_0) (x + x_0)
+	\end{gathered}\]
+
+	\begin{definition}[Функция Дирихле]
+		\[\begin{gathered}
+			D(x) = \begin{cases}
+				1, x \text{ --- рациональное} \\
+				0, x \text{ --- иррациональное} \\
+			\end{cases} \\
+			D(x) = \lim_{n \to \infty} (\lim_{m \to \infty} \cos^{2m}(\pi n! x))
+		\end{gathered}\]
+	\end{definition}
+
+	\begin{theorem*}
+		$f(x)$ --- непрерывна в точке $x_0$, $g(x)$ --- непрерывна в точке $x_0$. Тогда
+		\begin{enumerate}
+			\item
+			$f(x) + g(x)$ --- непрерывна в точке $x_0$
+
+			\item
+			$f(x)g(x)$ --- непрерывна в точке $x_0$
+
+			\item
+			$g(x_0) \neq 0 \implies \dfrac{f(x)}{g(x)}$ --- непрерывна в точке $x_0$
+		\end{enumerate}
+	\end{theorem*}
+
+	\begin{definition}[точки разрыва функции]
+		Если $f(x)$ не является непрерывной в точке $x_0$, то $x_0$ --- точка разрыва
+
+		Классификация точек разрыва:
+		\begin{itemize}
+			\item
+			\begin{equation*}
+				\exists \lim_{x \to x_0} f(x) \neq f(x_0)
+			\end{equation*}
+			$\implies x_0$ --- \textbf{точка устранимого разрыва}
+
+			\[\begin{gathered}
+				f(x) = \begin{cases}
+					\dfrac{\sin x}{x}, &x \neq 0 \\
+					100, &x = 0
+				\end{cases} \\
+				g(x) = \begin{cases}
+					f(x), &x \neq 0 \\
+					1, &x = 0
+				\end{cases} \\
+				g(x_0) = \lim_{x \to x_0} f(x)
+			\end{gathered}\]
+
+
+			\item
+			\[\begin{gathered}
+				\exists \lim_{x \to x_0 + 0} f(x), 
+				\exists \lim_{x \to x_0 - 0} f(x) \text{ и }
+				\lim_{x \to x_0 + 0} f(x) \neq \lim_{x \to x_0 - 0} f(x) \\
+			\end{gathered}\]
+			$\implies x_0$ --- точка разрыва \textbf{первого рода}
+
+			\[\begin{gathered}
+				f(x) = \begin{cases}
+					1, &x > 0 \\
+					0, &x = 0 \\
+					-1, &x < 0 \\
+				\end{cases}
+			\end{gathered}\]
+
+
+			\item
+			\[\begin{gathered}
+				\nexists \lim_{x \to x_0 + 0} f(x) 
+				\text{ или } 
+				\nexists \lim_{x \to x_0 - 0} f(x) 
+			\end{gathered}\]
+			$\implies x_0$ --- точка разрыва \textbf{второго рода}
+
+			\[\begin{gathered}
+				f(x) = \begin{cases}
+					\dfrac{1}{x}, x \neq 0
+				\end{cases}
+			\end{gathered}\]
+		\end{itemize}
+	\end{definition}
+
+	\subsubsection{Теоремы Вейерштрасса}
+	\[\begin{gathered}
+		y = f(z) \\
+		f(z) \text{ определена в окресности точки $z_0$ и непрерывна в точке $z_0$} \\
+		z = g(x) \text{ определена в окресности точки $x_0$ и непрерывна в точке $x_0$} \\
+		y = \phi(x) = f(z) = f(g(x)) \implies f(g(x)) \text{ непрерывна в точке $x_0$}
+	\end{gathered}\]
+	\begin{proof}
+		\[\begin{gathered}
+			x_n \xrightarrow[n \to \infty]{} x_0, 
+			x_n \neq x_0 \\
+			z_n = g(x_n) \xrightarrow[n \to \infty] z_0 = g(x_0) \\
+			y_n = f(z_n) \xrightarrow[n \to \infty] y_0 = f(z_0) \\
+			f(z_0) = f(g(x_0))
+		\end{gathered}\]
+	\end{proof}
+	\begin{definition}
+		$f(x)$ называется непрерывной на множестве $X \iff f(x) \in C(X)$
+
+		$\forall x \in X \implies f(x)$ непрерывна в точке $x$
+	\end{definition}
+
+	\begin{theorem*}[первая теорема Вейерштрасса: об ограниченности непрерывной на отрезке функции]
+		Пусть $f(x) \in C[a; b]$. Тогда
+		\[\begin{gathered}
+			\exists A: \; \forall x \implies |f(x)| \leq A
+		\end{gathered}\]
+
+		\textbf{Неверна для полуинтервалов}
+
+		$f(x) \in C(a, b), \quad f(x) = \dfrac{1}{x}, \quad X = (0; 1)$
+	\end{theorem*}
 \end{document}
