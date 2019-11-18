@@ -2,13 +2,14 @@
 
 build() {
     pushd $1
-    pushd $2
-    latexmk -pdf -interaction=nonstopmode -output-directory=.build -halt-on-error $3.tex
+    pushd $3
+    latexmk -pdf -interaction=nonstopmode -output-directory=.build -halt-on-error $4.tex
     latexmk -output-directory=.build -c
     popd
-    cp $2/.build/$3.pdf $1.pdf
+    cp $3/.build/$4.pdf $2.pdf
     popd
 }
 
-build linear_algebra source main
-build mathematical_analysis . mathematical_analysis
+build linear_algebra linear_algebra source main
+build linear_algebra linear_algebra_colloquium colloquium main
+build mathematical_analysis mathematical_analysis . mathematical_analysis
