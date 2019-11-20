@@ -1,0 +1,156 @@
+\section{Лекция 14.11.2019}
+
+\subsection{Векторные пространства, простейшие следствия из аксиом}
+
+\subsubsection{Определение векторного пространства}
+
+Фиксируем поле $F$ (можно считать, что $F = \RR$ или $\CC$)
+
+\begin{definition}
+    Множество $V$ называется \textit{векторным (линейным) пространством} над полем $F$, если на $V$ заданы две операции
+    \begin{itemize}[nosep]
+    \item ``сложение'': $V \times V \to V$, $(x, y) \mapsto x + y$.
+    \item ``умножение на скаляр'': $F \times V$, $(\alpha \in F, x \in V) \mapsto \alpha x$.
+    \end{itemize}
+    а также, $\forall x, y, z \in V$ и $\alpha, \beta \in F$ выполнены следующие условия (называются \textit{аксиомами векторного пространства}):
+    \begin{enumerate}[nosep]
+    \item $x + y = y + x$.
+    \item $(x + y) + z = x + (y + z)$.
+    \item $\exists \overrightarrow{0} \in V : x + \overrightarrow{0} = \overrightarrow{0} + x = x$ (нулевой элемент).
+    \item $\exists -x : -x + x = x + (-x) = \overrightarrow{0}$ (противоположный элемент).
+    \item $\alpha(x + y) = \alpha x + \alpha y$.
+    \item $(\alpha + \beta)x = \alpha x + \beta x$.
+    \item $(\alpha \beta)x = \alpha(\beta x)$.
+    \item $1 \cdot x = x$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Элементы векторного пространства называются (абстрактными) \textit{векторами}.
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}~
+    \item $\RR$ над $\RR$ (или $F$ над $F$).
+    \item Пространство $\RR^n$ над $\RR$ (или $F^n$ над $F$) реализованное как пространство столбцов или строк длины $n$.
+    \item $\text{Mat}_{m \times n}(F)$.
+    \item $F[x]$ -- многочлены то переменной $x$ с коэффициентами в $\RR$.
+    \item Пространство функций на множестве $M$ с значениями в $F$:
+
+        $f: M \rightarrow \RR$
+
+        \begin{itemize}[nosep]
+        \item сложение $(f_1 + f_2)(x) := f_1(x) + f_2(x)$.
+        \item умножение на скаляр $(\alpha f)(x) := \alpha f(x)$.
+        \end{itemize}
+
+        -- это векторное пространство над $F$.
+
+        Например, множество всех функций $[0, 1] \to R$.
+    \end{enumerate}
+\end{example}
+
+
+\subsubsection{Простейшие следствия из аксиом}
+
+$\forall \alpha \in F, x \in V$.
+\begin{enumerate}
+\item
+    Элемент $\overrightarrow{0}$ единственный.
+
+    Если $\overrightarrow{0}'$ -- другой такой ноль, то $\overrightarrow{0}' = \overrightarrow{0}' + \overrightarrow{0} = \overrightarrow{0}$.
+
+\item Элемент $-x$ единственный.
+
+    Если $(-x)'$ -- другой такой противоположный элемент, то
+    \begin{equation*}
+        (-x)' = (-x)' + \overrightarrow{0} = (-x)' + (x + (-x)) = ((-x)' + x) + (-x) = \overrightarrow{0} + (-x) = -x
+    .\end{equation*}
+\item $\alpha \overrightarrow{0} = \overrightarrow{0}$.
+\item $\alpha (-x) = -(\alpha x)$.
+\item $0 \cdot x = \overrightarrow{0}$.
+\item $(-1) \cdot x = -x$.
+\end{enumerate}
+
+
+\subsection{Подпространства векторных пространств}
+
+
+Пусть $V$ -- векторное пространство над $F$.
+
+\begin{definition}
+    Подмножество $U \subseteq V$ называется \textit{подпространством} (в $V$), если
+    \begin{enumerate}[nosep]
+    \item $\overrightarrow{0} \in U$.
+    \item $x, y \in U \implies x + y \in U$.
+    \item $x \in U, \alpha \in F \implies \alpha x \in U$.
+    \end{enumerate}
+\end{definition}
+
+\begin{comment}
+    Всякое подпространство само является векторным пространством относительно тех же операций.
+\end{comment}
+
+\begin{example}~
+    \begin{enumerate}
+        \item $\{\overrightarrow{0}\}$ и $V$ -- всегда подпространства в $V$.
+
+            они называются \textit{несобственными} подпространствами, остальные называются \textit{собственными}.
+
+        \item Множество всех верхнетреугольных, нижнетреугольных, диагональных матриц в $M_n(F)$.
+
+        \item $F[x]_{\leq n}$ все многочлены в $F[x]$ степени $\leq n$ -- подпространство в $F[x]$.
+    \end{enumerate}
+\end{example}
+
+
+\subsection{Утверждение о том, что множество решений однородной системы линейных уравнений с n неизвестными является подпространством в $F^n$}
+
+\begin{proposal}
+    Множество решений любой ОСЛУ $Ax = 0$ $(\star)$ ($A \in \text{Mat}_{m \times n}(F), x \in F^n$) является подпространством в $F^n$.
+\end{proposal}
+
+\begin{proof}
+    $S := $ множество решений ОСЛУ $(\star)$.
+    \begin{enumerate}
+        \item $\overrightarrow{0} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix} \in S$.
+        \item $x, y \in S \implies Ax = \overrightarrow{0}$ и $Ay = \overrightarrow{0} \implies A(x + y) = Ax + Ay = \overrightarrow{0} + \overrightarrow{0} = \overrightarrow{0} \implies x + y \in S$.
+        \item $x \in S, \alpha \in F \implies Ax = \overrightarrow{0} \implies A(\alpha x) = \alpha (Ax) = \alpha \overrightarrow{0} = \overrightarrow{0} \implies \alpha x \in S$. \qedhere
+    \end{enumerate}
+\end{proof}
+
+
+\subsection{Линейная комбинация конечного набора векторов}
+
+Пусть $V$ -- векторное пространство над $F$ и $v_1, \dots, v_k \in V$ -- набор векторов.
+
+\begin{definition}
+    \textit{Линейной комбинацией} векторов $v_1, \dots, v_k$ называется всякое выражение вида $\alpha_1 v_1 + \dots \alpha_k v_k$, где $\alpha_i \in F$.
+\end{definition}
+
+\subsection{Линейная оболочка подмножества векторного пространства, примеры}
+
+Пусть $S \subseteq V$ -- подмножество.
+
+\begin{definition}
+    \textit{Линейной оболочкой} множества $S$ называются множество всех векторов из $V$, представимых в виде линейной комбинации какого-то конечного набора векторов из $S$.
+
+    Обозначение: $\langle S \rangle$.
+\end{definition}
+
+Если $S = \{v_1, \dots, v_k\}$ конечно и состоит из векторов $v_1, \dots, v_k$, то еще пишут $\langle v_1, \dots, v_k \rangle$ и говорят ``линейная оболочка векторов $v_1, \dots, v_k$''.
+
+Соглашение: $\varnothing = \{\overrightarrow{0}\}$.
+
+\begin{example}~
+    \begin{enumerate}
+    \item
+        $\langle \overrightarrow{0} \rangle = \{\overrightarrow{0}\}$.
+    \item
+        $V = \RR^2$, $v \neq 0$, $\langle v \rangle = \{\alpha v \mid \alpha \in \RR\}$ -- прямая.
+    \item
+        $V = \RR^3$, $v_1, v_2$ -- пара неколлинеарных векторов.
+
+        Тогда, $\langle v_1, v_2 \rangle = \{a_1 v_1 + a_2 v_2 \mid a_1, a_2 \in \RR\}$ -- плоскость натянутая на $v_1, v_2$.
+    \end{enumerate}
+\end{example}
