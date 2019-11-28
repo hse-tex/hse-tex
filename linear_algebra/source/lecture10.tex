@@ -107,11 +107,11 @@ $\forall \alpha \in F, x \in V$.
 \subsection{Утверждение о том, что множество решений однородной системы линейных уравнений с n неизвестными является подпространством в $F^n$}
 
 \begin{proposal}
-    Множество решений любой ОСЛУ $Ax = 0$ $(\star)$ ($A \in \text{Mat}_{m \times n}(F), x \in F^n$) является подпространством в $F^n$.
+    Множество решений любой ОСЛУ $Ax = 0$ ($A \in \text{Mat}_{m \times n}(F)$, $x \in F^n$) является подпространством в $F^n$.
 \end{proposal}
 
 \begin{proof}
-    $S := $ множество решений ОСЛУ $(\star)$.
+    Пусть $S$ -- множество решений ОСЛУ Ax = 0.
     \begin{enumerate}
         \item $\overrightarrow{0} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix} \in S$.
         \item $x, y \in S \implies Ax = \overrightarrow{0}$ и $Ay = \overrightarrow{0} \implies A(x + y) = Ax + Ay = \overrightarrow{0} + \overrightarrow{0} = \overrightarrow{0} \implies x + y \in S$.
@@ -140,7 +140,7 @@ $\forall \alpha \in F, x \in V$.
 
 Если $S = \{v_1, \dots, v_k\}$ конечно и состоит из векторов $v_1, \dots, v_k$, то еще пишут $\langle v_1, \dots, v_k \rangle$ и говорят ``линейная оболочка векторов $v_1, \dots, v_k$''.
 
-Соглашение: $\varnothing = \{\overrightarrow{0}\}$.
+Соглашение: $\langle \varnothing \rangle = \{\overrightarrow{0}\}$.
 
 \begin{example}~
     \begin{enumerate}

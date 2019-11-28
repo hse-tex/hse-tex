@@ -1,0 +1,253 @@
+\section{Лекция 21.11.2019}
+
+Напомним, если $V$ -- векторное пространство над полем $F$, то при $S \subseteq V$, линейная оболочка 
+
+$\langle S \rangle = \{\text{все линейные комбинации конечных наборов векторов из } S\}$
+
+\begin{example}~
+    \begin{enumerate}
+    \setcounter{enumi}{3}
+    \item
+        $V = F^n$, $S = \{e_1, \dots, e_n\}$, где
+
+        \begin{equation*}
+            e_1 = \begin{pmatrix} 1 \\ 0 \\ \dots \\ 0 \end{pmatrix}, \
+            e_2 = \begin{pmatrix} 0 \\ 1 \\ \dots \\ 0 \end{pmatrix}, \
+            \dots \ , \
+            e_n = \begin{pmatrix} 0 \\ 0 \\ \dots \\ 1 \end{pmatrix}
+        .\end{equation*}
+
+        Тогда $\langle S \rangle = \langle e_1, \dots, e_n \rangle = F^n$.
+
+        Так как для любого $x \in F^n \implies x = \begin{pmatrix} x_1 \\ x_2 \\ \dots \\ x_n \end{pmatrix} = x_1 \begin{pmatrix} 1 \\ 0 \\ \dots \\ 0 \end{pmatrix} + x_2 \begin{pmatrix} 0 \\ 1 \\ \dots \\ 0 \end{pmatrix} + \dots + x_n \begin{pmatrix} 0 \\ 0 \\ \dots \\ 1 \end{pmatrix} = x_1 e_1 + x_2 e_2 + \dots + x_n e_n$.
+    \end{enumerate}
+\end{example}
+
+
+\subsection{Утверждение о том, что линейная оболочка системы векторов является подпространством объемлющего векторного пространства}
+
+Пусть $V$ -- векторное пространство, $S \subseteq V$.
+
+\begin{proposal}
+    $\langle S \rangle$ является подпространством в $V$.
+\end{proposal}
+
+\begin{proof}~
+    \begin{enumerate}
+    \item 
+        Два случая:
+
+        $S = \varnothing \implies \langle \varnothing \rangle = \{\overrightarrow{0}\} \implies \overrightarrow{0} \in \langle S \rangle$.
+
+        $S \neq \varnothing \implies \exists V \in S \implies \underbracket{0 V}_{\in \langle S \rangle} = \overrightarrow{0} = \overrightarrow{0} \in \langle S \rangle$.
+
+    \item 
+        Пусть $v, w \in \langle S \rangle$:
+
+        $v = \alpha_1 v_1 + \dots + \alpha_m v_m$,
+
+        $w = \beta_1 w_1 + \dots + \beta_n w_n$, где $v_i, w_i \in S$, $\alpha_i, \beta_i \in F$.
+
+        Тогда, $v + w = \alpha_1 v_1 + \dots + \alpha_m v_m + \beta_1 w_1 + \dots + \beta_n w_n \in \langle S \rangle$.
+
+        (если $v_i = w_j$, то $\alpha_i v_i + \beta_j w_j = (\alpha_i + \beta_j) w_j$)
+
+    \item
+        $v \in \langle S \rangle$, $\alpha \in F \implies v = \alpha_1 v_1 + \dots + \alpha_m v_m$
+
+        $\implies \alpha v = (\alpha \alpha_1) v_1 + \dots + (\alpha \alpha_m) v_m \in \langle S \rangle$. \qedhere
+    \end{enumerate}
+\end{proof}
+
+
+\subsection{Линейно зависимые и линейно независимые системы векторов}
+
+\begin{definition}
+    Линейная комбинация $\alpha_1 v_1 + \dots + \alpha_n v_n$ называется \textit{тривиальной}, если $\alpha_1 = \dots = \alpha_n = 0$ и \textit{нетривиальной} иначе (то есть $\exists i : a_i \neq 0$ или $(\alpha_1, \dots, \alpha_n) \neq (0, \dots, 0)$).
+\end{definition}
+
+\begin{example}
+    $v + (-v)$ -- нетривиальная линейная комбинация векторов $v$ и $-v$.
+\end{example}
+
+\begin{definition}~
+    \begin{enumerate}
+    \item 
+        Векторы $v_1, \dots, v_n \in V $ называются \textit{линейно зависимыми} если существует их нетривиальная линейная комбинация, равная $\overrightarrow{0}$ (то есть $\exists (\alpha_1, \dots, \alpha_n) \neq (0, \dots, 0)$, такие что $\alpha_1 v_1 + \dots + \alpha_n v_n = \overrightarrow{0}$) и \textit{линейно независимыми} иначе (то есть из условия $\alpha_1 v_1 + \dots\alpha_n v_n = \overrightarrow{0}$ следует $\alpha_1 = \dots = \alpha_n = 0$).
+
+    \item
+        Множество $S \subseteq V$ (возможно бесконечное, возможно с повторяющимися элементами) называется \textit{линейно зависимым} если существует конечное линейно зависимое подмножество, и \textit{линейно независимым} если любое конечное подмножество линейно независимо.
+    \end{enumerate}
+\end{definition}
+
+\begin{convention}
+    \textit{Система векторов} -- множество векторов, в котором возможны повторения.
+\end{convention}
+
+\begin{example}~
+    \begin{enumerate}
+        \item $S = \{\overrightarrow{0}\} \quad$ $1 \cdot \overrightarrow{0}$ -- нетривиальная линейная комбинация$\implies \overrightarrow{0}$ линейно зависимо.
+        \item $S = \{v\}$, $v \neq \overrightarrow{0}$ -- линейно независимо.
+
+            Пусть $\lambda v = \overrightarrow{0} \implies \overrightarrow{0} = \lambda^{-1} \overrightarrow{0} = \lambda^{-1}(\lambda v) = (\lambda^{-1} \lambda) v = 1v = v$ -- противоречие.
+
+        \item 
+            $S = \{v_1, v_2\} \implies S$ линейно зависимо тогда и только тогда, когда $v_1$ и $v_2$ пропорциональны (то есть либо $v_2 = \lambda_1 v_1$, $\lambda_1 \in F$, либо $v_1 = \lambda_2 v_2$, $\lambda_2 \in F$).
+            \begin{proof}~
+                \begin{description}
+                \item[$(\implies)$] 
+                    $\mu_1 v_1 + \mu_2 v_2 = \overrightarrow{0}$, $(\mu_1, \mu_2) \neq (0, 0)$.
+
+                    Если $\mu_1 \neq 0$, то $v_1 = -\frac{\mu_2}{\mu_1} v_2$. 
+
+                    Аналогично для $\mu_2 \neq 0$.
+
+                \item[$(\impliedby)$]
+                    $v_2 = \lambda_1 v_1 \implies \lambda_1 v_1 + (-1) v_2 = \overrightarrow{0} \implies v_1, v_2$ линейно зависимы.
+
+                    Аналогично для $v_1 = \lambda_2 v_2$. \qedhere
+                \end{description}
+            \end{proof}
+
+        \item
+            $V = F^n$, $S = \{e_1, \dots, e_n\} \implies S$ линейно независимо.
+
+            \begin{equation*}
+                \alpha_1 e_1 + \dots + \alpha_n e_n = \overrightarrow{0} \iff \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_n \end{pmatrix} = \begin{pmatrix} 0 \\ \dots \\ 0 \end{pmatrix} \iff \alpha_1 = \dots = \alpha_n = 0
+            .\end{equation*}
+    \end{enumerate}
+\end{example}
+
+
+\subsection{Критерий линейной зависимости конечного набора векторов}
+
+\begin{proposal}
+    Пусть $v_1, \dots, v_n \in V$, $i \in \{1, \dots, n\}$, тогда следующие условия эквивалентны:
+    \begin{enumerate}
+        \item $\exists (\alpha_1, \dots, \alpha_n) \in F^n$, такой что $\alpha_1 v_1 + \dots + \alpha_n v_n = \overrightarrow{0} (\star) $ и $\alpha_i \neq 0$. 
+        \item $v_i \in \langle v_1, \dots, v_{i - 1}, v_{i + 1}, \dots, v_n \rangle$.
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}~
+    \begin{description}
+        \item[$(1) \implies (2)$] $\alpha_i \neq 0$ в $(\star) \implies v_i = -\dfrac{\alpha_1}{\alpha_i} v_1 - \dots - \dfrac{\alpha_{i - 1}}{\alpha_i} v_{i - 1} - \dfrac{\alpha_{i + 1}}{\alpha_i} v_{i + 1} - \dots - \dfrac{\alpha_n}{\alpha_i} v_n \in \langle v_1, \dots v_{i - 1}, v_{i + 1}, \dots, v_n \rangle$.
+        \item[$(2) \implies (1)$] 
+            $v_i = \beta_1 v_1 + \dots + \beta_{i - 1} v_{i - 1} + \beta_{i + 1} v_{i + 1} + \dots + \beta_n v_n \implies $
+            
+            \begin{equation*}
+                b_1 v_1 + \dots + \beta_{i - 1} v_{i - 1} + \underbrace{(-1)}_{\neq 0} v_i + \beta_{i + 1} v_{i + 1} + \dots + \beta_n v_n = \overrightarrow{0}
+            .\end{equation*}
+
+            (нетривиальная линейная комбинация с $i$-м скаляром $\neq 0$). \qedhere
+    \end{description}
+\end{proof}
+
+\begin{corollary}
+    Векторы $v_1, \dots, v_n$ линейно зависимы тогда и только тогда, когда $\exists i \in \{1, \dots, n\}$, такое что $v_i \in \langle v_1, \dots, v_{i - 1}, v_{i + 1}, \dots, v_n \rangle$.
+\end{corollary}
+
+
+\subsection{Основная лемма о линейной зависимости}
+
+\begin{lemma}
+    Пусть есть две системы векторов $v_1, \dots, v_m$ и $w_1, \dots, w_n$, причем $m < n$ и $w_i \in \langle v_1, \dots, v_n \rangle \quad \forall i = 1, \dots, n$.
+
+    Тогда векторы $w_1, \dots, w_n$ линейно зависимы.
+\end{lemma}
+
+\begin{proof}
+    \begin{align*}
+        w_1 &= a_{11} v_1 + a_{21} v_2 + \dots + a_{m1} v_m = (v_1, \dots, v_m) \begin{pmatrix} a_{11} \\ a_{21} \\ \dots \\ a_{m1} \end{pmatrix} \\
+        \dots\\
+        w_n &= a_{1n} v_1 + a_{2n} v_2 + \dots + a_{mn} v_m = (v_1, \dots, v_m) \begin{pmatrix} a_{1n} \\ a_{2n} \\ \dots \\ a_{mn} \end{pmatrix}
+    .\end{align*}
+
+    \begin{equation*}
+        \tag{$\star$}
+        \label{v_times_A}
+        \implies (w_1, \dots, w_n) = (v_1, \dots, v_m) A
+    ,\end{equation*}
+    где $A = (a_{ij}) \in \text{Mat}_{m \times n} (F)$.
+
+    Так как $m < n$, то ОСЛУ $Ax = \overrightarrow{0}$ имеет ненулевое решение $z = \begin{pmatrix} z_1 \\ \dots \\ z_n \end{pmatrix} \in F^n$.
+
+    Тогда умножим \eqref{v_times_A} справа на $z$:
+    \begin{equation*}
+        (w_1, \dots, w_n) \cdot z = (v_1, \dots, v_m) \cdot \underbrace{A \cdot z}_{= \overrightarrow{0}} = (v_1, \dots, v_m) \begin{pmatrix} 0 \\ \dots \\ 0 \end{pmatrix} = \overrightarrow{0}
+    .\end{equation*}
+
+    \begin{equation*}
+        \implies (w_1, \dots, w_n) \begin{pmatrix} z_1 \\ \dots \\ z_n \end{pmatrix} = \overrightarrow{0} \implies z_1 w_1 + \dots z_n w_n = \overrightarrow{0}
+    .\end{equation*}
+
+    Это нетривиальная линейная комбинация, так как $z \neq 0$.
+
+    Следовательно, $w_1, \dots, w_n$ линейно зависимы.
+\end{proof}
+
+\begin{example}
+    Любые $n + 1$ векторов в $F^n$ линейно зависимы, так как $F^n = \langle e_1, \dots, e_n \rangle$.
+\end{example}
+
+
+\subsection{Базис векторного пространства}
+
+\begin{definition}
+    Подмножество $S \subseteq V$ называется \textit{базисом} пространства $V$, если
+    \begin{enumerate}[nosep]
+    \item $S$ линейно независимо,
+    \item $\langle S \rangle = V$.
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    $e_1, \dots, e_n$ -- это базис в $F^n$. Он называется \textit{стандартным базисом} в $F^n$.
+\end{example}
+
+\begin{comment}
+    Всякая линейно независимая система векторов является базисом своей линейной оболочки.
+\end{comment}
+
+
+\subsection{Конечномерные и бесконечномерные векторные пространства}
+
+\begin{definition}
+    Векторное пространство $V$ называется \textit{конечномерным}, если в нем есть конечный базис, и \textit{бесконечномерным} иначе.
+\end{definition}
+
+
+\subsection{Независимость числа элементов в базисе векторного пространства от выбора базиса}
+
+\begin{proposal}
+    $V$ -- конечномерное векторное пространство. Тогда, все базисы в $V$ содержат одно и то же количество элементов.
+\end{proposal}
+
+\begin{proof}
+    $V$ конечномерно, тогда существует конечный базис $e_1, \dots, e_n$.
+
+    Пусть $S \subseteq V$ -- другой базис. 
+    Так как $\langle e_1, \dots, e_n \rangle = V$, то $\forall v \in S \implies v \in \langle e_1, \dots, e_n \rangle$. 
+    Тогда любые $n + 1$ векторов в $S$ линейно зависимы по основной лемме о линейной зависимости.  Но $S$ линейно независимо, значит $|S| \leq n$.
+
+    Пусть $S = \{e'_1, \dots, e'_m\}$, где $m \leq n$. Тогда $\forall i = 1, \dots, n \quad e_i \in \langle e'_1, \dots, e'_m \rangle$, по основной лемме о линейной зависимости получаем $n \leq m$.
+    
+    То есть $m = n$.
+\end{proof}
+
+
+\subsection{Размерность конечномерного векторного пространств}
+
+\begin{definition}
+    \textit{Размерностью} конечномерного векторного пространства называется число элементов в (любом) его базисе.
+
+    Обозначение: $\dim V$.
+\end{definition}
+
+\begin{example}~
+    \begin{enumerate}
+    \item $\dim F^n = n$,
+    \item $V = \{\overrightarrow{0}\} \implies \dim V = 0$ так как базисом $V$ будет $\varnothing$.
+    \end{enumerate}
+\end{example}
+
