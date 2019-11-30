@@ -13,3 +13,4 @@ build() {
 build linear_algebra linear_algebra source main
 build linear_algebra linear_algebra_colloquium colloquium main
 build mathematical_analysis mathematical_analysis . mathematical_analysis
+build discrete_mathematics discrete_mathematics_colloquium . discrete_mathematics_colloquium
