@@ -1,7 +1,7 @@
 \section{Лекция 23.09.2019}
 
 \subsection{Инверсии в перестановке}
-Обозначение: $S_n$ -- множество всех подстановок из n элементов.
+Обозначение: $S_n$ -- множество всех перестановок из n элементов.
 
 \bigskip
 Пусть $\sigma \in S_n$, $i, j \in \{1, 2, \dots, n\}$, $i \neq j$
@@ -12,11 +12,11 @@
 
 \subsection{Знак и чётность перестановки}
 \begin{definition}
-    \textit{Знак} подстановки $\sigma$ -- это  число $\sgn(\sigma) = (-1)^{<\text{число инверсий в }\sigma>}$.
+    \textit{Знак} перестановки $\sigma$ -- это  число $\sgn(\sigma) = (-1)^{<\text{число инверсий в }\sigma>}$.
 \end{definition}
 
 \begin{definition}
-    $\sigma$ называется \textit{четной}, если $\sgn(\sigma)$ = 1 (четное количество инверсий), и \textit{нечетной} если $\sgn(\sigma) = -1$ (нечетное количество инверсий).
+    Перестановка $\sigma$ называется \textit{четной}, если $\sgn(\sigma)$ = 1 (четное количество инверсий), и \textit{нечетной} если $\sgn(\sigma) = -1$ (нечетное количество инверсий).
 \end{definition}
 
 \underline{Примеры}.
@@ -55,7 +55,7 @@
 
 \subsection{Произведение перестановок}
 \begin{definition}
-    \textit{Произведением} (или \textit{композицией}) двух подстановок $\sigma, \rho \in S_n$ называется такая постановка $\sigma \rho \in S_n$, что $(\sigma \rho)(x) := \sigma (\rho (x))$ $\forall x \in \{1, \dots, n\}$.
+    \textit{Произведением} (или \textit{композицией}) двух перестановок $\sigma, \rho \in S_n$ называется такая перестановка $\sigma \rho \in S_n$, что $(\sigma \rho)(x) := \sigma (\rho (x)) \quad \forall x \in \{1, \dots, n\}$.
 \end{definition}
 
 \underline{Пример}.
@@ -78,11 +78,11 @@ $\rho \sigma = \begin{pmatrix}
     2 & 1 & 3 & 4
 \end{pmatrix}$
 
-Видно, что $\sigma \rho \neq \rho \sigma \implies$ произведение подстановок не обладает свойством коммутативности.
+Видно, что $\sigma \rho \neq \rho \sigma \implies$ произведение перестановок не обладает свойством коммутативности.
 
 \subsection{Ассоциативность произведения перестановок}
 \begin{proposition}
-    Умножение подстановок ассоциативно, то есть $\sigma (\tau \pi) = (\sigma \tau) \pi \ \forall \sigma, \tau, \pi \in S_n$.
+    Умножение перестановок ассоциативно, то есть $\sigma (\tau \pi) = (\sigma \tau) \pi \ \forall \sigma, \tau, \pi \in S_n$.
 \end{proposition}
 
 \begin{proof}
@@ -96,7 +96,7 @@ $\rho \sigma = \begin{pmatrix}
 
 \subsection{Тождественная перестановка}
 \begin{definition}
-    Подстановка $id = \begin{pmatrix}
+    Перестановка $id = \begin{pmatrix}
         1 & 2 & \dots & n \\
         1 & 2 & \dots & n
     \end{pmatrix} \in S_n$ называется \textit{тождественной} перестановкой.
@@ -185,7 +185,7 @@ $\sigma \cdot \sigma^{-1} = id = \sigma^{-1} \cdot \sigma$
 \end{corollary}
 
 \begin{proof}
-    $\sigma \sigma^{-1} = id \implies \sgn(\sigma \sigma^{-1}) = \sgn(id) \implies \sgn \sigma \sgn \sigma^{-1} \implies \sgn \sigma = \sgn \sigma^{-1}$.
+    $\sigma \sigma^{-1} = id \implies \sgn(\sigma \sigma^{-1}) = \sgn(id) \implies \sgn \sigma \sgn \sigma^{-1} = 1 \implies \sgn \sigma = \sgn \sigma^{-1}$.
 \end{proof}
 
 \textit{\textbf{Упражнение на дом:} Показать, что число инверсий в $\sigma^{-1}$ такое же, как в $\sigma$}.
@@ -200,11 +200,10 @@ $\tau_{ij}(i) = j$.
 
 $\tau_{ij}(j) = i$.
 
-% TODO Придумать что-то со спейсингом \forall
 $\tau_{ij}(k) = k \quad \forall k \neq i, j$.
 
 \begin{definition}
-    Подстановки вида $\tau_{ij}$ называются \textit{транспозициями}.
+    Перестановки вида $\tau_{ij}$ называются \textit{транспозициями}.
 \end{definition}
 
 \begin{comment}
@@ -212,7 +211,7 @@ $\tau_{ij}(k) = k \quad \forall k \neq i, j$.
 \end{comment}
 
 \begin{definition}
-    Подстановки вида $\tau_{i, i+1}$ называются \textit{элементарными траспозициями}.
+    Перестановки вида $\tau_{i, i+1}$ называются \textit{элементарными траспозициями}.
 \end{definition}
 
 \begin{lemma}
@@ -243,15 +242,15 @@ $\tau_{ij}(k) = k \quad \forall k \neq i, j$.
 \end{proof}
 
 \begin{corollary}
-    При $n \geq 2$ отображение $\sigma \rightarrow \sigma \tau_{12}$ является биекцией между множеством четных подстановок в $S_n$ и множеством нечетных подстановок в $S_n$.
+    При $n \geq 2$ отображение $\sigma \rightarrow \sigma \tau_{12}$ является биекцией между множеством четных перестановок в $S_n$ и множеством нечетных перестановок в $S_n$.
 \end{corollary}
 
 \begin{corollary}
-    При $n \geq 2$ количество нечетных подстановок в $S_n$ равно количеству четных подстановок в $S_n$ и равно $\frac{n!}{2}$.
+    При $n \geq 2$ количество нечетных перестановок в $S_n$ равно количеству четных перестановок в $S_n$ и равно $\frac{n!}{2}$.
 \end{corollary}
 
 \begin{theorem}
-    Всякая подстановка $\sigma \in S_n$ может быть разложена в произведение конечного числа элементарных транспозиций.
+    Всякая перестановка $\sigma \in S_n$ может быть разложена в произведение конечного числа элементарных транспозиций.
 \end{theorem}
 
 \begin{proof}

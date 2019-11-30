@@ -258,24 +258,28 @@ $\underset{n \times m}{A} \underset{m \times p}{X} = \underset{n \times p}{B}$ -
 \subsection{Перестановки на множестве $\{1, 2, \dots, n\}$}
 
 \begin{definition}
-    \textit{Перестановкой множества} $\{1, 2, \dots, n\}$ называется упорядоченный набор $(i_1, i_2, \dots, i_n)$, в котором каждое число от 1 до $n$ встречается ровно один раз. 
-\end{definition}
-
-Обозначение: $P_n$ -- множество всех перестановок множества $\{1, 2, \dots, n\}$.
-
-Например, $(4, 2, 1, 3) \in P_4$.
-
-\begin{definition}
-    \textit{Подстановкой} на множестве $\{1, 2, \dots, n\}$ называется всякое биективное (взаимно однозначное) отображение множества $\{1, 2, \dots, n\}$ в себя.
-
+    \textit{Перестановкой (подстановкой)} на множестве $\{1, 2, \dots, n\}$ называется всякое биективное (взаимно однозначное) отображение множества $\{1, 2, \dots, n\}$ в себя.
     \begin{equation*}
         \sigma : \{1, 2, \dots, n\} \to \{1, 2, \dots, n\}
     .\end{equation*}
 
-    \begin{equation*}
-        \begin{pmatrix}
-            1 & 2 & 3 & \dots & n \\
-            i_1 & i_2 & i_3 & \dots i_n
-        \end{pmatrix}
-    \end{equation*}
+    $S_n$ -- множество всех перестановок на множестве $\{1, 2, \dots, n\}$.
 \end{definition}
+
+Запись:
+\begin{equation*}
+    \begin{pmatrix}
+        1 & 2 & 3 & \dots & n \\
+        \sigma(1) & \sigma(2) & \sigma(3) & \dots & \sigma(n)
+    \end{pmatrix} \text{ либо }
+    \begin{pmatrix} 
+        i_1 & i_2 & i_3 & \dots & i_n \\
+        \sigma(i_1) & \sigma(i_2) & \sigma(i_3) & \dots & \sigma(i_n)
+    \end{pmatrix} 
+.\end{equation*}
+
+Здесь, $\{i_1, i_2, \dots, i_n\} = \{1, 2, \dots, n\}$.
+
+\begin{comment}
+    Количество всех перестановок длины $n$: $|S_n| = n!$
+\end{comment}

@@ -169,9 +169,9 @@
         \begin{definition}
             СЛУ называется
 
-            -- \textit{совместной}, если у нее есть хотя бы одно решение
+            -- \textit{совместной}, если у нее есть хотя бы одно решение,
 
-            -- \textit{несовместной}, если решений нет
+            -- \textit{несовместной}, если решений нет.
         \end{definition}
 
     % Лекция 3
@@ -341,18 +341,18 @@
     \defitem{Свойство однородной системы линейных уравнений, у которой число неизвестных больше числа уравнений}
 
         \begin{corollary}
-            Всякая ОСЛУ, у которой число неизвестных больше числа уравнений, имеет ненулевое решение
+            Всякая ОСЛУ, у которой число неизвестных больше числа уравнений, имеет ненулевое решение.
         \end{corollary}
 
     % Лекция 4
     \defitem{Связь между множеством решений совместной системы линейных уравнений и множеством решений соответствующей ей однородной системы}
 
         \begin{proposition}
-            Пусть $Ax = b$ -- совместная СЛУ.
+            Пусть $Ax = b$ -- совместная СЛУ,
 
-            $x_0$ -- частное решение $Ax = b$
+            $x_0$ -- частное решение $Ax = b$,
 
-            $S \subset \RR^n$ -- множество решений ОСЛУ $Ax = 0$
+            $S \subset \RR^n$ -- множество решений ОСЛУ $Ax = 0$,
 
             $L \subset \RR^n $ -- множество решений $Ax = b$.
 
@@ -365,34 +365,34 @@
         \begin{definition}
             Матрица $B \in M_n$ называется \textit{обратной}, к $A$, если $AB = BA = E$.
 
-            Обозначение: $B = A^{-1}$
+            Обозначение: $B = A^{-1}$.
         \end{definition}
 
     % Лекция 4
     \defitem{Перестановки множества $\{1, 2, \dots , n\}$}
 
         \begin{definition}
-            \textit{Перестановкой множества} $\{1, 2, \dots, n\}$ называется упорядоченный набор $(i_1, i_2, \dots, i_n)$, в котором каждое число от 1 до $n$ встречается ровно один раз.
-        \end{definition}
-
-        Обозначение: $P_n$ -- множество всех перестановок множества $\{1, 2, \dots, n\}$.
-
-        Например, $(4, 2, 1, 3) \in P_4$.
-
-        \begin{definition}
-            \textit{Подстановкой} на множестве $\{1, 2, \dots, n\}$ называется всякое биективное (взаимно однозначное) отображение множества $\{1, 2, \dots, n\}$ в себя.
-
+            \textit{Перестановкой (подстановкой)} на множестве $\{1, 2, \dots, n\}$ называется всякое биективное (взаимно однозначное) отображение множества $\{1, 2, \dots, n\}$ в себя.
             \begin{equation*}
                 \sigma : \{1, 2, \dots, n\} \to \{1, 2, \dots, n\}
             .\end{equation*}
 
-            \begin{equation*}
-                \begin{pmatrix}
-                    1 & 2 & 3 & \dots & n \\
-                    i_1 & i_2 & i_3 & \dots i_n
-                \end{pmatrix}
-            \end{equation*}
+            $S_n$ -- множество всех перестановок на множестве $\{1, 2, \dots, n\}$.
         \end{definition}
+
+        Запись:
+        \begin{equation*}
+            \begin{pmatrix}
+                1 & 2 & 3 & \dots & n \\
+                \sigma(1) & \sigma(2) & \sigma(3) & \dots & \sigma(n)
+            \end{pmatrix} \text{ либо }
+            \begin{pmatrix} 
+                i_1 & i_2 & i_3 & \dots & i_n \\
+                \sigma(i_1) & \sigma(i_2) & \sigma(i_3) & \dots & \sigma(i_n)
+            \end{pmatrix} 
+        .\end{equation*}
+
+        Здесь, $\{i_1, i_2, \dots, i_n\} = \{1, 2, \dots, n\}$.
 
     % Лекция 5
     \defitem{Инверсия в перестановке. Знак перестановки. Чётные и нечётные перестановки}
@@ -404,25 +404,25 @@
         \end{definition}
 
         \begin{definition}
-            \textit{Знак} подстановки $\sigma$ -- это  число $\sgn(\sigma) = (-1)^{<\text{число инверсий в }\sigma>}$.
+            \textit{Знак} перестановки $\sigma$ -- это  число $\sgn(\sigma) = (-1)^{<\text{число инверсий в }\sigma>}$.
         \end{definition}
 
         \begin{definition}
-            $\sigma$ называется \textit{четной}, если $\sgn(\sigma)$ = 1 (четное количество инверсий), и \textit{нечетной} если $\sgn(\sigma) = -1$ (нечетное количество инверсий).
+            Перестановка $\sigma$ называется \textit{четной}, если $\sgn(\sigma)$ = 1 (четное количество инверсий), и \textit{нечетной} если $\sgn(\sigma) = -1$ (нечетное количество инверсий).
         \end{definition}
 
     % Лекция 5
     \defitem{Произведение двух перестановок}
 
         \begin{definition}
-            \textit{Произведением} (или \textit{композицией}) двух подстановок $\sigma, \rho \in S_n$ называется такая постановка $\sigma \rho \in S_n$, что $(\sigma \rho)(x) := \sigma (\rho (x))$ $\forall x \in \{1, \dots, n\}$.
+            \textit{Произведением} (или \textit{композицией}) двух перестановок $\sigma, \rho \in S_n$ называется такая перестановка $\sigma \rho \in S_n$, что $(\sigma \rho)(x) := \sigma (\rho (x)) \quad \forall x \in \{1, \dots, n\}$.
         \end{definition}
 
     % Лекция 5
     \defitem{Тождественная перестановка и её свойства. Обратная перестановка и её свойства}
 
         \begin{definition}
-            Подстановка $id = \begin{pmatrix}
+            Перестановка $id = \begin{pmatrix}
                 1 & 2 & \dots & n \\
                 1 & 2 & \dots & n
             \end{pmatrix} \in S_n$ называется \textit{тождественной} перестановкой.
@@ -433,7 +433,6 @@
         $\forall \sigma \in S_n \quad id \cdot \sigma = \sigma \cdot id = \sigma$.
 
         $\sgn(id) = 1$.
-
 
         \begin{definition}
             $\sigma \in S_n$, $\sigma = \begin{pmatrix}
@@ -468,7 +467,7 @@
         $\tau_{ij}(k) = k \ \forall k \neq i, j$.
 
         \begin{definition}
-            Подстановки вида $\tau_{ij}$ называются \textit{транспозициями}.
+            Перестановки вида $\tau_{ij}$ называются \textit{транспозициями}.
         \end{definition}
 
         \begin{comment}
@@ -552,7 +551,7 @@
     % Лекция 6
     \defitem{Поведение определителя при прибавлении к строке (столбцу) другой, умноженной на скаляр}
 
-        Если к строке (столбцу) прибавить другую строку (столбец), умноженный на скаляр, то $\det A$ не изменится.
+        Если к строке (столбцу) прибавить другую строку (столбец), умноженную на скаляр, то $\det A$ не изменится.
 
     % Лекция 6
     \defitem{Верхнетреугольные и нижнетреугольные матрицы}
@@ -655,7 +654,7 @@
     \defitem{Дополнительный минор к элементу квадратной матрицы}
 
         \begin{definition}
-            \textit{Дополнительным минором} к элементу $a_{ij}$ называется определитель $(n-1) \times (n-1)$ матрицы, получающейся из $А$ вычеркиванием $i$-ой строки и $j$-го столбца.
+            \textit{Дополнительным минором} к элементу $a_{ij}$ называется определитель $(n-1) \times (n-1)$ матрицы, получающейся из $A$ вычеркиванием $i$-ой строки и $j$-го столбца.
 
             Обозначение: $\overline{M}_{ij}$.
         \end{definition}
@@ -688,9 +687,9 @@
         \begin{lemma}~
             \begin{enumerate}
             \item
-                При любых $i, k \in \{1, 2, \dots, n\} : i \neq k \implies \sum_{j = 1}^n a_{ij} A_{kj} = 0$.
+                При любых $i, k \in \{1, 2, \dots, n\} : i \neq k \implies \sum_{j = 1}^n a_{ij} A_{kj} = 0$,
             \item
-                При любых $j, k \in \{1, 2, \dots, n\} : j \neq k \implies \sum_{i = 1}^n a_{ij} A_{ik} = 0$
+                При любых $j, k \in \{1, 2, \dots, n\} : j \neq k \implies \sum_{i = 1}^n a_{ij} A_{ik} = 0$.
             \end{enumerate}
         \end{lemma}
 
@@ -858,7 +857,6 @@
     \defitem{Формула Муавра}
 
         Пусть $z = |z|(\cos \phi + i \sin \phi)$. Тогда $\forall n \in \ZZ$,
-
         \begin{equation*}
             z^n = |z|^n (\cos(n \phi) + i \sin(n \phi)) \text{ -- формула Муавра}
         .\end{equation*}
@@ -973,13 +971,12 @@
 
         \begin{itemize}
         \item
+            Пусть $U \subseteq F^n$ -- множество векторов, тогда $\langle U \rangle$ -- подпространство в $F^n$.
+        \item
             Множество решений любой ОСЛУ $Ax = 0$ ($A \in \text{Mat}_{m \times n}(F)$, $x \in F^n$) является подпространством в $F^n$.
         \end{itemize} 
 
-        { \small Не имею понятия, что за вторая конструкция, сообщите если знает кто. }
-        \begin{equation*}
-            \text{\Huge:)}
-        \end{equation*}
+        Любое подпространство в $F^n$ можно задать любым из этих способов.
 
     % Лекция 11
     \defitem{Линейная зависимость конечного набора векторов}
@@ -1094,7 +1091,7 @@
             $(AB)C = A(BC)$
 
             \begin{proof}
-                $\underbracket{(AB)}_u C = x, A\underbracket{(BC)}_v = y$
+                $\underbracket{(AB)}_u C = x$, $A\underbracket{(BC)}_v = y$
 
                 \begin{align*}
                     x_{ij}
@@ -1136,15 +1133,13 @@
                         \vdots \\
                         a_n B_{(n)}
                     \end{pmatrix}$
-                \item $\forall B \in \text{Mat}_{m \times n} \implies BA = \begin{pmatrix}
-                        a_1 B^{(1)} & a_2 B^{(2)} & \dots & a_n B^{(n)}
-                    \end{pmatrix}$
+                \item $\forall B \in \text{Mat}_{m \times n} \implies BA = ( a_1 B^{(1)} \ a_2 B^{(2)} \ \dots \ a_n B^{(n)} )$
                 \end{enumerate}
             \end{lemma}
 
             \begin{proof}~
                 \begin{enumerate}
-                \item $[AB]_{ij} = \begin{pmatrix} 0 & \dots & 0 & a_i & 0 & \dots & 0\end{pmatrix} \begin{pmatrix} b_{1j} \\ b_{2j} \\ \vdots \\ b_{nj} \end{pmatrix} = a_i b_{ij} $
+                \item $[AB]_{ij} = ( 0 \ \dots \ 0 \ a_i \ 0 \ \dots \ 0 ) \begin{pmatrix} b_{1j} \\ b_{2j} \\ \vdots \\ b_{nj} \end{pmatrix} = a_i b_{ij} $
                 \item $[BA]_{ij} = \begin{pmatrix} b_{i1} & b_{i2} & \dots & b_{im} \end{pmatrix} \begin{pmatrix} \vdots \\ 0 \\ a_j \\ 0 \\ \vdots \end{pmatrix} = b_{ij} a_j$
                 \end{enumerate}
             \end{proof}
@@ -1153,11 +1148,10 @@
 
             $\tr(AB) = \tr(BA)$
 
-            $\forall A \in \text{Mat}_{m \times n}, B \in \text{Mat}_{n \times m}$
+            $\forall A \in \text{Mat}_{m \times n}$, $B \in \text{Mat}_{n \times m}$
 
             \begin{proof}
                 $AB = x \in M_m$, $BA = y \in M_n$
-
                 \begin{align*}
                     \tr x
                     = \sum_{i = 1}^{m} x_{ii}
@@ -1369,9 +1363,9 @@
             \begin{proposition}
                 Пусть $Ax = b$ -- совместная СЛУ.
 
-                $x_0$ -- частное решение $Ax = b$
+                $x_0$ -- частное решение $Ax = b$,
 
-                $S \subset \RR^n$ -- множество решений ОСЛУ $Ax = 0$
+                $S \subset \RR^n$ -- множество решений ОСЛУ $Ax = 0$,
 
                 $L \subset \RR^n $ -- множество решений $Ax = b$.
 
@@ -1381,32 +1375,32 @@
             \begin{proof}~
                 \begin{enumerate}
                 \item
-                    Пусть $u \in L$ ($u$ -- решение $Ax = b$), положим $v = u - x_0$
+                    Пусть $u \in L$ ($u$ -- решение $Ax = b$), положим $v = u - x_0$.
 
-                    Тогда, $Av = A(u - x_0) = Au - Ax_0 = b - b = 0 \implies v \in S \implies L \subseteq x_0 + S$
+                    Тогда, $Av = A(u - x_0) = Au - Ax_0 = b - b = 0 \implies v \in S \implies L \subseteq x_0 + S$.
 
                 \item
                     Пусть $v \in S$ ($v$ -- решение $Ax = 0$), положим $u = x_0 + v$.
 
-                    Тогда, $Au = A(x_0 + v) = Ax_0 + Av = b + 0 = b \implies u \in L \implies x_0 + S \subseteq L$
+                    Тогда, $Au = A(x_0 + v) = Ax_0 + Av = b + 0 = b \implies u \in L \implies x_0 + S \subseteq L$.
                 \end{enumerate}
 
                 Значит, $x_0 + S = L$.
             \end{proof}
 
-        \proofitem{Общий метод решения матричных уравнений вида AX = B и XA = B}
+        \proofitem{Общий метод решения матричных уравнений вида $AX = B$ и $XA = B$}
 
             Два типа матричных уравнений:
             \begin{enumerate}
             \item $AX = B$
 
-                A и B известны,
-                X -- неизвестная матрица
+                $A$ и $B$ известны,
+                $X$ -- неизвестная матрица.
 
             \item $XA = C$
 
-                A и C известны,
-                X -- неизвестная матрица
+                $A$ и $C$ известны,
+                $X$ -- неизвестная матрица.
             \end{enumerate}
 
             Из второго типа получается первый транспонированием матриц: $XA = C \iff A^T X^T = B^T$, то есть достаточно уметь решать только уравнения первого типа.
@@ -1445,26 +1439,26 @@
 
             Факты:
             \begin{enumerate}
-            \item Если $\exists A^{-1}$, то она определена однозначно
+            \item Если $\exists A^{-1}$, то она определена однозначно.
 
                 \begin{proof}
                     Пусть $B, B'$ -- две матрицы, обратные к $A$. Тогда $B = B(AB') = (BA)B' = B'$.
                 \end{proof}
 
-            \item Если $AB = E$ для некоторой $B \in M_n$, то $BA = E$ автоматически и тогда $B = A^{-1}$
+            \item Если $AB = E$ для некоторой $B \in M_n$, то $BA = E$ автоматически и тогда $B = A^{-1}$.
 
                 \begin{proof}
                     \begin{equation*}
                         AB = E \implies \det A \det B = 1 \implies \det A \neq 0 \implies \exists A^{-1}
                     .\end{equation*}
                     \begin{equation*}
-                        BA = EBA = (A^{-1}A)BA = A^{-1}(AB)A = A^{-1}A = E \qedhere
-                    .\end{equation*}
+                        BA = EBA = (A^{-1}A)BA = A^{-1}(AB)A = A^{-1}A = E
+                    .\qedhere\end{equation*}
                 \end{proof}
             \end{enumerate}
 
             \begin{corollary}
-                $A^{-1}$ является решение матричного уравнения $AX = E$ (если решение существует)
+                $A^{-1}$ является решение матричного уравнения $AX = E$ (если решение существует).
             \end{corollary}
 
     \end{colloq}
