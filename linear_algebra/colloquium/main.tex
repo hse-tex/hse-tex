@@ -2274,9 +2274,22 @@
             \begin{enumerate}
             \item $|z| \geq 0$, причем $|z| = 0 \iff z = 0$.
             \item $|z + w| \leq |z| + |w|$ (неравенство треугольника).
+
+                Пусть $z = a + bi$, $w = c + di$.
+                \begin{align*}
+                    |z + w| &\leq |z| + |w| \\
+                    \sqrt{(a + c)^2 + (b + d)^2} &\leq \sqrt{a^2 + b^2} + \sqrt{c^2 + d^2} \\
+                    (a + c)^2 + (b + d)^2 &\leq a^2 + b^2 + c^2 + d^2 + 2\sqrt{(a^2 + b^2)(c^2 + d^2)} \\
+                    ac + bd &\leq\sqrt{(a^2 + b^2)(c^2 + d^2)} \\
+                    ac + bd &\leq\sqrt{(ac)^2 + (ad)^2 + (bc)^2 + (bd)^2} \\
+                    (ac)^2 + (bd)^2 + 2acbd &\leq (ac)^2 + (ad)^2 + (bc)^2 + (bd)^2 \\
+                    2acbd &\leq (ad)^2 + (bc)^2 \\
+                    0 &\leq (ad)^2 + (bc)^2 - 2abcd \\
+                    0 &\leq (ad - bc)^2
+                \end{align*}
             \item $z \overline{z} = |z|^2$.
 
-                $z \overline{z} = (a + bi)(a - bi) = a^2 - b^2i = a^2 + b^2 = |z|^2$
+                $z \overline{z} = (a + bi)(a - bi) = a^2 - (bi)^2 = a^2 + b^2 = |z|^2$
             \item $|zw| = |z||w|$
 
                 $|zw|^2 = (zw) \cdot (\overline{zw}) = z \cdot w \cdot \overline{z} \cdot \overline{w} = |z|^2 |w|^2$
@@ -2373,7 +2386,7 @@
                 Множество $V$ называется \textit{векторным (линейным) пространством} над полем $F$, если на $V$ заданы две операции
                 \begin{itemize}[nosep]
                 \item ``сложение'': $V \times V \to V$, $(x, y) \mapsto x + y$.
-                \item ``умножение на скаляр'': $F \times V$, $(\alpha \in F, x \in V) \mapsto \alpha x$.
+                \item ``умножение на скаляр'': $F \times V \to V$, $(\alpha \in F, x \in V) \mapsto \alpha x$.
                 \end{itemize}
                 а также, $\forall x, y, z \in V$ и $\alpha, \beta \in F$ выполнены следующие условия (называются \textit{аксиомами векторного пространства}):
                 \begin{enumerate}[nosep]
@@ -2391,7 +2404,6 @@
             \paragraph{Простейшие следствия из аксиом}
             ~\\
             
-            % TODO: Доказательства всех следствий
             $\forall \alpha \in F, x \in V$.
             \begin{enumerate}
             \item Элемент $\overrightarrow{0}$ единственный.
@@ -2416,9 +2428,9 @@
 
             \item $\alpha (-x) = -(\alpha x)$.
 
-                Рассмотрим равенство $1 + (-1) = 0$.
+                Рассмотрим равенство $x + (-x) = \overrightarrow{0}$.
                 \begin{align*}
-                    1 + (-1) = 0 \implies 1x + (-1)x = 0 \implies ax + (-1)ax = 0 \implies (-1)ax = -ax \implies (-a)x = -ax
+                    x + (-x) = \overrightarrow{0} \implies ax + a(-x) = 0 \implies a(-x) = -(ax)
                 .\end{align*}
 
             \item $0 \cdot x = \overrightarrow{0}$.
@@ -2465,7 +2477,7 @@
 
                     $S = \varnothing \implies \langle \varnothing \rangle = \{\overrightarrow{0}\} \implies \overrightarrow{0} \in \langle S \rangle$.
 
-                    $S \neq \varnothing \implies \exists V \in S \implies \underbracket{0 V}_{\in \langle S \rangle} = \overrightarrow{0} = \overrightarrow{0} \in \langle S \rangle$.
+                    $S \neq \varnothing \implies \exists V \in S \implies \underbracket{0 V}_{\in \langle S \rangle} = \overrightarrow{0} \implies \overrightarrow{0} \in \langle S \rangle$.
 
                 \item 
                     Пусть $v, w \in \langle S \rangle$:
