@@ -1060,9 +1060,42 @@
     
     \defitem{Характеризация базисов конечномерного векторного пространства в терминах единственности линейного выражения векторов}
 
+        \begin{proposition}
+            Пусть $\dim V < \infty$, $e_1, \dots, e_n \in \langle V \rangle$.
+
+            $e_1, \dots, e_n$ --- базис $V$ тогда и только тогда, когда, $\forall v \in V$ единственным образом представим в виде
+            \begin{equation*}
+                v = x_1 e_1 + \dots + x_n e_n \quad x_i \in F
+            .\end{equation*}
+        \end{proposition}
+
     \defitem{Фундаментальная система решений однородной системы линейных уравнений}
 
-    \defitem{Лемма о добавлении вектора к конечной линейно независимой системе}    
+        \begin{equation*}
+            \tag{$\star$}
+            \label{lec12:oslu_1}
+            Ax = 0 \text{ -- ОСЛУ}
+        .\end{equation*}
+
+        $A \in \text{Mat}_{m \times n}(F), x = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} \in F^n$.
+
+        $S \subseteq F^n$ -- множество решений.
+
+        Знаем, что $S$ -- подпространство в $F^n$.
+
+        \begin{definition}
+            \textit{Фундаментальной системой решений} (ФСР) для ОСЛУ \eqref{lec12:oslu_1} называется всякий базис пространства её решений.
+        \end{definition}
+
+        \begin{comment}
+            У одной ОСЛУ может быть много разных ФСР.
+        \end{comment}
+
+    \defitem{Лемма о добавлении вектора к конечной линейно независимой системе}
+
+        \begin{lemma}
+            Пусть $v, v_1, \dots, v_m \in V$ и $v_1, \dots, v_m$ линейно независимы, тогда либо $v, v_1, \dots, v_m$ линейно независимы, либо $v \in \langle v_1, \dots , v_m \rangle$.
+        \end{lemma}   
 
     \end{colloq}
 
@@ -2455,6 +2488,7 @@
         \proofitem{Критерий линейной зависимости конечной системы векторов}
 
             \begin{proposal}
+                \label{lec11:proposal_a_i}
                 Пусть $v_1, \dots, v_n \in V$, $i \in \{1, \dots, n\}$, тогда следующие условия эквивалентны:
                 \begin{enumerate}
                     \item $\exists (\alpha_1, \dots, \alpha_n) \in F^n$, такой что $\alpha_1 v_1 + \dots + \alpha_n v_n = \overrightarrow{0} (\star) $ и $\alpha_i \neq 0$. 
@@ -2541,9 +2575,264 @@
             \end{proof}
 
         \proofitem{Характеризация базисов конечномерного векторного пространства в терминах единственности линейного выражения векторов}
+
+            \begin{proposition}
+                Пусть $\dim V < \infty$, $e_1, \dots, e_n \in \langle V \rangle$.
+
+                $e_1, \dots, e_n$ --- базис $V$ тогда и только тогда, когда, $\forall v \in V$ единственным образом представим в виде
+                \begin{equation*}
+                    v = x_1 e_1 + \dots + x_n e_n \quad x_i \in F
+                .\end{equation*}
+            \end{proposition}
+
+            \begin{proof}~
+                \begin{description}
+                \item[$\implies$]
+                    Пусть есть два представления $v = x_1 e_1 + \dots x_n e_n = x'_1 e_1 + \dots + x'_n e_n$.
+
+                    Тогда, $(x_1 - x'_1)e_1 + \dots + (x_n - x'_n)e_n = \overrightarrow{0}$.
+
+                    Так как $e_1, \dots, e_n$ линейно независимы, то $(x_1 - x'_1) = \dots = (x_n - x'_n) = 0$.
+
+                    Значит, $x_i = x'_i \quad \forall i$.
+
+                \item[$\impliedby$]
+                    $\forall v \in V$ имеем $v \in \langle e_1, \dots, e_n \rangle$.
+
+                    Значит, $\langle e_1, \dots, e_n \rangle = V$.
+
+                    Для $v = \overrightarrow{0}$ существует единственное представление $\overrightarrow{0} = \lambda_1 e_1 + \dots + \lambda_n e_n$.
+
+                    Но мы знаем, что $\overrightarrow{0} = 0e_1 + \dots + 0e_n$.
+
+                    Следовательно $\alpha_1 = \dots \alpha_n = 0$, то есть $e_1, \dots, e_n$ линейно независимо.
+                \end{description}
+
+                Итог: $e_1, \dots, e_n$ -- базис $V$.
+            \end{proof}
+
         \proofitem{Метод построения фундаментальной системы решений для однородной системы линейных уравнений}
+
+            Приведем матрицу к улучшенному ступенчатому виду элементарными преобразовиями строк.
+            \begin{equation*}
+                (A | \overrightarrow{0}) \rightsquigarrow (B | \overrightarrow{0}) \quad \leftarrow \text{ улучшенный ступенчатый вид}
+            .\end{equation*}
+
+            Пусть $r$ -- число ненулевых строк в $B$.
+
+            Тогда будет $r$ главных неизвестных и $n - r$ свободных.
+
+            Выполнив перенумерацию будем считать что,
+            \begin{align*}
+                x_1, \dots, x_r &\text{ -- главные неизвестные,} \\
+                x_{r + 1}, \dots, x_n &\text{ -- свободные}
+            .\end{align*}
+
+            Тогда, общее решение для $\eqref{lec12:oslu_1}$ имеет вид
+            \begin{align*}
+                &x_1 = c_{11} x_{r + 1} + c_{12}x_{r + 2} + \dots + c_{n - r} x_n \\
+                &x_2 = c_{21} x_{r + 1} + c_{22}x_{r + 2} + \dots + c_{n - r} x_n \\
+                &\dots \\
+                &x_r = c_{r1} x_{r + 1} + c_{r2}x_{r + 2} + \dots + c_{n - r} x_n
+            .\end{align*}
+
+            Предъявим некоторую систему решений
+            \begin{equation*}
+                u_1 = \begin{pmatrix} 
+                    c_{11} \\
+                    c_{21} \\
+                    \dots \\
+                    c_{r1} \\
+                    \underline{1} \\
+                    0 \\
+                    \dots \\
+                    0
+                \end{pmatrix}, \
+                u_2 = \begin{pmatrix} 
+                    c_{12} \\
+                    c_{22} \\
+                    \dots \\
+                    c_{r2} \\
+                    0 \\
+                    \underline{1} \\
+                    0 \\
+                    \dots \\
+                    0
+                \end{pmatrix}, \ \dots, \
+                u_{n - r} = \begin{pmatrix} 
+                    c_{1, n - r} \\
+                    c_{2, n - r} \\
+                    \dots \\
+                    c_{r, n - r} \\
+                    0 \\
+                    \dots \\
+                    0 \\
+                    \underline{1}
+                \end{pmatrix}
+            .\end{equation*}
+
+            $u_1, \dots, u_{n - r} \in S$
+
+            \begin{proposal}
+                $u_1, \dots, u_{n - r}$ -- это ФСР для ОСЛУ \eqref{lec12:oslu_1}.
+            \end{proposal}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item Линейная независимость.
+
+                    Пусть $\alpha_1 u_1 + \dots + \alpha_{n - r} u_{n - r} = \overrightarrow{0}$.
+
+                    При любом $k \in \{1, \dots, n - r\}$, ($r + k$)-я координата левой части равна $\alpha_k$, значит $\alpha_k = 0$.
+                    
+                    Следовательно $\alpha_1 = \dots = \alpha_{n - r} = 0$.
+
+                \item $\langle u_1, \dots, u_{n - r} \rangle = S$.
+
+                    \begin{description}
+                    \item[``$\subseteq$'']
+                        Верно, так как $u_1, \dots, u_{n - r} \in S$.
+
+                    \item[``$\supseteq$'']
+                        Пусть $u \in S$, тогда
+                        \begin{equation*}
+                            u = \begin{pmatrix} * \\ \dots \\ * \\ \alpha_1 \\ \alpha_2 \\ \dots \\ \alpha_{n - r} \end{pmatrix} \text{ для некоторых } \alpha_1, \dots, \alpha_{n - r} \in F
+                        .\end{equation*}
+
+                        Положим $v := u - \alpha_1 u_1 - \dots - \alpha_{n - r} u_{n - r}$.
+
+                        Тогда, $v \in S$, но
+                        \begin{equation*}
+                            v = \begin{pmatrix} * \\ \dots \\ * \\ 0 \\ \dots \\ 0 \end{pmatrix}
+                        .\end{equation*}
+
+                        Тогда формулы для общего решения дают $v = \overrightarrow{0}$.
+
+                        Поэтому $u = \alpha_i u_1 + \dots + \alpha_{n - r} u_{n - r}$.
+                    \end{description}
+                    Значит $\langle u_1, \dots, u_{n - r} \rangle = S$.
+                    \qedhere
+                \end{enumerate}
+            \end{proof}
+
+            \begin{example}
+                \begin{equation*}
+                    A = \begin{pmatrix} 
+                        1 & -3 & 0 & 1 \\
+                        0 & 0 & 1 & -2
+                    \end{pmatrix}
+                .\end{equation*}
+
+                Общее решение:
+                \begin{equation*}
+                    \begin{cases}
+                        x_1 = 3x_2 - x_4 \\
+                        x_3 = 2x_4
+                    \end{cases}
+                \end{equation*}
+
+                Тогда ФСР:
+                \begin{equation*}
+                    u_1 = \begin{pmatrix} 3 \\ 1 \\ 0 \\ 0 \end{pmatrix}, \
+                    u_2 = \begin{pmatrix} -1 \\ 0 \\ 2 \\ 1 \end{pmatrix}
+                .\end{equation*}
+            \end{example}
+
         \proofitem{Существование подмножества конечной системы векторов, являющегося базисом её линейной оболочки}
+
+            Пусть $V$ -- векторное пространство над F.
+
+            Наблюдение: если $v, v_1, \dots, v_m \in V$ и $v \in \langle v_1, \dots, v_m \rangle$, тогда $\langle v, v_1, \dots, v_m \rangle = \langle v_1, \dots, v_m \rangle$
+
+            \begin{proposal}
+                Из всякой конечной системы векторов $S \subseteq V$ можно выбрать подсистему, которая является базисом в линейной оболочке $\langle S \rangle$.
+            \end{proposal}
+
+            \begin{proof}
+                Пусть $S = \{v_1, \dots, v_m\}$.
+
+                Индукция по $m$.
+
+                \begin{description}
+                \item[База]
+                    $m = 1$: $S = \{v_1\}$.
+
+                    Если $v_1 = \overrightarrow{0}$, то $\langle S \rangle = \{\overrightarrow{0}\}$, значит в качестве базиса берем $\varnothing$.
+
+                    Если $v_1 \neq 0$, то $S$ линейно независимо.
+
+                    Cледовательно $S$ -- базис в $\langle S \rangle$.
+
+                \item[Шаг]
+                    Пусть доказано для $< m$, докажем для $m$.
+
+                    Если $v_1, \dots, v_m$ линейно независимо, то $v_1, \dots, v_m$ -- это уже базис в $\langle S \rangle$.
+
+                    Иначе, $\exists i : v_i \in \langle S \setminus \{v_i\} \rangle$.
+
+                    Положим $S' := S \setminus \{v_i\}$.
+
+                    Тогда, $\langle S' \rangle = \langle S \rangle$.
+
+                    Так как $|S'| = m - 1 < m$, то по предположению индукции в $S'$ можно выбрать базис для $\langle S' \rangle = \langle S \rangle$.
+                    \qedhere
+                \end{description}
+            \end{proof}
+
         \proofitem{Дополнение линейно независимой системы векторов до базиса конечномерного векторного пространства}
+
+            \begin{proposal}
+                Пусть $\dim V < \infty$, тогда всякую линейно независимую систему векторов в $V$ можно дополнить до базиса всего пространства $V$.
+            \end{proposal}
+
+            \begin{proof}
+                Пусть $v_1, \dots, v_m$ -- данная линейно независимая система.
+
+                Так как $\dim V < \infty$, в $V$ есть конечный базис $e_1, \dots, e_n$.
+
+                Рассмотрим систему векторов $v_1, \dots, v_m, e_1, \dots, e_n$.
+
+                Пройдемся по этим векторам слева направо и выбросим те, которые линейно выражаются через предыдущие (не выброшенные).
+
+                При этом:
+                \begin{enumerate}[nosep, label=\arabic*)]
+                \item линейная оболочка системы сохраняется и равна $\langle v_1, \dots, v_m, e_1, \dots, e_n \rangle = V$;
+                \item $v_1, \dots, v_m$ останутся в системе, так как они линейно независимы;
+                \item в новой системе никакой вектор линейно не выражается через предыдущие.
+                \end{enumerate}
+
+                Пусть новая система - это $S' = \{v_1, \dots, v_m, e_{i_1}, \dots, e_{i_t}\}$.
+
+                Докажем, что $S'$ -- базис в $V$.
+
+                По свойству 1) имеем, что $\langle S' \rangle = V$.
+
+                Осталось доказать, что $S'$ линейно независимо.
+
+                Пусть $\alpha_1 v_1 + \dots \alpha_n v_n + \beta_1 e_{i_1} + \dots + \beta_t e_{i_t} = \overrightarrow{0}$.
+
+                Предположим, что эта линейная комбинация нетривиальна.
+
+                Так как $v_1, \dots, v_m$ линейно независимы, то $\exists k : \beta_k \neq 0$.
+
+                Выберем $k$ максимальным с этим свойством.
+
+                Тогда, $e_{i_k}$ линейно выражается через предыдущие --- противоречие.
+            \end{proof}
+
         \proofitem{Лемма о добавлении вектора к конечной линейно независимой системе}
+
+            \begin{lemma}
+                Пусть $v, v_1, \dots, v_m \in V$ и $v_1, \dots, v_m$ линейно независимы, тогда либо $v, v_1, \dots, v_m$ линейно независимы, либо $v \in \langle v_1, \dots , v_m \rangle$.
+            \end{lemma}
+
+            \begin{proof}
+                Пусть $v, v_1, \dots, v_m$ линейно зависимы, тогда $\exists (\alpha, \alpha_1, \dots, \alpha_m) \neq (0, \dots, 0)$, такой что
+                \begin{equation*}
+                    \alpha v + \alpha_1 v_1 + \dots + \alpha_m v_m = \overrightarrow{0}
+                .\end{equation*}
+                Но, так как $v_1, \dots, v_m$ линейно независимы, то $\alpha \neq 0$. Значит, $v \in \langle v_1, \dots, v_m \rangle$ по \hyperref[lec11:proposal_a_i]{предложению}.
+            \end{proof}
+
     \end{colloq}
 \end{document}
