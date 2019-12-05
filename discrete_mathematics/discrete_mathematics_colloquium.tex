@@ -603,8 +603,8 @@
         \end{proof}
 
         \begin{consequence}
-            Если граф связный, то $|E| > |V| - 1$.
-        \end{consequence}
+            Если граф связный, то $|E| \geq |V| - 1$.
+        \end{consequence} 
 
     \proofitem{Если $G$ --- минимально связный граф (удаление любого ребра приводит к несвязности), то $G$ не содержит циклов.}
 
@@ -617,7 +617,7 @@
         \end{equation}
 
         \begin{proof}
-            Установим импликацию \ref{eq:minconnected} $\implies$ \ref{eq:acyclic}, воспользовавшись контрапозицией, т. е. докажем $\neg$ \ref{eq:acyclic} $\implies$ $\neg$ \ref{eq:minconnected}. Отрицание условия \ref{eq:acyclic} означает, что граф несвязен или имеет цикл, а условия \ref{eq:minconnected}, что граф или несвязен или связен, но не минимиально. 
+            Установим импликацию \ref{eq:minconnected} $\implies$ \ref{eq:acyclic}, воспользовавшись контрапозицией, т. е. докажем $\neg$ \ref{eq:acyclic} $\implies$ $\neg$ \ref{eq:minconnected}. Отрицание условия \ref{eq:acyclic} означает, что граф несвязен или имеет цикл, а условия \ref{eq:minconnected}, что граф или несвязен или связен, но не минимально. 
 
             Если граф несвязен, то импликация $\neg$ \ref{eq:acyclic} $\implies$ $\neg$ \ref{eq:minconnected} выполняется, поэтому сосредоточимся на случае связного графа, который содержит цикл. 
 
