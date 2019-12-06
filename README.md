@@ -3,7 +3,8 @@
 
 ## [Линейная алгебра - Конспект](https://github.com/LoDThe/hse-tex/blob/master/linear_algebra/linear_algebra.pdf)
 ## [Линейная алгебра - Коллоквиум 1](https://github.com/LoDThe/hse-tex/blob/master/linear_algebra/linear_algebra_colloquium.pdf)
-## [Математический анализ - Коллоквиум 1](https://github.com/LoDThe/hse-tex/blob/master/mathematical_analysis/mathematical_analysis.pdf)
+## [Математический анализ - Коллоквиум 1](https://github.com/LoDThe/hse-tex/blob/master/mathematical_analysis/mathematical_analysis_colloquium_01.pdf)
+## [Математический анализ - Коллоквиум 2](https://github.com/LoDThe/hse-tex/blob/master/mathematical_analysis/mathematical_analysis_colloquium_02.pdf)
 ## [Дискретная математика - Коллоквиум 1](https://github.com/LoDThe/hse-tex/blob/master/discrete_mathematics/discrete_mathematics_colloquium.pdf)
 
 ## Линейная алгебра
