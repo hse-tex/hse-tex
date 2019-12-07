@@ -7,6 +7,10 @@ git checkout gh-pages
 
 # relying on .pdf not being touched by git)00)00)0
 cp -r .pdf/* .
+
+# copy README from master
+# git checkout master README.md
+
 git add -A
 git commit --allow-empty -m "${TRAVIS_COMMIT_MESSAGE:=pdf updates}"
 git push origin gh-pages
