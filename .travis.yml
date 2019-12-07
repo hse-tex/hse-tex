@@ -1,0 +1,23 @@
+language: general
+sudo: required
+dist: trusty
+before_install:
+  - sudo apt-get install -y --no-install-recommends
+    texlive-fonts-recommended texlive-generic-recommended
+    texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+    texlive-base texlive-pictures texlive-lang-cyrillic texlive-science texlive-generic-extra
+    pgf latexmk
+script:
+  - ./build.sh
+before_deploy:
+  - openssl aes-256-cbc -K $encrypted_db7e1936f109_key -iv $encrypted_db7e1936f109_iv -in github_deploy_key.enc -out github_deploy_key -d
+  - chmod 600 github_deploy_key
+  - eval $(ssh-agent -s)
+  - ssh-add github_deploy_key
+deploy:
+  - provider: script
+    script: bash publish.sh
+    skip_cleanup: true
+    on: 
+      branch: master
+
