@@ -157,29 +157,34 @@
 
 	\defitem{Таблица производных основных элементарных функций.}
 
-		\begin{figure}[H]
-			\centering
+		{
+			\everymath{\textstyle}
+			\begin{figure}[H]
+				\centering
+					\begin{tabular}{| c | c |} \hline
+					$f(x) $&$ f'(x) $\\\hline
+					$const $&$ 0 $\\\hline
+					$x^a $&$ a \cdot x^{a - 1} $\\\hline
+					$a^x $&$ a^x \cdot \ln a $\\\hline
+					$e^x $&$ e^x $\\\hline
+					$\ln_a x $&$ \frac{1}{\ln a \cdot x} $\\\hline
+					$\ln x $&$ \frac{1}{x} $\\\hline
+					$\sin x $&$ \cos x $\\\hline
+					$\cos x $&$ -\sin x $\\\hline
+					$\tg x $&$ \frac{1}{\cos^2 x} $\\\hline
+					$\ctg x $&$ -\frac{1}{\sin^2 x} $\\\hline
+				\end{tabular}\quad\quad\quad
 				\begin{tabular}{| c | c |} \hline
-				$f(x) $&$ f'(x) $\\\hline
-				$const $&$ 0 $\\\hline
-				$x^a $&$ a \cdot x^{a - 1} $\\\hline
-				$a^x $&$ a^x \cdot \ln a $\\\hline
-				$e^x $&$ e^x $\\\hline
-				$\ln_a x $&$ \frac{1}{\ln a \cdot x} $\\\hline
-				$\ln x $&$ \frac{1}{x} $\\\hline
-				$\sin x $&$ \cos x $\\\hline
-				$\cos x $&$ -\sin x $\\\hline
-				$\tg x $&$ \frac{1}{\cos^2 x} $\\\hline
-				$\ctg x $&$ -\frac{1}{\sin^2 x} $\\\hline
-			\end{tabular}\quad\quad\quad
-			\begin{tabular}{| c | c |} \hline
-				$f(x) $&$ f'(x) $\\\hline
-				$\arcsin x $&$ \frac{1}{\sqrt{1 - x^2}} $\\\hline
-				$\arccos x $&$ -\frac{1}{\sqrt{1 - x^2}} $\\\hline
-				$\arctg x $&$ \frac{1}{1 + x^2} $\\\hline
-				$\arcctg x $&$ -\frac{1}{1 + x^2} $\\\hline
-			\end{tabular}
-		\end{figure}
+					$f(x) $&$ f'(x) $\\\hline
+					$\arcsin x $&$ \frac{1}{\sqrt{1 - x^2}} $\\\hline
+					$\arccos x $&$ -\frac{1}{\sqrt{1 - x^2}} $\\\hline
+					$\arctg x $&$ \frac{1}{1 + x^2} $\\\hline
+					$\arcctg x $&$ -\frac{1}{1 + x^2} $\\\hline
+				\end{tabular}
+			\end{figure}
+
+		}
+
 
 	\defitem{Понятие дифференциала (первого) функции в точке.}
 
