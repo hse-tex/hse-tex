@@ -3,14 +3,18 @@
 build() {
     pushd $1
     pushd $3
-    latexmk -pdf -interaction=nonstopmode -output-directory=.build -halt-on-error $4.tex
-    latexmk -output-directory=.build -c
+    # Incremental build
+    # latexmk -output-directory=.build -c
+    latexmk -pdf -interaction=nonstopmode -output-directory=.build -halt-on-error $2.tex
     popd
-    cp $3/.build/$4.pdf $2.pdf
     popd
+    cp $1/$3/.build/$2.pdf .pdf/
 }
 
-build linear_algebra linear_algebra source main
-build linear_algebra linear_algebra_colloquium colloquium main
-build mathematical_analysis mathematical_analysis . mathematical_analysis
-build discrete_mathematics discrete_mathematics_colloquium . discrete_mathematics_colloquium
+[ -d .pdf ] || mkdir .pdf
+
+build linear_algebra linear_algebra source
+build linear_algebra linear_algebra_colloquium colloquium
+build mathematical_analysis mathematical_analysis_colloquium_01 .
+build mathematical_analysis mathematical_analysis_colloquium_02 .
+build discrete_mathematics discrete_mathematics_colloquium .
