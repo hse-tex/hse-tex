@@ -45,7 +45,7 @@
     		\italicbold{По Коши}:
 
     		\begin{equation*}
-    			\forall \eps > 0 \ \exists \delta > 0: \ \forall x, |x - x_0| < \delta \implies |f(x) - A| < \eps
+    			\forall \eps > 0 \ \exists \delta > 0: \ \forall x, 0 < |x - x_0| < \delta \implies |f(x) - A| < \eps
     		\end{equation*}
 
 
@@ -189,7 +189,7 @@
 					$x^a $&$ a \cdot x^{a - 1} $\\\hline
 					$a^x $&$ a^x \cdot \ln a $\\\hline
 					$e^x $&$ e^x $\\\hline
-					$\ln_a x $&$ \frac{1}{\ln a \cdot x} $\\\hline
+					$\log_a x $&$ \frac{1}{\ln a \cdot x} $\\\hline
 					$\ln x $&$ \frac{1}{x} $\\\hline
 					$\sin x $&$ \cos x $\\\hline
 					$\cos x $&$ -\sin x $\\\hline
@@ -290,6 +290,21 @@
 
 	\defitem{Правило Лопиталя.}
 
+		Если функции $f(x)$ и $g(x)$, дифференцируемые в некоторой проколотой окрестности $\overset{\circ}{U}(a)$ точки $a$ обладают следующими свойствами
+
+		\begin{enumerate}
+			\item
+			$\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0$ или $\infty$
+
+			\item
+			$g'(x) \neq 0$ в окрестности $U$
+
+			\item
+			Существует $\lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
+		\end{enumerate}
+
+		Тогда существует $\lim_{x \to a} \dfrac{f(x)}{g(x)} = \lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
+
     \end{colloq}
 
     \section{Вопросы на знание доказательств}
@@ -305,7 +320,7 @@
     		\italicbold{По Коши}:
 
     		\begin{equation*}
-    			\forall \eps > 0 \ \exists \delta > 0: \ \forall x, |x - x_0| < \delta \implies |f(x) - A| < \eps
+    			\forall \eps > 0 \ \exists \delta > 0: \ \forall x, 0 < |x - x_0| < \delta \implies |f(x) - A| < \eps
     		\end{equation*}
 
 
@@ -325,7 +340,7 @@
     	\begin{proof}
     		Пусть $f$ определена на множестве $X$ и число $A$ является пределом функции $f$ в точке $x_0$ в смысле Коши. Выберем произвольную подходящую последовательность $x_n, n \in \NN$, т.е. такую, для которой $\forall n \in \NN: \ x_n \in X$ и $\lim_{n \to \infty} x_n = x_0$. Покажем, что $A$ является пределом в смысле Гейне.
 
-    		Зададим произвольное число $\eps > 0$ и укажем для него такое $\delta > 0$, что $\forall x \in X$ из условия $|x - x_0| < \delta$ следует неравенство $|f(x) - A| < \eps$. В силу того, что $\lim_{n \to \infty} x_n = x_0$, для $\delta > 0$ найдется такой номер $N \in \NN$, что для всех $n \geq N$ будет выполняться неравенство $|f(x_n) - A| < \eps$, т.е. $\lim_{n \to \infty} f(x_n) = A$.
+    		Зададим произвольное число $\eps > 0$ и укажем для него такое $\delta > 0$, что $\forall x \in X$ из условия $0 < |x - x_0| < \delta$ следует неравенство $|f(x) - A| < \eps$. В силу того, что $\lim_{n \to \infty} x_n = x_0$, для $\delta > 0$ найдется такой номер $N \in \NN$, что для всех $n \geq N$ будет выполняться неравенство $|f(x_n) - A| < \eps$, т.е. $\lim_{n \to \infty} f(x_n) = A$.
 
 
     		Докажем теперь обратное утверждение: предположим, что $A = \lim_{x \to x_0} f(x)$ в смысле Гейне, и покажем, что число $A$ является пределом функции $f$ в точке $x_0$ в смысле Коши. Предположим, что это неверно, т.е.
@@ -382,19 +397,19 @@
 			$f(x)$ непрерывна в $x_0$:
 
 			\begin{equation*}
-				\forall \eps > 0 \ \exists \delta > 0: \ \forall x: \ |x - x_0| < \delta \implies |f(x) - f(x_0)| < \eps
+				\forall \eps > 0 \ \exists \delta > 0: \ \forall x: \ 0 < |x - x_0| < \delta \implies |f(x) - f(x_0)| < \eps
 			\end{equation*}
 
 			$g(t)$ непрерывна в $t_0$:
 
 			\begin{equation*}
-				\forall \delta > 0 \ \exists \mu > 0: \ \forall t: \ |t - t_0| < \mu \implies |g(t) - g(t_0)| < \delta
+				\forall \delta > 0 \ \exists \mu > 0: \ \forall t: \ 0 < |t - t_0| < \mu \implies |g(t) - g(t_0)| < \delta
 			\end{equation*}
 
 			Получается, $f(g(t))$ непрерывна в $t_0$:
 
 			\begin{equation*}
-				\forall \eps > 0 \ \exists \mu > 0: \ \forall t: \ |t - t_0| < \mu \implies |f(g(t)) - f(g(t_0))| < \eps
+				\forall \eps > 0 \ \exists \mu > 0: \ \forall t: \ 0 < |t - t_0| < \mu \implies |f(g(t)) - f(g(t_0))| < \eps
 			\end{equation*}
 		\end{proof}
 
@@ -504,7 +519,7 @@
 		\end{proof}
 
 		\begin{theorem*}[Вторая теорема Больцано-Коши, о промежуточном значении непрерывных функций]
-			Если функция $f$ непрерывна на отрезке $[a, b]$ и $A = f(a) \neq f(b) = B$, число $С \in (A, B)$, тогда 
+			Если функция $f$ непрерывна на отрезке $[a, b]$ и $A = f(a) \neq f(b) = B$, число $C \in (A, B)$, тогда 
 			существует такая точка $c \in [a, b]$, что $f(c) = C$.
 
 			Другими словами, утверждается, что если непрерывная функция, принимает два значения, то она принимает и любое значение между ними.
@@ -575,7 +590,118 @@
 		TODO(): Спросить, что тут имеется ввиду. Производная суммы/произведения функций?
 
 	\proofitem{Теорема о дифференцируемости и производной сложной функции.}
+
+		\begin{theorem*}
+			Пусть функцию $y = y(x)$ от переменной $x$ можно представить как сложную функцию в следующем виде:
+
+			\begin{equation*}
+				y(x) = f(u(x))
+			\end{equation*}
+
+			где $f(u)$ и $u(x)$ есть некоторые функции. Функция $u = u(x)$ дифференцируема при некотором значении переменной $x$. Функция $f(u)$ дифференцируема при значении переменной $u = u(x)$. Тогда сложная (составная) функция $y = f(u(x))$ дифференцируема в точке $x$ и ее производная определяется по формуле:
+
+			\begin{equation*}
+				y'(x) = f'(u) \cdot u'(x)
+			\end{equation*}
+		\end{theorem*}
+
+		\begin{proof}
+			Введем следующие обозначения.
+
+			\[\begin{gathered}
+				\Delta u = u(x + \Delta x) - u(x) \\
+				\Delta f = f(u + \Delta x) - f(u) = f(u(x + \Delta x)) - f(u(x)) \\
+			\end{gathered}\]
+
+			Здесь $\Delta u$ есть функция от переменных $x$ и $\Delta x$, $\Delta f$ есть функция от переменных $u$ и $\Delta u$. Но мы будем опускать аргументы этих функций, чтобы не загромождать выкладки.
+
+			Поскольку функции $u$ и $f$ дифференцируемы в точках $x$ и $u = u(x)$, соответственно, то в этих точках существуют производные этих функций, которые являются следующими пределами:
+
+			\[\begin{gathered}
+				u'(x) = \lim_{\Delta x \to 0} \dfrac{\Delta u}{\Delta x} \\
+				f'(u) = \lim_{\Delta u \to 0} \dfrac{\Delta f}{\Delta u} \\
+			\end{gathered}\]
+
+			Рассмотрим следующую функцию:
+
+			\begin{equation*}
+				\eps(\Delta u) = \dfrac{\Delta f}{\Delta u} - f'(u)
+			\end{equation*}
+
+			При фиксированном значении переменной $u$, $\eps$ является функцией от $\Delta u$. Очевидно, что
+			
+			\begin{equation*}
+				\lim_{\Delta u \to 0} \eps(\Delta u) = 0
+			\end{equation*}
+
+			Тогда
+			
+			\begin{equation*}
+				\Delta f = (f'(u) + \eps(\Delta u)) \cdot \Delta u
+			\end{equation*}
+
+			Поскольку функция $u(x)$ является дифференцируемой функцией в точке $x$, то она непрерывна в этой точке. Поэтому
+			
+			\begin{equation*}
+				\lim_{\Delta x \to 0} \Delta u = 0
+			\end{equation*}
+
+			Тогда
+			
+			\begin{equation*}
+				\lim_{\Delta x \to 0} \eps(\Delta u) = \lim_{\Delta u \to 0} \eps(\Delta u) = 0
+			\end{equation*}
+
+			Теперь находим производную.
+
+			\begin{align*}
+				y'(x) 
+				&= \lim_{\Delta x \to 0} \dfrac{\Delta f}{\Delta x} \\
+				&= \lim_{\Delta x \to 0} \left(f'(u) \dfrac{\Delta u}{\Delta x} + \eps(\Delta u) \dfrac{\Delta u}{\Delta x}\right) \\
+				&= f'(u) \cdot \lim_{\Delta x \to 0} \dfrac{\Delta u}{\Delta x} + \lim_{\Delta x \to 0} \eps(\Delta u) \cdot \lim_{\Delta x \to 0} \dfrac{\Delta u}{\Delta x} \\
+				&= f'(u) \cdot u'(x) + 0 \cdot u'(x) \\
+				&= f'(u) \cdot u'(x)
+			\end{align*}
+
+			Формула доказана.
+		\end{proof}
+
 	\proofitem{Теорема о дифференцируемости обратной функции.}
+
+		\begin{theorem*}
+			Рассмотрим функцию $f(x)$, которая является строго монотонной на некотором интервале $(a, b)$. Если в этом интервале существует такая точка $x_0$, что $f'(x_0) \neq 0$, то функция $x = \phi(y)$, обратная к функции $y = f(x)$, также дифференцируема в точке $y_0 = f(x_0)$ и её производная равна
+
+			\begin{equation*}
+				\phi'(y_0) = \dfrac{1}{f'(x_0)}
+			\end{equation*}
+		\end{theorem*}
+
+		\begin{proof}
+			Пусть переменная $y$ в точке $y_0$ получает приращение $\Delta y \neq 0$. Соответствующее ему приращение переменной $x$ в точке $x_0$ обозначим как $\Delta x$, причем $\Delta x \neq 0$ в силу строгой монотонности функции $y = f(x)$. Запишем отношение приращений в виде
+
+			\begin{equation*}
+				\dfrac{\Delta x}{\Delta y} = \dfrac{1}{\frac{\Delta y}{\Delta x}}
+			\end{equation*}
+
+			Допустим, что $\Delta y \to 0$, тогда $\Delta x \to 0$, поскольку обратная функция $x = \phi(y)$ является непрерывной в точке $y_0$. В пределе, при $\Delta x \to 0$, правая часть записанного соотношения становится равной
+
+			\begin{equation*}
+				\lim_{\Delta x \to 0} \dfrac{1}{\frac{\Delta y}{\Delta x}} = \dfrac{1}{f'(x_0)}
+			\end{equation*}
+
+			В таком случае левая часть тоже стремится к пределу, который по определению равен производной обратной функции:
+
+			\begin{equation*}
+				\lim_{\Delta y \to 0} \dfrac{\Delta x}{\Delta y} = \phi'(y_0)
+			\end{equation*}
+
+			Таким образом,
+
+			\begin{equation*}
+				\phi'(y_0) = \dfrac{1}{f'(x_0)}
+			\end{equation*}
+		\end{proof}
+
 	\proofitem{Таблица производных основных элементарных функций.}
 
 		{
@@ -588,7 +714,7 @@
 					$x^a $&$ a \cdot x^{a - 1} $\\\hline
 					$a^x $&$ a^x \cdot \ln a $\\\hline
 					$e^x $&$ e^x $\\\hline
-					$\ln_a x $&$ \frac{1}{\ln a \cdot x} $\\\hline
+					$\log_a x $&$ \frac{1}{\ln a \cdot x} $\\\hline
 					$\ln x $&$ \frac{1}{x} $\\\hline
 					$\sin x $&$ \cos x $\\\hline
 					$\cos x $&$ -\sin x $\\\hline
@@ -607,6 +733,40 @@
 		}
 
 	\proofitem{Производные функций, графики которых заданы параметрически.}
+
+		\begin{theorem*}
+			Зависимость между аргументом $x$ и функцией $y$ может быть задана в параметрическом виде с помощью двух уравнений:
+
+			\begin{equation*}
+				\begin{cases}
+					x = \phi(t), \\
+					y = \psi(t) \\
+				\end{cases}
+			\end{equation*}
+
+			Пусть $x = \phi(t)$ и $y = \psi(t)$ определены и дифференцируемы при $t \in (a, b)$, причем $x'_t = \phi'(t) \neq 0$ и $x = \phi(t)$ имеет обратную функцию $t = \theta(x)$, то
+
+			\begin{equation*}
+				y'_x = \dfrac{\psi'(t)}{\phi'(t)}
+			\end{equation*}
+		\end{theorem*}
+
+		\begin{proof}
+			Перейдем от параметрического задания к явному. При этом получаем сложную функцию $y = \psi(t) = \psi(\theta(x))$, аргументов которой является $x$.
+
+			По правилу нахождения производной сложной функции имеем
+
+			\begin{equation*}
+				y'_x = (\psi(\theta(x)))' = \psi'(\theta(x)) \cdot \theta'(x)
+			\end{equation*}
+
+			По теореме об обратной функции $\theta'(x) = \dfrac{1}{\phi'(t)}$. А значит
+
+			\begin{equation*}
+				y'_x = \psi'(\theta(x)) \cdot \theta'(x) = \dfrac{\psi'(t)}{\phi'(t)}
+			\end{equation*}
+		\end{proof}
+
 	\proofitem{Понятие дифференциала (первого) функции в точке.}
 
 		Функция $f(x)$ является дифференцируемой в точке $x_0$ своей области определения $D[f]$, если существует такая константа A, что:
