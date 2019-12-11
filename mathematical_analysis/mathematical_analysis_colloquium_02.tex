@@ -3,7 +3,7 @@
 \usepackage{float}
 \usepackage{cmap}
 
-\newcommand\enumtocitem[3]{\item\textbf{#1}\addtocounter{#2}{1}\addcontentsline{toc}{#2}{\protect{\numberline{#3}} #1.}}
+\newcommand\enumtocitem[3]{\item\textbf{#1}\addtocounter{#2}{1}\addcontentsline{toc}{#2}{\protect{\numberline{#3}} #1}}
 \newcommand\defitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
 \newcommand\proofitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
 
@@ -50,7 +50,6 @@
     	\begin{itemize}
     		\item
     		\italicbold{По Коши}:
-
     		\begin{equation*}
     			\forall \eps > 0 \ \exists \delta > 0: \ \forall x, 0 < |x - x_0| < \delta \implies |f(x) - A| < \eps
     		\end{equation*}
@@ -58,7 +57,6 @@
 
     		\item
     		\italicbold{По Гейне}:
-
     		\begin{equation*}
     			\forall \{x_n\}: \; x_n \in \overset{\circ}{U}(x_0), \lim_{n \to \infty} x_n = x_0 \implies 
     			\lim_{n \to \infty} f(x_n) = A
@@ -91,7 +89,6 @@
 		\begin{itemize}
 			\item
 			\italicbold{Устранимый разрыв}: пределы $f(x)$ справа и слева существуют и равны друг другу, но отличаются от значения функции в исследуемой точке:
-
 			\begin{equation*}
 				\lim_{x \to a - 0} f(x) = \lim_{x \to a + 0} f(x) \neq f(a)
 			\end{equation*}
@@ -117,7 +114,6 @@
 
 		\begin{namedtheorem}[Вейерштрасса (вторая)]
 			Непрерывная на отрезке $[a, b]$ функция $f$ достигает на нем своих нижней и верхней граней. То есть существуют такие точки $x_1, x_2 \in [a, b]$, так что для любого $x \in [a, b]$, выполняются неравенства:
-
 			\begin{equation*}
 				f(x_1) \leq f(x) \leq f(x_2)
 			\end{equation*}
@@ -126,7 +122,6 @@
 	\defitem{Понятие производной функции в точке.}
 
 		Рассмотрим функцию, область определения которой содержит точку $x_0$. Тогда функция $f(x)$ является дифференцируемой в точке $x_0$, и ее производная определяется формулой
-
 		\begin{equation*}
 			f'(x_0) = \lim_{\Delta \to 0} \dfrac{f(x_0 + \Delta) - f(x_0)}{\Delta}
 		\end{equation*}
@@ -141,10 +136,9 @@
 
 	\defitem{Уравнение касательной к графику функции в точке.}
 
-		Пусть дана функция $f$, которая в некоторой точке $x_0$ имеет конечную производную $f(x0)$. Тогда прямая, проходящая через точку $(x_0; f(x_0))$, имеющая угловой коэффициент $f’(x_0)$, называется касательной.
+		Пусть дана функция $f$, которая в некоторой точке $x_0$ имеет конечную производную $f(x_0)$. Тогда прямая, проходящая через точку $(x_0; f(x_0))$, имеющая угловой коэффициент $f’(x_0)$, называется касательной.
 
 		Итак, пусть дана функция $y = f(x)$, которая имеет производную $y = f’(x)$ на отрезке $[a, b]$. Тогда в любой точке $x_0 \in (a; b)$ к графику этой функции можно провести касательную, которая задается уравнением:
-
 		\begin{equation*}
 			y = f'(x_0) \cdot (x - x_0) + f(x_0)
 		\end{equation*}
@@ -152,26 +146,21 @@
 	\defitem{Понятие дифференцируемости функции в точке.}
 
 		Функция $f(x)$ является дифференцируемой в точке $x_0$ своей области определения $D[f]$, если существует такая константа A, что:
-
-		\begin{equation*}
-			f(x) = f(x_0) + A(x - x_0) + \os(x - x_0)
-		\end{equation*}
-		и
-		\begin{equation*}
+		\[\begin{gathered}
+			f(x) = f(x_0) + A(x - x_0) + \os(x - x_0) \\
+			\text{и} \\
 			A = f'(x_0) = \lim_{\Delta \to 0} \dfrac{f(x_0 + \Delta) - f(x_0)}{\Delta}
-		\end{equation*}
+		\end{gathered}\]
 
 	\defitem{Правила дифференцирования (производная суммы, произведения, частного).}
 
 		Пусть функции $f(x)$ и $g(x)$ имеют производные в точке $x_0$. Тогда,
-
 		\[\begin{gathered}
 			(g + f)'(x_0) = g'(x_0) + f'(x_0) \\
 			(g \cdot f)'(x_0) = g'(x_0) \cdot f(x_0) + g(x_0) \cdot f'(x_0) \\
 		\end{gathered}\]
 
 		Если $g(x_0) \neq 0$, то
-
 		\begin{equation*}
 			\left(\dfrac{f}{g}\right)'(x_0) = \dfrac{f'(x_0) \cdot g(x_0) - f(x_0) \cdot g'(x_0)}{g(x_0)^2}
 		\end{equation*}
@@ -179,7 +168,6 @@
 	\defitem{Формула вычисления производной сложной функции.}
 
 		Если $g(x)$ дифференцируема в точке $x_0$ и $f(x)$ дифференцируема в точке $y_0 = g(x_0)$, тогда,
-
 		\begin{equation*}
 			(f \circ g)'(x_0) = (f(g(x_0)))' = f'(g(x_0)) \cdot g'(x_0)
 		\end{equation*}
@@ -218,7 +206,6 @@
 	\defitem{Понятие дифференциала (первого) функции в точке.}
 
 		Функция $f(x)$ является дифференцируемой в точке $x_0$ своей области определения $D[f]$, если существует такая константа A, что:
-
 		\[\begin{gathered}
 			f(x) = f(x_0) + A(x - x_0) + \os(x - x_0) \\
 			A = f'(x_0) = \lim_{\Delta \to 0} \dfrac{f(x_0 + \Delta) - f(x_0)}{\Delta} \\
@@ -235,13 +222,11 @@
 	\defitem{Определение локального экстремума. Необходимое условие для внутреннего локального экстремума (теорема Ферма).}
 
 		Точка $x_0$ называется точкой локального максимума (минимума) функции $f$, если существует такая окрестность $U_{\delta} (x_0)$ точки $x_0$, что 
-
 		\begin{equation*}
 			\forall x \in U_{\delta}(x_0) \implies f(x) \leq f(x_0) \text{ (для минимума соответственно $f(x) \geq f(x_0)$)}
 		\end{equation*}
 
 		$x_0$ называется точкой строгого локального максимума (минимума), если
-
 		\begin{equation*}
 			\forall x \in \overset{\circ}{U_{\delta}} (x_0) \implies f(x) < f(x_0) \text{ (для минимума соответственно $f(x) > f(x_0)$)}
 		\end{equation*}
@@ -254,15 +239,13 @@
 
 		\begin{namedtheorem}[Лагранжа. Формула конечных приращений]
 			Если функция $f(x)$ непрерывна на отрезке $[a, b]$ и дифференцируема на интервале $(a, b)$, то в этом интервале существует хотя бы одна точка $x_0$, что
-
 			\begin{equation*}
 				\dfrac{f(b) - f(a)}{b - a} = f'(x_0)
 			\end{equation*}
 		\end{namedtheorem}
 
 		\begin{namedtheorem}[Коши. Обобщает формулу конечных приращений Лагранжа.]
-			Пусть функции $f(x)$ и $g(x)$ непрерывны на отрезке $[a, b]$ и дифференцируемы на интвервале $(a, b)$, причем $g'(x) \neq 0$ при всех $x \in (a, b)$. Тогда в этом интервале существует точка $x = \xi$ такая, что
-
+			Пусть функции $f(x)$ и $g(x)$ непрерывны на отрезке $[a, b]$ и дифференцируемы на интервале $(a, b)$, причем $g'(x) \neq 0$ при всех $x \in (a, b)$. Тогда в этом интервале существует точка $x = \xi$ такая, что
 			\begin{equation*}
 				\dfrac{f(b) - f(a)}{g(b) - g(a)} = \dfrac{f'(\xi)}{g'(\xi)}
 			\end{equation*}
@@ -275,19 +258,33 @@
 		Предположим пока, что $x_0 = 0$. Тогда $P_n(x) = c_0 + c_1x + c_2x^2 + \dots + c_nx^n$. $P_n(0) = c_0$, а $P_n'(x) = c_1 + 2c_2x + \dots + nc_nx^{n - 1}$, из чего следует, что $c_1 = P_n'(0)$. По аналогии можно получить, что $c_2 = \dfrac{P_n''(0)}{2!}, \dots, c_n = \dfrac{P_n^{(n)}}{n!}$. Т.е. получаем, что $P_n(x) = P_n(0) + \dfrac{P_n'(0)}{1!}x + \dots + \dfrac{P_n^{(n)}(0)}{n!} x^n$.
 
 		Пусть $\exists f^{(n)}(x_0)$, тогда справедлива формула:
-
 		\begin{equation*}
 			f(x) = f(x_0) + \dfrac{f'(x_0)}{1!}(x - x_0) + \dfrac{f''(x_0)}{2!}(x - x_0)^2 + \dots + \dfrac{f^{(n)}(x_0)}{n!}(x - x_0)^n + r_n(f, x)
 		\end{equation*}
 
 		Эта формула называется \textbf{формулой Тейлора} и обычно записывается в виде:
-
 		\begin{equation*}
 			f(x) = \underbrace{\sum_{k = 0}^n \dfrac{f^{(k)}(x_0)}{k!} \cdot (x - x_0)^k}_{\text{многочлен Тейлора}} + \underbrace{r_n(f, x)}_{\text{остаточный член}}
 		\end{equation*}
 
 
 	\defitem{Формулы Маклорена для основных элементарных функций.}
+
+		При $x_0 = 0$ формула Тейлора с остаточным членом в форме Пеано называется формулой Маклорена
+
+		Приведем пример: $f(x) = \sin x$. Вспомним, что
+		\begin{equation*}
+			f^{(n)}(x) = \sin \left(x + \dfrac{\pi n}{2}\right) \implies f^{(n)}(0) = \sin \left(\dfrac{\pi n}{2}\right) 
+			= \begin{cases}
+				0, \quad &\text{если $n = 2k$}, \\
+				(-1)^k, \quad &\text{если $n = 2k + 1$}
+			\end{cases}
+		\end{equation*}
+
+		Тогда получаем следующее разложение:
+		\begin{equation*}
+			\sin x = x - \dfrac{x^3}{3!} + \dfrac{x^5}{5!} - \dots + (-1)^{n - 1} \cdot \dfrac{x^{2n - 1}}{(2n - 1)!} + \os(x^{2n})
+		\end{equation*}
 
 		\begin{enumerate}[leftmargin=*]
 			\item
@@ -302,10 +299,10 @@
 			Например $(1 + x)^{\frac{1}{3}} - 1 = \dbinom{\frac{1}{3}}{1}x + \dbinom{\frac{1}{3}}{2} x^2 + \os(x^2) = \dfrac{1}{3} x + \dfrac{\frac{1}{3}(\frac{1}{3} - 1)}{2} x^2 + \os(x^2)$
 
 			\item
-			$\sin (x) = x - \dfrac{x^3}{3!} + \dfrac{x^5}{5!} - \dots + (-1)^{n - 1} \cdot \dfrac{x^{2n - 1}}{(2n - 1)!} + \os(x^{2n - 1})$
+			$\sin (x) = x - \dfrac{x^3}{3!} + \dfrac{x^5}{5!} - \dots + (-1)^{n - 1} \cdot \dfrac{x^{2n - 1}}{(2n - 1)!} + \os(x^{2n})$
 
 			\item
-			$\cos (x) = 1 - \dfrac{x^2}{2!} + \dfrac{x^4}{4!} + \dots + (-1)^{n} \dfrac{x^{2n - 2}}{(2n - 2)!} + \os(x^{2n - 2})$
+			$\cos (x) = 1 - \dfrac{x^2}{2!} + \dfrac{x^4}{4!} + \dots + (-1)^{n} \dfrac{x^{2n}}{(2n)!} + \os(x^{2n + 1})$
 
 			\item
 			$\tg (x) = x + \dfrac{x^3}{3} + \dfrac{2}{15} x^5 + \dots + \dfrac{B_{2n}(-4)^n(1 - 4^n)}{(2n)!} \cdot x^{2n - 1} + \os(x^{2n - 1})$, где $B_{2n}$ --- числа Бернулли
@@ -327,20 +324,45 @@
 
 	\defitem{Правило Лопиталя.}
 
-		Если функции $f(x)$ и $g(x)$, дифференцируемые в некоторой проколотой окрестности $\overset{\circ}{U}(a)$ точки $a$ обладают следующими свойствами
+		\begin{namedtheorem}[Лопиталя (первое правило)]
+			Если функции $f(x)$ и $g(x)$ таковы, что
 
-		\begin{enumerate}
-			\item
-			$\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0$ или $\infty$
+			\begin{enumerate}
+				\item
+				$f(x)$ и $g(x)$ дифференцируемы в проколотой окрестности точки $a$
 
-			\item
-			$g'(x) \neq 0$ в окрестности $U$
+				\item
+				$\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0$
 
-			\item
-			Существует $\lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
-		\end{enumerate}
+				\item
+				$g'(x) \neq 0$ в окрестности $U$
 
-		Тогда существует $\lim_{x \to a} \dfrac{f(x)}{g(x)} = \lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
+				\item
+				Существует $\lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
+			\end{enumerate}
+
+			Тогда существует $\lim_{x \to a} \dfrac{f(x)}{g(x)} = \lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
+		\end{namedtheorem}
+
+		\begin{namedtheorem}[Лопиталя (второе правило)]
+			Если для функций $f(x)$ и $g(x)$ справедливо следующее:
+
+			\begin{enumerate}
+				\item
+				$f(x)$ и $g(x)$ дифференцируемы на интервале $(a, b)$, причем $a$ и $b$ конечны
+
+				\item
+				$\lim_{x \to a + 0} f(x) = \lim_{x \to a + 0} g(x) = \infty$
+
+				\item
+				$g'(x) \neq 0$ при $x \in (a, b)$
+
+				\item
+				Существует конечный $\lim_{x \to a + 0} \dfrac{f'(x)}{g'(x)} = A$
+			\end{enumerate}
+
+			то $\lim_{x \to a + 0} \dfrac{f(x)}{g(x)} = \lim_{x \to a + 0} \dfrac{f'(x)}{g'(x)} = A$
+		\end{namedtheorem}
 
     \end{colloq}
 
@@ -355,7 +377,6 @@
     	\begin{itemize}
     		\item
     		\italicbold{По Коши}:
-
     		\begin{equation*}
     			\forall \eps > 0 \ \exists \delta > 0: \ \forall x, 0 < |x - x_0| < \delta \implies |f(x) - A| < \eps
     		\end{equation*}
@@ -363,7 +384,6 @@
 
     		\item
     		\italicbold{По Гейне}:
-
     		\begin{equation*}
     			\forall \{x_n\}: \; x_n \in \overset{\circ}{U}(x_0), \lim_{n \to \infty} x_n = x_0 \implies 
     			\lim_{n \to \infty} f(x_n) = A
@@ -381,7 +401,6 @@
 
 
     		Докажем теперь обратное утверждение: предположим, что $A = \lim_{x \to x_0} f(x)$ в смысле Гейне, и покажем, что число $A$ является пределом функции $f$ в точке $x_0$ в смысле Коши. Предположим, что это неверно, т.е.
-
     		\begin{equation*}
     			\exists \eps_0 > 0 \ \forall \delta > 0 \ \exists x_{\delta} \in X: \ 0 < |x_{\delta} - x_0| < \delta: \ |f(x_{\delta}) - A| \geq \eps
     		\end{equation*}
@@ -396,7 +415,6 @@
 		\begin{itemize}
 			\item
 			\italicbold{Устранимый разрыв}: пределы $f(x)$ справа и слева существуют и равны друг другу, но отличаются от значения функции в исследуемой точке:
-
 			\begin{equation*}
 				\lim_{x \to a - 0} f(x) = \lim_{x \to a + 0} f(x) \neq f(a)
 			\end{equation*}
@@ -410,7 +428,13 @@
 
 	\proofitem{Непрерывность основных элементарных функций.}
 
-		TODO(): Спросить, что тут требуется.
+		\begin{theorem*}
+			Пусть $g(x)$ и $f(x)$ непрерывны в $a$, тогда функции $f \pm g, f \cdot g, \dfrac{f}{g} (g \neq 0)$ также непрерывны в точке $a$.
+		\end{theorem*}
+
+		\begin{proof}
+			Рассмотрим сумму $(f(x) + g(x))$. Для остальных операций доказательство практически аналогично. По определению $\lim_{x \to a} f(x) = f(a)$ и $\lim_{x \to a} g(x) = g(a)$. Но тогда, используя свойство суммы для пределов, получаем, что $\lim_{x \to a} (f(x) + g(x)) = f(a) + g(a)$, что означает, что $(f(x) + g(x))$ непрерывна в точке $a$.
+		\end{proof}
 
 	\proofitem{Арифметические свойства непрерывных функций.}
 
@@ -432,19 +456,16 @@
 			Для доказательства этой теоремы воспользуемся формальным преобразованием двух выражений с кванторами кванторов.
 
 			$f(x)$ непрерывна в $x_0$:
-
 			\begin{equation*}
 				\forall \eps > 0 \ \exists \delta > 0: \ \forall x: \ 0 < |x - x_0| < \delta \implies |f(x) - f(x_0)| < \eps
 			\end{equation*}
 
 			$g(t)$ непрерывна в $t_0$:
-
 			\begin{equation*}
 				\forall \delta > 0 \ \exists \mu > 0: \ \forall t: \ 0 < |t - t_0| < \mu \implies |g(t) - g(t_0)| < \delta
 			\end{equation*}
 
 			Получается, $f(g(t))$ непрерывна в $t_0$:
-
 			\begin{equation*}
 				\forall \eps > 0 \ \exists \mu > 0: \ \forall t: \ 0 < |t - t_0| < \mu \implies |f(g(t)) - f(g(t_0))| < \eps
 			\end{equation*}
@@ -472,7 +493,6 @@
 			Получим последовательность $\{x_n\} \subset [a, b]$, то есть последовательность $\{x_n\}$ ограничена.
 
 			По теореме Больцано-Вейерштрасса из неё можно выделить подпоследовательность, которая сходится к точке $c$, то есть
-
 			\begin{equation*}
 				\lim_{k \to \infty} x_{n_k} = c
 			\end{equation*}
@@ -480,7 +500,6 @@
 			Тогда $c \in [a, b]$. Но по условию функция непрерывна в точке $c$ и тогда по определению непрерывности в точке по Гейне $\lim_{k \to \infty} f(x_{n_k}) = f(c)$.
 
 			С другой стороны
-
 			\begin{equation*}
 				|f(x_{n_k})| > n_k, n_k \geq k \implies \lim_{k \to \infty} f(x_{n_k}) = \infty
 			\end{equation*}
@@ -490,7 +509,6 @@
 
 		\begin{namedtheorem}[Вейерштрасса (вторая)]
 			Непрерывная на отрезке $[a, b]$ функция $f$ достигает на нем своих нижней и верхней граней. То есть существуют такие точки $c_1, c_2 \in [a, b]$, так что для любого $x \in [a, b]$, выполняются неравенства:
-
 			\begin{equation*}
 				f(с_2) \leq f(x) \leq f(с_1)
 			\end{equation*}
@@ -500,7 +518,6 @@
 			Докажем $\exists c_1 \in [a, b]: \ f(c_1) = \sup\limits_{x \in [a, b]} f(x)$.
 
 			Пусть $M = \sup\limits_{x \in [a, b]} f(x)$ (существование следует из первой теоремы Вейерштрасса). В силу определения точной верхней грани выполняется условие:
-
 			\begin{equation*}
 				\begin{cases}
 					\forall x \in [a, b] \implies f(x) \leq M \\
@@ -535,19 +552,16 @@
 			Алгебраически: разделим отрезок $[a, b]$ точкой $x_0$ на два равных по длине отрезка, тогда либо $f(x_0) = 0$ и, значит, искомая точка $x_0$ найдена, либо $f(x_0) \neq 0$ и тогда на концах одного из полученных промежутков функция $f$ принимает значения разных знаков, точнее, на левом конце значение меньше нуля, на правом --- больше.
 
 			Обозначим этот отрезок $[a_1, b_1]$ и разделим его снова на два равных подлине отрезка и т.д. В результате, либо через конечное число шагов придем к искомой точке $x$, в которой $f(x) = 0$, либо получим последовательность вложенных отрезков $[a_n, b_n]$ по длине стремящихся к нулю и таких, что
-
 			\begin{equation*}
 				f(a_n) < 0 < f(b_n)
 			\end{equation*}
 
 			Пусть $\gamma$ --- общая точка всех отрезков $[a_n, b_n]$. Тогда $\gamma = \lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n$. Поэтому, в силу непрерывности функции $f$
-
 			\begin{equation*}
 				f(\gamma) = \lim_{n \to \infty} f(a_n) = \lim_{n \to \infty} f(b_n)
 			\end{equation*}
 
 			Но тогда
-
 			\begin{equation*}
 				\lim_{n \to \infty} f(a_n) \leq 0 \leq \lim_{n \to \infty} f(b_n)
 			\end{equation*}
@@ -569,7 +583,6 @@
 	\proofitem{Понятие производной функции в точке.}
 
 		Рассмотрим функцию, область определения которой содержит точку $x_0$. Тогда функция $f(x)$ является дифференцируемой в точке $x_0$, и ее производная определяется формулой
-
 		\begin{equation*}
 			f'(x_0) = \lim_{\Delta \to 0} \dfrac{f(x_0 + \Delta) - f(x_0)}{\Delta}
 		\end{equation*}
@@ -584,10 +597,9 @@
 
 	\proofitem{Уравнение касательной к графику функции в точке.}
 
-		Пусть дана функция $f$, которая в некоторой точке $x_0$ имеет конечную производную $f(x0)$. Тогда прямая, проходящая через точку $(x_0; f(x_0))$, имеющая угловой коэффициент $f’(x_0)$, называется касательной.
+		Пусть дана функция $f$, которая в некоторой точке $x_0$ имеет конечную производную $f(x_0)$. Тогда прямая, проходящая через точку $(x_0; f(x_0))$, имеющая угловой коэффициент $f’(x_0)$, называется касательной.
 
 		Итак, пусть дана функция $y = f(x)$, которая имеет производную $y = f’(x)$ на отрезке $[a, b]$. Тогда в любой точке $x_0 \in (a; b)$ к графику этой функции можно провести касательную, которая задается уравнением:
-
 		\begin{equation*}
 			y = f'(x_0) \cdot (x - x_0) + f(x_0)
 		\end{equation*}
@@ -595,14 +607,11 @@
 	\proofitem{Понятие дифференцируемости функции в точке.}
 
 		Функция $f(x)$ является дифференцируемой в точке $x_0$ своей области определения $D[f]$, если существует такая константа A, что:
-
-		\begin{equation*}
-			f(x) = f(x_0) + A(x - x_0) + \os(x - x_0)
-		\end{equation*}
-		и
-		\begin{equation*}
+		\[\begin{gathered}
+			f(x) = f(x_0) + A(x - x_0) + \os(x - x_0) \\
+			\text{и} \\
 			A = f'(x_0) = \lim_{\Delta \to 0} \dfrac{f(x_0 + \Delta) - f(x_0)}{\Delta}
-		\end{equation*}
+		\end{gathered}\]
 
 	\proofitem{Необходимое условие дифференцируемости.}
 
@@ -612,7 +621,6 @@
 
 		\begin{proof}
 			Пусть функция $y = f(x)$ дифференцируема в точке $x_0$. Тогда её приращение представимо в виде
-
 			\begin{equation*}
 				\Delta y = A \Delta x + \os(\Delta x)
 			\end{equation*}
@@ -624,19 +632,93 @@
 
 	\proofitem{Правила дифференцирования.}
 
-		TODO(): Спросить, что тут имеется ввиду. Производная суммы/произведения функций?
+		\begin{theorem*}
+			Если $f(x)$ и $g(x)$ дифференцируемы в точке $x$, то $f \pm g$, $f \cdot g$, $\dfrac{f}{g} (g \neq 0)$ также дифференцируемы в точке $x$, причем $(f \pm g)' = f' \pm g'$, $(f \cdot g)' = f'g + fg'$, $\left(\dfrac{f}{g}\right)' = \dfrac{f'g - fg'}{g^2}$
+		\end{theorem*}
+
+		\begin{proof}
+			Будем считать, что $\Delta f$ отвечает приращению $f(x)$, $\Delta g$ отвечает приращению $g(x)$, а $\Delta h$ отвечает приращению $h(x)$.
+
+			\begin{enumerate}
+				\item
+				$h(x) = f(x) \pm g(x)$
+				\begin{align*}
+					\Delta h 
+					= h(x + \Delta x) - h(x)
+					&= (f(x + \Delta x) \pm g(x + \Delta x)) - (f(x) \pm g(x)) \\
+					&= (f(x + \Delta x) - f(x)) \pm (g(x + \Delta x) - g(x)) \\
+					&= \Delta f \pm \Delta g
+				\end{align*}
+
+				Таким образом,
+				\begin{equation*}
+					\dfrac{\Delta h}{\Delta x} = \dfrac{\Delta f}{\Delta x} \pm \dfrac{\Delta g}{\Delta x}
+				\end{equation*}
+
+				При $\Delta x \to 0$ существует предел правой части, равный $f'(x) \pm g'(x)$, а значит, существует и предел левой части
+				\begin{equation*}
+					h'(x) = f'(x) \pm g'(x)
+				\end{equation*}
+
+
+				\item
+				$h(x) = f(x) \cdot g(x)$
+				\begin{align*}
+					\Delta h 
+					= h(x + \Delta x) - h(x)
+					&= f(x + \Delta x) \cdot g(x + \Delta x) - f(x)g(x) \\
+					&=(f(x + \Delta x) \cdot g(x + \Delta x) - f(x + \Delta x) \cdot g(x)) + (f(x + \Delta x) \cdot g(x) - f(x) \cdot g(x))
+				\end{align*}
+
+				Далее можно записать
+				\begin{equation*}
+					\Delta h = f(x + \Delta x) \cdot (g(x + \Delta x) - g(x)) + g(x) \cdot (f(x + \Delta x) - f(x)) = f(x + \Delta x) \cdot \Delta g + g(x) \Delta f
+				\end{equation*}
+
+				Таким образом
+				\begin{equation*}
+					\dfrac{\Delta h}{\Delta x} = f(x + \Delta x) \dfrac{\Delta g}{\Delta x} + g(x) \cdot \dfrac{\Delta f}{\Delta x}
+				\end{equation*}
+
+				Возьмем теперь предел правой части при $\Delta x \to 0$. В силу непрерывности $f(x)$ в $x$ (т.к. она дифференцируема в этой точке) $\lim_{\Delta x \to 0} f(x + \Delta x) = f(x)$. Тогда получаем, что
+				\begin{equation*}
+					h'(x) = f(x) \cdot g'(x) + g(x) \cdot f'(x)
+				\end{equation*}
+
+
+				\item
+				$h(x) = \dfrac{f(x)}{g(x)}$. Поскольку $g(x) \neq 0$, то $g(x + \Delta x) \neq 0$ для малых $\Delta x$. Тогда
+				\begin{align*}
+					\Delta h
+					= h(x + \Delta x) - h(x)
+					&= \dfrac{f(x + \Delta x)}{g(x + \Delta x)} - \dfrac{f(x)}{g(x)} \\
+					&= \dfrac{f(x + \Delta x)g(x) - g(x + \Delta x)f(x)}{g(x)g(x + \Delta x)} \\
+					&= \dfrac{(f(x + \Delta x)g(x) - f(x)g(x)) - (g(x + \Delta x)f(x) - f(x)g(x))}{g(x)g(x + \Delta x)} \\
+					&= \dfrac{g(x)(f(x + \Delta x) - f(x)) - f(x)(g(x + \Delta x) - g(x))}{g(x)g(x + \Delta x)} \\
+					&= \dfrac{g(x)\Delta f - f(x) \Delta g}{g(x)g(x + \Delta x)}
+				\end{align*}
+
+				Таким образом,
+				\begin{equation*}
+					\dfrac{\Delta h}{\Delta x} = \dfrac{g(x) \dfrac{\Delta f}{\Delta x} - f(x) \dfrac{\Delta g}{\Delta x}}{g(x)g(x + \Delta x)}
+				\end{equation*}
+
+				Снова используя непрерывность и беря предел правой и левой частей, получаем, что
+				\begin{equation*}
+					h'(x) = \dfrac{g(x)f'(x) - f(x)g'(x)}{g^2(x)}
+				\end{equation*}
+			\end{enumerate}
+		\end{proof}
 
 	\proofitem{Теорема о дифференцируемости и производной сложной функции.}
 
 		\begin{theorem*}
 			Пусть функцию $y = y(x)$ от переменной $x$ можно представить как сложную функцию в следующем виде:
-
 			\begin{equation*}
 				y(x) = f(u(x))
 			\end{equation*}
 
 			где $f(u)$ и $u(x)$ есть некоторые функции. Функция $u = u(x)$ дифференцируема при некотором значении переменной $x$. Функция $f(u)$ дифференцируема при значении переменной $u = u(x)$. Тогда сложная (составная) функция $y = f(u(x))$ дифференцируема в точке $x$ и ее производная определяется по формуле:
-
 			\begin{equation*}
 				y'(x) = f'(u) \cdot u'(x)
 			\end{equation*}
@@ -653,44 +735,37 @@
 			Здесь $\Delta u$ есть функция от переменных $x$ и $\Delta x$, $\Delta f$ есть функция от переменных $u$ и $\Delta u$. Но мы будем опускать аргументы этих функций, чтобы не загромождать выкладки.
 
 			Поскольку функции $u$ и $f$ дифференцируемы в точках $x$ и $u = u(x)$, соответственно, то в этих точках существуют производные этих функций, которые являются следующими пределами:
-
 			\[\begin{gathered}
 				u'(x) = \lim_{\Delta x \to 0} \dfrac{\Delta u}{\Delta x} \\
 				f'(u) = \lim_{\Delta u \to 0} \dfrac{\Delta f}{\Delta u} \\
 			\end{gathered}\]
 
 			Рассмотрим следующую функцию:
-
 			\begin{equation*}
 				\eps(\Delta u) = \dfrac{\Delta f}{\Delta u} - f'(u)
 			\end{equation*}
 
 			При фиксированном значении переменной $u$, $\eps$ является функцией от $\Delta u$. Очевидно, что
-			
 			\begin{equation*}
 				\lim_{\Delta u \to 0} \eps(\Delta u) = 0
 			\end{equation*}
 
 			Тогда
-			
 			\begin{equation*}
 				\Delta f = (f'(u) + \eps(\Delta u)) \cdot \Delta u
 			\end{equation*}
 
 			Поскольку функция $u(x)$ является дифференцируемой функцией в точке $x$, то она непрерывна в этой точке. Поэтому
-			
 			\begin{equation*}
 				\lim_{\Delta x \to 0} \Delta u = 0
 			\end{equation*}
 
 			Тогда
-			
 			\begin{equation*}
 				\lim_{\Delta x \to 0} \eps(\Delta u) = \lim_{\Delta u \to 0} \eps(\Delta u) = 0
 			\end{equation*}
 
 			Теперь находим производную.
-
 			\begin{align*}
 				y'(x) 
 				&= \lim_{\Delta x \to 0} \dfrac{\Delta f}{\Delta x} \\
@@ -707,7 +782,6 @@
 
 		\begin{theorem*}
 			Рассмотрим функцию $f(x)$, которая является строго монотонной на некотором интервале $(a, b)$. Если в этом интервале существует такая точка $x_0$, что $f'(x_0) \neq 0$, то функция $x = \phi(y)$, обратная к функции $y = f(x)$, также дифференцируема в точке $y_0 = f(x_0)$ и её производная равна
-
 			\begin{equation*}
 				\phi'(y_0) = \dfrac{1}{f'(x_0)}
 			\end{equation*}
@@ -715,25 +789,21 @@
 
 		\begin{proof}
 			Пусть переменная $y$ в точке $y_0$ получает приращение $\Delta y \neq 0$. Соответствующее ему приращение переменной $x$ в точке $x_0$ обозначим как $\Delta x$, причем $\Delta x \neq 0$ в силу строгой монотонности функции $y = f(x)$. Запишем отношение приращений в виде
-
 			\begin{equation*}
 				\dfrac{\Delta x}{\Delta y} = \dfrac{1}{\frac{\Delta y}{\Delta x}}
 			\end{equation*}
 
 			Допустим, что $\Delta y \to 0$, тогда $\Delta x \to 0$, поскольку обратная функция $x = \phi(y)$ является непрерывной в точке $y_0$. В пределе, при $\Delta x \to 0$, правая часть записанного соотношения становится равной
-
 			\begin{equation*}
 				\lim_{\Delta x \to 0} \dfrac{1}{\frac{\Delta y}{\Delta x}} = \dfrac{1}{f'(x_0)}
 			\end{equation*}
 
 			В таком случае левая часть тоже стремится к пределу, который по определению равен производной обратной функции:
-
 			\begin{equation*}
 				\lim_{\Delta y \to 0} \dfrac{\Delta x}{\Delta y} = \phi'(y_0)
 			\end{equation*}
 
 			Таким образом,
-
 			\begin{equation*}
 				\phi'(y_0) = \dfrac{1}{f'(x_0)}
 			\end{equation*}
@@ -773,7 +843,6 @@
 
 		\begin{theorem*}
 			Зависимость между аргументом $x$ и функцией $y$ может быть задана в параметрическом виде с помощью двух уравнений:
-
 			\begin{equation*}
 				\begin{cases}
 					x = \phi(t), \\
@@ -782,7 +851,6 @@
 			\end{equation*}
 
 			Пусть $x = \phi(t)$ и $y = \psi(t)$ определены и дифференцируемы при $t \in (a, b)$, причем $x'_t = \phi'(t) \neq 0$ и $x = \phi(t)$ имеет обратную функцию $t = \theta(x)$, то
-
 			\begin{equation*}
 				y'_x = \dfrac{\psi'(t)}{\phi'(t)}
 			\end{equation*}
@@ -792,13 +860,11 @@
 			Перейдем от параметрического задания к явному. При этом получаем сложную функцию $y = \psi(t) = \psi(\theta(x))$, аргументов которой является $x$.
 
 			По правилу нахождения производной сложной функции имеем
-
 			\begin{equation*}
 				y'_x = (\psi(\theta(x)))' = \psi'(\theta(x)) \cdot \theta'(x)
 			\end{equation*}
 
 			По теореме об обратной функции $\theta'(x) = \dfrac{1}{\phi'(t)}$. А значит
-
 			\begin{equation*}
 				y'_x = \psi'(\theta(x)) \cdot \theta'(x) = \dfrac{\psi'(t)}{\phi'(t)}
 			\end{equation*}
@@ -807,7 +873,6 @@
 	\proofitem{Понятие дифференциала (первого) функции в точке.}
 
 		Функция $f(x)$ является дифференцируемой в точке $x_0$ своей области определения $D[f]$, если существует такая константа A, что:
-
 		\[\begin{gathered}
 			f(x) = f(x_0) + A(x - x_0) + \os(x - x_0) \\
 			A = f'(x_0) = \lim_{\Delta \to 0} \dfrac{f(x_0 + \Delta) - f(x_0)}{\Delta} \\
@@ -865,7 +930,6 @@
 
 		\begin{namedtheorem}[(Формула Лейбница)]
 			Пусть $u(x)$ и $v(x)$ имеют не менее $n$ производных на множестве $E$. Тогда
-
 			\begin{equation*}
 				(u \cdot v)^{(n)} = \sum_{k = 0}^n \binom{n}{k} \cdot u^{(n - k)} \cdot v^{(k)}
 			\end{equation*}
@@ -873,7 +937,6 @@
 
 		\begin{proof}
 			Докажем по индукции. При $n = 1$
-
 			\begin{equation*}
 				(u \cdot v)' = u'v + uv' = \sum_{k = 0}^1 \binom{1}{k} \cdot u^{(1 - k)} \cdot v^{(k)}
 			\end{equation*}
@@ -891,7 +954,6 @@
 			\end{align*}
 
 			Последний переход сделан при помощи следующего рассуждения: 
-
 			\begin{equation*}
 				\binom{n + 1}{k} = \binom{n}{k - 1} + \binom{n}{k}
 			\end{equation*}
@@ -900,13 +962,11 @@
 	\proofitem{Понятие об экстремумах функции одной переменной.}
 
 		Точка $x_0$ называется точкой локального максимума (минимума) функции $f$, если существует такая окрестность $U_{\delta} (x_0)$ точки $x_0$, что 
-
 		\begin{equation*}
 			\forall x \in U_{\delta}(x_0) \implies f(x) \leq f(x_0)
 		\end{equation*}
 
 		и точкой локального минимума, если
-
 		\begin{equation*}
 			\forall x \in U_{\delta}(x_0) \implies f(x) \geq f(x_0)
 		\end{equation*}
@@ -950,7 +1010,6 @@
 			Если функция $f(x)$ постоянна на отрезке $[a, b]$ (а значит, её минимальное и максимальное значение совпадают), то производная равна нулю в любой точке интервала $(a, b)$, в этом случае утверждение справедливо.
 
 			Иначе, минимальное и максимальное значение функции не совпадают. По второй теореме Вейерштрасса (о достижении функции значения точной верхней/нижней грани на отрезке), функция достигает своего наибольшего или наименьшего значения в точке $\xi$ интервала $(a, b)$, т.е. в точке $\xi$ существует локальный экстремум. Тогда по теореме Ферма производная в этой точке равна нулю
-
 			\begin{equation*}
 				f'(\xi) = 0
 			\end{equation*}
@@ -958,7 +1017,6 @@
 
 		\begin{namedtheorem}[Лагранжа. Формула конечных приращений]
 			Если функция $f(x)$ непрерывна на отрезке $[a, b]$ и дифференцируема на интервале $(a, b)$, то в этом интервале существует хотя бы одна точка $x_0$, что
-
 			\begin{equation*}
 				\dfrac{f(b) - f(a)}{b - a} = f'(x_0)
 			\end{equation*}
@@ -968,7 +1026,6 @@
 			Рассмотрим вспомогательную функцию $F(x) = f(x) + \lambda x$.
 
 			Выберем число $\lambda$ таким, чтобы выполнялось условие $F(a) = F(b)$, тогда
-
 			\begin{equation*}
 				f(a) + \lambda a = f(b) + \lambda b 
 				\implies f(b) - f(a) = \lambda(a - b) 
@@ -976,7 +1033,6 @@
 			\end{equation*}
 
 			В результате получаем
-
 			\begin{equation*}
 				F(x) = f(x) - \dfrac{f(b) - f(a)}{b - a} \cdot x
 			\end{equation*}
@@ -984,14 +1040,12 @@
 			Функция $F(x)$ непрерывна на отрезке $[a, b]$, дифференцируема на интервале $(a, b)$ и принимает одинаковые значения на концах отрезка. Следовательно, для неё выполнены все условия теоремы Ролля. Тогда в интервале $(a, b)$ существует такая точка $\xi$, что $F'(\xi) = 0$.
 
 			Отсюда следует, что $0 = f'(\xi) - \dfrac{f(b) - f(a)}{b - a}$ или
-
 			\begin{equation*}
 				f'(\xi) = \dfrac{f(b) - f(a)}{b - a}
 			\end{equation*}
 		\end{proof}
 
 		Теорема Лагранжа имеет простой геометрический смысл. Хорда, проходящая через точки графика, соответствующие концам отрезка $a$ и $b$ имеет угловой коэффициент, равный
-
 		\begin{equation*}
 			k = \tg \alpha = \dfrac{f(b) - f(a)}{b - a}
 		\end{equation*}
@@ -999,8 +1053,7 @@
 		Тогда внутри отрезка существует точка $x = \xi$, в которой касательная к графику параллельна хорде.
 
 		\begin{namedtheorem}[Коши. Обобщает формулу конечных приращений Лагранжа.]
-			Пусть функции $f(x)$ и $g(x)$ непрерывны на отрезке $[a, b]$ и дифференцируемы на интвервале $(a, b)$, причем $g'(x) \neq 0$ при всех $x \in (a, b)$. Тогда в этом интервале существует точка $x = \xi$ такая, что
-
+			Пусть функции $f(x)$ и $g(x)$ непрерывны на отрезке $[a, b]$ и дифференцируемы на интервале $(a, b)$, причем $g'(x) \neq 0$ при всех $x \in (a, b)$. Тогда в этом интервале существует точка $x = \xi$ такая, что
 			\begin{equation*}
 				\dfrac{f(b) - f(a)}{g(b) - g(a)} = \dfrac{f'(\xi)}{g'(\xi)}
 			\end{equation*}
@@ -1015,7 +1068,6 @@
 			Введем вспомогательную функцию $F(x) = f(x) + \lambda g(x)$.
 
 			Выберем число $\lambda$ таким, чтобы выполнялось условие $F(a) = F(b)$, тогда
-
 			\begin{equation*}
 				f(a) + \lambda g(a) = f(b) + \lambda g(b) 
 				\implies f(b) - f(a) = \lambda(g(a) - g(b)) 
@@ -1023,7 +1075,6 @@
 			\end{equation*}
 
 			В результате получаем
-
 			\begin{equation*}
 				F(x) = f(x) - \dfrac{f(b) - f(a)}{g(b) - g(a)} \cdot x
 			\end{equation*}
@@ -1031,20 +1082,74 @@
 			Функция $F(x)$ непрерывна на отрезке $[a, b]$, дифференцируема на интервале $(a, b)$ и при найденном значении $\lambda$ принимает одинаковые значения на концах отрезка. Следовательно, для неё выполнены все условия теоремы Ролля. Тогда в интервале $(a, b)$ существует такая точка $\xi$, что $F'(\xi) = 0$.
 
 			Отсюда следует, что
-
 			\begin{equation*}
 				0 = f'(\xi) - \dfrac{f(b) - f(a)}{g(b) - g(a)} \cdot g'(\xi)
 			\end{equation*}
 
 			или
-
 			\begin{equation*}
 				\dfrac{f'(\xi)}{g'(\xi)} = \dfrac{f(b) - f(a)}{g(b) - g(a)}
 			\end{equation*}
 		\end{proof}
 
 	\proofitem{Многочлен Тейлора и формула Тейлора для функций одной переменной с остаточным членом в форме Пеано и Лагранжа.}
+
+		Предположим, что имеется некоторая функция $f(x)$ и надо исследовать ее поведение в некоторой точке $x_0$ или ее окрестности. Сама функция может быть при этом достаточно сложной, и поэтому непосредственное вычисление $\lim_{x \to x_0} f(x)$ (как пример того, что мы хотим узнать о функции в $x_0$) окажется крайне трудоемким. Идея в том, чтобы найти такой многочлен $P_n(x)$, что $f(x) \sim P_n(x - x_0)$ при $x \to x_0$, а затем исследовать его. Работать с многочленами практически всегда намного проще.
+
+		Предположим пока, что $x_0 = 0$. Тогда $P_n(x) = c_0 + c_1x + c_2x^2 + \dots + c_nx^n$. $P_n(0) = c_0$, а $P_n'(x) = c_1 + 2c_2x + \dots + nc_nx^{n - 1}$, из чего следует, что $c_1 = P_n'(0)$. По аналогии можно получить, что $c_2 = \dfrac{P_n''(0)}{2!}, \dots, c_n = \dfrac{P_n^{(n)}}{n!}$. Т.е. получаем, что $P_n(x) = P_n(0) + \dfrac{P_n'(0)}{1!}x + \dots + \dfrac{P_n^{(n)}(0)}{n!} x^n$.
+
+		Пусть $\exists f^{(n)}(x_0)$, тогда справедлива формула:
+		\begin{equation*}
+			f(x) = f(x_0) + \dfrac{f'(x_0)}{1!}(x - x_0) + \dfrac{f''(x_0)}{2!}(x - x_0)^2 + \dots + \dfrac{f^{(n)}(x_0)}{n!}(x - x_0)^n + r_n(f, x)
+		\end{equation*}
+
+		Эта формула называется \textbf{формулой Тейлора} и обычно записывается в виде:
+		\begin{equation*}
+			f(x) = \underbrace{\sum_{k = 0}^n \dfrac{f^{(k)}(x_0)}{k!} \cdot (x - x_0)^k}_{\text{многочлен Тейлора}} + \underbrace{r_n(f, x)}_{\text{остаточный член}}
+		\end{equation*}
+
+		\begin{lemma}
+			Пусть $\exists f^{(n)}(x_0)$ и $\exists f'(x)$ на некоторой $U(x_0)$. Тогда $(r_n(f, x))' = r_{n - 1}(f', x)$.
+		\end{lemma}
+
+		\begin{proof}
+			\[\begin{gathered}
+				r_n(f, x) = f(x) - \sum_{k = 0}^n \dfrac{f^{(k)}(x_0)}{k!} (x - x_0)^k \\
+				(r_n(f, x))' = f'(x) - \sum_{k = 1}^n \dfrac{f^{(k)}(x_0)}{(k - 1)!} (x - x_0)^{k - 1}
+				= f'(x) - \sum_{k = 0}^{n - 1} \dfrac{f^{(k + 1)}(x_0)}{k!}(x - x_0)^k = r_{n - 1}(f', x)
+			\end{gathered}\]
+			так как $f^{(k + 1)}(x_0) = (f')^{(k)}(x_0)$. Следует также обратить внимание на то, что дифференцирование $r_n(f, x)$ происходит по $x$, поэтому все члены суммы, кроме $(x - x_0)^k$, --- константы.
+		\end{proof}
+
+		\begin{namedtheorem}[о локальной форме остаточного члена (Форма Пеано)]
+			Пусть $\exists f^{(n)}(x_0)$ и $\exists f'(x)$ на некоторой $U(x_0)$. Тогда справедлива формула Тейлора, причем $r_n(f, x) = \os((x - x_0)^n), x \to x_0$.
+		\end{namedtheorem}
+
+		\begin{proof}
+			Докажем с помощью метода математической индукции. При $n = 1$, $f(x) = f(x_0) + f'(x_0)(x - x_0) + \os(x - x_0)$, что верно, т.к. $f(x)$ дифференцируема в точке $x_0$. Предположим теперь, что теорема верна для \textbf{произвольной функции} $f$ при $n = n - 1$, и докажем её при $n = n$.
+
+			Заметим сначала, что $r_n(f, x_0) = 0$ (следует из обычной формулы Тейлора). Тогда $r_n(f, x) = f_n(f, x) - f_n(f, x_0) = (r_n(f, \xi))'(x - x_0)$, где $\xi$ принадлежит интервалу $(\min\{x, x_0\}, \max\{x, x_0\})$ по теореме Лагранжа.
+
+			По лемме получаем, что $(r_n(f, \xi))'(x - x_0) = r_{n - 1}(f', \xi)(x - x_0)$. По предположению для произвольной функции $f$, у которой есть $n$-ая производная в $x_0$ и $(n - 1)$-ая в окрестности $x_0$, можно выполнить индукционный переход для $f'$, т.к. для $r_{n - 1}$ у $f'(x)$ существуют $(n - 1)$-ая производная в $x_0$ и $(n - 2)$-ая в окрестности $x_0$. Тогда $r_{n - 1}(f', \xi)(x - x_0) = \os((\xi - x_0)^{n - 1})(x - x_0) = [|\xi - x_0| < |x - x_0| \implies \os((\xi - x_0)^{n - 1}) = \os((x - x_0)^{n - 1})] = \os((x - x_0)^{n - 1})(x - x_0) = \os((x - x_0)^n)$
+		\end{proof}
+
+		\begin{namedtheorem}[о форме Лагранжа]
+			Пусть $n \in \NN \cup \{0\}$ и $\exists f^{(n)}(x)$, причем $f^{(n)}(x)$ непрерывна на отрезке $[x_0, x]$. Кроме того, $\exists f^{(n + 1)}(x)$ на $(x_0, x)$. Тогда справедлива формула Тейлора, причем $r_n(f, x) = \dfrac{f^{(n + 1)}(\xi)}{(n + 1)!}(x - x_0)^{n + 1}$, где $\xi \in (x_0, x)$.
+		\end{namedtheorem}
+
+		\begin{proof}
+			Снова воспользуемся методом математической индукции. При $n = 0$, $f(x) = f(x_0) + f'(\xi)(x - x_0)$ --- формула Лагранжа. Предположим теперь, что для произвольной функции $f$ справедливо, что $r_{n - 1}(f, x) = \dfrac{f^{(n)}(\xi)}{n!}(x - x_0)^n$, где $\xi \in (x_0, x)$. При $n = n$ имеем:
+
+			\[\begin{gathered}
+				\dfrac{r_n(f, x)}{(x - x_0)^{n + 1}} = \dfrac{r_n(f, x) - r_n(f, x_0)}{(x - x_0)^{n + 1} - (x_0 - x_0)^{n + 1}} \text{ [по формуле Коши] } = \\
+				= \dfrac{(r_n(f, \mu))'}{(n + 1)(\mu - x_0)^n} \text{ [по лемме, доказанной выше] } = \\
+				= \dfrac{r_{n - 1}(f', \mu)}{(n + 1)(\mu - x_0)^n} = \dfrac{(f'(\xi))^{(n)}}{(n + 1)n!} \implies r_n(f, x) = \dfrac{f^{(n + 1)}(\xi)}{(n + 1)!}(x - x_0)^{n + 1}
+			\end{gathered}\]
+		\end{proof}
+
 	\proofitem{Формулы Маклорена для основных элементарных функций.}
+
+		При $x_0 = 0$ формула Тейлора с остаточным членом в форме Пеано называется формулой Маклорена
 
 		\begin{enumerate}[leftmargin=*]
 			\item
@@ -1059,10 +1164,10 @@
 			Например $(1 + x)^{\frac{1}{3}} - 1 = \dbinom{\frac{1}{3}}{1}x + \dbinom{\frac{1}{3}}{2} x^2 + \os(x^2) = \dfrac{1}{3} x + \dfrac{\frac{1}{3}(\frac{1}{3} - 1)}{2} x^2 + \os(x^2)$
 
 			\item
-			$\sin (x) = x - \dfrac{x^3}{3!} + \dfrac{x^5}{5!} - \dots + (-1)^{n - 1} \cdot \dfrac{x^{2n - 1}}{(2n - 1)!} + \os(x^{2n - 1})$
+			$\sin (x) = x - \dfrac{x^3}{3!} + \dfrac{x^5}{5!} - \dots + (-1)^{n - 1} \cdot \dfrac{x^{2n - 1}}{(2n - 1)!} + \os(x^{2n})$
 
 			\item
-			$\cos (x) = 1 - \dfrac{x^2}{2!} + \dfrac{x^4}{4!} + \dots + (-1)^{n} \dfrac{x^{2n - 2}}{(2n - 2)!} + \os(x^{2n - 2})$
+			$\cos (x) = 1 - \dfrac{x^2}{2!} + \dfrac{x^4}{4!} + \dots + (-1)^{n} \dfrac{x^{2n}}{(2n)!} + \os(x^{2n + 1})$
 
 			\item
 			$\tg (x) = x + \dfrac{x^3}{3} + \dfrac{2}{15} x^5 + \dots + \dfrac{B_{2n}(-4)^n(1 - 4^n)}{(2n)!} \cdot x^{2n - 1} + \os(x^{2n - 1})$, где $B_{2n}$ --- числа Бернулли
@@ -1083,72 +1188,94 @@
 		\end{enumerate}
 
 	\proofitem{Правило Лопиталя.}
-		\begin{enumerate}[leftmargin=*]
-			\item
-			\begin{namedtheorem}[Лопиталя (первое правило)]
-				Если функции $f(x)$ и $g(x)$ таковы, что
+		\begin{namedtheorem}[Лопиталя (первое правило)]
+			Если функции $f(x)$ и $g(x)$ таковы, что
 
-				\begin{enumerate}
-					\item
-					$f(x)$ и $g(x)$ дифференцируемы в проколотой окрестности точки $a$
+			\begin{enumerate}
+				\item
+				$f(x)$ и $g(x)$ дифференцируемы в проколотой окрестности точки $a$
 
-					\item
-					$\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0$
+				\item
+				$\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0$
 
-					\item
-					$g'(x) \neq 0$ в окрестности $U$
+				\item
+				$g'(x) \neq 0$ в окрестности $U$
 
-					\item
-					Существует $\lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
-				\end{enumerate}
+				\item
+				Существует $\lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
+			\end{enumerate}
 
-				Тогда существует $\lim_{x \to a} \dfrac{f(x)}{g(x)} = \lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
-			\end{namedtheorem}
+			Тогда существует $\lim_{x \to a} \dfrac{f(x)}{g(x)} = \lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
+		\end{namedtheorem}
 
-			Докажем теорему для случая, когда пределы равны 0
+		\begin{proof}
+			Доопределим функции в точке $a$ нулём. Из первого условия следует, что $f(x)$ и $g(x)$ непрерывны на отрезке $[a, x]$, где $x$ принадлежит рассматриваемой окрестности точки $a$. 
 
-			\begin{proof}
-				Доопределим функции в точке $a$ нулём. Из первого условия следует, что $f(x)$ и $g(x)$ непрерывны на отрезке $[a, x]$, где $x$ принадлежит рассматриваемой окрестности точки $a$. 
+			Применим обобщённую формулу конечных приращений (Коши) к $f(x)$ и $g(x)$ на отрезке $[a, x]$.
+			\begin{equation*}
+				\exists \xi \in [a, x]: \ \dfrac{f(x) - f(a)}{g(x) - g(a)} = \dfrac{f'(\xi)}{g'(\xi)}
+			\end{equation*}
 
-				Применим обобщённую формулу конечных приращений (Коши) к $f(x)$ и $g(x)$ на отрезке $[a, x]$.
+			Так как $g(a) = f(a) = 0$ получим, что $\forall x \ \exists \xi \in [a, x]: \dfrac{f(x)}{g(x)} = \dfrac{f'(\xi)}{g'(\xi)}$.
 
-				\begin{equation*}
-					\exists \xi \in [a, x]: \ \dfrac{f(x) - f(a)}{g(x) - g(a)} = \dfrac{f'(\xi)}{g'(\xi)}
-				\end{equation*}
+			Пусть предел отношения производных равен $A$. Следовательно, $\lim_{x \to a} \dfrac{f'(\xi(x))}{g'(\xi(x))} = \lim_{y \to a} \dfrac{f'(y)}{g'(y)} = A$, так как $\lim_{x \to a} \xi(x) = a$.
+		\end{proof}
 
-				Так как $g(a) = f(a) = 0$ получим, что $\forall x \ \exists \xi \in [a, x]: \dfrac{f(x)}{g(x)} = \dfrac{f'(\xi)}{g'(\xi)}$.
+		\begin{namedtheorem}[Лопиталя (второе правило)]
+			Если для функций $f(x)$ и $g(x)$ справедливо следующее:
 
-				Пусть предел отношения производных равен $A$. Следовательно, $\lim_{x \to a} \dfrac{f'(\xi(x))}{g'(\xi(x))} = \lim_{y \to a} \dfrac{f'(y)}{g'(y)} = A$, так как $\lim_{x \to a} \xi(x) = a$.
-			\end{proof}
+			\begin{enumerate}
+				\item
+				$f(x)$ и $g(x)$ дифференцируемы на интервале $(a, b)$, причем $a$ и $b$ конечны
 
-			\item
-			Докажем теорему для случая, когда пределы равны $\infty$. Условия:
+				\item
+				$\lim_{x \to a + 0} f(x) = \lim_{x \to a + 0} g(x) = \infty$
 
-			\begin{namedtheorem}[Лопиталя (второе правило)]
-				Если для функций $f(x)$ и $g(x)$ справедливо следующее:
+				\item
+				$g'(x) \neq 0$ при $x \in (a, b)$
 
-				\begin{enumerate}
-					\item
-					$f(x)$ и $g(x)$ дифференцируемы при $x > a$
+				\item
+				Существует конечный $\lim_{x \to a + 0} \dfrac{f'(x)}{g'(x)} = A$
+			\end{enumerate}
 
-					\item
-					$\lim_{x \to a + 0}$ представляет собой неопределенность вида $\dfrac{\infty}{\infty}$
+			то $\lim_{x \to a + 0} \dfrac{f(x)}{g(x)} = \lim_{x \to a + 0} \dfrac{f'(x)}{g'(x)} = A$
+		\end{namedtheorem}
 
-					\item
-					$g'(x) \neq 0$ при $x > a$
+		\begin{proof}
+			Для начала положим, что $A \leq 0$ (при $A > 0$ доказательство практически аналогично приведенному). Пусть $\eps \in \left(0, \dfrac{1}{4}\right)$. Тогда по определению предела 
+			\begin{equation*}
+				\lim_{x \to a + 0} \dfrac{f'(x)}{g'(x)} = A \iff \exists x_{\eps} \in (a, b): \ \forall x \in (a, x_{\eps}) \implies \left|\dfrac{f'(x)}{g'(x)} - A\right| < \eps
+			\end{equation*}
 
-					\item
-					Существует конечный $\lim_{x \to a + 0} \dfrac{f'(x)}{g'(x)} = A$
-				\end{enumerate}
+			Здесь мы просто приняли, что $x_{\eps} = a + \delta$, в остальном же интерпретация определения предела не изменилась.
 
-				то $\lim_{x \to a + 0} \dfrac{f(x)}{g(x)} = A$
-			\end{namedtheorem}
+			Выберем произвольное $x$ из данного интервала $(a, x_{\eps})$. Заметим, что выполняется теорема Коши (доопределим функции $f$ и $g$ в точке $a$, а точке $x_{\eps}$ они уже определены):
 
-			\begin{proof}
-				TODO(): почемутакмного, точно ли это было на лекции? 
-				\href{http://hijos.ru/izuchenie-matematiki/mat-analiz-11-klass/15-pravila-lopitalya/}{Пруф}
-			\end{proof}
-		\end{enumerate}
+			\[\begin{gathered}
+				\dfrac{f(x) - f(x_{\eps})}{g(x) - g(x_{\eps})} = \dfrac{f'(\xi)}{g'(\xi)} \text{, где } a < x < \xi < x_{\eps} < b \\
+				\dfrac{f(x)}{g(x)} \cdot \dfrac{1 - \dfrac{f(x_{\eps})}{f(x)}}{1 - \dfrac{g(x_{\eps})}{g(x)}} = \dfrac{f'(\xi)}{g'(\xi)} \\
+				\dfrac{f(x)}{g(x)} = \dfrac{f'(\xi)}{g'(\xi)} \cdot \dfrac{1 - \dfrac{g(x_{\eps})}{g(x)}}{1 - \dfrac{f(x_{\eps})}{f(x)}}
+			\end{gathered}\]
+
+			Заметим теперь, что $\lim_{x \to a + 0} \dfrac{f(x_{\eps})}{f(x)} = \lim_{x \to a + 0} \dfrac{g(x_{\eps})}{g(x)} = 0$, т.к. $f(x_{\eps})$ и $g(x_{\eps})$ --- константы. Тогда выберем для текущего закрепленного $\eps$ такое $\delta(\eps) > 0$:
+			\begin{equation*}
+				\forall x \in (a, a + \delta), \delta + a < b \implies \left|\dfrac{f(x_{\eps})}{f(x)}\right| < \eps, \left|\dfrac{g(x_{\eps})}{g(x)}\right| < \eps
+			\end{equation*}
+
+			Тогда получаем следующую оценку:
+			\begin{equation*}
+				\dfrac{1 - \dfrac{g(x_{\eps})}{g(x)}}{1 - \dfrac{f(x_{\eps})}{f(x)}} \in \left(\dfrac{1 - \eps}{1 + \eps}, \dfrac{1 + \eps}{1 - \eps}\right)
+			\end{equation*}
+
+			Поскольку $\eps \in \left(0, \dfrac{1}{4}\right)$, то $\dfrac{1 - \eps}{1 + \eps} = 1 - \dfrac{2\eps}{1 + \eps} > 1 - 2\eps$ и $\dfrac{1 + \eps}{1 - \eps} = 1 + \dfrac{2\eps}{1 - \eps} < 1 + \dfrac{8}{3} \eps$. Учитывая, что $\dfrac{f'(x)}{g'(x)} \in \overset{\circ}{U}_\eps(A)$:
+			\[\begin{gathered}
+				\dfrac{f(x)}{g(x)} = \dfrac{f'(\xi)}{g'(\xi)} \cdot \dfrac{1 - \dfrac{g(x_{\eps})}{g(x)}}{1 - \dfrac{f(x_{\eps})}{f(x)}} \in \left((A - \eps)(1 - 2\eps), (A + \eps) \left(1 + \dfrac{8}{3} \eps\right)\right) = \\
+				= \left(A - (\eps + 2A\eps - 2\eps^2), A + \left(\eps + \dfrac{8}{3} \eps A + \dfrac{8}{3}\eps^2\right)\right) \implies \\
+				\implies \dfrac{f(x)}{g(x)} \in U_{\mu}(A), \text{ где } \mu = \max \left\{\eps + 2A\eps - 2\eps^2, \eps + \dfrac{8}{3}\eps A + \dfrac{8}{3}\eps^2\right\}
+			\end{gathered}\]
+
+			Как видно, $\lim_{\eps \to 0} \mu = 0$, а для любого сколько угодно малого $\mu$ всегда можно найти соответствующее $\eps$, такое, что все значения отношения функций попадут в заданную $\mu$-трубку. Это и означает, что предел отношения функции равен $A$.
+		\end{proof}
 	
 	\proofitem{Достаточное условие строгого возрастания (убывания) функции на промежутке.}
 
@@ -1162,7 +1289,6 @@
 			Докажем для строгого возрастания. Пусть $f'(x) > 0 \ \forall x \in (a, b)$. Выберем произвольные точки $x_1, x_2 \in (a, b)$, и, не ограничивая общности, скажем, что $x_1 < x_2$.
 
 			Применим формулу конечных приращений Лагранжа. Так как $f'(\xi) > 0$ и $x_2 > x_1$, имеем
-
 			\begin{equation*}
 				f(x_2) - f(x_1) = f'(\xi) \cdot (x_2 - x_1) > 0 \implies f(x_2) > f(x_1)
 			\end{equation*}
