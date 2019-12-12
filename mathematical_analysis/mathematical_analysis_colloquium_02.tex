@@ -28,7 +28,9 @@
 	\href{https://teleg.run/lodthe}{@lodthe},
     \href{https://github.com/LoDThe/hse-tex}{GitHub} \\
 }
-\date{2019 --- 2020}
+
+\usepackage[yyyymmdd,hhmmss]{datetime}
+\date{Дата изменения: \today \ в \currenttime}
 
 \begin{document}
     \maketitle
@@ -121,6 +123,8 @@
 		\begin{equation*}
 			y = f'(x_0) \cdot (x - x_0) + f(x_0)
 		\end{equation*}
+
+		\href{https://ege-ok.ru/2014/02/16/uravnenie-kasatelnoy}{Подробнее тут}
 
 	\defitem{Понятие дифференцируемости функции в точке.}
 
@@ -578,12 +582,10 @@
 
 	\proofitem{Понятие производной функции в точке.}
 
-		Рассмотрим функцию, область определения которой содержит точку $x_0$. Тогда функция $f(x)$ является дифференцируемой в точке $x_0$, и ее производная определяется формулой
+		Рассмотрим функцию, область определения которой содержит точку $x_0$. Тогда функция $f(x)$ является дифференцируемой в точке $x_0$, и ее производная  $f'(x_0)$ определяется следующей формулой, если существует предел
 		\begin{equation*}
 			f'(x_0) = \lim_{\Delta \to 0} \dfrac{f(x_0 + \Delta) - f(x_0)}{\Delta}
 		\end{equation*}
-
-		если предел существует.
 
 	\proofitem{Геометрический и физический смысл производной.}
 
@@ -615,7 +617,7 @@
 
 		\begin{proof}
 			Докажем необходимость и достаточность
-			
+
 			\begin{itemize}
 				\item
 				\textbf{Необходимость}. Пусть $f(x)$ дифференцируема в точке $x$ $\implies \Delta y = A\Delta x + \os(\Delta x) \implies \dfrac{\Delta y}{\Delta x} = A + \dfrac{\os(\Delta x)}{\Delta x} = A + \os(1)$
@@ -700,10 +702,19 @@
 				\begin{equation*}
 					h'(x) = f(x) \cdot g'(x) + g(x) \cdot f'(x)
 				\end{equation*}
+			\end{enumerate}
 
+			\begin{lemma}
+				Если $f(x)$ непрерывна в точке $a$ и $f(a) > 0 (f(a) < 0)$, то $\exists \delta > 0: f(x) > 0 (f(x) < 0) \forall x \in U_{\delta}(a)$
+			\end{lemma}
 
+			\begin{proof}
+				Так как $f(x) \in C(a)$, то $\forall \eps > 0 \ \exists \delta > 0: \ \forall x \in U_{\delta}(a) \implies |f(x) - f(a)| < \eps \iff f(a) - \eps < f(x) < f(a) + \eps$. Положим $\eps = \dfrac{|f(a)|}{2}$, тогда $f(a) - \eps > 0$ при $f(a) > 0$ и $f(a) + \eps < 0$ при $f(a) < 0$. Т.е. левая и правая части неравенства всегда одного знака, значит $\forall x \in U_{\delta}(a)$ выполнено требуемое.
+			\end{proof}
+
+			\begin{enumerate}[resume]
 				\item
-				$h(x) = \dfrac{f(x)}{g(x)}$. Поскольку $g(x) \neq 0$, то $g(x + \Delta x) \neq 0$ для малых $\Delta x$. Тогда
+				$h(x) = \dfrac{f(x)}{g(x)}$. По лемме, $g(x) \neq 0$, то $g(x + \Delta x) \neq 0$ для малых $\Delta x$. Тогда
 				\begin{align*}
 					\Delta h
 					= h(x + \Delta x) - h(x)
@@ -794,7 +805,7 @@
 			Формула доказана.
 		\end{proof}
 
-	\proofitem{Теорема о дифференцируемости обратной функции.}
+	\proofitem{[На коллоквиуме будет отсутствовать] Теорема о дифференцируемости обратной функции.}
 
 		\begin{theorem*}
 			Рассмотрим функцию $f(x)$, которая является строго монотонной на некотором интервале $(a, b)$. Если в этом интервале существует такая точка $x_0$, что $f'(x_0) \neq 0$, то функция $x = \phi(y)$, обратная к функции $y = f(x)$, также дифференцируема в точке $y_0 = f(x_0)$ и её производная равна
@@ -909,7 +920,7 @@
 
 		Производной $n$-ого порядка будем считать $f^{(n)}(x) = (f^{(n - 1)}(x))'$, причем $f^{(0)}(x) = f(x)$. Разумеется, для существования производной $n$-ого порядка должны существовать производные всех меньших порядков.
 
-		Множество функция, имеющих все производные до порядка $n$ включительно на множестве $E$, обозначается $C^{(n)}(E)$. Рассмотрми несколько примеров
+		Множество функций, имеющих все производные до порядка $n$ включительно на множестве $E$, обозначается $C^{(n)}(E)$. Рассмотрми несколько примеров
 
 		\begin{itemize}
 			\item
@@ -964,7 +975,7 @@
 				&= \left(\sum_{k = 0}^n \binom{n}{k} \cdot u^{(n - k)} \cdot v^{(k)}\right)' \\
 				&= \sum_{k = 0}^n \binom{n}{k} \cdot u^{(n - k + 1)} \cdot v^{(k)} + \sum_{k = 0}^n \binom{n}{k} \cdot u^{(n - k)} \cdot v^{(k + 1)} \\
 				&= \sum_{k = 0}^n \binom{n}{k} \cdot u^{(n - k + 1)} \cdot v^{(k)} + \sum_{k = 1}^{n + 1} \binom{n}{k - 1} \cdot u^{(n - k + 1)} \cdot v^{(k)} \\
-				&= \binom{n}{0} \cdot u^{(n + 1)} \cdot v + \sum_{k = 1}^n (\binom{n}{k} + \binom{n}{k - 1}) \cdot u^{(n - k + 1)} \cdot v^{(k)} + \binom{n}{n} \cdot u \cdot v^{(n + 1)} \\
+				&= \binom{n}{0} \cdot u^{(n + 1)} \cdot v + \sum_{k = 1}^n \left(\binom{n}{k} + \binom{n}{k - 1}\right) \cdot u^{(n - k + 1)} \cdot v^{(k)} + \binom{n}{n} \cdot u \cdot v^{(n + 1)} \\
 				&= \binom{n}{0} \cdot u^{(n + 1)} \cdot v + \sum_{k = 1}^n \binom{n + 1}{k} \cdot u^{(n - k + 1)} \cdot v^{(k)} + \binom{n}{n} \cdot u \cdot v^{(n + 1)} \\
 				&= \sum_{k = 0}^{n + 1} \binom{n + 1}{k} \cdot u^{(n - k + 1)} \cdot v^{(k)}
 			\end{align*}
@@ -986,6 +997,8 @@
 		\begin{equation*}
 			\forall x \in U_{\delta}(x_0) \implies f(x) \geq f(x_0)
 		\end{equation*}
+
+		Точка $x_0$ будет называться точкой строгого локального экстремума, если заменить окрестность на проколотую окрестность и нестрогий знак заменить на строгий.
 
 		\begin{namedtheorem}[Ферма]
 			Если функция $y = f(x)$ имеет экстремум в точке $x_0$, то ее производная $f'(x_0)$ либо равна нулю, либо не существует.
@@ -1092,7 +1105,7 @@
 
 			В результате получаем
 			\begin{equation*}
-				F(x) = f(x) - \dfrac{f(b) - f(a)}{g(b) - g(a)} \cdot x
+				F(x) = f(x) - \dfrac{f(b) - f(a)}{g(b) - g(a)} \cdot g(x)
 			\end{equation*}
 
 			Функция $F(x)$ непрерывна на отрезке $[a, b]$, дифференцируема на интервале $(a, b)$ и при найденном значении $\lambda$ принимает одинаковые значения на концах отрезка. Следовательно, для неё выполнены все условия теоремы Ролля. Тогда в интервале $(a, b)$ существует такая точка $\xi$, что $F'(\xi) = 0$.
@@ -1167,6 +1180,20 @@
 
 		При $x_0 = 0$ формула Тейлора с остаточным членом в форме Пеано называется формулой Маклорена
 
+		Приведем пример: $f(x) = \sin x$. Вспомним, что
+		\begin{equation*}
+			f^{(n)}(x) = \sin \left(x + \dfrac{\pi n}{2}\right) \implies f^{(n)}(0) = \sin \left(\dfrac{\pi n}{2}\right) 
+			= \begin{cases}
+				0, \quad &\text{если $n = 2k$}, \\
+				(-1)^k, \quad &\text{если $n = 2k + 1$}
+			\end{cases}
+		\end{equation*}
+
+		Тогда получаем следующее разложение:
+		\begin{equation*}
+			\sin x = x - \dfrac{x^3}{3!} + \dfrac{x^5}{5!} - \dots + (-1)^{n - 1} \cdot \dfrac{x^{2n - 1}}{(2n - 1)!} + \os(x^{2n})
+		\end{equation*}
+
 		\begin{enumerate}[leftmargin=*]
 			\item
 			$e^x = 1 + \dfrac{x}{1!} + \dfrac{x^2}{2!} + \dots + \dfrac{x^n}{n!} + \os(x^n), x \to 0$
@@ -1234,7 +1261,7 @@
 
 			Так как $g(a) = f(a) = 0$ получим, что $\forall x \ \exists \xi \in [a, x]: \dfrac{f(x)}{g(x)} = \dfrac{f'(\xi)}{g'(\xi)}$.
 
-			Пусть предел отношения производных равен $A$. Следовательно, $\lim_{x \to a} \dfrac{f'(\xi(x))}{g'(\xi(x))} = \lim_{y \to a} \dfrac{f'(y)}{g'(y)} = A$, так как $\lim_{x \to a} \xi(x) = a$.
+			По определению предела, $\lim_{x \to a + 0} \dfrac{f'(x)}{g'(x)} = A \iff \forall \eps > 0 \ \exists \delta > 0: \ \forall x: \ a < x < a + \delta \implies \left|\dfrac{f'(x)}{g'(x)} - A\right| < \eps$. Но для каждого $x$ из указанного интервала найдется своё $\xi_x$, такое что $\dfrac{f'(\xi_x)}{g'(\xi_x)} = \dfrac{f(x)}{g(x)}$. Но раз $\xi_x \in (a, x)$, то выполняется $\left|\dfrac{f'(\xi_x)}{g'(\xi_x)} - A\right| < \eps \implies \left|\dfrac{f(x)}{g(x)} - A\right|$, что и требовалось доказать.
 		\end{proof}
 
 		\begin{namedtheorem}[Лопиталя (второе правило)]
