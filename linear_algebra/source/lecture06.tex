@@ -1,4 +1,5 @@
 \section{Лекция 26.09.2019}
+% TODO: На лекции были другие пруфы. Некоторые -- сильно проще.
 
 Напомним что такое определитель:
 \begin{equation}
@@ -25,9 +26,9 @@
             &= \sum_{\sigma \in S_n} \sgn(\sigma) b_{1\sigma(1)} b_{2 \sigma(2)} \dots b_{n\sigma(n)}
             = \sum_{\sigma \in S_n} \sgn(\sigma) a_{\sigma(1) 1} a_{\sigma(2) 2} \dots a_{\sigma(n)} \\
             &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)^{-1}} a_{2\sigma(2)^{-1}} \dots a_{n\sigma(n)^{-1}}
-            \quad \text{ /\!/ замена } \sigma^{-1} = p \text{ /\!/} \\
-            &= \sum_{p \in S_n} a_{1p(1)} a_{2p(2)} \dots a_{np(n)} = \det A
-        .\end{align*}
+            \quad \text{ /\!/ замена } \sigma^{-1} = \rho \text{ /\!/} \\
+            &= \sum_{\rho \in S_n} \sgn(\rho) a_{1\rho(1)} a_{2\rho(2)} \dots a_{n\rho(n)} = \det A
+        .\qedhere\end{align*}
     \end{proof}
 
 \item[Свойство 0\label{det:prop_0}]
@@ -89,7 +90,7 @@
             &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots (a'_{i\sigma(i)} + a''_{i\sigma(i)}) \dots a_{n \sigma(n)} \\
             &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a'_{i\sigma(i)} \dots a_{n\sigma(n)} + \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a''_{i\sigma(i)} \dots a_{n\sigma(n)} \\
             &= \det A_1 + \det A_2
-        \end{align*}
+        .\qedhere\end{align*}
     \end{proof}
 
 \item[Свойство 3\label{det:prop_3}]
@@ -100,29 +101,30 @@
 
         Пусть $A = (a_{ij}) \in M_n$, $B = (b_{ij}) \in M_n $ -- матрица, полученная из А перестановкой $p$-ой и $q$-ой строк.
 
-        Пусть $\tau = \tau_{pq}$.
+        Так же, $\tau = \tau_{pq}$.
 
         \begin{equation*}
-            b(i,j) = a_{\tau(i)j} = \begin{cases}
-                a_{ij}, &\text{если }  i \neq p, q  \\
-                a_{qj}, &\text{если } i=p \\
+            b_{ij} = a_{\tau(i)j} = \begin{cases}
+                a_{ij}, &\text{если } i \neq p, q  \\
+                a_{qj}, &\text{если } i = p \\
                 a_{pj}, &\text{если } i = q
             \end{cases}
         \end{equation*}
         \begin{align*}
-            b_{ij} = a_{\tau(i)j} \ \forall i, j \implies a_{\tau(i)\sigma(i)} = a_{\tau(i),(\sigma\tau)(\tau(i))}
+            b_{ij} = a_{\tau(i)j} \implies b_{i\sigma(i)} = a_{\tau(i)\sigma(i)} = a_{\tau(i),(\sigma\tau\tau)(i)}
         \end{align*}
         \begin{align*}
             \det B
-            &= \sum_{\sigma \in S_n} \sgn(\sigma) b_{1\sigma(1)} b_{2\sigma(2)} \dots b_{n\sigma(n)} \\
-            &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{\tau(1), \sigma(1)} a_{\tau(2), \sigma(2)} \dots a_{\tau(n), \sigma(n)} \\
-            &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{\tau(1),(\sigma\tau)(\tau(1))} a_{\tau(2),(\sigma\tau)(\tau(2))} \dots a_{\tau(n),(\sigma\tau)(\tau(n))} \\
-            &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1, (\sigma\tau(1))} a_{2, (\sigma\tau(2))} \dots a_{n,(\sigma\tau(n))} \\
-            &= -\sum_{\sigma \in S_n} \sgn(\sigma\tau) a_{1, (\sigma\tau(1))} a_{2, (\sigma\tau(2))} \dots a_{n,(\sigma\tau(n))}
-            \quad \text{ /\!/ замена } \rho = \sigma\tau \text{ /\!/} \\
-            &= -\sum_{\rho \in S_n} \sgn(p) a_{1, \rho(1)} a_{2, \rho(2)} \dots a_{n, \rho(n)} \\
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) \cdot b_{1\sigma(1)} \cdot b_{2\sigma(2)} \dots b_{n\sigma(n)} \\
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) \cdot a_{\tau(1), \sigma(1)} \cdot a_{\tau(2), \sigma(2)} \dots a_{\tau(n), \sigma(n)} \\
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) \cdot a_{\tau(1),(\sigma\tau\tau)(1)} \cdot a_{\tau(2),(\sigma\tau\tau)(2)} \dots a_{\tau(n),(\sigma\tau\tau)(n)} \\
+            &\quad \text{ /\!/ уберем } \tau(i) \text{, переупорядочив элементы в произведении /\!/} \\
+            &= \sum_{\sigma \in S_n} \sgn(\sigma) \cdot a_{1, (\sigma\tau)(1)} \cdot a_{2, (\sigma\tau)(2)} \dots a_{n,(\sigma\tau)(n)} \\
+            &= -\sum_{\sigma \in S_n} \sgn(\sigma\tau) \cdot a_{1, (\sigma\tau)(1)} \cdot a_{2, (\sigma\tau)(2)} \dots a_{n,(\sigma\tau)(n)} \\
+            &\quad \text{ /\!/ замена } \rho = \sigma\tau \text{ /\!/} \\
+            &= -\sum_{\rho \in S_n} \sgn(\rho) \cdot a_{1, \rho(1)} \cdot a_{2, \rho(2)} \dots a_{n, \rho(n)} \\
             &= -\det A
-        .\end{align*}
+        .\qedhere\end{align*}
     \end{proof}
 
 \item[Свойство 4\label{det:prop_4}]
@@ -145,7 +147,7 @@
             \end{vmatrix} = |A| + \lambda \begin{vmatrix}
                 \dots \\ A_{(j)} \\ \dots \\ A_{(j)} \\ \dots
             \end{vmatrix} = |A| + \lambda 0 = |A|
-        \end{equation*}.
+        .\end{equation*}
     \end{proof}
 
 \item[Свойство 5\label{det:prop_5}]
@@ -173,7 +175,7 @@
         0 & 0 & a_{33} & \dots & a_{3n} \\
         \vdots & \vdots & \vdots & \ddots & \vdots \\
         0 & 0 & 0 & \dots & a_{mn}
-	\end{pmatrix} \text{ -- верхнетреугольная}
+    \end{pmatrix} \text{ -- верхнетреугольная}
 \end{equation*}
 
 \begin{equation*}
@@ -202,7 +204,7 @@
             a_{1, \sigma(1)} \dots a_{n - 1, \sigma(n - 1)} a_{n, \sigma(n)} \neq 0
         \end{equation*}
         \begin{equation*}
-            \implies a_{n\sigma(n) \neq 0} \implies \sigma(n) = n
+            \implies a_{n\sigma(n)} \neq 0 \implies \sigma(n) = n
         .\end{equation*}
         \begin{equation*}
             \implies a_{n - 1, \sigma(n - 1)} \neq 0 \implies \sigma(n - 1) \in \{n - 1, n\},
@@ -211,7 +213,6 @@
         но $n$ уже занято, значит $\sigma(n - 1) = n - 1$, и так далее.
 
         Рассуждая аналогично, получаем $\sigma(k) = k \ \forall k \implies \sigma = id$ -- это единственное слагаемое в \eqref{det:sum}, которое может быть не равно 0.
-
         \begin{equation*}
             \sgn(id) = +1 \implies \det A = a_{11} a_{22} \dots a_{nn}
         .\end{equation*}
@@ -222,7 +223,7 @@
     \end{corollary}
 
     \begin{corollary}
-        $\det E = 1$
+        $\det E = 1$.
     \end{corollary}
 \end{description}
 

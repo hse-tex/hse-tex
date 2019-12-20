@@ -36,10 +36,19 @@ $a_{ij}$ -- элемент на пересечении $i$-й строки и $j
 \subsection{Операции над матрицами}
 
 Для любых $A, B \in \text{Mat}_{m \times n}$
-
 \begin{itemize}
-    \item \emph{Сложение} $A + B := (a_{ij} + b_{ij})$
-    \item \emph{Умножение на скаляр} $\alpha \in \RR \implies \lambda A := (\lambda a_{ij})$
+    \item \emph{Сложение} $A + B := (a_{ij} + b_{ij}) = \begin{pmatrix}
+            a_{11} + b_{11} & a_{12} + b_{12} & \dots & a_{1n} + b_{1n} \\
+            a_{21} + b_{21} & a_{22} + b_{22} & \dots & a_{2n} + b_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} + b_{m1} & a_{m2} + b_{m2} & \dots & a_{mn} + b_{mn}
+        \end{pmatrix}$
+    \item \emph{Умножение на скаляр} $\lambda \in \RR \implies \lambda A := (\lambda a_{ij}) = \begin{pmatrix}
+            \lambda a_{11} & \lambda a_{12} & \dots & \lambda a_{1n} \\
+            \lambda a_{21} & \lambda a_{22} & \dots & \lambda a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            \lambda a_{m1} & \lambda a_{m2} & \dots & \lambda a_{mn}
+        \end{pmatrix}$
 \end{itemize}
 
 \textbf{Свойства суммы и произведения на скаляр}
@@ -115,19 +124,20 @@ $\lambda \in \RR \implies \lambda x_i := (\lambda x_1, \dots, \lambda x_n)$
 
 \subsection{Транспонирование матриц, его простейшие свойства}
 
-$A \in \text{Mat}_{m \times n} = \begin{pmatrix}
-    a_{11} & a_{12} & \dots & a_{1n} \\
-    a_{21} & a_{22} & \dots & a_{2n} \\
-    \vdots & \vdots & \ddots & \vdots \\
-    a_{m1} & a_{m2} & \dots & a_{mn}
-\end{pmatrix} \leadsto A^T \in \text{Mat}_{n \times m} := \begin{pmatrix}
-    a_{11} & a_{21} & \dots & a_{m1} \\
-    a_{12} & a_{22} & \dots & a_{m2} \\
-    \vdots & \vdots & \ddots & \vdots \\
-    a_{1n} & a_{2n} & \dots & a_{mn}
-\end{pmatrix}$
-
-$A^T$ ---  \textit{транспонированная матрица}
+\begin{align*}
+    A \in \text{Mat}_{m \times n} = &\begin{pmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \dots & a_{mn}
+    \end{pmatrix} \\
+    A^T \in \text{Mat}_{n \times m} := &\begin{pmatrix}
+        a_{11} & a_{21} & \dots & a_{m1} \\
+        a_{12} & a_{22} & \dots & a_{m2} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{1n} & a_{2n} & \dots & a_{mn}
+    \end{pmatrix} \text{ --- \textit{транспонированная матрица}}
+.\end{align*}
 
 \bigskip
 Свойства:
@@ -171,25 +181,28 @@ $A_{(i)} = \begin{pmatrix} a_{i1}, a_{i2}, \dots, a_{in} \end{pmatrix} $ --- $i$
 $A^{(j)} = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mn} \end{pmatrix} $ --- $j$-й  столбец матрицы $A$
 
 \begin{enumerate}[label=\arabic*)]
-    \item 
+    \item
         Частный случай: умножение строки на столбец той же длинны
-    
-        $\underbrace{(x_1, \dots, x_n)}_{1 \times n} 
+
+        $\underbrace{(x_1, \dots, x_n)}_{1 \times n}
         \underbrace{\begin{pmatrix}
             y_1 \\ \vdots \\ y_n
-        \end{pmatrix}}_{n \times 1} 
+        \end{pmatrix}}_{n \times 1}
         = x_1 \cdot y_1 + \dots + x_n \cdot y_n$
-        
+
     \item
         Общий случай:
 
-        $A$ - матрица размера $m \times \underline{n}$
-        
-        $B$ - матрица размера $\underline{n} \times p$
-        
-        Количество строк матрицы $A$ равно количеству столбцов матрицы $B$ --- условие согласованности матриц
-        
-        $AB := C \in \text{Mat}_{m \times p}$, где $C_{ij} = A_{(i)} B^{(j)}$
+        $A$ -- матрица размера $m \times \underline{n}$
+
+        $B$ -- матрица размера $\underline{n} \times p$
+
+        $AB := C \in \text{Mat}_{m \times p}$, где
+        \begin{equation*}
+            C_{ij} = A_{(i)} B^{(j)} = \sum_{k = 1}^{n} a_{ik} \cdot b_{kj}
+        .\end{equation*}
+
+        Количество столбцов матрицы $A$ равно количеству строк матрицы $B$ --- условие согласованности матриц.
 \end{enumerate}
 
 \begin{example}

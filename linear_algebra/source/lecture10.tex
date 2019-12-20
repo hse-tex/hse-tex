@@ -10,7 +10,7 @@
     Множество $V$ называется \textit{векторным (линейным) пространством} над полем $F$, если на $V$ заданы две операции
     \begin{itemize}[nosep]
     \item ``сложение'': $V \times V \to V$, $(x, y) \mapsto x + y$.
-    \item ``умножение на скаляр'': $F \times V$, $(\alpha \in F, x \in V) \mapsto \alpha x$.
+    \item ``умножение на скаляр'': $F \times V \to V$, $(\alpha \in F, x \in V) \mapsto \alpha x$.
     \end{itemize}
     а также, $\forall x, y, z \in V$ и $\alpha, \beta \in F$ выполнены следующие условия (называются \textit{аксиомами векторного пространства}):
     \begin{enumerate}[nosep]
@@ -55,8 +55,7 @@
 
 $\forall \alpha \in F, x \in V$.
 \begin{enumerate}
-\item
-    Элемент $\overrightarrow{0}$ единственный.
+\item Элемент $\overrightarrow{0}$ единственный.
 
     Если $\overrightarrow{0}'$ -- другой такой ноль, то $\overrightarrow{0}' = \overrightarrow{0}' + \overrightarrow{0} = \overrightarrow{0}$.
 
@@ -66,10 +65,35 @@ $\forall \alpha \in F, x \in V$.
     \begin{equation*}
         (-x)' = (-x)' + \overrightarrow{0} = (-x)' + (x + (-x)) = ((-x)' + x) + (-x) = \overrightarrow{0} + (-x) = -x
     .\end{equation*}
+
 \item $\alpha \overrightarrow{0} = \overrightarrow{0}$.
+
+    \newcommand{\zr}{\overrightarrow{0}}
+    Рассмотрим равенство $\zr + \zr = \zr$. Домножив на $\alpha$ получаем $\alpha(\zr + \zr) = \alpha\zr$.
+
+    Раскроем скобки, $\alpha\zr + \alpha\zr = \alpha\zr$.
+
+    Прибавим к обоим частям обратный элемент к $\alpha\zr$, получим $\alpha\zr + \zr = \zr \implies \alpha\zr = \zr$.
+
 \item $\alpha (-x) = -(\alpha x)$.
+
+    Рассмотрим равенство $x + (-x) = \overrightarrow{0}$.
+    \begin{align*}
+        x + (-x) = \overrightarrow{0} \implies ax + a(-x) = 0 \implies a(-x) = -(ax)
+    .\end{align*}
+
 \item $0 \cdot x = \overrightarrow{0}$.
+
+    Доказывается так же, как пункт 3, но с 0 вместо $\zr$.
+
 \item $(-1) \cdot x = -x$.
+
+    Рассмотрим равенство $1 + (-1) = 0$. Домножив на $x$ получаем $(1 + (-1))x = 0x$.
+
+    Раскроем скобки и воспользуемся пунктом 5 --- $1x + (-1)x = 0$ или $x + (-1)x = 0$.
+
+    Прибавим к обоим частям $-x$, получим $0 + (-1)x = -x$ или $(-1)x = -x$.
+
 \end{enumerate}
 
 
@@ -125,7 +149,7 @@ $\forall \alpha \in F, x \in V$.
 Пусть $V$ -- векторное пространство над $F$ и $v_1, \dots, v_k \in V$ -- набор векторов.
 
 \begin{definition}
-    \textit{Линейной комбинацией} векторов $v_1, \dots, v_k$ называется всякое выражение вида $\alpha_1 v_1 + \dots \alpha_k v_k$, где $\alpha_i \in F$.
+    \textit{Линейной комбинацией} векторов $v_1, \dots, v_k$ называется всякое выражение вида $\alpha_1 v_1 + \dots + \alpha_k v_k$, где $\alpha_i \in F$.
 \end{definition}
 
 \subsection{Линейная оболочка подмножества векторного пространства, примеры}

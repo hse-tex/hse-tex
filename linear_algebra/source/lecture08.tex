@@ -26,7 +26,7 @@
 
     \begin{equation*}
         (AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = A A^{-1} = E
-    .\end{equation*}
+    .\qedhere\end{equation*}
 \end{proof}
 
 \subsection{Формулы Крамера}
@@ -55,7 +55,7 @@
                  & \quad + \dots + \\
                  & \quad+ x_n \det \left(A^{(1)}, \dots, A^{(i - 1)}, A^{(n)}, A^{(i + 1)}, \dots, A^{(n)}\right) \\
                  &= x_i \det A \quad \text{ /\!/ Все слагаемые кроме i-го равны 0}
-    .\end{align*}
+    .\qedhere\end{align*}
 \end{proof}
 
 
@@ -125,9 +125,21 @@ $F_2 = \{0, 1\}$, сложение и умножение по модулю 2.
 \setcounter{enumi}{2}
 \item $0 = (0, 0)$.
 \item $-(a, b) = (-a, -b)$.
-\item Дистрибутивность -- \textit{Упражнение на дом}.
-\item Из явного вида формулы для умножения.
-\item
+\item Дистрибутивность
+    \begin{align*}
+        (a_1 + b_1 i) ((a_2 + b_2 i) + (a_3 + b_3 i))
+        &= (a_1 + b_1 i) ((a_2 + a_3) + (b_2 + b_3) i) \\
+        &= (a_1 (a_2 + a_3) - b_1 (b_2 + b_3)) + (a_1 (b_2 + b_3) + b_1 (a_2 + a_3)) i \\
+        &= a_1 a_2 + a_1 a_3 - b_1 b_2 - b_1 b_3 + (a_1 b_2 + a_1 b_3 + b_1 a_2 + b_1 a_3) i \\
+        &= ((a_1 a_2 - b_1 b_2) + (a_1 b_2 + b_1 a_2)i) + ((a_1 a_3 + b_1 b_3) + (b_1 a_3 + a_1 b_3) i) \\
+        &= (a_1 + b_1 i)(a_2 + b_2 i) + (a_1 + b_1 i)(a_3 + b_3 i)
+    \end{align*}
+\item Коммутативность умножения -- из явного вида формулы.
+    \begin{equation*}
+        (a_1 + b_1 i) (a_2 + b_2 i) = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1) i
+    \end{equation*}
+
+\item Ассоциативность умножения
     \begin{align*}
         (a_1, b_1)(a_2, b_2)(a_3, b_3)
         &= (a_1 a_2 - b_1 b_2, a_1 b_2 + a_2 b_1) (a_3, b_3) \\
@@ -140,13 +152,12 @@ $F_2 = \{0, 1\}$, сложение и умножение по модулю 2.
 
 \item $(a, b) \neq 0 \implies a^2 + b^2 \neq 0$. Тогда, $(a, b)^{-1} = \left(\frac{a}{a^2 + b^2}, -\frac{b}{a^2 + b^2}\right)$.
 
-    $(a, b) (\frac{a}{a^2 + b^2}, \frac{-b}{a^2 + b^2}) = (\frac{a^2}{a^2 + b^2} + \frac{b^2}{a^2 + b^2}, \frac{-ab}{a^2 + b^2} + \frac{ba}{a^2 + b^2}) = (1, 0)$.
+    $(a, b) \left(\frac{a}{a^2 + b^2}, \frac{-b}{a^2 + b^2}\right) = \left(\frac{a^2}{a^2 + b^2} + \frac{b^2}{a^2 + b^2}, \frac{-ab}{a^2 + b^2} + \frac{ba}{a^2 + b^2}\right) = (1, 0)$.
 \end{enumerate}
 
 Итак, $\CC$ -- поле.
 
-\bigskip
-Проверка свойств:
+\paragraph{Проверка свойств}
 \begin{enumerate}
 \item $a \in \RR \leftrightarrow (a, 0) \in \CC$.
 
@@ -168,6 +179,7 @@ $F_2 = \{0, 1\}$, сложение и умножение по модулю 2.
     Число $i$ называется \textit{мнимой единицей}.
 
     $a =: Re(z)$ -- \textit{действительная} часть числа $z$.
+
     $b =: Im(z)$ -- \textit{мнимая} часть числа $z$.
 \end{definition}
 
@@ -187,9 +199,16 @@ $F_2 = \{0, 1\}$, сложение и умножение по модулю 2.
 \item $\overline{\overline{z}} = z$.
 \item $\overline{z + w} = \overline{z} + \overline{w}$.
 \item $\overline{zw} = \overline{z} \cdot \overline{w}$.
+% TODO: Добавить про сопряжение деления? (Было доп вопросом на коллке).
 \end{itemize}
 
-Доказательство -- прямая проверка (\textit{упражнение на дом}).
+\begin{proof}~
+    \begin{itemize}
+    \item $\overline{\overline{z}} = \overline{\overline{a + bi}} = \overline{a - bi} = a + bi = z$.
+    \item $\overline{z + w} = \overline{(a_1 + b_1 i) + (a_2 + b_2 i)} = \overline{(a_1 + a_2) + (b_1 + b_2) i} = (a_1 + a_2) - (b_1 + b_2)i = (a_1 - b_1 i) + (a_2 - b_2 i) = \overline{z} + \overline{w}$.
+    \item $\overline{z} \cdot \overline{w} = (a_1 - b_1 i) (a_2 - b_2 i) = (a_1 a_2 - b_1 b_2) - (a_1 b_2 + a_2 b_1) i = \overline{zw}$. \qedhere
+    \end{itemize}
+\end{proof}
 
 \subsection{Геометрическая модель комплексных чисел, интерпретация сложения и сопряжения в этой модели.}
 

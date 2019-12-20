@@ -62,7 +62,7 @@
 
     \begin{equation*}
         \alpha \beta \det A = \det \begin{pmatrix} P' & Q' \\ 0 & R' \end{pmatrix} = \det P' \det R' = (\alpha \det P) (\beta \det R) = \alpha \beta \det P \det R
-    .\end{equation*}
+    .\qedhere\end{equation*}
 \end{proof}
 
 
@@ -130,7 +130,7 @@
     Сокращая $\alpha$ получаем,
     \begin{equation*}
         \det CB = \det C \det B \implies \det AB = \det A \det B
-    .\end{equation*}
+    .\qedhere\end{equation*}
 \end{proof}
 
 \begin{comment}
@@ -143,7 +143,7 @@
 
 \subsection{Дополнительные миноры и алгебраические дополнения к элементам квадратной матрицы}
 \begin{definition}
-    \textit{Дополнительным минором} к элементу $a_{ij}$ называется определитель $(n-1) \times (n-1)$ матрицы, получающейся из $А$ вычеркиванием $i$-ой строки и $j$-го столбца.
+    \textit{Дополнительным минором} к элементу $a_{ij}$ называется определитель $(n-1) \times (n-1)$ матрицы, получающейся из $A$ вычеркиванием $i$-ой строки и $j$-го столбца.
 
     Обозначение: $\overline{M}_{ij}$.
 \end{definition}
@@ -209,7 +209,6 @@
 
     \bigskip
     $\implies det A = (-1)^{i - 1 + j - 1} \det A'' = (-1)^{i + j} a_{ij} \overline{M}_{ij} = a_{ij} A_{ij}$.
-
 \end{proof}
 
 
@@ -240,9 +239,9 @@
 \begin{lemma}~
     \begin{enumerate}
     \item
-        При любых $i, k \in \{1, 2, \dots, n\} : i \neq k \implies \sum_{j = 1}^n a_{ij} A_{kj} = 0$.
+        При любых $i, k \in \{1, 2, \dots, n\} : i \neq k \implies \sum_{j = 1}^n a_{ij} A_{kj} = 0$,
     \item
-        При любых $j, k \in \{1, 2, \dots, n\} : j \neq k \implies \sum_{i = 1}^n a_{ij} A_{ik} = 0$
+        При любых $j, k \in \{1, 2, \dots, n\} : j \neq k \implies \sum_{i = 1}^n a_{ij} A_{ik} = 0$.
     \end{enumerate}
 \end{lemma}
 
@@ -262,7 +261,7 @@
     Разлагая $\det B$ по $k$-й строке, получаем
     \begin{equation*}
         \det B = \sum_{j = 1}^n b_{kj} B_{kj} = \sum_{j = 1}^n a_{ij} A_{kj}
-    .\end{equation*}
+    .\qedhere\end{equation*}
 \end{proof}
 
 
@@ -284,8 +283,8 @@
 \begin{proof}
     Пусть $B, C \in M_n$ такие, что $AB = BA = E$ и $AC = CA = E$. Тогда,
     \begin{equation*}
-        B = BE = B(AC) = (BA)C = EC = C \Rightarrow B = B'
-    .\end{equation*}
+        B = BE = B(AC) = (BA)C = EC = C \implies B = C
+    .\qedhere\end{equation*}
 \end{proof}
 
 
@@ -326,16 +325,17 @@
 \end{theorem}
 
 \begin{proof}
+    % TODO: Што
     Утверждение в одну сторону следует из леммы 2.
 
     \bigskip
     Пусть $\det A \neq 0$. Покажем, что $\frac{1}{detA} \widehat{A} = A^{-1}$.
-    Для этого достаточно доказать, что $A \widehat{A} = \widehat{A} A = \det(A) \cdot E$.
+    Для этого достаточно доказать, что $A \widehat{A} = \widehat{A} A = \det A \cdot E$.
 
     Для $X = A \widehat{A}$ имеем
     \begin{equation*}
         x_{ij} = \sum_{k = 1}^n a_{ik} [\widehat{A}]_{kj} = \sum_{k = 1}^n a_{ik} A_{jk} = \begin{cases}
-            detA, &\text{при }  i = j  \\
+            detA, &\text{при }  i = j\\
             0, &\text{при } i \neq j \\
         \end{cases}
     .\end{equation*}
@@ -344,7 +344,7 @@
 
     \begin{equation*}
         y_{ij} = \sum_{k = 1}^n [\widehat{A}]_{ik} a_{kj} = \sum_{k = 1}^n A_{ki} a_{kj} = \begin{cases}
-            detA, &\text{при }  i = j  \\
+            detA, &\text{при }  i = j \\
             0, &\text{при } i \neq j \\
         \end{cases}
     .\end{equation*}

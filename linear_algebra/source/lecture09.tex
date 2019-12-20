@@ -10,12 +10,25 @@
 \begin{enumerate}
 \item $|z| \geq 0$, причем $|z| = 0 \iff z = 0$.
 \item $|z + w| \leq |z| + |w|$ (неравенство треугольника).
+
+    Пусть $z = a + bi$, $w = c + di$.
+    \begin{align*}
+        |z + w| &\leq |z| + |w| \\
+        \sqrt{(a + c)^2 + (b + d)^2} &\leq \sqrt{a^2 + b^2} + \sqrt{c^2 + d^2} \\
+        (a + c)^2 + (b + d)^2 &\leq a^2 + b^2 + c^2 + d^2 + 2\sqrt{(a^2 + b^2)(c^2 + d^2)} \\
+        ac + bd &\leq\sqrt{(a^2 + b^2)(c^2 + d^2)} \\
+        ac + bd &\leq\sqrt{(ac)^2 + (ad)^2 + (bc)^2 + (bd)^2} \\
+        (ac)^2 + (bd)^2 + 2acbd &\leq (ac)^2 + (ad)^2 + (bc)^2 + (bd)^2 \\
+        2acbd &\leq (ad)^2 + (bc)^2 \\
+        0 &\leq (ad)^2 + (bc)^2 - 2abcd \\
+        0 &\leq (ad - bc)^2
+    \end{align*}
 \item $z \overline{z} = |z|^2$.
 
-    $z \overline{z} = (a + bi)(a - bi) = a^2 - b^2i = a^2 + b^2 = |z|^2$
-\item $|zw| = |z||w|$
+    $z \overline{z} = (a + bi)(a - bi) = a^2 - (bi)^2 = a^2 + b^2 = |z|^2$
+\item $|zw| = |z||w|$.
 
-    $|zw|^2 = (zw) \cdot (\overline{zw}) = z \cdot w \cdot \overline{z} \cdot \overline{w} = |z|^2 |w|^2$
+    $|zw|^2 = (zw) \cdot (\overline{zw}) = z \cdot w \cdot \overline{z} \cdot \overline{w} = |z|^2 |w|^2$.
 \end{enumerate}
 
 \begin{comment}
@@ -83,7 +96,7 @@ $Arg(z) = \{\phi \in \RR \mid \cos \phi = \frac{a}{|z|}, \sin \phi = \frac{b}{|z
     \begin{align*}
         z_1 z_2 &= |z_1||z_2|(\cos \phi_1 + i \sin \phi_1)(\cos \phi_2 + i \sin \phi_2)  \\
                 &= |z_1||z_2|((\cos \phi_1 \cos \phi_2 - \sin \phi_1 \sin \phi_2) + i(\cos \phi_1 \sin \phi_2 + \sin \phi_1 \cos \phi_2)) \\
-                &= |z_1||z_2|(\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2))
+                &= |z_1||z_2|(\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2)) \qedhere
     .\end{align*}
 \end{proof}
 
@@ -141,12 +154,12 @@ $z = w^n = |w|^n (\cos (n \psi) + i \sin (n \psi))$
 
 Отсюда,
 \begin{equation*}
-	z = w^n \iff
+    z = w^n \iff
     \begin{cases}
         |z| = |w|^n  \\
         n \psi = \phi + 2 \pi k \text{, для некоторого } k \in \ZZ
     \end{cases}
-	\iff
+    \iff
     \begin{cases}
         |w| = \sqrt[n]{|z|}  \\
         \psi = \frac{\phi + 2 \pi k}{n} \text{, для некоторого } k \in \ZZ
@@ -155,7 +168,7 @@ $z = w^n = |w|^n (\cos (n \psi) + i \sin (n \psi))$
 
 С точностью до $2 \pi l$, $l \in \ZZ$, получается ровно $n$ различных значений для $\psi$, при $k = 0, 1, \dots, n-1$.
 
-В результате $\sqrt[n]{z} = \{w_0, w_1, \dots, w_{n-1} \}$, где $w_m = \sqrt[n]{|z|}\left(\cos \frac{\phi + 2 \pi k}{n} + i \sin \frac{\phi + 2 \pi k}{n}\right)$
+В результате $\sqrt[n]{z} = \{w_0, w_1, \dots, w_{n-1} \}$, где $w_k = \sqrt[n]{|z|}\left(\cos \frac{\phi + 2 \pi k}{n} + i \sin \frac{\phi + 2 \pi k}{n}\right)$
 
 \begin{comment}
     Числа $w_0, w_1, \dots, w_{n-1}$ лежат в вершинах правильного n-угольника с центром в начале координат.
@@ -221,7 +234,7 @@ $\deg(f \cdot g) = \deg f + \deg g$.
 
 \subsection{Теорема Безу}
 
-Частный случай: $g(x) = x - c$, $\deg g(x) = 1$:
+Частный случай деления многочлена $f(x)$ на многочлен $g(x)$ с остатком: $g(x) = x - c$, $\deg g(x) = 1$:
 
 $f(x) = q(x) (x - c) + r(x)$, где либо $r(x) = 0$, либо $\deg r(x) < g(x) = 1$
 
@@ -263,4 +276,3 @@ $f(x) = q(x) (x - c) + r(x)$, где либо $r(x) = 0$, либо $\deg r(x) < 
 
     Иными словами, $f(z)$ имеет ровно $n$ корней с учетом кратностей.
 \end{corollary}
-

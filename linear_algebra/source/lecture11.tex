@@ -39,7 +39,7 @@ $\langle S \rangle = \{\text{все линейные комбинации кон
 
         $S = \varnothing \implies \langle \varnothing \rangle = \{\overrightarrow{0}\} \implies \overrightarrow{0} \in \langle S \rangle$.
 
-        $S \neq \varnothing \implies \exists V \in S \implies \underbracket{0 V}_{\in \langle S \rangle} = \overrightarrow{0} = \overrightarrow{0} \in \langle S \rangle$.
+        $S \neq \varnothing \implies \exists V \in S \implies \underbracket{0 V}_{\in \langle S \rangle} = \overrightarrow{0} \implies \overrightarrow{0} \in \langle S \rangle$.
 
     \item 
         Пусть $v, w \in \langle S \rangle$:
@@ -137,7 +137,7 @@ $\langle S \rangle = \{\text{все линейные комбинации кон
             $v_i = \beta_1 v_1 + \dots + \beta_{i - 1} v_{i - 1} + \beta_{i + 1} v_{i + 1} + \dots + \beta_n v_n \implies $
             
             \begin{equation*}
-                b_1 v_1 + \dots + \beta_{i - 1} v_{i - 1} + \underbrace{(-1)}_{\neq 0} v_i + \beta_{i + 1} v_{i + 1} + \dots + \beta_n v_n = \overrightarrow{0}
+                \beta_1 v_1 + \dots + \beta_{i - 1} v_{i - 1} + \underbrace{(-1)}_{\neq 0} v_i + \beta_{i + 1} v_{i + 1} + \dots + \beta_n v_n = \overrightarrow{0}
             .\end{equation*}
 
             (нетривиальная линейная комбинация с $i$-м скаляром $\neq 0$). \qedhere
@@ -152,7 +152,8 @@ $\langle S \rangle = \{\text{все линейные комбинации кон
 \subsection{Основная лемма о линейной зависимости}
 
 \begin{lemma}
-    Пусть есть две системы векторов $v_1, \dots, v_m$ и $w_1, \dots, w_n$, причем $m < n$ и $w_i \in \langle v_1, \dots, v_n \rangle \quad \forall i = 1, \dots, n$.
+    \label{lec11:osnovnaya_lemma_o_lin_zavisimosti}
+    Пусть есть две системы векторов $v_1, \dots, v_m$ и $w_1, \dots, w_n$, причем $m < n$ и $w_i \in \langle v_1, \dots, v_m \rangle \quad \forall i = 1, \dots, n$.
 
     Тогда векторы $w_1, \dots, w_n$ линейно зависимы.
 \end{lemma}
@@ -237,7 +238,7 @@ $\langle S \rangle = \{\text{все линейные комбинации кон
 \end{proof}
 
 
-\subsection{Размерность конечномерного векторного пространств}
+\subsection{Размерность конечномерного векторного пространства}
 
 \begin{definition}
     \textit{Размерностью} конечномерного векторного пространства называется число элементов в (любом) его базисе.
@@ -251,4 +252,3 @@ $\langle S \rangle = \{\text{все линейные комбинации кон
     \item $V = \{\overrightarrow{0}\} \implies \dim V = 0$ так как базисом $V$ будет $\varnothing$.
     \end{enumerate}
 \end{example}
-
