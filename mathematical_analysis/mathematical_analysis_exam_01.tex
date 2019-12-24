@@ -22,7 +22,7 @@
 
 \renewcommand*{\arraystretch}{1.5}
 
-\title{\HugeМатематический анализ, Коллоквиум 2}
+\title{\HugeМатематический анализ, Экзамен 1}
 \author{
 	Балюк Игорь \\
 	\href{https://teleg.run/lodthe}{@lodthe},
@@ -41,320 +41,493 @@
 
     \newpage
 
-    \section{Вопросы предварительной части коллоквиума}
-
-	Список вопросов предварительной части коллоквиума, ответ на которые	необходим для подготовки к основной части.
-
-    \begin{colloq}
-    
-    \defitem{Определение непрерывности функции в точке.}
-
-    	Функция $f(x)$ непрерывна в точке $x_0$, если она определена на некоторой окрестности этой точки и $\lim_{x \to x_0} f(x) = f(x_0)$. Другими словами, $A = f(x_0)$ и справедливы следующие определения предела функции в точке $x_0$:
-
-    	\begin{itemize}
-    		\item
-    		\italicbold{По Коши}:
-    		\begin{equation*}
-    			\forall \eps > 0 \ \exists \delta > 0: \ \forall x, 0 < |x - x_0| < \delta \implies |f(x) - A| < \eps
-    		\end{equation*}
-
-
-    		\item
-    		\italicbold{По Гейне}:
-    		\begin{equation*}
-    			\forall \{x_n\}: \; x_n \in \overset{\circ}{U}(x_0), \lim_{n \to \infty} x_n = x_0 \implies 
-    			\lim_{n \to \infty} f(x_n) = A
-    		\end{equation*}
-    	\end{itemize}
-
-	\defitem{Точки разрыва, их классификация.}
-
-		Пусть $f(x)$ определена в некоторой окрестности $U_{\delta}(a)$ и функция разрывна в $a$. Тогда этот разрыв является одним из следующих:
-
-		\begin{itemize}
-			\item
-			\italicbold{Устранимый разрыв}: пределы $f(x)$ справа и слева существуют и равны друг другу, но отличаются от значения функции в исследуемой точке:
-			\begin{equation*}
-				\lim_{x \to a - 0} f(x) = \lim_{x \to a + 0} f(x) \neq f(a)
-			\end{equation*}
-
-			\item
-			\italicbold{Неустранимый разрыв первого рода}: пределы $f(x)$ справа и слева существуют, но не равны друг другу
-
-			\item
-			\italicbold{Неустранимый разрыв второго рода}: хотя бы один из односторонних пределов $f(x)$ не существует или равен бесконечности.
-		\end{itemize}
-
-	\defitem{Теорема о непрерывности сложной функции.}
-
-		\begin{theorem*}
-			Пусть функция $g(x)$ непрерывна в точке $a_0$ и функция $f(x)$ непрерывна в точке $b_0~=~g(a_0)$. Тогда функция $f(g(x))$ непрерывна в точке $a_0$.
-		\end{theorem*}
-
-	\defitem{Формулировки первой и второй теорем Вейерштрасса.}
-
-		\begin{namedtheorem}[Вейерштрасса (первая)]
-			Если функция $f(x)$ непрерывна на отрезке $[a, b]$, то она ограничена на этом отрезке.
-		\end{namedtheorem}
-
-		\begin{namedtheorem}[Вейерштрасса (вторая)]
-			Непрерывная на отрезке $[a, b]$ функция $f$ достигает на нем своих точных нижней и верхней граней. То есть существуют такие точки $x_1, x_2 \in [a, b]$, так что для любого $x \in [a, b]$, выполняются неравенства:
-			\begin{equation*}
-				f(x_1) \leq f(x) \leq f(x_2)
-			\end{equation*}
-		\end{namedtheorem}
-
-	\defitem{Понятие производной функции в точке.}
-
-		Рассмотрим функцию, область определения которой содержит точку $x_0$. Тогда функция $f(x)$ является дифференцируемой в точке $x_0$, и ее производная определяется $f'(x_0)$, если следующий предел существует:
-		\begin{equation*}
-			f'(x_0) = \lim_{\Delta \to 0} \dfrac{f(x_0 + \Delta) - f(x_0)}{\Delta}
-		\end{equation*}
-
-	\defitem{Геометрический и физический смысл производной.}
-
-		\textbf{Геометрический смысл производной}. Производная в точке $x_0$ равна угловому коэффициенту касательной к графику функции $y = f(x)$ в этой точке.
-
-		\textbf{Физический смысл производной}. Если точка движется вдоль оси $OX$ и ее координата изменяется по закону  $x(t)$, то мгновенная скорость точки: $v(t) = x'(t)$.
-
-	\defitem{Уравнение касательной к графику функции в точке.}
-
-		Пусть дана функция $f$, которая в некоторой точке $x_0$ имеет конечную производную $f(x_0)$. Тогда прямая, проходящая через точку $(x_0; f(x_0))$, имеющая угловой коэффициент $f’(x_0)$, называется касательной.
-
-		Итак, пусть дана функция $y = f(x)$, которая имеет производную $y = f’(x)$ на отрезке $[a, b]$. Тогда в любой точке $x_0 \in (a; b)$ к графику этой функции можно провести касательную, которая задается уравнением:
-		\begin{equation*}
-			y = f'(x_0) \cdot (x - x_0) + f(x_0)
-		\end{equation*}
-
-		\href{https://ege-ok.ru/2014/02/16/uravnenie-kasatelnoy}{Подробнее тут}
-
-	\defitem{Понятие дифференцируемости функции в точке.}
-
-		Функция $f(x)$ является дифференцируемой в точке $x_0$ своей области определения $D[f]$, если существует такая константа A, что:
-		\[\begin{gathered}
-			f(x) = f(x_0) + A(x - x_0) + \os(x - x_0) \\
-			\text{и} \\
-			A = f'(x_0) = \lim_{\Delta x \to 0} \dfrac{\Delta y}{\Delta x} = \lim_{x \to x_0} \dfrac{f(x) - f(x_0)}{x - x_0}
-		\end{gathered}\]
-
-	\defitem{Правила дифференцирования (производная суммы, произведения, частного).}
-
-		Пусть функции $f(x)$ и $g(x)$ имеют производные в точке $x_0$. Тогда,
-		\[\begin{gathered}
-			(g + f)'(x_0) = g'(x_0) + f'(x_0) \\
-			(g \cdot f)'(x_0) = g'(x_0) \cdot f(x_0) + g(x_0) \cdot f'(x_0) \\
-		\end{gathered}\]
-
-		Если $g(x_0) \neq 0$, то
-		\begin{equation*}
-			\left(\dfrac{f}{g}\right)'(x_0) = \dfrac{f'(x_0) \cdot g(x_0) - f(x_0) \cdot g'(x_0)}{g(x_0)^2}
-		\end{equation*}
-
-	\defitem{Формула вычисления производной сложной функции.}
-
-		Если $g(x)$ дифференцируема в точке $x_0$ и $f(x)$ дифференцируема в точке $y_0 = g(x_0)$, тогда,
-		\begin{equation*}
-			(f \circ g)'(x_0) = (f(g(x_0)))' = f'(g(x_0)) \cdot g'(x_0)
-		\end{equation*}
-
-	\defitem{Таблица производных основных элементарных функций.}
-
-		{
-			\everymath{\textstyle}
-			\begin{figure}[H]
-				\centering
-					\begin{tabular}{| c | c |} \hline
-					$f(x) $&$ f'(x) $\\\hline
-					$const $&$ 0 $\\\hline
-					$x^a $&$ a \cdot x^{a - 1} $\\\hline
-					$a^x $&$ a^x \cdot \ln a $\\\hline
-					$e^x $&$ e^x $\\\hline
-					$\log_a x $&$ \frac{1}{\ln a \cdot x} $\\\hline
-					$\ln x $&$ \frac{1}{x} $\\\hline
-					$\sin x $&$ \cos x $\\\hline
-					$\cos x $&$ -\sin x $\\\hline
-					$\tg x $&$ \frac{1}{\cos^2 x} $\\\hline
-					$\ctg x $&$ -\frac{1}{\sin^2 x} $\\\hline
-				\end{tabular}\quad\quad\quad
-				\begin{tabular}{| c | c |} \hline
-					$f(x) $&$ f'(x) $\\\hline
-					$\arcsin x $&$ \frac{1}{\sqrt{1 - x^2}} $\\\hline
-					$\arccos x $&$ -\frac{1}{\sqrt{1 - x^2}} $\\\hline
-					$\arctg x $&$ \frac{1}{1 + x^2} $\\\hline
-					$\arcctg x $&$ -\frac{1}{1 + x^2} $\\\hline
-				\end{tabular}
-			\end{figure}
-
-		}
-
-
-	\defitem{Понятие дифференциала (первого) функции в точке.}
-
-		Функция $f(x)$ является дифференцируемой в точке $x_0$ своей области определения $D[f]$, если существует такая константа A, что:
-		\[\begin{gathered}
-			f(x) = f(x_0) + A(x - x_0) + \os(x - x_0) \\
-			A = f'(x_0) = \lim_{\Delta \to 0} \dfrac{f(x_0 + \Delta) - f(x_0)}{\Delta} \\
-		\end{gathered}\]
-
-		Тогда выражение $f'(x_0) dx$ называют дифференциалом функции $f(x)$ в точке $x_0$. Обозначение: $df~=~df(x_0, dx)$. Обратите внимание, что $df$ зависит и от точки, и от $dx$.
-
-	\stepcounter{subsection}
-	\stepcounter{colloqi}
-
-	\defitem{Определение локального экстремума. Необходимое условие для внутреннего локального экстремума (теорема Ферма).}
-
-		Точка $x_0$ называется точкой локального максимума (минимума) функции $f$, если существует такая окрестность $U_{\delta} (x_0)$ точки $x_0$, что 
-		\begin{equation*}
-			\forall x \in U_{\delta}(x_0) \implies f(x) \leq f(x_0) \text{ (для минимума соответственно $f(x) \geq f(x_0)$)}
-		\end{equation*}
-
-		$x_0$ называется точкой строгого локального максимума (минимума), если
-		\begin{equation*}
-			\forall x \in \overset{\circ}{U_{\delta}} (x_0) \implies f(x) < f(x_0) \text{ (для минимума соответственно $f(x) > f(x_0)$)}
-		\end{equation*}
-
-		\begin{namedtheorem}[Ферма]
-			Если функция имеет в точке локального экстремума производную, то эта производная равна нулю.
-		\end{namedtheorem}
-
-	\defitem{Формулы Лагранжа и Коши.}
-
-		\begin{namedtheorem}[Лагранжа. Формула конечных приращений]
-			Если функция $f(x)$ непрерывна на отрезке $[a, b]$ и дифференцируема на интервале $(a, b)$, то в этом интервале существует хотя бы одна точка $x_0$, что
-			\begin{equation*}
-				\dfrac{f(b) - f(a)}{b - a} = f'(x_0)
-			\end{equation*}
-		\end{namedtheorem}
-
-		\begin{namedtheorem}[Коши. Обобщает формулу конечных приращений Лагранжа.]
-			Пусть функции $f(x)$ и $g(x)$ непрерывны на отрезке $[a, b]$ и дифференцируемы на интервале $(a, b)$, причем $g'(x) \neq 0$ при всех $x \in (a, b)$. Тогда в этом интервале существует точка $x = \xi$ такая, что
-			\begin{equation*}
-				\dfrac{f(b) - f(a)}{g(b) - g(a)} = \dfrac{f'(\xi)}{g'(\xi)}
-			\end{equation*}
-		\end{namedtheorem}
-
-	\defitem{Многочлен Тейлора и формула Тейлора для функций одной переменной.}
-
-		Предположим, что имеется некоторая функция $f(x)$ и надо исследовать ее поведение в некоторой точке $x_0$ или ее окрестности. Сама функция может быть при этом достаточно сложной, и поэтому непосредственное вычисление $\lim_{x \to x_0} f(x)$ (как пример того, что мы хотим узнать о функции в $x_0$) окажется крайне трудоемким. Идея в том, чтобы найти такой многочлен $P_n(x)$, что $f(x) \sim P_n(x - x_0)$ при $x \to x_0$, а затем исследовать его. Работать с многочленами практически всегда намного проще.
-
-		Предположим пока, что $x_0 = 0$. Тогда $P_n(x) = c_0 + c_1x + c_2x^2 + \dots + c_nx^n$. $P_n(0) = c_0$, а $P_n'(x) = c_1 + 2c_2x + \dots + nc_nx^{n - 1}$, из чего следует, что $c_1 = P_n'(0)$. По аналогии можно получить, что $c_2 = \dfrac{P_n''(0)}{2!}, \dots, c_n = \dfrac{P_n^{(n)}(0)}{n!}$. Т.е. получаем, что $P_n(x) = P_n(0) + \dfrac{P_n'(0)}{1!}x + \dots + \dfrac{P_n^{(n)}(0)}{n!} x^n$.
-
-		Пусть $\exists f^{(n)}(x_0)$, тогда справедлива формула:
-		\begin{equation*}
-			f(x) = f(x_0) + \dfrac{f'(x_0)}{1!}(x - x_0) + \dfrac{f''(x_0)}{2!}(x - x_0)^2 + \dots + \dfrac{f^{(n)}(x_0)}{n!}(x - x_0)^n + r_n(f, x)
-		\end{equation*}
-
-		Эта формула называется \textbf{формулой Тейлора} и обычно записывается в виде:
-		\begin{equation*}
-			f(x) = \underbrace{\sum_{k = 0}^n \dfrac{f^{(k)}(x_0)}{k!} \cdot (x - x_0)^k}_{\text{многочлен Тейлора}} + \underbrace{r_n(f, x)}_{\text{остаточный член}}
-		\end{equation*}
-
-
-	\defitem{Формулы Маклорена для основных элементарных функций.}
-
-		При $x_0 = 0$ формула Тейлора с остаточным членом в форме Пеано называется формулой Маклорена
-
-		Приведем пример: $f(x) = \sin x$. Вспомним, что
-		\begin{equation*}
-			f^{(n)}(x) = \sin \left(x + \dfrac{\pi n}{2}\right) \implies f^{(n)}(0) = \sin \left(\dfrac{\pi n}{2}\right) 
-			= \begin{cases}
-				0, \quad &\text{если $n = 2k$}, \\
-				(-1)^k, \quad &\text{если $n = 2k + 1$}
-			\end{cases}
-		\end{equation*}
-
-		Тогда получаем следующее разложение:
-		\begin{equation*}
-			\sin x = x - \dfrac{x^3}{3!} + \dfrac{x^5}{5!} - \dots + (-1)^{n - 1} \cdot \dfrac{x^{2n - 1}}{(2n - 1)!} + \os(x^{2n})
-		\end{equation*}
-
-		\begin{enumerate}[leftmargin=*]
-			\item
-			$e^x = 1 + \dfrac{x}{1!} + \dfrac{x^2}{2!} + \dots + \dfrac{x^n}{n!} + \os(x^n), x \to 0$
-
-			\item
-			$\ln(1 + x) = x - \dfrac{x^2}{2} + \dfrac{x^3}{3} - \dots + (-1)^{n + 1} \cdot \dfrac{x^n}{n} + \os(x^n), x \to 0$
-
-			\item
-			$\underset{\alpha \in \RR}{(1 + x)^{\alpha}} = 1 + \sum_{k = 1}^{n} \dbinom{\alpha}{k} x^k + \os(x^n)$
-
-			Например $(1 + x)^{\frac{1}{3}} - 1 = \dbinom{\frac{1}{3}}{1}x + \dbinom{\frac{1}{3}}{2} x^2 + \os(x^2) = \dfrac{1}{3} x + \dfrac{\frac{1}{3}(\frac{1}{3} - 1)}{2} x^2 + \os(x^2)$
-
-			\item
-			$\sin (x) = x - \dfrac{x^3}{3!} + \dfrac{x^5}{5!} - \dots + (-1)^{n - 1} \cdot \dfrac{x^{2n - 1}}{(2n - 1)!} + \os(x^{2n})$
-
-			\item
-			$\cos (x) = 1 - \dfrac{x^2}{2!} + \dfrac{x^4}{4!} + \dots + (-1)^{n} \dfrac{x^{2n}}{(2n)!} + \os(x^{2n + 1})$
-
-			\item
-			$\tg (x) = x + \dfrac{x^3}{3} + \dfrac{2}{15} x^5 + \dots + \dfrac{B_{2n}(-4)^n(1 - 4^n)}{(2n)!} \cdot x^{2n - 1} + \os(x^{2n - 1})$, где $B_{2n}$ --- числа Бернулли
-
-			Но достаточно помнить, что
-			$\tg (x) = x + \dfrac{x^3}{3} + \dfrac{2}{15}x^5 + \os(x^5)$, т.е. общая формула для семинаров \underline{не} нужна
-
-			\item
-			$\arcsin (x) = x + \dfrac{x^3}{6} + \dfrac{3}{40} x^5 + \dots + \dfrac{(2n)!}{4^n (n!)^2 (2n + 1)} \cdot x^{2n + 1} + \os(x^{2n + 1})$
-
-			Достаточно знать $\arcsin (x) = x + \dfrac{x^3}{6} + \dfrac{3}{40} x^5 + \os(x^5)$
-
-			\item
-			$\arccos (x) = \dfrac{\pi}{2} - \arcsin (x)$
-
-			\item
-			$\arctg(x) = x - \dfrac{x^3}{3} + \dfrac{x^5}{5} + \dots + (-1)^{n + 1} \dfrac{x^{2n - 1}}{2n - 1} + \os(x^{2n - 1})$
-		\end{enumerate}
-
-	\defitem{Правило Лопиталя.}
-
-		\begin{namedtheorem}[Лопиталя (первое правило)]
-			Если функции $f(x)$ и $g(x)$ таковы, что
-
-			\begin{enumerate}
-				\item
-				$f(x)$ и $g(x)$ дифференцируемы в проколотой окрестности точки $a$
-
-				\item
-				$\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0$
-
-				\item
-				$g'(x) \neq 0$ в окрестности $U$
-
-				\item
-				Существует $\lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
-			\end{enumerate}
-
-			Тогда существует $\lim_{x \to a} \dfrac{f(x)}{g(x)} = \lim_{x \to a} \dfrac{f'(x)}{g'(x)}$
-		\end{namedtheorem}
-
-		\begin{namedtheorem}[Лопиталя (второе правило)]
-			Если для функций $f(x)$ и $g(x)$ справедливо следующее:
-
-			\begin{enumerate}
-				\item
-				$f(x)$ и $g(x)$ дифференцируемы на интервале $(a, b)$
-
-				\item
-				$\lim_{x \to a + 0} f(x) = \lim_{x \to a + 0} g(x) = \infty$
-
-				\item
-				$g'(x) \neq 0$ при $x \in (a, b)$
-
-				\item
-				Существует $\lim_{x \to a + 0} \dfrac{f'(x)}{g'(x)} = A$
-			\end{enumerate}
-
-			Тогда $\lim_{x \to a + 0} \dfrac{f(x)}{g(x)} = \lim_{x \to a + 0} \dfrac{f'(x)}{g'(x)} = A$
-		\end{namedtheorem}
-
-    \end{colloq}
-
-    \section{Вопросы на знание доказательств}
+    \section{Вопросы}
     \begin{colloq}
     %\setlength\parindent{20pt}
 
-    \proofitem{Определение непрерывности функции в точке. Точки разрыва, их классификация.}
+    \proofitem{Числовые последовательности. Примеры.}
 
-    	Функция $f(x)$ непрерывна в точке $x_0$, если она определена на некоторой окрестности этой точки $\lim_{x \to x_0} f(x) = f(x_0)$. Другими словами, $A = f(x_0)$ и справедливы следующие определения предела функции в точке $x_0$:
+    	\underline{Определение из википедии}: Пусть $X$ --- это либо множество вещественных чисел $\RR$, либо множество комплексных чисел $\CC$. Тогда последовательность $\{x_n\}_{n = 1}^{\infty}$ элементов множества $X$ называется \textbf{числовой последовательностью}.
+
+		\underline{Определение из Ёжика}: Отображение $\NN \mapsto X$ будем называть последовательностью и записывать как $x_1, x_2, \dots, x_n$. Отображение $\NN \mapsto \RR$ будем называть \textbf{числовой последовательностью}.
+
+		Примеры:
+		\begin{itemize}
+			\item
+			$\{1/n\}_{n=1}^{\infty}$ является бесконечной последовательностью рациональных чисел. Элементы этой последовательности начиная с первого имеют вид $1,1/2,1/3,1/4,1/5,\ldots$.
+
+			\item
+			$\left((-1)^{n}\right)_{{n=1}}^{{\infty }}$ является бесконечной последовательностью целых чисел. Элементы этой последовательности начиная с первого имеют вид $-1,1,-1,1,-1,\ldots$.
+		\end{itemize}
+
+	\proofitem{Понятие предела последовательности.}
+
+		Число $a$ называется пределом числовой последовательности $\{x_n\}$, если
+		\begin{equation*}
+			\forall \eps > 0, \exists N(\eps): \forall n \geq N(\eps) \implies |x_n - a| < \eps
+		\end{equation*}
+
+	\proofitem{Ограниченные и неограниченные последовательности.}
+
+		\begin{itemize}
+			\item
+			Ограниченная сверху последовательность --- это последовательность элементов множества $\RR$, все члены которой не превышают некоторого элемента из этого множества. Этот элемент называется верхней гранью данной последовательности (говоря в общем, это верно и не только для $\RR$).
+			\begin{equation*}
+				\{x_n\} \text{ ограниченная сверху } \iff \exists M \in \RR: \; \forall n \implies x_n \leq M
+			\end{equation*}
+
+			\item
+			Ограниченная снизу последовательность --- это последовательность элементов множества $\RR$, для которой в этом множестве найдётся элемент, не превышающий всех её членов. Этот элемент называется нижней гранью данной последовательности.
+			\begin{equation*}
+				\{x_n\} \text{ ограниченная снизу } \iff \exists m \in \RR: \; \forall n \implies x_n \geq m
+			\end{equation*}
+
+			\item
+			Ограниченная последовательность (ограниченная с обеих сторон последовательность) --- это последовательность, ограниченная и сверху, и снизу.
+			\begin{equation*}
+				\{x_n\} \text{ ограниченная } \iff \exists M, m \in \RR: \; \forall n \implies m \leq x_n \leq M
+			\end{equation*}
+
+			\item
+			Неограниченная последовательность --- это последовательность, которая не является ограниченной.
+			\begin{equation*}
+				\{x_n\} \text{ неограниченная } \iff \forall M, m \in \RR: \; \exists N \implies (x_N < m) \lor (x_N > M)
+			\end{equation*}
+		\end{itemize}
+
+		\underline{Критерий ограниченности}: Числовая последовательность является ограниченной тогда и только тогда, когда существует такое число, что модули всех членов последовательности не превышают его.
+		\begin{equation*}
+			\{x_n\} \text{ ограниченная } \iff \exists A \in \RR: \; \forall N \implies |x_N| \leq A
+		\end{equation*}
+
+	\proofitem{Теорема об ограниченности сходящейся последовательности.}
+
+		\begin{theorem*}
+			Всякая сходящаяся последовательность ограничена.
+		\end{theorem*}
+
+		\begin{proof}
+			Все члены последовательности, кроме конечного их числа, принадлежат окрестности предела --- ограниченному множеству.
+
+			Пусть последовательность $\{x_n\}$ сходится к $a$, т.е. $\lim\limits_{n \to \infty} x_n = a$. 
+			\begin{equation*}
+				\forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |x_n - a| < \eps
+			\end{equation*}
+			Пусть $\eps = 1$, тогда $A = \max\{|x_1|, \dots, |x_N|, |a - \eps|, |a + \eps|\}$. Тогда, $\forall n \in \NN: \; |x_n| \leq A$.
+		\end{proof}
+
+	\proofitem{Теорема о единственности предела сходящейся последовательности.}
+
+		\begin{theorem*}
+			Если предел числовой последовательности существует, то он единственный.
+		\end{theorem*}
+
+		\begin{proof}
+			 Доказательство теоремы проведем «методом от противного». Предположим, что теорема неверна. Тогда, пусть $\lim_{n \to \infty} x_n = a = b$ и выполняется следующее:
+			 \begin{equation*}
+			 	\begin{cases}
+			 		a < b, \\
+			 		\forall \eps > 0, \exists N_1(\eps): \forall n \geq N_1(\eps) \implies |x_n - a| < \eps, \\
+			 		\forall \eps > 0, \exists N_2(\eps): \forall n \geq N_2(\eps) \implies |x_n - b| < \eps, \\
+			 	\end{cases}
+			 \end{equation*}
+			 Положим $\eps = \dfrac{b - a}{2}$ и $N = max\{N_1(\eps), N_2(\eps)\}$. Тогда, $\forall n \geq N \implies  |x_n - a| < \eps \; \land \; |x_n - b| < \eps$. Возьмём $n \geq N$, тогда,
+			 \begin{equation*}
+			 	b - a = |b - a| = |b - x_n + x_n - a| \leq |x_n - b| + |x_n - a| < \dfrac{b - a}{2} + \dfrac{b - a}{2} = b - a
+			 \end{equation*}
+			 Пришли к противоречию ($b - a < b - a$).
+		\end{proof}
+
+	\proofitem{Теорема о переходе к пределу в неравенствах.}
+
+		\begin{theorem*}
+		Если элементы сходящейся последовательности $\{x_n\}$, начиная с некоторого номера, удовлетворяют неравенству $x_n \geq b \; (x_n \leq b)$, то и предел $a$ этой последовательности удовлетворяет неравенству $a \geq b \; (a \leq b)$.
+		\end{theorem*}
+
+		\begin{proof}
+			Пусть все элементы $x_n$, по крайней мере начиная с некоторого номера, удовлетворяют неравенству $x_n \geq b$. Требуется доказать неравенство $a \geq b$. 
+
+			Предположим, что $a < b$. Поскольку $a$ - предел последовательности $\{x_n\}$, то для положительного $\eps = b - a$ можно указать номер $N$ такой, что при $n \geq N$ выполняется неравенство $|x_n - a| < b - a$. Это неравенство эквивалентно следующим двум неравенствам: $-(b - a) < x_n - a < b - a$. Используя правое из этих неравенств, получим $x_n < b$, а это противоречит условию теоремы. Случай $x_n \leq b$ рассматривается аналогично..
+		\end{proof}
+
+		\begin{remark}
+			Элементы сходящейся последовательности $\{x_n\}$ могут удовлетворять строгому неравенству $x_n > b$, однако при этом предел $a$ может оказаться равным $b$. Например, если $x_n = \dfrac{1}{n}$, то $x_n > 0$, однако $\lim\limits_{n \to \infty} x_n = 0$.
+		\end{remark}
+
+	\proofitem{Теорема о вынужденном пределе.}
+
+		\begin{theorem*}
+			Если $\forall n \in \NN: x_n \leq y_n \leq z_n$ и $\exists \lim\limits_{n \to \infty} x_n = a = \lim\limits_{n \to \infty} z_n$, тогда $\lim\limits_{n \to \infty} y_n = a$.
+		\end{theorem*}
+
+		\begin{proof}
+			Из определения предела $\{x_n\}$, $\forall \eps > 0 \; \exists N_1: \; \forall n \geq N_1 \implies |x_n - a| < \eps \iff a - \eps < x_n < a + \eps$. Аналогично для предела $\{z_n\}$, $\forall \eps > 0 \; \exists N_2: \; \forall n \geq N_2 \implies |z_n - a| < \eps \iff a - \eps < z_n < a + \eps$. 
+
+			Тогда, 
+			$\forall n \geq \max \{N_1, N_2\} \implies a - \eps < x_n \leq y_n \leq z_n < a + \eps \implies \lim\limits_{n \to \infty} y_n = a$.
+		\end{proof}
+
+	\proofitem{Теорема о сходимости монотонных ограниченных последовательностей.}
+
+		\begin{theorem*}
+			Неубывающая числовая последовательность имеет предел, причём он в точности равен точной верхней границе (нижней границе, для ограниченной невозрастающей ч.п.).
+		\end{theorem*}
+
+		\begin{proof}
+			Пусть $\{x_n\}$ --- ограниченная неубывающая числовая последовательность. Тогда множество $\{x_n\}_{n \in \NN}$ ограничено, следовательно, из определения супремума, имеет супремум. Обозначим его через $S$. Тогда $\lim\limits_{n \to \infty} x_n = S$. Действительно, так как $S = sup \{x_n\}_{n \in \NN}$, то
+			\begin{equation*}
+				\forall \eps > 0 \; \exists N: \; \forall n \geq N \implies S - \eps < x_N \leq x_n \leq S \implies |x_n - S| < \eps
+			\end{equation*}
+		\end{proof}
+
+		Аналогичное доказательство для ограниченной невозрастающей ч.п.
+
+	\proofitem{Определение числа е.}
+
+		\begin{equation*}
+			e = \sum_{n = 0}^{\infty} \dfrac{1}{n!}
+		\end{equation*}
+
+		\begin{theorem*}
+			Последовательность с общим членом $e_n = \left(1 + \dfrac{1}{n}\right)^n$ имеет конечный предел при $n \to \infty$. Для обозначение этого предела используется символ $e$.
+		\end{theorem*}
+
+		\begin{proof}
+			Докажем сначала, что $\{e_n\}$ представляет собой монотонно возрастающую последовательность. Согласно биному Ньютона,
+			\begin{align*}
+				e_n = \left(1 + \frac{1}{n}\right)^n 
+				&= 1 + n \cdot \frac{1}{n} + \frac{n (n - 1)}{2!} \cdot \frac{1}{n^2} + \frac{n(n - 1)(n - 2)}{3!} \cdot \frac{1}{n^3} + \dots + \frac{1}{n^n} \\
+				&= 2 + \frac{1}{2!} \cdot \left(1 - \frac{1}{n}\right) + \frac{1}{3!} \cdot \left(1 - \frac{1}{n}\right) \cdot \left(1 - \frac{2}{n}\right) + \frac{1}{n!} \cdot \left(1 - \frac{1}{n}\right) \dots \left(1 - \frac{1}{n - 1}\right)
+			\end{align*}
+			\begin{align*}
+				e_{n + 1} &= \left(1 + \frac{1}{n + 1}\right)^{n + 1} \\
+				&= 2 + \frac{1}{2!} \cdot \left(1 - \frac{1}{n + 1}\right) + \frac{1}{3!} \cdot \left(1 - \frac{1}{n + 1}\right) \cdot \left(1 - \frac{2}{n + 1}\right) + \dots
+			\end{align*}
+			Сравним $e_n$ и $e_{n + 1}$:
+			\begin{itemize}
+				\item
+				Оба выражения содержат только положительные слагаемые
+
+				\item
+				Начиная со второго слогаемого, каждый член в выражении $e_{n + 1}$ превышает соответствующий член в $e_n$, так как
+				\begin{equation*}
+					\left(1 - \frac{1}{n}\right) < \left(1 - \frac{1}{n + 1}\right),
+					\left(1 - \frac{2}{n}\right) < \left(1 - \frac{2}{n + 1}\right) \dots
+				\end{equation*}
+
+				\item
+				Выражение $e_{n + 1}$ состоит из большего числа слагаемых. Следовательно, $e_{n + 1} > e_n$.
+			\end{itemize}
+
+			Далее докажем, что последовательность $\{e_n\}$ является ограниченной. Действительно, первый член любой монотонно возрастающей последовательности является ее наибольшей нижней границей и, таким образом, $e_n \geq 2 \; \forall n \in \NN$.
+
+			Перейдем к доказательству существования верхней границы. Очевидно, что
+			\begin{align*}
+				e_n 
+				&= 2 + \frac{1}{2!} \cdot \left(1 - \frac{1}{n}\right) + \frac{1}{3!} \cdot \left(1 - \frac{1}{n}\right) \cdot \left(1 - \frac{2}{n}\right) + \frac{1}{n!} \cdot \left(1 - \frac{1}{n}\right) \dots \left(1 - \frac{1}{n - 1}\right) <\\
+				&< 2 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + \frac{1}{5!} + \dots + \frac{1}{n!}
+			\end{align*}
+
+			Кроме того, $\dfrac{1}{k!} < \dfrac{1}{2^k} \; \forall k > 3$. Тогда,
+			\begin{equation*}
+				\frac{1}{4!} + \frac{1}{5!} + \dots + \frac{1}{n!} < 
+				\frac{1}{2^4} + \frac{1}{2^5} + \dots + \frac{1}{2^n}
+			\end{equation*}
+			Правая часть этого неравенства представляет собой сумму убывающей геометрической прогрессии, которая равна $\dfrac{\frac{1}{16}}{1 - \frac{1}{2}} = \dfrac{1}{8}$. Таким образом, последовательность
+			\begin{equation*}
+				e_n < 2 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + \frac{1}{5!} + \dots + \frac{1}{n!}
+				< 2 + \frac{1}{2} + \frac{1}{6} + \frac{1}{8} < 3
+			\end{equation*}
+			представляет собой ограниченную монотонно возрастающую последовательность и, следовательно, имеет конечный предел.
+		\end{proof}
+
+	\proofitem{Бесконечно малые последовательности.}
+
+		Последовательность $\{a_n\}$ называется бесконечно малой, если 
+		\begin{equation*}
+			\forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |a_n| < \eps
+		\end{equation*}
+
+		т.е. $\lim\limits_{n \to \infty} a_n = 0$.
+
+		\proofitem{Связь со сходящимися последовательностями.}
+
+		Если предел последовательности равен 0, то это бесконечно малая последовательность. Бесконечно малые последовательности являются сходящимися последовательностями.
+
+		Для того чтобы последовательность $\{x_n\}$ имела предел $b$, необходимо и достаточно, чтобы
+		$x_n = b + \alpha_n$, где $\alpha_n$ --- бесконечно малая последовательность.
+
+	\proofitem{Арифметические свойства бесконечно малых и сходящихся последовательностей.}
+
+		Пусть $\{\alpha_n\}$ --- бесконечно малая числовая последвательность.
+
+		\begin{theorem*}
+			$\{\alpha_n\}$ ограничена
+		\end{theorem*}
+
+		\begin{proof}
+			Как известно, $\forall \eps > 0 \; \exists N: \; \forall n > N \implies |\alpha_n| < \eps$. Значит, для всех $n > N$ доказано. Но $\forall n < N \implies \alpha_n \leq \max\{|\alpha_1|, |\alpha_2|, \dots, |\alpha_{N - 1}|\}$. Тогда выберем $\eps = 1, A = \max\{|\alpha_1|, |\alpha_2|, \dots, |\alpha_{N - 1}|, 1\} \implies \forall n \in \NN, |\alpha_n| \leq A$.
+		\end{proof}
+
+
+ 		\begin{theorem*}
+ 			Если $\{y_n\}$ ограничена, то $\{y_n \cdot \alpha_n\}$ --- бесконечно малая.
+ 		\end{theorem*}
+
+ 		\begin{proof}
+ 			$\{\alpha_n\}$ --- бесконечно малая, поэтому $\forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |\alpha_n| < \dfrac{\eps}{A}$. Ввиду ограниченности $\{y_n\}, \exists A: \; \forall n \in \NN \implies |y_n| \leq A$. Но тогда $\{y_n \cdot \alpha_n\}: \forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |y_n \cdot \alpha_n| < \dfrac{\eps}{A} \cdot A = \eps$.
+ 		\end{proof}
+
+
+ 		\begin{theorem*}
+ 			Если $\{\beta_n\}$ --- бесконечно малая, то $\{\alpha_n \pm \beta_n\}$ и $\{\alpha_n \cdot \beta_n\}$ --- бесконечно малые.
+ 		\end{theorem*}
+
+ 		\begin{proof}
+ 			\[\begin{gathered}
+ 				\forall \eps > 0 \; \exists N_1: \forall n \geq N_1 \implies |\alpha_n| < \frac{\eps}{2}
+ 				\text{ и }
+ 				\forall \eps > 0 \; \exists N_2: \forall n \geq N_2 \implies |\beta_n| < \frac{\eps}{2} \\
+ 				\text{Тогда при } N = \max\{N_1, N_2\} \implies \forall n \geq N \implies
+ 				|\alpha_n \pm \beta_n| \leq |\alpha_n| + |\beta_n| < \frac{\eps}{2} + \frac{\eps}{2} = \eps
+ 			\end{gathered}\]
+ 			Аналогично для произведения:
+ 			\[\begin{gathered}
+ 				\forall \eps > 0 \; \exists N_1: \forall n \geq N_1 \implies |\alpha_n| < \frac{1}{\eps}
+ 				\text{ и }
+ 				\forall \eps > 0 \; \exists N_2: \forall n \geq N_2 \implies |\beta_n| < \eps^2 \\
+ 				\text{Тогда при } N = \max\{N_1, N_2\} \implies \forall n \geq N \implies
+ 				|\alpha_n \cdot \beta_n| \leq |\alpha_n| \cdot |\beta_n| < \frac{1}{\eps} \cdot \eps^2 = \eps
+ 			\end{gathered}\]
+ 		\end{proof}
+
+	\proofitem{Арифметические свойства для последовательностей, имеющих конечные и бесконечные пределы.}
+
+		\begin{theorem*}
+			Если $\exists \lim\limits_{n \to \infty} x_n = a, \lim\limits_{n \to \infty} y_n = b$, то $\exists \lim\limits_{n \to \infty} (x_n \pm y_n) = a \pm b, \lim\limits_{n \to \infty} (x_n \cdot y_n) = a \cdot b$, а также $\lim\limits_{n \to \infty} \dfrac{x_n}{y_n} = \dfrac{a}{b}$, если $b \neq 0$.
+		\end{theorem*}
+
+		\begin{proof}
+			\[\begin{gathered}
+				\lim_{n \to \infty} x_n = a, \lim_{n \to \infty} y_n = b \iff x_n = a + \alpha_n, y_n = b + \beta_n, \text{ где } \{\alpha_n\} \{\beta_n\} \text{--- бесконечно малые.} \\
+				x_n \pm y_n = (a + \alpha_n) \pm (b + \beta_n) = (a \pm b) + \underbrace{(\alpha_n \pm \beta_n)}_{\text{б. м.}} \\
+				x_n \cdot y_n = (a + \alpha_n) \cdot (b + \beta_n) = a \cdot b + \underbrace{(\alpha_n \cdot \beta_n + \alpha_n \cdot b + \beta_n \cdot a)}_{\text{б.м.}}
+			\end{gathered}\]
+			\begin{lemma}
+				Пусть $\exists \lim\limits_{n \to \infty} y_n = b \neq 0$. Тогда $\exists r > 0: \exists N \in \NN: \forall n \geq N \implies |y_n| > r > 0$.
+			\end{lemma}
+			\begin{proof}
+				$\forall \eps > 0 \exists N: \forall n \geq N \implies |y_n - b| < \eps \implies b - \eps < y_n < b + \eps$. Пусть $\eps = \left|\dfrac{b}{2}\right|$, тогда $r < \left|\dfrac{b}{2}\right| < |y_n| < \left|\dfrac{3b}{2}\right|$.
+			\end{proof}
+			Рассмотрим последовательность $\left\{\dfrac{x_n}{y_n} - \dfrac{a}{b}\right\}$ --- бесконечно малая.
+			\[\begin{gathered}
+				\frac{x_n}{y_n} - \frac{a}{b} = \frac{a + \alpha_n}{b + \beta_n} - \frac{a}{b}
+				= \frac{b \cdot a + b \cdot \alpha_n - b \cdot a - \beta_n \cdot a}{y_n \cdot b}
+				= (\alpha_n \cdot b - \beta_b \cdot a) \cdot \frac{1}{y_n \cdot b}
+			\end{gathered}\]
+			По лемме $\left|\dfrac{1}{y_n \cdot b}\right| \leq max\left\{\left|\dfrac{1}{y_1 \cdot b}\right|, \dots, \left|\dfrac{1}{y_N \cdot b}\right|, \dfrac{1}{rb} \right\} \implies \left\{\dfrac{1}{y_n \cdot b}\right\}$ ограничена. Но тогда имеем произведение бесконечно малой и ограниченной последовательностей, значит, $\left\{\dfrac{x_n}{y_n} - \dfrac{a}{b}\right\}$ --- бесконечно малая.
+		\end{proof}
+
+	\proofitem{Неопределенности.}
+
+		\emph{Не очень понятно, что именно требуется в этом пункте}
+		
+		Основные виды неопределенностей: $\dfrac{0}{0}, \dfrac{\infty}{\infty}, 0 \cdot \infty, \infty - \infty, 1^{\infty}, 0^0, \infty^0$
+
+		Раскрывать неопределенность помогает:
+		\begin{itemize}
+			\item
+			упрощение вида функции (преобразование выражения с использованием формул сокращенного умножения, 
+
+			\item
+			тригонометрических формул, домножением на сопряженные выражения с последующим сокращением и т.п.);
+			использование замечательных пределов;
+		\end{itemize}	
+
+	\proofitem{Определение подпоследовательности.}
+
+		Подпоследоследовательность последовательности $\{x_n\}$ --- это последовательность $\{x_{n_k}\} = \{x_{n_1}, x_{n_2}, \dots, x_{n_k}\}$, полученная из $\{x_n\}$, удалением ряда её членов без изменения порядка следования членов. 
+
+		То есть подпоследовательность состоит из членов исходной последовательности $\{x_n\}$ с номерами $n_k$, где $\{n_k\}$ --- строго монотонная последовательность натуральных чисел. 
+
+		\begin{remark}
+			Если $\lim\limits_{n \to \infty} a_n = a$, тогда $\forall \{a_{n_k}\}: \lim\limits_{k \to \infty} a_{n_k} = a$
+		\end{remark}
+
+	\proofitem{Теорема Больцано-Вейерштрасса.}
+
+		\begin{theorem*}
+			Из любой ограниченной последовательности можно выделить сходящуюся подпоследовательность.
+		\end{theorem*}
+
+		\begin{proof}
+			Для понимания происходящего следует ознакомиться с \ref{sss:segments} Системой стягивающихся отрезков (ССО)
+
+			$\{x_n\}$ ограничена $\implies \exists [a, b]: \forall n \in N \implies a \leq x_n \leq b$. Поделим $[a; b]$ на две равные части. Хотя бы одна из частей (пусть это $[a_1; b_1]$) содержит бесконечно много элементов $\{x_n\}$.
+
+			Выберем на $[a_1; b_1]$ произвольный элемент $\{x_n\}$. Назовем его $x_{n_1}$. Далее делим $[a_1; b_1]$ на
+			две равные части. Хотя бы одна из этих частей содержит бесконечно много элементов $\{x_n\}$.
+			Обозначим ее $[a_2; b_2]$. Выберем $x_{n_2} \in [a_2; b_2]$. Будем продолжать выполнять указанные действия.
+			Обозначим за $x_{n_k}$ число, полученное на $k$-ом шаге, т.е. $x_{n_k} \in [a_k; b_k]$.
+
+			$\{[a_k; b_k]\}$ --- система стягивающихся отрезков. Тогда, существует единственное $c: \forall k \implies c \in [a_k; b_k]$.
+
+			$\lim\limits_{k \to \infty} a_k = \lim\limits_{k \to \infty} b_k = c \implies \exists \lim\limits_{k \to \infty} x_{n_k} = c$ (по теореме о двух милиционерах)
+		\end{proof}
+
+	\proofitem{Критерий Коши сходимости последовательности.}
+
+		\begin{theorem*}
+			Для того, чтобы последовательность $\{x_n\}$ сходилась, необходимо и достаточно, чтобы она была фундаментальной.
+
+			Последовательность называется фундаментальной, если 
+
+			$\forall \eps > 0 \; \exists N: \forall n, m \geq N: |x_n - x_m| < \eps$
+		\end{theorem*}
+
+		\begin{proof}
+			Докажем необходимость и достаточность.
+			\begin{itemize}
+				\item
+				\underline{Необходимость}:
+
+				Пусть $\lim\limits_{n \to \infty} x_n = a$ по определению:
+				\begin{equation*}
+					\forall \eps > 0: \; \exists N: \; \forall p \geq N \implies |x_p - a| < \eps
+				\end{equation*}
+				Поскольку $\eps$ произвольное, можно взять вместо него $\dfrac{\eps}{2}$
+				\[\begin{gathered}
+					p = m \geq N \implies |x_m - a| < \frac{\eps}{2} \\
+					p = n \geq N \implies |x_n - a| < \frac{\eps}{2} \\
+					|x_n - x_m| = |x_n - a + a - x_m| \leq |x_n - a| + |a - x_m| < \frac{\eps}{2} + \frac{\eps}{2} = \eps
+				\end{gathered}\]
+				То есть $|x_n - x_m| < \eps$, а значит $\{x_n\}$ фундаментальная по определению. Необходимость доказана
+
+				\item
+				\underline{Достаточность}:
+
+				Пусть $\{x_n\}$ --- фундаментальная последовательность, докажем, что она имеет предел. Сначала покажем, что $\{x_n\}$ --- ограничена. По определению фундаментальной последовательности
+				\begin{equation*}
+					\forall \eps > 0 \; \exists N: \forall n, m \geq N: |x_n - x_m| < \eps
+				\end{equation*}
+				Так как $\eps$ произвольное, возьмём $\eps = 1$. 
+				\[\begin{gathered}
+					|x_n| = |(x_n - x_N) + x_N| \leq \underbrace{|x_n - x_N|}_{\leq \eps} + |x_N| \leq 1 + |x_N| \\
+					\forall n \geq N \implies |x_n| \leq (1 + |x_N|) \; = const \leq A \implies |x_n| \leq A \\
+					A = \max\{1 + |x_N|; |x_1|; |x_2|; \dots; |x_N|\} \\
+					\forall n \geq N \implies |x_n| \leq A
+				\end{gathered}\]
+				По теореме \ref{sss:bolzano} Больцано-Вейерштрасса, так как $\{x_n\}$ --- ограниченная, $\{x_n\}$ имеет сходящуюся подпоследовательность $\{x_{n_k}\}$.
+
+				Пусть $\lim\limits_{k \to \infty} x_{n_k} = a$, покажем, что число $a$ и будет пределом всей последовательности $\{x_n\}$.
+
+				Так как $\{x_n\}$ фундаментальная:
+				\begin{equation*}
+					\forall \eps > 0: \; \exists N_1: \; \forall m, n \geq N_1 \implies |x_m - x_n| < \frac{\eps}{2}
+				\end{equation*}
+				Так как $\{x_{n_k}\}$ сходящаяся:
+				\[\begin{gathered}
+					\lim_{k \to \infty} x_{n_k} = a: \; \forall \eps > 0 \; \exists N_2: \; \forall n_k \geq n_{N_2} \implies |x_{n_k} - a| < \frac{\eps}{2} \\
+					\forall \eps > 0: \; |x_n - a| = |(x_n - x_{n_k}) + (x_{n_k} - a)| \leq |x_n - x_{n_k}| + |x_{n_k} - a| < \frac{\eps}{2} + \frac{\eps}{2} = \eps \\
+					\text{Возьмём } N = \max\{N_1, N_2\}: \; \forall \eps > 0 \; \exists N: \; \forall n \geq N \implies |x_n - a| < \eps
+				\end{gathered}\]
+				Достаточность доказана.
+			\end{itemize}
+		\end{proof}
+
+	\proofitem{Определение предела функции в точке по Коши и по Гейне.}
+
+		\begin{itemize}
+			\item
+			\underline{По Коши (или на языке $\eps - \delta$)}: \\$A$ --- предел функции $f(x)$ в точке $a$ ($\lim_{x \to a} f(x) = A$), если 
+
+			$\forall \eps > 0 \; \exists \delta > 0: \forall x: \; 0 < |x - a| < \delta \implies |f(x) - A| < \eps$
+
+			\item
+			\underline{По Гейне}: \\$A$ называется пределом функции $f(x)$ в точке $a$, если $\forall \{x_n\} \to a, x_n \neq a$ (т.е. $\lim_{n \to \infty} x_n = a$), соответствующая последовательность значений $f(x_n) \to A$ (т.е. $\lim_{n \to \infty} f(x_n) = A$)
+		\end{itemize}
+
+	\proofitem{Теорема об эквивалентности этих определений.}
+
+		\begin{itemize}
+			\item
+			Из определения по Коши следует определение по Гейне:
+
+			Выберем произвольную $\{x_n\} \to a, x_n \neq a$. По определению предела последовательности 
+			\begin{equation*}
+				\forall \delta > 0 \; \exists N: \; \forall n \geq N \implies |x_n - a| < \delta
+			\end{equation*}
+			Указанное неравенство выполняется для любого $\delta > 0$. Тогда какое бы $\eps > 0$ мы бы ни выбрали, можно найти $\delta > 0$, такое, что по определению по Коши будет выполняться
+			\begin{equation*}
+				\forall x: \; 0 < |x - a| < \delta \implies |f(x) - A| < \eps
+			\end{equation*}
+			т.е. $\{f(x_n)\} \to A$, а значит из сходимости по Коши следует сходимость по Гейне.
+
+			\item
+			Из определения по Гейне следует определение по Коши:
+
+			Пусть $\lim\limits_{n \to \infty} f(x_n) = A$ По Гейне. От противного: если $\lim\limits_{x \to a} f(x) = A$ по Гейне, то $\lim\limits_{x \to a} f(x) \neq A$ по Коши. Напишем отрицание определения по Коши:
+			\begin{equation*}
+				\exists \eps_0: \; \forall \delta > 0: \; \exists x: \; 0 < |x - a| < \delta: \; |f(x) - A| \geq \eps_0
+			\end{equation*}
+			Так как $\delta$ может быть любым, можно выбрать последовательность $\{\delta_n\} = \left\{\dfrac{1}{n}\right\}$, а соответствующие значения $x$ будем обозначать как $x_n$. Тогда $0 < |x_n - a| < \delta_n = \dfrac{1}{n}$, и $|f(x_n) - A| \geq \eps_0$. Отсюда следует, что последовательность $\{x_n\}$ является подходящей, но при этом число $A$ не является пределом функции $f(x)$ в точке $a$ (по Гейне). Пришли к противоречию.
+		\end{itemize}
+
+	\proofitem{Односторонние пределы, их связь с двусторонними. Пределы функции в бесконечности.}
+
+		Назовём число $A$ левым (правым) пределом $f$ по Коши, если:
+		\begin{equation*}
+			\forall \eps > 0 \; \exists \delta > 0: \; \forall x \in (a - \delta; a) (x \in (a; a + \delta)) \implies |f(x) - a| < A
+		\end{equation*}
+
+		Назовём число $A$ левым (правым) пределом $f$ по Гейне, если:
+		\begin{equation*}
+			\forall \{x_n\}: \; \forall n \in \NN, x_n \neq a, x_n < a \; (x_n > a) \text{ и } 
+			\lim_{n \to \infty} x_n = a \implies \{f(x_n)\} \xrightarrow[n \to \infty]{} A
+		\end{equation*}
+
+		Обозначим односторонние пределы так: $\lim\limits_{x \to a - 0} f(x) = A = f(a - 0)$ и 
+		$\lim\limits_{x \to a + 0} f(x) = A = f(a + 0)$. 
+		Таким образом, когда мы можем «подойти» к предельному значению функции, двигаясь по
+		$x$ к точке $a$ слева, говорят, что существует левый предел. Аналогично следует понимать и
+		определение правого предела. Поэтому если мы можем подойти к $a$ и слева, и справа, то
+		существует предел в точке $a$. В кванторах это значит следующее:
+		\[\begin{gathered}
+			\exists \lim_{x \to a} f(x) = A \iff \exists f(a - 0) = f(a + 0) = A \\
+			(\text{т. к. } \forall x: \; a - \delta < x < a \; \text{ и } \forall x: \; a < x < a + \delta \iff
+			\forall x: \; 0 < |x - a| < \delta)
+		\end{gathered}\]
+
+		Предел функции на бесконечности:
+		\begin{itemize}
+			\item
+			По Коши:
+			\begin{equation*}
+				\lim_{x \to \infty} f(x) = A \iff
+				\forall \eps > 0 \; \exists \delta > 0: \; \forall x \in D(f): \; |x| > \delta \implies |f(x) - A| < \eps
+			\end{equation*}
+
+			\item
+			По Гейне:
+			\begin{equation*}
+				\lim_{x \to \infty} f(x) = A \iff
+				\forall \{x_n\}: \; \lim_{n \to \infty} x_n = \infty \implies
+				\lim_{n \to \infty} f(x) = A
+			\end{equation*}
+		\end{itemize}
+
+	\addtocounter{subsection}{1}
+	\addtocounter{colloqi}{1}
+
+	\proofitem{[TODO(): ] Неопределенности. Теоремы о переходе к пределу в неравенствах, о вынужденном пределе.}
+
+	\proofitem{[TODO(): ] Первый и второй замечательные пределы.}
+
+	\proofitem{[TODO(): ] Критерий Коши существования конечного предела функции.}
+
+	\proofitem{Определение непрерывности функции в точке.}
+
+		Функция $f(x)$ непрерывна в точке $x_0$, если она определена на некоторой окрестности этой точки $\lim_{x \to x_0} f(x) = f(x_0)$. Другими словами, $A = f(x_0)$ и справедливы следующие определения предела функции в точке $x_0$:
 
     	\begin{itemize}
     		\item
@@ -372,7 +545,7 @@
     		\end{equation*}
     	\end{itemize}
 
-    	\textbf{Классицифкация разрывов:}
+    \proofitem{Точки разрыва, их классификация.}
 
     	Пусть $f(x)$ определена в некоторой окрестности $U_{\delta}(a)$ и функция разрывна в $a$. Тогда говорят, что функция имеет
 
@@ -521,6 +694,8 @@
 			Функция непрерывна на интервале может не достигать своих точных граней (требовать непрерывности на сегменте существенно).
 		\end{proof}
 
+	\proofitem{Критерий существования и непрерывности обратной функции на промежутке}
+
 	\proofitem{Теорема Коши о прохождении непрерывной функции через промежуточные значения.}
 
 		\begin{namedtheorem}[Больцано-Коши (первая), о нулях непрерывной функции]
@@ -582,9 +757,6 @@
 		\begin{equation*}
 			y = f'(x_0) \cdot (x - x_0) + f(x_0)
 		\end{equation*}
-
-	\stepcounter{subsection}
-	\stepcounter{colloqi}
 
 	\proofitem{Понятие дифференцируемости функции в точке.}
 
@@ -789,8 +961,14 @@
 			Формула доказана.
 		\end{proof}
 
-	\stepcounter{subsection}
-	\stepcounter{colloqi}
+	\proofitem{Теорема о дифференцируемости обратной функции}
+
+		\begin{theorem*}
+			Рассмотрим функцию $f(x)$, которая является строго монотонной на некотором интервале $(a, b)$. Если в этом интервале существует такая точка $x_0$, что $f'(x_0) \neq 0$, то функция $x = \phi(y)$, обратная к функции $y = f(x)$, также дифференцируема в точке $y_0 = f(x_0)$ и её производная равна
+			\begin{equation*}
+				\phi'(y_0) = \dfrac{1}{f'(x_0)}
+			\end{equation*}
+		\end{theorem*}
 
 	\proofitem{Таблица производных основных элементарных функций.}
 
@@ -833,10 +1011,16 @@
 		Тогда выражение $f'(x_0) dx$ называют дифференциалом функции $f(x)$ в точке $x_0$. Обозначение: $df~=~df(x_0, dx)$. Обратите внимание, что $df$ зависит и от точки, и от $dx$.
 
 	
-	\addtocounter{subsection}{2}
-	\addtocounter{colloqi}{2}
+	\proofitem{Инвариативность формы первого дифференциала}
 
-	\proofitem{[На коллоквиуме будет только производная высших порядков] Производные и дифференциалы высших порядков функции одной переменной в точке.}
+		Найдем выражение для дифференциала сложной функции. Пусть $y = f(u(x))$. Тогда
+		\begin{equation*}
+			dy = y'(x) \cdot dx = f'(u(x)) \cdot u'(x) \cdot dx = f' \cdot du
+		\end{equation*}
+
+		Таким образом, форма дифференциала не зависит от того, является аргумент функции независимой переменной или функцией другого аргумента. Это свойство называется свойством неизменности, или инвариантности, дифференциала.
+
+	\proofitem{Производные и дифференциалы высших порядков функции одной переменной в точке.}
 
 		Рассмотрим функцию, дифференцируемую на множестве $E$. Т.е. $\exists f'(x)$, Если $f'(x)$ тоже дифференцируема на $E$, то $\exists (f'(x))' = f''(x)$. 
 
@@ -876,6 +1060,11 @@
 				f^{(n)}(x) = f^{(n - 1)}(x - 1) = (-1)^{n - 1} \cdot (n - 1)! \cdot x^{-n}
 			\end{equation*}
 		\end{itemize}
+
+		Дифференциал порядка $n$, где $n > 1$, от функции $f$ в некоторой точке называется дифференциал в этой точке от дифференциала порядка $(n - 1)$, то есть
+		\begin{equation*}
+			d^n f = d(d^{n - 1}f) = f^{(n)} \cdot dx^n
+		\end{equation*}
 
 		\begin{namedtheorem}[(Формула Лейбница)]
 			Пусть $u(x)$ и $v(x)$ имеют не менее $n$ производных на множестве $E$. Тогда
@@ -1259,9 +1448,11 @@
 			\end{equation*}
 		\end{proof}
 
+	\proofitem{Достаточные условия локального экстремума для функции одной переменной.}
+
     \end{colloq}
 
-    \section{Вопросы, которые были убраны из программы коллоквиума}
+    \section{Вопросы, которые были убраны из программы экзамена}
 
     \begin{colloq}
     
@@ -1284,15 +1475,6 @@
 
     		В качестве $\delta$ рассмотрим $\delta = \dfrac{1}{n}$, а соответствующие значения $x_{\delta}$ будем обозначать $x_n$. Тогда при любом $n \in \NN$ выполняются условия $x_n \neq x_0, |x_n - x_0| < \dfrac{1}{n}$ и $|f(x_n) - A| \geq \eps$. Отсюда следует, что последовательность $\{x_n\}$ является подходящей, но число $A$ не является пределом функции $f$ в точке $x_0$. Получили противоречие.
     	\end{proof}
-
-    	\proofitem{Теорема о дифференцируемости обратной функции.}
-
-		\begin{theorem*}
-			Рассмотрим функцию $f(x)$, которая является строго монотонной на некотором интервале $(a, b)$. Если в этом интервале существует такая точка $x_0$, что $f'(x_0) \neq 0$, то функция $x = \phi(y)$, обратная к функции $y = f(x)$, также дифференцируема в точке $y_0 = f(x_0)$ и её производная равна
-			\begin{equation*}
-				\phi'(y_0) = \dfrac{1}{f'(x_0)}
-			\end{equation*}
-		\end{theorem*}
 
 		\begin{proof}
 			Пусть переменная $y$ в точке $y_0$ получает приращение $\Delta y \neq 0$. Соответствующее ему приращение переменной $x$ в точке $x_0$ обозначим как $\Delta x$, причем $\Delta x \neq 0$ в силу строгой монотонности функции $y = f(x)$. Запишем отношение приращений в виде
