@@ -361,8 +361,6 @@
 		\end{theorem*}
 
 		\begin{proof}
-			Для понимания происходящего следует ознакомиться с \ref{sss:segments} Системой стягивающихся отрезков (ССО)
-
 			$\{x_n\}$ ограничена $\implies \exists [a, b]: \forall n \in N \implies a \leq x_n \leq b$. Поделим $[a; b]$ на две равные части. Хотя бы одна из частей (пусть это $[a_1; b_1]$) содержит бесконечно много элементов $\{x_n\}$.
 
 			Выберем на $[a_1; b_1]$ произвольный элемент $\{x_n\}$. Назовем его $x_{n_1}$. Далее делим $[a_1; b_1]$ на
@@ -477,7 +475,7 @@
 
 		Назовём число $A$ левым (правым) пределом $f$ по Коши, если:
 		\begin{equation*}
-			\forall \eps > 0 \; \exists \delta > 0: \; \forall x \in (a - \delta; a) (x \in (a; a + \delta)) \implies |f(x) - a| < A
+			\forall \eps > 0 \; \exists \delta > 0: \; \forall x \in (a - \delta; a) (x \in (a; a + \delta)) \implies |f(x) - A| < \eps
 		\end{equation*}
 
 		Назовём число $A$ левым (правым) пределом $f$ по Гейне, если:
@@ -516,14 +514,73 @@
 			\end{equation*}
 		\end{itemize}
 
-	\addtocounter{subsection}{1}
-	\addtocounter{colloqi}{1}
+	\addtocounter{subsection}{2}
+	\addtocounter{colloqi}{2}
 
-	\proofitem{[TODO(): ] Неопределенности. Теоремы о переходе к пределу в неравенствах, о вынужденном пределе.}
+	\proofitem{Первый и второй замечательные пределы.}
 
-	\proofitem{[TODO(): ] Первый и второй замечательные пределы.}
+	\subsubsection{Первый замечательный предел}
 
-	\proofitem{[TODO(): ] Критерий Коши существования конечного предела функции.}
+		\begin{statement}
+			\begin{equation*}
+				\lim_{x \to 0} \dfrac{\sin x}{x} = 0
+			\end{equation*}
+		\end{statement}
+
+		\href{http://ru.solverbook.com/spravochnik/predely/pervyj-zamechatelnyj-predel/}{Доказательство}
+
+	\subsubsection{Второй замечательный предел}
+
+		\begin{statement}
+			\[\begin{gathered}
+				\lim_{x \to +\infty} \left(1 + \dfrac{1}{x}\right)^x = e \\
+			\end{gathered}\]
+		\end{statement}
+
+		\begin{proof}
+			Будем пользоваться тем фактом, что $e = \lim\limits_{n \to \infty} \left(1 + \dfrac{1}{n}\right)^n$ (тут $n \in \NN$, а $x$ в утверждении --- может быть не целым)
+
+			$[x]$ --- целая часть от числа $x$. Тогда
+			\[\begin{gathered}
+				[x] \leq x \leq [x + 1] = [x] + 1 \\
+				\dfrac{1}{[x] + 1} \leq \dfrac{1}{x} \leq \dfrac{1}{[x]} \\
+				1 + \dfrac{1}{[x] + 1} \leq 1 + \dfrac{1}{x} \leq 1 + \dfrac{1}{[x]} \\
+				\left(1 + \dfrac{1}{[x] + 1}\right)^{[x]} \leq \left(1 + \dfrac{1}{x}\right)^{[x]} \leq \left(1 + \dfrac{1}{[x]}\right)^{[x]} \\
+				\left(1 + \dfrac{1}{[x] + 1}\right)^{[x]} \leq \left(1 + \dfrac{1}{x}\right)^{x} \leq \left(1 + \dfrac{1}{[x]}\right)^{[x] + 1} \\
+			\end{gathered}\]
+			Воспользуемся теоремой о вынужденной сходимости
+			\[\begin{gathered}
+				\left(1 + \dfrac{1}{[x]}\right)^{[x] + 1} = \left(1 + \dfrac{1}{n}\right)^{n + 1} \rightarrow e \\
+				\left(1 + \dfrac{1}{[x] + 1}\right)^{[x]} = \left(1 + \dfrac{1}{[x] + 1}\right)^{[x] + 1 - 1} = \left(1 + \dfrac{1}{n}\right)^{n - 1} \rightarrow e \\
+				\text{Пояснение: } \lim_{n \to \infty} \left(1 + \dfrac{1}{n}\right)^{n + 1} = \lim_{n \to \infty} \left(1 + \dfrac{1}{n}\right)^n \cdot \left(1 + \dfrac{1}{n}\right) = e \cdot 1 = e
+			\end{gathered}\]
+		\end{proof}
+
+		Рассмотрим похожее утверждение
+
+		\begin{statement}
+			\[\begin{gathered}
+				\lim_{x \to -\infty} \left(1 + \dfrac{1}{x}\right)^x = e \\
+			\end{gathered}\]
+		\end{statement}
+
+		\begin{proof}
+			\[\begin{gathered}
+				y = -x \\
+				x \to -\infty \iff y \to \infty \\
+				\lim_{x \to -\infty} \left(1 + \dfrac{1}{x}\right)^x \iff \lim_{y \to +\infty} \left(1 - \dfrac{1}{y}\right)^{-y} = \lim_{y \to +\infty} \left(\dfrac{y - 1}{y}\right)^{-y} = \\
+				= \lim_{y \to +\infty} \left(\dfrac{y - 1 + 1}{y - 1}\right)^y
+				= \lim_{y \to +\infty} \left(1 + \dfrac{1}{y - 1}\right)^{y - 1 + 1} = e
+			\end{gathered}\]
+		\end{proof}
+
+	\proofitem{Критерий Коши существования конечного предела функции.}
+
+		\begin{theorem*}
+			Для того, чтобы функция $f$ имела конечный предел в точке $x_0$, необходимо и достаточно, чтобы выполнялось условие Коши: для любого $\eps > 0$ существовало такое число $\delta > 0$, что для всех $u, v \in X$ из неравенств $0 < |u - x_0| < \delta, 0 < |v - x_0| < \delta$ следует неравенство $|f(u) - f(v)| < \eps$.
+		\end{theorem*}
+
+		\href{http://elisey-ka.ru/matan/exm/18.htm}{Доказательство}
 
 	\proofitem{Определение непрерывности функции в точке.}
 
