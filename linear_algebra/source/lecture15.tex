@@ -1,0 +1,236 @@
+\section{Лекция 9.01.2020}
+
+\subsection{Сумма двух подпространств векторного пространства}
+
+Пусть $V$ -- векторное пространство над $F$.
+
+$U, W \subseteq V$ -- подпространства.
+
+Тогда, $U \cap W$ -- тоже подпространство. (можно проверить по определению)
+
+\begin{definition}
+    \textit{Суммой} подпространств $U$, $W$ называется множество
+    \begin{equation*}
+        U + W := \{u + w \mid v \in U, w \in W\}
+    .\end{equation*}
+\end{definition}
+
+\begin{exercise}
+    $U + W$ -- подпространство.
+\end{exercise}
+
+\begin{comment}
+    Имеем $U \cap W \subseteq U = U + 0 \subseteq U + W$. 
+
+    Значит,  $\dim (U \cap W) \leq \dim U \leq \dim (U + W)$.
+\end{comment}
+
+
+\subsection{Связь размерностей двух подпространств с размерностями их суммы и пересечения}
+
+\begin{theorem}
+    $\dim (U \cap W) + \dim (U + W) = \dim U + \dim W$.
+\end{theorem}
+
+\begin{example}
+    Всякие две плоскости в $\RR^3$ (содержащие 0) имеют общую прямую.
+
+    Здесь $V = \RR^3$, $\dim U = 2$, $\dim W = 2$.
+
+    При этом $\dim (U + W) \leq 3$.
+
+    Тогда, $\dim (U \cap W) = \dim U + \dim W - \dim (U + W) \geq 2 + 2 - 3 = 1$.
+\end{example}
+
+\begin{proof}
+    Пусть $\dim (U \cap W) = p$, $\dim U = q$, $\dim W = r$.
+
+    Пусть $a = \{a_1, \dots, a_p\}$ -- базис в $U \cap W$.
+
+    Тогда, $a$ можно дополнить до базиса в $U$ и в $W$:
+
+    $b = \{b_1, \dots, b_{q - p}\}$ -- такая система, что $a \cup b$ -- базис в $U$.
+
+    $c = \{c_1, \dots, c_{r - p}\}$ -- такая система, что $a \cup c$ -- базис в $W$.
+
+    \bigskip
+    Докажем, что $a \cup b \cup c$ -- базис в $U + W$.
+    \begin{enumerate}
+    \item 
+        $\langle a \cup b \cup c \rangle = U + W$:
+
+        $v \in U + W \implies \exists u \in U, w \in W$, такие что $v = u + w$.
+
+        $u \in U = \langle a \cup b \rangle \subseteq \langle a \cup b \cup c \rangle$.
+
+        $w \in W = \langle a \cup c \rangle \subseteq \langle a \cup b \cup c \rangle$.
+
+        Значит, $v \in \langle a \cup b \cup c \rangle$.
+
+    \item
+        $a \cup b \cup c$ линейно независимо.
+
+        Пусть $\underbrace{\alpha_1 a_1 + \dots + \alpha_p a_p}_x + \underbrace{\beta_1 b_1 + \dots + \beta_{q - p} b_{q - p}}_y + \underbrace{\gamma_1 c_1 + \dots + \gamma_{r - p} c_{r - p}}_z = 0$, где $\alpha_i, \beta_j, \gamma_k \in F$.
+
+        Тогда, $z = -\underset{\in U}{x} - \underset{\in U}{y} \in U$.
+
+        Но, $z \in W$, значит $z \in U \cap W$. 
+
+        То есть $z = \lambda_1 a_1 + \dots + \lambda_p a_p$, $\lambda_i \in F$.
+
+        Тогда, $\lambda_1 a_1 + \dots + \lambda_p a_p - \gamma_1 c_1 - \dots - \gamma_{r - p} c_{r - p} = 0$
+
+        Так как $a \cup c$ линейно независимо, то $\lambda_1 = \dots = \lambda_p = \gamma_1 = \dots = \gamma_{r - p} = 0$ и $z = 0$.
+
+        Следовательно, $x + y = 0$, то есть $\alpha_1 a_1 + \dots \alpha_p a_p + \beta_1 b_1 + \dots + \beta_{q - p} b_{q - p} = 0$.
+
+        Так как $a \cup b$ линейно независимо, то $\alpha_1 = \dots = \alpha_p = \beta_1 = \dots = \beta_{q - p} = 0$.
+
+        Получаем, что $a \cup b \cup c$ линейно независимо.
+    \end{enumerate}
+
+    Итог: $a \cup b \cup c$ -- базис в $U + W$.
+    \begin{align*}
+        \dim (U + W) 
+        &= |a| + |b| + |c| \\
+        &= p + q - p + r - p \\
+        &= q + r - p \\
+        &= \dim U + \dim W - \dim (U \cap W)
+    .\qedhere\end{align*}.
+\end{proof}
+
+
+\subsection{Сумма нескольких подпространств векторного пространства}
+
+Пусть $U_1, \dots U_k \subseteq V$ -- подпространства.
+
+\begin{definition}
+    \textit{Суммой} подпространств $U_1, \dots U_k$ называется множество
+    \begin{equation*}
+        U_1 + \dots + U_k = \{u_1 + \dots + u_k \mid u_i \in U_i\}
+    .\end{equation*}
+\end{definition}
+
+\begin{exercise}
+    Доказать, что $U_1 + \dots + U_k$ -- подпространство.
+\end{exercise}
+
+\begin{comment}
+    $\dim (U_1 + \dots + U_k) \leq \dim U_1 + \dots + \dim U_k$.
+\end{comment}
+
+
+\subsection{Линейно независимые подпространства, пять эквивалентных условий}
+
+\begin{definition}
+    Подпространства $U_1, \dots, U_k$ называются \textit{линейно независимыми}, если $\forall u_1 \in U_1, \dots, u_k \in U_k$ из условия $u_1 + \dots + u_k = 0$ следует $u_1 = \dots = u_k = 0$.
+\end{definition}
+
+\begin{example}
+    Если $\dim U_i = 1$ и $U_i = \langle u_i \rangle \ \forall i$, то $U_1, \dots, U_k$ линейно независимы $\iff$ $u_1, \dots, u_k$ линейно независимы.
+\end{example}
+
+\begin{theorem}
+    Следующие условия эквивалентны:
+    \begin{enumerate}[label=(\arabic*)]
+    \item \label{lec15:eq_thm_1} $U_1, \dots, U_k$ линейно независимы.
+    \item \label{lec15:eq_thm_2} всякий $u \in U_1 + \dots + U_k$ единственным образом представим в виде $u = u_1 + \dots + u_k$, где $u_i \in U_i$.
+    \item \label{lec15:eq_thm_3} Если $e_i$ --- базис в $U_i \ \forall i$, то $\underbrace{e_1 \sqcup e_2 \sqcup \dots \sqcup e_k}_\text{объединение мультимножеств}$ --- базис в $U_1 + \dots + U_k$.
+    \item \label{lec15:eq_thm_4} $\dim (U_1 + \dots + U_k) = \dim U_1 + \dots + \dim U_k$.
+    \item \label{lec15:eq_thm_5} $\forall i = 1, \dots, k \quad U_i \cap (U_1 + \dots + U_{i - 1} + U_{i + 1} + \dots + U_k) = 0$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{example}
+    \newcommand{\E}{\mathbbm{e}}
+    Если $\E_1 = \{e_1, e_2\}, \E_2 = \{e_2, e_3\}$, то
+    \begin{itemize}[nosep]
+    \item $\E_1 \cup \E_2 = \{e_1, e_2, e_3\}$ -- 2 элемента,
+    \item $\E_1 \sqcup \E_2 = \{e_1, e_2, e_2, e_3\}$ -- 4 элемента.
+    \end{itemize}
+\end{example}
+
+\begin{proof}
+    \newcommand\E{\mathbbm{e}}
+    Пусть $\widehat{U}_i = U_1 + \dots + U_{i - 1} + U_{i + 1} + \dots + U_k$.
+
+    \begin{description}
+    \item[\ref{lec15:eq_thm_1}$\implies$\ref{lec15:eq_thm_2}]
+        Пусть $u_1 + \dots + u_k = u'_1 + \dots + u'_k$, где $u_i, u'_i \in U_i$.
+
+        Тогда, $\underset{\in U_1}{(u_1 - u'_1)} + \underset{\in U_2}{(u_2 - u'_2)} + \dots + \underset{\in U_k}{(u_k - u'_k)} = 0 \implies u_i - u'_i = \dots = u_k - u'_k = 0$.
+
+        То есть, $u_1 = u'_1, \dots, u_k = u'_k$.
+
+    \item[\ref{lec15:eq_thm_2}$\implies$\ref{lec15:eq_thm_3}]
+        Пусть $u \in U_1 + \dots + U_k$ -- произвольный.
+
+        $u$ единственным образом представим в виде $u = u_1 + \dots + u_k$, где $u_i \in U_i$,
+
+        $u_i$ единственным образом представим в виде линейной комбинации векторов из $\E_i$.
+ 
+        Следовательно, $u$ единственным образом представим в виде линейной комбинации векторов из $\E_1 \sqcup \dots \sqcup \E_k$.
+
+        То есть, $\E_1 \sqcup \dots \sqcup \E_k$ --- базис в $U_1 + \dots + U_k$.
+
+    \item[\ref{lec15:eq_thm_3}$\implies$\ref{lec15:eq_thm_4}]
+        Очевидно. 
+
+    \item[\ref{lec15:eq_thm_4}$\implies$\ref{lec15:eq_thm_5}]
+        \begin{align*}
+            \dim (U_i \cap \widehat{U}_i) 
+            &= \dim U_i + \dim \widehat{U}_i - \dim (U_i + \dots + U_k) \\
+            &\leq \dim U_i + (\dim U_1 + \dots + \dim U_{i - 1} + \dim U_{i + 1} + \dots + \dim U_k) - (\dim U_1 + \dots + \dim U_k) \\
+            &= 0
+        .\end{align*}
+
+    \item[\ref{lec15:eq_thm_5}$\implies$\ref{lec15:eq_thm_1}]
+        $u_1 + \dots + u_k = 0$, где $u_i \in U_i$.
+
+        Тогда, $\underset{\in U_i}{u_i} = \underbrace{-u_1 - \dots - u_{i - 1} - u_{i + 1} - \dots - u_k}_{\in \widehat{U}_i}$
+
+        Следовательно, $u_i \in U_i \cap \widehat{U}_i = 0 \implies u_i = 0$.
+        \qedhere
+    \end{description}
+\end{proof}
+
+\begin{corollary}
+    Пусть $k = 2$, тогда
+
+    $U_1, U_2$ линейно независимы $\iff$ $U_1 \cap U_2 = 0$.
+\end{corollary}
+
+
+\subsection{Разложение векторного пространства в прямую сумму нескольких подпространств}
+
+\begin{definition}
+    Говорят, что векторное пространство $V$ разлагается в \textit{прямую сумму} $U_1, \dots, U_k$, если
+    \begin{enumerate}
+    \item $V = U_1 + \dots + U_k$,
+    \item $U_1, \dots, U_k$ линейно независимы.
+    \end{enumerate}
+
+    Обозначение: $V = U_1 \oplus U_2 \oplus \dots \oplus U_k$.
+\end{definition}
+
+\begin{example}
+    Если $e_1, \dots, e_n$ -- базис $V$, то $V = \langle e_1 \rangle \oplus \langle e_2 \rangle \oplus \dots \oplus \langle e_n \rangle$
+\end{example}
+
+
+\subsection{Проекция вектора на подпространство вдоль дополнительного подпространства}
+
+\begin{comment}
+    При $k = 2$:
+    \begin{enumerate}
+    \item $V = U_1 \oplus U_2 \iff \begin{cases}
+        V = U_1 + U_2, \\
+        U_1 \cap U_2 = 0,
+    \end{cases}$
+    \item $V = U_1 \oplus U_2 \implies \forall v \in V \ \exists! u_1 \in U_1, u_2 \in U_2$, такие что $v = u_1 + u_2$.
+
+        Тогда, $u_1$ называется проекцией вектора $v$ на $U_1$ вдоль $U_2$.
+        
+        Так же, $u_2$ называется проекцией вектора $v$ на $U_2$ вдоль $U_1$.
+    \end{enumerate}
+\end{comment}
