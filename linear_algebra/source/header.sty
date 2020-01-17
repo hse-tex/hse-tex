@@ -27,6 +27,8 @@
 %% Эпиграф
 \usepackage{epigraph}
 
+\usepackage{fixltx2e}
+
 %% Оглавление с ссылками и ссылки на разные вещи
 \usepackage[unicode=true, colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
 \usepackage{nameref}
@@ -102,3 +104,9 @@
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\FF}{\mathbb{F}}
 \newcommand{\QQ}{\mathbb{Q}}
+
+
+%% Изоморфизм
+\newcommand*\MapsTo{%
+  \xrightarrow[]{\raisebox{-0.25 em}{\smash{\ensuremath{\sim}}}}%
+}
