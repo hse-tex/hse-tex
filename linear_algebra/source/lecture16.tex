@@ -54,7 +54,7 @@ $\phi(v) := v \quad \forall v \in V$.
 
 \subsubsection{Пример 2}
 
-$\phi: \RR^2 \to \RR^3$ --- поворот на угол $\alpha$ вокруг начала координат. 
+$\phi: \RR^2 \to \RR^2$ --- поворот на угол $\alpha$ вокруг начала координат. 
 
 \bigskip
 Два красных вектора $v_1$, $v_2$ и их сумму $v_1 + v_2$ повернули на угол $\alpha$, получив $\phi(v_1)$, $\phi(v_2)$ а так же точку $A$.
@@ -99,7 +99,7 @@ $\Delta : f(x) \mapsto f'(x)$ --- отображение дифференции�
 \end{enumerate}
 
 \bigskip
-\ref{lec16:example4_1} \& \ref{lec16:example4_2} $\implies \Delta $ --- линейное отображение $\RR[x]_{\leq n} \to \RR[x]_{\leq n - 1}$.
+\ref{lec16:example4_1} и \ref{lec16:example4_2} $\implies \Delta $ --- линейное отображение $\RR[x]_{\leq n} \to \RR[x]_{\leq n - 1}$.
 
 \subsubsection{Пример 5}
 \label{lec16:example_5}
@@ -301,7 +301,7 @@ $v = x_1 e_1 + \dots + x_n e_n \implies \phi(v) := \begin{pmatrix} x_1 \\ \vdots
 \begin{proof}[Доказательство теоремы]~
     \begin{description}
     \item[$\impliedby$] Пусть $\dim V= \dim W = n$. Тогда по \hyperref[lec16:lemma_1]{лемме 1} $V \simeq F^n, W \simeq F^n$, значит $V \simeq W$.
-    \item[$\implies$] Пусть $V \simeq W$. Фиксируем изоморфизм $\phi : V \MapsTo V$.
+    \item[$\implies$] Пусть $V \simeq W$. Фиксируем изоморфизм $\phi : V \MapsTo W$.
 
         Тогда по \hyperref[lec16:lemma_2]{лемме 2} получаем, что $\phi(e_1), \dots, \phi(e_n)$ --- базис $W$, а значит $\dim V = n = \dim W$.
         \qedhere
@@ -309,7 +309,7 @@ $v = x_1 e_1 + \dots + x_n e_n \implies \phi(v) := \begin{pmatrix} x_1 \\ \vdots
 \end{proof}
 
 \begin{exercise}
-    Если $\dim V = n$, то все изоморфизмы $V \MapsTo F^n$ находятся в биекции находятся в биекции с базисами пространства $V$.
+    Если $\dim V = n$, то все изоморфизмы $V \MapsTo F^n$ находятся в биекции с базисами пространства $V$.
 \end{exercise}
 
 
@@ -320,7 +320,7 @@ $v = x_1 e_1 + \dots + x_n e_n \implies \phi(v) := \begin{pmatrix} x_1 \\ \vdots
 \begin{proposal}~
     \begin{enumerate}
     \item Если $\phi : V \to W$ --- линейное отображение, то $\phi$ однозначно определяется векторами $\phi(e_1), \dots, \phi(e_n)$,
-    \item $\forall w_1, \dots, w_n \in W \quad \exists!$ линейное отображение $\phi$, такое что, $\phi(e_1) = w_1, \dots, \phi(e_n) = w_n$.
+    \item $\forall w_1, \dots, w_n \in W \ \exists!$ линейное отображение $\phi$, такое что, $\phi(e_1) = w_1, \dots, \phi(e_n) = w_n$.
     \end{enumerate}
 \end{proposal}
 
