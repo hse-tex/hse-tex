@@ -1,0 +1,288 @@
+\section{Лекция 23.01.2020}
+
+\subsection{Критерий инъективности линейного отображения в терминах его ядра}
+
+Пусть $V, W$ --- векторные пространства над $F$, 
+
+$\phi : V \to W$ --- линейное отображение.
+
+Ядро: $\ker \phi := \{v \in V \mid \phi(v) = 0\} \subseteq V$.
+
+Образ: $\Im \phi := \phi(V) \subseteq W$.
+
+\begin{proposal}~
+    \begin{enumerate}[label=(\alph*)]
+    \item $\phi$ инъективно $\iff \ker \phi = \{0\}$,
+    \item $\phi$ сюръективно $\iff \Im \phi = W$.
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}~
+    \begin{enumerate}[label=(\alph*)]
+    \item 
+        \begin{description}
+        \item[$\implies$] очевидно
+        \item[$\impliedby$] 
+            Пусть $v_1, v_2 \in V$ таковы, что $\phi(v_1) = \phi(v_2)$. 
+            Тогда $\phi(v_1 - v_2) = 0$, а значит $v_1 - v_2 \in \ker \phi$.
+
+            Но тогда, $v_1 - v_2 = 0$, то есть $v_1 = v_2$.
+        \end{description}
+    \item очевидно.
+        \qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    $\phi$ изоморфизм
+    \begin{math}
+        \iff
+        \left\{
+        \begin{aligned}
+            \ker \phi &= \{0\},\\
+            \Im \phi &= W.
+        \end{aligned}
+        \right.
+    \end{math}
+\end{corollary}
+
+
+\subsection{Характеризация изоморфизмов в терминах их ядер и образов}
+
+Пусть $U \subseteq V$ --- подпространство, $u_1, \dots, u_k$ --- базис в $U$.
+
+\begin{lemma}
+    Тогда, $\phi(U) = \left< \phi(u_1), \dots, \phi(u_k) \right>$.
+
+    В частности,
+    \begin{math}
+        \begin{aligned}[t]
+            &\dim \phi(U) \leq \dim U, \\
+            &\dim \Im \phi \leq \dim V.
+        \end{aligned}
+    \end{math}
+\end{lemma}
+
+\begin{proof}
+    $u \in U \implies u = \alpha_1 u_1 + \dots + \alpha_k u_k$, $\alpha_i \in F$, тогда
+    \begin{equation*}
+        \phi(u) = \alpha_1 \phi(u_1) + \dots + \alpha_k \phi(u_k) \in \left< \phi(u_1), \dots, \phi(u_k) \right>
+    .\qedhere\end{equation*}
+\end{proof}
+
+
+\subsection{Связь размерности образа линейного отображения с рангом его матрицы}
+
+Пусть 
+
+$\E = (e_1, \dots, e_n)$ --- базис $V$,
+
+$\F = (f_1, \dots, f_m)$ --- базис $W$,
+
+$A = A(\phi, \E, \F)$.
+
+\begin{theorem}
+    $\rk A = \dim \Im \phi$.
+\end{theorem}
+
+\begin{proof}
+    По лемме, $\Im \phi = \left< \phi(e_1), \dots, \phi(e_n) \right>$. Поэтому, $\dim \Im \phi = \rk \{\phi(e_1), \dots, \phi(e_n)\}$.
+
+    Так как $j$-й столбец матрицы $A$ составлен из координат вектора $\phi(e_j)$ в базисе $\F$, то
+    \begin{equation*}
+        \alpha_1 \phi(e_1) + \dots + \alpha_n \phi(e_n) = 0 \iff \alpha_1 A^{(1)} + \dots + \alpha_n A^{(n)} = 0
+    .\end{equation*}
+
+    Значит, $\dim \Im \phi = \rk \{\phi(e_1), \dots, \phi(e_n)\} = \rk \{A^{(1)}, \dots, A^{(n)}\} = \rk A$.
+\end{proof}
+
+\begin{comment}
+    Число $\dim \Im \phi$ называется \textit{рангом} линейного отображения $\phi$, обозначается $\rk \phi$.
+\end{comment}
+
+\begin{corollary}
+    $\rk A$ не зависит от выбора пары базисов $\E$ и $\F$.
+\end{corollary}
+
+
+\subsection{Инвариантность ранга матрицы относительно умножения на квадратную невырожденную матрицу слева или справа}
+
+\begin{designation}
+    $M^{0}_n(F) := \{ C \in M_n(F) \mid \det C \neq 0\}$.  
+\end{designation}
+
+\begin{corollary}
+    Ранг матрицы не меняется при умножении слева и/или справа на невырожденную матрицу.
+\end{corollary}
+
+\begin{proof}
+    Если $A \in \text{Mat}_{m \times n}$, $C \in M^{0}_n$, $D \in M_m^{0}$, то $A$ и $D^{-1}AC$ --- это матрицы одного и того же линейного отображения в разных парах базисов.
+
+    По теореме, $\rk A = \rk\left(D^{-1}AC\right)$.
+\end{proof}
+
+
+\subsection{Свойство образов векторов, дополняющих базис ядра до базиса всего пространства}
+
+\begin{proposal}
+    Пусть $e_1, \dots, e_k$ --- базис $\ker \phi$ и векторы $e_{k + 1}, \dots, e_n$ дополняют его до базиса всего $V$.
+
+    Тогда, $\phi(e_{k + 1}), \dots, \phi(e_n)$ образуют базис в $\Im \phi$.
+\end{proposal}
+
+\begin{proof}
+    $\Im \phi = \left< \phi(e_1), \dots, \phi(e_k), \phi(e_{k + 1}), \dots, \phi(e_n) \right> = \left< \phi(e_{k + 1}), \dots, \phi(e_n) \right>$. (так как $\phi(e_1) = \dots = \phi(e_k) = 0$).
+
+    Осталось показать, что $\phi(e_{k + 1}), \dots, \phi(e_n)$ линейно независимы.
+
+    Пусть $\alpha_{k + 1} \phi(e_{k + 1}) + \dots + \alpha_n \phi(e_n) = 0$, где $\alpha_i \in F$.
+
+    Тогда $\phi(\alpha_{k + 1} e_{k + 1} + \dots \alpha_n e_n) = 0 \implies \alpha_{k + 1} e_{k + 1} + \dots + \alpha_n e_n \in \ker \phi$.
+
+    Но тогда $\alpha_{k + 1} e_{k + 1} + \dots \alpha_n e_n = \beta_1 e_1 + \dots + \beta_k e_k$, где $\beta_j \in F$.
+
+    Так как $(e_1, \dots, e_n)$ --- базис $V$, то $\alpha_i = \beta_j = 0 \ \forall i, j$.
+\end{proof}
+
+
+\subsection{Теорема о связи размерностей ядра и образа линейного отображения}
+
+\begin{theorem}
+    $\dim \Im \phi + \dim \ker \phi = \dim V$.
+\end{theorem}
+
+\begin{proof}
+    Вытекает из предыдущего предложения так как в его доказательстве:
+
+    $\dim V = n$,
+
+    $\dim \ker \phi = k$,
+
+    $\dim \Im \phi = n - k$.
+\end{proof}
+
+
+\subsection{Приведение матрицы линейного отображения к диагональному виду с единицами и нулями на диагонали}
+
+\begin{proposal}
+    Пусть $\rk \phi = r$. Тогда существует базис $\E$ в $V$ и базис $\F$ в $W$, такие что
+    \begin{equation*}
+        A(\phi, \E, \F) = \left(
+            \begin{array}{c|c}
+                E & 0 \\
+                \hline
+                0 & 0
+            \end{array}
+        \right) = \bordermatrix{    
+            &   & r &   &   &   & n - r &   \cr
+            & 1 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+          \hspace{0.7cm} r & 0 & \ddots & 0 & \dots & 0 & 0 & 0 \cr
+            & 0 & 0 & 1 & \dots & 0 & 0 & 0 \cr
+            & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \cr
+            & 0 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+      m - r & 0 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+            & 0 & 0 & 0 & \dots & 0 & 0 & 0
+        }
+    .\end{equation*}
+\end{proposal}
+
+\begin{proof}
+    Пусть $e_{r + 1}, \dots, e_n$ --- базис $\ker \phi$. Дополним его векторами $e_1, \dots, e_r$ до базиса всего $V$.
+
+    Положим $f_1 = \phi(e_1), \dots, f_r = \phi(e_r)$, тогда $(f_1, \dots, f_r)$ --- базис $\Im \phi$.
+
+    Дополним $f_1, \dots, f_r$ до базиса $f_1, \dots, f_m$ всего $W$.
+
+    Тогда, $\E = (e_1, \dots, e_n)$ и $\F = (f_1, \dots, f_m)$ --- искомые базисы.
+\end{proof}
+
+\begin{corollary}
+    Если $A \in \text{Mat}_{m \times n}(F)$, $\rk A = r$, то $\exists C \in M_n^{0}(F)$ и $D \in M_m^{0}(F)$, такие что
+    \begin{equation*}
+        D^{-1}AC = \left(
+            \begin{array}{c|c}
+                E & 0 \\
+                \hline
+                0 & 0
+            \end{array}
+        \right) = B
+    .\end{equation*}
+
+    $(\iff A = DBC^{-1})$.
+\end{corollary}
+
+\begin{proof}
+    Реализуем $A$ как матрицу линейного отображения $\phi : F^{n} \to F^n$ в некоторой паре базисов, тогда утверждение вытекает из предложения и формулы изменения матрицы линейного отображения при замене базисов.
+\end{proof}
+
+
+\subsection{Линейные функции на векторном пространстве}
+
+\begin{definition}
+    \textit{Линейной функцией} (или \textit{линейной формой}, или \textit{линейным функционалом}) на $V$ называется всякое линейное отображение $\alpha : V \to F$.
+\end{definition}
+
+\begin{designation}
+    $V^{*} := \hom(V, F)$ --- множество всех линейных функций на $V$.
+\end{designation}
+
+
+\subsection{Примеры}
+
+\begin{enumerate}
+\item $\alpha : F^n \to F$.
+
+    $\alpha \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = (a_1, \dots, a_n) \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = a_1 x_1 + \dots + a_n x_n$, где $a_i \in F$ --- фиксированные скаляры.
+
+\item $F(X, \RR)$ --- все функции из линейного пространства $X$ в $\RR$, $x_0 \in X$
+
+    $\alpha : F(X, \RR) \to \RR$,
+
+    $\alpha(f) := f(x_0)$.
+
+\item $\alpha : C[0, 1] \to \RR$
+
+    $\alpha(f) := \displaystyle\int_0^1 f(x) \mathop{}\!d x$
+
+\item $\alpha : M_n(F) \to F$
+
+    $\alpha(X) := \tr X$
+\end{enumerate}
+
+\subsection{Двойственное (сопряжённое) векторное пространство, его размерность в конечномерном случае}
+
+Из общей теории линейных отображений:
+\begin{enumerate}
+\item $V^{*}$ векторное пространство (оно называется \textit{сопряженным} или \textit{двойственным}).
+\item Если $\E = (e_1, \dots, e_n)$ --- фиксированный базис в $V$, то есть изоморфизм $V^{*} \simeq \text{Mat}_{1 \times n}(F)$ (а это ни что иное, как строки длины $n$).
+
+    $\alpha \to (\alpha_1, \dots, \alpha_n)$
+
+    $v = x_1 e_1 + \dots + x_n e_n$
+
+    $\alpha(v) = (\alpha_1, \dots, \alpha_n) \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = \alpha_1 x_1 + \dots + \alpha_n x_n$.
+
+    $\alpha_i = \alpha(e_i)$ --- коэффициенты линейной функции $\alpha$ в базисе $\E$.
+\end{enumerate}
+
+\begin{corollary}
+    $\dim V^{*} = \dim V$ ($\implies V^{*} \simeq V$).
+\end{corollary}
+
+
+\subsection{Двойственный базис}
+
+При $i = 1, \dots, n$ рассмотрим линейную функцию $\epsilon_i \in V^{*}$, соответствующую строке $(0 \dots 1 \dots 0)$. Тогда $\epsilon_1, \dots, \epsilon_n$ --- базис $V^{*}$, он однозначно определяется условием $\epsilon_i(e_j) = \delta_{ij} = \begin{cases}
+    1, &i = j, \\
+    0, &i \neq j.
+\end{cases}$. ($\delta_{ij}$ --- символ Кронекера)
+
+
+\begin{definition}
+    Базис $(\epsilon_1, \dots, \epsilon_n)$ пространства $V^{*}$, определенный условием выше, называется базисом, \textit{двойственным} (сопряженным) к базису $\E$.
+
+    Удобная запись условия:
+    \begin{equation*}
+        \begin{pmatrix} \epsilon_1 \\ \dots \\ \epsilon_n \end{pmatrix} (e_1, \dots, e_n) = E
+    .\end{equation*}
+\end{definition}
