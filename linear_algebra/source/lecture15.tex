@@ -130,25 +130,27 @@ $U, W \subseteq V$ -- подпространства.
     Если $\dim U_i = 1$ и $U_i = \langle u_i \rangle \ \forall i$, то $U_1, \dots, U_k$ линейно независимы $\iff$ $u_1, \dots, u_k$ линейно независимы.
 \end{example}
 
-\begin{theorem}
-    Следующие условия эквивалентны:
-    \begin{enumerate}[label=(\arabic*)]
-    \item \label{lec15:eq_thm_1} $U_1, \dots, U_k$ линейно независимы.
-    \item \label{lec15:eq_thm_2} всякий $u \in U_1 + \dots + U_k$ единственным образом представим в виде $u = u_1 + \dots + u_k$, где $u_i \in U_i$.
-    \item \label{lec15:eq_thm_3} Если $e_i$ --- базис в $U_i \ \forall i$, то $\underbrace{e_1 \sqcup e_2 \sqcup \dots \sqcup e_k}_\text{объединение мультимножеств}$ --- базис в $U_1 + \dots + U_k$.
-    \item \label{lec15:eq_thm_4} $\dim (U_1 + \dots + U_k) = \dim U_1 + \dots + \dim U_k$.
-    \item \label{lec15:eq_thm_5} $\forall i = 1, \dots, k \quad U_i \cap (U_1 + \dots + U_{i - 1} + U_{i + 1} + \dots + U_k) = 0$.
-    \end{enumerate}
-\end{theorem}
-
-\begin{example}
+{
     \newcommand{\E}{\mathbbm{e}}
-    Если $\E_1 = \{e_1, e_2\}, \E_2 = \{e_2, e_3\}$, то
-    \begin{itemize}[nosep]
-    \item $\E_1 \cup \E_2 = \{e_1, e_2, e_3\}$ -- 2 элемента,
-    \item $\E_1 \sqcup \E_2 = \{e_1, e_2, e_2, e_3\}$ -- 4 элемента.
-    \end{itemize}
-\end{example}
+    \begin{theorem}
+        Следующие условия эквивалентны:
+        \begin{enumerate}[label=(\arabic*)]
+        \item \label{lec15:eq_thm_1} $U_1, \dots, U_k$ линейно независимы.
+        \item \label{lec15:eq_thm_2} всякий $u \in U_1 + \dots + U_k$ единственным образом представим в виде $u = u_1 + \dots + u_k$, где $u_i \in U_i$.
+        \item \label{lec15:eq_thm_3} Если $\E_i$ --- базис в $U_i \ \forall i$, то $\underbrace{\E_1 \sqcup \E_2 \sqcup \dots \sqcup \E_k}_\text{объединение мультимножеств}$ --- базис в $U_1 + \dots + U_k$.
+        \item \label{lec15:eq_thm_4} $\dim (U_1 + \dots + U_k) = \dim U_1 + \dots + \dim U_k$.
+        \item \label{lec15:eq_thm_5} $\forall i = 1, \dots, k \quad U_i \cap (U_1 + \dots + U_{i - 1} + U_{i + 1} + \dots + U_k) = 0$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{example}
+        Если $\E_1 = \{e_1, e_2\}, \E_2 = \{e_2, e_3\}$, то
+        \begin{itemize}[nosep]
+        \item $\E_1 \cup \E_2 = \{e_1, e_2, e_3\}$ -- 2 элемента,
+        \item $\E_1 \sqcup \E_2 = \{e_1, e_2, e_2, e_3\}$ -- 4 элемента.
+        \end{itemize}
+    \end{example}
+}
 
 \begin{proof}
     \newcommand\E{\mathbbm{e}}
@@ -179,7 +181,7 @@ $U, W \subseteq V$ -- подпространства.
     \item[\ref{lec15:eq_thm_4}$\implies$\ref{lec15:eq_thm_5}]
         \begin{align*}
             \dim (U_i \cap \widehat{U}_i) 
-            &= \dim U_i + \dim \widehat{U}_i - \dim (U_i + \dots + U_k) \\
+            &= \dim U_i + \dim \widehat{U}_i - \dim (U_1 + \dots + U_k) \\
             &\leq \dim U_i + (\dim U_1 + \dots + \dim U_{i - 1} + \dim U_{i + 1} + \dots + \dim U_k) - (\dim U_1 + \dots + \dim U_k) \\
             &= 0
         .\end{align*}

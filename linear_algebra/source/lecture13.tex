@@ -143,11 +143,11 @@
 \end{corollary}
 
 \begin{proposal}
-    При элементарных преобразованиях строк линейная оболочка $\langle A^{(1)}, \dots, A^{(n)} \rangle$ сохраняется.
+    При элементарных преобразованиях столбцов линейная оболочка $\langle A^{(1)}, \dots, A^{(n)} \rangle$ сохраняется.
 \end{proposal}
 
 \begin{proof}
-    Пусть $A \rightsquigarrow B$ элементарными преобразованиями строк.
+    Пусть $A \rightsquigarrow B$ элементарными преобразованиями столбцов.
 
     Тогда, 
     \begin{equation*}
@@ -163,7 +163,7 @@
 \end{proof}
 
 \begin{corollary}
-    Ранг матрицы (стобцовый) сохраняется при элементарных преобразованиях строк.
+    При элементарных преобразованиях столбцов (столбцовый) ранг матрицы сохраняется.
 \end{corollary}
 
 \begin{corollary}
@@ -245,8 +245,8 @@
 
     Следовательно, достаточно доказать для ступенчатых матриц. В этом случае
     \begin{align*}
-        \rk A = n &\implies n \text{ ненулевых строк} \implies \det A \neq 0, \\
-        \rk A < n &\implies \text{ есть нулевые строки} \implies \det A = 0
+        \rk A = n &\iff n \text{ ненулевых строк} \iff \det A \neq 0, \\
+        \rk A < n &\iff \text{ есть нулевые строки} \iff \det A = 0
         \qedhere
     .\end{align*}
 \end{proof}

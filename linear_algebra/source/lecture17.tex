@@ -21,7 +21,7 @@ $\forall j = 1, \dots, n$
 
 $\phi(e_j) = a_{1j} f_1 + a_{2j} f_2 + \dots + a_{mj} f_m = (f_1, \dots, f_m) \begin{pmatrix} a_{1j} \\ a_{2j} \\ \dots \\ a_{mj} \end{pmatrix}$.
 
-Тогда, $(\phi(e_1), \dots, \phi(e_n)) = (f_1, \dots, f_n) \cdot A$, где $A = (a_{ij}) \in \text{Mat}_{m \times n} (F)$.
+Тогда, $(\phi(e_1), \dots, \phi(e_n)) = (f_1, \dots, f_m) \cdot A$, где $A = (a_{ij}) \in \text{Mat}_{m \times n} (F)$.
 
 \begin{definition}
     $A$ называется матрицей линейного отображения $\phi$ в базисах $\E$ и $\F$.
@@ -161,10 +161,12 @@ $A' = A(\phi, \E', \F')$.
     \begin{equation*}
         (e'_1, \dots e'_n) = (e_1, \dots, e_n) \cdot C
     .\end{equation*}
+    
     Применим $\phi$, 
     \begin{align*}
         (\phi(e'_1), \dots, \phi(e'_n)) &= (\phi(e_1), \dots, \phi(e_n)) \cdot C = (f_1, \dots, f_m) \cdot A \cdot C
     \end{align*}
+    
     При этом,
     \begin{align*}
         (\phi(e'_1), \dots, \phi(e'_n)) &= (f'_1, \dots, f'_m) \cdot A' = (f_1, \dots, f_m) \cdot D \cdot A'
