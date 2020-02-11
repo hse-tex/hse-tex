@@ -22,7 +22,8 @@
 %% Шрифты
 \usepackage{euscript} % Шрифт Евклид
 \usepackage{mathrsfs} % Красивый матшрифт
-\usepackage{bbm} % mathbb for lowercase letters
+\usepackage[bbgreekl]{mathbbol}
+
 
 %% Эпиграф
 \usepackage{epigraph}
@@ -110,6 +111,16 @@
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\FF}{\mathbb{F}}
 \newcommand{\QQ}{\mathbb{Q}}
+
+%% Соси жопу, mathbbol, хочу mathbb от amsmath 😎
+\DeclareSymbolFontAlphabet{\mathbbold}{bbold}
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+
+%% Жоские буквы для базисов
+\newcommand\E{\mathbbold{e}}
+\newcommand\F{\mathbbold{f}}
+\let\G\undefined
+\newcommand\G{\mathbbold{g}}
 
 
 %% Изоморфизм

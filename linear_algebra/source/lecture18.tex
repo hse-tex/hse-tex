@@ -20,7 +20,7 @@ $\phi : V \to W$ --- линейное отображение.
 \begin{proof}~
     \begin{enumerate}[label=(\alph*)]
     \item 
-        \begin{description}
+        \begin{description}[leftmargin=0.935cm]
         \item[$\implies$] очевидно
         \item[$\impliedby$] 
             Пусть $v_1, v_2 \in V$ таковы, что $\phi(v_1) = \phi(v_2)$. 
@@ -53,14 +53,7 @@ $\phi : V \to W$ --- линейное отображение.
 
 \begin{lemma}
     Тогда, $\phi(U) = \left< \phi(u_1), \dots, \phi(u_k) \right>$.
-
-    В частности,
-    \begin{math}
-        \begin{aligned}[t]
-            &\dim \phi(U) \leq \dim U, \\
-            &\dim \Im \phi \leq \dim V.
-        \end{aligned}
-    \end{math}
+    В частности, $\dim \phi(U) \leq \dim U$ и $\dim \Im \phi \leq \dim V$.
 \end{lemma}
 
 \begin{proof}
@@ -74,12 +67,13 @@ $\phi : V \to W$ --- линейное отображение.
 \subsection{Связь размерности образа линейного отображения с рангом его матрицы}
 
 Пусть 
-
-$\E = (e_1, \dots, e_n)$ --- базис $V$,
-
-$\F = (f_1, \dots, f_m)$ --- базис $W$,
-
-$A = A(\phi, \E, \F)$.
+\begin{math}
+    \begin{aligned}[t]
+        \E &= (e_1, \dots, e_n) \text{ --- базис $V$}, \\
+        \F &= (f_1, \dots, f_m) \text{ --- базис $W$}, \\
+        A &= A(\phi, \E, \F)$.
+    \end{aligned}
+\end{math}
 
 \begin{theorem}
     $\rk A = \dim \Im \phi$.
@@ -117,7 +111,6 @@ $A = A(\phi, \E, \F)$.
 
 \begin{proof}
     Если $A \in \text{Mat}_{m \times n}$, $C \in M^{0}_n$, $D \in M_m^{0}$, то $A$ и $D^{-1}AC$ --- это матрицы одного и того же линейного отображения в разных парах базисов.
-
     По теореме, $\rk A = \rk\left(D^{-1}AC\right)$.
 \end{proof}
 
@@ -189,7 +182,7 @@ $A = A(\phi, \E, \F)$.
 \begin{proof}
     Пусть $e_{r + 1}, \dots, e_n$ --- базис $\ker \phi$. Дополним его векторами $e_1, \dots, e_r$ до базиса всего $V$.
 
-    Положим $f_1 = \phi(e_1), \dots, f_r = \phi(e_r)$, тогда $(f_1, \dots, f_r)$ --- базис $\Im \phi$.
+    Положим $f_1 = \phi(e_1)$, $\dots$, $f_r = \phi(e_r)$, тогда $(f_1, \dots, f_r)$ --- базис $\Im \phi$.
 
     Дополним $f_1, \dots, f_r$ до базиса $f_1, \dots, f_m$ всего $W$.
 
@@ -234,7 +227,7 @@ $A = A(\phi, \E, \F)$.
 
     $\alpha \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = (a_1, \dots, a_n) \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = a_1 x_1 + \dots + a_n x_n$, где $a_i \in F$ --- фиксированные скаляры.
 
-\item $F(X, \RR)$ --- все функции из линейного пространства $X$ в $\RR$, $x_0 \in X$
+\item $F(X, \RR)$ --- все функции из линейного пространства $X$ в $\RR$, $x_0 \in X$,
 
     $\alpha : F(X, \RR) \to \RR$,
 
@@ -253,7 +246,7 @@ $A = A(\phi, \E, \F)$.
 
 Из общей теории линейных отображений:
 \begin{enumerate}
-\item $V^{*}$ векторное пространство (оно называется \textit{сопряженным} или \textit{двойственным}).
+\item $V^{*}$ --- векторное пространство (оно называется \textit{сопряженным} или \textit{двойственным}).
 \item Если $\E = (e_1, \dots, e_n)$ --- фиксированный базис в $V$, то есть изоморфизм $V^{*} \simeq \text{Mat}_{1 \times n}(F)$ (а это ни что иное, как строки длины $n$).
 
     $\alpha \to (\alpha_1, \dots, \alpha_n)$
