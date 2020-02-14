@@ -38,7 +38,7 @@ $\epsilon_i (x_1 e_1 + \dots + x_n e_n) = x_i$, поэтому $\epsilon_i$ на
 Пусть $V$ --- векторное пространство над $F$.
 
 \begin{definition}
-    \textit{Биленейная форма} на $V$ --- это отображение $\beta \colon V \times V \to F$, линейная по каждому аргументу.
+    \textit{Биленейная форма} на $V$ --- это отображение $\beta \colon V \times V \to F$, линейное по каждому аргументу.
 \end{definition}
 
 \paragraph{Линейность по 1-му аргументу}
@@ -55,6 +55,7 @@ $\epsilon_i (x_1 e_1 + \dots + x_n e_n) = x_i$, поэтому $\epsilon_i$ на
 
 
 \subsection{Примеры}
+\label{lec19:bilinear_examples}
 
 \subsubsection{}
 
@@ -70,7 +71,9 @@ $\beta(x, y) := \det \begin{pmatrix} x_1 & y_1 \\ x_2 & y_2 \end{pmatrix}$.
 
 \subsubsection{}
 
-$V = C[a, b]; \quad \beta(f, g) := \displaystyle\int^b_a f(x) \mathop{}\!d x$.
+$V = C[a, b];$
+
+$\beta(f, g) := \displaystyle\int^b_a f(x) \mathop{}\!d x$.
 
 
 \subsection{Матрица билинейной формы по отношению к фиксированному базису}
@@ -86,6 +89,8 @@ $V = C[a, b]; \quad \beta(f, g) := \displaystyle\int^b_a f(x) \mathop{}\!d x$.
 \end{definition}
 
 \paragraph{Примеры}
+Матрицы билинейных форм из примеров \hyperref[lec19:bilinear_examples]{выше}:
+
 \begin{enumerate}
 \item Пусть $\E$ --- стандартный базис, тогда $B(\beta, \E) = E$.
 \item Пусть $\E$ --- стандартный базис, тогда $B(\beta, \E) = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$.
@@ -101,7 +106,7 @@ $V = C[a, b]; \quad \beta(f, g) := \displaystyle\int^b_a f(x) \mathop{}\!d x$.
     \end{aligned}
 \end{math}
 
-Тогда
+Тогда,
 \begin{align*}
     \beta(x, y)
     &= \beta\left(\sum_{i = 1}^{n} x_i e_i, \ \sum_{j = 1}^{n} y_j e_j\right)
@@ -200,8 +205,90 @@ $B' := B(\beta, \E')$.
     Билинейная форма $\beta$ называется \textit{симметричной}, если $\beta(x, y) = \beta(y, x) \ \forall x, y \in V$.
 \end{definition}
 
+
 \subsection{Критерий симметричности билинейной формы в терминах её матрицы в каком-либо базисе}
+
+Пусть $\E$ --- произвольный базис $V$.
+
+\begin{proposal}
+    $\beta$ симметрична $\iff B = B^{T}$.
+\end{proposal}
+
+\begin{proof}~
+    \begin{description}
+    \item[$\implies$] $b_{ji} = \beta(e_j, e_i) = \beta(e_i, e_j) = b_{ij}$, 
+    \item[$\impliedby$] 
+        \begin{math}
+            \begin{aligned}[t]
+                x &= x_1 e_1 + \dots + x_n e_n, \\
+                y &= y_1 e_1 + \dots + y_n e_n,
+            \end{aligned}
+        \end{math}
+
+        Тогда, 
+        \begin{equation*}
+            \beta(y, x) = (y_1 \dots y_n) B \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = (x_1 \dots x_n) B^{T} \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} = (x_1 \dots x_n) B \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} = \beta(x, y)
+        .\end{equation*}
+    \end{description}
+\end{proof}
+
+
 \subsection{Квадратичные формы на векторном пространстве}
+
+Пусть $\beta \colon V \times V \to F$ --- билинейная форма на $V$.
+
+\begin{definition}
+    Отображение $Q_\beta \colon V \to F$, $Q_\beta(x) = \beta(x, x)$, называется \textit{квадратичной формой}, ассоциированной с билинейной формой $\beta$.
+\end{definition}
+
+Пусть $\E$ --- базис $V$, $x = x_1 e_1 + \dots x_n e_n$, $B = B(\beta, \E)$.
+
+Тогда,
+\begin{equation*}
+    Q_\beta(x, x) = (x_1 \dots x_n) B \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = \sum_{i = 1}^{n} \sum_{j = 1}^{n} b_{ij} x_i x_j = \sum_{i = 1}^{n} b_{ii} x_i^2 + \sum_{1 \leq i < j \leq n}^{n} (b_{ij} + b_{ji}) x_i x_j
+.\end{equation*}
+
+
 \subsection{Примеры}
+
+\subsubsection{}
+
+$V = F^n$, $\beta(x, y) = x_1 y_1 + \dots + x_n y_n \implies Q_\beta(x) = x_1^2 + \dots + x_n^2$.
+
+\subsubsection{}
+
+$V = F^2$, $\beta(x, y) = 2x_1 y_2 \implies Q_\beta(x) = 2x_1 x_2$.
+
+Если $\E$ --- стандартный базис, то $B(\beta, \E) = \begin{pmatrix} 0 & 2 \\ 0 & 0 \end{pmatrix}$.
+
+\subsubsection{}
+
+$V = F^2$, $\beta(x, y) = x_1 y_2 + x_2 y_1 \implies Q_\beta(x) = 2x_1 x_2$.
+
+Если $\E$ --- стандартный базис, то $B(\beta, \E) = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$.
+
+
 \subsection{Соответствие между симметричными билинейными формами и квадратичными формами}
+
+\begin{proposal}
+    Пусть в поле $F$ выполнено условие $1 + 1 \neq 0$ (то есть $2 \neq 0$). Тогда отображение $\beta \mapsto Q_\beta$ является биекцией между симметричными билинейными формами на $V$ и квадратичным формами на $V$.
+\end{proposal}
+
+
+\begin{proof}~
+    \begin{description}
+    \item[Сюръективность] $Q$ --- квадратичная форма $ \implies Q = Q_\beta$ для некоторой билинейной формы на $V$.
+
+        То есть $Q(x) = \beta(x, x) \ \forall x \in V$.
+
+        Положим $\sigma(x, y) = \frac{1}{2} \left[\beta(x, y) + \beta(y, x)\right]$, тогда $\sigma$ --- симметричная билинейная форма.
+        \begin{equation*}
+            \sigma(x, x) = \frac{1}{2}\left[\beta(x, x) + \beta(x, x)\right] = \beta(x, x)
+        .\end{equation*}
+
+    \item[Инъективность] $\beta$ --- симметричная билинейная форма на $V$.
+
+        $Q_\beta(x + y) = \beta(x + y, x + y) = \underbrace{\beta(x, x)}_{Q_b(x)} + \underbrace{\beta(x, y) + \beta(y, x)}_{\text{равны между собой}} + \underbrace{\beta(y, y)}_{Q_\beta(y)} \implies \beta(x, y) = \frac{1}{2} \left[Q_\beta(x + y) - Q_\beta(x) - Q_\beta(y)\right]$.
+    \end{description}
+\end{proof}
 
