@@ -73,7 +73,7 @@ $\beta(x, y) := \det \begin{pmatrix} x_1 & y_1 \\ x_2 & y_2 \end{pmatrix}$.
 
 $V = C[a, b];$
 
-$\beta(f, g) := \displaystyle\int^b_a f(x) \mathop{}\!d x$.
+$\beta(f, g) := \displaystyle\int^b_a f(x) g(x) \mathop{}\!d x$.
 
 
 \subsection{Матрица билинейной формы по отношению к фиксированному базису}
@@ -157,7 +157,7 @@ $B = B(\beta, \E)$.
 
 Пусть $\E' = (e'_1, \dots e'_n)$ --- другой базис $V$.
 
-$\E' = e \cdot C$.
+$\E' = \E \cdot C$.
 
 $B' := B(\beta, \E')$.
 
@@ -245,7 +245,7 @@ $B' := B(\beta, \E')$.
 
 Тогда,
 \begin{equation*}
-    Q_\beta(x, x) = (x_1 \dots x_n) B \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = \sum_{i = 1}^{n} \sum_{j = 1}^{n} b_{ij} x_i x_j = \sum_{i = 1}^{n} b_{ii} x_i^2 + \sum_{1 \leq i < j \leq n}^{n} (b_{ij} + b_{ji}) x_i x_j
+    Q_\beta(x) = (x_1 \dots x_n) B \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = \sum_{i = 1}^{n} \sum_{j = 1}^{n} b_{ij} x_i x_j = \sum_{i = 1}^{n} b_{ii} x_i^2 + \sum_{1 \leq i < j \leq n}^{n} (b_{ij} + b_{ji}) x_i x_j
 .\end{equation*}
 
 
@@ -288,7 +288,7 @@ $V = F^2$, $\beta(x, y) = x_1 y_2 + x_2 y_1 \implies Q_\beta(x) = 2x_1 x_2$.
 
     \item[Инъективность] $\beta$ --- симметричная билинейная форма на $V$.
 
-        $Q_\beta(x + y) = \beta(x + y, x + y) = \underbrace{\beta(x, x)}_{Q_b(x)} + \underbrace{\beta(x, y) + \beta(y, x)}_{\text{равны между собой}} + \underbrace{\beta(y, y)}_{Q_\beta(y)} \implies \beta(x, y) = \frac{1}{2} \left[Q_\beta(x + y) - Q_\beta(x) - Q_\beta(y)\right]$.
+        $Q_\beta(x + y) = \beta(x + y, x + y) = \underbrace{\beta(x, x)}_{Q_\beta(x)} + \underbrace{\beta(x, y) + \beta(y, x)}_{\text{равны между собой}} + \underbrace{\beta(y, y)}_{Q_\beta(y)} \implies \beta(x, y) = \frac{1}{2} \left[Q_\beta(x + y) - Q_\beta(x) - Q_\beta(y)\right]$.
     \end{description}
 \end{proof}
 
