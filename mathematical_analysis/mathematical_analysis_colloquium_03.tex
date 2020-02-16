@@ -1,0 +1,214 @@
+\documentclass[a4paper]{article}
+\usepackage{header}
+\usepackage{float}
+\usepackage{cmap}
+
+\newcommand\enumtocitem[3]{\item\textbf{#1}\addtocounter{#2}{1}\addcontentsline{toc}{#2}{\protect{\numberline{#3}} #1}}
+\newcommand\defitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
+\newcommand\proofitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
+
+\newtheorem{theorem1*}{Theorem}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{}{.5em}{Теорема \thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcommand{\italicbold}[1]{\emph{\textbf{#1}}}
+
+\newlist{colloq}{enumerate}{1}
+\setlist[colloq]{label=\textbf{\arabic*.}}
+
+\everymath{\displaystyle}
+
+\renewcommand*{\arraystretch}{1.5}
+
+\title{\HugeМатематический анализ, Коллоквиум 3}
+\author{
+	Балюк Игорь \\
+	\href{https://teleg.run/lodthe}{@lodthe},
+    \href{https://github.com/LoDThe/hse-tex}{GitHub} \\
+}
+
+\usepackage[yyyymmdd,hhmmss]{datetime}
+\settimeformat{xxivtime}
+\renewcommand{\dateseparator}{.}
+\date{Дата изменения: \today \ в \currenttime}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+
+    \newpage
+
+    Предварительная дата проведения коллоквиума --- $29$ февраля.
+
+    \href{https://www.dropbox.com/s/3sdxlo11hnmmaxw/%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D0%BA%D0%BE%D0%BB%D0%BB%D0%BE%D0%BA%D0%B2%D0%B8%D1%83%D0%BC%D0%B0%20%D0%9C%D0%90-2-1.pdf?dl=0}{Оригинальный список вопросов}
+
+    \section{Выпуклые и вогнутые функции. Выпуклость в терминах производной. Неравенство Йенсена. Примеры.}
+
+        \subsection{Выпуклые и вогнутые функции и их свзяь с производной}
+
+        \begin{definition*}
+            Функция $f$ на интервале $I$ называется \textbf{выпуклой}, если $\forall x, y \int I$ и для каждого $t \in [0; 1]$ выполнено $f(tx + (1 - t)y) \leq tf(x) + (1 - t)f(y)$.
+
+            Функция $f$ на интервале $I$ называется \textbf{вогнутой}, если функция $-f$ --- выпуклая.
+        \end{definition*}
+
+        \begin{lemma*}
+            Функция $f$ на интервале $I$ выпукла тогда и только тогда, когда для всех точек $x < y < z$ из этого интервала выполенно
+            \begin{equation*}
+                \dfrac{f(z) - f(x)}{z - x} \leq \dfrac{f(y) - f(z)}{y - z}
+            \end{equation*}
+        \end{lemma*}
+
+        \begin{proof}
+            Зафиксируем $t \in [0; 1]$. Пусть $z = tx + (1 - t)y$. Тогда $t = \dfrac{y - z}{y - x}$ и выпуклость $f$ равносильна выполнению неравенства:
+            \begin{equation*}
+                f(z) = f(tx + (1 - t)y) \leq tf(x) + (1 - t)f(y) = \dfrac{y - z}{y - x}f(x) + \dfrac{z - x}{y - x}f(y)
+            \end{equation*}
+            Так как $y - x = y - z + z - x$, полученное неравенство равносильно неравенству из формлуировки леммы:
+            \[\begin{gathered}
+                f(z) \leq \dfrac{y - z}{y - x}f(x) + \dfrac{z - x}{y - x}f(y) \\
+                f(z) \cdot (y - z + z - x) \leq (y - z)f(x) + (z - x) f(y) \\
+                yf(z) - zf(z) + zf(z) - xf(z) \leq yf(x) - zf(x) + zf(y) - xf(y) \\
+                yf(z) - zf(z) -yf(x) + zf(x) \leq zf(y) - xf(y) - zf(z) + xf(z) \\
+                (f(z) - f(x)) \cdot (y - z) \leq (f(y) - f(z)) \cdot (z - x) \\
+                \dfrac{f(z) - f(x)}{z - x} \leq \dfrac{f(y) - f(z)}{y - z}
+            \end{gathered}\]
+        \end{proof}
+
+        \begin{theorem*}
+            Дифференцируемая функция $f$ на интервале $I$ выпукла тогда и толко тогда, когда $f'$ --- неубывает.
+        \end{theorem*}
+
+        \begin{proof}
+            Если $f$ выпукла, то по предыущей лемме для $x < y$ выполнено
+            \begin{equation*}
+                f'(x) \leq \dfrac{f(y) - f(x)}{y - x} \leq f'(y).
+            \end{equation*}
+            Первая часть неравенства выполняется, если в лемме приближать $z$ к $x$ справа. Вторая часть неравенства выполняется, если значение $z$ из леммы приближать к $y$ слева. Полученное неравенство означает неубывание $f'$.
+
+            Наоборот, пусть теперь $f'$ неубывает. По теореме Лагранжа для всех точек $x < z < y$ найдутся точки $\xi_1 \in (x; z)$ и $\xi_2 \in (z; y)$ для которых
+            \begin{equation*}
+                \dfrac{f(z) - f(x)}{z - x} = f'(\xi_1), \quad
+                \dfrac{f(y) - f(z)}{y - z} = f'(\xi_2)
+            \end{equation*}.
+
+            Так как $f'(\xi) \leq f'(\xi_2)$, то по предудыщей лемме получаем выпуклость $f$.
+        \end{proof}
+
+        Заметим, что дважды дифференцируемая функция $f$ на интервале $I$ выпукла тогда и только тогда, когда $f''(x) \geq 0 \forall x \in I$.
+
+        \subsection{Неравенство Йенсена}
+
+        \begin{namedtheorem}[(Неравенство Йенсена)]
+            Пусть функция $f$ выпукла на интервале $I$. Тогда для всех точек $x_1, \dots, x_n \in I$ и для всех чисел $t_1 \geq 0, \dots, t_n \geq 0$, для которых $t_1 + \dots + t_n = 1$, выполнено $f(t_1x_1 + \dots + t_nx_n) \leq t_1f(x_1) + \dots + t_nf(x_n)$.
+        \end{namedtheorem}
+
+        \begin{proof}
+            Докажем утверждение индукцией по $n$.
+
+            База: $n = 2$, по определению выпуклости.
+
+            Пусть утверждение выполнено для $n$ точек. Проверим, что оно выполнено для $n + 1$ точки. Пусть $t := t_1 + \dots + t_n$. Так как $\dfrac{t_1}{t}x_1 + \dots + \dfrac{t_n}{t}x_n \in I$ (проверяется подстановкой во все $t_i$ минимального/максимального из $t$), то
+            \[\begin{gathered}
+                f(t_1x_1 + \dots + t_nx_n + t_{n + 1}x_{n + 1}) \leq tf \left(\dfrac{t_1}{t}x_1 + \dots + \dfrac{t_n}{t}x_n\right) + f_{n + 1}f(x_{n + 1}) \\
+                \leq t \left(\dfrac{t_1}{t}f(x_1) + \dots + \dfrac{t_n}{t}f(x_n)\right) + t_{n + 1}f(x_{n + 1}) = t_1f(x_1) + \dots + t_{n + 1}f(x_{n + 1})
+            \end{gathered}\]
+
+            Первое неравенство верно из определения выпуклости, второе --- воспользовались предположением индукции для $n$.
+        \end{proof}
+
+        \subsection{Примеры}
+
+        С помощью неравенства Йенсена докажем неравенство о средних. Пусть $x_1, \dots, x_n > 0$. Тогда $\sqrt[n]{x_1 \times \dots \times x_n} \leq \dfrac{x_1 + \dots + x_n}{n}$.
+
+        \begin{proof}
+            Действительно, рассмотрим функцию $f(x) = e^x$. Так как $f''(x) = e^x \geq 0$, то $f$ --- выпуклая функция. Теперь заметим, что
+            \begin{equation*}
+                \sqrt[n]{x_1 \times \dots \times x_n} = f \left(\dfrac{1}{n} \ln x_1 + \dots + \dfrac{1}{n} \ln x_n \right) \leq \dfrac{1}{n} f(\ln x_1) + \dots + \dfrac{1}{n}f(\ln x_n) = \dfrac{x_1 + \dots + x_n}{n}
+            \end{equation*}
+        \end{proof}
+
+
+    \section{Первообразная и неопределенный интеграл. Линейность интеграла, формула интегрирования по частям и замены переменной.}
+
+        \subsection{Первообразная и неопределенный интеграл}
+
+        \begin{definition*}
+            Функция $F$ называется \textbf{первообразной} функции $f$ на некотором интервале $I$, если $F$ дифференцируема на $I$ и $F'(x) = f(x) \forall x \in I$.
+        \end{definition*}
+
+        \begin{lemma*}
+            Любимые две первообразные $F_1$ и $F_2$ функции $f$ на интервале $I$ отличаются на константу.
+        \end{lemma*}
+
+        \begin{proof}
+            По теореме Лагранжа, применимой к функции $F := F_1 - F_2$, для произвольных точек $x, y \in I$ выполнено $F(x) - F(y) = F'(\xi)(x - y) = 0$. Что означает, что для двух первообразных, для каждой пары точек из интервала, их разность равна. 
+
+            $F'(\xi)(x - y) = 0$, так как $F'(\xi) = F_1'(\xi) - F_2'(\xi) = f(\xi) - f(\xi) = 0$.
+        \end{proof}
+
+        \begin{definition*}
+            Множество всех первообразных функции $f$ на некотором задонном интервале $I$ называется \textbf{неопределенным интегралом} от $f$ и обозначается $\int f(x) \dd x$.
+        \end{definition*}
+
+        Если $F$ --- некоторая первообразная функции $f$ на некотором интервале $I$, то $\int f(x) \dd x = F + C$, где $C$ --- константа.
+
+        \subsection{Линейность интеграла, формула интегрирования по частям и замены переменной}
+
+        \begin{namedtheorem}[(Свойства неопределенного интеграла)]~
+            \begin{enumerate}
+            \item (\textbf{Линейность})
+                $\int \left(\alpha f(x) + \beta g(x)\right) \dd x = \alpha \int f(x) \dd x + \beta \int g(x) \dd x + C$
+
+            \item (\textbf{Формула интегрирования по частям})
+                $\int f(x)g'(x) \dd x = f(x)g(x) - \int f'(x)g(x) \dd x$
+
+            \item (\textbf{Формула замены переменной})
+                $\int f(x) \dd x = [x = \phi(t)] = \int f(\phi(t))\phi'(t) \dd t$
+            \end{enumerate}
+        \end{namedtheorem}
+
+        \begin{proof}~
+            \begin{enumerate}
+            \item
+                Пусть $F$ и $G$ --- первообразные $f$ и $g$ соответственно. Тогда $\alpha F + \beta G$ --- первообразная функции $\alpha f + \beta g$, то есть $\int \left(\alpha f(x) + \beta g(x)\right) \dd x = \alpha F + \beta G + C$.
+
+                В то же время
+                \begin{equation*}
+                    \int f(x) \dd x  +\beta \int g(x) \dd x = \alpha F + \alpha C_1 + \beta G + \beta C_2 = \alpha F + \beta G + C
+                \end{equation*}
+
+            \item
+                Так как $(fg)' = f'g + fg'$, то по линейности интеграла
+                \begin{equation*}
+                    \int f'(x)g(x) \dd x + \int f(x)g'(x) \dd x = f(x) + g(x) + C.
+                \end{equation*}
+
+            \item
+                Если $F$ --- первообразная для $f$, то $(F(\phi(t))') = F'(\phi(t))\phi'(t)$.
+            \end{enumerate}
+        \end{proof}
+
+    \section{Вычислиение интеграла от рациональной функции. Примеры сведения интеграла к интегралу от рациональной функции.}
+
+    \section{Интегралы Римана: определение, примеры интегрриуемых и неинтегрируемых функций, линейность и монотонность интеграла, ограниченность интегрируемой функции.}
+
+    \section{Нижние и верхние суммы Дарбу. Критерий Дарбу интегрируемости ограниченной функции.}
+
+    \section{Переформулировка критерия Дарбу в терминах колебаний. Интегрируемость модуля и произвдеения интегрируемых функций. Интегрируемость на подотрезке, аддитивность интеграла.}
+
+    \section{Интегрируемость монотонных функций. Равномерная непрерывность. Примеры. Равновероятная непрерывность непрерывной на отрезке функции. Интегрируемость непрерывных функций.}
+
+    \section{Формула Тейлора с остаточным членом в интегральной форме. Ряд Тейлора для функций $e^x$, $\sin x$, $\cos x$, $\ln(1 + x)$, $(1 + x)^p$ (обоснование сходимости для $e^x$ и $\ln(1 + x)$). Площадь криволинейной трапеции и длина кривой.}
+
+    \section{Формула Стирлинга.}
+
+    \section{Несобственный интеграл Римана: определение и примеры. Регулярность и линейность несобственного интеграла, независимость сходимости интеграла от его <<начала>>. Формула интегрирования по частям и замены переменной для несобственного интеграла.}
+
+    \section{Абсолютная и условная сходимость несобственных интегралов. Пример функции, интеграл от которой сходится условно. Исследования сходимости интеграла от неотрицательной функции с помощью неравенств и эквивалентности. Признаки Дирихле-Абеля сходимости несобственного интеграла.}
+
+
+\end{document}
