@@ -5,6 +5,7 @@
 ## [Линейная алгебра - Коллоквиум 1](https://hse-tex.me/linear_algebra_colloquium.pdf)
 ## [Математический анализ - Коллоквиум 1](https://hse-tex.me/mathematical_analysis_colloquium_01.pdf)
 ## [Математический анализ - Коллоквиум 2](https://hse-tex.me/mathematical_analysis_colloquium_02.pdf)
+## [Математический анализ - Коллоквиум 3](https://hse-tex.me/mathematical_analysis_colloquium_03.pdf)
 ## [Математический анализ - Экзамен 1](https://hse-tex.me/mathematical_analysis_exam_01.pdf)
 ## [Дискретная математика - Коллоквиум 1](https://hse-tex.me/discrete_mathematics_colloquium.pdf)
 
