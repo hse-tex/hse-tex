@@ -564,6 +564,87 @@
 
     \section{Формула Ньютона-Лейбница и интегрирование по частям. Интеграл с переменным верхним пределом, его свойства. Наличие первообразной у непрерывной функции. Формула замены переменной.}
 
+        \subsection{Формула Ньютона-Лейбница и интегрирование по частям}
+
+        \begin{namedtheorem}[(Формула Ньютона-Лейбница)]
+            Пусть $F$ дифференцируема на $[a; b]$ и ее производная $F'$ интегрируема по Риману на $[a; b]$. Тогда
+            \begin{equation*}
+                \left. \int_a^b F'(x) \dd x = F(b) - F(a) = F(x) \right|_a^b
+            \end{equation*}
+        \end{namedtheorem}
+
+        \begin{proof}
+            Для разбиения $\T$ по тореме Лагранжа $F(x_k) - F(x_{k - 1}) = F'(\xi_k) \cdot |\Delta_k|$. Поэтому
+            \begin{equation*}
+                F(b) - F(a) = \sum_{k = 1}^n (F(x_k) - F(x_{k - 1})) = \sum_{k = 1}^n F'(\xi_k) \cdot |\Delta_k| = \sigma(f, \T, \xi).
+            \end{equation*}
+
+            При достаточно малом масштабе $\lambda(\T)$ интегральная сумма близка к интегралу от $F'$.
+        \end{proof}
+
+        \begin{consequence*}
+            Пусть $f$, $g$ --- непрерывно дифференцируемы на отрезке $[a; b]$ функции. Тогда
+            \begin{equation*}
+                \int_a^b f(x) g'(x) \dd x = f(b) g(b) - f(a) g(a) - \int_a^b f'(x) g(x) \dd x
+            \end{equation*}
+        \end{consequence*}
+
+        \begin{proof}
+            Применяем формулу Ньютона-Лейбница к $F = fg$:
+            \begin{equation*}
+                \int_a^b (f(x)g(x))' \dd x = f(b)g(b) - f(a)g(a)
+            \end{equation*}
+            и правило Лейбница: $(fg)' = f'g + fg'$.
+        \end{proof}
+
+        Далее будем использовать соглашение: при $b > a$ по определению $\int_b^a f(x) \dd x = - \int_a^b f(x) \dd x$.
+
+        \subsection{Интеграл с переменным верхним пределом, его свойства}
+
+        \begin{theorem*}
+            Пусть $f$ интегрируема по Риману на $[a; b]$. Тогда функция
+            \begin{equation*}
+                F(x) := \int_a^x f(x) \dd x
+            \end{equation*}
+            непрерывна на $[a; b]$. Кроме того, если $f$ непрерывна в точке $x_0 \in [a; b]$, то $F$ дифференцируема в точке $x_0$ и $F'(x_0) = f(x_0)$.
+        \end{theorem*}
+
+        \begin{proof}
+            Для $x, y \in [a; b]$ выполнено $|F(x) - f(y)| \leq \sup\limits_{z \in [a; b]} |f(z)| \cdot |x - y|$, что влечет непрерывность $F$. Пусть $f$ непрерывна в точке $x_0$. Тогда
+            \begin{equation*}
+                \forall \eps > 0 \ \exists \delta > 0: f(x_0) - \eps < f(x) < f(x_0) + \eps
+            \end{equation*}
+            для каждой точки $x$, для которой $|x - x_0| < \delta$.
+
+            Так как $F(X) - F(x_0) = \int_{x_0}^x f(t) \dd t$, то для точек $x$, для которых $|x - x_0| < \delta$, выполнено
+            \begin{equation*}
+                f(x_0) - \eps < \dfrac{F(x) - F(x_0)}{x - x_0} < f(x_0) + \eps,
+            \end{equation*}
+            что и дает второе утверждение теоремы.
+        \end{proof}
+
+        \begin{consequence*}
+            Пусть $f$ непрерывна на $[a; b]$, тогда у $f$ существует первообразная.
+        \end{consequence*}
+
+        \subsection{Формула замены переменной}
+
+        \begin{consequence*}
+            Пусть $f$ --- непрерывна на $[a; b]$, $\phi: [\alpha, \beta] \to [a; b]$ --- непрерывно дифференцируемая функция. Тогда
+            \begin{equation*}
+                \int_{\phi(\alpha)}^{\phi(\beta)} f(x) \dd x = \int_{\alpha}^{\beta} f(\phi(t)) \phi'(t) \dd t
+            \end{equation*}
+        \end{consequence*}
+
+        \begin{proof}
+            Пусть $F$ --- первообразная $f$. Тогда $F(\phi(t))$ --- первообразная функция $f(\phi(t)) \phi'(t)$. 
+
+            По формуле Ньютона-Лейбница:
+            \begin{equation*}
+                \int_{\phi(\alpha)}^{\phi(\beta)} f(x) \dd x = F(\phi(\beta)) - F(\phi(\alpha)) = \int_{\alpha}^{\beta} f(\phi(t)) \phi'(t) \dd t
+            \end{equation*}
+        \end{proof}
+
     \section{Формула Тейлора с остаточным членом в интегральной форме. Ряд Тейлора для функций $e^x$, $\sin x$, $\cos x$, $\ln(1 + x)$, $(1 + x)^p$ (обоснование сходимости для $e^x$ и $\ln(1 + x)$). Площадь криволинейной трапеции и длина кривой.}
 
     \section{Формула Стирлинга.}
