@@ -99,7 +99,7 @@
                 \dfrac{f(y) - f(z)}{y - z} = f'(\xi_2)
             \end{equation*}.
 
-            Так как $f'(\xi) \leq f'(\xi_2)$, то по предыдущей лемме получаем выпуклость $f$.
+            Так как $f'(\xi_1) \leq f'(\xi_2)$, то по предыдущей лемме получаем выпуклость $f$.
         \end{proof}
 
         Заметим, что дважды дифференцируемая функция $f$ на интервале $I$ выпукла тогда и только тогда, когда $f''(x) \geq 0 \forall x \in I$.
@@ -117,7 +117,7 @@
 
             Пусть утверждение выполнено для $n$ точек. Проверим, что оно выполнено для $n + 1$ точки. Пусть $t := t_1 + \dots + t_n$. Так как $\dfrac{t_1}{t}x_1 + \dots + \dfrac{t_n}{t}x_n \in I$ (проверяется подстановкой во все $t_i$ минимального/максимального из $t$), то
             \[\begin{gathered}
-                f(t_1x_1 + \dots + t_nx_n + t_{n + 1}x_{n + 1}) \leq tf \left(\dfrac{t_1}{t}x_1 + \dots + \dfrac{t_n}{t}x_n\right) + f_{n + 1}f(x_{n + 1}) \\
+                f(t_1x_1 + \dots + t_nx_n + t_{n + 1}x_{n + 1}) \leq tf \left(\dfrac{t_1}{t}x_1 + \dots + \dfrac{t_n}{t}x_n\right) + t_{n + 1}f(x_{n + 1}) \\
                 \leq t \left(\dfrac{t_1}{t}f(x_1) + \dots + \dfrac{t_n}{t}f(x_n)\right) + t_{n + 1}f(x_{n + 1}) = t_1f(x_1) + \dots + t_{n + 1}f(x_{n + 1})
             \end{gathered}\]
 
@@ -556,7 +556,7 @@
         \begin{proof}
             В силу предыдущей теоремы $f$ равномерно непрерывна на $[a; b]$.
 
-            Поэтому, $\forall \eps > 0 \ \exists \delta > 0: \omega(f, \Delta_k) < \eps \forall k$ для произвольного разбиения $\T$ с $\lambda(\T) < \delta$. Для такого разбиения
+            Поэтому, $\forall \eps > 0 \ \exists \delta > 0: \omega(f, \Delta_k) < \eps \ \forall k$ для произвольного разбиения $\T$ с $\lambda(\T) < \delta$. Для такого разбиения
             \begin{equation*}
                 \sum_k \omega(f, \Delta_k) \cdot |\Delta_k| < \eps \cdot |b - a|.
             \end{equation*}
@@ -647,7 +647,151 @@
 
     \section{Формула Тейлора с остаточным членом в интегральной форме. Ряд Тейлора для функций $e^x$, $\sin x$, $\cos x$, $\ln(1 + x)$, $(1 + x)^p$ (обоснование сходимости для $e^x$ и $\ln(1 + x)$). Площадь криволинейной трапеции и длина кривой.}
 
+    	\subsection{Формула Тейлора с остаточным членом в интегральной форме}
+
+    	\begin{theorem*}
+    		Если $f$ непрерывно дифференцируема $m + 1$ раз на отрезке $[a; x]$, то
+    		\begin{equation*}
+    			f(x) = f(a) + f'(a)(x - a) + \dots + \dfrac{1}{m!} \cdot f^{(m)}(a) (x-  a)^m + \dfrac{1}{m!} \int_a^x (x - t)^m f^{(m + 1)}(t) \dd t
+    		\end{equation*}
+    	\end{theorem*}
+
+    	\begin{proof}
+    		Заметим, что
+    		\begin{equation*}
+    			\dfrac{1}{m!} \int_a^x (x - t)^m f^{(m + 1)}(t) \dd t
+    			= -\dfrac{1}{m!}(x - a)^m \cdot f^{(m)}(a) - \dfrac{1}{m!} \int_a^x -m(x - t)^{m - 1}f^{(m)}(t) \dd t.
+    		\end{equation*}
+
+    		Чтобы получить интегральную формулу, воспользовались интегрированием по частям. Если начать раскрывать эти интегралы до конца ($m - 1$ раз), и сложить с посчитанными членами в ряде Тейлора, то получится
+    		\begin{equation*}
+    			f(x) = f(a) + \int_a^x f'(t) \dd t = f(a) + f(x) - f(a) = f(x)
+    		\end{equation*}
+    	\end{proof}
+
+    	\subsection{Ряд Тейлора для функций $e^x$, $\sin x$, $\cos x$, $\ln(1 + x)$, $(1 + x)^p$ (обоснование сходимости для $e^x$ и $\ln(1 + x)$)}
+
+    	\begin{consequence*}
+    		Справедливы следующие равенства:
+
+    		\begin{itemize}
+    		\item
+    			$e^x = \sum_{n = 0}^{\infty} \dfrac{x^n}{n!}$, $x \in \RR$
+
+    		\item
+    			$\sin x = \sum_{n = 0}^{\infty} \dfrac{(-1)^n x^{2n + 1}}{(2x + 1)!}$, $x \in \RR$
+
+    		\item
+    			$\cos x = \sum_{n = 0}^{\infty} \dfrac{(-1)^n x^{2n}}{(2n + 1)!}$, $x \in \RR$
+
+    		\item
+    			$\ln(1 + x) = \sum_{n = 1}^{\infty} \dfrac{(-1)^{n - 1}x^n}{n}$, $x \in (-1; 1]$
+
+    		\item
+    			$(1 + x)^p = 1 + \sum_{n = 1}^{\infty} \binom{p}{n} x^n$, где $\binom{p}{n} := \dfrac{p(p - 1) \dots (p - n + 1)}{n!}$, $x \in (-1; 1)$
+    		\end{itemize}
+    	\end{consequence*}
+
+    	\begin{proof}
+    		Имеем
+    		\begin{equation*}
+    			\left|e^x - \sum_{n = 0}^m \dfrac{x^n}{n!}\right|
+    			= \dfrac{1}{m!} \left|\int_0^x (x - t)^m e^t \dd t\right|
+    			\leq \dfrac{|x|^m \cdot e^x}{m!} \xrightarrow[m \to \infty]{} 0
+    		\end{equation*}
+
+    		Функции $\sin$ и $\cos$ рассматриваются аналогично. Для $\ln(1 + x)$ имеем
+    		\begin{equation*}
+    			\left|\ln(1 + x) - \sum_{n = 1}^m \dfrac{(-1)^{n - 1}x^n}{n}\right| = \left|\int_0^x(x - t)^m (1 + t)^{-m - 1} \dd t\right|.
+    		\end{equation*}
+
+    		Если $x > 0$, то последнее выражение оценивается через $\dfrac{1}{m + 1}$, а если $x < 0$, то $|x - t| = |x| \cdot (1 - tx^{-1}) \leq |x| \cdot (1 - |t|) = |x| \cdot (1 + t)$, поэтому
+    		\begin{equation*}
+    			\left|\int_0^x (x - t)^m \cdot (1 + t)^{-m - 1} \dd t\right| \leq \dfrac{|x|^m}{1 + x} \xrightarrow[m \to \infty]{} 0
+    		\end{equation*}
+
+    		Ряд для функции $(1 + x)^p$ рассматривается похожим образом.
+    	\end{proof}
+
     \section{Формула Стирлинга.}
+
+   		\subsection{Формула Стирлинга}
+
+   		\begin{theorem*}
+   			Для некоторой числовой постоянно $c$ выполнено $N! \sim c \sqrt{N} (N / e)^N$
+   		\end{theorem*}
+
+   		\begin{proof}
+   			Пусть $f(x) := \ln x$. В силу вогнутости $\forall a, b \geq 1$
+   			\begin{equation*}
+   				\dfrac{f(a) + f(b)}{2} \leq \dfrac{1}{b - a} \int_a^b f(x) \dd x \leq f\left(\dfrac{a + b}{2}\right).
+   			\end{equation*}
+
+   			Также отметим, что по Теореме Лагранжа найдутся точки $\xi_1 \in \left(a; \dfrac{a + b}{2}\right)$ и $\xi_2 \in \left(\dfrac{a + b}{2}; b\right)$, для которых
+   			\[\begin{gathered}
+   				f \left(\dfrac{a + b}{2}\right) - f(a) = f'(\xi_1) \cdot \left(\dfrac{a + b}{2} - a\right) \\
+   				f \left(\dfrac{a + b}{2}\right) - f(b) = f'(\xi_2) \cdot \left(\dfrac{a + b}{2} - b\right) \\
+   			\end{gathered}\]
+   			Складываем оба равенства, делим на $2$:
+   			\begin{equation*}
+   				f \left(\dfrac{a + b}{2}\right) - \dfrac{f(a) + f(b)}{2} = \dfrac{b - a}{4} (f'(\xi_1) - f'(\xi_2)) = \dfrac{b - a}{4} f''(\xi) \cdot (\xi_1 - \xi_2) \leq \dfrac{(b - a)^2}{4} \max\limits_{x \in [a; b]} |f''(x)|.
+   			\end{equation*}
+
+   			В нашем случае,
+   			\begin{equation*}
+   				\dfrac{\ln(n - 1) + \ln n}{2} \leq \int_{n - 1}^n \ln x \dd x \leq \dfrac{\ln( n- 1) + \ln n}{2} + \dfrac{1}{4(n - 1)^2}.
+   			\end{equation*}
+
+   			Таким образом, последовательность
+   			\begin{equation*}
+   				s_N := \int_1^N \ln x \dd x - \sum_{n = 2}^N \ln n + \dfrac{1}{2} \ln N
+   			\end{equation*}
+   			монотонна и ограничена, а значит имеет предел. Тем самым, предел существует и у последовательности
+   			\begin{equation*}
+   				e^{-S_N} = \dfrac{N!}{(N / e)^N \sqrt{N}}
+   			\end{equation*}
+   		\end{proof}
+
+   		\subsection{Вычисление константы в формуле Стирлинга}
+
+   		\begin{theorem*}
+   			Число $c$ в формуле Стирлинга равно $\sqrt{2\pi}$.
+   		\end{theorem*}
+
+   		\begin{proof}
+   			Пусть
+   			\begin{equation*}
+   				I_k = \int_0^{\pi/2} \sin^k x \dd x.
+   			\end{equation*}
+
+   			Легко проверить, что
+   			\begin{equation*}
+   				I_{2n} = \dfrac{2n - 1}{2n}I_{2n - 2} = \dfrac{\pi}{2} \cdot \dfrac{(2n - 1)!!}{(2n)!!};
+   				\quad
+   				I_{2n + 1} = \dfrac{2n}{2n + 1}I_{2n - 1} = \dfrac{(2n)!!}{(2n + 1)!!}.
+   			\end{equation*}
+
+   			Кроме того,
+   			\begin{equation*}
+   				1 \geq \dfrac{I_{2n + 1}}{I_{2n}} \geq \dfrac{2n}{2n + 1}.
+   			\end{equation*}
+
+   			Тем самым,
+   			\begin{equation*}
+   				\lim_{n \to \infty} \dfrac{((2n)!!)^2}{(2n + 1)!!(2n - 1)!!} = \dfrac{\pi}{2}.
+   			\end{equation*}
+
+   			Но
+   			\begin{equation*}
+   				\dfrac{((2n)!!)^2}{(2n + 1)!!(2n - 1)!!} = \dfrac{((2n)!!)^4}{(2n + 1)((2n)!)^2} = \dfrac{(2^n n!)^4}{(2n + 1)((2n)!)^2} \sim \dfrac{2^{4n}c^4n@(n / e)^{4n}}{c^2(2n + 1)2n((2n)/e)^{4n}}.
+   			\end{equation*}
+
+   			Таким образом,
+   			\begin{equation*}
+   				\lim_{n \to \infty} \dfrac{c^2n}{2(2n + 1)} = \dfrac{\pi}{2},
+   			\end{equation*}
+   			откуда следует нужное равенство.
+   		\end{proof}
 
     \section{Несобственный интеграл Римана: определение и примеры. Регулярность и линейность несобственного интеграла, независимость сходимости интеграла от его <<начала>>. Формула интегрирования по частям и замены переменной для несобственного интеграла.}
 
