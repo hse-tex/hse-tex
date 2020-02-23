@@ -910,7 +910,141 @@
     		сходятся или расходятся одновременно.
     	\end{remark*}
 
+        \subsection{Формула интегрирования по частям и замены переменной для несобственного интеграла}
+
+        \begin{theorem*}
+            Пусть $f$ непрерывна на $[a; b)$, $\phi: [\alpha; \beta) \to [a; b)$ --- непрерывно дифференцируемое отображение, $\phi(\alpha) = a, \phi(t) \to b$ при $t \to \beta$. Тогда функция $t \mapsto f(\phi(t))\phi'(t)$ интегрируема в несобственном смысле на промежутке $[\alpha; \beta)$ и
+            \begin{equation*}
+                \int_a^b f(x) \dd x = \int_{\alpha}^{\beta} f(\phi(t))\phi'(t) \dd t
+            \end{equation*}
+        \end{theorem*}
+
+        \begin{proof}
+            По формуле замены переменной для произвольного $T < \beta$ выполнено
+            \begin{equation*}
+                \int_{\alpha}^T f(\phi(t))\phi'(t) \dd t = \int_a^{\phi(T)} f(x) \dd x
+            \end{equation*}
+
+            /\!/TODO: Добавить нормальное пояснение
+        \end{proof}  
+
+        \begin{theorem*}
+            Пусть $f$, $g$ непрерывно дифференцируемы на $[a; b)$ и существует предел
+            \begin{equation*}
+                \lim_{x \to b - 0} f(x)g(x).
+            \end{equation*}
+
+            Тогда функции $f'g$ и $fg'$ одновременно интегрируемы или не интегрируемы в несобственном смысле на $[a; b)$, и в случае интегрируемости
+            \begin{equation*}
+                \int_a^b f(t)g'(t) \dd t = \lim_{x \to b - 0} f(x) g(x) - f(a)g(a) - \int_a^b f(t)g'(t) \dd t.
+            \end{equation*}
+        \end{theorem*}      
+
+        \begin{proof}
+            Утверждение следует из формулы интегрирования по частями для обычного интеграла Римана.
+
+            Заметим, что сходимость интеграла от функции $f$ на промежутке $[a; b)$ равносильна существованию предела для функции
+            \begin{equation*}
+                F(X) := \int_a^x f(t) \dd t
+            \end{equation*}
+            при $x \to b - 0$.
+
+            Тем самым, для сходимости интеграла верен критерий Коши: пусть $f$ интегрируема на каждом отрезке $[a; x]$ при $x < b$. Тогда интеграл
+            \begin{equation*}
+                \int_a^b f(t) \dd t
+            \end{equation*}
+            сходится тогда и только тогда, когда $\forall \eps > 0 \ \exists x_0: \forall x_1, x_2 \in (x_0, b)$ выполнено
+            \begin{equation*}
+                \left|\int_{x_1}^{x_2} f(t) \dd t\right| < \eps.
+            \end{equation*}
+        \end{proof}
+
     \section{Абсолютная и условная сходимость несобственных интегралов. Пример функции, интеграл от которой сходится условно. Исследования сходимости интеграла от неотрицательной функции с помощью неравенств и эквивалентности. Признаки Дирихле-Абеля сходимости несобственного интеграла.}
 
+        \subsection{Абсолютная и условная сходимость несобственных интегралов}
 
+        \begin{definition*}
+            Говорят, что несобственный интеграл $\int_a^b f(t) \dd t$ сходится \textbf{абсолютно}, если сходится интеграл $\int_a^b |f(t)| \dd t$.
+        \end{definition*}
+
+        \begin{remark*}
+            В силу критерия Коши ясно, что абсолютно сходящийся интеграл сходится.
+
+            /\!/TODO: разобраться и пояснить.
+        \end{remark*}
+
+        \begin{remark*}
+            Исследования абсолютной сходимости сводится к исследования сходимости интеграла от неотрицательной функции. В случае неотричательной функции $f$ функциия $F$ оказывается монотонной, поэтому сходимость интеграла от неотрицательной функции равносильна ограниченности $F$ на $[a; b)$.
+        \end{remark*}
+
+        \begin{proposal*}
+            Пусть $f$, $g$ интегрируемы на каждом отрезке $[a; x]$ при $x < b$ и $0 \leq f(x) \leq g(x)$ при $x [in [a; b)$. Тогда из сходимости интеграла для $g$ следует сходимость интеграла для $f$, а из расходимости интеграла для $f$ следует расходимость интеграла для $g$.
+        \end{proposal*}
+
+        \begin{proof}
+            Следует из оценки
+            \begin{equation*}
+                \int_a^x f(t) \dd t \leq \int_a^x g(t) \dd t
+            \end{equation*}
+            при $x \in [a; b)$ и неотрицательности обеих функций.
+        \end{proof}
+
+        \begin{consequence*}
+            Если $f \geq 0$ и $f(x) \sim g(x)$ при $x \to b - 0$, то интегралы от функций $f$ и $g$ сходятся или расходятся одновременно.
+        \end{consequence*}
+
+        \begin{proof}
+            Найдется такое число $x_0 \in [a; b)$, что $\dfrac{1}{2}g(x) \leq f(x) \leq \dfrac{3}{2}g(x)$ при $x \in (x_0; b)$.
+        \end{proof}
+
+        \begin{definition*}
+            Говорят, что несобственный интеграл $\int_a^b f(t) \dd t$ сходится условно, если сам интеграл сходится, но не сходится абсолютно.
+        \end{definition*}
+
+        \subsection{Примеры}
+
+        \begin{equation*}
+            \left.\int_1^{\infty} \dfrac{\sin x}{x} \dd x = - \dfrac{\cos x}{x} \right|_1^{\infty} - \int_1^{\infty} \dfrac{\cos x}{x^2} \dd x,
+        \end{equation*}
+        последний интеграл сходится абсолютно. В то же время,
+        \begin{equation*}
+            \int_1^{\infty} \left|\dfrac{\sin x}{x}\right| \dd x \geq \int_1^{\infty} \dfrac{\sin^2 x}{x} \dd x = \int_1^{\infty} \left( \dfrac{1}{2x} - \dfrac{\cos 2x}{2x} \right)\dd x,
+        \end{equation*}
+        где первый интеграл не сходится, а второй сходится, а значит и интеграл от суммы сходиться не может.
+
+        \subsetion{Признак Дирихле-Абеля}
+
+        \begin{theorem*}
+            Пусть $f$ и $g$ интегрируемы на каждом отрезке $[a; x]$ при $x < g$, $f$ --- непрерывная функция, $g$ --- монотонная, непрерывно дифференцируемая функция. Пусть
+            \begin{enumerate}
+            \item
+                функция $F(x) := \int_a^x f(t) \dd t$ ограничена, а $g(x) \to 0$ при $x \to b - 0$
+
+            \textbf{или}
+
+            \item
+                интеграл $\int_a^b f(t) \dd t$ сходится, а $g$ --- ограниченная функция
+            \end{enumerate}
+
+            Тогда интеграл $\int_a^b f(x)g(x) \dd x$ сходится.
+        \end{theorem*}
+
+        \begin{proof}
+            Заметим, что
+            \begin{equation*}
+                \int_{x_1}^{x_2} f(t) g(t) \dd t = (F(x_2) - F(x_1))g(x_2) - \int_{x_1}^{x_2} (F(t) - F(x_1))g'(t) \dd t.
+            \end{equation*}
+
+            Тогда
+            \begin{equation*}
+                \left|\int_{x_1}^{x_2} f(t) g(t) \dd t\right| \leq |g(x_2)| \cdot |F(x_2) - F(x_1)| + \sup\limits_{t \in [x_1; x_2]} |F(t) - F(x_1)| \cdot \int_{x_1}^{x_2} |g'(t)| \dd t.
+            \end{equation*}
+
+            Так как $\int_{x_1}^{x_2} |g'(t)| \dd t = |g(x_2) - g(x_1)|$, то
+            \begin{equation*}
+                \left|\int_{x_1}^{x_2} f(t) g(t) \dd t\right| \leq (2 \cdot |g(x_2)| + |g(x_1)|) \cdot \sup\limits_{t \in [x_1; x_2]} |F(t) - F(x_1)|.
+            \end{equation*}
+
+            При каждом из наших предположений, последнее выражение мало при больших $x_1$, $x_2$.
+        \end{proof}
 \end{document}
