@@ -182,7 +182,7 @@
 
                 В то же время
                 \begin{equation*}
-                    \int f(x) \dd x  +\beta \int g(x) \dd x = \alpha F + \alpha C_1 + \beta G + \beta C_2 = \alpha F + \beta G + C
+                    \alpha \int f(x) \dd x + \beta \int g(x) \dd x = \alpha F + \alpha C_1 + \beta G + \beta C_2 = \alpha F + \beta G + C
                 \end{equation*}
 
             \item
@@ -192,7 +192,7 @@
                 \end{equation*}
 
             \item
-                Если $F$ --- первообразная для $f$, то $(F(\phi(t))') = F'(\phi(t))\phi'(t)$.
+                Если $F$ --- первообразная для $f$, то $(F(\phi(t)))' = F'(\phi(t))\phi'(t)$.
             \end{enumerate}
         \end{proof}
 
@@ -338,7 +338,7 @@
 
             для каждого отмеченного разбиения $(\T, \xi)$ с масштабом $\lambda(\T) < \delta$. Тем самым, для таких разбиений
             \begin{equation*}
-                \left|\sigma(\alpha f + \beta g, \T, \xi) - \alpha \int_a^b f(x) \dd x + \beta \int_a^b g(x) \dd x\right| < (|\alpha| + |\beta|) \cdot \eps
+                \left|\sigma(\alpha f + \beta g, \T, \xi) - \alpha \int_a^b f(x) \dd x - \beta \int_a^b g(x) \dd x\right| < (|\alpha| + |\beta|) \cdot \eps
             \end{equation*}
         \end{proof}
 
@@ -367,7 +367,7 @@
             \end{equation*}
             суммы Дарбу.
 
-            \textbf{Нижним интегралом Дарбу} называется число $\underline{I} = \sup\limits_{\T} s(f, \T)$ (обратите внимание, что черта снизу), а \textbf{верхним интегралом Дарбу} называется число $\overline{I} = \int\limits_{\T} S(f, \T)$. 
+            \textbf{Нижним интегралом Дарбу} называется число $\underline{I} = \sup\limits_{\T} s(f, \T)$ (обратите внимание, что черта снизу), а \textbf{верхним интегралом Дарбу} называется число $\overline{I} = \inf\limits_{\T} S(f, \T)$. 
         \end{definition*}
 
         \begin{lemma*}~
@@ -407,7 +407,7 @@
 
             Для каждого $\eps$ найдется такое разбиение $\T_{\eps}$, для которого $\underline{I} \leq s(f, \T_{\eps}) + \dfrac{\eps}{2} \leq s(f, \T_{\eps} \cup \T)$ для произвольного разбиения $\T$. Первое неравенство выполняется, так как можно в $\T_{\eps}$ подставить разбиение $\T$, которое было выбрано для супремума в $\underline{I}$. Второе неравенство выполняется по третьему пункту из предыдущей леммы.
 
-            Заметим, что среди отрезков, порожденных разбиением $\T_{\eps} \cup \T$ не более чем $2|\T_{\eps}$ отрезков не порожденных разбиением $\T$ (худший случай, когда в каждый отрезок, порожденный $\T$, попадает одна точка из $\T_{\eps}$, тем самым порождая 2 новых отрезка). Поэтому $s(f, \T_{\eps} \cup \T) \leq qs(f, \T) + 2|\T_{\eps}| \cdot 2 \sup\limits_{x \in [a; b]} |f(x)| \cdot \lambda(\T)$.
+            Заметим, что среди отрезков, порожденных разбиением $\T_{\eps} \cup \T$ не более чем $2|\T_{\eps}|$ отрезков, не порожденных разбиением $\T$ (худший случай, когда в каждый отрезок, порожденный $\T$, попадает одна точка из $\T_{\eps}$, тем самым порождая 2 новых отрезка). Поэтому $s(f, \T_{\eps} \cup \T) \leq qs(f, \T) + 2|\T_{\eps}| \cdot 2 \sup\limits_{x \in [a; b]} |f(x)| \cdot \lambda(\T)$.
 
             Взяв теперь $\delta > 0$ так, чтобы $4|\T_{\eps}| \sup\limits_{x \in [a; b]} |f(x)| \cdot \delta < \dfrac{\eps}{2}$, получаем требуемую оценку.
         \end{proof}
