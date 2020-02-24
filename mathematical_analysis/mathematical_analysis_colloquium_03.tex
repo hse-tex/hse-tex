@@ -332,7 +332,7 @@
         \begin{proof}
             Заметим, что $\sigma(\alpha f + \beta g, \T, \xi) = \alpha \sigma(f, \T, \xi) + \beta \sigma(g, \T, \xi)$. Кроме того, для произвольного $\eps > 0$ найдется $\delta > 0$ для которого
             \begin{equation*}
-                \left|\sigma(f, |T, \xi) - \int_a^b f(x) \dd x\right| < \eps; \quad
+                \left|\sigma(f, \T, \xi) - \int_a^b f(x) \dd x\right| < \eps; \quad
                 \left|\sigma(g, \T, \xi) - \int_a^b g(x) \dd x\right| < \eps
             \end{equation*}
 
@@ -374,10 +374,10 @@
 
             \begin{enumerate}
             \item
-                $s(f, \T) \leq \inf_{\xi} \sigma(f, \T, \xi) \leq \sigma(f, \T, \sigma) \leq \sup_{\xi} \sigma(f, \T, \xi) \leq S(f, \T)$
+                $s(f, \T) \leq \inf_{\xi} \sigma(f, \T, \xi) \leq \sigma(f, \T, \xi) \leq \sup_{\xi} \sigma(f, \T, \xi) \leq S(f, \T)$
 
             \item
-                Если $\T \in \T'$, то $s(f, \T) \leq s(f, \T')$ и $S(f, T') \leq S(f, \T)$
+                Если $\T \subseteq \T'$, то $s(f, \T) \leq s(f, \T')$ и $S(f, \T') \leq S(f, \T)$
 
             \item
                 $s(f, \T_1) \leq s(f, \T_1 \cup \T_2) \leq S(f, \T_1 \cap \T_2) \leq S(f, \T_2)$
@@ -407,7 +407,7 @@
 
             Для каждого $\eps$ найдется такое разбиение $\T_{\eps}$, для которого $\underline{I} \leq s(f, \T_{\eps}) + \dfrac{\eps}{2} \leq s(f, \T_{\eps} \cup \T)$ для произвольного разбиения $\T$. Первое неравенство выполняется, так как можно в $\T_{\eps}$ подставить разбиение $\T$, которое было выбрано для супремума в $\underline{I}$. Второе неравенство выполняется по третьему пункту из предыдущей леммы.
 
-            Заметим, что среди отрезков, порожденных разбиением $\T_{\eps} \cup \T$ не более чем $2|\T_{\eps}|$ отрезков, не порожденных разбиением $\T$ (худший случай, когда в каждый отрезок, порожденный $\T$, попадает одна точка из $\T_{\eps}$, тем самым порождая 2 новых отрезка). Поэтому $s(f, \T_{\eps} \cup \T) \leq qs(f, \T) + 2|\T_{\eps}| \cdot 2 \sup\limits_{x \in [a; b]} |f(x)| \cdot \lambda(\T)$.
+            Заметим, что среди отрезков, порожденных разбиением $\T_{\eps} \cup \T$ не более чем $2|\T_{\eps}|$ отрезков, не порожденных разбиением $\T$ (худший случай, когда в каждый отрезок, порожденный $\T$, попадает одна точка из $\T_{\eps}$, тем самым порождая 2 новых отрезка). Поэтому $s(f, \T_{\eps} \cup \T) \leq s(f, \T) + 2|\T_{\eps}| \cdot 2 \sup\limits_{x \in [a; b]} |f(x)| \cdot \lambda(\T)$.
 
             Взяв теперь $\delta > 0$ так, чтобы $4|\T_{\eps}| \sup\limits_{x \in [a; b]} |f(x)| \cdot \delta < \dfrac{\eps}{2}$, получаем требуемую оценку.
         \end{proof}
@@ -450,11 +450,11 @@
         \end{consequence*}
 
         \begin{proof}
-            Заметим, что $\overline{i} = \underline{I} \iff \forall \eps > 0$ найдется разбиение $\T$, для которого $S(f, \T) - s(f, \T) < \eps$.
+            Заметим, что $\overline{I} = \underline{I} \iff \forall \eps > 0$ найдется разбиение $\T$, для которого $S(f, \T) - s(f, \T) < \eps$.
 
             Требует пояснения только импликация $\implies$, так как обратное следует из выбора $\T$: для инфинума и супремума в $\overline{I}$ и $\underline{I}$ соответственно будет выбрано то самое $\T$.
 
-            Если $\overline{i} = \underline{I}$, то $\forall \eps > 0$ найдутся разбиения $\T_1$ и $\T_2$: $S(f, \T_1) - s(f, \T_2) < \overline{I} - \dfrac{\eps}{2} - (\underline{I} - \dfrac{\eps}{2}) = \eps$ (так как можно взять $\T_1$ и $\T_2$ равные выбранным в $\overline{I}$ и $\underline{I}$ соответственно).
+            Если $\overline{I} = \underline{I}$, то $\forall \eps > 0$ найдутся разбиения $\T_1$ и $\T_2$: $S(f, \T_1) - s(f, \T_2) < \overline{I} - \dfrac{\eps}{2} - (\underline{I} - \dfrac{\eps}{2}) = \eps$ (так как можно взять $\T_1$ и $\T_2$ равные выбранным в $\overline{I}$ и $\underline{I}$ соответственно).
 
             Кроме того, $S(f, \T_1 \cup \T_2) - s(f, \T_1 \cup \T_2) \leq S(f, \T_1) - s(f, \T_2)$ (по свойствам для сумм Дарбу). 
 
@@ -471,7 +471,7 @@
             Интегрируемость $|f|$ и $f^2$ следует из оценок
             \[\begin{gathered}
                 \omega(|f|, \Delta) \leq \omega(f, \Delta) \\
-                \omega(f^2, \Delta) \leq 2 \sup_{x \in \Delta} |f(x)) \cdot \omega(f, \Delta)
+                \omega(f^2, \Delta) \leq 2 \sup_{x \in \Delta} |f(x)| \cdot \omega(f, \Delta)
             \end{gathered}\]
 
             Интегрируемость на подотрезке доказывается следующим образом. Для каждого $\eps > 0$ найдутся разбиение $\T$ отрезка $[a; b]$ для которого $S_{[a; b]}(f, \T) - s_{[a; b]} < \eps$. Но
@@ -487,7 +487,7 @@
         \end{consequence*}
 
         \begin{proof}
-            Действительно, $f \cdot g = \dfrac{1}{4} \cdot |(f + g)^2 - (f - g)^2|$
+            Действительно, $f \cdot g = \dfrac{1}{4} \cdot \left[(f + g)^2 - (f - g)^2\right]$
         \end{proof}
 
         \subsection{Аддитивность интеграла}
@@ -790,7 +790,7 @@
 
    			Но
    			\begin{equation*}
-   				\dfrac{((2n)!!)^2}{(2n + 1)!!(2n - 1)!!} = \dfrac{((2n)!!)^4}{(2n + 1)((2n)!)^2} = \dfrac{(2^n n!)^4}{(2n + 1)((2n)!)^2} \sim \dfrac{2^{4n}c^4n@(n / e)^{4n}}{c^2(2n + 1)2n((2n)/e)^{4n}}.
+   				\dfrac{((2n)!!)^2}{(2n + 1)!!(2n - 1)!!} = \dfrac{((2n)!!)^4}{(2n + 1)((2n)!)^2} = \dfrac{(2^n n!)^4}{(2n + 1)((2n)!)^2} \sim \dfrac{2^{4n}c^4n^2(n / e)^{4n}}{c^2(2n + 1)2n((2n)/e)^{4n}}.
    			\end{equation*}
 
    			Таким образом,
