@@ -454,7 +454,7 @@
 
             Требует пояснения только импликация $\implies$, так как обратное следует из выбора $\T$: для инфинума и супремума в $\overline{I}$ и $\underline{I}$ соответственно будет выбрано то самое $\T$.
 
-            Если $\overline{I} = \underline{I}$, то $\forall \eps > 0$ найдутся разбиения $\T_1$ и $\T_2$: $S(f, \T_1) - s(f, \T_2) < \overline{I} - \dfrac{\eps}{2} - (\underline{I} - \dfrac{\eps}{2}) = \eps$ (так как можно взять $\T_1$ и $\T_2$ равные выбранным в $\overline{I}$ и $\underline{I}$ соответственно).
+            Если $\overline{I} = \underline{I}$, то $\forall \eps > 0$ найдутся разбиения $\T_1$ и $\T_2$: $S(f, \T_1) - s(f, \T_2) < \left(\overline{I} + \dfrac{\eps}{2}\right) - (\underline{I} - \dfrac{\eps}{2}) = \eps$ (так как можно взять $\T_1$ и $\T_2$ равные выбранным в $\overline{I}$ и $\underline{I}$ соответственно).
 
             Кроме того, $S(f, \T_1 \cup \T_2) - s(f, \T_1 \cup \T_2) \leq S(f, \T_1) - s(f, \T_2)$ (по свойствам для сумм Дарбу). 
 
@@ -617,7 +617,7 @@
         \end{theorem*}
 
         \begin{proof}
-            Для $x, y \in [a; b]$ выполнено $|F(x) - f(y)| \leq \sup\limits_{z \in [a; b]} |f(z)| \cdot |x - y|$, что влечет непрерывность $F$. Пусть $f$ непрерывна в точке $x_0$. Тогда
+            Для $x, y \in [a; b]$ выполнено $|F(x) - F(y)| \leq \sup\limits_{z \in [a; b]} |f(z)| \cdot |x - y|$, что влечет непрерывность $F$. Пусть $f$ непрерывна в точке $x_0$. Тогда
             \begin{equation*}
                 \forall \eps > 0 \ \exists \delta > 0: f(x_0) - \eps < f(x) < f(x_0) + \eps
             \end{equation*}
@@ -686,10 +686,10 @@
     			$e^x = \sum_{n = 0}^{\infty} \dfrac{x^n}{n!}$, $x \in \RR$
 
     		\item
-    			$\sin x = \sum_{n = 0}^{\infty} \dfrac{(-1)^n x^{2n + 1}}{(2x + 1)!}$, $x \in \RR$
+    			$\sin x = \sum_{n = 0}^{\infty} \dfrac{(-1)^n x^{2n + 1}}{(2n + 1)!}$, $x \in \RR$
 
     		\item
-    			$\cos x = \sum_{n = 0}^{\infty} \dfrac{(-1)^n x^{2n}}{(2n + 1)!}$, $x \in \RR$
+    			$\cos x = \sum_{n = 0}^{\infty} \dfrac{(-1)^n x^{2n}}{(2n)!}$, $x \in \RR$
 
     		\item
     			$\ln(1 + x) = \sum_{n = 1}^{\infty} \dfrac{(-1)^{n - 1}x^n}{n}$, $x \in (-1; 1]$
@@ -873,7 +873,7 @@
     		$l(\alpha, \gamma) = l(\alpha, \beta) + l(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
 
     	\item
-    		$\inf\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha) \leq l(\alpha, \beta) \leq \sup\limits_{t \in [\alpha; \beta]}$, где $v(t) =  (x'(t), y'(t), z'(t))$
+    		$\inf\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha) \leq l(\alpha, \beta) \leq \sup\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha)$, где $v(t) =  (x'(t), y'(t), z'(t))$
     	\end{enumerate}
 
     	Аналогично получаем, $l(a, b) = \int_a^b |v(t)| \dd t$, где $|v(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}$.
