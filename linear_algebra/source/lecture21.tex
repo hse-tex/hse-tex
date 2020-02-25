@@ -1,0 +1,235 @@
+\section{Лекция 20.02.2020}
+
+\begin{comment}
+    Для $F = \CC$ всякую квадратичную форму можно привести к виду \eqref{lec21:1}, где $k = \rk Q$.
+    \begin{equation}
+        \label{lec21:1}
+        Q = x_1^2 + \dots + x_k^2
+    .\end{equation}
+\end{comment}
+
+
+\subsection{Положительный и отрицательный индексы инерции квадратичной формы над $\RR$}
+
+Пусть $F = \RR$.
+
+Пусть $Q \colon V \to \RR$ --- квадратичная форма.
+
+Можно привести к нормальному виду
+\begin{equation*}
+    Q(x_1, \dots, x_n) = x_1^2 + \dots + x_s^2 - x_{s + 1}^2 - \dots - x_{s + t}^2
+.\end{equation*}
+
+Здесь
+\begin{math}
+    \begin{aligned}[t]
+        &i_+ := s \text{ --- положительный индекс инерции квадратичной формы $Q$}, \\
+        &i_- := t \text{ --- отрицательный индекс инерции квадратичной формы $Q$}.
+    \end{aligned}
+\end{math}
+
+
+\subsection{Закон инерции}
+
+\begin{theorem}
+    Числа $i_+$ и $i_-$ не зависят от базиса в котором $Q$ принимает нормальный вид.
+\end{theorem}
+
+\begin{proof}
+    $s + t = \rk Q$, то есть не зависит от выбора базиса. Следовательно, достаточно показать, что число $s$ определено однозначно.
+
+    Пусть $\E = (e_1, \dots, e_n)$ --- базис, в котором $Q$ принимает нормальный вид
+    \begin{equation*}
+        Q = x_1^2 + \dots + x_s ^2 - x_{s + 1}^2 - \dots - x_{s + t}^2
+    .\end{equation*}
+
+    Пусть $\E' = (e'_1, \dots, e'_n)$ --- другой базис, в котором $Q$ принимает нормальный вид
+    \begin{equation*}
+        Q = x'^2_1 + \dots + x'^2_s - x'^2_{s + 1} - \dots - x'^2_{s + t}
+    .\end{equation*}
+
+    Предположим, что $s \neq s'$, можно считать что $s > s'$.
+
+    Положим 
+    \begin{math}
+        \begin{aligned}[t]
+            &L := \left< e_1, \dots, e_s \right>, \ \dim L = s, \\
+            &L' := \left< e'_{s + 1}, \dots, e'_{s + t} \right>, \ \dim L' = n - s'.
+        \end{aligned}
+    \end{math}
+
+    \bigskip
+    Так как $L + K' \subseteq V$, то $\dim \left(L + L'\right) \leq n$.
+
+    Тогда, $\dim \left(L \cap L'\right) \geq s + (n - s') - n = s - s' > 0$.
+
+    \bigskip
+    Значит, $\exists$ вектор $v \in L \cap L'$, такой что $v \neq 0$.
+
+    Теперь: 
+    \begin{enumerate}[nosep]
+        \item Так как $v \in L$, то $Q(v) > 0$,
+        \item Так как $v \in L'$, то $Q(v) \leq 0$.
+    \end{enumerate}
+ 
+    Противоречие.
+\end{proof}
+
+
+\subsection{Следствие метода Якоби о вычислении индексов инерции квадратичной формы над $\RR$}
+
+Пусть $Q \colon V \to \RR$ --- квадратичная форма,
+
+$\E = (e_1, \dots, e_n)$ --- базис,
+
+$B = B(Q, \E)$, 
+
+$\delta_k$ --- $k$-й угловой минор матрицы $B$.
+
+
+\begin{corollary}[из метода Якоби]
+    Пусть $\delta_k \neq 0 \ \forall k$. Тогда:
+
+    Число $i_+$ равно количеству \underline{сохранений знака} в последовательности $1, \delta_1, \dots, \delta_n$.
+
+    Число $i_-$ равно количеству \underline{перемен знака} в последовательности $1, \delta_1, \dots, \delta_n$.
+\end{corollary}
+
+\begin{proof}
+    Метод Якоби $ \implies \exists $ базис, в котором $Q$ принимает канонический вид
+    \begin{equation*}
+        Q = \delta_1 x_1^2 + \frac{\delta_2}{\delta_1} x_2^2 + \dots + \frac{\delta_n}{\delta_{n - 1}} x_{n}^2
+    .\end{equation*}
+
+    Здесь, знак отношения $\frac{\delta_i}{\delta_{i - 1}}$ соответствует смене либо сохранению знака в рассматриваемой последовательности.
+
+    По закону инерции, количества знаков $+$ и $-$ не изменяются от выбора базиса.
+\end{proof}
+
+
+\subsection{Положительно определённые, отрицательно определённые, неотрицательно определённые, неположительно определённые, неопределённые квадратичные формы над $\RR$}
+
+\begin{definition}
+    Квадратичная форма $Q$ над $\RR$ называется
+\end{definition}
+\begin{table}[H]
+{\renewcommand{\arraystretch}{1.7}
+    \begin{tabular}{c|c|c|c|c}
+        Термин & Обозначение & Условие & Нормальный вид & Индексы инерции \\ \hline
+        Положительно определённой & $Q > 0$ & $Q(x) > 0 \ \forall x \neq 0$ & $x_1^2 + \dots + x_n^2$ & $i_+ = n, i_- = 0$ \\ \hline
+        Отрицательно определённой & $Q < 0$ & $Q(x) < 0 \ \forall x \neq 0$ & $-x_1^2 - \dots - x_n^2$ & $i_+ = 0, i_- = n$ \\ \hline
+        Неотрицательно определённой & $Q \geq 0$ & $Q(x) \geq 0 \ \forall x$ & $x_1^2 + \dots + x_k^2, \ k \leq n$ & $i_+ = k, i_- = 0$ \\ \hline
+        Неположительно определённой & $Q \leq 0$ & $Q(x) \leq 0 \ \forall x$ & $-x_1^2 - \dots - x_k^2, \ k \leq n$ & $i_+ = 0, i_- = k$ \\ \hline
+        Неопределённой & --- & 
+        \begin{math}
+            \begin{aligned}
+                \exists x : Q(x) > 0 \\
+                \exists y : Q(y) < 0
+            \end{aligned}
+        \end{math} &
+        \begin{math}
+            \begin{gathered}
+                x_1^2 + \dots + x_s ^2 - x_{s + 1}^2 - x_{s + t}^2 \\
+                s, t \geq 1
+            \end{gathered}
+        \end{math} & $i_+ = s, i_- = t$
+        \\ \hline
+    \end{tabular}       
+}
+\end{table}
+
+
+\subsection{Примеры}
+
+$V = \RR^2$.
+
+\begin{enumerate}
+\item $Q(x, y) = x^2 + y^2$, $Q > 0$.
+
+    \begin{tikzpicture}
+    \begin{axis}[
+    xlabel=$x$, ylabel=$y$, small,
+    xmin=-2, xmax=2,
+    ymin=-2, ymax=2,
+    zmin=0, zmax=4,
+    3d box=complete,
+    unit vector ratio*=1 1 1,
+    ]
+    \addplot3[surf, domain=-1.5:1.5] 
+    {x^2+y^2};
+    \end{axis}
+    \end{tikzpicture} 
+
+\item $Q(x, y) = -x^2 - y^2$, $Q < 0$.
+
+    \begin{tikzpicture}
+    \begin{axis}[
+    xlabel=$x$, ylabel=$y$, small,
+    xmin=-2, xmax=2,
+    ymin=-2, ymax=2,
+    zmin=-4, zmax=0,
+    3d box=complete,
+    unit vector ratio*=1 1 1,
+    ]
+    \addplot3[surf, domain=-1.5:1.5] 
+    {-x^2-y^2};
+    \end{axis}
+    \end{tikzpicture} 
+
+\item $Q(x, y) = x^2$, $Q \geq 0$.
+    
+    \begin{tikzpicture}
+    \begin{axis}[
+    xlabel=$x$, ylabel=$y$, small,
+    xmin=-2, xmax=2,
+    ymin=-2, ymax=2,
+    zmin=0, zmax=4,
+    3d box=complete,
+    unit vector ratio*=1 1 1,
+    ]
+    \addplot3[surf, domain=-1.5:1.5] 
+    {x^2};
+    \end{axis}
+    \end{tikzpicture} 
+
+\item $Q(x, y) = -x^2$, $Q \leq 0$.
+
+    \begin{tikzpicture}
+    \begin{axis}[
+    xlabel=$x$, ylabel=$y$, small,
+    xmin=-2, xmax=2,
+    ymin=-2, ymax=2,
+    zmin=-4, zmax=0,
+    3d box=complete,
+    unit vector ratio*=1 1 1,
+    ]
+    \addplot3[surf, domain=-1.5:1.5] 
+    {-x^2};
+    \end{axis}
+    \end{tikzpicture} 
+
+\item $Q(x, y) = x^2 - y^2$.
+
+    \begin{tikzpicture}
+    \begin{axis}[
+    xlabel=$x$, ylabel=$y$, small,
+    xmin=-1, xmax=1,
+    ymin=-1, ymax=1,
+    zmin=-1, zmax=1,
+    3d box=complete,
+    unit vector ratio*=1 1 1,
+    ]
+    \addplot3[surf, domain=-1:1] 
+    {x^2 - y^2};
+    \end{axis}
+    \end{tikzpicture} 
+
+\end{enumerate}
+
+
+\subsection{Критерий Сильвестра положительной определённости квадратичной формы}
+\subsection{Критерий отрицательной определённости квадратичной формы}
+\subsection{Евклидово пространство}
+\subsection{Скалярное произведение}
+\subsection{Примеры}
+
