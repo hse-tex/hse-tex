@@ -115,7 +115,7 @@
 
             База: $n = 2$, по определению выпуклости.
 
-            Пусть утверждение выполнено для $n$ точек. Проверим, что оно выполнено для $n + 1$ точки. Пусть $t := t_1 + \dots + t_n$. Так как $\dfrac{t_1}{t}x_1 + \dots + \dfrac{t_n}{t}x_n \in I$ (проверяется подстановкой во все $t_i$ минимального/максимального из $t$), то
+            Пусть утверждение выполнено для $n$ точек. Проверим, что оно выполнено для $n + 1$ точки. Пусть $t := t_1 + \dots + t_n$. Так как $\dfrac{t_1}{t}x_1 + \dots + \dfrac{t_n}{t}x_n \in I$ (проверяется подстановкой во все $x_i$ минимального/максимального из $x$), то
             \[\begin{gathered}
                 f(t_1x_1 + \dots + t_nx_n + t_{n + 1}x_{n + 1}) \leq tf \left(\dfrac{t_1}{t}x_1 + \dots + \dfrac{t_n}{t}x_n\right) + t_{n + 1}f(x_{n + 1}) \\
                 \leq t \left(\dfrac{t_1}{t}f(x_1) + \dots + \dfrac{t_n}{t}f(x_n)\right) + t_{n + 1}f(x_{n + 1}) = t_1f(x_1) + \dots + t_{n + 1}f(x_{n + 1})
@@ -377,7 +377,7 @@
                 $s(f, \T) \leq \inf_{\xi} \sigma(f, \T, \xi) \leq \sigma(f, \T, \xi) \leq \sup_{\xi} \sigma(f, \T, \xi) \leq S(f, \T)$
 
             \item
-                Если $\T \subseteq \T'$, то $s(f, \T) \leq s(f, \T')$ и $S(f, T') \leq S(f, \T)$
+                Если $\T \subseteq \T'$, то $s(f, \T) \leq s(f, \T')$ и $S(f, \T') \leq S(f, \T)$
 
             \item
                 $s(f, \T_1) \leq s(f, \T_1 \cup \T_2) \leq S(f, \T_1 \cup \T_2) \leq S(f, \T_2)$
@@ -500,7 +500,7 @@
         \end{consequence*}
 
         \begin{proof}
-            Интегрируемость на подотрезках уже доказано. А равенство следует из того, что при вычислении интеграла можно использовать интегральные суммы, соответствующие разбиениям, содержащим точку $c$ (выберем $\T$, в котором будет точка $c$).
+            Интегрируемость на подотрезках уже доказана. А равенство следует из того, что при вычислении интеграла можно использовать интегральные суммы, соответствующие разбиениям, содержащим точку $c$ (выберем $\T$, в котором будет точка $c$).
         \end{proof}
 
     \section{Интегрируемость монотонных функций. Равномерная непрерывность. Примеры. Равномерная непрерывность непрерывной на отрезке функции. Интегрируемость непрерывных функций.}
@@ -627,7 +627,7 @@
             \begin{equation*}
                 f(x_0) - \eps < \dfrac{F(x) - F(x_0)}{x - x_0} < f(x_0) + \eps,
             \end{equation*}
-            что и дает второе утверждение теоремы.
+            что и дает второе утверждение теоремы.  
         \end{proof}
 
         \begin{consequence*}
@@ -651,6 +651,43 @@
                 \int_{\phi(\alpha)}^{\phi(\beta)} f(x) \dd x = F(\phi(\beta)) - F(\phi(\alpha)) = \int_{\alpha}^{\beta} f(\phi(t)) \phi'(t) \dd t
             \end{equation*}
         \end{proof}
+
+        \subsection{Площадь криволинейной трапеции и длина кривой}
+
+        Пусть $f \geq 0$ на $[a; b]$. И пусть $S(\alpha, \beta)$ площадь под графиком функции $f$ на отрезке $[\alpha; \beta] \subseteq [a; b]$. Разумные требования на $S$ --- это
+
+        \begin{enumerate}
+        \item 
+            аддитивность: $S(\alpha, \gamma) = S(\alpha, \beta) + S(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
+
+        \item
+            монотонность по включению: $\inf\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha) \leq S(\alpha, \beta) \leq \sup\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha)$ 
+        \end{enumerate}
+
+        \begin{proposal*}
+            Пусть $f$ интегрируема по Риману на $[a; b]$. При выполнении выше описанных условий $S(a, b) = \int_a^b f(x) \dd x$.
+        \end{proposal*}
+
+        \begin{proof}
+            Для произвольного разбиения $\T$ выполнено
+            \begin{equation*}
+                \sum_{k = 1}^n \inf\limits_{x \in \Delta_k} f(x) \cdot |\Delta_k| \leq S(a, b) \leq \sum_{k = 1}^n \sup_{x \in \Delta_k} f(x) \cdot |\Delta_k|.
+            \end{equation*}
+
+            Слева и справа стоят нижняя и верхняя суммы Дарбу, которые при малом масштабе разбиения близки к интегралу.
+        \end{proof}
+
+        Пусть $\gamma: [a; b] \to \RR^3$ --- гладкая кривая, те. $\gamma(t) = (x(t), y(t), z(t))$ и функции $x, y, z \in C^1([a; b])$ (принадлежность функции $C^1$ означает, что первая производная непрерывна). Пусть $l(a, b)$ --- длина пути, соответствующая отрезку $[a; b]$. Тогда естественными требованиями будут
+
+        \begin{enumerate}
+        \item
+            $l(\alpha, \gamma) = l(\alpha, \beta) + l(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
+
+        \item
+            $\inf\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha) \leq l(\alpha, \beta) \leq \sup\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha)$, где $v(t) =  (x'(t), y'(t), z'(t))$
+        \end{enumerate}
+
+        Аналогично получаем, $l(a, b) = \int_a^b |v(t)| \dd t$, где $|v(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}$.
 
     \section{Формула Тейлора с остаточным членом в интегральной форме. Ряд Тейлора для функций $e^x$, $\sin x$, $\cos x$, $\ln(1 + x)$, $(1 + x)^p$ (обоснование сходимости для $e^x$ и $\ln(1 + x)$). Площадь криволинейной трапеции и длина кривой.}
 
@@ -725,7 +762,7 @@
    		\subsection{Формула Стирлинга}
 
    		\begin{theorem*}
-   			Для некоторой числовой постоянно $c$ выполнено $N! \sim c \sqrt{N} (N / e)^N$
+   			Для некоторой числовой постоянной $c$ выполнено $N! \sim c \sqrt{N} (N / e)^N$
    		\end{theorem*}
 
    		\begin{proof}
@@ -822,7 +859,7 @@
 
     	\subsection{Примеры}
 
-    	Рассмотрим функци $f_p(x) := \dfrac{1}{x^p}$. Тогда,
+    	Рассмотрим функцию $f_p(x) := \dfrac{1}{x^p}$. Тогда,
     	\begin{equation*}
     		\int_1^x f_p(t) \dd t = \begin{cases}
     			\dfrac{1}{1 - p} \cdot (x^{1 - p} - 1), &p \neq 1, \\
@@ -840,43 +877,6 @@
     		\end{cases}
     	\end{equation*}
     	Предел при $x \to 0$ существует тогда и только тогда, когда $p < 1$ (т.к. иначе из-за $x^{1 - p}$ появляется произведение бесконечно большой последовательности на ограниченную).
-
-    	\subsection{Площадь криволинейной трапеции и длина кривой}
-
-    	Пусть $f \geq 0$ на $[a; b]$. И пусть $S(\alpha, \beta)$ площадь под графиком функции $f$ на отрезке $[\alpha; \beta] \subseteq [a; b]$. Разумные требования на $S$ --- это
-
-    	\begin{enumerate}
-    	\item 
-    		аддитивность: $S(\alpha, \gamma) = S(\alpha, \beta) + S(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
-
-    	\item
-    		монотонность по включению: $\inf\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha) \leq S(\alpha, \beta) \leq \sup\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha)$ 
-    	\end{enumerate}
-
-    	\begin{proposal*}
-    		Пусть $f$ интегрируема по Риману на $[a; b]$. При выполнении выше описанных условий $S(a, b) = \int_a^b f(x) \dd x$.
-    	\end{proposal*}
-
-    	\begin{proof}
-    		Для произвольного разбиения $\T$ выполнено
-    		\begin{equation*}
-    			\sum_{k = 1}^n \inf\limits_{x \in \Delta_k} f(x) \cdot |\Delta_k| \leq S(a, b) \leq \sum_{k = 1}^n \sup_{x \in \Delta_k} f(x) \cdot |\Delta_k|.
-    		\end{equation*}
-
-    		Слева и справа стоят нижняя и верхняя суммы Дарбу, которые при малом масштабе разбиения близки к интегралу.
-    	\end{proof}
-
-    	Пусть $\gamma: [a; b] \to \RR^3$ --- гладкая кривая, те. $\gamma(t) = (x(t), y(t), z(t))$ и функции $x, y, z \in C^1([a; b])$ (принадлежность функции $C^1$ означает, что первяа производная непрерывна). Пусть $l(a, b)$ --- длина пути, соответствующая отрезку $[a; b]$. Тогда естественными требованиями будут
-
-    	\begin{enumerate}
-    	\item
-    		$l(\alpha, \gamma) = l(\alpha, \beta) + l(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
-
-    	\item
-    		$\inf\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha) \leq l(\alpha, \beta) \leq \sup\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha)$, где $v(t) =  (x'(t), y'(t), z'(t))$
-    	\end{enumerate}
-
-    	Аналогично получаем, $l(a, b) = \int_a^b |v(t)| \dd t$, где $|v(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}$.
 
     	\subsection{Регулярность и линейность несобственного интеграла, независимость сходимости интеграла от его <<начала>>}
 
