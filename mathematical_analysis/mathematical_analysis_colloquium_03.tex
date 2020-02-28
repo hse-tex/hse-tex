@@ -827,22 +827,26 @@
    			\end{gathered}\]
    			Складываем оба равенства, делим на $2$:
    			\begin{equation*}
-   				f \left(\dfrac{a + b}{2}\right) - \dfrac{f(a) + f(b)}{2} = \dfrac{b - a}{4} (f'(\xi_1) - f'(\xi_2)) = \dfrac{b - a}{4} f''(\xi) \cdot (\xi_1 - \xi_2) \leq \dfrac{(b - a)^2}{4} \max\limits_{x \in [a; b]} |f''(x)|.
+   				f \left(\dfrac{a + b}{2}\right) - \dfrac{f(a) + f(b)}{2} = \dfrac{b - a}{4} (f'(\xi_1) - f'(\xi_2)) = \dfrac{b - a}{4} f''(\xi) \cdot (\xi_1 - \xi_2) \leq \dfrac{(b - a)^2}{4} \sup\limits_{x \in [a; b]} |f''(x)|.
    			\end{equation*}
 
-   			В нашем случае,
-   			\begin{equation*}
-   				\dfrac{\ln(n - 1) + \ln n}{2} \leq \int_{n - 1}^n \ln x \dd x \leq \dfrac{\ln( n- 1) + \ln n}{2} + \dfrac{1}{4(n - 1)^2}.
-   			\end{equation*}
+   			В нашем случае, рассмотрим $a = n - 1, b = n$. Тогда, $\sup\limits_{x \in [a; b]} |f''(x)| = \sup\limits_{x \in [n; n + 1]} |\ln''(x)| = \dfrac{1}{(n - 1)^2}$. Применим данную оценку для самого первого неравенства:
+   			\[\begin{gathered}
+                \dfrac{\ln(n - 1) + \ln n}{2} \leq \int_{n - 1}^n \ln x \dd x \leq \dfrac{\ln(n - 1) + \ln n}{2} + \dfrac{1}{4(n - 1)^2} \\
+                \int_{n - 1}^n \ln x \dd x - \dfrac{\ln(n - 1) + \ln n}{2} \leq \dfrac{1}{4(n - 1)^2}
+            \end{gathered}\]
 
-   			Таким образом, последовательность
-   			\begin{equation*}
-   				S_N := \int_1^N \ln x \dd x - \sum_{n = 2}^N \ln n + \dfrac{1}{2} \ln N
-   			\end{equation*}
-   			монотонна и ограничена, а значит имеет предел. Тем самым, предел существует и у последовательности
-   			\begin{equation*}
-   				e^{-S_N} = \dfrac{N!}{(N / e)^N \sqrt{N}}
-   			\end{equation*}
+            Суммируем последнее неравенство по всем парам $a, b = (1, 2), (2, 3), \dots, (n - 1, n)$. Получаем:
+            \begin{equation*}
+                S_N := \int_1^N \ln x \dd x - \sum_{n = 2}^N \ln n + \dfrac{1}{2} \ln N \leq \sum_{n = 2}^N \dfrac{1}{4(n - 1)^2}
+            \end{equation*}
+
+            $S_N$ монотонно и ограничена, а значит, сходится к какому-то числу. Замечаем, что
+            \begin{equation*}
+                e^{-S_N} = \dfrac{N!}{(N / e)^N \sqrt{N}} \to c.
+            \end{equation*}
+
+            А значит, константа $c$ существует.
    		\end{proof}
 
    		\subsection{Вычисление константы в формуле Стирлинга}
@@ -853,9 +857,13 @@
 
    		\begin{proof}
    			Пусть
-   			\begin{equation*}
-   				I_k = \int_0^{\pi/2} \sin^k x \dd x.
-   			\end{equation*}
+   			\[\begin{gathered}
+                I_k = \int_0^{\pi/2} \sin^k x \dd x \\
+                \int \sin^k x \dd x = J_k = -\dfrac{1}{k} \sin^{k - 1} x \cdot \cos x + \dfrac{k - 1}{k} J_{k - 2} \\
+                \int_0^{\pi/2} \sin^k x \dd x = -\dfrac{1}{k} \sin^{k - 1} \dfrac{\pi}{2} \cdot \cos \dfrac{\pi}{2} + \dfrac{k - 1}{k} I_{k - 2} = 0 + \dfrac{k - 1}{k} I_{k - 2} \dd x \\
+                I_0 = \dfrac{\pi}{2} \\
+                I_1 = 1 \\
+            \end{gathered}\]
 
    			Легко проверить, что
    			\begin{equation*}
@@ -864,15 +872,20 @@
    				I_{2n + 1} = \dfrac{2n}{2n + 1}I_{2n - 1} = \dfrac{(2n)!!}{(2n + 1)!!}.
    			\end{equation*}
 
-   			Кроме того,
+   			Кроме того, так как при $x \in [0; \pi/2] \sin x \geq 0$, то $\sin^{n + 1} \leq \sin^{n}$. По монотонности интеграла получаем, что
    			\begin{equation*}
    				1 \geq \dfrac{I_{2n + 1}}{I_{2n}} \geq \dfrac{2n}{2n + 1}.
    			\end{equation*}
 
    			Тем самым,
    			\begin{equation*}
-   				\lim_{n \to \infty} \dfrac{((2n)!!)^2}{(2n + 1)!!(2n - 1)!!} = \dfrac{\pi}{2}.
+   				\lim_{n \to \infty} \dfrac{I_{n + 1}}{I_n} = 1.
    			\end{equation*}
+
+            Тогда
+            \begin{equation*}
+                \lim_{n \to \infty} \dfrac{I_{n + 1}}{I_n} \cdot \frac{\pi}{2} = \dfrac{\pi}{2} = \lim_{n \to \infty} \dfrac{((2n)!!)^2}{(2n + 1)!!(2n - 1)!!}.
+            \end{equation*}
 
    			Но
    			\begin{equation*}
