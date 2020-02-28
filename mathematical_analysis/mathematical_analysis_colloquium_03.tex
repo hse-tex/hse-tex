@@ -690,43 +690,6 @@
             \end{equation*}
         \end{proof}
 
-        \subsection{Площадь криволинейной трапеции и длина кривой}
-
-        Пусть $f \geq 0$ на $[a; b]$. И пусть $S(\alpha, \beta)$ площадь под графиком функции $f$ на отрезке $[\alpha; \beta] \subseteq [a; b]$. Разумные требования на $S$ --- это
-
-        \begin{enumerate}
-        \item 
-            аддитивность: $S(\alpha, \gamma) = S(\alpha, \beta) + S(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
-
-        \item
-            монотонность по включению: $\inf\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha) \leq S(\alpha, \beta) \leq \sup\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha)$ 
-        \end{enumerate}
-
-        \begin{proposal*}
-            Пусть $f$ интегрируема по Риману на $[a; b]$. При выполнении выше описанных условий $S(a, b) = \int_a^b f(x) \dd x$.
-        \end{proposal*}
-
-        \begin{proof}
-            Для произвольного разбиения $\T$ выполнено
-            \begin{equation*}
-                \sum_{k = 1}^n \inf\limits_{x \in \Delta_k} f(x) \cdot |\Delta_k| \leq S(a, b) \leq \sum_{k = 1}^n \sup_{x \in \Delta_k} f(x) \cdot |\Delta_k|.
-            \end{equation*}
-
-            Слева и справа стоят нижняя и верхняя суммы Дарбу, которые при малом масштабе разбиения близки к интегралу.
-        \end{proof}
-
-        Пусть $\gamma: [a; b] \to \RR^3$ --- гладкая кривая, те. $\gamma(t) = (x(t), y(t), z(t))$ и функции $x, y, z \in C^1([a; b])$ (принадлежность функции $C^1$ означает, что первая производная непрерывна). Пусть $l(a, b)$ --- длина пути, соответствующая отрезку $[a; b]$. Тогда естественными требованиями будут
-
-        \begin{enumerate}
-        \item
-            $l(\alpha, \gamma) = l(\alpha, \beta) + l(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
-
-        \item
-            $\inf\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha) \leq l(\alpha, \beta) \leq \sup\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha)$, где $v(t) =  (x'(t), y'(t), z'(t))$
-        \end{enumerate}
-
-        Аналогично получаем, $l(a, b) = \int_a^b |v(t)| \dd t$, где $|v(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}$.
-
     \section{Формула Тейлора с остаточным членом в интегральной форме. Ряд Тейлора для функций $e^x$, $\sin x$, $\cos x$, $\ln(1 + x)$, $(1 + x)^p$ (обоснование сходимости для $e^x$ и $\ln(1 + x)$). Площадь криволинейной трапеции и длина кривой.}
 
     	\subsection{Формула Тейлора с остаточным членом в интегральной форме}
@@ -787,7 +750,7 @@
             \begin{equation*}
                 \left|\sin x - \sum_{n = 1}^m \dfrac{(-1)^n x^{2n + 1}}{(2n + 1)!}\right|
                 = \dfrac{1}{m!} \cdot \left|\int_0^x (x - t)^m \sin^{(m + 1)} t \dd t\right|
-                \leq \dfrac{1}{m!} \cdot \left|\int_0^x x^m \cdot 1 t \dd t\right|
+                \leq \dfrac{1}{m!} \cdot \left|\int_0^x x^m \cdot 1 \dd t\right|
                 = \dfrac{x^{m + 1}}{m!} \to 0
             \end{equation*}
 
@@ -805,6 +768,43 @@
 
     		Ряд для функции $(1 + x)^p$ рассматривается похожим образом.
     	\end{proof}
+
+        \subsection{Площадь криволинейной трапеции и длина кривой}
+
+        Пусть $f \geq 0$ на $[a; b]$. И пусть $S(\alpha, \beta)$ площадь под графиком функции $f$ на отрезке $[\alpha; \beta] \subseteq [a; b]$. Разумные требования на $S$ --- это
+
+        \begin{enumerate}
+        \item 
+            аддитивность: $S(\alpha, \gamma) = S(\alpha, \beta) + S(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
+
+        \item
+            монотонность по включению: $\inf\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha) \leq S(\alpha, \beta) \leq \sup\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha)$ 
+        \end{enumerate}
+
+        \begin{proposal*}
+            Пусть $f$ интегрируема по Риману на $[a; b]$. При выполнении выше описанных условий $S(a, b) = \int_a^b f(x) \dd x$.
+        \end{proposal*}
+
+        \begin{proof}
+            Для произвольного разбиения $\T$ выполнено
+            \begin{equation*}
+                \sum_{k = 1}^n \inf\limits_{x \in \Delta_k} f(x) \cdot |\Delta_k| \leq S(a, b) \leq \sum_{k = 1}^n \sup_{x \in \Delta_k} f(x) \cdot |\Delta_k|.
+            \end{equation*}
+
+            Слева и справа стоят нижняя и верхняя суммы Дарбу, которые при малом масштабе разбиения близки к интегралу.
+        \end{proof}
+
+        Пусть $\gamma: [a; b] \to \RR^3$ --- гладкая кривая, те. $\gamma(t) = (x(t), y(t), z(t))$ и функции $x, y, z \in C^1([a; b])$ (принадлежность функции $C^1$ означает, что первая производная непрерывна). Пусть $l(a, b)$ --- длина пути, соответствующая отрезку $[a; b]$. Тогда естественными требованиями будут
+
+        \begin{enumerate}
+        \item
+            $l(\alpha, \gamma) = l(\alpha, \beta) + l(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
+
+        \item
+            $\inf\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha) \leq l(\alpha, \beta) \leq \sup\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha)$, где $v(t) =  (x'(t), y'(t), z'(t))$
+        \end{enumerate}
+
+        Аналогично получаем, $l(a, b) = \int_a^b |v(t)| \dd t$, где $|v(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}$.
 
     \section{Формула Стирлинга.}
 
@@ -894,7 +894,7 @@
 
    			Таким образом,
    			\begin{equation*}
-   				\lim_{n \to \infty} \dfrac{c^2n}{2(2n + 1)} = \dfrac{\pi}{2},
+   				\lim_{n \to \infty} \dfrac{c^2n}{2(2n + 1)} = \dfrac{\pi}{2} \implies \dfrac{c^2}{4} = \dfrac{\pi}{2},
    			\end{equation*}
    			откуда следует нужное равенство.
    		\end{proof}
