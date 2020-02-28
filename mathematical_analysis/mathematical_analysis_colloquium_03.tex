@@ -779,15 +779,26 @@
     		\begin{equation*}
     			\left|e^x - \sum_{n = 0}^m \dfrac{x^n}{n!}\right|
     			= \dfrac{1}{m!} \left|\int_0^x (x - t)^m e^t \dd t\right|
-    			\leq \dfrac{|x|^m \cdot e^x}{m!} \xrightarrow[m \to \infty]{} 0
+                \leq \dfrac{1}{m!} \left|\int_0^x x^m e^x \dd t\right|
+    			= \dfrac{|x|^{m + 1} \cdot e^x}{m!} \xrightarrow[m \to \infty]{} 0
     		\end{equation*}
 
-    		Функции $\sin$ и $\cos$ рассматриваются аналогично. Для $\ln(1 + x)$ имеем
+    		Функции $\sin$ и $\cos$ рассматриваются аналогично:
+            \begin{equation*}
+                \left|\sin x - \sum_{n = 1}^m \dfrac{(-1)^n x^{2n + 1}}{(2n + 1)!}\right|
+                = \dfrac{1}{m!} \cdot \left|\int_0^x (x - t)^m \sin^{(m + 1)} t \dd t\right|
+                \leq \dfrac{1}{m!} \cdot \left|\int_0^x x^m \cdot 1 t \dd t\right|
+                = \dfrac{x^{m + 1}}{m!} \to 0
+            \end{equation*}
+
+            Для $\ln(1 + x)$ имеем
     		\begin{equation*}
-    			\left|\ln(1 + x) - \sum_{n = 1}^m \dfrac{(-1)^{n - 1}x^n}{n}\right| = \left|\int_0^x(x - t)^m (1 + t)^{-m - 1} \dd t\right|.
+    			\left|\ln(1 + x) - \sum_{n = 1}^m \dfrac{(-1)^{n - 1}x^n}{n}\right| = \left|\int_0^x(x - t)^m \cdot \dfrac{1}{(1 + t)^{m + 1}} \dd t\right|.
     		\end{equation*}
 
-    		Если $x > 0$, то последнее выражение оценивается через $\dfrac{1}{m + 1}$, а если $x < 0$, то $|x - t| = |x| \cdot (1 - tx^{-1}) \leq |x| \cdot (1 - |t|) = |x| \cdot (1 + t)$, поэтому
+    		Если $x > 0$, то последнее выражение оценивается через $\dfrac{1}{m + 1}$, так как $|(x - t)^m| \leq 1$, а $\left|\int \dfrac{1}{(1 + t)^{m + 1}}\right| = \dfrac{1}{(1 + t)^m \cdot m} \leq \dfrac{1}{m + 1}$ 
+
+            Если $x < 0$, то $|x - t| = |x| \cdot (1 - tx^{-1}) \leq |x| \cdot (1 - |t|) = |x| \cdot (1 + t)$, поэтому
     		\begin{equation*}
     			\left|\int_0^x (x - t)^m \cdot (1 + t)^{-m - 1} \dd t\right| \leq \dfrac{|x|^m}{1 + x} \xrightarrow[m \to \infty]{} 0
     		\end{equation*}
