@@ -227,9 +227,144 @@ $V = \RR^2$.
 \end{enumerate}
 
 
+\subsection{Одно применение квадратичных форм над $\RR$}
+
+\href{https://www.dropbox.com/s/wwv38znnuts9rld/Qforms_application.pdf?dl=0}{Презентация} (продублирована ниже)
+
+\subsubsection{Знаем из курса математического анализа}
+
+Пусть $f\colon \RR \to \RR$ --- некоторая функция, $x_0 \in \RR$ --- некоторая точка.
+
+Если $f$ дважды дифференцируема в точке $x_0$, то для малого приращения $y$ имеем
+\begin{equation*}
+    f(x_0 + y) = f(x_0) + ay + by^2 + o(y^2)
+,\end{equation*}
+где $a = f'(x_0),$, $b = f''(x_0) / 2$.
+
+\begin{proposal}[необходмое условие локального экстремума]
+    Если $f$ в точке $x_0$ имеет локальные экстремум, то $f'(x_0) = 0$.
+\end{proposal}
+
+\begin{proposal}[достаточные условия локального экстремума]
+    Пусть $f'(x_0) = 0$. Тогда
+    \begin{itemize}[nosep]
+    \item если $f''(x_0) > 0$, то $f$ в точке $x_0$ имеет локальный минимум;
+    \item если $f''(x_0) < 0$, то $f$ в точке $x_0$ имеет локальный максимум.
+    \end{itemize}
+\end{proposal}
+
+\subsubsection{Применение квадратичных форм}
+
+Пусть $f\colon \RR^n \to \RR$ --- некоторая функция, $x_0 \in \RR^n$ --- некоторая точка.
+
+Если $f$ <<дважды дифференциируема>> в точке $x_0$, то для малого приращения $y = \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} \in \RR^n$ имеем
+
+\begin{equation*}
+    f(x_0 + y) = f(x_0) + \underbrace{a_1 y_1 + \dots + a_n y_n}_{l(y)} + \underbrace{\sum_{i = 1}^{n} b_{ii} y_i^2 + \sum_{1 \leq i < j \leq n} 2b_{ij} y_i y_j}_{Q(y)} + o(|y|^2)
+.\end{equation*}
+
+$l(y)$ --- линейная форма, (называется <<дифференциал>>)
+
+$Q(y)$ --- квадратичная форма.
+
+\begin{proposal}[необходимое условие локального экстремума]
+    Если $f$ в точке $x_0$ имеет локальный экстремум, то $l(y) \equiv 0$ (то есть $a_1 = \dots = a_n = 0$).
+\end{proposal}
+
+\begin{proposal}[достаточные условие локального экстремума или его отсутствия]
+    Пусть $l(y) \equiv 0$. Тогда:
+    \begin{itemize}[nosep]
+    \item если $Q > 0$, то $f$ в точке $x_0$ имеет локальный минимум;
+    \item если $Q < 0$, то $f$ в точке $x_0$ имеет локальный максимум;
+    \item если $Q$ неопределённа, то $f$ в точке $x_0$ не имеет локального экстремума.
+    \end{itemize}
+\end{proposal}
+
 \subsection{Критерий Сильвестра положительной определённости квадратичной формы}
+
+Пусть 
+\begin{math}
+    \begin{aligned}[t]
+        &V \text{ --- векторное пространство над $\RR$, $\dim V = n$}, \\
+        &\E = (e_1, \dots, e_n) \text{ --- базис $V$}, \\
+        &B = B(Q, \E), \\
+        &B_k \text{ --- левый верхний $k \times k$ блок}, \\
+        &\delta_k = \det B_k.
+    \end{aligned}
+\end{math}
+
+\begin{theorem}[Критерий Сильвестра положительной определенности]
+    \begin{equation*}
+        Q > 0 \iff \delta_k > 0 \ \forall k = 1 \dots n
+    .\end{equation*}
+\end{theorem}
+
+\begin{proof}~
+    \begin{description}
+    \item[$\impliedby$] По следствию из метода Якоби, $i_+ = n$, то есть $Q > 0$.
+    \item[$\implies$] $Q > 0 \implies \exists C \in M_n^0(\RR)$, такая что $C^TBC = E$.
+
+        Тогда, $\det C^T \cdot \underset{= \delta_n}{\det B} \cdot \det C = 1$. Отсюда, $\delta_n = \frac{1}{(\det C)^2} > 0$.
+
+        Теперь, для любого $k$ ограничение $Q$ на $\left< e_1, \dots, e_k \right>$ тоже положительно определённо, а его матрица в базисе $e_1, \dots, e_k$ равна $B_k$. Следовательно, $\det B_k > 0$.
+        \qedhere
+    \end{description}
+\end{proof}
+
 \subsection{Критерий отрицательной определённости квадратичной формы}
-\subsection{Евклидово пространство}
-\subsection{Скалярное произведение}
+
+\begin{corollary}
+    \begin{equation*}
+        Q < 0 \iff \delta_k \begin{cases}
+            > 0 & \text{при } k \!\!\not\;\divby 2, \\
+            < 0 & \text{при } k \divby 2.
+        \end{cases}
+    \end{equation*}
+\end{corollary}
+
+\begin{proof}
+    \begin{math}
+        \begin{aligned}[t]
+            Q < 0 &\iff -Q > 0 \\
+                  &\iff \det (-B_k) > 0 \ \forall k \\
+                  &\iff (-1)^{k} \delta_k > 0 \ \forall k
+        \end{aligned}
+    \end{math}
+\end{proof}
+
+
+\subsection{Евклидово пространство и скалярное произведение}
+
+\begin{definition}
+    \textit{Евклидово пространство} --- это векторное пространство $\EE$ над $\RR$, на котором задано \textit{скалярное произведение}, то есть такое отображение $(\bigcdot, \bigcdot)\colon \EE \times \EE \to \RR$, что
+    \begin{enumerate}[nosep]
+        \item $(\bigcdot, \bigcdot)$ --- симметричная билинейная форма,
+        \item Квадратичная форма $(x, x)$ положительно определённая.
+    \end{enumerate}
+\end{definition}
+
+
 \subsection{Примеры}
 
+\begin{enumerate}
+\item 
+    $\EE = \RR^n$, $x = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix}$, $y = \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix}$.
+
+    $(x, y) := x_1 y_1 + \dots + x_n y_n \leftarrow $ стандартное скалярное произведение в $\RR^n$.
+
+    $(x, x) = x_1^2 + \dots + x_n^2 > 0$.
+
+\item
+    $\EE = \text{Mat}_{m \times n}(\RR)$,
+
+    $(A, B) := \tr (A^{T} B)$,
+
+    $(A, A) = \tr (A^{T}A) = \sum_{i = 1}^{m} \sum_{j = 1}^{m} a_{ij}^2$.
+
+\item
+    $\EE = C[a, b]$,
+    
+    $(f, g) := \int_a^b f(x) g(x) \mathop{}\!dx$,
+
+    $(f, f) = \int_a^b f^2(x) \mathop{}\!dx > 0$.
+\end{enumerate}

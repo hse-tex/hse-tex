@@ -119,6 +119,7 @@
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\FF}{\mathbb{F}}
 \newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\EE}{\mathbb{E}}
 
 %% Соси жопу, mathbbol, хочу mathbb от amsmath 😎
 \DeclareSymbolFontAlphabet{\mathbbold}{bbold}
@@ -135,3 +136,13 @@
 \newcommand*\MapsTo{%
   \xrightarrow[]{\raisebox{-0.25 em}{\smash{\ensuremath{\sim}}}}%
 }
+
+% Символ делимости (три вертикальные точки)
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\text{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}}%
+}
+
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
