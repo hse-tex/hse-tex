@@ -7,7 +7,8 @@
 ## [Математический анализ - Коллоквиум 2](https://hse-tex.me/mathematical_analysis_colloquium_02.pdf)
 ## [Математический анализ - Коллоквиум 3](https://hse-tex.me/mathematical_analysis_colloquium_03.pdf)
 ## [Математический анализ - Экзамен 1](https://hse-tex.me/mathematical_analysis_exam_01.pdf)
-## [Дискретная математика - Коллоквиум 1](https://hse-tex.me/discrete_mathematics_colloquium.pdf)
+## [Дискретная математика - Коллоквиум 1](https://hse-tex.me/discrete_mathematics_colloquium_01.pdf)
+## [Дискретная математика - Коллоквиум 1](https://hse-tex.me/discrete_mathematics_colloquium_02.pdf)
 
 ## Линейная алгебра
 За основу конспекта был взят конспект Левиной Александры от 2017 года. Данная версия адаптирована под лекции 2019 года и будет дополняться.
