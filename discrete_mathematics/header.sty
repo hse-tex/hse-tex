@@ -29,8 +29,10 @@
 \newcommand{\eps}{\varepsilon}
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\leq}{\leqslant}
+\renewcommand{\phi}{\varphi}
+\newcommand{\dd}{\mathop{}\! d}
 
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
 \newlist{options}{enumerate}{1}
 \newlist{options*}{enumerate*}{1}
@@ -47,20 +49,21 @@
 \newtheorem*{solution}{Решение}
 \newtheorem*{consequence}{Следствие}
 \newtheorem*{example}{Пример}
-\newtheorem*{statement}{Утверждение}
-\newtheorem*{lemma}{Лемма}
 
 \theoremstyle{remark}
 \newtheorem*{exercise}{Упражнение}
 \newtheorem*{remark}{Примечание}
 \newtheorem*{answer}{Ответ}
 \newtheorem*{hint}{Подсказка}
+\newtheorem*{statement}{Утверждение}
 
 \theoremstyle{plain}
+\newtheorem*{lemma}{Лемма}
 \newtheorem{theorem}{Теорема}
 \newtheorem*{theorem*}{Теорема}
 \newtheorem{problem}{Задача}
 
+% Округление
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
@@ -71,7 +74,10 @@
 \end{array}\right)
 }
 
+\newcommand{\ar}[2]{\xrightarrow[\text{#2}]{\text{#1}}}
+
 % subsubsubsection
+
 \titleclass{\subsubsubsection}{straight}[\subsection]
 
 \newcounter{subsubsubsection}[subsubsection]
@@ -103,4 +109,35 @@
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
 
-% numbered and unnumbered theorem
+% С++ code
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+    basicstyle=\small\ttfamily,
+    tabsize=4, % tab space width
+    showstringspaces=false, % don't mark spaces in strings
+    numbers=left, % display line numbers on the left
+    commentstyle=\color{green}, % comment color
+    morecomment=[l][\color{magenta}]{\#},
+    keywordstyle=\color{blue}, % keyword color
+    language=C++,
+    stringstyle=\color{red}\ttfamily,
+    breaklines=true
+}
+
+\usepackage{diagbox}
+\usepackage{tikz}
+\usetikzlibrary{calc,trees,positioning,arrows,fit,shapes,calc}
+
+
+\everymath{\displaystyle} % math everywhere
+
+\usepackage{euscript} % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+\usepackage{bbm}
+
+% Большие интегралы
+\usepackage{bigints}
+
+% \int = \int\limits
+\renewcommand{\int}{\intop}
