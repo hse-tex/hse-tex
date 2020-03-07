@@ -58,6 +58,8 @@
 %% Свои команды
 \DeclareMathOperator{\rk}{\mathop{\mathrm{rk}}}
 \DeclareMathOperator{\tr}{\mathop{\mathrm{tr}}}
+\DeclareMathOperator{\pr}{\mathop{\mathrm{pr}}}
+\DeclareMathOperator{\ort}{\mathop{\mathrm{ort}}}
 \let\Im\undefined
 \DeclareMathOperator{\Im}{\mathop{\mathrm{Im}}}
 \DeclareMathOperator{\sgn}{\mathop{\mathrm{sgn}}}
@@ -145,4 +147,13 @@
 \makeatletter
 \newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
 \newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+
+%% Команда для ||w||
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+\makeatletter
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
 \makeatother
