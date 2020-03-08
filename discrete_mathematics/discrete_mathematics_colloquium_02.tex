@@ -65,7 +65,7 @@
         \begin{enumerate}
         \item $a \equiv b \pmod c \iff b \equiv a \pmod c$
 
-        \item $a \equiv d \pmod c \iff (a _ x) \equiv (b - x) \pmod c$
+        \item $a \equiv d \pmod c \iff (a - x) \equiv (b - x) \pmod c$
 
         \item $x \equiv a \pmod m, y \equiv b \pmod m \implies xy \equiv ab \pmod m$
 
@@ -502,21 +502,21 @@
 
             Определим целые числа $M, M_i, b_I$ следующим образом:
             \begin{equation*}
-                M = \prod_{i = 1}^k a_i; \quad
+                M = \prod_{i = 1}^k m_i; \quad
                 M_i = \dfrac{M}{m_i}; \quad
                 M_i \cdot b_i \equiv a_i \pmod{m_i}, 1 \leq i \leq k.
             \end{equation*}
 
             После чего определим $x_0$ следующим образом:
             \begin{equation*}
-                x_o = \sum_{i = 1}^k M_i \cdot b_i.
+                x_0 = \sum_{i = 1}^k M_i \cdot b_i.
             \end{equation*}
 
             Тогда множество целых чисел, удовлетворяющих системе сравнений, составляет класс вычетов $x \equiv x_0 \pmod M$.
         \end{theorem*}
 
         \begin{proof}
-            Так как $\gcd(M_i, m_i) = 1$ по построению, то $b_i$ обязательно существует и $x_0$ также существует.
+            Так как $\gcd(M_i, m_i) = 1$ по построению, а значит, существует обратный к $M_i$ по модулю $m_i$. Тогда $b_i \equiv a_i \cdot M_i^{-1} \pmod{m_i}$ и $x_0$ также существует.
 
             Покажем, что $x_0$ соответствует системе сравнений. Так как $m_i \mid M_j$ при $j \neq i$, то $x_0 \equiv M_i \cdot b_i \equiv a_i \pmod{m_i}$ для $1 \leq i \leq k$. Тогда систему можно переписать в следующем виде:
             \begin{equation*}
