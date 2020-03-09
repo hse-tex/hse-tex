@@ -69,13 +69,13 @@
         \begin{enumerate}
         \item $a \equiv b \pmod c \iff b \equiv a \pmod c$
 
-        \item $a \equiv d \pmod c \iff (a - x) \equiv (b - x) \pmod c$
+        \item $a \equiv b \pmod c \iff (a - x) \equiv (b - x) \pmod c$
 
         \item $x \equiv a \pmod m, y \equiv b \pmod m \implies xy \equiv ab \pmod m$
 
         \item $a \equiv 0 \pmod c \iff c \mid a$
 
-        \item $a \equiv b \pmod d, b \equiv c \pmod c \iff a \equiv c \pmod d$
+        \item $a \equiv b \pmod d, b \equiv c \pmod d \iff a \equiv c \pmod d$
         \end{enumerate}
         
         Например, можно найти $2^{100} \bmod 7$ (остаток от деления $2^{100}$ на $7$): поскольку $2^3 = 8 \equiv 1 \pmod 7$, то $2^{99} = (2^{3})^{33} \equiv 1^{33} = 1 \pmod 7$, так что $2^{100} = 2^{99} \cdot 2 \equiv 1 \cdot 2 = 2 \pmod 7$.
