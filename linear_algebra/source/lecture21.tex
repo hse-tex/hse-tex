@@ -45,7 +45,7 @@
 
     Пусть $\E' = (e'_1, \dots, e'_n)$ --- другой базис, в котором $Q$ принимает нормальный вид
     \begin{equation*}
-        Q = x'^2_1 + \dots + x'^2_s - x'^2_{s + 1} - \dots - x'^2_{s + t}
+        Q = x'^2_1 + \dots + x'^2_{s'} - x'^2_{s' + 1} - \dots - x'^2_{s' + t'}
     .\end{equation*}
 
     Предположим, что $s \neq s'$, можно считать что $s > s'$.
@@ -54,12 +54,12 @@
     \begin{math}
         \begin{aligned}[t]
             &L := \left< e_1, \dots, e_s \right>, \ \dim L = s, \\
-            &L' := \left< e'_{s + 1}, \dots, e'_{s + t} \right>, \ \dim L' = n - s'.
+            &L' := \left< e'_{s' + 1}, \dots, e'_n \right>, \ \dim L' = n - s'.
         \end{aligned}
     \end{math}
 
     \bigskip
-    Так как $L + K' \subseteq V$, то $\dim \left(L + L'\right) \leq n$.
+    Так как $L + L' \subseteq V$, то $\dim \left(L + L'\right) \leq n$.
 
     Тогда, $\dim \left(L \cap L'\right) \geq s + (n - s') - n = s - s' > 0$.
 

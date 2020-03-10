@@ -1,0 +1,165 @@
+\section{Лекция 05.03.2020}
+
+\begin{example}
+    $\EE = \RR^n$ со стандартным скалярным произведением.
+
+    Тогда, стандартный базис является ортонормированным.
+    \begin{equation*}
+        \begin{pmatrix} 1 \\ 0 \\ \dots \\ 0 \end{pmatrix},
+        \begin{pmatrix} 0 \\ 1 \\ \dots \\ 0 \end{pmatrix},
+        \dots,
+        \begin{pmatrix} 0 \\ 0 \\ \dots \\ 1 \end{pmatrix}
+    .\end{equation*}
+\end{example}
+
+
+\subsection{Теорема о существовании ортонормированного базиса}
+
+\begin{theorem}
+    Во всяком конечномерном евклидовом пространстве существует ортонормированный базис.
+\end{theorem}
+
+\begin{proof}
+    Следует из теоремы о приведении квадратичной формы $(x, x)$ к нормальному виду (который будет $E$ в силу положительной определённости).
+\end{proof}
+
+\begin{corollary}
+    Всякую ортогональную (ортонормированную) систему векторов можно дополнить до ортогонального (ортонормированного) базиса.
+\end{corollary}
+
+\begin{proof}
+    Пусть $e_1, \dots, e_k$ --- данная система. 
+
+    Пусть $e_{k + 1}, \dots, e_{n}$ --- это ортогональный (ортонормированный) базис в $\left< e_1, .., e_k \right>^{\perp}$.
+
+    Тогда $e_1, \dots, e_n$ --- искомый базис.
+\end{proof}
+
+
+\subsection{Описание всех ортонормированных базисов в терминах одного ортонормированного базиса и матриц перехода}
+
+Пусть $\E = (e_1, \dots, e_n)$ --- ортонормированный базис в $E$.
+
+Пусть $\E' = (e'_1, \dots, e'_n)$ --- какой-то другой базис.
+
+$(e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C$, $C \in M_n^{0}(\RR)$.
+
+\begin{proposal}
+    $\E'$ --- ортонормированный базис $\iff C^{T} \cdot C = E$.
+\end{proposal}
+
+\begin{proof}
+    $G(e'_1, \dots, e'_n) = C^{T} \underbracket{G(e_1, \dots, e_n)}_E C = C^{T} C$.
+
+    $\E'$ ортонормированный $\iff G(e'_1, \dots, e'_n) = E \iff C^{T} C = E$.
+\end{proof}
+
+
+\subsection{Ортогональные матрицы и их свойства}
+
+\begin{definition}
+    Матрица $C \in M_n(\RR)$ называется \textit{ортогональной} если $C^{T} C = E$.
+\end{definition}
+
+\begin{comment}
+    $C^{T} C = E \iff C C^{T} = E \iff C^{-1} = C^{T}$.
+\end{comment}
+
+\begin{properties}~
+    \begin{enumerate}
+    \item $C^{T} C = E \implies $ система столбцов $C^{(1)}, \dots, C^{(n)}$ --- это ортонормированный базис в $\RR^n$,
+    \item $C C^{T} = E \implies $ система строк $C_{(1)}, \dots, C_{(n)}$ --- это тоже ортонормированный базис в $\RR^n$,
+    \end{enumerate}
+    В частности, $|c_{ij}| \leq 1$.
+    \begin{enumerate}[resume]
+    \item $\det C = \pm 1$.
+    \end{enumerate}
+\end{properties}
+
+\begin{example}
+    $n = 2$.
+    Ортогональный матрицы:
+    \begin{equation}
+        \begin{gathered}
+            \begin{pmatrix} 
+                \cos \phi & -\sin \phi \\
+                \sin \phi & \cos \phi
+            \end{pmatrix} \\
+            \det = 1
+        \end{gathered}
+        \hspace{1cm}
+        \begin{gathered}
+            \begin{pmatrix} 
+                \cos \phi & \sin \phi \\
+                \sin \phi & -\cos \phi
+            \end{pmatrix} \\
+            \det = -1
+        \end{gathered}
+    .\end{equation}
+\end{example}
+
+
+\subsection{Координаты вектора в ортогональном (ортонормированном) базисе}
+
+Пусть $\EE$ --- евклидово пространство, $(e_1, \dots, e_n)$ --- ортогональный базис.
+
+$v \in \EE$.
+
+\begin{proposal}
+    $v = \dfrac{(v, e_1)}{(e_1, e_1)}e_1 + \dfrac{(v, e_2)}{(e_2, e_2)}e_2 + \dots + \dfrac{(v, e_n)}{(e_n, e_n)}e_n$.
+
+    В частности, если $e_1, \dots, e_n$ ортонормирован, то $v = (v, e_1)e_1 + \dots + (v, e_n) e_n$.
+\end{proposal}
+
+\begin{proof}
+    $v = \lambda_1 e_1 + \lambda_2 e_2 + \dots \lambda_n e_n$.
+
+    $\forall i = 1, \dots, n \quad (v, e_i) = \lambda_1 (e_1, e_i) + \dots + \lambda_n (e_n, e_i)$.
+
+    Так как базис ортогонален, то $(v, e_i) = \lambda_i (e_i, e_i) \implies \lambda_i = \dfrac{(v, e_i)}{(e_i, e_i)}$.
+\end{proof}
+
+
+\subsection{Формула для ортогональной проекции вектора на подпространство в терминах его ортогонального (ортонормированного) базиса}
+
+
+Пусть $S \subseteq \EE$ --- подпространство.
+
+$e_1, \dots, e_k$ --- ортогональный базис в $S$.
+
+\begin{proposal}
+    $\forall v \in \EE \quad \pr_S v = \sum_{i = 1}^{k} \dfrac{(v, e_i)}{(e_i, e_i)} e_i$.
+
+    В частности, если $e_1, \dots, e_k$ ортонормирован, то $\pr_S v = \sum_{i = 1}^{k} (v, e_i) e_i$.
+\end{proposal}
+
+\begin{proof}
+    Пусть $e_{k + 1}, \dots, e_n$ --- ортогональный базис в $S^{\perp}$. Тогда $e_1, \dots, e_n$ --- ортогональный базис в $\EE$.
+
+    \begin{equation*}
+        v = \underbrace{\sum_{i = 1}^{k} \dfrac{(v, e_i)}{(e_i, e_i)} e_i}_{\in S} + \underbrace{\sum_{i = k + 1}^{n} \dfrac{(v, e_i)}{(e_i, e_i)} e_i}_{\in S^{\perp}}
+    .\end{equation*}
+
+    Отсюда,
+    \begin{equation*}
+        \pr_S v = \sum_{i = 1}^{k} \dfrac{(v, e_i)}{(e_i, e_i)}
+    .\end{equation*}
+\end{proof}
+
+
+\subsection{Метод ортогонализации Грама–Шмидта}
+
+Как построить ортогональный (ортонормированный) базис в $\EE$?
+
+Если $f_1, \dots, f_n$ --- ортогональный базис, то $\left(\frac{f_1}{|f_1|}, \dots, \frac{f_n}{|f_n|}\right)$ --- ортонормированный базис.
+
+
+\subsection{Теорема Пифагора в евклидовом пространстве}
+\subsection{Расстояние между векторами евклидова пространства}
+\subsection{Неравенство треугольника}
+\subsection{Расстояние между двумя подмножествами евклидова пространства}
+\subsection{Теорема о расстоянии от вектора до подпространства}
+\subsection{Псевдорешение несовместной системы линейных уравнений}
+
+
+
