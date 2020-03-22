@@ -38,6 +38,9 @@
 
 \usepackage{fixltx2e}
 
+\usepackage{graphicx}
+
+
 %% Оглавление с ссылками и ссылки на разные вещи
 \usepackage[unicode=true, colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
 \usepackage{nameref}
@@ -150,6 +153,12 @@
 \newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
 \makeatother
 
+\makeatletter
+\newcommand{\customlabel}[2]{%
+   \protected@write \@auxout {}{\string \newlabel {#1}{{#2}{\thepage}{#2}{#1}{}} }%
+   \hypertarget{#1}{#2}
+}
+\makeatother
 
 %% Команда для ||w||
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%

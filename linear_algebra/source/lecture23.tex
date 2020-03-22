@@ -143,7 +143,7 @@ $e_1, \dots, e_k$ --- ортогональный базис в $S$.
     Отсюда,
     \begin{equation*}
         \pr_S v = \sum_{i = 1}^{k} \dfrac{(v, e_i)}{(e_i, e_i)}
-    .\end{equation*}
+    .\qedhere\end{equation*}
 \end{proof}
 
 
@@ -153,13 +153,119 @@ $e_1, \dots, e_k$ --- ортогональный базис в $S$.
 
 Если $f_1, \dots, f_n$ --- ортогональный базис, то $\left(\frac{f_1}{|f_1|}, \dots, \frac{f_n}{|f_n|}\right)$ --- ортонормированный базис.
 
+Тогда, достаточно построить ортогональный базис.
+
+Пусть $e_1, \dots, e_k$ --- линейно независимая система векторов.
+
+$i$-й угловой минор в $G(e_1, \dots, e_k)$ --- это $\det G(e_1, \dots, e_k) > 0$.
+
+\bigskip
+Следовательно, применим метод Якоби:
+
+$\exists!$ система векторов $f_1, \dots, f_k$, такая что 
+\begin{align*}
+&f_1 = e_1, \\
+&f_2 \in e_2 + \left< e_1 \right>, \\
+&f_3 \in e_3 + \left< e_1, e_2 \right>, \\
+&\dots, \\
+&f_k \in e_k + \left< e_1, \dots, e_{k - 1} \right>
+\end{align*}
+
+
+И выполнены следующие свойства $\forall i = 1, \dots, k$:
+
+\begin{enumerate}[start=0,nosep]
+\item $f_1, \dots, f_k$ ортогональны.
+\item $\left< e_1, \dots, e_i \right> = \left< f_1, \dots, f_i \right>$.
+\item $f_i = e_i - \sum_{j = 1}^{i - 1} \dfrac{(e_i, f_j)}{(f_j, f_j)} f_j$ \customlabel{lec23:star}{($\star$)}.
+\item $\det G(e_1, \dots, e_i) = \det G(f_1, \dots, f_i)$ \customlabel{lec23:heart}{$(\heartsuit)$}.
+\end{enumerate}
+
+\bigskip
+Построение базиса $f_1, \dots, f_k$ по формулам \ref{lec23:star} называется методом (процессом) ортогонализации Грамма-Шмидта.
+
+\begin{comment}
+    Свойство 2) говорит, что 
+    \begin{equation*}
+        f_i = e_i - \pr_{\left< f_1, \dots, f_{i - 1}\right>} e_i = \ort_{\left< f_1, \dots, f_{i - 1} \right>} e_i
+    .\end{equation*}
+\end{comment}
+
 
 \subsection{Теорема Пифагора в евклидовом пространстве}
+
+\begin{theorem}
+    Пусть $x, y \in \EE$, $(x, y) = 0$. Тогда $|x + y|^2 = |x|^2 + |y|^2$.
+\end{theorem}
+
+\begin{proof}
+    \begin{equation*}
+        |x + y|^2 = (x + y, x + y) = \underbrace{(x, x)}_{|x|^2} + \underbrace{(x, y)}_{0} + \underbrace{(y, x)}_{0} + \underbrace{(y, y)}_{|y|^2} = |x|^2 + |y|^2
+    .\qedhere\end{equation*}
+\end{proof}
+
+
 \subsection{Расстояние между векторами евклидова пространства}
+
+\begin{defintion}
+    \textit{Расстояние} между векторами $x, y \in \EE$ --- это $\rho(x, y) = |x - y|$.
+\end{defintion}
+
+
 \subsection{Неравенство треугольника}
+
+\begin{proposal}
+    $\forall a, b, c \in \EE \implies \rho(a, b) + \rho(b, c) \geq \rho(a, c)$.
+\end{proposal}
+
+\begin{proof}
+    Пусть $x = a - b$, $y = b - c$. Тогда, $a - c = x + y$.
+    Достаточно доказать, что $|x| + |y| \geq |x + y|$.
+
+    \begin{equation*}
+        |x + y|^2 = |x|^2 + \underbrace{2(x, y)}_{\leq |x||y|} + |y|^2 \leq |x|^2 + 2|x||y| + |y|^2 = (|x| + |y|)^2
+    .\qedhere\end{equation*}
+\end{proof}
+
+
 \subsection{Расстояние между двумя подмножествами евклидова пространства}
+
+Пусть $P, Q \subseteq \EE$ --- два подмножества.
+
+\begin{definition}
+    \textit{Расстояние} между $P$ и $Q$ --- это
+    \begin{equation*}
+        \rho(P, Q) := \inf_{x \in P, y \in Q} \rho(x, y)
+    .\end{equation*}
+\end{definition}
+
+
 \subsection{Теорема о расстоянии от вектора до подпространства}
-\subsection{Псевдорешение несовместной системы линейных уравнений}
+
+\begin{theorem}
+    Пусть $x \in \EE$, $S \subseteq \EE$ --- подпространство. Тогда, $\rho(x, S) = \left|\ort_S x\right|$, причем $\pr_S x$ --- это ближайший к $x$ вектор из $S$.
+\end{theorem}
+
+\begin{proof}
+    Положим $y = \pr_S x$, $z = \ort_S x$. Тогда, $x = y + z$.
+    Для любого $y' \in S$, $y' \neq 0$ имеем
+    \begin{equation*}
+        \rho(x, y + y')^2 = |x - y - y'|^2 = |z - y'|^2 = |z|^2 + |y'|^2 > |z|^2 = |x - y|^2 = \rho(x, y)^2
+    .\qedhere\end{equation*}
+\end{proof}
 
 
+\subsection{Псевдорешение несовместной системы линейных уравнений (метод наименьших квадратов)}
 
+СЛУ $Ax = b$, $A \in \text{Mat}_{m \times n}(\RR)$, $x \in \RR^n$, $b \in \RR^m$.
+\begin{equation*}
+    x_0 \text{ --- решение системы} \iff Ax_0 = b \iff Ax_0 - b = 0 \iff |Ax_0 - b| = 0 \iff \rho(Ax_0, b) = 0
+.\end{equation*}
+
+Если СЛУ несовместна, то $x_0$ называется \textit{псевдорешением}, если $\rho(Ax_0, b)$ минимально.
+
+\begin{equation*}
+    \rho(Ax_0, b) = \min_{x \in R^n} \rho(Ax, b)
+.\end{equation*}
+
+$x_0$ --- решение задачи оптимизации $\rho(Ax, b) \xrightarrow[x \in \RR^n]{} \min$.
