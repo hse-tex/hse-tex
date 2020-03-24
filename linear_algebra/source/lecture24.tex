@@ -1,0 +1,244 @@
+\section{Лекция 12.03.2020} 
+
+\subsection{Метод наименьших квадратов для несовместных систем линейных уравнений: постановка задачи и её решение}
+
+Пусть $S \subseteq \RR^n$ --- подпространство натянутое на столбцы матрицы $A$.
+
+$S = \left< A^{(1)}, \dots, A^{(n)} \right>$.
+
+Положим $c := \pr_S b$.
+
+\begin{proposal}~
+    \begin{enumerate}
+    \item $x_0$ --- псевдорешение $Ax = b \iff x_0$ --- решение для $Ax = c$.  
+    \item Если столбцы $A^{(1)}, \dots, A^{(n)}$, то псевдорешение единственно и может быть найдено по формуле $x_0 = (A^{T} A)^{-1} A^{T} b$.
+    \end{enumerate}
+\end{proposal}
+
+
+\subsection{Единственность псевдорешения и явная формула для него в случае линейной независимости столбцов матрицы коэффициентов}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item
+            \begin{equation*}
+                \forall x \in \RR^n \quad Ax = x_1 A^{(1)} + \dots + x_n A^{(n)} \implies \{Ax \mid x \in \RR^n\} = S \implies \min_{x \in \RR^n} \rho(Ax, b) = \rho(S, b)
+            .\end{equation*}
+            По теореме о расстоянии от вектора до подпространства минимум достигается при $Ax = c = \pr_S b$.
+
+        \item
+            Так как $A^{(1)}, \dots, A^{(n)}$ линейно независимы, то $c$ единственным образом представим в виде линейной комбинации этих столбцов.
+
+            Следовательно, $x_0$ единственно.
+
+            Знаем, что $A \underbrace{(A^{T} A)^{-1} A^{T} b} = c$. Значит, $x_0 = (A^{T} A)^{-1} A^{T} b$.
+            \qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    \begin{math}
+        \begin{cases}
+            x = 0, \\
+            x = 1.
+        \end{cases}
+    \end{math}
+
+    Здесь $A = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$, $b = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$.
+
+    Тогда, $x_0 = \left[\begin{pmatrix} 1 & 1 \end{pmatrix}\begin{pmatrix} 1 \\ 1 \end{pmatrix}\right]^{-1} \begin{pmatrix} 1 & 1 \end{pmatrix}\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{1}{2}$.
+    
+    \bigskip
+    {\tiny Здесь должна была быть картинка, но мне лень. Пинать можно @darkkeks.}
+\end{example}
+
+
+\subsection{Формула для расстояния от вектора до подпространства в терминах матриц Грама}
+
+Пусть $\EE$ --- евклидово пространство, $\dim \EE = n < \infty$.
+
+$S \subseteq \EE$ --- подпространство, $e_1, \dots, e_k$ --- базис в $S$.
+
+\begin{theorem}
+    $\forall x \in \EE \quad \rho(x, S)^2 = \dfrac{\det G(e_1, \dots, e_k, x)}{\det G(e_1, \dots, e_k)}$.
+\end{theorem}
+
+\begin{proof}
+    Пусть $z := \ort_S x$, тогда $\rho(x, S)^2 = |z|^2$.
+
+    \begin{enumerate}
+    \item $x \in S \implies \rho(x, S) = 0$:
+
+        так как $e_1, \dots, e_k$ линейно независимы, то $\det G(e_1, \dots, e_k, x) = 0$.
+
+    \item $x \not\in S$.
+
+        Ортогонализация Грама-Шмидта: $e_1, \dots, e_k, x \leadsto f_1, \dots, f_k, z$.
+
+        По свойству \ref{lec23:heart} получаем
+        \begin{equation*}
+            \dfrac{\det G(e_1, \dots, e_k, x}{\det G(e_1, \dots, e_k} = \dfrac{\det G(f_1, \dots, f_k, z)}{\det G(f_1, \dots, f_k)} = \frac{|f_1|^2 \dots |f_k|^2 |z|^2}{|f_1|^2 \dots |f_k|^2} = |z|^2 = \rho(x, S)^2
+        .\end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+\subsection{$k$-мерный параллелепипед}
+
+\begin{definition}
+    \textit{$k$-мерный параллелепипед}, натянутый на векторы $a_1, \dots, a_k$, это множество
+    \begin{equation*}
+        P(a_1, \dots, a_k) := \left\{ \sum_{i = 1}^{k} x_i a_i \mid 0 \leq x_1 < 1 \right\}
+    .\end{equation*}
+
+    Основание: $P(a_1, \dots, a_{k - 1})$.
+
+    Высота: $h := |\ort_{\left< a_1, \dots, a_{k - 1} \right>} a_k|$.
+\end{definition}
+
+\begin{example}~
+    \begin{description}
+    \item[$k = 1$] $h = |a_1|$ {\tiny здесь картинка, тоже лень :(}
+    \item[$k = 2$] основание --- $P(a_1)$, высота --- $h$ {\tiny дада, люблю картинки делать}
+    \end{description}
+\end{example}
+
+
+\subsection{Объём $k$-мерного параллелепипеда в евклидовом пространстве}
+
+\begin{example}
+    \textit{$k$-мерный объем} $k$-мерного параллелепипеда $P(a_1, \dots, a_k)$ --- это величина $\vol P(a_1, \dots, a_k)$, определяемая индуктивно:
+
+    \begin{description}
+    \item[$k = 1$] $\implies \vol P(a_1) := |a_1|$.
+    \item[$k > 1$] $\implies \vol P(a_1, \dots, a_k) := \vol P(a_1, \dots, a_{k - 1}) \cdot h$.
+    \end{description}
+\end{example}
+
+
+\subsection{Вычисление объёма $k$-мерного параллелепипеда при помощи определителя матрицы Грама задающих его векторов}
+
+\begin{theorem}
+    $\vol P(a_1, \dots, a_k)^2 = \det G(a_1, \dots, a_k)$.
+\end{theorem}
+
+\begin{proof}
+    Индукция по $k$:
+
+    \begin{description}
+    \item[$k = 1:$] $|a_1|^2 = (a_1, a_1)$ --- верно.
+    \item[$k > 1:$] $\vol P(a_1, \dots, a_k)^2 = \vol P(a_1, \dots, a_{k - 1})^2 \cdot h^2 = \det G(a_1, \dots, a_k) \cdot h^2 = (\star)$.
+
+        Если $a_1, \dots, a_{k - 1}$ линейно независимы, то $h_2 = \dfrac{\det G(a_1, \dots, a_k)}{\det G(a_1, \dots, a_{k - 1}}$.
+        Тогда, $(\star) = \det G(a_1, \dots, a_k)$.
+
+        Если же $a_1, \dots, a_{k - 1}$ линейно зависимы, то $\det G(a_1, \dots, a_{k - 1}) = 0 \implies (\star) = 0$. Но $a_1, \dots, a_k$ тоже линейно зависимы, а значит $\det G(a_1, \dots, a_k) = 0$.
+        \qedhere
+    \end{description}
+\end{proof}
+
+\begin{corollary}
+    $\vol P(a_1, \dots, a_k)$ не зависит от выбора основания.
+\end{corollary}
+
+\begin{example}
+    Пусть $a_1, \dots, a_k$ ортогональны, тогда $P(a_1, \dots, a_k)$ --- <<прямоугольный параллелепипед>>.
+
+    \begin{equation*}
+        \vol P(a_1, \dots, a_k) = \sqrt{\det G(a_1, \dots, a_k)} = \sqrt{|a_1|^2 \dots |a_k|^2} = |a_1| \dots |a_k|
+    .\end{equation*}
+\end{example}
+
+
+\subsection{Формула для объёма $n$-мерного параллелепипеда в n-мерном евклидовом пространстве в терминах координат задающих его векторов в ортонормированном базисе}
+
+Пусть $(e_1, \dots, e_n)$ --- ортонормированный базис в $\EE$,
+
+$(a_1, \dots, a_n) = (e_1, \dots, e_n) \cdot A$, $A \in M_n(\RR)$.
+
+\begin{proposal}
+    $\vol P(a_1, \dots, a_n) = |\det A|$.
+\end{proposal}
+
+\begin{proof}
+    \begin{equation*}
+        G(a_1, \dots, a_n) = A^{T} \cdot A \implies \vol P(a_1, \dots, a_n)^2 = \det (A^{T} A) = \left(\det A\right)^2
+    .\end{equation*}
+\end{proof}
+
+
+\subsection{Отношение одинаковой ориентированности на множестве базисов евклидова пространства}
+
+Пусть $\E = (e_1, \dots, e_n)$ и $\E' = (e'_1, \dots, e'_n)$ --- два базиса в $\EE$.
+
+$(e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C$, $C \in M_n^0(\RR)$.
+
+\begin{definition}
+    Говорят, что $\E$ и $\E'$ одинаково ориентированы, если $\det C > 0$.
+\end{definition}
+
+\begin{exercise}~
+    \begin{enumerate}
+    \item 
+        Отношение одинаковой ориентированности является отношением эквивалентности на множестве всех базисов~в~$\EE$.
+    \item 
+        Имеется ровно 2 класса эквивалентности.
+    \end{enumerate}
+\end{exercise}
+
+
+\subsection{Ориентация в евклидовом пространстве}
+
+\begin{definition}
+    Говорят, что в $\EE$ задана ориентация, если все базисы одного класса объявлены положительно ориентированными, а все базисы другого класса объявлены отрицательно ориентированными.
+\end{definition}
+
+\begin{example}
+    Стандартный выбор ориентации в $\RR^3$:
+
+    Положительно ориентированные: <<правые>> тройки.
+
+    Отрицательно ориентированные: <<левые>> тройки.
+
+    \bigskip
+    Тут показывать надо, но попробую описать словами: берем правую руку, и нумеруем пальцы начиная с большого (большой --- первый вектор, указательный --- второй, средний --- третий). Такую тройку векторов назовём <<правой>>. Аналогично можно сделать для левой руки. Суть в том, что никакую правую тройку векторов невозможно перевести в левую непрерывным преобразованием (так чтобы в процессе тройка оставалось базисом).
+\end{example}
+
+
+\subsection{Ориентированный объём n-мерного параллелепипеда в $n$-мерном евклидовом пространстве}
+
+Фиксируем ориентацию в $\EE$.
+
+Фиксируем положительно ориентированный базис $\E = (e_1, \dots, e_n)$ в $\EE$.
+
+Пусть $a_1, \dots, a_n \in \EE$, $(a_1, \dots, a_n) = (e_1, \dots, e_n) \cdot A$.
+
+\begin{definition}
+    \textit{Ориентированным объемом} параллелепипеда $P(a_1, \dots, a_n)$ называется величина
+    \begin{equation*}
+        \Vol (a_1, \dots, a_n) = \det A
+    .\end{equation*}
+\end{definition}
+
+\begin{proposal}
+    $\Vol P(a_1, \dots, a_n)$ определён корректно, то есть не зависит от выбора положительно ориентированного базиса в $\EE$.
+\end{proposal}
+
+\begin{proof}
+    Пусть $\E'$ --- другой положительно ориентированный базис, тогда $\E' = \E C$, где $C$ --- ортогональная матрица.
+    В частности, $\det C = \pm 1$. 
+    Так как $\E$ и $\E'$ одинаково ориентированны, то $\det C = 1$.
+    Тогда, 
+    \begin{equation*}
+        (a_1, \dots, a_n) = (e'_1, \dots, e'_n) \cdot C^{-1} \cdot A \implies \Vol(a_1, \dots, a_n)_\text{новый} = \det \left(C^{-1} A\right) = \det A = \Vol (a_1, \dots, a_n)_\text{старый}
+    .\qedhere\end{equation*}
+\end{proof}
+
+Свойства ориентированного объема:
+\begin{enumerate}[nosep]
+\item $\Vol(a_1, \dots, a_n)$ линеен по каждому аргументу.
+\item $\Vol(a_1, \dots, a_n)$ кососимметрична (то есть меняет знак при перестановке любых двух аргументов).
+\item $\Vol(a_1, \dots, a_n) > 0 \iff (a_1, \dots, a_n)$ --- положительно ориентированный базис в $\EE$.
+\item $\Vol(a_1, \dots, a_n) < 0 \iff (a_1, \dots, a_n)$ --- отрицательно ориентированный базис в $\EE$.
+\item $\Vol(a_1, \dots, a_n) = 0 \iff (a_1, \dots, a_n)$ линейно независимы.
+\end{enumerate}
