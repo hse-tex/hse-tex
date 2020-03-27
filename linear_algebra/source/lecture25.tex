@@ -1,0 +1,199 @@
+\section{Лекция 19.03.2020} 
+
+\href{https://www.dropbox.com/s/y3r4x7mjt7iv71a/%D0%9B%D0%90%D0%B8%D0%93_19-20_%D0%9B%D0%B5%D0%BA%D1%86%D0%B8%D1%8F_25.pdf?dl=0}{Записки с лекции}
+
+
+\begin{lemma}
+    Пусть $v_1, v_2 \in \EE$. Тогда, $(v_1, x) = (v_2, x) \ \forall x \in \EE \implies v_1 = v2$.
+\end{lemma}
+
+\begin{proof}
+    Имеем $(v_1 - v_2, x) = 0 \ \forall x \in \EE$.
+    Тогда, $v_1 - v_2 \in \EE^{\perp} = \{0\} \implies v_1 - v_2 = 0 \implies v_1 = v2$.
+\end{proof}
+
+
+\subsection{Трёхмерное евклидово пространство}
+
+\begin{theorem}
+    \label{lec25:t}
+    Пусть $a, b \in \RR^3$. Тогда
+    \begin{enumerate}
+    \item $\exists! v \in \EE$, такой что $(v, x) = \Vol(a, b, x) \quad \forall x \in \RR^3$.
+    \item Если $\E = (e_1, e_2, e_3)$ --- положительно ориентированный базис и
+        \begin{math}
+            \ \begin{aligned}[t]
+                a &= a_1 e_1 + a_2 e_2 + a_3 e_3 \\
+                b &= b_1 e_1 + b_2 e_2 + b_3 e_3
+            \end{aligned},
+        \end{math}
+        то 
+        \begin{equation}
+            \tag{$\star$}
+            \label{lec25:v}
+            v = \begin{vmatrix}
+                e_1 & e_2 & e_3 \\
+                a_1 & a_2 & a_3 \\
+                b_1 & b_2 & b_3
+            \end{vmatrix}
+            := \begin{vmatrix} 
+                a_2 & a_3 \\
+                b_2 & b_3
+            \end{vmatrix} e_1 - \begin{vmatrix} 
+                a_1 & a_3 \\
+                b_1 & b_3
+            \end{vmatrix} e_2 + \begin{vmatrix} 
+                a_1 & a_2 \\
+                b_1 & b_2
+            \end{vmatrix} e_3
+        .\end{equation}
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}~
+    \begin{description}
+    \item[Единственность] если $v'$ --- другой такой вектор, то $(v, x) = (v', x) \ \forall x \in \RR^3$, а значит $v' = v$ по лемме.
+    \item[Существование] Покажем, что $v$, заданный формулой \eqref{lec25:v} подойдёт.
+        \begin{align*}
+            x = x_1 e_2 + x_2 e_2 + x_3 e_3 \implies (v, x) &= \begin{vmatrix} 
+                a_2 & a_3 \\
+                b_2 & b_3
+            \end{vmatrix} x_1 - \begin{vmatrix} 
+                a_1 & a_3 \\
+                b_1 & b_3
+            \end{vmatrix} x_2 + \begin{vmatrix} 
+                a_1 & a_2 \\
+                b_1 & b_2
+                \end{vmatrix} x_3 \\ &= \begin{vmatrix} 
+                x_1 & x_2 & x_3 \\
+                a_1 & a_2 & a_3 \\
+                b_1 & b_2 & b_3
+            \end{vmatrix} = \begin{vmatrix} 
+                a_1 & a_2 & a_3 \\
+                b_1 & b_2 & b_3 \\
+                x_1 & x_2 & x_3
+            \end{vmatrix} = \Vol(a, b, x)
+        .\end{align*}
+    \end{description}
+\end{proof}
+
+
+\subsection{Векторное произведение, его выражение в координатах}
+
+\begin{definition}
+    Вектор $v$ из теоремы выше называется \textit{векторным произведением} векторов $a$ и $b$.
+
+    Обозначение: $[a, b]$ или $a \times b$.
+\end{definition}
+
+
+\subsection{Смешанное произведение трёх векторов, его свойства}
+
+\begin{definition}
+    $\forall a, b, c \in \EE$ число $(a, b, c) := ([a, b], c)$ называется \textit{смешанным произведением} векторов $a, b, c$.
+\end{definition}
+
+\begin{comment}
+    Из \hyperref[lec25:t]{теоремы} видно, что $(a, b, c) = \Vol(a, b, c)$.
+\end{comment}
+
+\begin{proof}[Свойства смешанного произведения]~
+    \begin{enumerate}[nosep]
+    \item 
+        $(a, b, c) > 0 \iff a, b, c$ --- положительно ориентированный ортонормированный базис,
+        
+        $(a, b, c) < 0 \iff a, b, c$ --- отрицательно ориентированный ортонормированный базис.
+
+        \medskip
+        Критерий компланарности ($= $ линейной зависимости)
+        \begin{equation*}
+            a, b, c\text{ компланарны} \iff (a, b, c) = 0
+        .\end{equation*}
+
+    \item Линейность по каждому аргументу.
+
+    \item Кососимметричность (меняет знак при перестановке любых двух векторов).
+
+    \item Если $e_1, e_2, e_3$ --- положительно ориентированный ортонормированный базис, то
+        \begin{equation*}
+            \left.\begin{aligned}
+                a &= a_1 e_1 + a_2 e_2 + a_3 e_3 \\
+                b &= b_1 e_1 + b_2 e_2 + b_3 e_3 \\
+                c &= c_1 e_1 + c_2 e_2 + c_3 e_3
+            \end{aligned} \right| \implies (a, b, c) = \begin{vmatrix} 
+                a_1 & a_2 & a_3 \\
+                b_1 & b_2 & b_3 \\
+                c_1 & c_2 & c_3
+            \end{vmatrix}
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+
+\subsection{Критерий коллинеарности двух векторов в терминах векторного произведения}
+
+\begin{proposal}
+    $a, b \in \EE$ коллинеарны $\iff [a, b] = 0$.
+\end{proposal}
+
+\begin{proof}~
+    \begin{description}
+        \item[$\implies$] 
+            \begin{equation*}
+                (a, b, x) = 0 \ \forall x \implies ([a, b], x) = 0 \ \forall x \implies [a, b] = 0
+            .\end{equation*}
+
+        \item[$\impliedby$]
+            \begin{equation*}
+                [a, b] = 0 \implies ([a, b], x) = 0 \ \forall x \implies (a, b, x) = 0 \ \forall x \in \RR^3
+            .\end{equation*}
+
+            Если $a$, $b$ линейно независимы, то можно взять $x$, который дополняет их до базиса в $\RR^3$.
+
+            Тогда, $(a, b, x) \neq 0$ --- противоречие. Значит $a$, $b$ линейно зависимы $\implies$ коллинеарны.
+            \qedhere
+    \end{description}
+\end{proof}
+
+
+\subsection{Геометрические свойства векторного произведения}
+
+\begin{proposal}~
+    \begin{enumerate}[nosep]
+    \item $[a, b] \perp \left< a, b \right>$.
+    \item $\left|[a, b]\right| = \vol P(a, b)$.
+    \item $\Vol(a, b, [a, b]) \geq 0$.
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}~
+    \begin{enumerate}
+    \item $([a, b], a) = (a, b, a) = 0 = (a, b, b) = ([a, b], b)$.
+    \item Если $a$, $b$ коллинеарны, то обе части равны 0.
+
+        Пусть $[a, b] \neq 0$.
+        \begin{equation*}
+            \left|[a, b]\right|^2 = ([a, b], [a, b]) = (a, b, [a, b]) = (\#) > 0
+        .\end{equation*}
+        \begin{equation*}
+            [a, b] \perp \left< a, b \right> \implies (\#) = \vol P(a, b, [a, b]) = \Vol(a, b, [a, b]) = \vol P(a, b,) \cdot \left|[a, b]\right|
+        .\end{equation*}
+
+        Сокращая на $|[a, b]| \neq 0$, получаем требуемое.
+
+    \item
+        $\Vol (a, b, [a, b]) = ([a, b], [a, b]) \geq 0$.
+        \qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{exercise}
+    $[a, b]$ однозначно определяется свойствами $1)$ --- $3)$.
+\end{exercise}
+
+\subsection{Антикоммутативность и билинейность векторного произведения}
+\subsection{Линейные многообразия в $\RR^n$}
+\subsection{Характеризация линейных многообразий как сдвигов подпространств}
+\subsection{Критерий равенства двух линейных многообразий}
+\subsection{Направляющее подпространство и размерность линейного многообразия}
+ 
