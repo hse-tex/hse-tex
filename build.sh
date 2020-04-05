@@ -13,7 +13,8 @@ build() {
 [ -d .pdf ] || mkdir .pdf
 
 build linear_algebra/source linear_algebra
-build linear_algebra/colloquium linear_algebra_colloquium
+build linear_algebra/colloquium linear_algebra_colloquium_1
+build linear_algebra/colloquium linear_algebra_colloquium_2
 build mathematical_analysis mathematical_analysis_colloquium_01
 build mathematical_analysis mathematical_analysis_colloquium_02
 build mathematical_analysis mathematical_analysis_colloquium_03

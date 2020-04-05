@@ -1,0 +1,1251 @@
+\documentclass[a4paper]{article}
+\usepackage{header}
+
+
+\newcommand\enumtocitem[3]{\item\textbf{#1}\addtocounter{#2}{1}\addcontentsline{toc}{#2}{\protect{\numberline{#3}} #1}}
+\newcommand\defitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
+\newcommand\proofitem[1]{\enumtocitem{#1}{subsubsection}{\thesubsubsection}}
+
+\newlist{colloq}{enumerate}{1}
+\setlist[colloq]{label=\textbf{\arabic*.}}
+
+
+\title{\HugeЛинейная алгебра, Коллоквиум \uppercase\expandafter{\romannumeral 2\relax}}
+\author{
+    Бобень Вячеслав \\
+    \href{https://teleg.run/darkkeks}{@darkkeks},
+    \href{https://github.com/LoDThe/hse-tex}{GitHub} \\
+    Благодарность выражается Левину Александру (\href{https://teleg.run/azerty1234567890}{@azerty1234567890}) \\
+    и Милько Андрею (\href{https://teleg.run/andrew_milko}{@andrew\_milko}) за видеозаписи лекций.
+}
+\date{2019 --- 2020}
+
+\begin{document}
+    \maketitle
+
+    \epigraph{
+        ``К коллоку можете даже не готовиться''.
+    }{\rightline{{\rm --- Роман Сергеевич Авдеев}}}
+
+    \tableofcontents
+
+    \newpage
+
+    \section{Определения и формулировки}
+
+    \begin{colloq}
+
+    \defitem{Сумма двух подпространств векторного пространства}
+
+        Пусть $V$ -- векторное пространство над $F$.
+
+        $U, W \subseteq V$ -- подпространства.
+
+        \begin{definition}
+            \textit{Суммой} подпространств $U$, $W$ называется множество
+            \begin{equation*}
+                U + W := \{u + w \mid v \in U, w \in W\}
+            .\end{equation*}
+        \end{definition}
+
+
+    \defitem{Теорема о связи размерности суммы двух подпространств с размерностью их пересечения}
+
+        \begin{theorem}
+            $\dim (U \cap W) + \dim (U + W) = \dim U + \dim W$.
+        \end{theorem}
+
+        \begin{example}
+            Всякие две плоскости в $\RR^3$ (содержащие 0) имеют общую прямую.
+
+            Здесь $V = \RR^3$, $\dim U = 2$, $\dim W = 2$.
+
+            При этом $\dim (U + W) \leq 3$.
+
+            Тогда, $\dim (U \cap W) = \dim U + \dim W - \dim (U + W) \geq 2 + 2 - 3 = 1$.
+        \end{example}
+
+
+    \defitem{Сумма нескольких подпространств векторного пространства}
+
+        Пусть $U_1, \dots U_k \subseteq V$ -- подпространства.
+
+        \begin{definition}
+            \textit{Суммой} подпространств $U_1, \dots U_k$ называется множество
+            \begin{equation*}
+                U_1 + \dots + U_k = \{u_1 + \dots + u_k \mid u_i \in U_i\}
+            .\end{equation*}
+        \end{definition}
+
+        \begin{comment}
+            $\dim (U_1 + \dots + U_k) \leq \dim U_1 + \dots + \dim U_k$.
+        \end{comment}
+
+
+    \defitem{Линейная независимость нескольких подпространств векторного пространства}
+
+        \begin{definition}
+            Подпространства $U_1, \dots, U_k$ называются \textit{линейно независимыми}, если $\forall u_1 \in U_1, \dots, u_k \in U_k$ из условия $u_1 + \dots + u_k = 0$ следует $u_1 = \dots = u_k = 0$.
+        \end{definition}
+
+        \begin{example}
+            Если $\dim U_i = 1$ и $U_i = \langle u_i \rangle \ \forall i$, то $U_1, \dots, U_k$ линейно независимы $\iff$ $u_1, \dots, u_k$ линейно независимы.
+        \end{example}
+
+
+    \defitem{Разложение векторного пространства в прямую сумму подпространств}
+
+        \begin{definition}
+            Говорят, что векторное пространство $V$ разлагается в \textit{прямую сумму} $U_1, \dots, U_k$, если
+            \begin{enumerate}
+            \item $V = U_1 + \dots + U_k$,
+            \item $U_1, \dots, U_k$ линейно независимы.
+            \end{enumerate}
+
+            Обозначение: $V = U_1 \oplus U_2 \oplus \dots \oplus U_k$.
+        \end{definition}
+
+        \begin{example}
+            Если $e_1, \dots, e_n$ -- базис $V$, то $V = \langle e_1 \rangle \oplus \langle e_2 \rangle \oplus \dots \oplus \langle e_n \rangle$
+        \end{example}
+
+
+    \defitem{При каких условиях на подпространства $U_1$, $U_2$ векторного пространства $V$ имеет место разложение $V = U_1 \oplus U_2$?}
+    \defitem{Матрица перехода от одного базиса векторного пространства к другому}
+    \defitem{Формула преобразования координат вектора при замене базиса}
+    \defitem{Линейное отображение векторных пространств, его простейшие свойства}
+
+        Пусть $V$, $W$ --- векторные пространства над $F$.
+
+        \begin{definition}
+            Отображение $\phi \colon V \to W$ называется \textit{линейным}, если
+            \begin{enumerate}
+            \item \label{lec16:def_1_1}$\phi(v_1 + v_2) = \phi(v_1) + \phi(v_2)$,
+            \item \label{lec16:def_1_2} $\phi(\lambda v) = \lambda \phi(v)$.
+            \end{enumerate}
+
+            $\forall v_1, v_2, v \in V$, $\forall \lambda \in F$.
+        \end{definition}
+
+        \paragraph{Простейшие свойства}~
+
+        \begin{enumerate}
+        \item $\phi(\overrightarrow{0_V}) = \overrightarrow{0_W}$.
+
+            Доказательство: $\phi(\overrightarrow{0_V}) = \phi(0 \cdot \overrightarrow{0_V}) = 0 \cdot \phi(\overrightarrow{0_V}) = \phi(\overrightarrow{0_W})$.
+
+        \item $\phi(-v) = -\phi(v)$.
+
+            Доказательство: $\phi(-v) + \phi(v) = \phi(-v + v) = \phi(0) = \phi(\overrightarrow{0_V)} = \overrightarrow{0_W} \implies \phi(-v) = -\phi(v)$.
+        \end{enumerate}
+
+
+    \defitem{Изоморфизм векторных пространств, изоморфные векторные пространства}
+
+        \begin{definition}
+            Отображение $\phi \colon V \to W$ называется \textit{изоморфизмом} если оно линейно и биективно.
+
+            Обозначение: $\phi \colon V \MapsTo W$.
+        \end{definition}
+
+        \begin{definition}
+            Два векторных пространства $V$, $W$ называются \textit{изоморфными}, если существует изоморфизм \\ ${\phi\colon V \MapsTo W}$.
+
+            Обозначается: $V \simeq W$ (либо $V \cong W$).
+        \end{definition}
+
+
+    \defitem{Какими свойствами обладает отношение изоморфности на множестве всех векторных пространств?}
+
+        \begin{theorem}
+            Отношение изоморфности является отношением эквивалентности на множестве всех векторных пространств над фиксированным полем $F$.
+        \end{theorem}
+
+
+    \defitem{Критерий изоморфности двух конечномерных векторных пространств}
+
+        \begin{theorem}
+            Пусть $V$, $W$ --- два конечномерных векторных пространства над $F$.
+
+            Тогда, $V \simeq W \iff \dim V = \dim W$.
+        \end{theorem}
+
+
+    \defitem{Матрица линейного отображения}
+
+        Пусть $V, W$ --- векторные пространства над $F$.
+
+        $\E = (e_1, \dots, e_n)$ --- базис $V$,
+
+        $\F = (f_1, \dots, f_m)$ --- базис $W$.
+
+        \bigskip
+        Пусть $\phi\colon V \to W$ --- линейное отображение.
+
+        $\forall j = 1, \dots, n$
+
+        $\phi(e_j) = a_{1j} f_1 + a_{2j} f_2 + \dots + a_{mj} f_m = (f_1, \dots, f_m) \begin{pmatrix} a_{1j} \\ a_{2j} \\ \dots \\ a_{mj} \end{pmatrix}$.
+
+        Тогда, $(\phi(e_1), \dots, \phi(e_n)) = (f_1, \dots, f_m) \cdot A$, где $A = (a_{ij}) \in \text{Mat}_{m \times n} (F)$.
+
+        \begin{definition}
+            $A$ называется матрицей линейного отображения $\phi$ в базисах $\E$ и $\F$.
+
+            Обозначение: $A = A(\phi, \E, \F)$.
+        \end{definition}
+
+        В $j$-м столбце матрицы $A$ стоят координаты вектора $\phi(e_j)$ в базисе $\F$.
+
+
+    \defitem{Связь между координатами вектора и его образа при линейном отображении}
+
+        \begin{proposal}
+            Пусть $\phi \colon V \to W$ --- линейное отображение,
+
+            $\E = (e_1, \dots, e_n)$ --- базис $V$,
+
+            $\F = (f_1, \dots, f_m)$ --- базис $W$,
+
+            $A = A(\phi, \E, \F)$.
+
+            \begin{math}
+                \begin{aligned}
+                    v \in V \implies &v = x_1 e_1 + \dots + x_n e_n, \\
+                    &\phi(v) = y_1 f_1 + \dots + y_m f_m.
+                \end{aligned}
+            \end{math}
+
+            Тогда,
+            \begin{equation*}
+                \begin{pmatrix} y_1 \\ \vdots \\ y_m \end{pmatrix} = A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}
+            .\end{equation*}
+        \end{proposal}
+
+
+    \defitem{Формула изменения матрицы линейного отображения при замене базисов}
+
+        Пусть теперь $\E'$ --- другой базис в $V$, $\F'$ --- другой базис в $W$.
+
+        $\E' = \E \cdot C_{\in M_n}$,
+
+        $\F' = \F \cdot D_{\in M_m}$.
+
+        $A = A(\phi, \E, \F)$,
+
+        $A' = A(\phi, \E', \F')$.
+
+        \begin{proposal}
+            $A' = D^{-1} A C$.
+        \end{proposal}
+
+
+    \defitem{Сумма двух линейных отображений и её матрица. Произведение линейного отображения на скаляр и его матрица}
+
+        Пусть $\phi, \psi \in \hom(V, W)$, $\lambda \in F$.
+
+        \begin{definition}~
+            \begin{enumerate}
+            \item \textit{Суммой} линейных отображений $\phi$ и $\psi$ называется линейное отображение $\phi + \psi \in \hom(V, W)$, \\ такое что ${(\phi + \psi)(v) := \phi(v) + \psi(v)}$.
+            \item Произведение $\phi$ на $\lambda$ --- это линейное отображение $\lambda \phi \in \hom(V, W)$, такое что $(\lambda\phi)(v) := \lambda \phi(v)$.
+            \end{enumerate}
+        \end{definition}
+
+
+        Зафиксируем базисы $\E = (e_1, \dots, e_n)$ в $V$ и $\F = (f_1, \dots, f_m)$ в $W$.
+
+        \begin{proposal}~
+            \begin{enumerate}
+            \item
+                \begin{math}
+                    \begin{aligned}[t]
+                        \phi, \psi \in \hom(V, W), \
+                        &A_\phi = A(\phi, \E, \F)& \\
+                        &A_\psi = A(\psi, \E, \F)& \\
+                        &A_{\phi + \psi} = A(\phi + \phi, \E, \F)& \implies A_{\phi + \psi} = A_\phi + A_\psi
+                    \end{aligned}
+                \end{math}
+
+            \item
+                \begin{math}
+                    \begin{aligned}[t]
+                        \lambda \in F, \phi \in \hom(V, W), \
+                        &A_\phi = A(\phi, \E, \F)& \\
+                        &A_{\lambda \phi} = A(\lambda \phi, \E, \F)& \implies A_{\lambda \phi} = \lambda A_\phi
+                    \end{aligned}
+                \end{math}
+            \end{enumerate}
+        \end{proposal}
+
+
+    \defitem{Композиция двух линейных отображений и её матрица}
+
+        Пусть $U \xrightarrow{\psi} V \xrightarrow{\phi} W$ --- цепочка линейных отображений, а $\phi \circ \psi : U \to W$ --- их композиция,
+
+        $\E = (e_1, \dots, e_n)$ --- базис $V$,
+
+        $\F = (f_1, \dots, f_m)$ --- базис $W$,
+
+        $\G = (g_1, \dots, g_k)$ --- базис $U$.
+
+        $A_{\phi} = A(\phi, \E, \F)$,
+
+        $A_\psi = A(\psi, \G, \E)$,
+
+        $A_{\phi \circ \psi} = A(\phi \circ \psi, \G, \F)$.
+
+        Тогда, $A_{\phi \circ \psi} = A_\phi \cdot A_\psi$.
+
+
+    \defitem{Ядро и образ линейного отображения. Являются ли они подпространствами в соответствующих векторных пространствах?}
+
+        Пусть $\phi \colon V \to W$.
+
+        \begin{definition}
+            \textit{Ядро} линейной оболочки $\phi$ --- это $\ker \phi := \{v \in V \mid \phi(v) = 0\} \subseteq V$.
+
+            \textit{Образ} линейного отображения $\phi$ --- это $\Im \phi := \phi(V) \subseteq W$.
+        \end{definition}
+
+        \begin{example}
+            $\Delta \colon \RR[x]_{\leq n} \to \RR[x]_{\leq n}, \ f \mapsto f'$,
+
+            $\ker \Delta = \{f \mid f = \text{const}\}$,
+
+            $\Im \Delta = \RR[x]_{\leq n - 1}$.
+        \end{example}
+
+        \begin{proposal}~
+            \begin{enumerate}[nosep]
+            \item Ядро --- подпространство в $V$.
+            \item Образ --- подпространство в $W$.
+            \end{enumerate}
+        \end{proposal}
+
+
+    \defitem{Критерий инъективности линейного отображения в терминах его ядра}
+
+        Пусть $V, W$ --- векторные пространства над $F$, 
+
+        $\phi \colon V \to W$ --- линейное отображение.
+
+        Ядро: $\ker \phi := \{v \in V \mid \phi(v) = 0\} \subseteq V$.
+
+        Образ: $\Im \phi := \phi(V) \subseteq W$.
+
+        \begin{proposal}~
+            \begin{enumerate}[label=(\alph*)]
+            \item $\phi$ инъективно $\iff \ker \phi = \{0\}$,
+            \item $\phi$ сюръективно $\iff \Im \phi = W$.
+            \end{enumerate}
+        \end{proposal}
+
+
+    \defitem{Связь между рангом матрицы линейного отображения и размерностью его образа}
+
+        Пусть 
+        \begin{math}
+            \begin{aligned}[t]
+                \E &= (e_1, \dots, e_n) \text{ --- базис $V$}, \\
+                \F &= (f_1, \dots, f_m) \text{ --- базис $W$}, \\
+                A &= A(\phi, \E, \F).
+            \end{aligned}
+        \end{math}
+
+        \begin{theorem}
+            $\rk A = \dim \Im \phi$.
+        \end{theorem}
+
+        \begin{comment}
+            Число $\dim \Im \phi$ называется \textit{рангом} линейного отображения $\phi$, обозначается $\rk \phi$.
+        \end{comment}
+
+        \begin{corollary}
+            $\rk A$ не зависит от выбора пары базисов $\E$ и $\F$.
+        \end{corollary}
+
+
+    \defitem{Каким свойством обладает набор векторов, дополняющих базис ядра линейного отображения до базиса всего пространства?}
+
+        \begin{proposal}
+            Пусть $e_1, \dots, e_k$ --- базис $\ker \phi$ и векторы $e_{k + 1}, \dots, e_n$ дополняют его до базиса всего $V$.
+
+            Тогда, $\phi(e_{k + 1}), \dots, \phi(e_n)$ образуют базис в $\Im \phi$.
+        \end{proposal}
+
+
+    \defitem{Теорема о связи размерностей ядра и образа линейного отображения}
+
+        \begin{theorem}
+            $\dim \Im \phi + \dim \ker \phi = \dim V$.
+        \end{theorem}
+
+
+    \defitem{К какому простейшему виду можно привести матрицу линейного отображения путём замены базисов?}
+
+        \begin{proposal}
+            Пусть $\rk \phi = r$. Тогда существует базис $\E$ в $V$ и базис $\F$ в $W$, такие что
+            \begin{equation*}
+                A(\phi, \E, \F) = \left(
+                    \begin{array}{c|c}
+                        E & 0 \\
+                        \hline
+                        0 & 0
+                    \end{array}
+                \right) = \bordermatrix{    
+                    &   & r &   &   &   & n - r &   \cr
+                    & 1 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+                  \hspace{0.7cm} r & 0 & \ddots & 0 & \dots & 0 & 0 & 0 \cr
+                    & 0 & 0 & 1 & \dots & 0 & 0 & 0 \cr
+                    & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \cr
+                    & 0 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+              m - r & 0 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+                    & 0 & 0 & 0 & \dots & 0 & 0 & 0
+                }
+            .\end{equation*}
+        \end{proposal}
+
+
+    \defitem{Линейная функция на векторном пространстве}
+
+        \begin{definition}
+            \textit{Линейной функцией} (или \textit{линейной формой}, или \textit{линейным функционалом}) на $V$ называется всякое линейное отображение $\alpha \colon V \to F$.
+        \end{definition}
+
+        \begin{designation}
+            $V^{*} := \hom(V, F)$ --- множество всех линейных функций на $V$.
+        \end{designation}
+
+
+    \defitem{Сопряжённое (двойственное) векторное пространство и его размерность}
+
+        Из общей теории линейных отображений:
+        \begin{enumerate}
+        \item $V^{*}$ --- векторное пространство (оно называется \textit{сопряженным} или \textit{двойственным}).
+        \item Если $\E = (e_1, \dots, e_n)$ --- фиксированный базис в $V$, то есть изоморфизм $V^{*} \simeq \text{Mat}_{1 \times n}(F)$ (а это ни что иное, как строки длины $n$).
+
+            $\alpha \to (\alpha_1, \dots, \alpha_n)$
+
+            $v = x_1 e_1 + \dots + x_n e_n$
+
+            $\alpha(v) = (\alpha_1, \dots, \alpha_n) \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = \alpha_1 x_1 + \dots + \alpha_n x_n$.
+
+            $\alpha_i = \alpha(e_i)$ --- коэффициенты линейной функции $\alpha$ в базисе $\E$.
+        \end{enumerate}
+
+        \begin{corollary}
+            $\dim V^{*} = \dim V$ ($\implies V^{*} \simeq V$).
+        \end{corollary}
+
+
+    \defitem{Базис сопряжённого пространства, двойственный к данному базису исходного векторного пространства}
+
+        При $i = 1, \dots, n$ рассмотрим линейную функцию $\epsilon_i \in V^{*}$, соответствующую строке $(0 \dots 1 \dots 0)$. Тогда $\epsilon_1, \dots, \epsilon_n$ --- базис $V^{*}$, он однозначно определяется условием $\epsilon_i(e_j) = \delta_{ij} = \begin{cases}
+            1, &i = j, \\
+            0, &i \neq j.
+        \end{cases}$. ($\delta_{ij}$ --- символ Кронекера)
+
+
+        \begin{definition}
+            Базис $(\epsilon_1, \dots, \epsilon_n)$ пространства $V^{*}$, определенный условием выше, называется базисом, \textit{двойственным} (сопряженным) к базису $\E$.
+
+            Удобная запись условия:
+            \begin{equation*}
+                \begin{pmatrix} \epsilon_1 \\ \dots \\ \epsilon_n \end{pmatrix} (e_1, \dots, e_n) = E
+            .\end{equation*}
+        \end{definition}
+
+
+    \defitem{Билинейная форма на векторном пространстве}
+
+        Пусть $V$ --- векторное пространство над $F$.
+
+        \begin{definition}
+            \textit{Биленейная форма} на $V$ --- это отображение $\beta \colon V \times V \to F$, линейное по каждому аргументу.
+        \end{definition}
+
+        \paragraph{Линейность по 1-му аргументу}
+        \begin{itemize}[nosep]
+        \item $\beta(x_1 + x_2, y) = \beta(x_1, y) + \beta(x_2, y) \quad \forall x_1, x_2, y \in V$,
+        \item $\beta(\lambda x, y) = \lambda\beta(x, y) \quad \forall x, y \in V, \ \lambda \in F$.
+        \end{itemize}
+
+        \paragraph{Линейность по 2-му аргументу}
+        \begin{itemize}[nosep]
+        \item $\beta(x, y_1 + y_2) = \beta(x, y_1) + \beta(x, y_2) \quad \forall x, y_1, y_2 \in V$,
+        \item $\beta(x, \lambda y) = \lambda\beta(x, y) \quad \forall x, y \in V, \ \lambda \in F$.
+        \end{itemize}
+
+
+    \defitem{Матрица билинейной формы}
+
+        Считаем, что $\dim V = n < \infty$.
+
+        Пусть $\E = (e_1, \dots, e_n)$ --- базис $V$.
+
+        \begin{definition}
+            Матрицей билинейной формы $\beta$ в базисе $\E$ называется такая матрица $B \in M_n$, что $b_{ij} = \beta(e_i, e_j)$.
+
+            Обозначение: $B(\beta, \E)$.
+        \end{definition}
+
+
+    \defitem{Формула для вычисления значений билинейной формы в координатах}
+
+        Пусть
+        \begin{math}
+            \begin{aligned}[t]
+                x &= x_1 e_1 + \dots + x_n e_n, \\
+                y &= y_1 e_1 + \dots + y_n e_n.
+            \end{aligned}
+        \end{math}
+
+        Тогда,
+        \begin{align*}
+            \beta(x, y)
+            &= \beta\left(\sum_{i = 1}^{n} x_i e_i, \ \sum_{j = 1}^{n} y_j e_j\right)
+            = \sum_{i = 1}^{n} x_i \cdot \beta\left(e_i, \ \sum_{j = 1}^{n} y_j e_j\right) \\
+            &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} x_i y_j \underbracket{\beta(e_i, e_j)}_{\beta_{ij}}
+            = \sum_{i = 1}^{n} \sum_{j = 1}^{n} x_i \beta_{ij} y_j  \\
+            &= (x_1, \dots, x_n) B \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix}
+        .\end{align*}
+
+
+    \defitem{Формула изменения матрицы билинейной формы при переходе к другому базису}
+
+        $B = B(\beta, \E)$.
+
+        Пусть $\E' = (e'_1, \dots e'_n)$ --- другой базис $V$.
+
+        $\E' = \E \cdot C$.
+
+        $B' := B(\beta, \E')$.
+
+        \begin{proposal}
+            $B' = C^{T} B C$.
+        \end{proposal}
+
+
+    \defitem{Симметричная билинейная форма. Критерий симметричности билинейной формы в терминах её матрицы}
+
+        \begin{definition}
+            Билинейная форма $\beta$ называется \textit{симметричной}, если $\beta(x, y) = \beta(y, x) \ \forall x, y \in V$.
+        \end{definition}
+
+        Пусть $\E$ --- произвольный базис $V$.
+
+        \begin{proposal}
+            $\beta$ симметрична $\iff B = B^{T}$.
+        \end{proposal}
+
+
+    \defitem{Квадратичная форма}
+
+        Пусть $\beta \colon V \times V \to F$ --- билинейная форма на $V$.
+
+        \begin{definition}
+            Отображение $Q_\beta \colon V \to F$, $Q_\beta(x) = \beta(x, x)$, называется \textit{квадратичной формой}, ассоциированной с билинейной формой $\beta$.
+        \end{definition}
+
+        Пусть $\E$ --- базис $V$, $x = x_1 e_1 + \dots x_n e_n$, $B = B(\beta, \E)$.
+
+        Тогда,
+        \begin{equation*}
+            Q_\beta(x) = (x_1 \dots x_n) B \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = \sum_{i = 1}^{n} \sum_{j = 1}^{n} b_{ij} x_i x_j = \sum_{i = 1}^{n} b_{ii} x_i^2 + \sum_{1 \leq i < j \leq n}^{n} (b_{ij} + b_{ji}) x_i x_j
+        .\end{equation*}
+
+
+    \defitem{Соответствие между симметричными билинейными формами и квадратичными формами}
+
+        \begin{proposal}
+            Пусть в поле $F$ выполнено условие $1 + 1 \neq 0$ (то есть $2 \neq 0$). Тогда отображение $\beta \mapsto Q_\beta$ является биекцией между симметричными билинейными формами на $V$ и квадратичным формами на $V$.
+        \end{proposal}
+
+
+    \defitem{Симметризация билинейной формы}
+
+        Билинейная форма $\sigma(x, y) = \frac{1}{2} \left(\beta(x, y) + \beta(y, x)\right)$ называется \textit{симметризацией} билинейной формы $\beta$.
+
+        Если $B$ и $S$ --- матрицы билинейных форм $\beta$ и $\sigma$ в некотором базисе, то $S = \frac{1}{2} (B + B^{T})$.
+
+
+    \defitem{Поляризация квадратичной формы}
+
+        Симметричная билинейная форма $\beta(x, y) = \frac{1}{2} \left[Q(x + y) - Q(x) - Q(y)\right]$ называется \textit{поляризацией} квадратичной формы $Q$.
+
+
+    \defitem{Матрица квадратичной формы}
+
+        \begin{definition}
+            Матрицей квадратной формы $Q$ в базисе $\E$ называется матрица соответствующей симметричной билинейной формы (поляризации) в базисе $\E$.
+
+            Обозначение: $B(Q, \E)$.
+        \end{definition}
+
+        \begin{example}
+            Пусть $Q(x_1, x_2) = x_1^2 + x_1 x_2 + x_2^2$.
+
+            Если $\E$ --- стандартный базис, то $B(Q, \E) = \begin{pmatrix} 1 & \frac{1}{2} \\ \frac{1}{2} & 1 \end{pmatrix}$.
+        \end{example}
+
+
+    \defitem{Канонический вид квадратичной формы}
+
+        \begin{definition}
+            Квадратичная форма $Q$ имеет в базисе $\E$ \textit{канонический вид}, если $B(Q, \E)$ диагональна.
+
+            Если $B(Q, \E) = \diag(b_1, b_2, \dots, b_n)$, то $Q(x_1, \dots, x_n) = b_1 x_1^2 + b_2 x_2^2 + \dots + b_n x_n^2$.
+        \end{definition}
+
+
+    \defitem{Нормальный вид квадратичной формы над $\RR$}
+
+        \begin{definition}
+            Квадратичная форма над $\RR$ имеет \textit{нормальный вид} в базисе $\E$, если в этом базисе
+            \begin{equation*}
+                Q(x_1, \dots, x_n) = \epsilon_1 x_1^2 + \dots + \epsilon_n x_n^2
+            ,\end{equation*}
+            где $\epsilon_i \in \{-1, 0, 1\}$.
+        \end{definition}
+
+
+    \defitem{Индексы инерции квадратичной формы над $\RR$}
+
+        Пусть $F = \RR$.
+
+        Пусть $Q \colon V \to \RR$ --- квадратичная форма.
+
+        Можно привести к нормальному виду
+        \begin{equation*}
+            Q(x_1, \dots, x_n) = x_1^2 + \dots + x_s^2 - x_{s + 1}^2 - \dots - x_{s + t}^2
+        .\end{equation*}
+
+        Здесь
+        \begin{math}
+            \begin{aligned}[t]
+                &i_+ := s \text{ --- положительный индекс инерции квадратичной формы $Q$}, \\
+                &i_- := t \text{ --- отрицательный индекс инерции квадратичной формы $Q$}.
+            \end{aligned}
+        \end{math}
+
+
+    \defitem{Закон инерции для квадратичной формы над $\RR$}
+
+        \begin{theorem}
+            Числа $i_+$ и $i_-$ не зависят от базиса в котором $Q$ принимает нормальный вид.
+        \end{theorem}
+
+
+    \defitem{Положительно/неотрицательно определённая квадратичная форма над $\RR$}
+    \defitem{Отрицательно/неположительно определённая квадратичная форма над $\RR$}
+    \defitem{Неопределённая квадратичная форма над $\RR$}
+
+        \begin{definition}
+            Квадратичная форма $Q$ над $\RR$ называется
+        \end{definition}
+        \begin{table}[H]
+        {\renewcommand{\arraystretch}{1.7}
+            \begin{tabular}{c|c|c|c|c}
+                Термин & Обозначение & Условие & Нормальный вид & Индексы инерции \\ \hline
+                Положительно определённой & $Q > 0$ & $Q(x) > 0 \ \forall x \neq 0$ & $x_1^2 + \dots + x_n^2$ & $i_+ = n, i_- = 0$ \\ \hline
+                Отрицательно определённой & $Q < 0$ & $Q(x) < 0 \ \forall x \neq 0$ & $-x_1^2 - \dots - x_n^2$ & $i_+ = 0, i_- = n$ \\ \hline
+                Неотрицательно определённой & $Q \geq 0$ & $Q(x) \geq 0 \ \forall x$ & $x_1^2 + \dots + x_k^2, \ k \leq n$ & $i_+ = k, i_- = 0$ \\ \hline
+                Неположительно определённой & $Q \leq 0$ & $Q(x) \leq 0 \ \forall x$ & $-x_1^2 - \dots - x_k^2, \ k \leq n$ & $i_+ = 0, i_- = k$ \\ \hline
+                Неопределённой & --- & 
+                \begin{math}
+                    \begin{aligned}
+                        \exists x : Q(x) > 0 \\
+                        \exists y : Q(y) < 0
+                    \end{aligned}
+                \end{math} &
+                \begin{math}
+                    \begin{gathered}
+                        x_1^2 + \dots + x_s ^2 - x_{s + 1}^2 - x_{s + t}^2 \\
+                        s, t \geq 1
+                    \end{gathered}
+                \end{math} & $i_+ = s, i_- = t$
+                \\ \hline
+            \end{tabular}       
+        }
+        \end{table}
+
+
+    \defitem{Способ нахождения индексов инерции квадратичной формы над $\RR$, вытекающий из метода Якоби}
+
+        Пусть $Q \colon V \to \RR$ --- квадратичная форма,
+
+        $\E = (e_1, \dots, e_n)$ --- базис,
+
+        $B = B(Q, \E)$, 
+
+        $\delta_k$ --- $k$-й угловой минор матрицы $B$.
+
+
+        \begin{corollary}[из метода Якоби]
+            Пусть $\delta_k \neq 0 \ \forall k$. Тогда:
+
+            Число $i_+$ равно количеству \underline{сохранений знака} в последовательности $1, \delta_1, \dots, \delta_n$.
+
+            Число $i_-$ равно количеству \underline{перемен знака} в последовательности $1, \delta_1, \dots, \delta_n$.
+        \end{corollary}
+
+
+    \defitem{Критерий Сильвестра положительной определённости квадратичной формы над $\RR$}
+
+        Пусть 
+        \begin{math}
+            \begin{aligned}[t]
+                &V \text{ --- векторное пространство над $\RR$, $\dim V = n$}, \\
+                &\E = (e_1, \dots, e_n) \text{ --- базис $V$}, \\
+                &B = B(Q, \E), \\
+                &B_k \text{ --- левый верхний $k \times k$ блок}, \\
+                &\delta_k = \det B_k.
+            \end{aligned}
+        \end{math}
+
+        \begin{theorem}[Критерий Сильвестра положительной определенности]
+            \begin{equation*}
+                Q > 0 \iff \delta_k > 0 \ \forall k = 1 \dots n
+            .\end{equation*}
+        \end{theorem}
+
+
+    \defitem{Критерий отрицательной определённости квадратичной формы над $\RR$}
+
+        \begin{corollary}
+            \begin{equation*}
+                Q < 0 \iff \delta_k \begin{cases}
+                    > 0 & \text{при } k \!\!\not\;\divby 2, \\
+                    < 0 & \text{при } k \divby 2.
+                \end{cases}
+            \end{equation*}
+        \end{corollary}
+
+
+    \defitem{Евклидово пространство}
+
+        \begin{definition}
+            \textit{Евклидово пространство} --- это векторное пространство $\EE$ над $\RR$, на котором задано \textit{скалярное произведение}, то есть такое отображение $(\bigcdot, \bigcdot)\colon \EE \times \EE \to \RR$, что
+            \begin{enumerate}[nosep]
+                \item $(\bigcdot, \bigcdot)$ --- симметричная билинейная форма,
+                \item Квадратичная форма $(x, x)$ положительно определённая.
+            \end{enumerate}
+        \end{definition}
+
+
+    \defitem{Длина вектора в евклидовом пространстве}
+
+        \begin{definition}
+            \textit{Длина} вектора $x \in \EE$ --- это $|x| := \sqrt{(x, x)}$.
+
+            Свойство: 
+            $|x| \geq 0$, причем $|x| = 0 \iff x = 0$.
+        \end{definition}
+
+        \begin{example}
+            Если $\EE = \RR^n$ со стандартным скалярным произведением, то $|x| = \sqrt{x_1^2 + \dots + x_n^2}$.
+        \end{example}
+
+
+    \defitem{Неравенство Коши--Буняковского}
+
+        \begin{proposal}[неравенство Коши-Буняковского]
+            $\forall x, y \in \EE$ верно $|(x, y)| \leq |x| \cdot |y|$, причём равенство $\iff$ $x$, $y$ пропорциональны.
+        \end{proposal}
+
+        \begin{example}
+            Пусть $\EE = \RR^n$ со стандартным скалярным произведением, тогда
+            \begin{equation*}
+                |x_1 y_1 + \dots + x_n y_n| \leq \sqrt{x_1^2 + \dots + x_n^2} \cdot \sqrt{y_1^2 + \dots + y_n^2}
+            .\end{equation*}
+        \end{example}
+
+
+    \defitem{Угол между ненулевыми векторами евклидова пространства}
+
+        Пусть $x, y \in \EE \setminus \{0\}$, тогда $-1 \leq \frac{(x, y)}{|x| \cdot |y|} \leq 1$.
+
+        \begin{definition}
+            Угол между ненулевыми векторами $x, y \in \EE$, это такой $\alpha \in [0, \pi]$, что $\cos \alpha = \frac{(x, y)}{|x| \cdot |y|}$.
+
+            Тогда $(x, y) = |x| |y| \cos \alpha$.
+        \end{definition}
+
+
+    \defitem{Матрица Грама системы векторов евклидова пространства}
+
+        Пусть $v_1, \dots, v_k$ --- произвольная система векторов.
+
+        \begin{definition}
+            \textit{Матрица Грама} этой системы --- это
+            \begin{equation*}
+                G(v_1, \dots, v_k) = \begin{pmatrix}
+                    (v_1, v_1) & (v_1, v_2) & \dots & (v_1, v_k) \\
+                    (v_2, v_1) & (v_2, v_2) & \dots & (v_2, v_k) \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    (v_k, v_1) & (v_k, v_2) & \dots & (v_k, v_k)
+                \end{pmatrix}
+            .\end{equation*}
+        \end{definition}
+
+        \begin{example}
+            $\EE = \RR^n$ со стандартным скалярным произведением.
+
+            $a_1, \dots, a_k \in \RR^n \leadsto A := (a_1, \dots, a_k) \in \text{Mat}_{n \times k}(\RR)$.
+
+            Тогда, $G(a_1, \dots, a_k) = A^T \cdot A$.
+        \end{example}
+
+
+    \defitem{Свойства определителя матрицы Грама}
+
+        \begin{proposal}
+            $\forall v_1, \dots, v_k \in \EE \implies \det G(v_1, \dots, v_k) \geq 0$.
+
+            Более того, $\det G(v_1, \dots, v_k) > 0 \iff v_1, \dots, v_k$ линейно независимы. 
+        \end{proposal}
+
+
+    \defitem{Ортогональная система векторов евклидова пространства. Ортогональный базис}
+    \defitem{Ортонормированная система векторов евклидова пространства. Ортонормированный базис}
+
+        \begin{definition}
+            Система ненулевых векторов $v_1, \dots, v_k$ называется
+            \begin{enumerate}[nosep]
+                \item \textit{ортогональной}, если $(v_i, v_j) = 0 \ \forall i \neq j$ (то есть $G(v_1, \dots, v_k)$ диагональна),
+                \item \textit{ортонормированной}, если $(v_i, v_j) = 0 \ \forall i \neq j$ и $(v_i, v_i) = 1$ ($\iff |v_i| = 1$).
+                    То есть $G(v_1, \dots, v_k) = E$.
+            \end{enumerate}
+        \end{definition}
+
+        \begin{comment}
+            Всякая ортогональная (и в частности ортонормированная) система векторов автоматически линейно независима.
+            \begin{equation*}
+                \det G(v_1, \dots, v_k) = |v_1|^2 \dots |v_k|^2 \neq 0
+            .\end{equation*}
+        \end{comment}
+
+        \begin{definition}
+            Базис пространства называется \textit{ортогональным} (соответственно \textit{ортонормированным}), если он является ортогональной (ортонормированной) системой векторов.
+        \end{definition}
+
+
+    \defitem{Описание всех ортонормированных базисов евклидова пространства в терминах одного такого базиса и матриц перехода}
+
+        Пусть $\E = (e_1, \dots, e_n)$ --- ортонормированный базис в $E$.
+
+        Пусть $\E' = (e'_1, \dots, e'_n)$ --- какой-то другой базис.
+
+        $(e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C$, $C \in M_n^{0}(\RR)$.
+
+        \begin{proposal}
+            $\E'$ --- ортонормированный базис $\iff C^{T} \cdot C = E$.
+        \end{proposal}
+
+        \begin{proof}
+            $G(e'_1, \dots, e'_n) = C^{T} \underbracket{G(e_1, \dots, e_n)}_E C = C^{T} C$.
+
+            $\E'$ ортонормированный $\iff G(e'_1, \dots, e'_n) = E \iff C^{T} C = E$.
+        \end{proof}
+
+
+    \defitem{Ортогональная матрица}
+
+        \begin{definition}
+            Матрица $C \in M_n(\RR)$ называется \textit{ортогональной} если $C^{T} C = E$.
+        \end{definition}
+
+        \begin{comment}
+            $C^{T} C = E \iff C C^{T} = E \iff C^{-1} = C^{T}$.
+        \end{comment}
+
+        \begin{properties}~
+            \begin{enumerate}
+            \item $C^{T} C = E \implies $ система столбцов $C^{(1)}, \dots, C^{(n)}$ --- это ортонормированный базис в $\RR^n$,
+            \item $C C^{T} = E \implies $ система строк $C_{(1)}, \dots, C_{(n)}$ --- это тоже ортонормированный базис в $\RR^n$,
+            \end{enumerate}
+            В частности, $|c_{ij}| \leq 1$.
+            \begin{enumerate}[resume]
+            \item $\det C = \pm 1$.
+            \end{enumerate}
+        \end{properties}
+
+        \begin{example}
+            $n = 2$.
+            Ортогональный матрицы:
+            \begin{equation}
+                \begin{gathered}
+                    \begin{pmatrix} 
+                        \cos \phi & -\sin \phi \\
+                        \sin \phi & \cos \phi
+                    \end{pmatrix} \\
+                    \det = 1
+                \end{gathered}
+                \hspace{1cm}
+                \begin{gathered}
+                    \begin{pmatrix} 
+                        \cos \phi & \sin \phi \\
+                        \sin \phi & -\cos \phi
+                    \end{pmatrix} \\
+                    \det = -1
+                \end{gathered}
+            .\end{equation}
+        \end{example}
+
+
+    \defitem{Формула для координат вектора в ортогональном и ортонормированном базисах евклидова пространства}
+
+        Пусть $\EE$ --- евклидово пространство, $(e_1, \dots, e_n)$ --- ортогональный базис.
+
+        $v \in \EE$.
+
+        \begin{proposal}
+            $v = \dfrac{(v, e_1)}{(e_1, e_1)}e_1 + \dfrac{(v, e_2)}{(e_2, e_2)}e_2 + \dots + \dfrac{(v, e_n)}{(e_n, e_n)}e_n$.
+
+            В частности, если $e_1, \dots, e_n$ ортонормирован, то $v = (v, e_1)e_1 + \dots + (v, e_n) e_n$.
+        \end{proposal}
+
+
+    \defitem{Ортогональное дополнение подмножества евклидова пространства}
+
+        \begin{definition}
+            \textit{Ортогональное дополнение} множества $S \subseteq \EE$ --- это множество $S^{\perp} := \{x \in \EE \mid (x, y) = 0 \ \forall y \in S\}$.
+        \end{definition}
+
+
+    \defitem{Чему равна размерность ортогонального дополнения к подпространству евклидова пространства?}
+    \defitem{Каким свойством обладают подпространство евклидова пространства и его ортогональное дополнение?}
+
+        Считаем, что $\dim \EE = n < \infty$.
+
+        \begin{proposal}
+            Пусть $S \subseteq \EE$ --- подпространство.
+            Тогда:
+            \begin{enumerate}
+            \item $\dim S^{\perp} = n - \dim S$.
+            \item $\EE = S \oplus S^{\perp}$.
+            \item $(S^{\perp})^{\perp} = S$.
+            \end{enumerate}
+        \end{proposal}
+
+
+    \defitem{Ортогональная проекция вектора на подпространство}
+    \defitem{Ортогональная составляющая вектора относительно подпространства}
+
+        $S$ --- подпространство $ \implies \EE = S \oplus S^{\perp}$
+
+        $\forall v \in \EE \exists! x \in S, y \in S^{\perp}$, такие что $x + y = v$.
+
+        \begin{definition}~
+            \begin{enumerate}
+            \item 
+                $x$ называется \textit{ортогональной проекцией} вектора $v$ на подпространство $S$.
+
+                Обозначение: $x = \pr_S v$.
+
+            \item
+                $y$ называется \textit{ортогональной составляющей} вектора $v$ относительно подпространства $S$.
+
+                Обозначение: $y = \ort_S v$.
+            \end{enumerate}
+        \end{definition}
+
+
+    \defitem{Формула для ортогональной проекции вектора на подпространство в $\RR^n$, заданное своим базисом}
+            
+        Пусть $\EE = \RR^n$ со стандартным скалярным произведением.
+
+        $S \subseteq \EE$ --- подпространство, $a_1, \dots, a_k$ --- базис $S$.
+
+        Пусть $A := (a_1, \dots, a_k) \in \text{Mat}_{n \times k}(\RR)$, $A^{(i)} = a_i$.
+
+        \begin{proposal}
+            $\forall v \in \RR^n \quad \pr_S v = A (A^{T} A)^{-1} A^{T} v$.
+        \end{proposal}
+
+
+    \defitem{Формула для ортогональной проекции вектора на подпространство в терминах его ортогонального базиса}
+    
+        Пусть $S \subseteq \EE$ --- подпространство.
+
+        $e_1, \dots, e_k$ --- ортогональный базис в $S$.
+
+        \begin{proposal}
+            $\forall v \in \EE \quad \pr_S v = \sum_{i = 1}^{k} \dfrac{(v, e_i)}{(e_i, e_i)} e_i$.
+
+            В частности, если $e_1, \dots, e_k$ ортонормирован, то $\pr_S v = \sum_{i = 1}^{k} (v, e_i) e_i$.
+        \end{proposal}
+
+
+    \defitem{Теорема Пифагора в евклидовом пространстве}
+
+        \begin{theorem}
+            Пусть $x, y \in \EE$, $(x, y) = 0$. Тогда $|x + y|^2 = |x|^2 + |y|^2$.
+        \end{theorem}
+
+
+    \defitem{Расстояние между векторами евклидова пространства}
+
+        \begin{definition}
+            \textit{Расстояние} между векторами $x, y \in \EE$ --- это $\rho(x, y) = |x - y|$.
+        \end{definition}
+
+
+    \defitem{Неравенство треугольника в евклидовом пространстве}
+
+        \begin{proposal}
+            $\forall a, b, c \in \EE \implies \rho(a, b) + \rho(b, c) \geq \rho(a, c)$.
+        \end{proposal}
+
+
+    \defitem{Теорема о расстоянии между вектором и подпространством в терминах ортогональной составляющей}
+
+        \begin{theorem}
+            Пусть $x \in \EE$, $S \subseteq \EE$ --- подпространство. Тогда, $\rho(x, S) = \left|\ort_S x\right|$, причем $\pr_S x$ --- это ближайший к $x$ вектор из $S$.
+        \end{theorem}
+
+
+    \defitem{Псевдорешение несовместной системы линейных уравнений}
+
+        СЛУ $Ax = b$, $A \in \text{Mat}_{m \times n}(\RR)$, $x \in \RR^n$, $b \in \RR^m$.
+        \begin{equation*}
+            x_0 \text{ --- решение системы} \iff Ax_0 = b \iff Ax_0 - b = 0 \iff |Ax_0 - b| = 0 \iff \rho(Ax_0, b) = 0
+        .\end{equation*}
+
+        Если СЛУ несовместна, то $x_0$ называется \textit{псевдорешением}, если $\rho(Ax_0, b)$ минимально.
+
+        \begin{equation*}
+            \rho(Ax_0, b) = \min_{x \in R^n} \rho(Ax, b)
+        .\end{equation*}
+
+        $x_0$ --- решение задачи оптимизации $\rho(Ax, b) \xrightarrow[x \in \RR^n]{} \min$.
+
+
+    \defitem{Формула для расстояния от вектора до подпространства в терминах матриц Грама}
+
+        Пусть $\EE$ --- евклидово пространство, $\dim \EE = n < \infty$.
+
+        $S \subseteq \EE$ --- подпространство, $e_1, \dots, e_k$ --- базис в $S$.
+
+        \begin{theorem}
+            $\forall x \in \EE \quad \rho(x, S)^2 = \dfrac{\det G(e_1, \dots, e_k, x)}{\det G(e_1, \dots, e_k)}$.
+        \end{theorem}
+
+
+    \defitem{$k$-мерный параллелепипед и его объём}
+
+        \begin{definition}
+            \textit{$k$-мерный параллелепипед}, натянутый на векторы $a_1, \dots, a_k$, это множество
+            \begin{equation*}
+                P(a_1, \dots, a_k) := \left\{ \sum_{i = 1}^{k} x_i a_i \mid 0 \leq x_1 < 1 \right\}
+            .\end{equation*}
+
+            Основание: $P(a_1, \dots, a_{k - 1})$.
+
+            Высота: $h := |\ort_{\left< a_1, \dots, a_{k - 1} \right>} a_k|$.
+        \end{definition}
+
+        \begin{example}~
+            \begin{description}
+            \item[$k = 1$] $h = |a_1|$ {\tiny здесь картинка, тоже лень :(}
+            \item[$k = 2$] основание --- $P(a_1)$, высота --- $h$ {\tiny дада, люблю картинки делать}
+            \end{description}
+        \end{example}
+
+        \begin{example}
+            \textit{$k$-мерный объем} $k$-мерного параллелепипеда $P(a_1, \dots, a_k)$ --- это величина $\vol P(a_1, \dots, a_k)$, определяемая индуктивно:
+
+            \begin{description}
+            \item[$k = 1$] $\implies \vol P(a_1) := |a_1|$.
+            \item[$k > 1$] $\implies \vol P(a_1, \dots, a_k) := \vol P(a_1, \dots, a_{k - 1}) \cdot h$.
+            \end{description}
+        \end{example}
+
+
+    \defitem{Формула для объёма $k$-мерного параллелепипеда в $n$-мерном евклидовом пространстве}
+
+        \begin{theorem}
+            $\vol P(a_1, \dots, a_k)^2 = \det G(a_1, \dots, a_k)$.
+        \end{theorem}
+
+
+    \defitem{Формула для объёма $n$-мерного параллелепипеда в $n$-мерном евклидовом пространстве в терминах координат в ортонормированном базисе}
+
+        Пусть $(e_1, \dots, e_n)$ --- ортонормированный базис в $\EE$,
+
+        $(a_1, \dots, a_n) = (e_1, \dots, e_n) \cdot A$, $A \in M_n(\RR)$.
+
+        \begin{proposal}
+            $\vol P(a_1, \dots, a_n) = \left|\det A\right|$.
+        \end{proposal}
+    
+
+    \defitem{В каком случае два базиса евклидова пространства называются одинаково ориентированными?}
+
+        Пусть $\E = (e_1, \dots, e_n)$ и $\E' = (e'_1, \dots, e'_n)$ --- два базиса в $\EE$.
+
+        $(e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C$, $C \in M_n^0(\RR)$.
+
+        \begin{definition}
+            Говорят, что $\E$ и $\E'$ одинаково ориентированы, если $\det C > 0$.
+        \end{definition}
+
+
+    \defitem{Векторное произведение в трёхмерном евклидовом пространстве}
+
+        \begin{theorem}
+            Пусть $a, b \in \RR^3$. Тогда $\exists! v \in \EE$, такой что $(v, x) = \Vol(a, b, x) \quad \forall x \in \RR^3$.
+        \end{theorem}
+
+        \begin{definition}
+            Вектор $v$ из теоремы выше называется \textit{векторным произведением} векторов $a$ и $b$.
+
+            Обозначение: $[a, b]$ или $a \times b$.
+        \end{definition}
+
+
+    \defitem{Критерий коллинеарности двух векторов трёхмерного евклидова пространства}
+
+        \begin{proposal}
+            $a, b \in \EE$ коллинеарны $\iff [a, b] = 0$.
+        \end{proposal}
+
+
+    \defitem{Формула для вычисления векторного произведения в терминах координат в положительно ориентированном ортонормированном базисе}
+
+        Если $\E = (e_1, e_2, e_3)$ --- положительно ориентированный базис и
+        \begin{math}
+            \ \begin{aligned}[t]
+                a &= a_1 e_1 + a_2 e_2 + a_3 e_3 \\
+                b &= b_1 e_1 + b_2 e_2 + b_3 e_3
+            \end{aligned},
+        \end{math}
+        то 
+        \begin{equation}
+            \tag{$\star$}
+            \label{lec25:v}
+            [a, b] = \begin{vmatrix}
+                e_1 & e_2 & e_3 \\
+                a_1 & a_2 & a_3 \\
+                b_1 & b_2 & b_3
+            \end{vmatrix}
+            := \begin{vmatrix} 
+                a_2 & a_3 \\
+                b_2 & b_3
+            \end{vmatrix} e_1 - \begin{vmatrix} 
+                a_1 & a_3 \\
+                b_1 & b_3
+            \end{vmatrix} e_2 + \begin{vmatrix} 
+                a_1 & a_2 \\
+                b_1 & b_2
+            \end{vmatrix} e_3
+        .\end{equation}
+
+    \defitem{Смешанное произведение векторов трёхмерного евклидова пространства}
+
+        \begin{definition}
+            $\forall a, b, c \in \EE$ число $(a, b, c) := ([a, b], c)$ называется \textit{смешанным произведением} векторов $a, b, c$.
+        \end{definition}
+
+        \begin{comment}
+            $(a, b, c) = \Vol(a, b, c)$.
+        \end{comment}
+
+
+    \defitem{Формула для вычисления смешанного произведения в терминах координат в положительно ориентированном ортонормированном базисе}
+
+        Если $e_1, e_2, e_3$ --- положительно ориентированный ортонормированный базис, то
+        \begin{equation*}
+            \left.\begin{aligned}
+                a &= a_1 e_1 + a_2 e_2 + a_3 e_3 \\
+                b &= b_1 e_1 + b_2 e_2 + b_3 e_3 \\
+                c &= c_1 e_1 + c_2 e_2 + c_3 e_3
+            \end{aligned} \right| \implies (a, b, c) = \begin{vmatrix} 
+                a_1 & a_2 & a_3 \\
+                b_1 & b_2 & b_3 \\
+                c_1 & c_2 & c_3
+            \end{vmatrix}
+        \end{equation*}
+
+
+    \defitem{Критерий компланарности трёх векторов трёхмерного евклидова пространства}
+
+        $a, b, c$ компланарны $\iff (a, b, c) = 0$.
+
+
+    \defitem{Линейное многообразие. Характеризация линейных многообразий как сдвигов подпространств}
+
+        \begin{definition}
+            \textit{Линейное многообразие} в $\RR^n$ --- это множество решений некоторой совместной СЛУ.
+        \end{definition}
+
+        Пусть $Ax = b$ --- СЛУ, $\varnothing \neq L \subseteq \RR^n$ --- множество решений, $x_z \in L$ --- частное решение.
+
+        Было: Лемма: $L = x_z + S$, где $S$ --- множество решений ОСЛУ $Ax = 0$.
+
+        \begin{proposal}
+            Множество $L \subseteq \RR^n$ является линейны многообразием $\iff L = v_0 + S$ для некоторых $v_0 \in \RR^n$ и подпространства $S \subseteq \RR^n$. 
+        \end{proposal}
+
+
+    \defitem{Критерий равенства двух линейных многообразий. Направляющее подпространство и размерность линейного многообразия}
+
+        \begin{proposal}
+            Пусть $L_1 = v_1 + S_1$ и $L_2 = v_2 + S_2$ --- два линейных многообразия в $\RR^n$. Тогда,
+            \begin{equation*}
+                L_1 = L_2 \iff \begin{cases}
+                    S_1 = S_2 \ (= S) \\
+                    v_1 - v_2 \in S
+                \end{cases}
+            .\end{equation*}
+        \end{proposal}
+
+
+        Если $L$ --- линейное многообразие, то $L = v_0 + S$, где $S$ определено однозначно.
+
+        \begin{definition}
+            $S$ называется \textit{направляющим подпространством} линейного многообразия $L$.
+        \end{definition}
+
+        \begin{definition}
+            \textit{Размерностью} линейного многообразия называется размерность его направляющего подпространства.
+        \end{definition}
+
+
+    \defitem{Теорема о плоскости, проходящей через $k + 1$ точку в $\RR^n$}
+    \defitem{Три способа задания прямой в $\RR^2$. Уравнение прямой в $\RR^2$, проходящей через две различные точки}
+    \defitem{Три способа задания плоскости в $\RR^3$. Уравнение плоскости в $\RR^3$, проходящей через три точки, не лежащие на одной прямой}
+    \defitem{Три способа задания прямой в $\RR^3$. Уравнения прямой в $\RR^3$, проходящей через две различные точки}
+    \defitem{Случаи взаимного расположения двух прямых в $\RR^3$}
+    \defitem{Формула для расстояния от точки до прямой в $\RR^3$}
+    \defitem{Формула для расстояния от точки до плоскости в $\RR^3$}
+    \defitem{Формула для расстояния между двумя скрещивающимися прямыми в $\RR^3$}
+    \defitem{Линейный оператор}
+    \defitem{Матрица линейного оператора}
+    \defitem{Связь между координатами вектора и его образа при действии линейного оператора}
+    \defitem{Формула изменения матрицы линейного оператора при переходе к другому базису}
+    \defitem{Подобные матрицы}
+    \defitem{Подпространство, инвариантное относительно линейного оператора}
+    \defitem{Вид матрицы линейного оператора в базисе, дополняющем базис инвариантного подпространства}
+    \defitem{Вид матрицы линейного оператора в базисе, согласованном с разложением пространства в прямую сумму двух инвариантных подпространств}
+    \defitem{Собственный вектор линейного оператора}
+    \defitem{Собственное значение линейного оператора}
+    \defitem{Спектр линейного оператора}
+    \defitem{Диагонализуемый линейный оператор}
+    \defitem{Критерий диагонализуемости линейного оператора в терминах собственных векторов}
+    \defitem{Собственное подпространство линейного оператора}
+    \defitem{Характеристический многочлен линейного оператора}
+    \defitem{Связь спектра линейного оператора с его характеристическим многочленом}
+    \defitem{Алгебраическая кратность собственного значения линейного оператора}
+    \defitem{Геометрическая кратность собственного значения линейного оператора}
+    \defitem{Связь между алгебраической и геометрической кратностями собственного значения линейного оператора}
+    \defitem{Критерий диагонализуемости линейного оператора в терминах его характеристического многочлена и кратностей его собственных значений}
+    \defitem{Линейное отображение евклидовых пространств, сопряжённое к данному}
+    \defitem{Линейный оператор в евклидовом пространстве, сопряжённый к данному}
+    \defitem{Самосопряжјнный линейный оператор в евклидовом пространстве}
+    \defitem{Теорема о каноническом виде самосопряжјнного линейного оператора}
+    \defitem{Каким свойством обладают собственные подпространства самосопряжённого линейного оператора, отвечающие попарно различным собственным значениям?}
+    \defitem{Приведение квадратичной формы к главным осям}
+    \end{colloq}
+
+    \section{Вопросы на доказательство}
+\end{document}
