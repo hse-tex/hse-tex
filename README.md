@@ -2,7 +2,8 @@
 Репозиторий создан для публикации затеханых материалов и еще чего-то, связанного с ВШЭ, что может показаться полезным.
 
 ## [Линейная алгебра - Конспект](https://hse-tex.me/linear_algebra.pdf)
-## [Линейная алгебра - Коллоквиум 1](https://hse-tex.me/linear_algebra_colloquium.pdf)
+## [Линейная алгебра - Коллоквиум 1](https://hse-tex.me/linear_algebra_colloquium_1.pdf)
+## [Линейная алгебра - Коллоквиум 2](https://hse-tex.me/linear_algebra_colloquium_2.pdf)
 ## [Математический анализ - Коллоквиум 1](https://hse-tex.me/mathematical_analysis_colloquium_01.pdf)
 ## [Математический анализ - Коллоквиум 2](https://hse-tex.me/mathematical_analysis_colloquium_02.pdf)
 ## [Математический анализ - Коллоквиум 3](https://hse-tex.me/mathematical_analysis_colloquium_03.pdf)
