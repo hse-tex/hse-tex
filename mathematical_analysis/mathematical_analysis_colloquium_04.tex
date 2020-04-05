@@ -1,0 +1,98 @@
+\documentclass[a4paper]{article}
+\usepackage{header}
+\usepackage{float}
+\usepackage{cmap}
+
+\newcommand\enumtocitem[3]{\item\textbf{#1}\addtocounter{#2}{1}\addcontentsline{toc}{#2}{\protect{\numberline{#3}} #1}}
+\newcommand\defitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
+\newcommand\proofitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
+
+\newtheorem{theorem1*}{Theorem}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{}{.5em}{Теорема \thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcommand{\italicbold}[1]{\emph{\textbf{#1}}}
+
+\newlist{colloq}{enumerate}{1}
+\setlist[colloq]{label=\textbf{\arabic*.}}
+
+\everymath{\displaystyle}
+
+\title{\HugeМатематический анализ, Коллоквиум 4}
+\author{
+	Балюк Игорь \\
+	\href{https://teleg.run/lodthe}{@lodthe},
+    \href{https://github.com/LoDThe/hse-tex}{GitHub} \\
+}
+
+\usepackage[yyyymmdd,hhmmss]{datetime}
+\settimeformat{xxivtime}
+\renewcommand{\dateseparator}{.}
+\date{Дата изменения: \today \ в \currenttime}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+
+    \newpage
+
+    \href{https://www.youtube.com/watch?v=dQw4w9WgXcQ}{Оригинальный список вопросов}
+
+    Огромное спасибо Егору Косову: документ состоит из его конспектов и моих вставок.
+
+    \section{Метрические и нормированные пространства.}
+
+        \href{https://www.dropbox.com/s/donysz87em9jfhs/%D0%9B%D0%B5%D0%BA%D1%86%D0%B8%D1%8F%208.pdf?dl=0}{Оригинальный конспект.}
+
+        \begin{definition*}
+            Пусть $X$ --- множество. Функция $d: X \times X \to [0; +\infty)$ называется метрикой, если
+            \begin{enumerate}
+            \item $d(x, y) = 0 \iff x = y$;
+            \item $d(x, y) = d(y, x) \forall x, y \in X$;
+            \item $d(x, z) \leq d(x, y) + d(y, z) \forall x, y, z \in X$.
+            \end{enumerate}
+
+            Пара $(X, d)$ называется метрическим пространством.
+        \end{definition*}
+
+        Говоря простым языком, метрика --- это расстояние между двумя объектами. Мы будем часто работать с Евклидовой метрикой: пусть $x, y \in \RR^n$, тогда $d(x, y) = \sqrt{(x_1 - y_1)^2 + \dots + (x_n - y_n)^2}$.
+
+        \begin{definition*}
+            Пусть $X$ --- линейное пространство. Функция $\norm{\cdot}: X \to [0; +\infty)$ называется нормой, если
+            \begin{enumerate}
+            \item $\norm{x} = 0 \iff x = 0$;
+            \item $\norm{\lambda x} = |\lambda| \norm{x}, \forall x \in X$;
+            \item $\norm{x + y} \leq \norm{x} + \norm{y} \forall x, y \in X$.
+            \end{enumerate}
+
+            Пара $(X, \norm{\cdot})$ называется нормированным пространством.
+        \end{definition*}
+
+        Нормой является привычнам нам длина вектора. Аналогично матрике, мы будем часто работать с Евклидовой нормой: пусть $x \in \RR^n$, тогда $\norm{x} = \sqrt{x_1^2 + \dots + x_n^2}$.
+
+        Всякое нормированное пространство является метрическим с метрикой $d(x, y) = \norm{x - y}$.
+
+        \begin{definition*}
+            Пусть $X$ --- линейное пространство. Функция $\langle \cdot, \cdot \rangle: X \times X \to \RR$ называется скалярным произведением, если для всех $x, y, z \in X$ и всех $a, b \in \RR$ выполнены следующие условия:
+            \begin{enumerate}
+            \item $\langle x, x \rangle \geq 0$ и $\langle x, x \rangle = 0 \iff x = 0$;
+            \item $\langle x, y \rangle = \langle y, x \rangle$;
+            \item $\langle ax + by, z \rangle = a \langle x, z \rangle + b \langle y, z \rangle$.
+            \end{enumerate}
+
+            Линейное пространство $X$ со скалярным произведением называется Евклидовым.
+        \end{definition*}
+
+        Мы будем часто работать со следующим скалярным произведением: пусть $x, y \in \RR^n$, тогда $\langle x, y \rangle = x_1 \cdot y_1 \dots x_n \cdot y_n$.
+
+        \begin{lemma*} (Неравенство Коши-Буняковского) 
+            Пусть $\langle \cdot, \cdot \rangle$ скалярное произведение на линейном пространстве $X$, тогда $\forall x, y \in X$
+            \begin{equation*}
+                |\langle x, y \rangle| \leq \sqrt{\langle x, x \rangle} \cdot \sqrt{\langle y, y \rangle}.
+            \end{equation*}
+        \end{lemma*}
+        
+\end{document}
