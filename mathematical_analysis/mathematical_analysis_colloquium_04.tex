@@ -25,6 +25,7 @@
 	Балюк Игорь \\
 	\href{https://teleg.run/lodthe}{@lodthe},
     \href{https://github.com/LoDThe/hse-tex}{GitHub} \\
+    Основано на материалах Егора Косова.
 }
 
 \usepackage[yyyymmdd,hhmmss]{datetime}
@@ -40,8 +41,6 @@
     \newpage
 
     \href{https://www.youtube.com/watch?v=dQw4w9WgXcQ}{Оригинальный список вопросов}
-
-    Огромное спасибо Егору Косову: документ состоит из его конспектов и моих вставок.
 
     \section{Метрические и нормированные пространства.}
 
@@ -94,5 +93,170 @@
                 |\langle x, y \rangle| \leq \sqrt{\langle x, x \rangle} \cdot \sqrt{\langle y, y \rangle}.
             \end{equation*}
         \end{lemma*}
+
+        \begin{proof}
+            Заметим, что для $\lambda \in \RR$ выполнено
+            \begin{equation*}
+                0 \leq \langle x + \lambda y, x + \lambda y \rangle = \lambda^2 \langle y, y \rangle + 2\lambda \langle x, y \rangle + \rangle x, x \rangle.
+            \end{equation*}
+
+            Не ограничивая общности, считаем, что $\langle y, y \rangle > 0$ (иначе $y$ --- нулевой вектор, доказательство тривиально). Это означает, что ветви параболы смотрят вверх. Но парабола не касается оси $Ox$, поэтому дискриминант этого трехчлена неположителен, т.е. $4|\langle x, y \rangle| - 4\langle y, y \rangle \langle x, x \rangle \leq 0$.
+        \end{proof}
+
+        \begin{consequence*}
+            На евклидовом пространстве функция $\norm{x} := \sqrt{\langle x, x \rangle}$ является нормой.
+        \end{consequence*}
+
+        \begin{proof}
+            Первые два свойства следуют из определения скалярного произведения. Неравенство треугольника следует из неравенства Коши-Буняковского:
+            \begin{equation*}
+                \norm{x + y}^2 = \langle x + y, x + y \rangle \leq \norm{x}^2 + 2 \cdot |\langle x, y \rangle| + \norm{y}^2 \leq \norm{x}^2 + 2\norm{x}\norm{y} + \norm{y}^2 = (\norm{x} + \norm{y})^2.
+            \end{equation*}
+        \end{proof}
+
+        \begin{example*}
+            На линейном пространстве $\RR^k$ всех упорядоченных наборов $(x_1, \dots, x_k)$ задано скалярное произведение $\langle x, y \rangle := \sum_{j = 1}^k x_jy_j$. Тем самым, на $\RR^k$ задана естественная евклидова метрика $\norm{x - y} := \sqrt{|x_1 - y_1|^2 + \dots + |x_k - y_k|^2}$.
+        \end{example*}
+
+        \begin{definition*}
+            Пусть $(X, d)$ метрическое пространство.
+            \begin{enumerate}
+            \item
+                Множество 
+                \begin{equation*}
+                    B_r(x_0) := \{x \in X \mid d(x, x_0) < r\}
+                \end{equation*}
+                называется \textbf{открытым шаром} радиуса $r$.
+
+            \item
+                Множество
+                \begin{equation*}
+                    \overline{B_r}(x_0) := \{x \in X \mid d(x, x_0) \leq r\}
+                \end{equation*}
+                называется \textbf{замкнутым шаром} радиуса $r$.
+
+            \item
+                Последовательность точек $x_n \in X$ называется \textbf{сходящейся к точке $x$}, если для всякого $\eps > 0$ найдется такой номер $N(\eps)$, что $d(x, x_n) < \eps$ для каждого $n \geq N(\eps)$.
+
+            \item
+                Последовательность точек $x_n \in X$ называется \textbf{фундаментальной}, если для всякого $\eps > 0$ найдется такой номер $N(\eps)$, что $d(x_k, x_n) < \eps$ для всех $k, n \geq N(\eps)$.
+
+            \item
+                Точка $x$ называется \textbf{предельной} для множества $M \subset X$, если для всякого $\eps > 0$ выполнено $B_{\eps}(x) \cap (M \setminus \{x\}) \neq \varnothing$.
+
+            \item
+                Множество $U \subset X$ называется \textbf{открытым}, если для всякого $x \in U$ найдется такое $\eps > 0$, что $B_{\eps}(x) \subset U$.
+
+            \item
+                Множество $F \subset X$ называется \textbf{замкнутым}, если множество $X \setminus F$ открыто.
+            \end{enumerate}
+        \end{definition*}   
+
+        \begin{lemma*}
+            Пусть $(X, d)$ метрическое пространство. Тогда
+            \begin{enumerate}
+            \item
+                если $x_n \to x, y_n \to y$, то $d(x_n, y_n) \to d(x, y)$;
+
+            \item
+                предел сходящейся последовательности единственный;
+
+            \item
+                любой открытый шар является открытым множеством;
+
+            \item
+                множество $F$ замкнуто тогда и только тогда, когда множество $F$ содержит все свои предельные точки.
+            \end{enumerate}
+
+            \begin{proof}
+                ~
+
+                \begin{enumerate}
+                \item
+                    Следует из оценки
+                    \begin{equation*}
+                        |d(x_n, y_n) - d(x, y)| \leq |d(x_n, y_n) - d(x_n, y)| + |d(x_n, y) - d(x, y)| \leq d(y_n, y) + d(x_n, x).
+                    \end{equation*}
+
+                \item
+                    Следует из пункта $1)$.
+
+                \item
+                    Если $x \in B_r(x_0)$, то по неравенству треугольника $B_{\eps}(x) \subset B_r(x_0)$ при $\eps + d(x, x_0) < r$.
+
+                \item
+                    Множество $F$ замкнуто тогда и только тогда, когда $\forall x \notin F \ \exists \eps > 0: \ B_{\eps} \cap F = \varnothing \iff$ всякая точка $x \notin F$ --- не предельная для $F$.
+                \end{enumerate}
+            \end{proof}
+        \end{lemma*}
+
+        \begin{definition*}
+            Метрическое пространство называется полным, если каждая фундаментальная последовательность в нем сходится.
+        \end{definition*}
+
+        \begin{remark*}
+            На $\RR^k$ справедливы соотношения
+            \begin{equation*}
+                \max\limits_{1 \leq j \leq k} |x_j| \leq \norm{x_j} \leq \sqrt{k} \cdot \max\limits_{1 \leq j \leq k} |x_j|
+            \end{equation*}
+            для векторов $x = (x_1, \dots, x_k)$. Тем самым, последовательность $x_n \to x$ в $\RR^k$ тогда и только тогда, когда $(x_n)_j \to x_j$.
+        \end{remark*}
+
+        \begin{example*}
+            Пространство $\RR^k$ со стандартной евклидовой метрикой полное. Действительно. если последовательность векторов $x_n \in \RR^k$ фундаментальна, то фундаментальны и последовательности координат $\{(x_n)_j\}_{j = 1}^{\infty}$ для всякого $j \in \{1, \dots, k\}$.
+
+            Тем самым, у $j$-ой координаты есть предел $x_j$ для каждого $j \in \{1, \dots, k\}$. То есть $|(x_n)_j - x_j| \to 0$. Значит, $x_n \to x := (x_1, \dots, x_k)$.
+        \end{example*}
+
+        \begin{example*}
+            Пусть $X = [0; \pi / 2)$. Пространство $X$ не является полным с метрикой $d_1(x, y) = |x - y|$, но является полным с метрикой $d_2(x, y) = |\tg x - \tg y|$.
+        \end{example*}
+
+        \begin{definition*}
+            Пусть $(X, d_X)$ и $(Y, d_Y)$ --- два метрических пространства. Отображение $f: X \to Y$ называется непрерывным в точке $x_0 \in X$, если для всякой последовательности $x_n \to x_0$ выполнено $f(x_n) \to f(x_0)$.
+        \end{definition*}
+
+        \begin{lemma*}
+            Пусть $(X, d_X)$ и $(Y, d_Y)$ --- два метрических пространства.
+            \begin{enumerate}
+            \item
+                Отображение $f: X \to Y$ является непрерывным в точке $x \in X$ тогда и только тогда, когда для всякого $\eps > 0$ найдется $\delta > 0$ такое, что $d_Y(f(x), f(x_0)) < \eps$, если $d_X(x, x_0) < \delta$.
+
+            \item
+                Отображение $f: X \to Y$ является непрерывным в каждой точке $x \in X$ тогда и только тогда, когда прообраз каждого открытого множества в $Y$ будет открытым множеством в $X$ (такие отображения будем называть просто непрерывными).
+            \end{enumerate}
+        \end{lemma*}
+
+        \begin{proof}
+            ~
+
+            \begin{enumerate}
+            \item
+                Отображение $f$ разрывно в точке $x_0$ $\iff$ найдется последовательность $x_n \to x_0$, для которой $f(x_n)$ не сходится к $f(x_0)$ $\iff$ найдется число $\eps > 0$ и последовательность $x_n' \to x_0$, для которой $d_Y(f(x_n'), f(x_0)) \geq \eps$ $\iff$ найдется такое число $\eps > 0$, что для произвольного $\delta > 0$ существует $x_{\delta} \in B_{\delta}(x_0)$, для которого $d_Y(f(x_\delta), f(x_0)) \geq \eps$.
+
+            \item
+                Если прообраз любого открытого множества открыт, то для произвольного $\eps > 0$ найдется такое $\delta > 0$, что $f^{-1}(B_{\eps}(f(x_0))) \supset B_{\delta}(x_0)$, и значит отображение $f$ непрерывно в точке $x_0$. Наоборот: пусть $U$ --- открыто в $Y$ и $x_0 \in f^{-1}(U)$. Тогда в силу открытости найдется $\eps > 0$, для которого $B_{\eps}(f(x_0)) \subset U$. Из-за непрерывности в точке $x_0$ найдется такое $\delta > 0$, что $f^{-1}(B_{\eps}(f(x_0))) \supset B_{\delta}(x_0)$, что дает открытость множества $f^{-1}(U)$.
+            \end{enumerate} 
+        \end{proof}
+
+        \begin{proposal*}
+            Пусть $f: X \to Y$ непрерывна в точке $a \in X$, $g: Y \to Z$ непрерывна в точке $f(a) \in Y$. Тогда композиция $g \circ f: X \to Z$ непрерывна в точке $a$.
+        \end{proposal*}
+
+        \begin{proof}
+            Следует из определения непрерывности. TODO()
+        \end{proof}
+
+        \begin{consequence*}
+            Пусть $f, g: \RR^k \to \RR^m$ --- непрерывные в точке $a$ функции. Тогда $f + g$ и $f \cdot g$ --- непрерывны в точке $a$.
+        \end{consequence*}
+
+        \begin{proof}
+            Следует из того, что отображение $(x_1, x_2) \to x_1 + x_2$ и $(x_1, x_2) \to x_1 \cdot x_2$ непрерывны на $\RR^2$.
+        \end{proof}
+
+        \begin{definition*}
+            Пусть $(X, d_X)$ и $(Y, d_Y)$ --- метрические пространства и пусть $x_0$ --- предельная точка в $X$. Скажем, что предел функции $f: X \to Y$ в точке $x_0$ равен $y_0$, если функция $g$, определенная соотношением $g(x) = f(x)$ при $x \neq x_0$ и $g(x_0) = y_0$ иначе, непрерывна в точке $x_0$.
+        \end{definition*}
         
 \end{document}
