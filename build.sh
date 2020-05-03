@@ -1,12 +1,26 @@
 #!/bin/bash
-set -e
+set -e 
 
-build() {
-    pushd $1
-    # Incremental build
-    # latexmk -output-directory=.build -c
+function build {
+    pushd $1 > /dev/null
+
+    if [ ! -z "$CI" ]; then
+        travis_fold start build_log
+        travis_time_start
+        echo -ne "\033[1;33m"
+        echo -n "Build $2"
+        echo -e "\033[0m"
+    fi
+
     latexmk -pdf -interaction=nonstopmode -output-directory=.build -halt-on-error $2.tex
-    popd
+
+    if [ ! -z "$CI" ]; then
+        travis_time_finish
+        travis_fold end build_log
+    fi
+    
+    popd > /dev/null
+
     cp $1/.build/$2.pdf .pdf/
 }
 
