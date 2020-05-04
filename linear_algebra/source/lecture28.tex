@@ -231,22 +231,24 @@ $\chi_\phi(t) = t^n + c_{n - 1}t^{n - 1} + \dots + c_1 t + c_0$, где $c_{n - 
     Выберем в $V_\lambda(f)$ базис $e_1, \dots, e_{g_\lambda}$ и дополним его до базиса $(e_1, \dots, e_n) = \E$ всего $V$. Тогда $A(\phi, \E)$ имеет вид
     \begin{equation*}
         \resizebox{7cm}{!}{
-            \begin{blockarray}{ccccccccccc}
-                \begin{block}{(ccccc|ccccc)c}
-                    \lambda & 0 & 0 & \dots & 0 & & & & & \\
-                    0 & \lambda & 0 & \dots & 0 & & & & & \\
-                    0 & 0 & \lambda & \dots & 0 & & & \scaleobj{2}{B} & & & g_{\lambda}\\
-                    \vdots & \vdots & \vdots & \ddots & \vdots & & \\
-                    0 & 0 & 0 & \dots & \lambda & & \\
-                    \cline{1-10}
-                    & & & & & & & & & & \\
-                    & & & & & & & & & & \\
-                    & & \scaleobj{2}{0} & & & & & \scaleobj{2}{C} & & & n - g_{\lambda} \\
-                    & & & & & & & & & & \\
-                    & & & & & & & & & & \\
-                \end{block}
-                & & g_{\lambda} & & & & & n - g_{\lambda}            
-            \end{blockarray}
+            \begin{math}
+                \begin{blockarray}{ccccccccccc}
+                    \begin{block}{(ccccc|ccccc)c}
+                        \lambda & 0 & 0 & \dots & 0 & & & & & \\
+                        0 & \lambda & 0 & \dots & 0 & & & & & \\
+                        0 & 0 & \lambda & \dots & 0 & & & \scaleobj{2}{B} & & & g_{\lambda}\\
+                        \vdots & \vdots & \vdots & \ddots & \vdots & & \\
+                        0 & 0 & 0 & \dots & \lambda & & \\
+                        \cline{1-10}
+                        & & & & & & & & & & \\
+                        & & & & & & & & & & \\
+                        & & \scaleobj{2}{0} & & & & & \scaleobj{2}{C} & & & n - g_{\lambda} \\
+                        & & & & & & & & & & \\
+                        & & & & & & & & & & \\
+                    \end{block}
+                    & & g_{\lambda} & & & & & n - g_{\lambda}            
+                \end{blockarray}
+            \end{math}
         }
     \end{equation*}
 
@@ -255,15 +257,17 @@ $\chi_\phi(t) = t^n + c_{n - 1}t^{n - 1} + \dots + c_1 t + c_0$, где $c_{n - 
         \chi_\phi(t) 
         &= (-1)^{n} \cdot \det 
         \resizebox{4cm}{!}{
-            \begin{blockarray}{(ccc|c)}
-                \lambda - t & \dots & 0 & \\
-                \vdots & \ddots & \vdots & \scaleobj{2}{B} \\
-                0 & \dots & \lambda - t & \\
-                \cline{1-4}
-                & & & \\
-                & \scaleobj{2}{0} & & \scaleobj{2}{C - t E} \\
-                & & & \\
-            \end{blockarray}
+            \begin{math}
+                \begin{blockarray}{(ccc|c)}
+                    \lambda - t & \dots & 0 & \\
+                    \vdots & \ddots & \vdots & \scaleobj{2}{B} \\
+                    0 & \dots & \lambda - t & \\
+                    \cline{1-4}
+                    & & & \\
+                    & \scaleobj{2}{0} & & \scaleobj{2}{C - t E} \\
+                    & & & \\
+                \end{blockarray}
+            \end{math}
         } \\
         &= (-1)^n (\lambda - t)^{g_\lambda} \cdot \underbracket{\det (C - tE)}_{\text{некий многочлен}} \divby \ (t - \lambda)^{g_{\lambda}} \implies a_\lambda \geq g_\lambda
     .\end{align*}
