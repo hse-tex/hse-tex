@@ -50,7 +50,7 @@
         Пусть $X$ --- множество. Функция $d: X \times X \to [0; +\infty)$ называется метрикой, если
         \begin{enumerate}
         \item $d(x, y) = 0 \iff x = y$;
-        \item $d(x, y) = d(y, x)в x = 0$;
+        \item $d(x, y) = d(y, x) \forall x, y \in X$;
         \item $\norm{\lambda x} = |\lambda| \norm{x}, \forall x \in X$;
         \item $\norm{x + y} \leq \norm{x} + \norm{y} \forall x, y \in X$.
         \end{enumerate}
@@ -319,4 +319,62 @@
         \end{equation*}
         и каждое линейное отображение непрерывно на $\RR^k$.
     \end{remark*}
+
+    \begin{consequence*}
+        Если отображение $f: \RR^k \to \RR^m$ дифференцируемо в точке $x$, то оно непрерывно в точке $x$.
+    \end{consequence*}
+
+    \begin{proof}
+        Действительно, $\norm{f(x + h) - f(x)} = \norm{\dd f(h) + \alpha(h)\norm{h}} \leq C\norm{h}$ при $h$ из некоторой окрестности нуля.
+    \end{proof}
+
+    \begin{remark*}
+        Так как дифференцируемость $f$ в точке $x$ равносильна тому, что
+        \begin{equation*}
+            \lim_{h \to 0} \dfrac{\norm{f(x + h) - f(x) - Lh}}{\norm{h}} = 0,
+        \end{equation*}
+        и так как сходимость по норме равносильна покоординатной сходимости, то при фиксирвоанном базисе $e' := \{e_1', \dots, e_m'\}$ в $\RR^m$ дифференцируемость отображения $f$ равносильна дифференцируемости каждой координаты $f_j$ в точке $x$. В этом случае $Lh = (L_1h, \dots, L_mh)$ в базисе $e'$, где $L_j = \dd f_j$ --- дифференциал $j$-ой координаты.
+    \end{remark*}
+
+    \begin{lemma*}
+        Если отображение $f: \RR^k \to \RR^m$ дифференцируемо в точке $x$, то для каждого вектора $h \in \RR^k$ функция $t \to f(x + th)$ дифференцируема в точке $0$ и $\left.\dfrac{\dd}{\dd t}f(x + th)\right|_{t = 0} = \dd f(h)$.
+    \end{lemma*}
+
+    \begin{proof}
+        По определению 
+        \begin{equation*}
+            f(x + th) - f(x) = t \dd f(h) + t \alpha(th)\norm{h}.
+        \end{equation*}
+
+        Разделив на $t$ и перейдя к пределу при $t \to 0$, получаем требуемое соотношение.
+    \end{proof}
+
+    \begin{definition*}
+        Производная $\dfrac{\partial f}{\partial h}(x) := \left.\dfrac{\dd}{\dd t}f(x + th)\right|_{t = 0}$ называется производной вдоль вектора $h$ и может существовать и в случае, когда сама функция $f$ не дифференцируема в точке $x$.
+    \end{definition*}
+
+    Как мы уже поняли, для дифференцируемости отображения достаточно исследовать дифференцируемость его координат, то есть дифференцируемость функции $f: \RR^k \to \RR$. Зафиксировав базис $e := \{e_1, \dots, e_k\}$ в $\RR^n$, условие дифференцируемости в точке $x = (x_1, \dots, x_k)$ переписывается в виде
+    \begin{equation*}
+        f(x_1 + h_1, \dots, x_k + h_k) f(x_1, \dots, x_k) + c_1h_1 + \dots + c_k h_k + \os(\norm{h}),
+    \end{equation*}
+    то есть $\dd f(h) = c_1h_1 + \dots + c_kh_k$. Из уже доказанного ясно, что $\dfrac{\partial f}{\partial e_j}(x) = \dd f(e_j) = c_j$.
+
+    \begin{definition*}
+        Частной производной $\dfrac{\partial f}{\partial x_j}$ функции $f: \RR^k \to \RR$ в точке $x = (x_1, \dots, x_k)$ называется производная вдоль вектора $e_j$, то есть
+        \begin{equation*}
+            \dfrac{\partial f}{\partial x_j}(x) = \left.\dfrac{\dd}{\dd t}f(x_1, \dots, x_{j - 1}, t, x_{j + 1}, \dots, x_k)\right|_{t = x_j}.
+        \end{equation*}
+    \end{definition*}
+
+    \begin{remark*}
+        При фиксированно базисе $e = \{e_1, \dots, e_k\}$ в $\RR^k$ линейные функционалы $\dd x_1, \dots, \dd x_k$ оказываются сопряженным базисом к $e$. То есть $\dd x_i(e_j) = \delta_{i, j}$. Таким образом, $\dd f = \dfrac{\partial f}{\partial x_1}\dd x_1 + \dots + \dfrac{\partial f}{\partial x_k}\dd x_k$.
+    \end{remark*}
+
+    \begin{remark*}
+        В случае отображения $f: \RR^k \to \RR^m$ при фиксированных базисах $e$ и $e'$ в $\RR^k$ и в $\RR^m$ соответственно, компоненты матрицы дифференциала $\dd f$ имеют вид $a_{i, j} = \dfrac{\partial f_i}{\partial x_j}(x)$, то есть по строкам написаны градиенты $\nabla f_i(x)$.
+    \end{remark*}
+
+    \begin{definition*}
+        При фиксированных базисах $e$ в $\RR^k$ и $e'$ в $\RR^m$ матрицу, соответствующую линейному отображению $\dd f$, называют матрицей Якоби отображения $f$ в точке $x$ и обозначают $J_f(x)$.
+    \end{definition*}
 \end{document}
