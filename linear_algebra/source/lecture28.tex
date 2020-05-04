@@ -1,0 +1,355 @@
+\section{Лекция 16.04.2020} 
+
+Если у вас ощущение, что в конспекте баг, можете проверить \href{https://www.dropbox.com/s/9ice7q309b19wga/LA_19-20_osn_Lecture28.svg?dl=0}{снимок доски}, \href{https://www.youtube.com/watch?v=Jey544KL9mQ&list=PLEwK9wdS5g0oP4vhnGvQHPSqshML3Ze4P}{запись} и \href{https://www.dropbox.com/s/y4e65rt245cvibz/LinOperators1.pdf?dl=0}{слайды}.
+
+\subsection{Собственные векторы, собственные значения и спектр линейного оператора}
+
+\begin{definition}~
+    \begin{enumerate}
+    \item Вектор $v \in V$ называется \textit{собственным} для $\phi$, если $v \neq 0$ и $\phi(v) = \lambda v$ для некоторого $\lambda \in F$.
+    \item Элемент $\lambda \in F$ называется \textit{собственным значением} для $\phi$, если $\exists v \in V$, такой что $v \neq 0$ и $\phi(v) = \lambda v$.
+    \end{enumerate}
+
+    Множество всех собственных значений линейного оператора называется его \textit{спектром} и обозначается $\spec \phi$.
+\end{definition}
+
+В ситуации $\phi(v) = \lambda v$, $v \neq 0$ говорят, что
+\begin{itemize}[nosep]
+\item $v$ является собственным вектором, отвечающим собственному значению $\lambda$.
+\item $\lambda$ является собственным значением, отвечающим собственному вектору $v$.
+\end{itemize}
+
+
+\paragraph{Примеры}
+
+\begin{enumerate}
+    \item $\phi = \lambda \cdot \mathrm{Id}$ --- скалярный оператор $ \implies $ всякий вектор $v \neq 0$ является собственным с собственным значением $\lambda$.
+
+        $\color{red} \spec \phi = \{\lambda\}$.
+
+    \item $V = \RR^2$, $\phi$ --- ортогональная проекция на прямую $l \ni 0$.
+
+        Собственные векторы:
+
+        \begin{math}
+            \begin{aligned}
+                &0 \neq v \in l &&\implies \phi(v) = 1 \cdot v &&\implies \lambda = 1 \\
+                &0 \neq v \in l^{\perp} &&\implies \phi(v) = 0 = 0 \cdot v &&\implies \lambda = 0
+            \end{aligned}
+        \end{math}
+
+        $\color{red} \spec \phi = \{0, 1\}$.
+
+    \item $V = \RR^2$, $\phi$ --- поворот на угол $\alpha \neq \pi k$.
+
+        ($\alpha = 2\pi k \implies \phi = \mathrm{Id}; \quad \alpha = \pi + 2 \pi k \implies \phi = -\mathrm{Id}$)
+
+        Собственных векторов нет.
+
+        $\color{red} \spec \phi = \varnothing$.
+
+    \item $V = F[x]_{\leq n}$, $\phi \colon f \mapsto f'$.
+
+        $0 \neq f \in V$ --- собственный вектор $\iff \deg f = 0$, при этом $\phi(f) = 0 = 0 \cdot f \implies \lambda = 0$.
+
+        $\color{red} \spec \phi = \{0\}$.
+\end{enumerate}
+
+\medskip
+\begin{proposal}
+    $v \in V \setminus \{0\} $ --- собственный вектора для $\phi$ $\iff \left< v \right>$ --- $\phi$-инвариантное подпространство.
+\end{proposal}
+
+\begin{proof}~
+    \begin{description}
+    \item[$\implies$] $\phi(v) = \lambda v \implies \phi(\mu v) = \mu \phi(v) = \mu \lambda v \in \left< v \right> \implies \left< v \right> \ \phi$-инвариантно.
+    \item[$\impliedby$] $\phi(v) \in \left< v \right> \implies \exists \lambda \in F : \phi(v) = \lambda v$.
+        \qedhere
+    \end{description}
+\end{proof}
+
+
+\subsection{Диагонализуемые линейные операторы}
+
+\begin{definition}
+    Линейный оператор $\phi$ называется \textit{диагонализуемым}, если существует базис в $V$, в котором матрица линейного оператора $\phi$ диагональна.
+\end{definition}
+
+
+\subsection{Критерий диагонализуемости линейного оператора в терминах собственных векторов}
+
+\begin{proposal}
+    Линейный оператор $\phi$ диагонализуем $\iff$ в $V$ есть базис из собственных векторов.
+\end{proposal}
+
+\begin{proof}
+    Пусть $\E = (e_1, \dots, e_n)$ --- базис $V$.
+
+    \begin{equation*}
+        A(\phi, \E) = \begin{pmatrix}
+            \lambda_1 & 0 & \dots & 0 \\
+            0 & \lambda_2 & \dots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \dots & \lambda_n
+        \end{pmatrix} \iff \phi(e_i) = \lambda_i e_i \ \forall i = 1, \dots, n \iff \text{все $e_i$ --- собственные векторы для $\phi$}
+    \end{equation*}
+\end{proof}
+
+\paragraph{Примеры}
+
+\begin{enumerate}
+    \item $\phi = \lambda \cdot \mathrm{Id}$ --- скалярный оператор
+
+        $v \in V \setminus \{0\} \implies v$ --- собственный вектор.
+
+        {\color{red} $\phi$ диагонализуем}: любой базис состоит из собственных векторов.
+
+    \item $V = \RR^2$, $\phi$ --- ортогональная проекция на прямую $l \ni 0$.
+
+        Собственные векторы: $v \in l \setminus \{0\}$ или $v \in l^{\perp} \setminus \{0\}$.
+
+        {\color{red} $\phi$ диагонализуем}: $e_1 \in l \setminus \{0\}$, $e_2 \in l^{\perp} \setminus \{0\} \implies (e_1, e_2)$ --- базис из собственных векторов.
+
+    \item $V = \RR^2$, $\phi$ --- поворот на угол $\alpha \neq \pi k$.
+
+        Собственных векторов нет $\implies$ {\color{red} $\phi$ не диагонализуем}.
+
+    \item $V = F[x]_{\leq n}$, $\phi \colon f \mapsto f'$.
+
+        $0 \neq f \in V$ --- собственный вектор $\iff \deg f = 0$.
+
+        Собственных векторов {\color{blue} <<мало>>}: {\color{red} $\phi$ диагонализуем $\iff n = 0$}.
+\end{enumerate}
+
+
+\subsection{Собственное подпространство, отвечающее фиксированному собственному значению линейного оператора}
+
+Пусть $\phi \in \L(V)$, $\lambda \in F$.
+
+$V_\lambda(\phi) := \{v \in V \mid \phi(v) = \lambda v\}$.
+
+\begin{exercise}
+    $V_\lambda(\phi)$ --- подпространство в $V$.
+\end{exercise}
+
+\begin{lemma}
+    $V_\lambda(\phi) \neq \{0\} \iff \lambda \in \spec \phi$.
+\end{lemma}
+
+\begin{proof}
+    Следует из определения.
+\end{proof}
+
+\begin{definition}
+    $\lambda \in \spec \phi \implies V_\lambda(\phi)$ называется \textit{собственным подпространством} линейного оператора $\phi$, отвечающим собственному значению $\lambda$.
+\end{definition}
+
+\begin{comment}
+    $V_\lambda(\phi) \ \phi$-нивариантно, $\quad \phi\Big|_{V_{\lambda}(\phi)} = \lambda \cdot \mathrm{Id}\Big|_{V_\lambda(\phi)}$.
+\end{comment}
+
+\begin{proposal}
+    $\forall \lambda \in F \quad V_\lambda(\phi) = \ker(\phi - \lambda \cdot \mathrm{Id})$.
+\end{proposal}
+
+\begin{proof}
+    $v \in V_\lambda(\phi) \iff \phi(v) = \lambda v \iff \phi(v) - \lambda v = 0 \iff (\phi - \lambda \cdot \mathrm{Id}) v = 0 \iff v \in \ker(\phi - \lambda \cdot \mathrm{Id})$.
+\end{proof}
+
+\begin{corollary}
+    $\lambda \in \spec \phi \iff \det (\phi - \lambda \cdot \mathrm{Id}) = 0$.
+\end{corollary}
+
+\begin{proof}
+    $\lambda \in \spec \phi \iff V_\lambda(\phi) \neq \{0\} \iff \ker(\phi - \lambda \cdot \mathrm{Id}) \neq \{0\} \iff \det(\phi - \lambda \cdot \mathrm{Id}) = 0$.
+\end{proof}
+
+\subsection{Характеристический многочлен линейного оператора}
+
+\begin{definition}
+    Многочлен $\chi_\phi(t) := (-1)^n \det(\phi - t \cdot \mathrm{Id}) \in F[t]$ называется \textit{характеристическим многочленом} линейного оператора $\phi$.
+\end{definition}
+
+Если $\E$ --- какой-либо базис $V$ и $A = (a_{ij}) = A(\phi, \E)$, то
+\begin{equation*}
+    \chi_\phi(t) = (-1)^n \det (A - tE) = (-1)^n \begin{vmatrix} 
+        a_{11} - t & a_{12} & a_{13} & \dots & a_{1n} \\ 
+        a_{21} & a_{22} - t & a_{23} & \dots & a_{2n} \\
+        a_{31} & a_{32} & a_{33} - t & \dots & a_{3n} \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & a_{n3} & \dots & a_{nn} - t
+    \end{vmatrix}
+\end{equation*}
+
+$\chi_\phi(t) = t^n + c_{n - 1}t^{n - 1} + \dots + c_1 t + c_0$, где $c_{n - 1} = -\tr \phi$, $c_0 = (-1)^n \det \phi$.
+
+\subsection{Связь спектра линейного оператора с его характеристическим многочленом}
+
+\begin{corollary}
+    $\lambda \in \spec \phi \iff \chi_\phi(\lambda) = 0$, то есть $\lambda$ --- корень характеристического многочлена.
+\end{corollary}
+
+\begin{corollary}
+    $|\spec \phi| \leq n$.   
+\end{corollary}
+
+
+\subsection{Существование собственного вектора для линейного оператора в комплексном векторном пространстве}
+
+\begin{corollary}
+    $F = C \implies $ всякий линейный оператор $\phi$ обладает собственным вектором.
+\end{corollary}
+
+\begin{proof}
+    По основной теореме алгебры комплексных чисел $\chi_\phi(t)$ имеет корень. 
+\end{proof}
+
+
+\subsection{Алгебраическая и геометрическая кратности собственного значения линейного оператора, связь между ними}
+
+Пусть $\lambda \in \spec \phi$.
+
+Пусть $a_\lambda = a_\lambda(\phi) := $ кратность $\lambda$ как корня многочлена $\chi_\phi(t)$. То есть $\chi_\phi(t) \divby (t - \lambda)^{a_\lambda}$ и $\chi_\phi(t) \!\!\not\;\divby (t - \lambda)^{a_\lambda + 1}$.
+
+\begin{definition}
+    $a_\lambda$ называется \textit{алгебраической кратностью} собственного значения $\lambda$.
+\end{definition}
+
+\begin{definition}
+    Число $g_\lambda = g_\lambda(\phi) := \dim V_\lambda(\phi)$ называется \textit{геометрической кратностью} собственного значения $\lambda$.
+\end{definition}
+
+\begin{comment}
+    $a_\lambda \geq 1$, $g_\lambda \geq 1 \ \forall \lambda \in \spec \phi$.
+\end{comment}
+
+\begin{proposal}
+    $g_\lambda \leq a_\lambda \ \forall \lambda \in \spec \phi$.
+\end{proposal}
+
+\begin{proof}
+    Выберем в $V_\lambda(f)$ базис $e_1, \dots, e_{g_\lambda}$ и дополним его до базиса $(e_1, \dots, e_n) = \E$ всего $V$. Тогда $A(\phi, \E)$ имеет вид
+    \begin{equation*}
+        \resizebox{7cm}{!}{
+            \begin{blockarray}{ccccccccccc}
+                \begin{block}{(ccccc|ccccc)c}
+                    \lambda & 0 & 0 & \dots & 0 & & & & & \\
+                    0 & \lambda & 0 & \dots & 0 & & & & & \\
+                    0 & 0 & \lambda & \dots & 0 & & & \scaleobj{2}{B} & & & g_{\lambda}\\
+                    \vdots & \vdots & \vdots & \ddots & \vdots & & \\
+                    0 & 0 & 0 & \dots & \lambda & & \\
+                    \cline{1-10}
+                    & & & & & & & & & & \\
+                    & & & & & & & & & & \\
+                    & & \scaleobj{2}{0} & & & & & \scaleobj{2}{C} & & & n - g_{\lambda} \\
+                    & & & & & & & & & & \\
+                    & & & & & & & & & & \\
+                \end{block}
+                & & g_{\lambda} & & & & & n - g_{\lambda}            
+            \end{blockarray}
+        }
+    \end{equation*}
+
+    Следовательно, 
+    \begin{align*}
+        \chi_\phi(t) 
+        &= (-1)^{n} \cdot \det 
+        \resizebox{4cm}{!}{
+            \begin{blockarray}{(ccc|c)}
+                \lambda - t & \dots & 0 & \\
+                \vdots & \ddots & \vdots & \scaleobj{2}{B} \\
+                0 & \dots & \lambda - t & \\
+                \cline{1-4}
+                & & & \\
+                & \scaleobj{2}{0} & & \scaleobj{2}{C - t E} \\
+                & & & \\
+            \end{blockarray}
+        } \\
+        &= (-1)^n (\lambda - t)^{g_\lambda} \cdot \underbracket{\det (C - tE)}_{\text{некий многочлен}} \divby \ (t - \lambda)^{g_{\lambda}} \implies a_\lambda \geq g_\lambda
+    .\end{align*}
+\end{proof}
+
+
+\subsection{Линейная независимость собственных подпространств линейного оператора, отвечающих попарно различным собственным значениям}
+
+\begin{proposal}
+    Пусть $ \{\lambda_1, \dots, \lambda_s\} \subseteq \spec \phi$, $\lambda_i \neq \lambda_j$ при $i \neq j$. Тогда собственные подпространства $V_{\lambda_1}(\phi), \dots, V_{\lambda_s}(\phi)$ линейно независимы.
+\end{proposal}
+
+\begin{proof}
+    Индукция по $s$.
+    \begin{description}
+    \item[База] $s = 1$ --- ясно.
+    \item[Шаг] Пусть для $< s$ доказано, докажем для $s$.
+
+        Возьмем $v_i \in V_{\lambda_i}(\phi) \ \forall i = 1, \dots, s$ и предположим, что $v_1 + \dots + v_s = 0$ ($\star$).
+
+        Тогда 
+        \begin{math}
+            \begin{aligned}[t]
+                &\phi(v_1 + \dots + v_s) = \phi(0) = 0 \implies \\ 
+                &\phi(v_1) + \dots + \phi(v_s) = 0 \implies \\
+                &\lambda_1 v_1 + \dots + \lambda_s v_s = 0.
+            \end{aligned}
+        \end{math}
+
+        Вычтем отсюда $(\star) \cdot \lambda_s$:
+
+        \begin{math}
+            \quad \underset{\neq 0}{(\lambda_1 - \lambda_s)} v_1 + \dots + \underset{\neq 0}{(\lambda_{s - 1} - \lambda_s)} v_{s - 1} = 0.
+        \end{math}
+
+        По предположению индукции получаем $v_1 = \dots = v_{s - 1} = 0$, а значит и $v_s = 0$.
+        \qedhere
+    \end{description}
+\end{proof}
+
+
+\subsection{Диагонализуемость линейного оператора, у которого число корней характеристического многочлена равно размерности пространства}
+
+\begin{corollary}
+    Если $\chi_\phi(t)$ имеет ровно $n$ различных корней, то $\phi$ диагонализуем.
+\end{corollary}
+
+\begin{proof}
+    Пусть $\lambda_1, \dots, \lambda_n$ --- все корни многочлена $\chi_\phi(t)$. 
+
+    Тогда $\forall i = 1, \dots, n \ \dim V_{\lambda_i}(\phi) = 1$. Для каждого $i$ выберем $e_i \in V_{\lambda_i}(\phi) \setminus \{0\}$.
+
+    Тогда $e_1, \dots, e_n$ линейно независимы по предложению, а значит $(e_1, \dots, e_n)$ --- базис из собственных векторов.
+
+    Следовательно, $\phi$ диагонализуем.
+\end{proof}
+
+\begin{theorem}{(критерий диагонализуемости)} $\phi$ диагонализуемо $\iff$ выполнены одновременно следующие условия:
+
+    \begin{enumerate}
+        \item $\chi_\phi(t)$ разлагается на линейные множители.
+        \item если $\chi_\phi(t) = (t - \lambda_1)^{k_1} \cdot \ldots \cdot (t - \lambda_s)^{k_s}$, то $g_{\lambda_i} = a_{\lambda_i} \ \forall i$. (то есть $\lambda_i \neq \lambda_j$ при $i \neq j$)
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Если выполнено только 1), то $\phi$ можно привести к жордановой нормальной форме:
+
+    $\exists$ базис $\E$, такой что $A(\phi, \E)$ имеет вид
+    \begin{equation*}
+        \begin{pmatrix} 
+            J_{\mu_1}^{m_1} & 0 & \dots & 0 \\
+            0 & J_{\mu_2}^{m_2} & \dots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \dots & J_{\mu_s}^{m_s}
+        \end{pmatrix}
+    ,\end{equation*}
+    где $J_{\mu}^m \in M_n(F)$ --- жорданова клетка порядка $m$ с собственным значением $\mu$.
+    \begin{equation*}
+        J_{\mu}^m = \begin{pmatrix} 
+            \mu & 1 & 0 & \dots & 0 & 0 \\
+            0 & \mu & 1 & \dots & 0 & 0 \\
+            0 & 0 & \mu & \ddots & 0 & 0 \\
+            \vdots & \vdots & \vdots & \ddots & \ddots & \vdots \\
+            0 & 0 & 0 & \dots & \mu & 1 \\
+            0 & 0 & 0 & \dots & 0 & \mu
+        \end{pmatrix}
+    \end{equation*}
+\end{proof}

@@ -47,6 +47,10 @@
 \renewcommand{\kbldelim}{(}
 \renewcommand{\kbrdelim}{)}
 
+\usepackage{blkarray}
+
+\usepackage{scalerel}
+
 
 %% Оглавление с ссылками и ссылки на разные вещи
 \usepackage[unicode=true, colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
@@ -80,6 +84,7 @@
 \let\L\undefined
 \DeclareMathOperator{\L}{\mathop{\mathrm{L}}}
 \DeclareMathOperator{\diag}{\mathop{\mathrm{diag}}}
+\DeclareMathOperator{\spec}{\mathop{\mathrm{Spec}}}
 
 %%% Теоремы
 \theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
