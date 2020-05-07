@@ -25,7 +25,7 @@
 	Балюк Игорь \\
 	\href{https://teleg.run/lodthe}{@lodthe},
     \href{https://github.com/LoDThe/hse-tex}{GitHub} \\
-    Основано на материалах Егора Косова.
+    Материалы предоставил Егор Косов.
 }
 
 \usepackage[yyyymmdd,hhmmss]{datetime}
@@ -39,6 +39,8 @@
     \tableofcontents
 
     \newpage
+
+    Исходный код предоставил Егор Косов. В данном файле я попытался исправить опечатки и облегчить некоторые моменты для понимания.
 
     \href{https://www.youtube.com/watch?v=dQw4w9WgXcQ}{Оригинальный список вопросов}
 
@@ -377,4 +379,173 @@
     \begin{definition*}
         При фиксированных базисах $e$ в $\RR^k$ и $e'$ в $\RR^m$ матрицу, соответствующую линейному отображению $\dd f$, называют матрицей Якоби отображения $f$ в точке $x$ и обозначают $J_f(x)$.
     \end{definition*}
+
+    \section{Градиент и достаточное условие дифференцируемости}
+
+    \begin{definition*}
+        {\it Градиентом} функции $f$ называется вектор
+        $\nabla f:=\left(\dfrac{\partial f}{\partial x_1},\ldots,\dfrac{\partial f}{\partial x_n}\right)$.
+    \end{definition*}
+
+    \begin{lemma*}
+        Если $f$ дифференцируема в точке $x$ и $\dd f\ne0$, то наибольшее значение производной вдоль единичного вектора
+        $v$ (т.е. $\|v\|=1$) достигается на векторе $\|\nabla f(x)\|^{-1}\nabla f(x)$.
+    \end{lemma*}
+
+    \begin{proof}
+        Так как $\dfrac{\partial f}{\partial v}(x) = \dd f(v) = \langle\nabla f(x), v\rangle$,
+        то по неравенства Коши--Буняковского $\Bigl|\dfrac{\partial f}{\partial v}(x)\Bigr|\leq \|\nabla f(x)\|\|v\|
+        =\|\nabla f(x)\|$. Если $v=\|\nabla f(x)\|^{-1}\nabla f(x)$, то в неравенстве достигается равенство.
+    \end{proof}
+
+    Заметим, что наличия частных производных в точке недостаточно для дифференцируемости функции в этой точке.
+
+    \begin{example*}
+        Пусть
+        $$
+            f(x,y)=
+            \left\{
+            \begin{aligned}
+                \dfrac{2xy}{x^2+y^2}, &\ (x,y)\ne(0,0), \\
+                0, &\ (x,y)=(0,0).\\
+            \end{aligned}
+            \right.
+        $$
+        Функция $f$ разрывна в нуле, а значит не дифференцируема, но в точке $(0,0)$ существуют обе частных производных.
+        Действительно, если $x=r\cos\varphi, y=r\sin\varphi$, то функция $f(x,y) = \sin2\varphi$. Таким образом, $f(x,y)$ в любой окрестности точки $(0,0)$ принимет значения $\pm1$, но $\dfrac{\partial f}{\partial x}(0,0) = \dfrac{d}{dx}f(x,0) = 0$.
+        Аналогично $\dfrac{\partial f}{\partial y}(0,0)=0$.
+    \end{example*}
+
+
+    В следующей теореме сформулировано достаточное условие дифференцируемости.
+
+    \begin{theorem*}
+        Если все частные производные $\dfrac{\partial f}{\partial x_j}$ существуют в окрестности точки $x_0$ и непрерывны в этой точке, то $f$ --- дифференцируема в точке $x_0$.
+    \end{theorem*}
+
+    \begin{proof}
+        Для сокращения выкладок докажем теорему в случае $k=2$.
+        Заметим, что
+        \begin{align*}
+            f(x_1+h_1,x_2+h_2) - f(x_1,x_2)
+            &=f(x_1+h_1,x_2+h_2) - f(x_1,x_2+h_2) + f(x_1, x_2+h_2) - f(x_1,x_2) \\
+            &=\dfrac{\partial f}{\partial x_1}(\xi_1, x_2+h_2)h_1 + \dfrac{\partial f}{\partial x_2}(x_1,\xi_2)h_2,
+        \end{align*}
+
+        где $\xi_1$ принадлежит интервалу с концами
+        $x_1$, $x_1+h_1$, а $\xi_2$ --- с концами $x_2$, $x_2+h_2$.
+        Запишем теперь последнюю сумму в виде
+        $$
+            \dfrac{\partial f}{\partial x_1}(x_1, x_2)h_1 + \dfrac{\partial f}{\partial x_2}(x_1,x_2)h_2 + \alpha(h)\|h\|,
+        $$
+        где
+        $$
+            \alpha(h) =
+            \Bigl(\dfrac{\partial f}{\partial x_1}(\xi_1, x_2+h_2) - \dfrac{\partial f}{\partial x_1}(x_1, x_2)\Bigr)\dfrac{h_1}{\|h\|}
+            +
+            \Bigl(\dfrac{\partial f}{\partial x_2}(x_1,\xi_2) - \dfrac{\partial f}{\partial x_2}(x_1, x_2)\Bigr)\dfrac{h_2}{\|h\|}.
+        $$
+        При малой $\|h\|$ выражения в скобках будут малы в силу непрерывности частных производных.
+        Тем самым, $\lim\limits_{h\to 0}\|\alpha(h)\| = 0$.
+    \end{proof}
+
+    \section{Частные производные высокого порядка}
+
+    \begin{definition*}
+        Пусть $f\colon \RR^k\to \RR$ и предположим, что в некоторой окрестности $B_r(x_0)$ точки $x_0$ существует частная производная $\dfrac{\partial f}{\partial x_j}$. Если функция $x\mapsto \dfrac{\partial f}{\partial x_j}(x)$ в точке $x_0$ имеет частную производную по переменной $x_i$, то эта частная производная $\dfrac{\partial}{\partial x_i}\Bigl(\dfrac{\partial f}{\partial x_j}\Bigr) (x_0)$ называется {\it частной производной второго порядка} по переменным $x_j$ и $x_i$
+        и обозначается $\dfrac{\partial^2 f}{\partial x_i\partial x_j}(x_0)$.
+    \end{definition*}
+
+    \begin{remark*}
+        Заметим, что частные производные $\dfrac{\partial^2 f}{\partial x_i\partial x_j}$ и $\dfrac{\partial^2 f}{\partial x_j\partial x_i}$ являются разными объектами и, вообще говоря, не совпадают (пример будет в рамках семинарских задач).
+    \end{remark*}
+
+    О совпадении смешанных частных производных позволяют судить следующие две теоремы, которые мы для простоты сформулируем в двумерном случае (общий случай, по сути, ничем не отличается).
+
+    \begin{theorem}[Шварц]
+        Пусть смешанные частные производные $\dfrac{\partial^2f}{\partial x\partial y}$ и $\dfrac{\partial^2f}{\partial y\partial x}$ существуют в окрестности точки $(x_0,y_0)$ и непрерывны в этой точке. Тогда их значения в точке $(x_0,y_0)$ совпадают.
+    \end{theorem}
+
+    \begin{theorem}[Юнг] Пусть $f$ --- дифференцируема в окрестности точки $(x_0,y_0)$,
+    а ее частные производные $\dfrac{\partial f}{\partial x}$ и $\dfrac{\partial f}{\partial y}$
+    дифференцируемы в точке $(x_0,y_0)$.
+    Тогда смешанные частные производные $\dfrac{\partial^2f}{\partial x\partial y}$
+    и $\dfrac{\partial^2f}{\partial y\partial x}$
+    в точке $(x_0,y_0)$ совпадают.
+    \end{theorem}
+
+    Приведем доказательство второй из этих теорем.
+
+    \begin{proof}
+        Не ограничивая общности, будм считать, что $(x_0,y_0)=(0,0)$.
+        Рассмотрим функцию
+        $$
+        F(t,t) = f(t,t) - f(0,t) - f(t,0) + f(0,0).
+        $$
+        Применяя теорему Лагранжа к функции $g(u)= f(t,u)-f(0,u)$,
+        получаем
+        $$
+        F(t,t) = g(t) - g(0) = g'(\xi)t = \Bigl(\dfrac{\partial f}{\partial y}(t,\xi) -  \dfrac{\partial f}{\partial y}(0,\xi)\Bigr)t.
+        $$
+        Дифференцируемость $\dfrac{\partial f}{\partial y}$ в точке $(0,0)$ означает, что
+        $$
+        \dfrac{\partial f}{\partial y}(x,y) = \dfrac{\partial f}{\partial y}(0,0) +
+        \dfrac{\partial^2 f}{\partial x\partial y}(0,0)x + \dfrac{\partial^2 f}{\partial y^2}(0,0)y + \os(\sqrt{x^2+y^2}).
+        $$
+        Таким образом,
+        $$
+        \dfrac{\partial f}{\partial y}(t,\xi) = \dfrac{\partial f}{\partial y}(0,0) +
+        \dfrac{\partial^2 f}{\partial x\partial y}(0,0)t + \dfrac{\partial^2 f}{\partial y^2}(0,0)\xi + \os(\sqrt{t^2+\xi^2}).
+        $$
+        и
+        $$
+        \dfrac{\partial f}{\partial y}(0,\xi) = \dfrac{\partial f}{\partial y}(0,0) +
+        \dfrac{\partial^2 f}{\partial y^2}(0,0)\xi + \os(\xi).
+        $$
+        Т.к. $\xi\leq t$, то $\os(\sqrt{t^2+\xi^2}) = \os(t)$ и $\os(\xi) = \os(t)$.
+        Таким образом,
+        $$
+        F(t,t) = \dfrac{\partial^2 f}{\partial x\partial y}(0,0)t^2 + \os(t^2).
+        $$
+        Аналогично,
+        $$
+        F(t,t) = \dfrac{\partial^2 f}{\partial y\partial x}(0,0)t^2 + \os(t^2).
+        $$
+        Приравняв полученные выражения, поделив на $t^2$ и устремив $t$ к нулю, получаем
+        $$
+        \dfrac{\partial^2 f}{\partial x\partial y}(0,0) = \dfrac{\partial^2 f}{\partial y\partial x}(0,0).
+        $$
+    \end{proof}
+
+    \section{Правила дифференцирования}
+
+    \begin{theorem*}
+        Пусть функции $f, g \colon \RR^k\to \RR$ дифференцируемы в некоторой точке $x$. Тогда, для произвольных чисел $a,b \in \RR$,
+        функции $af + bg$ и $fg$ дифференцируемы в точке $x$ и $\dd(af + bg) = a\dd f + b\dd g$ и $d(fg) = f\dd g + g\dd f$.
+    \end{theorem*}
+
+    \begin{proof}
+        Заметим, что
+        \begin{multline*}
+            (af+bg)(x+h) - (af + bg)(x) = a(f(x+h) - f(x)) + b(g(x+h) - g(x))\\
+            = a(\dd f(h) + \os(\|h\|)) + b(\dd g (h) + \os(\|h\|))
+            = a\dd f(h) + b\dd g(h) + \os(\|h\|).
+        \end{multline*}
+        Таким образом, $\dd(af + bg) = a\dd f +b\dd g$.
+
+        Для доказательства второго равенства заметим, что
+        \begin{align*}
+            (fg)(x+h) - (fg)(x) 
+            &= (f(x+h) - f(x))g(x+h) + f(x)(g(x+h) - g(x)) \\
+            &= (\dd f(h) + \os(\|h\|))(g(x) +\os(1)) + f(x)(\dd g (h) + \os(\|h\|)) \\
+            &= g(x)\dd f(h) + f(x)\dd g(h) + (\dd f(h))\os(1) + g(x)\os(\|h\|)+ f(x)\os(\|h\|) + \os(\|h\|).
+        \end{align*}
+
+        Мы использовали непрерывность функции $g$, т.е. $g(x+h)-g(x) = \os(1)$ при $\|h\| \to 0$,
+        в силу ее дифференцируемости в точке $x$.
+
+        Так как $\dd f$ --- линейное отображение, то для некоторого числа $C>0$ выполнено $|\dd f(h)|\leq C\|h\|$, а значит $(\dd f(h))\os(1) = \os(\|h\|)$.
+        Т.к. $f(x)$ и $g(x)$ просто числа, то $ g(x)\os(\|h\|)+ f(x)\os(\|h\|) = \os(\|h\|)$.
+        Таким образом, теорема доказана.
+    \end{proof}
 \end{document}
