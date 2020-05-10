@@ -4,12 +4,12 @@
 
 
 \begin{lemma}
-    Пусть $v_1, v_2 \in \EE$. Тогда, $(v_1, x) = (v_2, x) \ \forall x \in \EE \implies v_1 = v2$.
+    Пусть $v_1, v_2 \in \EE$. Тогда, $(v_1, x) = (v_2, x) \ \forall x \in \EE \implies v_1 = v_2$.
 \end{lemma}
 
 \begin{proof}
     Имеем $(v_1 - v_2, x) = 0 \ \forall x \in \EE$.
-    Тогда, $v_1 - v_2 \in \EE^{\perp} = \{0\} \implies v_1 - v_2 = 0 \implies v_1 = v2$.
+    Тогда, $v_1 - v_2 \in \EE^{\perp} = \{0\} \implies v_1 - v_2 = 0 \implies v_1 = v_2$.
 \end{proof}
 
 
@@ -20,7 +20,7 @@
     Пусть $a, b \in \RR^3$. Тогда
     \begin{enumerate}
     \item $\exists! v \in \EE$, такой что $(v, x) = \Vol(a, b, x) \quad \forall x \in \RR^3$.
-    \item Если $\E = (e_1, e_2, e_3)$ --- положительно ориентированный базис и
+    \item Если $\E = (e_1, e_2, e_3)$ --- положительно ориентированный ортонормированный базис и
         \begin{math}
             \ \begin{aligned}[t]
                 a &= a_1 e_1 + a_2 e_2 + a_3 e_3 \\
@@ -100,9 +100,9 @@
 \begin{proof}[Свойства смешанного произведения]~
     \begin{enumerate}[nosep]
     \item 
-        $(a, b, c) > 0 \iff a, b, c$ --- положительно ориентированный ортонормированный базис,
+        $(a, b, c) > 0 \iff a, b, c$ --- положительно ориентированный базис,
         
-        $(a, b, c) < 0 \iff a, b, c$ --- отрицательно ориентированный ортонормированный базис.
+        $(a, b, c) < 0 \iff a, b, c$ --- отрицательно ориентированный базис.
 
         \medskip
         Критерий компланарности ($= $ линейной зависимости)
