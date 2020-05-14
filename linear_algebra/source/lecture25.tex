@@ -209,7 +209,7 @@
 \begin{proposal}~
     \begin{enumerate}
     \item $[a, b] = -[b, a] \quad \forall a, b$ (антикоммутативность).
-    \item $[\bigcdot, \bigcdot]$ билинейно (то ест линейно по каждому аргументу).
+    \item $[\bigcdot, \bigcdot]$ билинейно (то есть линейно по каждому аргументу).
     \end{enumerate}
 \end{proposal}
 
@@ -220,7 +220,7 @@
 
     \item
         Пусть $u = [\lambda_1 a_1 + \lambda_2 a_2, b]$, $v = \lambda_1 [a_1, b] + \lambda_2 [a_2, b]$.
-
+        Тогда $\forall x \in \RR^3$:
         \begin{align*}
             (u, x) &= (\lambda_1 a_1 + \lambda_2 a_2, b, x) \\
                    &= \lambda_1 (a_1, b, x) + \lambda_2 (a_2, b, x) \\
@@ -248,13 +248,13 @@
 Было: Лемма: $L = x_z + S$, где $S$ --- множество решений ОСЛУ $Ax = 0$.
 
 \begin{proposal}
-    Множество $L \subseteq \RR^n$ является линейны многообразием $\iff L = v_0 + S$ для некоторых $v_0 \in \RR^n$ и подпространства $S \subseteq \RR^n$. 
+    Множество $L \subseteq \RR^n$ является линейным многообразием $\iff L = v_0 + S$ для некоторых $v_0 \in \RR^n$ и подпространства $S \subseteq \RR^n$. 
 \end{proposal}
 
 \begin{proof}~
     \begin{description}
     \item[$\implies$] Из леммы.
-    \item[$\impliedby$] $L = v_0 + S$. Значит существует ОСЛУ $Ax = 0$, для которой $S$ является множеством решений. Тогда, $L$ --- множество решений СЛУ $Ax = Av$ (по лемме).
+    \item[$\impliedby$] $L = v_0 + S$. Значит существует ОСЛУ $Ax = 0$, для которой $S$ является множеством решений. Тогда, $L$ --- множество решений СЛУ $Ax = Av_0$ (по лемме).
         \qedhere
     \end{description}
 \end{proof}
