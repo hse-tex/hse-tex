@@ -123,17 +123,11 @@
     \defitem{Проекция вектора на подпространство вдоль дополнительного подпространства}
 
         \begin{comment}
-            \begin{enumerate}
-            \item $V = U_1 \oplus U_2 \iff \begin{cases}
-                V = U_1 + U_2, \\
-                U_1 \cap U_2 = 0,
-            \end{cases}$
-            \item $V = U_1 \oplus U_2 \implies \forall v \in V \ \exists! u_1 \in U_1, u_2 \in U_2$, такие что $v = u_1 + u_2$.
+            $V = U_1 \oplus U_2 \implies \forall v \in V \ \exists! u_1 \in U_1, u_2 \in U_2$, такие что $v = u_1 + u_2$.
 
-                Тогда, $u_1$ называется проекцией вектора $v$ на $U_1$ вдоль $U_2$.
-                
-                Так же, $u_2$ называется проекцией вектора $v$ на $U_2$ вдоль $U_1$.
-            \end{enumerate}
+            Тогда, $u_1$ называется проекцией вектора $v$ на $U_1$ вдоль $U_2$.
+            
+            Так же, $u_2$ называется проекцией вектора $v$ на $U_2$ вдоль $U_1$.
         \end{comment}
 
 
@@ -156,7 +150,7 @@
 
     \defitem{Формула преобразования координат вектора при замене базиса}
         
-        Пусть $v \in V$, тогда
+        Пусть $C$ --- матрица перехода от базиса $\E = (e_1, \dots, e_n)$ к базису $\E' = (e'_1, \dots, e'_n)$, $v \in V$, тогда
         \begin{align*}
             v &= x_1 e_1 + \dots + x_n e_n \\
             v &= x'_1 e'_1 + \dots + x'_n e'_n
@@ -188,12 +182,7 @@
 
         \begin{enumerate}
         \item $\phi(\overrightarrow{0_V}) = \overrightarrow{0_W}$.
-
-            Доказательство: $\phi(\overrightarrow{0_V}) = \phi(0 \cdot \overrightarrow{0_V}) = 0 \cdot \phi(\overrightarrow{0_V}) = \overrightarrow{0_W}$.
-
         \item $\phi(-v) = -\phi(v)$.
-
-            Доказательство: $\phi(-v) + \phi(v) = \phi(-v + v) = \phi(0) = \phi(\overrightarrow{0_V)} = \overrightarrow{0_W} \implies \phi(-v) = -\phi(v)$.
         \end{enumerate}
 
 
@@ -281,7 +270,7 @@
 
     \defitem{Формула изменения матрицы линейного отображения при замене базисов}
 
-        Пусть теперь $\E'$ --- другой базис в $V$, $\F'$ --- другой базис в $W$.
+        Пусть $\E'$ --- другой базис в $V$, $\F'$ --- другой базис в $W$.
 
         $\E' = \E \cdot C_{\in M_n}$,
 
@@ -363,14 +352,6 @@
             \textit{Образ} линейного отображения $\phi$ --- это $\Im \phi := \phi(V) \subseteq W$.
         \end{definition}
 
-        \begin{example}
-            $\Delta \colon \RR[x]_{\leq n} \to \RR[x]_{\leq n}, \ f \mapsto f'$,
-
-            $\ker \Delta = \{f \mid f = \text{const}\}$,
-
-            $\Im \Delta = \RR[x]_{\leq n - 1}$.
-        \end{example}
-
         \begin{proposal}~
             \begin{enumerate}[nosep]
             \item Ядро --- подпространство в $V$.
@@ -384,10 +365,6 @@
         Пусть $V, W$ --- векторные пространства над $F$, 
 
         $\phi \colon V \to W$ --- линейное отображение.
-
-        Ядро: $\ker \phi := \{v \in V \mid \phi(v) = 0\} \subseteq V$.
-
-        Образ: $\Im \phi := \phi(V) \subseteq W$.
 
         \begin{proposal}~
             \begin{enumerate}[label=(\alph*)]
@@ -559,10 +536,6 @@
         Тогда,
         \begin{align*}
             \beta(x, y)
-            &= \beta\left(\sum_{i = 1}^{n} x_i e_i, \ \sum_{j = 1}^{n} y_j e_j\right)
-            = \sum_{i = 1}^{n} x_i \cdot \beta\left(e_i, \ \sum_{j = 1}^{n} y_j e_j\right) \\
-            &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} x_i y_j \underbracket{\beta(e_i, e_j)}_{\beta_{ij}}
-            = \sum_{i = 1}^{n} \sum_{j = 1}^{n} x_i \beta_{ij} y_j  \\
             &= (x_1, \dots, x_n) B \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix}
         .\end{align*}
 
@@ -693,7 +666,9 @@
 
 
     \defitem{Положительно/неотрицательно определённая квадратичная форма над $\RR$}
+
     \defitem{Отрицательно/неположительно определённая квадратичная форма над $\RR$}
+
     \defitem{Неопределённая квадратичная форма над $\RR$}
 
         \begin{definition}
@@ -806,7 +781,7 @@
     \defitem{Неравенство Коши--Буняковского}
 
         \begin{proposal}[неравенство Коши-Буняковского]
-            $\forall x, y \in \EE$ верно $|(x, y)| \leq |x| \cdot |y|$, причём равенство $\iff$ $x$, $y$ пропорциональны.
+            $\forall x, y \in \EE$ верно $|(x, y)| \leq |x| \cdot |y|$, причём равенство $\iff$ ${x, y}$ пропорциональны.
         \end{proposal}
 
         \begin{example}
@@ -819,10 +794,10 @@
 
     \defitem{Угол между ненулевыми векторами евклидова пространства}
 
-        Пусть $x, y \in \EE \setminus \{0\}$, тогда $-1 \leq \frac{(x, y)}{|x| \cdot |y|} \leq 1$.
+        Пусть $x, y \in \EE \setminus \{0\}$, тогда $-1 \leq \dfrac{(x, y)}{|x| \cdot |y|} \leq 1$.
 
         \begin{definition}
-            Угол между ненулевыми векторами $x, y \in \EE$, это такой $\alpha \in [0, \pi]$, что $\cos \alpha = \frac{(x, y)}{|x| \cdot |y|}$.
+            Угол между ненулевыми векторами $x, y \in \EE$, это такой $\alpha \in [0, \pi]$, что $\cos \alpha = \dfrac{(x, y)}{|x| \cdot |y|}$.
 
             Тогда $(x, y) = |x| |y| \cos \alpha$.
         \end{definition}
@@ -870,6 +845,12 @@
 
 
     \defitem{Чему равна размерность ортогонального дополнения к подпространству евклидова пространства?}
+
+        Пусть $\dim \EE = n$, $S \subseteq \EE$ --- подпространство.
+
+        Тогда, $\dim S^{\perp} = n - \dim S$.
+
+
     \defitem{Каким свойством обладают подпространство евклидова пространства и его ортогональное дополнение?}
 
         Считаем, что $\dim \EE = n < \infty$.
@@ -886,6 +867,10 @@
 
 
     \defitem{Ортогональная проекция вектора на подпространство}
+
+        $\Downarrow$
+
+
     \defitem{Ортогональная составляющая вектора относительно подпространства}
 
         $S$ --- подпространство $ \implies \EE = S \oplus S^{\perp}$
@@ -920,6 +905,10 @@
         \end{proposal}
 
     \defitem{Ортогональная система векторов евклидова пространства. Ортогональный базис}
+
+        $\Downarrow$
+
+
     \defitem{Ортонормированная система векторов евклидова пространства. Ортонормированный базис}
 
         \begin{definition}
@@ -954,12 +943,6 @@
         \begin{proposal}
             $\E'$ --- ортонормированный базис $\iff C^{T} \cdot C = E$.
         \end{proposal}
-
-        \begin{proof}
-            $G(e'_1, \dots, e'_n) = C^{T} \underbracket{G(e_1, \dots, e_n)}_E C = C^{T} C$.
-
-            $\E'$ ортонормированный $\iff G(e'_1, \dots, e'_n) = E \iff C^{T} C = E$.
-        \end{proof}
 
 
     \defitem{Ортогональная матрица}
@@ -1034,7 +1017,40 @@
 
     \defitem{Метод ортогонализации Грама--Шмидта}
 
-        % TODO
+        Как построить ортогональный (ортонормированный) базис в $\EE$?
+
+        Если $f_1, \dots, f_n$ --- ортогональный базис, то $\left(\frac{f_1}{|f_1|}, \dots, \frac{f_n}{|f_n|}\right)$ --- ортонормированный базис.
+
+        Тогда, достаточно построить ортогональный базис.
+
+        Пусть $e_1, \dots, e_k$ --- линейно независимая система векторов.
+
+        $i$-й угловой минор в $G(e_1, \dots, e_k)$ --- это $\det G(e_1, \dots, e_k) > 0$.
+
+        \bigskip
+        Следовательно, применим метод Якоби:
+
+        $\exists!$ система векторов $f_1, \dots, f_k$, такая что 
+        \begin{align*}
+        &f_1 = e_1, \\
+        &f_2 \in e_2 + \left< e_1 \right>, \\
+        &f_3 \in e_3 + \left< e_1, e_2 \right>, \\
+        &\dots, \\
+        &f_k \in e_k + \left< e_1, \dots, e_{k - 1} \right>
+        \end{align*}
+
+
+        И выполнены следующие свойства $\forall i = 1, \dots, k$:
+
+        \begin{enumerate}[start=0,nosep]
+        \item $f_1, \dots, f_k$ ортогональны.
+        \item $\left< e_1, \dots, e_i \right> = \left< f_1, \dots, f_i \right>$.
+        \item $f_i = e_i - \sum_{j = 1}^{i - 1} \dfrac{(e_i, f_j)}{(f_j, f_j)} f_j$ \customlabel{lec23:star}{($\star$)}.
+        \item $\det G(e_1, \dots, e_i) = \det G(f_1, \dots, f_i)$ \customlabel{lec23:heart}{$(\heartsuit)$}.
+        \end{enumerate}
+
+        \bigskip
+        Построение базиса $f_1, \dots, f_k$ по формулам \ref{lec23:star} называется методом (процессом) ортогонализации Грамма-Шмидта.
 
 
     \defitem{Теорема Пифагора в евклидовом пространстве}
@@ -1080,6 +1096,8 @@
 
         $x_0$ --- решение задачи оптимизации $\rho(Ax, b) \xrightarrow[x \in \RR^n]{} \min$.
 
+        Если столбцы $A^{(1)}, \dots, A^{(n)}$ линейно независимы, то псевдорешение единственно и может быть найдено по формуле $x_0 = (A^{T} A)^{-1} A^{T} b$.
+
 
     \defitem{Формула для расстояния от вектора до подпространства в терминах матриц Грама}
 
@@ -1097,29 +1115,22 @@
         \begin{definition}
             \textit{$k$-мерный параллелепипед}, натянутый на векторы $a_1, \dots, a_k$, это множество
             \begin{equation*}
-                P(a_1, \dots, a_k) := \left\{ \sum_{i = 1}^{k} x_i a_i \mid 0 \leq x_1 < 1 \right\}
+                P(a_1, \dots, a_k) := \left\{ \sum_{i = 1}^{k} x_i a_i \bigg| 0 \leq x_i < 1 \right\}
             .\end{equation*}
 
             Основание: $P(a_1, \dots, a_{k - 1})$.
 
-            Высота: $h := |\ort_{\left< a_1, \dots, a_{k - 1} \right>} a_k|$.
+            Высота: $h := \left| \ort_{\left< a_1, \dots, a_{k - 1} \right>} a_k \right|$.
         \end{definition}
 
-        \begin{example}~
-            \begin{description}
-            \item[$k = 1$] $h = |a_1|$ {\tiny здесь картинка, тоже лень :(}
-            \item[$k = 2$] основание --- $P(a_1)$, высота --- $h$ {\tiny дада, люблю картинки делать}
-            \end{description}
-        \end{example}
-
-        \begin{example}
+        \begin{definition}
             \textit{$k$-мерный объем} $k$-мерного параллелепипеда $P(a_1, \dots, a_k)$ --- это величина $\vol P(a_1, \dots, a_k)$, определяемая индуктивно:
 
             \begin{description}
             \item[$k = 1$] $\implies \vol P(a_1) := |a_1|$.
             \item[$k > 1$] $\implies \vol P(a_1, \dots, a_k) := \vol P(a_1, \dots, a_{k - 1}) \cdot h$.
             \end{description}
-        \end{example}
+        \end{definition}
 
 
     \defitem{Формула для объёма $k$-мерного параллелепипеда в $n$-мерном евклидовом пространстве}
@@ -2594,12 +2605,236 @@
     \subsection{Элементы аналитической геометрии и линейные многообразия}
     \begin{colloq}
         \proofitem{Теорема о векторном произведении и формуле для него в координатах в положительно ориентированном ортонормированном базисе}
+
+            \begin{lemma}
+                Пусть $v_1, v_2 \in \EE$. Тогда, $(v_1, x) = (v_2, x) \ \forall x \in \EE \implies v_1 = v_2$.
+            \end{lemma}
+
+            \begin{proof}
+                Имеем $(v_1 - v_2, x) = 0 \ \forall x \in \EE$.
+                Тогда, $v_1 - v_2 \in \EE^{\perp} = \{0\} \implies v_1 - v_2 = 0 \implies v_1 = v_2$.
+            \end{proof}
+
+            \begin{theorem}
+                \label{lec25:t}
+                Пусть $a, b \in \RR^3$. Тогда
+                \begin{enumerate}
+                \item $\exists! v \in \EE$, такой что $(v, x) = \Vol(a, b, x) \quad \forall x \in \RR^3$.
+                \item Если $\E = (e_1, e_2, e_3)$ --- положительно ориентированный ортонормированный базис и
+                    \begin{math}
+                        \ \begin{aligned}[t]
+                            a &= a_1 e_1 + a_2 e_2 + a_3 e_3 \\
+                            b &= b_1 e_1 + b_2 e_2 + b_3 e_3
+                        \end{aligned},
+                    \end{math}
+                    то 
+                    \begin{equation}
+                        \tag{$\star$}
+                        \label{lec25:v}
+                        v = \begin{vmatrix}
+                            e_1 & e_2 & e_3 \\
+                            a_1 & a_2 & a_3 \\
+                            b_1 & b_2 & b_3
+                        \end{vmatrix}
+                        := \begin{vmatrix} 
+                            a_2 & a_3 \\
+                            b_2 & b_3
+                        \end{vmatrix} e_1 - \begin{vmatrix} 
+                            a_1 & a_3 \\
+                            b_1 & b_3
+                        \end{vmatrix} e_2 + \begin{vmatrix} 
+                            a_1 & a_2 \\
+                            b_1 & b_2
+                        \end{vmatrix} e_3
+                    .\end{equation}
+                \end{enumerate}
+            \end{theorem}
+
+            \begin{proof}~
+                \begin{description}
+                \item[Единственность] если $v'$ --- другой такой вектор, то $(v, x) = (v', x) \ \forall x \in \RR^3$, а значит $v' = v$ по лемме.
+                \item[Существование] Покажем, что $v$, заданный формулой \eqref{lec25:v} подойдёт.
+                    \begin{align*}
+                        x = x_1 e_1 + x_2 e_2 + x_3 e_3 \implies (v, x) &= \begin{vmatrix} 
+                            a_2 & a_3 \\
+                            b_2 & b_3
+                        \end{vmatrix} x_1 - \begin{vmatrix} 
+                            a_1 & a_3 \\
+                            b_1 & b_3
+                        \end{vmatrix} x_2 + \begin{vmatrix} 
+                            a_1 & a_2 \\
+                            b_1 & b_2
+                            \end{vmatrix} x_3 \\ &= \begin{vmatrix} 
+                            x_1 & x_2 & x_3 \\
+                            a_1 & a_2 & a_3 \\
+                            b_1 & b_2 & b_3
+                        \end{vmatrix} = \begin{vmatrix} 
+                            a_1 & a_2 & a_3 \\
+                            b_1 & b_2 & b_3 \\
+                            x_1 & x_2 & x_3
+                        \end{vmatrix} = \Vol(a, b, x)
+                    .\end{align*}
+                \end{description}
+            \end{proof}
+
+
         \proofitem{Критерий коллинеарности двух векторов трёхмерного евклидова пространства}
+
+            \begin{proposal}
+                $a, b \in \EE$ коллинеарны $\iff [a, b] = 0$.
+            \end{proposal}
+
+            \begin{proof}~
+                \begin{description}
+                    \item[$\implies$] 
+                        \begin{equation*}
+                            (a, b, x) = 0 \ \forall x \implies ([a, b], x) = 0 \ \forall x \implies [a, b] = 0
+                        .\end{equation*}
+
+                    \item[$\impliedby$]
+                        \begin{equation*}
+                            [a, b] = 0 \implies ([a, b], x) = 0 \ \forall x \implies (a, b, x) = 0 \ \forall x \in \RR^3
+                        .\end{equation*}
+
+                        Если $a$, $b$ линейно независимы, то можно взять $x$, который дополняет их до базиса в $\RR^3$.
+
+                        Тогда, $(a, b, x) \neq 0$ --- противоречие. Значит $a$, $b$ линейно зависимы $\implies$ коллинеарны.
+                        \qedhere
+                \end{description}
+            \end{proof}
+
+
         \proofitem{Геометрические свойства векторного произведения}
+
+            \begin{proposal}~
+                \begin{enumerate}[nosep]
+                \item $[a, b] \perp \left< a, b \right>$.
+                \item $\left|[a, b]\right| = \vol P(a, b)$.
+                \item $\Vol(a, b, [a, b]) \geq 0$.
+                \end{enumerate}
+            \end{proposal}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item $([a, b], a) = (a, b, a) = 0 = (a, b, b) = ([a, b], b)$.
+                \item Если $a$, $b$ коллинеарны, то обе части равны 0.
+
+                    Пусть $[a, b] \neq 0$.
+                    \begin{equation*}
+                        \left|[a, b]\right|^2 = ([a, b], [a, b]) = (a, b, [a, b]) = (\#) > 0
+                    .\end{equation*}
+                    \begin{equation*}
+                        [a, b] \perp \left< a, b \right> \implies (\#) = \vol P(a, b, [a, b]) = \Vol(a, b, [a, b]) = \vol P(a, b,) \cdot \left|[a, b]\right|
+                    .\end{equation*}
+
+                    Сокращая на $|[a, b]| \neq 0$, получаем требуемое.
+
+                \item
+                    $\Vol (a, b, [a, b]) = ([a, b], [a, b]) \geq 0$.
+                    \qedhere
+                \end{enumerate}
+            \end{proof}
+
+
         \proofitem{Антикоммутативность и билинейность векторного произведения}
+
+            \begin{proposal}~
+                \begin{enumerate}
+                \item $[a, b] = -[b, a] \quad \forall a, b$ (антикоммутативность).
+                \item $[\bigcdot, \bigcdot]$ билинейно (то есть линейно по каждому аргументу).
+                \end{enumerate}
+            \end{proposal}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item 
+                    $([a, b], x) = (a, b, x) = -(b, a, x) = -([b, a], x) = (-[b, a], x) \quad \forall x \in \RR^3 \implies [a, b] = -[b, a]$
+
+                \item
+                    Пусть $u = [\lambda_1 a_1 + \lambda_2 a_2, b]$, $v = \lambda_1 [a_1, b] + \lambda_2 [a_2, b]$.
+                    Тогда $\forall x \in \RR^3$:
+                    \begin{align*}
+                        (u, x) &= (\lambda_1 a_1 + \lambda_2 a_2, b, x) \\
+                               &= \lambda_1 (a_1, b, x) + \lambda_2 (a_2, b, x) \\
+                               &= \lambda_1 ([a_1, b], x) + \lambda_2([a_2, b], x) \\
+                               &= (\lambda_1[a_1, b] + \lambda_2[a_2, b], x) = (v, x)
+                    .\end{align*}
+
+                    Значит $u = v$. Аналогично линейность по второму аргументу.
+                    \qedhere
+                \end{enumerate}
+            \end{proof}
+
+
         \proofitem{Линейные многообразия как сдвиги подпространств}
+
+            Пусть $Ax = b$ --- СЛУ, $\varnothing \neq L \subseteq \RR^n$ --- множество решений, $x_z \in L$ --- частное решение.
+
+            Было: Лемма: $L = x_z + S$, где $S$ --- множество решений ОСЛУ $Ax = 0$.
+
+            \begin{proposal}
+                Множество $L \subseteq \RR^n$ является линейным многообразием $\iff L = v_0 + S$ для некоторых $v_0 \in \RR^n$ и подпространства $S \subseteq \RR^n$. 
+            \end{proposal}
+
+            \begin{proof}~
+                \begin{description}
+                \item[$\implies$] Из леммы.
+                \item[$\impliedby$] $L = v_0 + S$. Значит существует ОСЛУ $Ax = 0$, для которой $S$ является множеством решений. Тогда, $L$ --- множество решений СЛУ $Ax = Av_0$ (по лемме).
+                    \qedhere
+                \end{description}
+            \end{proof}
+
+
         \proofitem{Критерий равенства двух линейных многообразий}
+
+            \begin{proposal}
+                Пусть $L_1 = v_1 + S_1$ и $L_2 = v_2 + S_2$ --- два линейных многообразия в $\RR^n$. Тогда,
+                \begin{equation*}
+                    L_1 = L_2 \iff \begin{cases}
+                        S_1 = S_2 \ (= S) \\
+                        v_1 - v_2 \in S
+                    \end{cases}
+                .\end{equation*}
+            \end{proposal}
+
+            \begin{proof}~
+                \begin{description}
+                \item[$\impliedby$] 
+                    $L_1 = v_1 + S_1 = v_1 + S_2 = v_2 + (v_1 - v_2) + S = v_2 + S = L_2$.
+                \item[$\implies$]
+                    $v_1 = v_1 + 0 \in L_1 = L_2 = v_2 + S_2 \implies v_1 - v_2 \in S_2$,
+
+                    $v \in S_1 \implies v + v_1 \in L_1 = L_2 = v_2 + S_2 \implies v \in (v_2 - v_1) + S_2 = S_2 \implies S_1 \subseteq S_2$.
+
+                    Аналогично, $v_1 - v_2 \in S_1$ и $S_2 \subseteq S_1$.
+                    \qedhere
+                \end{description}
+            \end{proof}
+
+
         \proofitem{Теорема о плоскости, проходящей через $k+1$ точку в $\RR^n$}
+
+            \begin{theorem}~
+                \begin{enumerate}[label=\alph*)]
+                \item Через любые $k + 1$ точек в $\RR^n$ проходит плоскость размерности $\leq k$.
+                \item Если это точки не лежат в плоскости размерности $<k$, то через них проходит ровно одна плоскость размерности $k$.
+                \end{enumerate}
+            \end{theorem}
+
+            \begin{proof}~
+                \begin{enumerate}[label=\alph*)]
+                    \item Пусть $v_0, v_1, \dots, v_k$ --- данные точки. Тогда через них проходит плоскость $P = v_0 + \left< v_1 - v_0, \dots, v_k - v_0 \right>$.
+
+                        Ясно, что $\dim P \leq k$.
+
+                    \item Из условия следует, что $\dim P = k \implies v_1 - v_0, \dots, v_k - v_0$ линейно независимы.
+
+                        Если $P' = v_0 + S$ --- другая плоскость размерности $k$, содержащая $v_0, \dots, v_k$, то $v_1 - v_0, \dots, v_k - v_0 \in S \implies S = \left< v_1 - v_0, \dots, v_k - v_0 \right> \implies P' = P$.
+                        \qedhere
+                \end{enumerate}
+            \end{proof}
+
+
     \end{colloq}
 
 \end{document}
