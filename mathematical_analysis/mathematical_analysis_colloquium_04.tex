@@ -548,4 +548,194 @@
         Т.к. $f(x)$ и $g(x)$ просто числа, то $ g(x)\os(\|h\|)+ f(x)\os(\|h\|) = \os(\|h\|)$.
         Таким образом, теорема доказана.
     \end{proof}
+
+    \section{Дифференциалы высоких порядков.}
+
+    Предположим, что $f\colon \RR^k\to \RR$ --- дифференцируема в окрестности точки $a$ и предположим, что ее частные производные
+    $\dfrac{\partial f}{\partial x_j}$ дифференцируемы в точке $a$.
+    Тогда при каждом $h\in \RR^k$ возникает функция $x\mapsto df\bigl|_x(h)=\dfrac{\partial f}{\partial x_1}(x)h_1+\ldots+\dfrac{\partial f}{\partial x_k}(x)h_k$, дифференцируемая в точке $a$.
+    
+    Ее дифференциал
+    $\dd(\dd f(h))\bigl|_a (q)=
+    \left(\sum\limits_{j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_1}(a)q_j\right)h_1+\ldots+
+    \left(\sum\limits_{j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_k}(a)q_j\right)h_k$.
+
+    То есть получена билинейная форма
+    $\dd(\dd f(h))\bigl|_a (q)=\sum\limits_{i,j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_i}(a)q_jh_i$.
+    Эта билинейная форма оказывается симметричной по теореме Юнга, а т.к. симметричная билинейная форма однозначно задается своей квадратичной формой
+    $\dd(\dd f(h))\bigl|_a (h) = \sum\limits_{i,j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_i}(a)h_jh_i
+    =\sum\limits_{i,j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_i}(a)dx_j(h)dx_i(h)$,
+    то эту квадратичную форму $d^2f:=\sum\limits_{i,j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_i}(a)dx_jdx_i$
+    и называют {\bf вторым дифференциалом} функции $f$.
+
+    Аналогично определяется дифференциал $n$-го порядка:
+
+    \begin{definition*}
+        Если $f$ --- $n$ раз дифференцируема в точке $a$, то
+        $$
+            \dd^nf\bigl|_a:=\sum\limits_{1 \leq j_1,\ldots, j_n \leq k}
+            \dfrac{\partial^n f}{\partial x_{j_1}\ldots\partial x_{j_n}}(a)\dd x_{j_1}\ldots \dd x_{j_n}.
+        $$
+        Последняя запись означает лишь то, что при вычислении $n$-го дифференциала на векторе $h\in \RR^k$
+        надо воспользоваться линейностью, а $[\dd x_{j_1}\ldots \dd x_{j_n}] (h) := \dd x_{j_1}(h)\ldots \dd x_{j_n}(h) = h_{j_1}\ldots h_{j_n}$.
+    \end{definition*}
+
+    \section{Дифференцирование сложной функции.}
+
+    \begin{theorem*}
+        Пусть $f\colon \RR^k\to \RR^m$, $g\colon \RR^m\to \RR^n$, причем отображение $f$ дифференцируемо в точке $a$, отображение $g$ дифференцируемо в точке $f(a)$. Тогда отображение $g\circ f$ дифференцируемо в точке $a$ и $\dd(g\circ f)\bigl|_a = \dd g\bigl|_{f(a)}\circ\, \dd f\bigl|_a$.
+    \end{theorem*}
+
+    \begin{remark*}
+        Поясним запись $\dd(g\circ f)\bigl|_a = \dd g\bigl|_{f(a)}\circ\, \dd f\bigl|_a$.
+        Здесь $\dd f\bigl|_a\colon \RR^k\to \RR^m$ есть линейное отображение и $\dd g\bigl|_{f(a)}\colon \RR^m\to \RR^n$ есть линейное отображение.
+        Тогда их композиция $\dd g\bigl|_{f(a)}\circ\, \dd f\bigl|_a\colon \RR^k\to \RR^n$ есть линейное отображение, действующее по правилу
+        $$\dd g\bigl|_{f(a)}\circ\, \dd f\bigl|_a (h) = \dd g\bigl|_{f(a)} (\dd f\bigl|_a(h)).$$
+    \end{remark*}
+
+    \begin{proof}
+        По условию
+        $f(a+h)-f(a) = \dd f(h) + \alpha(h)\|h\|$, где $\lim\limits_{\|h\|\to0}\|\alpha(h)\|=0$
+        и $g(f(a)+q) - g(f(a)) = \dd g(q)+\beta(q)\|q\|$, где $\lim\limits_{\|q\|\to0}\|\beta(q)\|=0$.
+        Мы также доопределим $\alpha$ и $\beta$ в точке нуль нулем (т.е. считаем $\alpha(0)=0$ и $\beta(0)=0$).
+        Тогда
+        \begin{align*}
+            g\bigl(f(a+h)\bigr) - g\bigl(f(a)\bigr) 
+            &= g\bigl(f(a) + [f(a+h)-f(a)]\bigr) - g\bigl(f(a)\bigr) \\
+            &= \dd g[f(a+h)-f(a)] + \beta\bigl(f(a+h)-f(a)\bigr)\|f(a+h)-f(a)\| \\
+            &= \dd g[\dd f(h) + \alpha(h)\|h\|] + \beta\bigl(f(a+h)-f(a)\bigr)\|\dd f(h) + \alpha(h)\|h\|\|.
+        \end{align*}
+
+        Тем самым,
+        $$
+            g\bigl(f(a+h)\bigr) - g\bigl(f(a)\bigr) = \dd g[\dd f(h)] + \gamma(h)\|h\|,
+        $$
+        где
+        \begin{align*}
+            \|\gamma(h)\|
+            &= \Bigl\|dg[\alpha(h)] +  \beta\bigl(f(a+h)-f(a)\bigr)\|\dd f(h/\|h\|) + \alpha(h)\| \Bigr\| \\
+            &\leq \|dg[\alpha(h)]\| + \bigl\|\beta\bigl(f(a+h)-f(a)\bigr)\bigr\| (\|\dd f(h/\|h\|)\| + \|\alpha(h)\|).
+        \end{align*}
+
+        Напомним, что для линейных отображений $\dd g$ и $\dd f$ существуют такие постоянные $A$ и $B$, что
+        $\|\dd f(h)\|\leq A\|h\|$ и $\|\dd g(q)\|\leq B\|q\|$,
+        поэтому $\|\dd f(h/\|h\|)\| + \|\alpha(h)\|\leq A + \|\alpha(h)\|$ и $\|\dd g[\alpha(h)]\|\leq B\|\alpha(h)\|$.
+
+        Так как $\bigl\|\beta\bigl(f(a+h)-f(a)\bigr)\bigr\|\to0$ при $\|h\|\to 0$, получаем, что $\lim\limits_{\|h\|\to0}\|\gamma(h)\|=0$.
+    \end{proof}
+
+    \begin{remark*}
+        При фиксированных базисах $e=\{e_1,\ldots, e_k\}$, $e'=\{e_1',\ldots, e_m'\}$, $e''=\{e_1'',\ldots, e_n''\}$
+        в $\RR^k$, $\RR^m$ и $\RR^n$ соответственно, матрица композиции линейных отображений есть произведение матриц этих линейных отображений.
+
+        Таким образом, в нашем случае для композиции функций $g\circ f$, где $f\colon \RR^k\to \RR^m$ и $g\colon \RR^m\to \RR^n$, по предыдущей теореме выполнено
+        $$
+            \begin{pmatrix}
+                \dfrac{\partial (g\circ f)_1}{\partial y_1}(a) & \ldots & \dfrac{\partial (g\circ f)_1}{\partial y_k}(a) \\
+                \ldots \\
+                \dfrac{\partial (g\circ f)_n}{\partial y_1}(a) & \ldots & \dfrac{\partial (g\circ f)_n}{\partial y_k}(a)
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                \dfrac{\partial g_1}{\partial x_1}(f(a)) & \ldots & \dfrac{\partial g_1}{\partial x_m}(f(a)) \\
+                \ldots \\
+                \dfrac{\partial g_n}{\partial x_1}(f(a)) & \ldots & \dfrac{\partial g_n}{\partial x_m}(f(a))
+            \end{pmatrix}
+            \begin{pmatrix}
+                \dfrac{\partial f_1}{\partial y_1}(a) & \ldots & \dfrac{\partial f_1}{\partial y_k}(a) \\
+                \ldots \\
+                \dfrac{\partial f_m}{\partial y_1}(a) & \ldots & \dfrac{\partial f_m}{\partial y_k}(a)
+            \end{pmatrix}
+        $$
+        В частности, в случае, когда $n=1$, для функции $g(x_1,\ldots, x_m)$ и отображения
+        $$f(y_1,\ldots, y_k) = (f_1(y_1,\ldots, y_k),\ldots, f_m(y_1,\ldots, y_k)),$$ выполнено:
+        $$
+            \begin{pmatrix}
+                \dfrac{\partial (g\circ f)}{\partial y_1}(a) & \ldots & \dfrac{\partial (g\circ f)}{\partial y_k}(a)
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                \dfrac{\partial g}{\partial x_1}(f(a)) & \ldots & \dfrac{\partial g}{\partial x_m}(f(a))
+            \end{pmatrix}
+            \begin{pmatrix}
+                \dfrac{\partial f_1}{\partial y_1}(a) & \ldots & \dfrac{\partial f_1}{\partial y_k}(a) \\
+                \ldots \\
+                \dfrac{\partial f_m}{\partial y_1}(a) & \ldots & \dfrac{\partial f_m}{\partial y_k}(a)
+            \end{pmatrix}
+        $$
+
+        Отсюда, во-первых получаем правило вычисления частной производной сложной функции:
+        $\dfrac{\partial (g\circ f)}{\partial y_j}(a) =
+        \dfrac{\partial g}{\partial x_1}(f(a)) \dfrac{\partial f_1}{\partial y_j}(a)+\ldots+
+        \dfrac{\partial g}{\partial x_m}(f(a)) \dfrac{\partial f_m}{\partial y_j}(a)$.
+        Во-вторых, получаем следующее свойство инвариантности первого дифференциала:
+        для дифференциала выполнено равенство
+        $\dd g = \dfrac{\partial g}{\partial x_1}\dd x_1+\ldots+\dfrac{\partial g}{\partial x_m}\dd x_m$,
+        где нам не важно, являются ли $
+        dd x_1,\ldots, \dd x_m$ --- дифференциалами независимых переменных
+        или же являются дифференциалами некоторых функций $x_j = f_j(y_1,\ldots, y_k)$.
+    \end{remark*}
+
+    \begin{example*}
+        Пусть $f(x,y) = \varphi(u, v, w)$, где $u=xy, v= x+y, w=x-y$.
+        Тогда
+        \begin{align*}
+            \dd f 
+            &= \dfrac{\partial \varphi}{\partial u} \dd u + \dfrac{\partial \varphi}{\partial v} \dd v + \dfrac{\partial \varphi}{\partial w} \dd w 
+            = \dfrac{\partial \varphi}{\partial u} \dd(xy) + \dfrac{\partial \varphi}{\partial v} \dd(x+y) + \dfrac{\partial \varphi}{\partial w} \dd(x-y) \\
+            &= \dfrac{\partial \varphi}{\partial u} (x\dd y + y\dd x) +
+            \dfrac{\partial \varphi}{\partial v} (\dd x+\dd y) + \dfrac{\partial \varphi}{\partial w} (\dd x - \dd y).
+        \end{align*}
+
+        В частности,
+        $\dfrac{\partial f}{\partial x} = y\dfrac{\partial \varphi}{\partial u}(xy, x+y, x-y) +
+        \dfrac{\partial \varphi}{\partial v}(xy, x+y, x-y) +  \dfrac{\partial \varphi}{\partial w}(xy, x+y, x-y)$
+        и $\dfrac{\partial f}{\partial y} = x\dfrac{\partial \varphi}{\partial u}(xy, x+y, x-y) +
+        \dfrac{\partial \varphi}{\partial v}(xy, x+y, x-y) -  \dfrac{\partial \varphi}{\partial w}(xy, x+y, x-y)$.
+    \end{example*}
+
+    \section{Дифференциал обратного отображения}
+
+    \begin{theorem*}
+        Пусть $f\colon \RR^k\to \RR^k$ --- есть непрерывная биекция между окрестностями $U(a)$ и $V(f(a))$,
+        причем обратное отображение $f^{-1}\colon V(f(a))\to U(a)$ также непрерывно (т.е. $f$ --- гомеоморфизм между $U(a)$ и $V(f(a))$).
+
+        Предположим, что $f$ --- дифференцируемо в точке $a$ и $\dd f$ --- обратимое линейное отображение.
+        Тогда $f^{-1}$ --- дифференцируемо в точке $f(a)$ и $\dd f^{-1}\bigl|_{f(a)} = \bigr(df\bigl|_a\bigl)^{-1}$.
+    \end{theorem*}
+
+    \begin{proof}
+        Нам нужно проверить, что
+        $$
+            \lim\limits_{\|q\|\to0}\dfrac{\|f^{-1}(f(a) + q)-f^{-1}(f(a)) - (\dd f)^{-1}(q)\|}{\|q\|}=0.
+        $$
+
+        Пусть $h=f^{-1}(f(a) + q)-f^{-1}(f(a))=f^{-1}(f(a) + q)-a$, тогда $q = f(a+h)-f(a)$ и $\|q\|\to 0$ тогда и только тогда, когда $\|h\|\to0$.
+
+        Так как $f$ --- дифференцируемо в точке $a$, то $$f(a+h)-f(a) = \dd f(h)+\alpha(h)\|h\|,$$ где $\lim\limits_{\|h\|\to0}\|\alpha(h)\|=0$.
+
+        Таким образом,
+        $$
+            \lim\limits_{\|q\|\to0}\dfrac{\|f^{-1}(f(a) + q)-f^{-1}(f(a)) - (\dd f)^{-1}(q)\|}{\|q\|}
+            = \lim\limits_{\|h\|\to0}\dfrac{\bigl\|h - (\dd f)^{-1}(\dd f(h)+\alpha(h)\|h\|)\bigr\|}{\bigl\|\dd f(h)+\alpha(h)\|h\|\bigr\|}.
+        $$
+
+        Числитель в последнем выражении равен $\|h\|\bigl\|(df)^{-1}(\alpha(h))\bigr\|$. Для линейного отображения $(\dd f)^{-1}$ найдется число $C>0$, для которого $\|(\dd f)^{-1}(p)\| \leq C\|p\|,\forall p\in \RR^k$.
+
+        Отсюда, подставив $p=\dd f(h)$, получаем $C^{-1}\|h\|\leq\|\dd f(h)\|$. Тем самым $$\bigl\|\dd f(h)+\alpha(h)\|h\|\bigr\|\geq\|\dd f(h)\|-\|h\|\|\alpha(h)\|\geq\|h\|\bigl(C^{-1} - \|\alpha(h)\|\bigr).$$
+
+        Таким образом,
+        $$
+            \dfrac{\bigl\|h - (\dd f)^{-1}(\dd f(h)+\alpha(h)\|h\|)\bigr\|}{\bigl\|\dd f(h)+\alpha(h)\|h\|\bigr\|}
+            \leq \dfrac{C\|h\|\|\alpha(h)\|}{\|h\|\bigl(C^{-1} - \|\alpha(h)\|\bigr)}=
+            \dfrac{C\|\alpha(h)\|}{\bigl(C^{-1} - \|\alpha(h)\|\bigr)}\to0
+        $$
+        при $\|h\|\to 0$.
+    \end{proof}
+
+    \begin{remark*}
+        Отметим, что матрица обратного линейного отображения есть обратная матрица к матрице исходного линейного отображения.
+        Тем самым, матрица Якоби обратного отображения $J_{f^{-1}}(y)$ является обратной к матрице Якоби исходного отображения,
+        т.е. равна $\bigr(J_f(f^{-1}(y))\bigl)^{-1}$.
+    \end{remark*}
 \end{document}
