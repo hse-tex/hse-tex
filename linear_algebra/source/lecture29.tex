@@ -1,0 +1,124 @@
+\section{Лекция 23.04.2020} 
+
+Конспект полностью написан по
+\href{https://www.dropbox.com/s/ze7leityir3zbqo/LA_19-20_osn_Lecture29.svg?dl=0}{снимку доски}, 
+\href{https://www.youtube.com/watch?v=_J8hatdsSrM}{записи лекции} и
+\href{https://www.dropbox.com/s/as7uz9v74ba9u5f/LinOperators2.pdf?dl=0}{слайдам},
+возможны баги при переписывании. Если хочется понять точно ли что-то правда, лучше смотреть туда.
+
+
+\subsection{Критерий диагонализуемости линейного оператора в терминах его характеристического многочлена, а также алгебраической и геометрической кратностей его собственных }значений
+
+Пусть $V$ --- векторное пространство над $F$, $\dim V = n$, $\phi \in \L(V)$ --- линейный оператор.
+
+\begin{theorem}{(критерий диагонализуемости)}
+    $\phi$ диагонализуемо $\iff$ выполняются одновременно следующие 2 условия:
+    \begin{enumerate}
+    \item $\chi_\phi(t)$ разлагается на линейные множители.
+    \item $\forall \lambda \in \spec \phi \quad g_\lambda = a_\lambda$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}~
+    \begin{description}
+    \item[$\implies$] $\phi$ диагонализуемо $\implies \exists$ базис $\E = (e_1, \dots, e_n)$, такой что $\chi_\phi(t)$ разлагается на линейные множители:
+        \begin{equation*}
+            A(\phi, \E) = \begin{pmatrix} 
+                \mu_1 & 0 & \dots & 0 \\
+                0 & \mu_2 & \dots & 0 \\
+                \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & \dots & \mu_n
+            \end{pmatrix} \implies \chi_\phi(t) = (-1)^n \begin{vmatrix} 
+                \mu_1 - t & 0 & \dots & 0 \\
+                0 & \mu_2 - t & \dots & 0 \\
+                \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & \dots & \mu_n - t
+            \end{vmatrix} = (t - \mu_1) \cdot \ldots \cdot (t - \mu_n)
+        .\end{equation*}
+
+        Перепишем $\chi_\phi(t)$ в виде $\chi_\phi(t) = (t - \lambda_1)^{k_1} \cdot \ldots \cdot (t - \lambda_s)^{k_s}$, где $ \{\mu_1, \dots, \mu_n\} = \{\lambda_1, \dots, \lambda_s\}, \quad \lambda_i \neq \lambda_j$ при $i \neq j$.
+
+        $\forall i = 1, \dots, s$ имеем $V_{\lambda_i}(\phi) \supseteq \left< e_j \mid \mu_j = \lambda_i \right> \implies \dim V_{\lambda_i}(\phi) \geq k_i$, то есть $g_{\lambda_i} \geq a_{\lambda_i}$.
+
+        Но мы знаем, что $g_{\lambda_i} \leq a_{\lambda_i}$. Следовательно, $a_{\lambda_i} = a_{\lambda_i}$.
+        \qedhere
+
+    \item[$\impliedby$] Пусть $\chi_\phi(t) = (t - \lambda_1)^{k_1} \cdot \ldots \cdot (t - \lambda_s)^{k_s}$, $\lambda_i \neq \lambda_j$ при $i \neq j$.
+
+        Так как подпространства $V_{\lambda_1}(\phi), \dots, V_{\lambda_s}(\phi)$ линейно независимы, то 
+        \begin{equation*}
+            \dim(V_{\lambda_1}(\phi) + \dots + V_{\lambda_s}(\phi)) = \dim V_{\lambda_1}(\phi) + \dots + \dim V_{\lambda_s}(\phi) = k_1 + \dots + k_s = n = \dim V
+        .\end{equation*}
+        Следовательно, $V = V_{\lambda_1}(\phi) \oplus \dots \oplus V_{\lambda_s}(\phi)$.
+
+        Если $\E_i$ --- базис в $V_{\lambda_i}(\phi)$, то $\E = \E_1 \sqcup \dots \sqcup \E_s$ --- базис всего $V$, состоящий из собственных векторов, а значит $\phi$ диагонализуем.
+    \end{description}
+\end{proof}
+
+\paragraph{Примеры}
+
+\begin{enumerate}
+    \item $\phi = \lambda \cdot \mathrm{Id}$ --- скалярный оператор.
+
+        Для всякого базиса $\E$ в $V$ имеем $A(\phi, \E) = \diag(\lambda, \dots, \lambda)$.
+
+        $\chi_\phi(t) = (t - \lambda)^n$.
+
+        $\spec \phi = \{\lambda\}$, $a_\lambda = n = g_\lambda \implies $ условия 1) и 2) выполнены.
+
+    \item $V = \RR^2$, $\phi$ --- ортогональная проекция на прямую $l \ni 0$.
+
+        $e_1 \in l \setminus \{0\}$, $e_2 \in l^{\perp} \setminus \{0\}$, $\E = (e_1, e_2) \implies A(\phi, \E) = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$
+
+        $\chi_\phi(t) = t(t - 1) \implies \spec \phi = \{0, 1\}$.
+
+        $\lambda = 0, 1 \implies a_\lambda = 1 = g_\lambda \implies $ условия 1) и 2) выполнены.
+
+    \item $V = \RR^2$, $\phi$ --- поворот на угол $\alpha \neq \pi k$.
+
+        $\E = (e_1, e_2)$ --- положительно ориентированный базис $\implies A(\phi, \E) = \begin{pmatrix} \cos \alpha & - \sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}$.
+
+        $\chi_\phi(t) = \begin{vmatrix} \cos \alpha - t & - \sin \alpha \\ \sin a & \cos \alpha - t \end{vmatrix} = t^2 - 2 \cos \alpha \cdot t + 1$.
+
+        $\frac{D}{4} = \cos ^2 \alpha - 1 = - \sin ^2 a < 0 \implies $ нет корней в $\RR \implies \chi_\phi(t)$ не разлагается на линейные множители над $\RR \implies $ 1) не выполнено $ \implies \phi$ не диагонализуем над $\RR$.
+
+        Однако $\phi$ диагонализуем над $\CC$!
+
+    \item $V = F[x]_{\leq n}$, $n \geq 1$; $\quad \phi \colon f \mapsto f'$.
+
+        Техническое условие: $\mathop{\mathrm{char}} F = 0$ ($\iff \ord 1 = \infty$ в группе $(F, +)$), например, $F = \QQ, \RR, \CC$ подходят.
+
+        \begin{math}
+            \E = (1, x, \dots, x^n) \implies A(\phi, \E) = \begin{pmatrix}
+                0 & 1 & 0 & \dots & 0 \\
+                0 & 0 & 2 & \dots & 0 \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & 0 & \dots & n \\
+                0 & 0 & 0 & \dots & 0
+            \end{pmatrix}
+        \end{math}
+
+        $\chi_\phi(t) = t^{n + 1} \implies \spec \phi = \{0\} \implies $ 1) выполнено.
+
+        $\lambda = 0 \implies a_\lambda = n + 1; \quad V_\lambda(\phi) = \left< 1 \right> \implies g_\lambda = 1 < a_\lambda \implies $ 2) не выполнено $\implies \phi$ не диагонализуем.
+
+        \begin{math}
+            \E' = \left(1, x, \frac{x^2}{2}, \dots, \frac{x^n}{n!}\right) \implies A(\phi, \E') = \begin{pmatrix} 
+                0 & 1 & 0 & \dots & 0 \\
+                0 & 0 & 0 & \dots & 0 \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & 0 & \dots & 1 \\
+                0 & 0 & 0 & \dots & 0
+            \end{pmatrix} = J_0^{n + 1} \text{ --- это жорданова клетка}
+        \end{math}
+\end{enumerate}
+
+
+\subsection{Существование одномерного или двумерного инвариантного подпространства у линейного оператора в действительном векторном пространстве}
+\subsection{Отображение, сопряжённое к линейному отображению между двумя евклидовыми пространствами: определение, существование и единственность}
+\subsection{Матрица сопряжённого отображения в паре произвольных и паре ортонормированных базисов}
+\subsection{Сопряжённый оператор в евклидовом пространстве}
+\subsection{Самосопряжённые (симметрические) операторы}
+\subsection{Существование собственного вектора у самосопряжённого оператора}
+\subsection{Инвариантность ортогонального дополнения к подпространству, инвариантному относительно самосопряжённого оператора}
+
