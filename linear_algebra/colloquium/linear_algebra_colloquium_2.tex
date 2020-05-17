@@ -1580,7 +1580,10 @@
             \begin{proof}
                 Фиксируем базис $(e_1, \dots, e_n)$ в $V$.
 
-                Тогда, отображение $\phi \colon V \to F^n$ из \hyperref[lec16:example_5]{Примера 5} --- изоморфизм.
+                Тогда, отображение $\phi \colon V \to F^n$ --- изоморфизм.
+                \begin{equation*}
+                    v = x_1 e_1 + \dots + x_n e_n \implies \phi(v) := \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}.
+                \end{equation*}
             \end{proof}
 
             \begin{lemma}
@@ -1616,6 +1619,7 @@
 
 
         \proofitem{Существование и единственность линейного отображения с заданными образами базисных векторов}
+        \label{2_2_3}
 
             Пусть $V$, $W$ --- векторные пространства над $F$ и $(e_1, \dots, e_n)$ --- фиксированный базис в $V$.
 
@@ -1636,7 +1640,7 @@
 
                     Тогда $\phi$ --- линейное отображение из $V$ в $W$ (упражнение).
 
-                    Единственность следует из \ref{lec16:kekek}
+                    Единственность следует из \ref{lec16:kekek}.
                     \qedhere
                 \end{enumerate}
             \end{proof}
@@ -1730,16 +1734,57 @@
                 При фиксированном $\E$ и $\F$ отображение $\phi \mapsto A(\phi, \E, \F)$ является изоморфизмом между $\hom(V, W)$ и $\text{Mat}_{m \times n}(F)$.
             \end{corollary}
 
-            % TODO
+            Зафиксируем базисы $\E = (e_1, \dots, e_n)$ в $V$ и $\F = (f_1, \dots, f_m)$ в $W$.
+
+            \paragraph{Линейность.}
+            \begin{enumerate}
+            \item
+                \begin{math}
+                    \begin{aligned}[t]
+                        \phi, \psi \in \hom(V, W), \
+                        &A_\phi = A(\phi, \E, \F)& \\
+                        &A_\psi = A(\psi, \E, \F)& \\
+                        &A_{\phi + \psi} = A(\phi + \phi, \E, \F)& \implies A_{\phi + \psi} = A_\phi + A_\psi
+                    \end{aligned}
+                \end{math}
+
+            \item
+                \begin{math}
+                    \begin{aligned}[t]
+                        \lambda \in F, \phi \in \hom(V, W), \
+                        &A_\phi = A(\phi, \E, \F)& \\
+                        &A_{\lambda \phi} = A(\lambda \phi, \E, \F)& \implies A_{\lambda \phi} = \lambda A_\phi
+                    \end{aligned}
+                \end{math}
+            \end{enumerate}
 
             \begin{proof}~
-                Биективность была выше.
-                Линейность --- из предыдущего предложения.
+                \begin{enumerate}
+                \item 
+                    \begin{align*}
+                        (f_1, \dots, f_m) \cdot A_{\phi + \psi}
+                        &= ((\phi + \psi)(e_1), \dots, (\phi + \psi)(e_n)) \\
+                        &= (\phi(e_1), \dots, \phi(e_n)) + (\psi(e_1), \dots, \psi(e_n)) \\
+                        &= (f_1, \dots, f_m) A_\phi + (f_1, \dots, f_m) A_\psi \\
+                        &= (f_1, \dots, f_m) (A_\phi + A_\psi)
+                    .\end{align*}
+
+                    Следовательно, $A_{\phi + \psi} = A_\phi + A_\psi$.
+
+                \item 
+                    \begin{align*}
+                        (f_1, \dots, f_m) \cdot A_{\lambda \phi}
+                        &= ((\lambda \phi)(e_1), \dots, (\lambda \phi)(e_n)) \\
+                        &= ((\phi)(e_1), \dots, (\phi)(e_n)) \lambda \\
+                        &= (f_1, \dots, f_m) A_{\phi} \lambda
+                    .\end{align*}
+                    Следовательно, $A_{\lambda \phi} = \lambda A_{\phi}$.
+                    \qedhere
+                \end{enumerate}
             \end{proof}
 
-            \begin{corollary}
-                $\dim \hom(V, W) = m \cdot n$.
-            \end{corollary}
+            \paragraph{Биективность.}
+            Следует из пункта \ref{2_2_3}
 
 
         \proofitem{Матрица композиции двух линейных отображений}
@@ -1806,6 +1851,21 @@
 
         \proofitem{Связь между рангом матрицы линейного отображения и размерностью его образа}
 
+            Пусть $U \subseteq V$ --- подпространство, $u_1, \dots, u_k$ --- базис в $U$.
+
+            \begin{lemma}
+                Тогда, $\phi(U) = \left< \phi(u_1), \dots, \phi(u_k) \right>$.
+                В частности, $\dim \phi(U) \leq \dim U$ и $\dim \Im \phi \leq \dim V$.
+            \end{lemma}
+
+            \begin{proof}
+                $u \in U \implies u = \alpha_1 u_1 + \dots + \alpha_k u_k$, $\alpha_i \in F$, тогда
+                \begin{equation*}
+                    \phi(u) = \alpha_1 \phi(u_1) + \dots + \alpha_k \phi(u_k) \in \left< \phi(u_1), \dots, \phi(u_k) \right>
+                .\qedhere\end{equation*}
+            \end{proof}
+
+            \bigskip
             Пусть 
             \begin{math}
                 \begin{aligned}[t]
