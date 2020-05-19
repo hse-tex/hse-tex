@@ -1400,6 +1400,7 @@
     \end{colloq}
 
 
+    \newpage
     \section{Вопросы на доказательство}
 
     \subsection{Подпространства}
@@ -1553,6 +1554,56 @@
     \begin{colloq}
         \proofitem{Свойства отношения изоморфности на множестве всех векторных пространств}
 
+            \begin{proposal}
+                \label{lec16:prop_1}
+                Если $\phi \colon V \to W$ --- изоморфизм, то $\phi^{-1}$ --- тоже изоморфизм. 
+            \end{proposal}
+
+            \begin{proof}
+                Биективность есть, так как $\phi^{-1}$ --- обратное отображение.
+                Проверим линейность:
+                \begin{enumerate}[label=\arabic*)]
+                \item $w_1, w_2 \in W \implies w_1 = \phi(\phi^{-1}(w_1))$, $w_2 = \phi(\phi^{-1}(w_2))$
+                    \begin{align*}
+                        \phi^{-1}(w_1 + w_2) &= \phi^{-1}\Big(\underbrace{\phi\left(\phi^{-1}(w_1)\right)}_{w_1} + \underbrace{\phi\left(\phi^{-1}(w_2)\right)}_{w_2}\Big) \\
+                        &= \underbrace{\phi^{-1}\big(\phi}_{Id}\left(\phi^{-1}(w_1) + \phi^{-1}(w_2)\right)\!\big)\\
+                        &= \phi^{-1}(w_1) + \phi^{-1}(w_2)
+                    .\end{align*}
+
+                \item 
+                    \begin{align*}
+                        \phi^{-1}(\lambda \cdot w_1) &= \phi^{-1}\left(\lambda \cdot \phi\left(\phi^{-1}\left(w_1\right)\right)\right) \\
+                        &= \underbrace{\phi^{-1}\big(\phi}_{Id}\left(\lambda \cdot \phi^{-1}(w_1)\right)\!\big) \\
+                        &= \lambda \phi^{-1}(w_1)
+                    .\qedhere\end{align*}
+                \end{enumerate}
+            \end{proof}
+
+
+            \bigskip
+            Пусть $U \xrightarrow{\psi} V \xrightarrow{\phi} W$, тогда $\phi \circ \psi : U \to W$ --- композиция.
+
+            \begin{proposal}~
+                \label{lec16:prop_2}
+                \begin{enumerate}[nosep]
+                \item Если $\phi$, $\psi$ линейны, то $\phi \circ \psi$ тоже линейна.
+                \item Если $\phi$, $\psi$ --- изоморфизмы, то $\phi \circ \psi$ --- тоже изоморфизм.
+                \end{enumerate}
+            \end{proposal}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item \label{lec16:comp_1}
+                    \begin{enumerate}[label=(\arabic*)]
+                        \item $(\phi \circ \psi)(u_1 + u_2) = \phi(\psi(u_1 + u_2)) = \phi(\psi(u_1) + \psi(u_2)) = \phi(\psi(u_1)) + \phi(\psi(u_2)) = (\phi \circ \psi)(u_1) + (\phi \circ \psi)(u_2)$.
+                        \item $(\phi \circ \psi)(\lambda u) = \phi(\psi(\lambda u)) = \phi(\lambda \psi(u)) = \lambda \phi(\psi(u)) = \lambda(\phi \circ \psi)(u)$.
+                    \end{enumerate}
+                \item из \ref{lec16:comp_1} следует, что $(\phi \circ \psi)$ линейно, но при этом биективно как композиция двух биекций.
+                    \qedhere
+                \end{enumerate}
+            \end{proof}
+
+            \bigskip
             \begin{theorem}
                 Отношение изоморфности является отношением эквивалентности на множестве всех векторных пространств над фиксированным полем $F$.
             \end{theorem}
@@ -1787,7 +1838,10 @@
             \end{proof}
 
             \paragraph{Биективность.}
-            Следует из пункта \ref{2_2_3}
+
+            По определению, в $j$-м столбце матрицы $A$ стоят координаты вектора $\phi(e_j)$ в базисе $\F$.
+
+            А значит, из пункта \hyperref[2_2_3]{2.3} следует, что при фиксированных базисах $\E$ и $\F$ отображение $\phi \mapsto A(\phi, \E, \F)$ является биекцией между $\hom(V, W)$ и $\text{Mat}_{m \times n}(F)$.
 
 
         \proofitem{Матрица композиции двух линейных отображений}
@@ -1823,7 +1877,7 @@
             \end{proof}
 
 
-        \proofitem{Утверждение о том, что ядро и образ подпространства в соответствующих векторных пространствах}
+        \proofitem{Утверждение о том, что ядро и образ --- подпространства в соответствующих векторных пространствах}
 
             \begin{proposal}~
                 \begin{enumerate}
