@@ -32,6 +32,9 @@
 \usepackage{tikz}
 \pgfplotsset{every axis/.style={scale only axis}}
 
+%% wrapfigure
+\usepackage{wrapfig}
+
 
 %% Эпиграф
 \usepackage{epigraph}
@@ -39,6 +42,22 @@
 \usepackage{fixltx2e}
 
 \usepackage{graphicx}
+
+\usepackage{blkarray}
+
+\usepackage{scalerel}
+
+
+\usepackage{../lib/kbordermatrix}
+\renewcommand{\kbldelim}{(}
+\renewcommand{\kbrdelim}{)}
+
+
+%% фигуры
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
 
 
 %% Оглавление с ссылками и ссылки на разные вещи
@@ -70,7 +89,10 @@
 \DeclareMathOperator{\sgn}{\mathop{\mathrm{sgn}}}
 \let\hom\undefined
 \DeclareMathOperator{\hom}{\mathop{\mathrm{Hom}}}
+\let\L\undefined
+\DeclareMathOperator{\L}{\mathop{\mathrm{L}}}
 \DeclareMathOperator{\diag}{\mathop{\mathrm{diag}}}
+\DeclareMathOperator{\spec}{\mathop{\mathrm{Spec}}}
 
 %%% Теоремы
 \theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
@@ -169,3 +191,25 @@
 \let\oldnorm\norm
 \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
 \makeatother
+
+
+
+
+% Syntax: \colorboxed[<color model>]{<color specification>}{<math formula>}
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+  \colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  \begingroup
+    \colorlet{cb@saved}{.}%
+    \color#1{#2}%
+    \boxed{%
+      \color{cb@saved}%
+      #3%
+    }%
+  \endgroup
+}

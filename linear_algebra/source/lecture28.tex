@@ -170,6 +170,9 @@ $V_\lambda(\phi) := \{v \in V \mid \phi(v) = \lambda v\}$.
     Многочлен $\chi_\phi(t) := (-1)^n \det(\phi - t \cdot \mathrm{Id}) \in F[t]$ называется \textit{характеристическим многочленом} линейного оператора $\phi$.
 \end{definition}
 
+
+\subsection{Связь спектра линейного оператора с его характеристическим многочленом}
+
 Если $\E$ --- какой-либо базис $V$ и $A = (a_{ij}) = A(\phi, \E)$, то
 \begin{equation*}
     \chi_\phi(t) = (-1)^n \det (A - tE) = (-1)^n \begin{vmatrix} 
@@ -182,8 +185,6 @@ $V_\lambda(\phi) := \{v \in V \mid \phi(v) = \lambda v\}$.
 \end{equation*}
 
 $\chi_\phi(t) = t^n + c_{n - 1}t^{n - 1} + \dots + c_1 t + c_0$, где $c_{n - 1} = -\tr \phi$, $c_0 = (-1)^n \det \phi$.
-
-\subsection{Связь спектра линейного оператора с его характеристическим многочленом}
 
 \begin{corollary}
     $\lambda \in \spec \phi \iff \chi_\phi(\lambda) = 0$, то есть $\lambda$ --- корень характеристического многочлена.
@@ -333,7 +334,7 @@ $\chi_\phi(t) = t^n + c_{n - 1}t^{n - 1} + \dots + c_1 t + c_0$, где $c_{n - 
     \end{enumerate}
 \end{theorem}
 
-\begin{proof}
+\begin{comment}
     Если выполнено только 1), то $\phi$ можно привести к жордановой нормальной форме:
 
     $\exists$ базис $\E$, такой что $A(\phi, \E)$ имеет вид
@@ -356,4 +357,4 @@ $\chi_\phi(t) = t^n + c_{n - 1}t^{n - 1} + \dots + c_1 t + c_0$, где $c_{n - 
             0 & 0 & 0 & \dots & 0 & \mu
         \end{pmatrix}
     \end{equation*}
-\end{proof}
+\end{comment}
