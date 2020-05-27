@@ -1592,12 +1592,44 @@
 
     \defitem{Вид матрицы линейного оператора в базисе, дополняющем базис инвариантного подпространства}
 
-        % TODO
+        Пусть $U \subseteq V$ --- $\phi$-инвариантное подпространство, $(e_1, \dots, e_k)$ --- базис $U$, дополним его до базиса $(e_1, \dots, e_n)$ всего $V$.
+        
+        Тогда $A(\phi, \E)$ имеет вид
+        \begin{equation}
+            \label{lec27:mat}
+            \kbordermatrix{
+                  & k & n - k \\
+                k & A & B \\
+                n - k & 0 & C
+            }
+        .\end{equation}
+
+        При этом $A\left(\phi\big|_U, (e_1, \dots, e_k)\right) = A$.
+
+        Если
+        \begin{math}
+            \begin{aligned}[t]
+                &U = \ker \phi \implies A = 0, \\
+                &U = \Im \phi \implies A = C = 0.
+            \end{aligned}
+        \end{math}
+
+        Обратно, если для некоторого базиса $\E = (e_1, \dots, e_k) \quad A(\phi, \E)$ имеет вид $\eqref{lec27:mat}$, то векторы $e_1, \dots, e_k$ порождают $\phi$-инвариантное подпространство.
 
 
     \defitem{Вид матрицы линейного оператора в базисе, согласованном с разложением пространства в прямую сумму двух инвариантных подпространств}
 
-        %TODO
+        Пусть $U_1, U_2 \subseteq V$ --- два $\phi$-инвариантных подпространства, такие что $V = U_1 \oplus U_2$.
+        
+        Пусть $(e_1, \dots, e_k)$ --- базис $U_1$, $(e_{k + 1}, \dots, e_n)$ --- базис $U_2$.
+        Тогда, $\E = (e_1, \dots, e_n)$ --- базис $V$ и $A(\phi, \E)$ имеет вид
+        \begin{equation*}
+            \kbordermatrix{
+                      & k & n - k \\
+                k     & \star & 0 \\
+                n - k & 0 & \diamond
+            }
+        .\end{equation*}
 
 
     \defitem{Собственный вектор линейного оператора}
@@ -1695,41 +1727,131 @@
 
     \defitem{Линейное отображение евклидовых пространств, сопряжённое к данному}
 
+        Пусть 
+        \begin{math}
+            \begin{aligned}[t]
+                &\EE \text{ --- евклидово пространство со скалярным произведением } (\bigcdot, \bigcdot), \quad \dim \EE = n, \\
+                &\EE \text{ --- другое евклидово пространство со скалярным произведением } (\bigcdot, \bigcdot)', \quad \dim \EE' = m, \\
+                &\phi \colon \EE \to \EE'.
+            \end{aligned}
+        \end{math}
+
+        \begin{definition}
+            Линейное отображение $\psi \colon \EE' \to \EE$ называется \textit{сопряженным} к $\phi$, если 
+            \begin{equation*}
+                \label{lec29:def}
+                \tag{$\star$}
+                (\phi(x), y)'  = (x, \psi(y)) \quad \forall x \in \EE, y \in \EE'
+            .\end{equation*}
+
+            Обозначение: $\phi^*$.
+        \end{definition}
 
 
     \defitem{Линейный оператор в евклидовом пространстве, сопряжённый к данному}
 
+        Пусть $\EE' = \EE$.
+
+        $\phi \colon \EE \to \EE$ --- линейный оператор $ \implies \exists!$ линейный оператор $\phi^{*} \colon \EE \to \EE$, такой что $(\phi(x), y) = (x, \phi^{*}(y)) \quad \forall x, y \in \EE$.
 
 
-    \defitem{Самосопряжјнный линейный оператор в евклидовом пространстве}
+    \defitem{Самосопряжённый линейный оператор в евклидовом пространстве}
 
+        \begin{definition}
+            Линейный оператор $\phi \in L(\EE)$ называется \textit{самосопряженным} (или \textit{симметричным}), если $\phi = \phi^{*}$, то есть $(\phi(x), y) = (x, \phi(y)) \quad \forall x, y \in \EE`$.
+        \end{definition}
 
 
     \defitem{Теорема о каноническом виде самосопряжённого линейного оператора}
 
+        \begin{theorem}
+            \label{lec30:th}
+            $\phi = \phi^* \implies $ в $\EE$ существует ортонормированный базис из собственных векторов.
+
+            В частности, $\phi$ диагонализуем над $\RR$ и $\chi_{\phi}(t)$ разлагается на линейные множители над $\RR$.
+        \end{theorem}
 
 
     \defitem{Каким свойством обладают собственные подпространства самосопряжённого линейного оператора, отвечающие попарно различным собственным значениям}
 
+        \begin{proposal}
+            $\phi = \phi^{*}$, $\lambda, \mu \in \spec \phi$, $\lambda \neq \mu \implies \EE_\lambda(\phi) \perp \EE_\mu(\phi)$.
+        \end{proposal}
 
 
     \defitem{Приведение квадратичной формы к главным осям}
 
+        \begin{theorem}
+            Для любой квадратичной формы $Q \colon \EE \to \RR$ существует ортонормированный базис $\E = (e_1, \dots, e_n)$, в котором $Q$ принимает канонический вид $Q(x) = \lambda_1 x_1^2 + \dots+ \lambda_n x_n^2$.
+            Более того, набор $\lambda_1, \dots, \lambda_n$ определен однозначно, с точностью до перестановки.
+        \end{theorem}
 
 
     \defitem{Ортогональный линейный оператор}
 
+        \begin{definition}
+            Линейный оператор $\phi \in L(\EE)$ называется \textit{ортогональным}, если $(\phi(x), \phi(y)) = (x, y) \quad \forall x, y \in \EE$ (то есть $\phi$ сохраняет скалярное произведение).
+        \end{definition}
 
 
     \defitem{Теорема о пяти эквивалентных условиях, определяющих ортогональный линейный оператор}
 
+        \begin{theorem}
+            $\phi \in L(\EE) \implies $ следующие условия эквивалентны:
+            \begin{enumerate}[label=(\arabic*)]
+            \item \label{lec30:eq1} $\phi$ ортогонален.
+            \item \label{lec30:eq2} $\left|\phi(x)\right| = |x| \quad \forall x \in \EE$ (то есть $\phi$ сохраняет длины векторов).
+            \item \label{lec30:eq3} $\exists \phi^{-1}$ и $\phi^{-1} = \phi^{*}$ (то есть $\phi^{*} \phi = \phi \phi^{*} = \mathrm{Id}$).
+            \item \label{lec30:eq4} $\forall$ ортонормированного базиса $\E$ матрица $A(\phi, \E)$ ортогональна.
+            \item \label{lec30:eq5} $\forall$ ортонормированного базиса $\E = (e_1, \dots, e_n)$ векторы $(\phi(e_1), \dots, \phi(e_n))$ образуют ортонормированный базис.
+            \end{enumerate}
+        \end{theorem}
 
 
     \defitem{Теорема о каноническом виде ортогонального линейного оператора}
 
+        \begin{theorem}
+            Если $\phi \in L(\EE)$ --- ортогональный оператор, то существует ортонормированный базис $\E = (e_1, \dots, e_n)$, такой что 
+            \begin{equation*}
+                \label{lec30:zhopa}
+                \tag{$\star$}
+                A(\phi, \E) = \begin{pmatrix} 
+                    \Pi(\alpha_1) & 0 & \dots & 0 & 0 & \dots & 0 & 0 & \dots & 0 \\ 
+                    0 & \Pi(\alpha_2) & \dots & 0 & 0 & \dots & 0 & 0 & \dots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \dots & \Pi(\alpha_k) & 0 & \dots & 0 & 0 & \dots & 0 \\
+                    0 & 0 & \dots & 0 & -1 & \dots & 0& 0 & \dots & 0\\
+                    \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \dots & 0 & 0 & \dots & -1 & 0 & \dots & 0\\
+                    0 & 0 & \dots & 0 & 0 & \dots & 0 & 1 & \dots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \dots & 0 & 0 & \dots & 0 & 0 & \dots & 1
+                \end{pmatrix},
+                \hspace{1cm}
+                \Pi(\alpha) = \begin{pmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}
+            .\end{equation*}
+        \end{theorem}
 
 
     \defitem{Классификация ортогональных линейных операторов в трёхмерном евклидовом пространстве}
+
+        \begin{corollary}
+            $\dim \EE = 3 \implies \exists$ ортонормированный базис $\E = (e_1, e_2, e_3)$, такой что
+            \begin{math}
+                A(\phi, \E) = \begin{blockarray}{(cc)}
+                    \Pi(\alpha) & 0 \\
+                    0 & 1
+                \end{blockarray}
+            \end{math}
+            или
+            \begin{math}
+                \begin{pmatrix} 
+                    \Pi(\alpha) & 0 \\
+                    0 & -1
+                \end{pmatrix}
+            \end{math}
+            для некоторого $\alpha$.
+        \end{corollary}
 
 
     \end{colloq}
@@ -2540,7 +2662,232 @@
 
 
         \proofitem{Метод Лагранжа приведения квадратичной формы к каноническому виду}
+
+            \begin{theorem}
+                Всякую квадратичную форму путём замены базиса можно привести к каноническому виду.
+            \end{theorem}
+
+            \begin{proof}[Доказательство (метод Лагранжа)]
+                Индукция по $n$:
+                \begin{description}
+                \item[База] $n = 1 \implies Q(x) = b x_1^2$ --- канонический вид.
+                \item[Шаг] Пусть утверждение доказано для $< n$, докажем для $n$.
+
+                    Пусть $B = B(Q, \E)$ --- матрица квадратичной формы в исходном базисе $\E$.
+                    \begin{equation*}
+                        Q(x) = \sum_{i = 1}^{n} b_{ii} x_i^2 + \sum_{1 \leq i < j \leq n}^{n} 2 b_{ij} x_i x_j
+                    .\end{equation*}
+
+                    \begin{enumerate}[start=0,label=Случай \arabic*.]
+                    \item
+                        $b_{ij} = 0 \ \forall i, j$ --- доказывать нечего.
+                    \item
+                        $\exists i : b_{ii} \neq 0$. Сделав перенумерацию, считаем $b_{11} \neq 0$.
+
+                        Тогда,
+                        \begin{align*}
+                            Q(x_1, \dots, x_n)
+                            &= b_{11} x_1^2 + 2b_{12} x_1 x_2 + \dots + 2 b_{1n} x_1 x_n + Q_1(x_2, \dots, x_n) \\
+                            &= b_{11} \left(x_1^2 + 2\frac{b_{12}}{b_{11}} x_1 x_2 + \dots + 2\frac{b_{1n}}{b_{11}} x_1 x_n\right) + Q_1(x_2, \dots, x_n) \\
+                            &= b_{11} \Bigg(\underbrace{x_1 + \frac{b_{12}}{b_{11}} x_2 + \dots + \frac{b_{1n}}{b_{11}} x_n}_{x'_1}\Bigg)^2 \underbrace{ - b_{11} \left(\frac{b_{12}}{b_{11}}x_2 + \dots + \frac{b_{1n}}{b_{11}} x_n\right)^2 + Q_1(x_2, \dots, x_n)}_{Q_2(x'_2, \dots, x'_n)} \\
+                            &= b_{11} (x_1')^2 + Q_2 (x'_2, \dots, x'_n)
+                        ,\end{align*}
+                        где
+                        \begin{equation*}
+                            \begin{cases}
+                                x'_1 &= x_1 + \frac{b_{12}}{b_{11}} x_2 + \dots + \frac{b_{1n}}{b_{11}} x_n, \\
+                                x'_2 &= x_2, \\
+                                     &\vdots \\
+                                x'_n &= x_n.
+                            \end{cases}
+                        \end{equation*}
+
+                        Здесь важно проследить, что замена действительно соответствует замене базисов (то есть является невырожденной).
+
+                        Вспомним как происходит замена базиса:
+
+                        \begin{equation*}
+                            \boxed{
+                                \begin{aligned}
+                                    \E' &= \E \cdot C \\
+                                    \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} &= C \cdot \begin{pmatrix} x'_1 \\ \dots \\ x'_n \end{pmatrix}
+                                \end{aligned}
+                            }
+                        \end{equation*}
+
+                        Выразим $x$ через $x'$ и запишем матрицу перехода:
+                        \begin{equation*}
+                            \begin{cases}
+                                x_1 &= x'_1 - \frac{b_{12}}{b_{11}} x'_2 - \dots - \frac{b_{1n}}{b_{11}} x'_n, \\
+                                x_2 &= x'_2, \\
+                                    &\vdots \\
+                                x_n &= x'_n.
+                            \end{cases}
+                            \hspace{3cm}
+                            C = \begin{pmatrix} 
+                                1 & - \frac{b_{12}}{b_{11}} & \dots & -\frac{b_{1n}}{b_{11}} \\
+                                0 & 1 & \dots & 0 \\
+                                \vdots & \vdots & \ddots & \vdots \\
+                                0 & 0 & \dots & 1
+                            \end{pmatrix}
+                        \end{equation*}
+
+                        По предположению индукции, $Q_2$ можно привести к каноническому виду.
+
+                    \item
+                        $b_{ii} = 0 \ \forall i$, но $\exists i, j, i \neq j$, такие что $b_{ij} \neq 0$.
+
+                        Выполнив перенумерацию считаем, что $b_{12} \neq 0$.
+
+                        Сделаем замену и выпишем матрицу перехода:
+                        \begin{equation*}
+                            \begin{cases}
+                                x_1 &= x'_1 + x'_2, \\
+                                x_2 &= x'_1 - x'_2, \\
+                                x_3 &= x'_3, \\
+                                    &\vdots \\
+                                x_n &= x'_n.
+                            \end{cases}
+                            \hspace{3cm}
+                            C = \begin{pmatrix} 
+                                1 & 1 & 0 & \dots & 0 \\
+                                1 & -1 & 0 & \dots & 0 \\
+                                0 & 0 & 1 & \dots & 0 \\
+                                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                                0 & 0 & 0 & \dots & 1
+                            \end{pmatrix}
+                        \end{equation*}
+
+                        Получаем $Q(x) = b_{12} x_1^2 - b_{12} x_2^2 + \underbrace{\dots\dots\dots\dots}_{\text{нет квадратов}}$, мы попали в случай 1.
+                        \qedhere
+                    \end{enumerate}
+                \end{description}
+            \end{proof}
+
+
         \proofitem{Метод Якоби приведения квадратичной формы к каноническому виду}
+
+            Пусть $\E = (e_1, \dots, e_n)$ --- базис пространства $V$.
+
+            Рассмотрим систему векторов $e'_1, \dots, e'_n$ следующего вида:
+
+            $e'_1 = e_1$,
+
+            $e'_2 \in e_2 + \left< e_1 \right>$,
+
+            $e'_3 \in e_3 + \left< e_1, e_2 \right>$,
+
+            $\dots$
+
+            $e'_n \in e_n + \left< e_1, \dots, e_{n - 1} \right>$.
+
+            Для любого $k = 1 \dots n$ имеем $(e'_1, \dots, e'_k) = (e_1, \dots, e_k) \cdot C_k$, где
+            \begin{equation*}
+                C_k = \begin{pmatrix} 
+                    1 & \star & \dots & \star & \star \\
+                    0 & 1 & \ddots & \star & \star \\
+                    \vdots & \vdots & \ddots & \ddots & \vdots \\
+                    0 & 0 & \dots & 1 & \star \\
+                    0 & 0 & \dots & 0 & 1
+                \end{pmatrix} \in M_k(F)
+            .\end{equation*}
+
+            Так как $\det C = 1 \neq 0$, то $e'_1, \dots, e'_k$ линейно независимы и $\left< e_1, \dots, e_k \right> = \left< e'_1, \dots, e'_k \right>$.
+
+            В частности, $e'_1, \dots, e'_n$ --- базис $V$.
+
+            Заметим, что $C_k$ --- левый верхний $k \times k$ блок в $C_n$.
+
+            Пусть $Q \colon V \to F$ --- квадратичная форма, $\beta$ --- соответствующая симметричная билинейная форма.
+
+            $B := B(Q, \E)$.
+
+            $B_k$ --- левый верхний $k \times k$ блок в $B$.
+
+            $\delta_k := \delta_k(Q, \E) := \det B_k(Q, \E)$ --- $k$-й угловой минор матрицы $B$.
+
+            Для удобства, $\delta_0 := 1$.
+
+            \begin{lemma}
+                Пусть $(e'_1, \dots, e'_n) = \E'$ --- базис $V$ описанного выше вида и $\delta'_k = \delta_k(Q, \E')$. Тогда, $\delta'_k = \delta_k \ \forall k$.
+            \end{lemma}
+
+            \begin{proof}
+                Пусть $B' = B(Q, \E')$ и $B'_k = B_k(Q, \E')$.
+
+                Так как $\left< e'_1, \dots, e'_k \right> = \left< e_1, \dots, e_k \right>$, то $B'_k = C_k^T B_k C_k$.
+                Отсюда, $\delta'_k = \det B'_k = \underbrace{\det C_k^T}_1 \det B_k \underbrace{\det C_k}_1 = \det B_k = \delta_k$.
+            \end{proof}
+
+            \begin{theorem}
+                Пусть $\delta_k \neq 0 \ \forall k = 1, \dots, n$.
+
+                Тогда, $\exists!$ базис $\E' = (e'_1, \dots, e'_n)$ в $V$, такой что
+                \begin{enumerate}
+                \item $\E'$ имеет описанный выше вид;
+                \item В базисе $\E'$ $Q$ принимает канонический вид
+
+                    $Q(x'_1, \dots, x'_n) = \delta_1 x'^2_1 + \frac{\delta_2}{\delta_1} x'^2_2 + \dots + \frac{\delta_n}{\delta_{n - 1}} x'^2_n$.
+
+                    То есть $B(Q, \E') = \diag\left(\delta_1, \frac{\delta_2}{\delta_1}, \dots, \frac{\delta_n}{\delta_{n - 1}}\right)$
+                \end{enumerate}
+            \end{theorem}
+
+            \begin{proof}
+                Индукция по $n$.
+
+                \begin{description}
+                \item[База] $n = 1 \implies $ верно.
+                \item[Шаг] Пусть доказано для $< n$, докажем для $n$.
+
+                    Применяя предположение индукции к ограничению квадратичной формы на подпространство $\left< e_1, .., e_{n - 1} \right>$ получаем, что $\exists$ требуемый базис $e'_1, \dots, e'_{n - 1}$ в $\left< e_1, \dots, e_{n - 1} \right>$ нужного вида.
+
+                    Тогда, $B(Q, (e'_1, \dots, e'_{n - 1}, e_n))$ имеет вид 
+                    \begin{equation*}
+                        \left(\begin{array}{cccc|c}
+                            \delta_1 & 0 & \dots & 0 & \star \\
+                            0 & \frac{\delta_2}{\delta_1} & \dots & 0 & \star \\
+                            \vdots & \vdots & \ddots & \vdots & \vdots \\
+                            0 & 0 & \dots & \frac{\delta_{n - 1}}{\delta_{n - 2}} & \star \\
+                            \hline
+                            \star & \star & \dots & \star & \star
+                        \end{array}\right)
+                    .\end{equation*}
+
+                    Ищем $e'_n$ в виде
+                    \begin{equation*}
+                        e'_n = e_n + \lambda_1 e'_1 + \dots + \lambda_{n - 1} e'_{n - 1}
+                    .\end{equation*}
+
+                    Для любого $k = 1, \dots, n - 1$
+                    \begin{align*}
+                        \beta(e'_n, e'_k) &= \beta(e_n + \lambda_1 e'_1 + \dots + \lambda_{n - 1} e'_{n - 1}, e'_k) \\
+                        &= \beta(e_n, e'_k) + \lambda_1 \beta(e'_1, e'_k) + \dots + \lambda_{n - 1} \beta(e'_{n - 1}, e'_k) \\
+                        &= \beta(e_n, e'_k) + \lambda_k \beta(e'_k, e'_k) \\
+                        &= \beta(e_n, e'_k) + \lambda_k \frac{\delta_k}{\delta_{k - 1}}
+                    .\end{align*}
+
+                    Хотим, $\beta(e'_n, e'_k) = 0 \ \forall k = 1, \dots, n - 1 \iff \lambda_k = -\beta(e_n, e'_k) \frac{\delta_{k - 1}}{\delta_k}$.
+
+                    Тогда в базисе $\E' = (e'_1, \dots, e'_n)$ матрица $Q$ равна
+                    \begin{equation*}
+                        \begin{pmatrix} 
+                            \delta_1 & 0 & \dots & 0 & 0 \\
+                            0 & \frac{\delta_2}{\delta_1} & \dots & 0 & 0 \\
+                            \vdots & \vdots & \ddots & \vdots & \vdots \\
+                            0 & 0 & \dots & \frac{\delta_{n - 1}}{\delta_{n - 2}} & 0 \\
+                            0 & 0 & \dots & 0 & ?
+                        \end{pmatrix}
+                    .\end{equation*}
+
+                    По лемме, $\delta_n = \delta'_n = \delta_1 \cdot \frac{\delta_2}{\delta_1} \cdot \dots \cdot \frac{\delta_{n - 1}}{\delta_{n - 2}} \cdot ? = \delta_{n - 1} \cdot ? \implies ? = \frac{\delta_n}{\delta_{n - 1}}$.
+
+                    Единственность следует из явной формулы для $\lambda_k$.
+                    \qedhere
+                \end{description}
+            \end{proof}
+
+
         \proofitem{Существование нормального вида для квадратичной формы над $\RR$}
 
             \begin{corollary}[из метода Лагранжа]
@@ -3640,11 +3987,244 @@
 
 
         \proofitem{Существование собственного вектора для самосопряжённого линейного оператора}
+
+            Если $\E$ --- ортонормированный базис в $\EE$, $A_\phi = A(\phi, \E)$, $A_{\phi^{*}} = A(\phi^{*}, \E)$, то $A_{\phi^{*}} = A_\phi^{T}$.
+
+            Следовательно, $\phi = \phi^{*} \iff A_\phi = A_\phi^{T}$.
+
+            \begin{proposal}
+                Если $\phi = \phi^{*}$, то $\exists$ собственный вектор для $\phi$.
+            \end{proposal}
+
+            \begin{proof}
+                Было: $\exists$ либо
+                \begin{enumerate*}[label=\arabic*)]
+                \item 1-мерное $\phi$-инвариантное подпространство, либо
+                \item 2-мерное $\phi$-инвариантное подпространство.
+                \end{enumerate*}
+
+                \begin{enumerate}
+                \item ок.
+                \item $U \subseteq \EE$ --- $\phi$-инвариантное подпространство, $\dim U = 2$.
+
+                    Фиксируем ортонормированный базис $\E = (e_1, e_2)$. Пусть $\psi = \phi \big|_{U}$.
+
+                    Значит, $\psi = \psi^{*} \implies A(\psi, \E) = \begin{pmatrix} a & b \\ b & c \end{pmatrix}$.
+
+                    Отсюда, $\chi_\psi(t) = \begin{vmatrix} a - t & b \\ b & c - t \end{vmatrix} = t^2 - (a + c)t + ac - b^2$.
+
+                    $D = (a + c)^2 - 4(ac - b^2) = (a - c)^2 + 4b^2 \geq 0$.
+
+                    Следовательно, $\chi_\psi(t)$ имеет корни в $\RR$, то есть в $U$ есть собственный вектор для $\psi$, он же собственный вектор для $\phi$.
+                    \qedhere
+                \end{enumerate}
+            \end{proof}
+
+
         \proofitem{Существование ортонормированного базиса из собственных векторов для самосопряжённого линейного оператора}
+
+            \begin{theorem}
+                \label{lec30:th}
+                $\phi = \phi^* \implies $ в $\EE$ существует ортонормированный базис из собственных векторов.
+
+                В частности, $\phi$ диагонализуем над $\RR$ и $\chi_{\phi}(t)$ разлагается на линейные множители над $\RR$.
+            \end{theorem}
+
+            \begin{proof}Индукция по $n$:
+                \begin{description}
+                \item[\textbf{База}] $n = 1$ --- ясно.
+                \item[\textbf{Шаг}] $n > 1$. Тогда существует собственный вектор $v$ для $\phi$. Положим $e_1 = \dfrac{v}{|v|} \implies |e_1| = 1$.
+
+                    $U = \left< e_1 \right>^{\perp}$ --- $\phi$-инвариантное подпространство, $\dim U < n \implies $ по предположению индукции в $U$ существует ортонормированный базис $(e_2, \dots, e_n)$ из собственных векторов. Тогда $(e_1, e_2, \dots, e_n)$ --- искомый базис.
+                    \qedhere
+                \end{description}
+            \end{proof}
+
+
         \proofitem{Приведение квадратичной формы к главным осям}
+
+            \begin{theorem}{(приведение квадратичной формы к главным осям)}
+                Для любой квадратичной формы $Q \colon \EE \to \RR$ существует ортонормированный базис $\E = (e_1, \dots, e_n)$, в котором $Q$ принимает канонический вид $Q(x) = \lambda_1 x_1^2 + \dots+ \lambda_n x_n^2$.
+                Более того, набор $\lambda_1, \dots, \lambda_n$ определен однозначно, с точностью до перестановки.
+            \end{theorem}
+
+
+            \begin{proof}
+                Пусть $\F = (f_1, \dots, f_n)$ --- какой-то ортонормированный базис. Рассмотрим линейный оператор $\phi \colon \EE \to \EE$, такой что $A(\phi, \F) = B(Q, \F)$ ($\phi = \phi^{*}$, так как $B(Q, \F)$ симметрична).
+
+                Если $\F' = (f_1', \dots, f_n')$ --- другой ортонормированный базис, то $\F' = \F \cdot C$, где $C$ --- ортонормированная матрица $(C^{T} C = \EE \iff C^{T} = C^{-1})$.
+                Тогда $A(\phi, \F') = C^{-1} A(\phi, \F) C = C^{T} B(Q, \F) C = B(Q, \F')$.
+
+                Значит, в любом ортонормированном базисе $\phi$ и $Q$ имеют одинаковые матрицы.
+
+                \medskip
+                По \hyperref[lec30:th]{теореме}, существует ортонормированный базис $\E$, такой что $A(\phi, \E) = \diag(\lambda_1, \dots, \lambda_n)$.
+
+                Тогда $B(Q, \E) = \diag(\lambda_1, \dots, \lambda_n)$.
+
+                Единственность для $ \{\lambda_i\}$ следует из того, что набор $\lambda_1, \dots, \lambda_n$ --- это спектр $\phi$ (с учетом кратностей).
+            \end{proof}
+
+
         \proofitem{Теорема о пяти эквивалентных условиях, определяющих ортогональный линейный оператор}
+
+            \begin{theorem}
+                $\phi \in L(\EE) \implies $ следующие условия эквивалентны:
+                \begin{enumerate}[label=(\arabic*)]
+                \item \label{lec30:eq1} $\phi$ ортогонален.
+                \item \label{lec30:eq2} $\left|\phi(x)\right| = |x| \quad \forall x \in \EE$ (то есть $\phi$ сохраняет длины векторов).
+                \item \label{lec30:eq3} $\exists \phi^{-1}$ и $\phi^{-1} = \phi^{*}$ (то есть $\phi^{*} \phi = \phi \phi^{*} = \mathrm{Id}$).
+                \item \label{lec30:eq4} $\forall$ ортонормированного базиса $\E$ матрица $A(\phi, \E)$ ортогональна.
+                \item \label{lec30:eq5} $\forall$ ортонормированного базиса $\E = (e_1, \dots, e_n)$ векторы $(\phi(e_1), \dots, \phi(e_n))$ образуют ортонормированный базис.
+                \end{enumerate}
+            \end{theorem}
+
+            \begin{proof}~
+                \begin{description}
+                    \item[\ref{lec30:eq1}$\implies$\ref{lec30:eq2}] $\left|\phi(x)\right| = \sqrt{(\phi(x), \phi(x))} = \sqrt{(x, x)} = |x|$.
+                    \item[\ref{lec30:eq2}$\implies$\ref{lec30:eq1}] 
+                        \begin{math}
+                            \begin{aligned}[t]
+                                (\phi(x), \phi(y)) &= \frac{1}{2} \left[(\phi(x + y), \phi(x + y)) - (\phi(x), \phi(x)) - (\phi(y), \phi(y))\right] \\
+                                &= \frac{1}{2} \left[|\phi(x + y)|^2 - |\phi(x)|^2 - |\phi(y)|^2\right] = \frac{1}{2} \left[|x + y|^2 - |x|^2 - |y|^2\right] = (x, y)
+                            \end{aligned}
+                        \end{math}
+
+                    \item[\ref{lec30:eq1} \& \ref{lec30:eq2}$\implies$\ref{lec30:eq3}] $|\phi(x)| = 0 \implies |x| = 0 \implies x = 0 \implies \ker \phi = \{0\} \implies \exists \phi^{-1}$.
+
+                        $(\phi^{-1}(x), y) = (\phi(\phi^{-1}(x)), \phi(y)) = (x, \phi(y)) \implies \phi^{-1} = \phi^{*}$.
+
+                    \item[\ref{lec30:eq3}$\implies$\ref{lec30:eq4}] $\E$ --- ортонормированный базис, 
+                        \begin{math}
+                            A = A(\phi, \E) \implies
+                            \begin{gathered}
+                                A(\phi^{-1}, \E) = A^{-1} \\
+                                A(\phi^{*}, \E) = A^{T}
+                            \end{gathered}
+                        \end{math}
+
+                        Так как $\phi^{-1} = \phi^{*}$, то $A^{-1} = A^{T} \implies A$ ортогональная.
+
+                    \item[\ref{lec30:eq4}$\implies$\ref{lec30:eq5}] $\E = (e_1, \dots, e_n)$ --- ортонормированный базис, $A = A(\phi, \E) \implies (\phi(e_1), \dots, \phi(e_n)) = (e_1, \dots, e_n) \cdot A$.
+
+                        Так как $A$ ортогональная, то $(\phi(e_1), \dots, \phi(e_n))$ --- ортонормированный базис.
+
+                    \item[\ref{lec30:eq5}$\implies$\ref{lec30:eq1}] $(e_1, \dots, e_n)$ --- ортонормированный базис $\implies (\phi(e_1), \dots, \phi(e_n))$ --- тоже ортонормированный базис.
+
+                        \begin{equation*}
+                            \begin{gathered}
+                                x = x_1 e_1 + \dots + x_n e_n \\
+                                y = y_1 e_1 + \dots + y_n e_n
+                            \end{gathered} \quad \implies \quad
+                            \begin{gathered}
+                                \phi(x) = x_1 \phi(e_1) + \dots + x_n \phi(e_n) \\
+                                \phi(y) = y_1 \phi(e_1) + \dots + y_n \phi(e_n)
+                            \end{gathered} \quad \implies
+                        \end{equation*}
+                        \begin{equation*}
+                            (\phi(x), \phi(y)) = (x_1, \dots, x_n) \cdot \underbrace{G (\phi(e_1), \dots, \phi(e_n))}_{ = E} \cdot \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} = (x_1, \dots, x_n) \cdot \underbrace{G(\E)}_{ = E} \cdot \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} = (x, y)
+                        .\qedhere\end{equation*}
+                \end{description}
+            \end{proof}
+
+            \begin{figure}[h]
+                \centering
+                \def\svgwidth{5cm}
+                \input{lecture30_proof.pdf_tex}
+            \end{figure}
+
+
         \proofitem{Инвариантность ортогонального дополнения к подпространству, инвариантному относительно ортогонального линейного оператора}
+
+            \begin{proposal}
+                $\phi = \phi^{*}$, $U \subseteq \EE$ --- $\phi$-инвариантное подпространство, тогда $U^{\perp}$ --- тоже $\phi$-инвариантное подпространство.
+            \end{proposal}
+
+            \begin{proof}
+                $\phi(U) \subseteq U$, хотим $\phi(U^{\perp}) \subseteq U^{\perp}$. 
+
+                $\forall x \in U^{\perp} \quad \forall y \in U \quad (\phi(x), y) = (x, \phi(y)) = 0 \implies \phi(x) \in U^{\perp}$.
+            \end{proof}
+
+
+
         \proofitem{Теорема о каноническом виде ортогонального линейного оператора}
+
+            \begin{enumerate}
+            \item $\dim \EE = 1$.
+
+                $\phi$ ортогонально $\iff \phi = \pm \mathrm{Id}$.
+
+            \item $\dim \EE = 2$, $\quad \E = (e_1, e_2)$ --- ортонормированный базис $ \implies \phi(e_1), \phi(e_2)$ --- тоже ортонормированный базис.
+
+                Два случая:
+                \begin{enumerate}
+                \item $\phi$ --- поворот на угол $\alpha$.
+
+                    \begin{math}
+                        A(\phi, \E) = \begin{pmatrix} \cos \alpha & - \sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}
+                    \end{math}
+
+                \item $\phi$ --- поворот на угол $\alpha$ и отражение относительно $\left< \phi(e_1) \right>$.
+
+                    \begin{math}
+                        A(\phi, \E) = \begin{pmatrix} \cos \alpha & \sin \alpha \\ \sin \alpha & -\cos \alpha \end{pmatrix}
+                    \end{math}
+
+
+                    Если {\color{red}$l$} --- биссектриса угла $\angle(e_1, \phi(e_1))$, то 
+                    \begin{math}
+                        \begin{gathered}[t]
+                            \phi(x) = x \quad \forall x \in l, \\
+                            \phi(x) = -x \quad \forall x \in l^{\perp}.
+                        \end{gathered}
+                    \end{math}
+
+                    \bigskip
+                    $e'_1 \in l, e'_2 \in l^{\perp}, |e'_1| = |e'_2| = 1, \E' = (e'_1, e'_2) \implies A(\phi, \E') = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$.
+
+                    Значит $\phi$ --- отражение относительно $l$.
+                \end{enumerate}
+            \end{enumerate}
+
+
+            \begin{theorem}
+                Если $\phi \in L(\EE)$ --- ортогональный оператор, то существует ортонормированный базис $\E = (e_1, \dots, e_n)$, такой что 
+                \begin{equation*}
+                    \label{lec30:zhopa}
+                    \tag{$\star$}
+                    A(\phi, \E) = \begin{pmatrix} 
+                        \Pi(\alpha_1) & 0 & \dots & 0 & 0 & \dots & 0 & 0 & \dots & 0 \\ 
+                        0 & \Pi(\alpha_2) & \dots & 0 & 0 & \dots & 0 & 0 & \dots & 0 \\
+                        \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+                        0 & 0 & \dots & \Pi(\alpha_k) & 0 & \dots & 0 & 0 & \dots & 0 \\
+                        0 & 0 & \dots & 0 & -1 & \dots & 0& 0 & \dots & 0\\
+                        \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+                        0 & 0 & \dots & 0 & 0 & \dots & -1 & 0 & \dots & 0\\
+                        0 & 0 & \dots & 0 & 0 & \dots & 0 & 1 & \dots & 0 \\
+                        \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+                        0 & 0 & \dots & 0 & 0 & \dots & 0 & 0 & \dots & 1
+                    \end{pmatrix},
+                    \hspace{1cm}
+                    \Pi(\alpha) = \begin{pmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}
+                .\end{equation*}
+            \end{theorem}
+
+            \begin{proof}
+                Индукция по $n$:
+                \begin{description}
+                \item[$n = 1, 2$]  --- было.
+                \item[$n > 2$] Существует 1-мерное или 2-мерное $\phi$-инвариантное подпространство.
+                    В нём требуемый базис найдется. 
+
+                    Так как $U^{\perp}$ $\phi$-инвариантно и $\dim U^{\perp} < n$, то по предположению индукции в $U^{\perp}$ тоже найдется такой базис.
+
+                    Объединяя эти базисы $U$ и $U^{\perp}$, получаем ортонормированный базис, в котором матрица $\phi$ имеет требуемый вид с точностью до перестановки блоков.
+                    \qedhere
+                \end{description}
+            \end{proof}
+
+
     \end{colloq}
 
 \end{document}
