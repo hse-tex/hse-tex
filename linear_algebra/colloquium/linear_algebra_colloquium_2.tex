@@ -368,7 +368,7 @@
 
 
     \defitem{Критерий инъективности линейного отображения в терминах его ядра}
-
+        \label{opr:20}
         Пусть $V, W$ --- векторные пространства над $F$, 
 
         $\phi \colon V \to W$ --- линейное отображение.
@@ -1030,11 +1030,12 @@
 
         Тогда, достаточно построить ортогональный базис.
 
+        \bigskip
         Пусть $e_1, \dots, e_k$ --- линейно независимая система векторов.
 
-        $i$-й угловой минор в $G(e_1, \dots, e_k)$ --- это $\det G(e_1, \dots, e_k) > 0$.
+        $i$-й угловой минор в $G(e_1, \dots, e_k)$ --- это $\det G(e_1, \dots, e_i) > 0$.
 
-        \bigskip
+        \medskip
         Следовательно, применим метод Якоби:
 
         $\exists!$ система векторов $f_1, \dots, f_k$, такая что 
@@ -1050,7 +1051,7 @@
         И выполнены следующие свойства $\forall i = 1, \dots, k$:
 
         \begin{enumerate}[start=0,nosep]
-        \item $f_1, \dots, f_k$ ортогональны.
+        \item $f_1, \dots, f_i$ ортогональны.
         \item $\left< e_1, \dots, e_i \right> = \left< f_1, \dots, f_i \right>$.
         \item $f_i = e_i - \sum_{j = 1}^{i - 1} \dfrac{(e_i, f_j)}{(f_j, f_j)} f_j$ \customlabel{lec23:star}{($\star$)}.
         \item $\det G(e_1, \dots, e_i) = \det G(f_1, \dots, f_i)$ \customlabel{lec23:heart}{$(\heartsuit)$}.
@@ -1235,7 +1236,7 @@
     \defitem{Смешанное произведение векторов трёхмерного евклидова пространства}
 
         \begin{definition}
-            $\forall a, b, c \in \EE$ число $(a, b, c) := ([a, b], c)$ называется \textit{смешанным произведением} векторов $a, b, c$.
+            $\forall a, b, c \in \RR^3$ число $(a, b, c) := ([a, b], c)$ называется \textit{смешанным произведением} векторов $a, b, c$.
         \end{definition}
 
         \begin{comment}
@@ -1610,7 +1611,7 @@
         \begin{math}
             \begin{aligned}[t]
                 &U = \ker \phi \implies A = 0, \\
-                &U = \Im \phi \implies A = C = 0.
+                &U = \Im \phi \implies C = 0.
             \end{aligned}
         \end{math}
 
@@ -3039,6 +3040,25 @@
                 \end{description}
             \end{proof}
 
+            \begin{corollary}
+                \begin{equation*}
+                    Q < 0 \iff \delta_k \begin{cases}
+                        > 0 & \text{при } k \divby 2, \\
+                        < 0 & \text{при } k \!\!\not\;\divby 2.
+                    \end{cases}
+                \end{equation*}
+            \end{corollary}
+
+            \begin{proof}
+                \begin{math}
+                    \begin{aligned}[t]
+                        Q < 0 &\iff -Q > 0 \\
+                              &\iff \det (-B_k) > 0 \ \forall k \\
+                              &\iff (-1)^{k} \delta_k > 0 \ \forall k
+                    \end{aligned}
+                \end{math}
+            \end{proof}
+
     \end{colloq}
 
     \subsection{Евклидовы пространства}
@@ -3288,6 +3308,19 @@
             \begin{proof}
                 \begin{equation*}
                     |x + y|^2 = (x + y, x + y) = \underbrace{(x, x)}_{|x|^2} + \underbrace{(x, y)}_{0} + \underbrace{(y, x)}_{0} + \underbrace{(y, y)}_{|y|^2} = |x|^2 + |y|^2
+                .\qedhere\end{equation*}
+            \end{proof}
+
+            \begin{proposal}
+                $\forall a, b, c \in \EE \implies \rho(a, b) + \rho(b, c) \geq \rho(a, c)$.
+            \end{proposal}
+
+            \begin{proof}
+                Пусть $x = a - b$, $y = b - c$. Тогда, $a - c = x + y$.
+                Достаточно доказать, что $|x| + |y| \geq |x + y|$.
+
+                \begin{equation*}
+                    |x + y|^2 = |x|^2 + \underbrace{2(x, y)}_{\leq |x||y|} + |y|^2 \leq |x|^2 + 2|x||y| + |y|^2 = (|x| + |y|)^2
                 .\qedhere\end{equation*}
             \end{proof}
 
@@ -3677,7 +3710,7 @@
             \begin{proof}~
                 \begin{description}
                     \item[$1) \iff 2)$] так как $\dim V = \dim \ker \phi + \dim \Im \phi$. 
-                    \item[$1) \& 2) \iff 3)$]
+                    \item[$1) \& 2) \iff 3)$] по предложению в \hyperref[opr:20]{определении 20}.
                     \item[$2) \iff 4)$] $\Im \phi = V \iff \rk \phi = \dim V \iff \det \phi = 0$.
                 \end{description}
             \end{proof}
@@ -4137,13 +4170,16 @@
         \proofitem{Инвариантность ортогонального дополнения к подпространству, инвариантному относительно ортогонального линейного оператора}
 
             \begin{proposal}
-                $\phi = \phi^{*}$, $U \subseteq \EE$ --- $\phi$-инвариантное подпространство, тогда $U^{\perp}$ --- тоже $\phi$-инвариантное подпространство.
+                Если $\phi \in L(\EE)$ --- ортогональный оператор, $U \subseteq \EE$ --- $\phi$-инвариантное подпространство, то $U^{\perp}$ тоже $\phi$-инвариантно.
             \end{proposal}
 
             \begin{proof}
-                $\phi(U) \subseteq U$, хотим $\phi(U^{\perp}) \subseteq U^{\perp}$. 
+                Пусть $\psi := \phi\big|_U$. Тогда $\psi$ --- ортогональный оператор в $U$, в частности $\psi$ обратим.
 
-                $\forall x \in U^{\perp} \quad \forall y \in U \quad (\phi(x), y) = (x, \phi(y)) = 0 \implies \phi(x) \in U^{\perp}$.
+                Хотим: $\phi(U^{\perp}) \subseteq U^{\perp} \quad \forall x \in U^{\perp} \ \forall y \in U$.
+                \begin{equation*}
+                    (\phi(x), y) = (x, \phi^{*}(y) = (x, \phi^{-1}(y)) = (\underbrace{x}_{\in U^{\perp}}, \underbrace{\psi^{-1}(y)}_{\in U}) = 0
+                .\qedhere\end{equation*}
             \end{proof}
 
 
