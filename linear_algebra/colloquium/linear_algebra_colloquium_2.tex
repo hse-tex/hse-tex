@@ -2355,7 +2355,7 @@
 
                 \item
                     \begin{enumerate}
-                    \item $0_W = \phi(W) \in \Im \phi$,
+                    \item $0_W = \phi(0_V) \in \Im \phi$,
                     \item $w_1, w_2 \in \Im \phi \implies \exists v_1, v_2 : w_1 = \phi(v_1), w_2 = \phi(v_2) \implies w_1 + w_2 = \phi(v_1) + \phi(v_2) = \phi(v_1 + v_2) \in \Im \phi$,
                     \item $\phi \in F, w \in \Im \phi \implies \exists v \in V : w = \phi(v) \implies \lambda w = \lambda \phi(v) = \phi(\lambda v) \in \Im \phi$.
                         \qedhere
@@ -3711,7 +3711,7 @@
                 \begin{description}
                     \item[$1) \iff 2)$] так как $\dim V = \dim \ker \phi + \dim \Im \phi$. 
                     \item[$1) \& 2) \iff 3)$] по предложению в \hyperref[opr:20]{определении 20}.
-                    \item[$2) \iff 4)$] $\Im \phi = V \iff \rk \phi = \dim V \iff \det \phi = 0$.
+                    \item[$2) \iff 4)$] $\Im \phi = V \iff \rk \phi = \dim V \iff \det \phi \neg 0$.
                 \end{description}
             \end{proof}
 
@@ -3737,6 +3737,46 @@
 
 
         \proofitem{Связь спектра линейного оператора с его характеристическим многочленом}
+
+            Пусть $\phi \in \L(V)$, $\lambda \in F$.
+
+            $V_\lambda(\phi) := \{v \in V \mid \phi(v) = \lambda v\}$.
+
+            \begin{exercise}
+                $V_\lambda(\phi)$ --- подпространство в $V$.
+            \end{exercise}
+
+            \begin{lemma}
+                $V_\lambda(\phi) \neq \{0\} \iff \lambda \in \spec \phi$.
+            \end{lemma}
+
+            \begin{proof}
+                Следует из определения.
+            \end{proof}
+
+            \begin{definition}
+                $\lambda \in \spec \phi \implies V_\lambda(\phi)$ называется \textit{собственным подпространством} линейного оператора $\phi$, отвечающим собственному значению $\lambda$.
+            \end{definition}
+
+            \begin{comment}
+                $V_\lambda(\phi) \ \phi$-нивариантно, $\quad \phi\Big|_{V_{\lambda}(\phi)} = \lambda \cdot \mathrm{Id}\Big|_{V_\lambda(\phi)}$.
+            \end{comment}
+
+            \begin{proposal}
+                $\forall \lambda \in F \quad V_\lambda(\phi) = \ker(\phi - \lambda \cdot \mathrm{Id})$.
+            \end{proposal}
+
+            \begin{proof}
+                $v \in V_\lambda(\phi) \iff \phi(v) = \lambda v \iff \phi(v) - \lambda v = 0 \iff (\phi - \lambda \cdot \mathrm{Id}) v = 0 \iff v \in \ker(\phi - \lambda \cdot \mathrm{Id})$.
+            \end{proof}
+
+            \begin{corollary}
+                $\lambda \in \spec \phi \iff \det (\phi - \lambda \cdot \mathrm{Id}) = 0$.
+            \end{corollary}
+
+            \begin{proof}
+                $\lambda \in \spec \phi \iff V_\lambda(\phi) \neq \{0\} \iff \ker(\phi - \lambda \cdot \mathrm{Id}) \neq \{0\} \iff \det(\phi - \lambda \cdot \mathrm{Id}) = 0$.
+            \end{proof}
 
             Если $\E$ --- какой-либо базис $V$ и $A = (a_{ij}) = A(\phi, \E)$, то
             \begin{equation*}
