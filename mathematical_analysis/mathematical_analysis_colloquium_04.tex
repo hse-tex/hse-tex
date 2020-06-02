@@ -230,18 +230,49 @@
         \begin{equation*}
             \max\limits_{1 \leq j \leq k} |x_j| \leq \norm{x_j} \leq \sqrt{k} \cdot \max\limits_{1 \leq j \leq k} |x_j|
         \end{equation*}
-        для векторов $x = (x_1, \dots, x_k)$. Тем самым, последовательность $x_n \to x$ в $\RR^k$ тогда и только тогда, когда $(x_n)_j \to x_j$.
+        для векторов $x = (x_1, \dots, x_k)$.
     \end{remark*}
+
+    \begin{theorem*}
+        Для любого конечномерного пространства $\RR^m$ последовательность $\{x_n\} \xrightarrow{n \to \infty} a$ тогда и только тогда, когда для всякого $i$ $\{(x_n)_i\} \xrightarrow{n \to \infty} a_i$.
+    \end{theorem*}
+
+    \begin{proof}~
+
+        \begin{itemize}
+        \item \textbf{Необходимость}. 
+            По определению
+            \begin{equation*}
+                \forall \eps > 0 \ \exists N(\eps) > 0: \ \forall n \geq N(\eps) \implies \sum_{i = 1}^m ((x_n)_i - a_i)^2 < \eps^2 \implies |(x_n)_i - a_i| < \eps \ \forall i,
+            \end{equation*}
+            а это означает, что $\{(x_n)_i\} \xrightarrow{n \to \infty} a_i$.
+
+        \item \textbf{Достаточность}. 
+            По определению для всякого $i$ и всякого $\eps > 0$ существует $N_i(\eps): \ \forall n \geq N_i(\eps) \implies |(x_n)_i - a_i| \leq \dfrac{\eps}{\sqrt{m}}$. Но если выбрать $N = \max \{N_i \mid 1 \leq i \leq m\}$, то
+            \begin{equation*}
+                \forall n \geq N \implies \sum_{i = 1}^m ((x_n)_i - a_i)^2 < m \cdot \dfrac{\eps^2}{m} = \eps^2 \iff d(x_n, a) < \eps.
+            \end{equation*}
+        \end{itemize}
+    \end{proof}
 
     \begin{example*}
         Пространство $\RR^k$ со стандартной евклидовой метрикой полное. Действительно. если последовательность векторов $x_n \in \RR^k$ фундаментальна, то фундаментальны и последовательности координат $\{(x_n)_j\}_{j = 1}^{\infty}$ для всякого $j \in \{1, \dots, k\}$.
 
-        Тем самым, у $j$-ой координаты есть предел $x_j$ для каждого $j \in \{1, \dots, k\}$. То есть $|(x_n)_j - x_j| \to 0$. Значит, $x_n \to x := (x_1, \dots, x_k)$.
+        Тем самым, у $j$-ой координаты есть предел $x_j$ для каждого $j \in \{1, \dots, k\}$. То есть $|(x_n)_j - x_j| \to 0$. Значит, $x_n \to x := (x_1, \dots, x_k)$. В доказательстве можно сослаться на одномерный случай.
     \end{example*}
 
     \begin{example*}
         Пусть $X = [0; \pi / 2)$. Пространство $X$ не является полным с метрикой $d_1(x, y) = |x - y|$, но является полным с метрикой $d_2(x, y) = |\tg x - \tg y|$.
     \end{example*}
+
+    \begin{proof}
+        Докажем, что пространство $X$ не является полным с метрикой $d_1(x, y) = |x - y|$. Возьмем следующую последовательность:
+        \begin{equation*}
+            x_1 = \dfrac{\pi}{2} - 1, \quad x_2 = \dfrac{\pi}{2} - \dfrac{1}{2}, \quad \dots, \quad x_n = \dfrac{\pi}{2} - \dfrac{1}{n}, \quad \dots
+        \end{equation*}
+
+        Тогда данная последовательность является фундаментальной, так как $|x_n - x_m| = \left|\dfrac{1}{n} - \dfrac{1}{m}\right| \leq \dfrac{1}{\min\{n, m\}}$, но она сходится к $\dfrac{\pi}{2}$, а оно не лежит в $X$.
+    \end{proof}
 
     \subsection{Непрерывные отображения в метрических пространствах: определения, доказательства их эквивалентностей, основные свойства.}
 
@@ -277,7 +308,7 @@
     \end{proposal*}
 
     \begin{proof}
-        Следует из определения непрерывности. TODO()
+        Следует из определения непрерывности.
     \end{proof}
 
     \begin{consequence*}
