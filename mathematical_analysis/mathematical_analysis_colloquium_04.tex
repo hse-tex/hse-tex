@@ -228,9 +228,9 @@
     \begin{remark*}
         На $\RR^k$ справедливы соотношения
         \begin{equation*}
-            \max\limits_{1 \leq j \leq k} |x_j| \leq \norm{x_j} \leq \sqrt{k} \cdot \max\limits_{1 \leq j \leq k} |x_j|
+            \max\limits_{1 \leq j \leq k} |x_j| \leq \norm{x} \leq \sqrt{k} \cdot \max\limits_{1 \leq j \leq k} |x_j|
         \end{equation*}
-        для векторов $x = (x_1, \dots, x_k)$.
+        для вектора $x = (x_1, \dots, x_k)$.
     \end{remark*}
 
     \begin{theorem*}
@@ -395,7 +395,7 @@
         \end{equation*}
         для произвольных векторов $h_1, h_2, \in \RR^k$ и произвольных чисел $a_1, a_2 \in \RR$. 
         
-        Если в $\RR^k$ фиксирован базис $e := \{e_1, \dots, e_k\}$, а в $\RR^m$ фиксирован $e' := \{e_1', \dots, e_m'\}$, то линейное отображение $L$ представимо в виде $L(h) = L(e_1)h_1 + \dots + L(e_k)h_k$, где $h = (h_1, \dots, h_k)$ в базисе $e$, а векторы $L(e_j) = (e_{1,j}, \dots, a_{m, j})$ в базисе $e'$. 
+        Если в $\RR^k$ фиксирован базис $e := \{e_1, \dots, e_k\}$, а в $\RR^m$ фиксирован $e' := \{e_1', \dots, e_m'\}$, то линейное отображение $L$ представимо в виде $L(h) = L(e_1)h_1 + \dots + L(e_k)h_k$, где $h = (h_1, \dots, h_k)$ в базисе $e$, а векторы $L(e_j) = (a_{1,j}, \dots, a_{m, j})$ в базисе $e'$. 
 
         В частности, каждое линейное отображение при фиксированных базисах $e$ и $e'$ в $\RR^k$ и $\RR^m$ соответственно записывается с помощью матрицы $A = (a_{ij})$. Кроме того,
         \begin{equation*}
@@ -429,7 +429,7 @@
     \begin{proof}
         По определению 
         \begin{equation*}
-            f(x + th) - f(x) = t \dd f(h) + t \alpha(th)\norm{h}.
+            f(x + th) - f(x) = t \dd f(h) + \alpha(th) \cdot |t| \norm{h}.
         \end{equation*}
 
         Разделив на $t$ и перейдя к пределу при $t \to 0$, получаем требуемое соотношение.
