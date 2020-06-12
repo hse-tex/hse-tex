@@ -5,6 +5,7 @@
 ## [Линейная алгебра - Коллоквиум 1](https://hse-tex.me/linear_algebra_colloquium_1.pdf)
 ## [Линейная алгебра - Коллоквиум 2](https://hse-tex.me/linear_algebra_colloquium_2.pdf)
 ## [Линейная алгебра - Экзамен 2](https://hse-tex.me/linear_algebra_exam_definitions_2.pdf)
+## [Линейная алгебра - Экзамен 2 подготовка](https://hse-tex.me/linear_algebra_exam_preparation_2.pdf)
 ## [Математический анализ - Коллоквиум 1](https://hse-tex.me/mathematical_analysis_colloquium_01.pdf)
 ## [Математический анализ - Коллоквиум 2](https://hse-tex.me/mathematical_analysis_colloquium_02.pdf)
 ## [Математический анализ - Коллоквиум 3](https://hse-tex.me/mathematical_analysis_colloquium_03.pdf)
