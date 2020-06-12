@@ -59,6 +59,10 @@
 \usepackage{pdfpages}
 \usepackage{transparent}
 
+%% КартинОчки
+\usepackage{graphicx}
+\graphicspath{ {../images/} }
+
 
 %% Оглавление с ссылками и ссылки на разные вещи
 \usepackage[unicode=true, colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
@@ -93,6 +97,8 @@
 \DeclareMathOperator{\L}{\mathop{\mathrm{L}}}
 \DeclareMathOperator{\diag}{\mathop{\mathrm{diag}}}
 \DeclareMathOperator{\spec}{\mathop{\mathrm{Spec}}}
+\DeclareMathOperator{\vht}{\mathop{\mathrm{ht}}}
+\DeclareMathOperator{\id}{\mathop{\mathrm{Id}}}
 
 %%% Теоремы
 \theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
@@ -111,6 +117,7 @@
 \newtheorem*{proposal}{Предложение}
 \newtheorem*{convention}{Соглашение}
 \newtheorem*{exercise}{Упражнение}
+\newtheorem*{facts}{Факты}
 
 \theoremstyle{remark} % "Примечание"
 \newtheorem*{example}{Пример}
