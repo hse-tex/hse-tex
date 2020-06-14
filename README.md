@@ -1,6 +1,7 @@
 # hse-tex
 Репозиторий создан для публикации затеханых материалов и еще чего-то, связанного с ВШЭ, что может показаться полезным.
 
+## [Алгебра - Экзамен](https://hse-tex.me/algebra_exam.pdf)
 ## [Линейная алгебра - Конспект](https://hse-tex.me/linear_algebra.pdf)
 ## [Линейная алгебра - Коллоквиум 1](https://hse-tex.me/linear_algebra_colloquium_1.pdf)
 ## [Линейная алгебра - Коллоквиум 2](https://hse-tex.me/linear_algebra_colloquium_2.pdf)
