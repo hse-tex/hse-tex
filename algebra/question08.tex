@@ -1,1 +1,23 @@
 \section{Классификация циклических групп}
+
+Пусть $G$ --- циклическая группа. Тогда
+\begin{enumerate}
+    \item Если $|G| = \infty$, то $G \simeq (\ZZ, +)$,
+    \item Если $|G| = n < \infty$, то $G \simeq (\ZZ_n, +)$.
+\end{enumerate}
+
+\begin{proof}
+    По определению, если $G$ --- циклическая, то $G = \left< g \right>$ для некоторого $g \in G$.
+    \begin{enumerate}
+    \item $\phi \colon \ZZ \to G$, $k \mapsto g^{k}$
+
+        Это гомоморфизм и биекция $\implies $ изоморфизм.
+
+    \item $\phi \colon \ZZ_n \to G$, $k \mapsto g^{k}$.
+
+        Рассмотрим, куда переходит $k + ns$, где $0 \leq k \leq n - 1$.
+
+        $k + ns \mapsto g^{k + ns} = g^{k}g^{ns} = g^{k} (g^{n})^{s} = g^{k}$.
+        \qedhere
+    \end{enumerate}
+\end{proof}

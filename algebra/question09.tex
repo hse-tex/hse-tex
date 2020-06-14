@@ -1,1 +1,58 @@
 \section{Прямое произведение групп. Разложение конечной циклической группы. Теорема о строении конечных абелевых групп}
+
+\begin{definition}
+    \textit{Прямым произведением} групп $G_1, \dots, G_m$ называется множество
+    \begin{equation*}
+        G_1 \times \dots \times G_m = \{(g_1, \dots, g_m) \mid g_1 \in G_1 , \dots, g_m \in G_m\}
+    \end{equation*}
+    с операцией $(g_1, \dots, g_m)(g_1', \dots, g_m') = (g_1g_1', \dots, g_m g_m')$.
+\end{definition}
+
+Ясно, что эта операция ассоциативна, обладает нейтральным элементом $(e_{G_1}, \dots, e_{G_m})$ и для каждого элемента $(g_1, \dots, g_m)$ есть обратный элемент $(g_1^{-1}, \dots, g_m^{-1})$.
+
+\begin{comment}
+    Группа $G_1 \times \dots \times G_m$ коммутативна в точности тогда, когда коммутативна каждая из групп $G_1, \dots, G_m$.
+\end{comment}
+
+\begin{comment}
+    Если все группы $G_1, \dots, G_m$ конечны, то $\left|G_1 \times \dots \times G_m\right| = \left|G_1\right| \cdots \left|G_m\right|$.
+\end{comment}
+
+\begin{definition}
+    Группа $G$ \textit{раскладывается в прямое произведение} своих подгрупп $H_1, \dots, H_m$ если отображение $H_1 \times \dots \times H_m \to G$, $(h_1, \dots, h_m) \mapsto h_1 \cdots h_m$, является изоморфизмом.
+\end{definition}
+
+\begin{theorem}
+    Пусть $n = ml$ --- разложение натурального числа $n$ на два взаимно простых сомножителя. Тогда имеет место изоморфизм групп
+    \begin{equation*}
+        \ZZ_n \simeq \ZZ_m \times \ZZ_l
+    .\end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Рассмотрим отображение
+    \begin{equation*}
+        \phi \colon \ZZ_n \to \ZZ_m \times \ZZ_l, \quad (k \mathop{\mathrm{mod}} {n}) \mapsto (k \mathop{\mathrm{mod}} m, k \mathop{\mathrm{mod}} l)
+    .\end{equation*}
+
+    Поскольку $m$ и $l$ делят $n$, отображение $\phi$ определено корректно. Ясно, что $\phi$ --- гомоморфизм. Далее, $a \mathop{\mathrm{mod}} n \in \ker \phi \implies a \mathop{\mathrm{mod}} m = 0, a \mathop{\mathrm{mod}} l = 0 \implies a \divby m,a \divby l$.
+
+    Так как $\gcd(m, l) = 1$, то $a \divby n \implies a \mathop{\mathrm{mod}} n = 0 \implies \ker \phi = \{0\}$.
+
+    Отсюда следует, что гомоморфизм $\phi$ инъективен. Поскольку множества $\ZZ_n$ и $\ZZ_m \times \ZZ_l$ содержат одинаковое число элементов, отображение $\phi$ биективно.
+\end{proof}
+
+\begin{corollary}
+    Пусть $n \geq 2$ --- натуральное число и $n = p_1^{k_1} \cdots p_s^{k_s}$ --- его разложение в произведение простых множителей (где $p_i \neq p_j$ при $i \neq j$). Тогда имеет место изоморфизм групп
+    \begin{equation*}
+        \ZZ_n \simeq \ZZ_{p_1^{k_1}} \times \dots \times \ZZ_{p_s^{k_s}} 
+    .\end{equation*}
+\end{corollary}
+
+\begin{definition}
+    Конечная абелева группа $A$ называется \textit{примарной}, если $\left|A\right| = p^{k}$, где $p$ --- простое и $k \in \NN$.
+\end{definition}
+
+\begin{theorem}
+    Пусть $A$ --- конечная абелева группа. Тогда $A \simeq \ZZ_{p_1^{k_1}} \times \dots \times \ZZ_{p_t^{k_t}}$, где $p_1, \dots, p_t$ --- простые числа (не обязательно различные!) и $k_1, \dots, k_t \in \NN$. Более того, набор примарных циклических множителей $\ZZ_{p_1^{k_11}}, \dots, \ZZ_{p_t^{k_t}}$ определен однозначно с точностью до перестановки (в частности, число этих множителей определено однозначно). 
+\end{theorem}
