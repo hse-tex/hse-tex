@@ -27,15 +27,18 @@ function build {
 [ -d .pdf ] || mkdir .pdf
 
 build algebra algebra_exam
-build linear_algebra/source linear_algebra
-build linear_algebra/colloquium linear_algebra_colloquium_1
-build linear_algebra/colloquium linear_algebra_colloquium_2
-build linear_algebra/colloquium linear_algebra_exam_definitions_2
-build linear_algebra/colloquium only-titles
-build mathematical_analysis mathematical_analysis_colloquium_01
-build mathematical_analysis mathematical_analysis_colloquium_02
-build mathematical_analysis mathematical_analysis_colloquium_03
-build mathematical_analysis mathematical_analysis_colloquium_04
-build mathematical_analysis mathematical_analysis_exam_01
-build discrete_mathematics discrete_mathematics_colloquium_01
-build discrete_mathematics discrete_mathematics_colloquium_02
+
+if [ -z "$CI" ]; then
+    build linear_algebra/source linear_algebra
+    build linear_algebra/colloquium linear_algebra_colloquium_1
+    build linear_algebra/colloquium linear_algebra_colloquium_2
+    build linear_algebra/colloquium linear_algebra_exam_definitions_2
+    build linear_algebra/colloquium only-titles
+    build mathematical_analysis mathematical_analysis_colloquium_01
+    build mathematical_analysis mathematical_analysis_colloquium_02
+    build mathematical_analysis mathematical_analysis_colloquium_03
+    build mathematical_analysis mathematical_analysis_colloquium_04
+    build mathematical_analysis mathematical_analysis_exam_01
+    build discrete_mathematics discrete_mathematics_colloquium_01
+    build discrete_mathematics discrete_mathematics_colloquium_02
+fi
