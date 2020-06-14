@@ -26,6 +26,7 @@ function build {
 
 [ -d .pdf ] || mkdir .pdf
 
+build algebra algebra_exam
 build linear_algebra/source linear_algebra
 build linear_algebra/colloquium linear_algebra_colloquium_1
 build linear_algebra/colloquium linear_algebra_colloquium_2
