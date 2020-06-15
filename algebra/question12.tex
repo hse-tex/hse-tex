@@ -1,1 +1,99 @@
 \section{Кольца. Коммутативные кольца. Обратимые элементы, делители нуля и нильпотенты. Примеры колец. Поля. Критерий того, что кольцо вычетов является полем}
+
+\begin{definition}
+    \textit{Кольцо} --- это множество $R$, на котором заданы две бинарные операции <<$+$>> (сложение) и <<$\cdot$>> (умножение), удовлетворяющее следующим условиям:
+    
+    \begin{enumerate}
+        \item $(R, +)$ --- абелева группа;
+        \item $\forall a, b, c, \in R \quad a(b + c) = ab + ac$ и $(a + b)c = ac + bc$;
+        \item $\forall a, b, c, \in R \quad (ab)c = a(bc)$.
+        \item $\exists 1 \in R$, такой что $1 \cdot a = a \cdot 1 = a \quad \forall a \in R$.
+    \end{enumerate}
+\end{definition}
+
+\begin{comment}~
+    \begin{enumerate}
+        \item $0 \cdot a = a \cdot 0 = 0 \quad \forall a \in R$;
+        \item Если $|R| > 1$, то $1 \neq 0$.
+    \end{enumerate}
+\end{comment}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item $a0 = a(0 + 0) = a0 + a0$, откуда $0 = a0$.
+        \item Следует из условий выше.
+    \end{enumerate}
+\end{proof}
+
+\begin{example}~
+    \begin{enumerate}
+    \item числовые кольца $\ZZ, \QQ, \RR, \CC$;
+    \item кольцо $\ZZ_n$ вычетов по модулю $n$;
+    \item кольцо матриц $\text{Mat}_{n \times n}(\RR)$;
+    \item $\RR[x]$ --- кольцо многочленов от переменной $x$ с коэффициентами из $\RR$;
+    \item $\RR[x_1, \dots, x_n]$ --- кольцо многочленов от нескольких переменных $x_1, \dots, x_n$ с коэффициентами из $\RR$;
+    \item $F(M, \RR)$ --- кольцо функций из множества $M$ в $\RR$ (с поточечными операциями сложения и умножения):
+
+        $(f_1 + f_2)(m) := f_1(m) + f_2(m), \quad (f_1 \cdot f_2)(m) := f_1(m) \cdot f_2(m)$.
+    \end{enumerate}
+\end{example}
+
+\begin{definition}
+    Кольцо $R$ называется \textit{коммутативным}, если $ab = ba$ для всех $a, b \in RR$.
+\end{definition}
+
+\begin{definition}
+    Элемент $a \in R$ называется \textit{обратимым}, если найдется такой $b \in R$, что $ab = ba = 1$.
+\end{definition}
+
+\begin{comment}
+    Все обратимые элементы кольца $R$ образуют группу по умножению.
+\end{comment}
+
+\begin{definition}
+    Элемент $a \in R$ называется \textit{левым} (соответственно \textit{правым}) \textit{делителем нуля}, если $a \neq 0$ и $\exists b \in R$, $b \neq 0$, такой что $ab = 0$ (соответственно $ba = 0$).
+\end{definition}
+
+\begin{comment}
+    Если $R$ коммутативно, то множества левых и правых делителей нуля совпадают. Тогда левые и правые делители нуля называются просто <<делителями нуля>>.
+\end{comment}
+
+\begin{comment}
+    Все делители нуля в $R$ необратимы. Если $ab = 0$, $a \neq 0$, $b \neq 0$ и существует $a^{-1}$, то получаем $a^{-1} a b = a^{-1} 0$, откуда $b = 0$ --- противоречние.
+\end{comment}
+
+\begin{definition}
+    Элемент $a \in R$ называется \textit{нильпотентным} (\textit{нильпотентом}), если $a \neq 0$ и найдется такое $n \in \NN$, что $a^{n} = 0$.
+\end{definition}
+
+\begin{comment}
+    Всякий нильпотент является делителем нуля: если $a \neq 0$ и $n$ минимально, то $a = a^{n - 1} = 0$.
+\end{comment}
+
+\begin{definition}
+    Кольцо $R$ называется \textit{полем}, если оно коммутативно (ассоциативно с 1), $0 \neq 1$ и любой ненулевой элемент обратим.
+\end{definition}
+
+\begin{example}
+    $\QQ$, $\RR$, $\CC$, $\ZZ_2$.
+\end{example}
+
+\begin{proposal}
+    Кольцо вычетов $\ZZ_n$ является полем $\iff$ $n$ --- простое число.
+\end{proposal}
+
+\begin{proof}
+Соглашение: $a \in \ZZ \leadsto \overline{a} \in \ZZ_n$ --- вычет $a \mathop{\mathrm{mod}} n$.
+\begin{description}
+    \item[$\implies$] Если $n = 1$, то $\ZZ_n = \{0\}$ --- не поле.
+
+        Если $n > 1$ и $n = m \cdot k$, где $1 < m, k < n$, то $\overline{m} \cdot \overline{k} = \overline{0} \implies $ в $\ZZ_n$ есть делитель нуля $ \implies $ $\ZZ_n$ --- не поле.
+
+    \item[$\impliedby$] $n = p$ --- простое. Пусть $\overline{a} \in \ZZ_p \setminus \{\overline{0}\}$.
+
+        Тогда $\gcd(a, p) = 1 \implies \exists k, l \in \ZZ$, такие что $ak + pl = 1$.
+
+        Значит, $\overline{a} \cdot \overline{k} + \overline{p} \cdot \overline{l} = \overline{1} \implies \overline{a} \cdot \overline{k} = \overline{1} \implies \overline{a}$ обратим.
+        \qedhere
+\end{description}
+\end{proof}
