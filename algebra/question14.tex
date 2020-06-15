@@ -1,1 +1,88 @@
 \section{Кольцо многочленов от одной переменной над полем: деление с остатком, наибольший общий делитель двух многочленов, теорема о его существовании и линейном выражении}
+
+Пусть $K$ --- поле, $K[x]$ --- кольцо многочленов от $x$ с коэффициентами из $K$.
+
+\begin{equation*}
+    K[x] = \{a_n x^{n} + \dots + a_1 x + a_0 \mid n \geq 0, a_i \in K\}
+.\end{equation*}
+
+Тогда $\forall f \in K[x] \setminus \{0\}$ определена степень $\deg f$.
+
+Удобно полагать, что $\deg 0 = -\infty$.
+
+Тогда
+\begin{math}
+    \begin{align}[t]
+        &\deg (fg) = \deg f + \deg g \\
+        &\deg (f + g) \leq \max(\deg f, \deg g)
+    \end{align}
+\end{math}
+
+\medskip
+Обратимые элементы в $K[x]: \{f \mid \deg f = 0\} \not\ni 0$.
+
+Делителей нуля нет.
+
+\begin{theorem}[деление с остатком]
+    $\forall f \in K[x] \ \forall g \in K[x] \setminus \{0\} \quad \exists! q, r \in K[x]$, такие что $f = q \cdot g + r$ и либо $r = 0$, либо $\deg r < \deg g$.
+\end{theorem}
+
+\begin{proof}~
+    \begin{description}
+    \item[Существование] 
+        Индукция по $\deg f$.
+
+        Если $f = 0$, то можно взять $q = r = 0$. Далее считаем $\deg f = n \geq 0$.
+
+        Пусть $f = a_n x^{n} + \dots + a_1 x + a_0 \ (a_n \neq 0)$, $g = b_m x^{m} + \dots + b_1 x + b_0 \ (b_m \neq 0)$.
+
+        Если $\deg f < \deg g$, то достаточно взять $q = 0$ и $r = f$.
+
+        Иначе положим $h = f - \frac{a_n}{b_m}x^{n - m}g$, тогда $\deg h < \deg f$.
+
+        По предположению индукции $h = q \cdot g + r$, где либо $r = 0$, либо $\deg r < \deg g$. Тогда $f = \left(q + \frac{a_n}{b_m} x^{n - m}\right) g + r$ --- искомое представление.
+
+    \item[Единственность] Пусть $f = q_1 g + r_1 = q_2 g + r_2$ --- два представления.
+
+        Тогда $(q_1 - q_2)g = r_2 - r_1$. Если $q_1 - q_2 \neq 0$, то $\deg (q_1 - q_2)g \geq \deg g > \deg (r_2 - r_1)$ --- противоречие. Значит, $q_1 = q_2$ и тогда $r_1 = r_2$.
+        \qedhere
+    \end{description}
+\end{proof}
+
+
+\begin{comment}
+    Доказательство дает алгоритм деления <<в столбик>>.
+\end{comment}
+
+\begin{definition}
+    Пусть $f, g \in K[x]$, $g \neq 0$. Говорят, что $f$ \textit{делится} на $g$ ($g$ \textit{делит} $f$), если $\exists h \in K[x]$, такой что $f = g \cdot h$.
+\end{definition}
+
+\begin{definition}
+    \textit{Наибольший общий делитель} многочленов $f, g \in K[x]$ --- это такой $h \in K[x]$, что
+    \begin{enumerate}
+    \item $h$ делит оба $f, g$;
+    \item $h$ имеет максимальную возможную степень.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    Пусть $f, g \in K[x]$ и $(f, g) \neq (0, 0)$. Тогда
+    \begin{enumerate}
+        \item $\exists \gcd(f, g) =: h$;
+        \item $\exists u, v \in K[x]$, такие что $h = u \cdot f + v \cdot g$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}~
+    \begin{enumerate}
+    \item Прямой ход алгоритма Евклида;
+    \item Обратный ход алгоритма Евклида.
+    \end{enumerate}
+\end{proof}
+
+\begin{comment}
+    $\gcd(f, g)$ определен однозначно с точностью до пропорциональности.
+
+    $2 = \gcd(2x^2, 2x + 1) = 1$.
+\end{comment}
