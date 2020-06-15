@@ -7,17 +7,11 @@
 \end{enumerate}
 
 \begin{proof}
-    По определению, если $G$ --- циклическая, то $G = \left< g \right>$ для некоторого $g \in G$.
-    \begin{enumerate}
-    \item $\phi \colon \ZZ \to G$, $k \mapsto g^{k}$
+    Пусть $G = \left< g \right>$. Рассмотрим отображение $\phi \colon \ZZ \to G$, $k \mapsto g^{k}$.
 
-        Это гомоморфизм и биекция $\implies $ изоморфизм.
-
-    \item $\phi \colon \ZZ_n \to G$, $k \mapsto g^{k}$.
-
-        Рассмотрим, куда переходит $k + ns$, где $0 \leq k \leq n - 1$.
-
-        $k + ns \mapsto g^{k + ns} = g^{k}g^{ns} = g^{k} (g^{n})^{s} = g^{k}$.
-        \qedhere
-    \end{enumerate}
+    Тогда $\phi(k + l) = g^{k + l} = g^{k}g^{l} = \phi(k) \phi(l)$, поэтому $\phi$ --- гомоморфизм.
+    Из определения циклической группы следует, что $\phi$ сюръективет, то есть $\Im \phi = G$.
+    Тогда по теореме о гомоморфизме мы получаем $G \simeq \ZZ / \ker \phi$.
+    Так как $\ker \phi$ --- подгруппа в $\ZZ$, то получаем $\ker \phi = m\ZZ$ для некоторого $m \geq 0$. (так как любая подгруппа $\ZZ$ имеет вид $k \ZZ$)
+    Если $m = 0$, то $\ker \phi = \{0\}$, откуда $G \simeq \ZZ / \{0\} \simeq \ZZ$. Если $m > 0$, то $G \simeq \ZZ / m \ZZ = \ZZ_m$.
 \end{proof}

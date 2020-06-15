@@ -1,7 +1,23 @@
 \section{Смежные классы. Индекс подгруппы. Теорема Лагранжа}
 
+Пусть $G$ --- группа, $H \subseteq G$ --- подгруппа. Определим отношение $L_H$ следующим образом: $(a, b) \in L_H \iff a^{-1} b \in H$.
+
+\begin{proposal}
+    $L_H$ --- отношение эквивалентности.
+\end{proposal}
+
+\begin{proof}~
+    \begin{enumerate}[nosep]
+    \item $a^{-1} a = e \in H$;
+    \item $a^{-1} b \in H \implies b^{-1} a = (a^{-1} b)^{-1} \in H$;
+    \item $a^{-1} b \in H, b ^{-1} c \in H \implies a^{-1} c = (a^{-1} b)(b^{-1} c) \in H$.
+    \end{enumerate}
+\end{proof}
+
+Заметим, что $a^{-1} b \in H \iff b \in aH$, поэтому класс эквивалентности элемента $a \in G$ совпадает с множеством $aH$.
+
 \begin{definition}
-    Пусть $G$ --- группа, $H \subseteq G$ --- подгруппа и $g \in G$. \textit{Левым смежным классом} элемента $g$ группы $G$ по подгруппе $H$ называется подмножество
+    \textit{Левым смежным классом} элемента $g$ группы $G$ по подгруппе $H$ называется подмножество
     \begin{equation*}
         gH = \{gh \mid h \in H\}
     .\end{equation*}
@@ -15,18 +31,7 @@
 Все дальнейшие доказательства для правых смежный классов формулируются и доказываются аналогично.
 
 \begin{lemma}
-    Пусть $G$ --- группа, $H \subseteq G$ --- её подгруппа и $g_1, g_2 \in G$.
-
-    Тогда либо $g_1 H = g_2 H$, либо $g_1 H \cap g_2 H = \varnothing$.
-\end{lemma}
-
-\begin{proof}
-    Предположим, что $g_1 H \cap g_2 H \neq \varnothing$, то есть $g_1 h_1 = g_2 h_2$ для некоторых $h_1, h_2 \in H$. Нужно доказать, что $g_1 H = g_2 H$. Заметим, что $g_1 H = g_2 h_2 h_1^{-1} H \subseteq g_2 H$. Обратное включение доказывается аналогично.
-\end{proof}
-
-\begin{lemma}
     Пусть $G$ --- конечная группа и $H \subseteq G$ --- конечная подгруппа.
-
     Тогда $\left|gH\right| = \left|H\right|$ для любого $g \in G$.
 \end{lemma}
 

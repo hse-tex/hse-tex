@@ -18,11 +18,19 @@
 \end{corollary}
 
 \begin{proof}
-    Пусть $k = \ord(g)$. Тогда из следствия 2: $|G| = k \cdot s \implies g^{|G|} = g^{ks} = \left(g^{k}\right)^{s} = e^{s} = e$.
+    Вытекает из следствия 1 и факта, что $\ord(g) = |\left< g \right>|$.
+\end{proof}
+
+\begin{corollary}
+    Пусть $G$ --- конечная группа и $g \in G$. Тогда $g^{|G|} = e$.
+\end{corollary}
+
+\begin{proof}
+    Согласно следствию 2, мы имеем $|G| = \ord(g) \cdot s$, откуда $g^{|G|} = \left(g^{\ord(g)}\right)^{s} = e^{s} = e$.
 \end{proof}
 
 \begin{corollary}[малая теорема Ферма]
-    $p$ --- простое число, $\gcd(a, p) = 1 \implies a^{p - 1} \equiv 1 \pmod{p}$.
+    Пусть $\overline{a}$ --- ненулевой вычет по простому модулю $p$. Тогда $\overline{a}^{p - 1} = 1$.
 \end{corollary}
 
 \begin{proof}

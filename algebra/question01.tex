@@ -66,11 +66,11 @@
 
 \item Группы матриц:
     
-    $\mathrm{GL}_n(\RR) = \{A \in \mathrm{Mat}_{n \times n}(\RR) \mid \det A \neq 0\}$;
+    $\mathrm{GL}_n(\RR) = \{A \in \mathrm{Mat}_{n \times n}(\RR) \mid \det A \neq 0\}$ --- полная линейная группа;
 
-    $\mathrm{SL}_n(\RR) = \{A \in \mathrm{Mat}_{n \times n}(\RR) \mid \det A = 1\}$.
+    $\mathrm{SL}_n(\RR) = \{A \in \mathrm{Mat}_{n \times n}(\RR) \mid \det A = 1\}$ --- специальная линейная группа.
 
-\item Группы перестановок:
+\item Группы перестановок (с операцией композиции):
 
     симметрическая группа $S_n$ --- все перестановки длины $n$, $|S_n| = n!$;
 
@@ -97,19 +97,16 @@
 
 \begin{proof}
     Очевидно, что все подмножества вида $k\ZZ$ являются подгруппами в $\ZZ$.
-    \begin{enumerate}
-    \item Пусть $H \subseteq \ZZ$ --- подгруппа. Если $H = \{0\}$, то $H = 0\ZZ$.
+
+    Пусть $H \subseteq \ZZ$ --- подгруппа. Если $H = \{0\}$, то $H = 0\ZZ$.
     
-        Иначе положим $k = \min(H \cap \NN) \neq 0$.
+    Иначе положим $k = \min(H \cap \NN) \neq 0$. (это множество непусто, так как $\forall x \implies -x \in H$)
 
-        Тогда $k\ZZ \subseteq H$.
+    Тогда $k\ZZ \subseteq H$.
 
-    \item
-        Покажем, что $k\ZZ = H$. Пусть $a \in H$. Поделим на $k$ с остатком.
+    Покажем, что $k\ZZ = H$. Пусть $a \in H$ --- произвольный элемент. Поделим его на $k$ с остатком.
 
-        $a = qk + r$, где $q \in H$, $0 \leq r \leq k \implies r = a - qk \in H$.
+    $a = qk + r$, где $q \in H$, $0 \leq r \leq k \implies r = a - qk \in H$.
 
-        В силу выбора $k$ получаем $r = 0 \implies a = qk$.
-        \qedhere
-    \end{enumerate}
+    В силу выбора $k$ получаем $r = 0 \implies a = qk \in k \ZZ$.
 \end{proof}
