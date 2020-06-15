@@ -1,1 +1,88 @@
 \section{Неприводимые многочлены. Факториальность кольца многочленов от одной переменной над полем}
+
+\begin{definition}
+    Многочлен $h \in K[x]$, $\deg h > 0$ называется \textit{неприводимым}, если его нельзя представить в виде $h = h_1 h_2$, где $\deg h_1 < \deg h$ и $\deg h_2 < \deg h$.
+
+    Иначе $h$ называется \textit{приводимым}.
+\end{definition}
+
+\begin{comment}~
+    \begin{enumerate}
+        \item $h \in K[x]$, $\deg h = 1 \implies h $ неприводим;
+        \item $h \in K[x]$, $\deg g \geq 2$, $h $ неприводим $ \implies h$ не имеет корней в $K$ (следствие теоремы Безу);
+        \item $h \in K[x]$, $\deg h \in \{2, 3\} \implies \left[h \text{ неприводим } \iff h \text{ не имеет корней в $K$}\right]$.
+    \end{enumerate}
+\end{comment}
+
+\begin{example}
+    $K = \CC$, $h \in \CC[x]$, $\deg h \geq 1$.
+
+    Если $\deg h \geq 2$, то $h$ имеет корень $ \implies \quad h$ неприводим $\iff \deg h = 1$. 
+\end{example}
+
+\begin{lemma}
+    Если $h \in K[x]$ --- неприводим и $h$ делит $g_1 \cdot \ldots \cdot g_k$ для некоторых $g_1, \dots, g_k \in K[x]$, то $\exists i : h$ делит $g_i$.
+\end{lemma}
+
+\begin{proof}
+    Индукция по $k$.
+
+    $k = 1$ --- ясно.
+
+    $k = 2$. Пусть $g_1 \not\divby h$. Так как $h$ неприводим, то $\gcd(g_1, h) = 1 \implies \exists u, v \in K[x]$, такие что $1 = ug_1 + vh$. Умножим на $g_2$:
+    \begin{equation*}
+        g_2 = u \cdot \underbrace{g_1 g_2}_{\divby h} + v \cdot \underbrace{h \cdot g_2}_{\divby h} \implies g_2 \divby h
+    .\end{equation*}
+
+    Для $k > 2$ надо применить предыдущее рассуждение для $(g_1 \cdot \ldots \cdot g_{k - 1}) \cdot g_k$ и воспользоваться предположением индукции.
+\end{proof}
+
+\begin{theorem}[факториальность кольца $K[x]$]
+    Пусть $f \in K[x]$ и $\deg f \geq 1$.
+
+    Тогда
+    \begin{enumerate}
+    \item $\exists$ разложение $f = h_1 \cdot \ldots \cdot h_k$, где все $h_i$ неприводимы;
+    \item это разложение единственно с точностью до перестановки множителей и пропорциональности. Точнее, если $f = h_1' \cdot \ldots \cdot h_m'$ --- другое такое разложение, то $k = m$ и после подходящей перестановки множителей $h_i$ и $h_i'$ пропорциональны.
+    \end{enumerate}
+\end{theorem}
+
+\begin{example}
+    $f = 6x^3 + 6x \implies f = (3x)(2x^2 + 2) = (x^2 + 1)(6x)$ --- одинаковые разложения с точки зрения теоремы.
+\end{example}
+
+\begin{proof}
+    Пусть $\deg f = n$. Индукция по $n$.
+
+    $n = 1 \implies f$ неприводим, единственность есть.
+
+    \bigskip
+    $n > 1$
+    \begin{description}
+    \item[Существование] $f$ неприводим $ \implies $ уже есть разложение.
+
+        Если же $f$ приводим, то $f = f_1 \cdot f_2$, $\deg f_i < n$.
+
+        Тогда по предположению индукции $f_1 = g_1 \cdot \ldots \cdot g_p$, $f_2 = h_1 \cdot \ldots \cdot h_q$, где $g_i, h_j$ --- неприводимы.
+
+        Значит, $f = g_1 \cdot \ldots g_q \cdot h_1 \cdot \ldots h_q$ --- разложение $f$ на неприводимые.
+
+    \item[Единственность] Пусть $f = h_1 \cdot \ldots \cdot h_k = h_1' \cdot \ldots \cdot h_m'$ --- два разложение на неприводимые множители.
+
+        Если $h_1$ делит $h_1' \cdot \ldots \cdot h_m'$, то по лемме существует $i$, такое что $h_1$ делит $h_i'$.
+
+        Переставив множители, будем считать, что $h_1$ делит $h_1'$. Так как $h_1$, $h_1'$ неприводимы, то $h' = \epsilon \cdot h$, где $\epsilon \in K \setminus \{0\}$. Так как в $K[x]$ нет делителей нуля, то можем сократить на $h_1$, получим
+        \begin{equation*}
+            h_2 \cdot \ldots \cdot h_k = \epsilon h_2' \cdot \ldots \cdot h_m' \quad \leftarrow \deg < n
+        .\end{equation*}
+        Осталось применить предположение индукции.
+        \qedhere
+    \end{description}
+\end{proof}
+
+\begin{comment}~
+    \begin{enumerate}
+    \item Всякое КГИ факториально;
+    \item $K[x_1, \dots, x_n]$, $n \geq 2$ --- это не КГИ, но тоже факториально.
+    \end{enumerate}
+\end{comment}
