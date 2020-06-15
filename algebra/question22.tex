@@ -1,1 +1,32 @@
 \section{Базис Грёбнера идеала в кольце многочленов от нескольких переменных, теорема о трёх эквивалентных условиях. Решение задачи вхождения многочлена в идеал}
+
+Пусть $I \triangleleft\, R$ -- идеал.\\
+\textbf{Определение.} Множество $F$ называется \textbf{базисом Грёбнера} идеала $I$, если \\
+\indent (1) $I = (F)$ \\
+\indent (2) $F$ -- система Грёбнера. \\\\
+\textbf{Теорема.} $F \subseteq I \backslash \{0\} \Rightarrow$ следующие условия эквивалентны: \\
+\indent (1) $F$ -- базис Грёбнера в $I$ \\
+\indent (2) $\forall\, g \in I\, g \overset{F}{\leadsto}0$ \\
+\indent (3)  $\forall\, g \in I \backslash \{0\}\ \exists f \in F:\ L(g)\, \vdots\, L(f)$
+\begin{proof} 
+    $(1) \Rightarrow (2)$: пусть $I_0 = \{g \in I |  \overset{F}{\leadsto}0\}$, тогда \\
+    \indent 1) $0 \in I_0$ \\
+    \indent 2) $g \in I_0 \Rightarrow -g \in I_0$ \\
+    \indent 3) $g_1, g_2 \in I_0 \Rightarrow g_1 + g_2 \in I_0$
+    Пусть $g = (g_1 + g_2 ) - g_2\overset{F}{\leadsto}0\Rightarrow$ существует остаток $r$, такой что $g_1+g_2\overset{F}{\leadsto}r, g_2\overset{F}{\leadsto}r$\\
+    Но F -- базис Грёбнера $\Rightarrow $ остаток определён однозначно и для $g_2$ получаем $r=0$.\\
+    $\Rightarrow g_1+g_2\overset{F}{\leadsto}0$\\
+    \indent 4) $g\in I_0\Rightarrow \forall m\in M\ mg\in I_0$\\
+    \indent$1)-3)\Rightarrow I_0$ -- подгруппа в $I $ по сложению. \\
+    \indent$3)-4)\Rightarrow I_0$ -- идеал в $R$.\\
+    $F\subseteq I_0\Rightarrow I=(F)\subseteq I_0\Rightarrow I_0=I$\\
+    \indent$(2)\Rightarrow (1) \ g\in I\Rightarrow g\overset{F}{\leadsto}0\Rightarrow g=m_1f_1+...+m_kf_k$, где $m_1,...,m_k\in M, f_1,...,f_k\in F\\$
+    $\Rightarrow g\in (F)\Rightarrow I\subseteq (F)$. Но $F\subseteq I\Rightarrow (F)\subseteq I\Rightarrow I=(F)$\\
+    $f_1f_2\in F\Rightarrow S(f_1,f_2)\in (F)=I\Rightarrow S(f_1,f_2)\overset{F}{\leadsto}0\Rightarrow$ $F$ -- система Грёбнера по критерию Бухбергера.\\
+    \indent $(3)\Rightarrow (2) \ g\in I, g\overset{F}{\leadsto}r$, где $r$ -- остаток. $\Rightarrow r=\underset{I}{g}-\underset{I}{m_1f_1-...-m_kf_k}, \ m_i\in M, f_i\in F$\\
+    $\Rightarrow r\in I$, если $r\neq 0$, то $L(r)\vdots L(f)$ для некоторого $f\in F$\\
+    $\Rightarrow F$ редуцируем дальше -- противоречие $\Rightarrow r=0$
+\end{proof}
+\noindent \textbf{Следствие.} F -- базис Грёбнера в I $\Rightarrow $\\
+\indent 1) $\forall \ g\in I $ любая цепочка элементарных редукций относительно F приводит к 0\\
+\indent 2) $\forall \ g\in R:\ g\in I \Leftrightarrow $ остаток $g$ относительно системы $f$ равен 0

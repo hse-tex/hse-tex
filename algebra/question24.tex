@@ -1,1 +1,14 @@
 \section{Теорема Гильберта о базисе идеала}
+
+\textbf{Теорема.} Всякий идеал в $R$ порождается конечным числом элементов. \\
+\begin{proof}
+    $I \triangleleft\, R. \\ I = \{0\} = I = (0)$ -- ок.\\
+    $I \neq 0. $ Выберем $r_1 \in I \setminus \{0\}.$ Если $I = (r_1)$, то ок;\\
+    Иначе выберем $f_2 \in I \setminus (r_1)$, $f_2 \overset{\{r_1\}}{\leadsto} r_2$ -- остаток.\\
+    Тогда $r_2 \in I \setminus (r_1) , L(r_2) \nodiv L(r_1)$. Если $I = (r_1, r_2), $ то ок.\\
+    Иначе выберем $f_3 \in I \setminus (r_1, r_2), f_3 \overset{\{r_1, r_2\}}{\leadsto} r_3$ -- остаток.\\
+    Тогда $r_3 \in I \setminus (r_1, r_2), L(r_3) \nodiv L(r_1), L(r_2).$\\
+    $\dotsc$\\
+    Если процесс не закончится, то получится бесконечная последовательность $r_1, r_2, \dotsc,$ такая что $L(r_i) 
+    \nodiv L(r_j)$ при $i > j$ - невозможно по лемме $\Rightarrow$ $\exists k : I = (r_1, \dotsc, r_k)$
+\end{proof}

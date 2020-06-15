@@ -1,1 +1,18 @@
 \section{Лексикографический порядок на множестве одночленов от нескольких переменных. Лемма о конечности убывающих цепочек одночленов}
+
+K -- поле, $R=K[x_1,...,x_n]$\\
+$M:=\{ax_1^{k_1}\cdot...\cdot x_n^{k_n}\ |\ a\in K\backslash\{0\}, k_i\geqslant 0\}$ -- все одночлены от $x_1,...,x_n$.\\
+\textbf{Определение.} \textbf{Лексикографический порядок на M}\\
+$ax_1^{i_1}\cdot...\cdot a_n^{i_n}\succ bx_1^{j_1}\cdot...\cdot x_n^{j_n}\Leftrightarrow \exists k:$\\
+$\forall\ q\in \{1,...,k-1\}: i_q=j_q, \ i_k>j_k$\\\\
+\textbf{Лемма.} Не существует бесконечно убывающих цепочек одночленов
+\\$m_1\succ m_2\succ m_3\succ ..., $ где $m_i\in M \ \forall \ i \in \N$
+\begin{proof}
+    От противного. Пусть $m_1\succ m_2 \succ m_3\succ ...$ -- бесконечная убывающая цепочка. Пусть $m_i=a_ix_1^{k_1(i)}\cdots x_n^{k_n(i)}\ \forall i\in \N$\\
+    Имеем:\\
+    $k_1(1)\geqslant k_1(2)\geqslant k_1(3)\geqslant ...\Rightarrow \exists \ i_1\in \N:k_1(i)=k_1(i_1)\ \forall i \geqslant i_1$\\
+    $k_2(i_1)\geqslant k_2(i_1+1)\geqslant k_2(i_1+2)\geqslant ...\Rightarrow \exists \ i_2\geqslant i_1:k_2(i)=k_2(i_2)\ \forall i \geqslant i_2$\\
+    $... \qquad ... \qquad ... \qquad ... \qquad ...$\\
+    $... \qquad ... \qquad \exists i_n\geqslant i_{n-1}:k_n(i)=k_n(i_n)\ \forall i\geqslant i_n$\\
+    Итог: при $i\geqslant i_n$ все $m_i$ имеют одинаковые наборы степеней -- противоречие.
+\end{proof}

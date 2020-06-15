@@ -1,1 +1,30 @@
 \section{Характеристика поля. Расширение полей. Конечное расширение и его степень. Степень композиции двух расширений}
+
+\textbf{Поля} $\Q, \R, \CC, \Z_p$, где $p$ -- простое. $K[x]/(h)$ (K -- поле, h -- неприводимый многочлен)\\
+\textbf{Определение.} \textbf{Характеристика} поля k -- наименьшее $p\in \N$, такое что $\underbrace{1+1+...+1}_{p}=0$\\
+Если такого p не существует, то говорят, что характеристика поля K равна 0.\\
+Обозначение: $char K$\\
+Примеры: $char\Q=char\CC=char\R=0$, $char\Z_p=p$\\
+\textbf{Предложение.} K -- поле $\Rightarrow$ либо $char K=0$, либо $char K$ -- простое число.
+\begin{proof}
+    $char K = p$, пусть $p> 0$. Так как $0\neq 1$, то $p\geqslant 2$.\\
+    Если $p=m\cdot k$, тогда $0=\underbrace{1+...+1}_{p}=\underbrace{1+...+1}_{m\cdot k}=\underbrace{1+...+1}_{m}\cdot\underbrace{(1+...+1)}_{k}$. Но мы знаем, что $\underbrace{(1+..+1)}_{k}\neq 0$ и $\underbrace{1+..+1}_{m}\neq 0$, а значит в K есть делители нуля, из чего следует, что K -- не поле. Противоречие.\\
+    $\Rightarrow$ p -- простое.
+\end{proof}
+\noindent \textbf{Определение.} $K, F$ -- поля, $K\subseteq F\Rightarrow f$ называется \textbf{расширением} поля $K$.\\ ($''K\subseteq F''$ -- расширение полей)\\\\
+\textbf{Определение.} \textbf{Степень} расширения полей $K\subseteq F$ -- это размерность F как векторного пространства над K.\\
+Обозначение: $[F:K]$\\
+Примеры: $[\CC:\RR]=2$, $[\R:\Q]=\infty$\\\\
+\textbf{Определение.} Расширение полей $K\subseteq F$ называется \textbf{конечным}, если $[F:K]<\infty$\\\\
+\textbf{Лемма о степени композиции расширения полей.}\\
+Пусть $K\subseteq F, F\subseteq L$ -- конечные расширения полей. Тогда $K\subseteq L$ -- тоже конечное расширение, причём $[L:K]=[L:F]\cdot[F:K]$
+\begin{proof}
+    Пусть $e_1,...,e_n$ -- базис $F$ над $K$, $f_1,...,f_m$ -- базис $L$ над $F$.\\
+    Покажем, что $\{e_if_j \}$ -- базис $L$ над $K$.\\
+    1) $a\in L\Rightarrow a=\sum_{j=1}^ma_jf_j$, где $a_j\in F$.\\
+    При этом $a_j$ раскладывается по базису $e_1,...,e_m$: $a_j=\sum_{i=1}^nb_{ij}e_i$, где $b_ij\in K$\\
+    $\Rightarrow a=\sum_{j=1}^m\left(\sum_{i=1}^nb_{ij}e_i\right)f_j=\sum_{j=1}^m\sum_{i=1}^nb_{ij}e_if_j$ Итог: $L=\langle e_if_j \rangle$\\
+    2) Если $\sum_{j=1}^{m}\sum_{i=1}^nc_{ij}e_if_j=0$, где $c_{ij}\in K$, то $=\sum_{j=1}^m\left(\sum_{i=1}^nc_{ij}e_i\right)f_j=0$\\
+    $\{f_j\}$ -- базис $L$ над $F \Rightarrow \ \forall \ j\ \sum_{i=1}^nc_{ij}e_i=0$, знаем, что $\{e_i\}$ -- базис $F$ над $K$\\
+    $\Rightarrow \forall \ i,j:\ c_{ij}=0\Rightarrow$ Система $\{e_if_j\}$ линейно независима.
+\end{proof}

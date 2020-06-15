@@ -1,1 +1,13 @@
 \section{Теорема существования для конечных полей}
+
+\textbf{Замечание.} Если $K$ -- поле и $\psi: K\to K$ -- автоморфизм, то подмножество $K^{\psi}:=\left\{ x\in K\ |\ \psi(x)=x \right\}$ неподвижных элементов всегда является подполем в K.\\\\
+\textbf{Теорема.} Для любого простого числа $p$ и всякого $n\in \N$ существует единственное с точностью до изоморфизма поле $K$, такое что $|K|=p^n$
+\begin{proof}
+    \textbf{Существование.} Положим $q=p^n$.\\
+    Рассмотрим многочлен $f=x^q-x\in \Z_p[x]$. Пусть $F\subseteq \Z_p, |F|<\infty$ -- конечное расширение, такое что $f$ разлагается в $F$ на линейные множители.\\
+    Пусть $K\subseteq F$ -- это множество всех корней многочлена $f$ в $F$.\\
+    Покажем, что $|K|=q=p^n$. Если это не так, то $\exists \ \alpha\in K$, такое что $f\ \vdots \ (x-\alpha)^2\Rightarrow f=(x-\alpha)^2\cdot g$, где $g\in K[x]$. Тогда $f'=2(x-\alpha)\cdot g+(x-\alpha)^2\cdot g'\ \vdots \ (x-\alpha)$.\\
+    Но $f=x^q-x\Rightarrow f'=q\cdot x^{q-1}-1=p^n\cdot x^{q-1}-1=-1 \nodiv (x-\alpha)$ -- противоречие $\Rightarrow |K|=q$.\\
+    $a\in K\Leftrightarrow f(a)=0\Leftrightarrow a^q-a=0\Leftrightarrow a^q=a\Leftrightarrow a^{p^n}=a\Leftrightarrow \varphi^n(a)=a\Leftrightarrow $ $a$ -- неподвижный элемент для автоморфизма $\psi=\varphi^n$\\
+    Вывод: $K=F^{\psi}\Rightarrow K$ -- подполе в $F$.
+\end{proof}

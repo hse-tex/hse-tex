@@ -1,1 +1,18 @@
 \section{Цикличность мультипликативной группы конечного поля и неприводимые многочлены над $\ZZ_p$}
+
+Обозначение: Поле из $q$ элементов обозначается $\F_q$\\
+Обозначение: $K$ -- поле $\Rightarrow K^{\times}=\left( K\backslash\{0\}, \times \right) $ -- мультипликативная группа поля $K$.\\\\
+\textbf{Предложение.} Группа $\F_q^{\times}$ является циклической.\\
+\begin{proof}
+    Положим $m=\exp(\F_q^{\times}), m\leqslant q-1$. Если $\F_q^{\times}$ не циклическая, то $m<q-1$. Но тогда $a^m=1\ \forall a\in \F_q^{\times}$\\
+    $\Rightarrow $ многочлен $x^m-1$ имеет $\F_q$ не меньше $q-1$ корней, но это невозможно, так как $m<q-1$
+\end{proof}
+\noindent \textbf{Предложение.} Пусть $p$ -- простое и $n\in \N$. Тогда поле $\F_q$ можно реализовать в виде $\Z_p[x]/(h)$, где $h\in \Z_p[x]$ -- неприводимый многочлен, $\deg{h}=n$. В частности, $\forall n\in \N$ в $\Z_p[x]$ существуют неприводимые многочлены степени n.
+\begin{proof}
+    Пусть $\alpha \in \F_q^{\times}$ -- порождающий элемент циклической группы $\F_q^{\times}$. $\Z_p\subseteq F_q\Rightarrow Z_p(\alpha) $ содержит $\alpha,...,\alpha^{q-1}  \ \ (q=p^n) \ \Rightarrow\Z_p(\alpha)=\F_q\Rightarrow \F_q\simeq \Z_p[x]/(h)$, где $h$ -- минимальный многочлен для $\alpha$ над $\Z_p$.\\
+    Если $\deg{h}=d$, то $\left| \Z_p[x]/(h) \right|=p^d$\\
+    $\Rightarrow p^d=p^n\Rightarrow d=n$
+\end{proof}
+\noindent \textbf{Теорема.} Пусть $q=p^n$, где $p$ -- простое.\\
+\indent 1) $F\subseteq \F_q$ -- подполе, то $F\simeq \F_{p^m}$, где $m|n$\\
+\indent 2) $\forall \ m\in\N, \ m|n,\ $ существует единственное подполе $F\subseteq \F_q$, такое что $|F|=p^m$
