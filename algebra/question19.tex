@@ -23,8 +23,8 @@ g \textbf{нередуцируем} относительно F, если $\foral
 \begin{proof}
     От противного. Пусть существует бесконечная цепочка элементарных редукций $g_1\overset{f_1}{\rightarrow}g_2\overset{f_2}{\rightarrow}g_3\overset{f_3}{\rightarrow}...$\\
     В силу того, что не существует бесконечно убывающих цепочек одночленов:\\
-    $L(g_1)\succcurlyeq L(g_2)\succcurlyeq L(g_3)\succcurlyeq ...\Rightarrow \exists \ i_1\in \N : L(g_i)= L(g_{i_2})\ \forall i\geqslant i_1$\\
-    $L_2(g_{i_2})\succcurlyeq L_2(g_{i_2+1})\succcurlyeq...\Rightarrow \exists i_2\geqslant i_1: L_2(g_i)=L_2(g_{i_2})\ \forall i\geqslant i_2$\\
+    $L(g_1)\succcurlyeq L(g_2)\succcurlyeq L(g_3)\succcurlyeq ...\Rightarrow \exists \ i_1\in \N : L(g_i)= L(g_{i_1})\ \forall i\geqslant i_1$\\
+    $L_2(g_{i_1})\succcurlyeq L_2(g_{i_1+1})\succcurlyeq...\Rightarrow \exists i_2\geqslant i_1: L_2(g_i)=L_2(g_{i_2})\ \forall i\geqslant i_2$\\
     ... ... ... и так далее ... ... ...\\
     Итог: $L(g_{i_1})=L(g_{i_2})\succ L_2(g_{i_2})=L_2(g_{i_3})\succ L_3(g_{i_3})=L_3(g_{i_4})\succ...$\\
     $\Rightarrow L(g_{i_1})\succ L_2(g_{i_2})\succ L_3(g_{i_3})\succ...$ -- бесконечно убывающая цепочка одночленов -- противоречие.

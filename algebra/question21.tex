@@ -7,7 +7,10 @@ $f_1,f_2\in R\leadsto $ рассмотрим $m=$НОК($L(f_1),L(f_2)$)$\in M$.
 \textbf{Теорема.} \textbf{(Критерий Бухбергера)} Для системы $F\subseteq R\backslash\{0\}$ следующие условия эквивалентны:\\
 \indent (1) $F$ -- система Грёбнера.\\
 \indent (2) $\forall f_1,f_2\in F\quad S(f_1,f_2)\overset{F}{\leadsto}0$\\
-\textbf{Следствие.} Если $f_1,f_2\in F, \ \ S(f_1,f_2)\overset{F}{\leadsto}r$ -- остаток и $r\neq 0$, то F не система Грёбнера.\\
+\begin{proof}
+    $(1) \Rightarrow (2)$ Если $F$ -- система Грёбнера, то $S(f_1,f_2)\overset{F}{\leadsto}0$, но при этом\\ $S(f_1,f_2)\overset{F}{\leadsto}r$. Знаем, что остаток определён однозначно, следовательно $r=0$. Противоречие (брали ненулевой r изначально).
+\end{proof}
+\noindent\textbf{Следствие.} Если $f_1,f_2\in F, \ \ S(f_1,f_2)\overset{F}{\leadsto}r$ -- остаток и $r\neq 0$, то F не система Грёбнера.\\
 \begin{proof}
     $(1)\Rightarrow (2) m=$НОК$(L(f_1),L(f_2))=m_1L(f_1)=m_2L(f_2)$\\
     $m_1f_1\overset{f_1}{\to}0$\\
@@ -16,15 +19,12 @@ $f_1,f_2\in R\leadsto $ рассмотрим $m=$НОК($L(f_1),L(f_2)$)$\in M$.
     $(2)\Rightarrow (1)$ Пусть $g\in R, m_1,m_2\in M(g)$ и мы проделаем элементарную редукцию $m_1$ при помощи $f_1\in F$ и $m_2$ при помощи $f_2$.\\
     $m_1=m_1'L(f_1), m_2=m_2'L(f_2)$\\
     $g\overset{f_1}{\to}g_1=g-m_1'f_1$\\
-    $g\overset{f_2}{\to}g_2=g-m_1'f_2$\\
+    $g\overset{f_2}{\to}g_2=g-m_2'f_2$\\
     Достаточно показать, что $g_1-g_2\overset{F}{\leadsto}0$\\
     \textbf{Случай 1} $L(m_2'f_2)$ и $L(m_1'f_1)$ не пропорциональны, можно считать, что $L(m_2'f_2)>L(m_1'f_1)$\\
-    $m_2'f_2-m_1'f_2\overset{f_2}{\to}-m_1'f_1\overset{f_1}{\to}0$\\
+    $m_2'f_2-m_1'f_1\overset{f_2}{\to}-m_1'f_1\overset{f_1}{\to}0$\\
     \textbf{Случай 2} $L(m_2'f_2)=L(m_1'f_1)$. Тогда $\exists \ m\in M$, такой что $m_2'f_2-m_1'f_1=mS(f_1,f_2)\overset{F}{\leadsto}0$\\
     \textbf{Случай 3} $L(m_2'f_2)=\alpha L(m_1'f_1)$ при некотором $\alpha\neq 1$. Тогда $L(m_2'f_2-m_1'f_1)=(\alpha - 1)L(m_1'f_1)$\\
     $\Rightarrow m_2'f_2-m_1'f_1\overset{f_1}{\to}m_2'f_2-m_1'f_1-(\alpha - 1)m_1'f_1=m_2'f_2-\alpha m_1'f_1$\\
     $L(m_2'f_2)=L(\alpha m_1'f_1)$ -- попали в \textbf{Случай 2}.
-\end{proof}
-\begin{proof}
-    $(1) \Rightarrow (2)$ Если $F$ -- система Грёбнера, то $S(f_1,f_2)\overset{F}{\leadsto}0$, но при этом\\ $S(f_1,f_2)\overset{F}{\leadsto}r$. Знаем, что остаток определён однозначно, следовательно $r=0$. Противоречие (брали ненулевой r изначально).
 \end{proof}
