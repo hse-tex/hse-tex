@@ -1,18 +1,55 @@
 \section{Лексикографический порядок на множестве одночленов от нескольких переменных. Лемма о конечности убывающих цепочек одночленов}
+        
+Пусть $K$ --- поле, $R = K[x_1, \dots, x_n]$.
 
-K -- поле, $R=K[x_1,...,x_n]$\\
-$M:=\{ax_1^{k_1}\cdot...\cdot x_n^{k_n}\ |\ a\in K\backslash\{0\}, k_i\geqslant 0\}$ -- все одночлены от $x_1,...,x_n$.\\
-\textbf{Определение.} \textbf{Лексикографический порядок на M}\\
-$ax_1^{i_1}\cdot...\cdot a_n^{i_n}\succ bx_1^{j_1}\cdot...\cdot x_n^{j_n}\Leftrightarrow \exists k:$\\
-$\forall\ q\in \{1,...,k-1\}: i_q=j_q, \ i_k>j_k$\\\\
-\textbf{Лемма.} Не существует бесконечно убывающих цепочек одночленов
-\\$m_1\succ m_2\succ m_3\succ ..., $ где $m_i\in M \ \forall \ i \in \N$
+$M := \{ax_1^{k_1} \cdot \ldots \cdot x_n^{k_n} \mid a \in K \setminus \{0\}, k_i \in \NN \cup \{0\} \}$ --- все одночлены от $x_1, \dots, x_n$.
+
+\begin{definition}[Лексикографический порядок на $M$]
+    \begin{equation*}
+        a x_{1}^{i_1} \cdot \ldots \cdot x_n^{i_n} \succ b x_1^{j_1} \cdot \ldots \cdot x_n^{j_n} \quad \iff \quad 
+        \begin{aligned}
+            &i_1 = j_1 \\
+            &i_2 = j_2 \\
+                &\dots \\
+                &i_{k - 1} = j_{k - 1} \\
+                &i_k > j_k.
+        \end{aligned}
+    \end{equation*}
+\end{definition}
+
+\begin{example}
+    $x_1^2 x_2 \succ x_1^2 x_3^{228}$.
+\end{example}
+
+\begin{comment}~
+    \begin{enumerate}
+    \item $m_1, m_2, m_3 \in M$, $m_1 \prec m_2 \implies m_1 m_3 \prec m_2 m_3$;
+    \item $m_1, m_2, m_3 \in M$, $m_1 \prec m_2$, $m_2 \prec m_3 \implies m_1 \prec m_3$.
+    \end{enumerate}
+\end{comment}
+
+\bigskip
+$g \in R \leadsto M(g) := \{\text{все одночлены входящие в $g$}\}$.
+
+\begin{lemma}
+    Не существует бесконечных убывающих цепочек $m_1 \succ m_2 \succ m_3 \succ \dots$, где $m_i \in M \ \forall i$.
+\end{lemma}
+
 \begin{proof}
-    От противного. Пусть $m_1\succ m_2 \succ m_3\succ ...$ -- бесконечная убывающая цепочка. Пусть $m_i=a_ix_1^{k_1(i)}\cdots x_n^{k_n(i)}\ \forall i\in \N$\\
-    Имеем:\\
-    $k_1(1)\geqslant k_1(2)\geqslant k_1(3)\geqslant ...\Rightarrow \exists \ i_1\in \N:k_1(i)=k_1(i_1)\ \forall i \geqslant i_1$\\
-    $k_2(i_1)\geqslant k_2(i_1+1)\geqslant k_2(i_1+2)\geqslant ...\Rightarrow \exists \ i_2\geqslant i_1:k_2(i)=k_2(i_2)\ \forall i \geqslant i_2$\\
-    $... \qquad ... \qquad ... \qquad ... \qquad ...$\\
-    $... \qquad ... \qquad \exists i_n\geqslant i_{n-1}:k_n(i)=k_n(i_n)\ \forall i\geqslant i_n$\\
-    Итог: при $i\geqslant i_n$ все $m_i$ имеют одинаковые наборы степеней -- противоречие.
+    От противного.
+
+    Пусть $m_1 \succ m_2 \succ m_3 \succ \dots$ --- бесконечная убывающая цепочка. Пусть $m_i = a_i x_1^{k_1(i)} \cdot \ldots \cdot x_n^{k_n(i)} \ \forall i \in \NN$.
+
+    Имеем
+    \begin{equation*}
+        \begin{array}{ccccccccc}
+            k_1(1) & \geq & k_1(2) & \geq & k_1(3) & \geq & \dots & \implies & \exists i_1 \in \NN : k_1(i) = k_1(i_1) \ \forall i \geq i_1 \\
+            k_2(i_1) & \geq & k_2(i_1 + 1) & \geq & k_2(i_1 + 2) & \geq & \dots & \implies & \exists i_2 \geq i_1 : k_2(i) = k_2(i_2) \ \forall i \geq i_2 \\
+            \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \\
+            \dots & \dots & \dots & \dots & \dots & \dots & \dots & \implies & \exists i_n \geq i_{n - 1} : k_n(i) = k_n(i_n) \ \forall i \geq i_n
+        \end{array}
+    \end{equation*}
+
+    \bigskip
+    Итог: при $i \geq i_n$ все $m_i$ имеют одинаковые наборы степеней --- противоречие.
 \end{proof}
