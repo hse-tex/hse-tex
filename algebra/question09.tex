@@ -32,14 +32,27 @@
 \begin{proof}
     Рассмотрим отображение
     \begin{equation*}
-        \phi \colon \ZZ_n \to \ZZ_m \times \ZZ_l, \quad (k \mathop{\mathrm{mod}} {n}) \mapsto (k \mathop{\mathrm{mod}} m, k \mathop{\mathrm{mod}} l)
+        \phi \colon \ZZ_n \to \ZZ_m \times \ZZ_l, \quad \phi(a \mathop{\mathrm{mod}} {n}) = (a \mathop{\mathrm{mod}} m, a \mathop{\mathrm{mod}} l)
     .\end{equation*}
 
-    Поскольку $m$ и $l$ делят $n$, отображение $\phi$ определено корректно. Ясно, что $\phi$ --- гомоморфизм. Далее, $a \mathop{\mathrm{mod}} n \in \ker \phi \implies a \mathop{\mathrm{mod}} m = 0, a \mathop{\mathrm{mod}} l = 0 \implies a \divby m,a \divby l$.
+    \begin{enumerate}
+    \item Корректность следует из того, что $n \divby m$, $n \divby l$;
+    \item $\phi$ --- гомоморфизм:
+        \begin{equation*}
+            \phi((a + b) \bmod n) = \phi(a \bmod n) + \phi(b \bmod n)
+        .\end{equation*}
+    \item
+        $\phi$ инъективен:
 
-    Так как $\gcd(m, l) = 1$, то $a \divby n \implies a \mathop{\mathrm{mod}} n = 0 \implies \ker \phi = \{0\}$.
+        Если $\phi(a \bmod n) = (0, 0)$, то $a$ делится на $m$ и на $l$.
+        Но так как $\gcd(m, l) = 1$, получаем что $a$ кратно $n$.
 
-    Отсюда следует, что гомоморфизм $\phi$ инъективен. Поскольку множества $\ZZ_n$ и $\ZZ_m \times \ZZ_l$ содержат одинаковое число элементов, отображение $\phi$ биективно.
+        А значит $a \equiv 0 \pmod n$.
+        То есть $\ker \phi = \{0\}$.
+
+    \item $\phi$ сюръективно, так как $|\ZZ_n| = n = m \cdot l = |\ZZ_m \times \ZZ_l|$.
+        \qedhere
+    \end{enumerate}
 \end{proof}
 
 \begin{corollary}
