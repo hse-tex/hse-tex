@@ -1,31 +1,67 @@
 \section{Старший член многочлена от нескольких переменных. Элементарная редукция многочлена относительно другого многочлена. Лемма о конечности цепочек элементарных редукций относительно системы многочленов}
 
-\textbf{Определение.} $f\in R\backslash\{0\}\Rightarrow$ \textbf{старший член} $L(f)$ -- это наибольший в лексикографическом порядке моном, присутствующий в f.\\
-\\
-$g\in R\leadsto M(g):=\{\text{все одночлены, входящие в g}\}$\\\\
-\textbf{Лемма о старшем члене.} $f,g\in R\backslash\{0\}\Rightarrow L(fg)=L(f)\cdot L(g)$
+\begin{definition}
+    $f \in R \setminus \{0\} \implies $ \textit{старший член} $L(f)$ --- это наибольший в лексикографическом порядке одночлен, присутствующий в $f$.
+\end{definition}
+
+\begin{lemma}[Лемма о старшем члене]
+    Пусть $f, g \in R \setminus \{0\}$. Тогда, $L(f, g) = L(f) \cdot L(g)$.
+\end{lemma}
+
 \begin{proof}
-    $u\in M(f), v\in M(g)\Rightarrow L(f)\succcurlyeq u, L(g)\succcurlyeq v$\\
-    $uv\preccurlyeq L(f)v\preccurlyeq L(f)\cdot L(g)\Rightarrow$ Равенство только в случае $u=L(f), v=L(g)$. А значит, что $L(f)\cdot L(g)$ больше любого другого монома в $fg$.\\
-    Итог: $L(fg)=L(f)L(g)$
+    $u \in M(f), \ v \in M(g) \implies u \preceq L(f), \ v \preceq L(g)$.
+
+    $uv \preceq L(f) \cdot v \preceq L(f) \cdot L(g) \implies uv \preceq L(f) \cdot L(g)$, причем равенство достигается при
+    \begin{math}
+        \begin{cases}
+            u = L(f),\\
+            v = L(g).
+        \end{cases}
+    \end{math}
+
+    Значит, $L(f) \cdot L(g)$ больше любого другого одночлена в $fg \implies L(f) \cdot L(g) = L(f \cdot g)$.
 \end{proof}
-\noindent Пусть $g,f\in R\backslash\{0\}$, g содержит одночлен m, такой что $m\,\vdots\, L(f)\Rightarrow m=L(f)m'$, где $m'\in M$\\
-\textbf{Элементарная редукция:} $g\overset{f}{\rightarrow}g':=g-m'f$\\
-В g одночлен m заменяется суммой нескольких меньших одночленов.\\
-$F\in R\backslash\{0\}$\\
-\textbf{Определение.} g \textbf{редуцируется} к $g'$ при помощи F, если $\exists$ конечная цепочка элементарных редукций \\
-$$g\overset{f_1}{\rightarrow}g_1\overset{f_2}{\rightarrow}g_2\overset{f_2}{\rightarrow}...\overset{f_k}{\rightarrow}g_k=g',\text{ где } f_i\in F $$
-\textbf{Обозначение.} $g\overset{F}{\rightarrow}g'$\\\\
-g \textbf{нередуцируем} относительно F, если $\forall \ m\in M(g)\ \forall f\in F\ m\!\!\not\vdots L(f)$\\\\
-\textbf{Конечность цепочек элементарных редукций.}\\
-\textbf{Лемма.} $F\subseteq R\backslash\{0\}\Rightarrow$ всякая последовательно элементарных редукций относительно F за конечное число шагов приводит к нередуцируемому многочлену.\\
-\textbf{Обозначение.} $L_K(g)$ -- k-й по старшинству одночлен в $g\in R$.\\
+
+Пусть $f, g \in R \setminus \{0\}$, $g$ содержит одночлен $m$, такой что $m \divby L(f)$. Тогда $m = L(f) \cdot m'$, где $m' \in M$.
+
+Элементарная редукция: $g \xrightarrow[]{f} g' := g - m' \cdot f$.
+
+В $g$ одночлен $m$ заменяется суммой нескольких меньших одночленов.
+
+\medskip
+Пусть $F \subseteq R \setminus \{0\}$.
+
+\begin{definition}
+    $g$ \textit{редуцируем} к $g'$ при помощи $F$, если существует конечная цепочка элементарных редукций
+    \begin{equation*}
+        g \xrightarrow[]{f_1} g_1 \xrightarrow[]{f_2} g_2 \xrightarrow[]{f_3} \dots \xrightarrow[]{f_k} g_k = g' \text{, где } f_i \in F
+    .\end{equation*}
+
+    Обозначение: $g \overset{F}{\rightsquigarrow} g'$.
+\end{definition}
+
+$g$ \textit{нередуцируем} относитльно $F$, если $\forall m \in M(g) \ \forall f \in F \quad m \!\!\not\;\divby L(f)$.
+
+
+\begin{lemma}[Конечность цепочек элементарных редукций]
+    $F \subseteq R \setminus \{0\} \implies $ всякая последовательность элементарных редукций относительно $F$ за коненчое число шагов приводит к нередуцируемому многочлену.
+\end{lemma}
+
+Обозначение: $L_k(g)$ --- $k$-й по старшинству одночлен в $g \in R$.
+
 \begin{proof}
-    От противного. Пусть существует бесконечная цепочка элементарных редукций $g_1\overset{f_1}{\rightarrow}g_2\overset{f_2}{\rightarrow}g_3\overset{f_3}{\rightarrow}...$\\
-    В силу того, что не существует бесконечно убывающих цепочек одночленов:\\
-    $L(g_1)\succcurlyeq L(g_2)\succcurlyeq L(g_3)\succcurlyeq ...\Rightarrow \exists \ i_1\in \N : L(g_i)= L(g_{i_1})\ \forall i\geqslant i_1$\\
-    $L_2(g_{i_1})\succcurlyeq L_2(g_{i_1+1})\succcurlyeq...\Rightarrow \exists i_2\geqslant i_1: L_2(g_i)=L_2(g_{i_2})\ \forall i\geqslant i_2$\\
-    ... ... ... и так далее ... ... ...\\
-    Итог: $L(g_{i_1})=L(g_{i_2})\succ L_2(g_{i_2})=L_2(g_{i_3})\succ L_3(g_{i_3})=L_3(g_{i_4})\succ...$\\
-    $\Rightarrow L(g_{i_1})\succ L_2(g_{i_2})\succ L_3(g_{i_3})\succ...$ -- бесконечно убывающая цепочка одночленов -- противоречие.
+    От противного.
+
+    Пусть существует бесконечная цепочка элементарных редукций $g_1 \xrightarrow[]{f_1} g_2 \xrightarrow[]{f_2} g_3 \xrightarrow[]{f_3} \dots$
+
+    В силу леммы о конечности убывающих цепочек одночленов имеем
+    \begin{equation*}
+        \begin{array}{ccccccccc}
+            L(g_1) & \succeq & L(g_2) & \succeq & L(g_3) & \succeq & \dots & \implies & \exists i_1 \in \NN : L(g_i) = L(g_{i_1}) \ \forall i \geq i_1 \\
+            L_2(g_{i_1)} & \succeq & L_2(g_{i_1} + 1) & \succeq & L_2(g_{i_1} + 2) & \succeq & \dots & \implies & \exists i_2 \geq i_1 : L_2(g_i) = L_2(g_{i_2}) \ \forall i \geq i_2 \\
+            \dots & \dots & \dots & \dots & \dots & \dots & \dots
+        \end{array}
+    \end{equation*}
+
+    Итог: $L(g_{i_1}) = L(g_{i_2}) \succ L_2(g_{i_2}) = L_2(g_{i_3}) \succ L_3(g_{i_3}) = L_3(g_{i_4}) \succ \dots \implies L(g_{i_1}) \succ L_2(g_{i_2}) \succ L_3(g_{i_3}) \succ \dots$ --- бесконечно убывающая цепочка одночленов --- противоречие.
 \end{proof}
