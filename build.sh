@@ -5,8 +5,8 @@ function build {
     pushd $1 > /dev/null
 
     if [ ! -z "$CI" ]; then
-        travis_fold start build_log
-        travis_time_start
+        travis_fold start build_log || true
+        travis_time_start || true
         echo -ne "\033[1;33m"
         echo -n "Build $2"
         echo -e "\033[0m"
@@ -15,8 +15,8 @@ function build {
     latexmk -pdf -interaction=nonstopmode -output-directory=.build -halt-on-error $2.tex
 
     if [ ! -z "$CI" ]; then
-        travis_time_finish
-        travis_fold end build_log
+        travis_time_finish || true
+        travis_fold end build_log || true
     fi
     
     popd > /dev/null
