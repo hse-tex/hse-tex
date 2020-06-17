@@ -2,9 +2,9 @@
 
 \begin{definition}
     Многочлен $h \in K[x]$, $\deg h > 0$ называется \textit{неприводимым}, если его нельзя представить в виде $h = h_1 h_2$, где $\deg h_1 < \deg h$ и $\deg h_2 < \deg h$.
-
-    Иначе $h$ называется \textit{приводимым}.
 \end{definition}
+
+Иначе $h$ называется \textit{приводимым}.
 
 \begin{comment}~
     \begin{enumerate}
@@ -29,9 +29,9 @@
 
     $k = 1$ --- ясно.
 
-    $k = 2$. Пусть $g_1 \not\divby h$. Так как $h$ неприводим, то $\gcd(g_1, h) = 1 \implies \exists u, v \in K[x]$, такие что $1 = ug_1 + vh$. Умножим на $g_2$:
+    $k = 2$. Пусть $g_1 \!\!\not\;\divby h$. Так как $h$ неприводим, то $\gcd(g_1, h) = 1 \implies \exists u, v \in K[x]$, такие что $1 = ug_1 + vh$. Умножим на $g_2$:
     \begin{equation*}
-        g_2 = u \cdot \underbrace{g_1 g_2}_{\divby h} + v \cdot \underbrace{h \cdot g_2}_{\divby h} \implies g_2 \divby h
+        g_2 = u \cdot \underbrace{g_1 \cdot g_2}_{\divby \ h} + v \cdot \underbrace{h \cdot g_2}_{\divby \ h} \implies g_2 \divby h
     .\end{equation*}
 
     Для $k > 2$ надо применить предыдущее рассуждение для $(g_1 \cdot \ldots \cdot g_{k - 1}) \cdot g_k$ и воспользоваться предположением индукции.
@@ -39,7 +39,6 @@
 
 \begin{theorem}
     Пусть $f \in K[x]$ и $\deg f \geq 1$.
-
     Тогда
     \begin{enumerate}
     \item $\exists$ разложение $f = h_1 \cdot \ldots \cdot h_k$, где все $h_i$ неприводимы;
@@ -58,14 +57,14 @@
 
     \bigskip
     $n > 1$
-    \begin{description}
+    \begin{description}[labelindent=2\parindent,leftmargin=3\parindent]
     \item[Существование] $f$ неприводим $ \implies $ уже есть разложение.
 
         Если же $f$ приводим, то $f = f_1 \cdot f_2$, $\deg f_i < n$.
 
         Тогда по предположению индукции $f_1 = g_1 \cdot \ldots \cdot g_p$, $f_2 = h_1 \cdot \ldots \cdot h_q$, где $g_i, h_j$ --- неприводимы.
 
-        Значит, $f = g_1 \cdot \ldots g_q \cdot h_1 \cdot \ldots h_q$ --- разложение $f$ на неприводимые.
+        Значит, $f = g_1 \cdot \ldots g_q \cdot h_1 \cdot \ldots \cdot h_q$ --- разложение $f$ на неприводимые.
 
     \item[Единственность] Пусть $f = h_1 \cdot \ldots \cdot h_k = h_1' \cdot \ldots \cdot h_m'$ --- два разложение на неприводимые множители.
 

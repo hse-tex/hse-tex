@@ -22,10 +22,13 @@
     $(k) = k\ZZ$ --- главный идеал в $\ZZ$.
 \end{example}
 
-\begin{comment}
-    $(a) = R \iff a$ обратим
-
-    $(a) = \{0\} \iff a = 0$.
+\begin{comment}~\\
+    \begin{math}
+        \begin{aligned}[t]
+            &(a) = R \iff a \text{ обратим,} \\
+            &(a) = \{0\} \iff a = 0.
+        \end{aligned}
+    \end{math}
 \end{comment}
 
 
@@ -89,7 +92,8 @@
     \item 
         Так как $\phi$ --- гомоморфизм абелевых групп, то $\ker \phi$ является подгруппой в $R$ по сложению. Покажем теперь, что $ra \in \ker \phi$ и $ar \in \ker \phi$ для произвольных элементов $a \in \ker \phi$ и $r \in R$.
 
-        Имеем $\phi(ra) = \phi(r)(\phi(a) = \phi(r) 0 = 0$, откуда $ra \in \ker \phi$. Аналогично для $ar \in \ker \phi$.
+        Имеем $\phi(ra) = \phi(r)\phi(a) = \phi(r) 0 = 0$, откуда $ra \in \ker \phi$. Аналогично для $ar \in \ker \phi$.
+        \qedhere
     \end{enumerate}
 \end{proof}
 
@@ -103,7 +107,7 @@
     Остается проверить, что $\psi$ --- гомоморфизм колец.
     \begin{equation*}
         \psi((a + I)(b + I)) = \psi(ab + I) = \phi(ab) = \phi(a)\phi(b) = \psi(a + I) \psi(b + I)
-    .\end{equation*}
+    .\qedhere\end{equation*}
 \end{proof}
 
 \begin{example}
