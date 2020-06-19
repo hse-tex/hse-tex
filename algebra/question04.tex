@@ -1,0 +1,46 @@
+\section{Пять следствий из теоремы Лагранжа}
+
+\begin{theorem}[Теорема лагранжа]
+    Пусть $G$ --- конечная группа и $H \subseteq G$ --- подгруппа. Тогда
+    \begin{equation*}
+        |G| = |H| \cdot \left[G : H\right]
+    .\end{equation*}
+\end{theorem}
+
+Рассмотрим некоторые следствия из теоремы Лагранжа.
+
+\begin{corollary}
+    Пусть $G$ --- конечная группа и $H \subseteq G$ --- подгруппа. Тогда $|H|$ делит $|G|$.
+\end{corollary}
+
+\begin{corollary}
+    Пусть $G$ --- конечная группа и $g \in G$. Тогда $\ord(g)$ делит $|G|$.
+\end{corollary}
+
+\begin{proof}
+    Вытекает из следствия 1 и факта, что $\ord(g) = |\left< g \right>|$.
+\end{proof}
+
+\begin{corollary}
+    Пусть $G$ --- конечная группа и $g \in G$. Тогда $g^{|G|} = e$.
+\end{corollary}
+
+\begin{proof}
+    Согласно следствию 2, мы имеем $|G| = \ord(g) \cdot s$, откуда $g^{|G|} = \left(g^{\ord(g)}\right)^{s} = e^{s} = e$.
+\end{proof}
+
+\begin{corollary}[малая теорема Ферма]
+    Пусть $\overline{a}$ --- ненулевой вычет по простому модулю $p$. Тогда $\overline{a}^{p - 1} = 1$.
+\end{corollary}
+
+\begin{proof}
+    Применим следствие 3 к группе $(\ZZ_p \setminus \{0\}, \times)$.
+\end{proof}
+
+\begin{corollary}
+    Пусть $G$ --- группа. Предположим, что $|G|$ --- простое число. Тогда $G$ --- циклическая группа, порождаемая любым своим неединичным элементов.
+\end{corollary}
+
+\begin{proof}
+    Пусть $g \in G$ --- произвольный неединичный элемент. Тогда циклическая подгруппа $\left< g \right>$ содержит более одного элемента и $\left|\left< g \right>\right|$ делит $|G|$ по следствию 1. Значит, $\left|\left< g \right>\right| = |G|$, откуда $G = \left< g \right>$.
+\end{proof}

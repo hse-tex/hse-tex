@@ -1,5 +1,6 @@
 \usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[english, russian]{babel}
 \usepackage{graphicx}
 \usepackage{import}
@@ -14,7 +15,7 @@
 
 \usepackage{caption}
 
-\usepackage[top=0.8in,bottom=0.8in,left=0.8in,right=0.8in,headheight=110pt]{geometry}
+\usepackage[top=0.4in,bottom=0.8in,left=0.4in,right=0.4in,headheight=110pt]{geometry}
 \usepackage{amsmath, amsthm, amssymb, mathtools}
 \usepackage{indentfirst}
 \usepackage[unicode=true, colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
@@ -29,8 +30,10 @@
 \newcommand{\eps}{\varepsilon}
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\leq}{\leqslant}
+\renewcommand{\phi}{\varphi}
+\newcommand{\dd}{\mathop{}\!d}
 
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
 \newlist{options}{enumerate}{1}
 \newlist{options*}{enumerate*}{1}
@@ -62,6 +65,7 @@
 \newtheorem{theorem}{Теорема}
 \newtheorem{problem}{Задача}
 
+% Округление
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
@@ -72,7 +76,10 @@
 \end{array}\right)
 }
 
+\newcommand{\ar}[2]{\xrightarrow[\text{#2}]{\text{#1}}}
+
 % subsubsubsection
+
 \titleclass{\subsubsubsection}{straight}[\subsection]
 
 \newcounter{subsubsubsection}[subsubsection]
@@ -104,4 +111,45 @@
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
 
-\newcommand{\dd}{\mathop{}\! d}
+% С++ code
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+    basicstyle=\small\ttfamily,
+    tabsize=4, % tab space width
+    showstringspaces=false, % don't mark spaces in strings
+    numbers=left, % display line numbers on the left
+    commentstyle=\color{green}, % comment color
+    morecomment=[l][\color{magenta}]{\#},
+    keywordstyle=\color{blue}, % keyword color
+    language=C++,
+    stringstyle=\color{red}\ttfamily,
+    breaklines=true
+}
+
+\usepackage{diagbox}
+\usepackage{tikz}
+\usetikzlibrary{calc,trees,positioning,arrows,fit,shapes,calc}
+
+
+\everymath{\displaystyle} % math everywhere
+
+\usepackage{euscript} % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+\usepackage{bbm}
+
+% Большие интегралы
+\usepackage{bigints}
+
+% \int = \int\limits
+\renewcommand{\int}{\intop}
+
+
+\newcommand{\ans}[1]{\textbf{Ответ}: #1.}
+
+% norm command
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\ord}[1]{\operatorname{ord}(#1)}
+\renewcommand{\gcd}{\text{НОД}}
+\newcommand{\lcm}{\text{НОК}}

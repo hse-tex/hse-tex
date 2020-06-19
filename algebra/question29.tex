@@ -1,0 +1,15 @@
+\section{Подполе в расширении полей, порождённое алгебраическим элементом}
+
+$K\subseteq F, \alpha \in F$ -- элемент, алгебраический над $K$, $h_\alpha$ -- минимальный многочлен для $\alpha$\\
+$K(\alpha):=$ пересечение всех подполей в $F$, содержащих $K$ и $\alpha$ = наименьшее подполе в $F$, содержащее $K$ и $\alpha$.\\
+\textbf{Замечание.} $K(\alpha)=\left\{ \cfrac{f(\alpha)}{g(\alpha)} \ \Biggl| \ f,g\in K[x], g(\alpha)\neq0 \right\}$\\\\
+\textbf{Теорема.} Существует изоморфизм $\psi :K[x]/(h_\alpha)\xrightarrow{\sim} K(\alpha)$, такое что $\psi(\overline{x})=\alpha$ \\
+\begin{proof}
+    Рассмотрим гомоморфизм $\varphi: K[x]\to F, f\to f(\alpha)$\\
+    Тогда $\ker\varphi=(h_\alpha)\Rightarrow $ по теореме о гомоморфизме для колец получаем изоморфизм $\psi:K[x]/(h_\alpha)\xrightarrow{\sim} Im\varphi, \overline{x}\to\alpha$\\
+    Так как $K[x]/(h_\alpha)$ -- поле, то $Im\varphi$ -- подполе в $F,\ K\subseteq Im\varphi, \ \alpha=\psi(\overline{x})\in Im\varphi$\\
+    $\Rightarrow K[\alpha]\varphi\subseteq Im\varphi$\\
+    С другой стороны, $Im\varphi =\left\{ f(\alpha)\ |\ f\in K[x] \right\}$ -- содержится в любом поле, содержащем $K$ и $\alpha$.\\
+    $\Rightarrow Im\varphi\subseteq K(\alpha)$
+\end{proof}
+\noindent \textbf{Следствие.} $\forall y\in K(\alpha)$ единственным образом представим в виде $y=\beta_0+\beta_1\alpha+...+\beta_{n-1}\alpha^{n-1}$, где $\beta_i\in K$.

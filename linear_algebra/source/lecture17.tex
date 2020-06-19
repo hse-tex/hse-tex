@@ -205,7 +205,7 @@ $A' = A(\phi, \E', \F')$.
                 \phi, \psi \in \hom(V, W), \
                 &A_\phi = A(\phi, \E, \F)& \\
                 &A_\psi = A(\psi, \E, \F)& \\
-                &A_{\phi + \psi} = A(\phi + \phi, \E, \F)& \implies A_{\phi + \psi} = A_\phi + A_\psi
+                &A_{\phi + \psi} = A(\phi + \psi, \E, \F)& \implies A_{\phi + \psi} = A_\phi + A_\psi
             \end{aligned}
         \end{math}
 
@@ -292,7 +292,7 @@ $A_{\phi \circ \psi} = A(\phi \circ \psi, \G, \F)$.
 Пусть $\phi \colon V \to W$.
 
 \begin{definition}
-    \textit{Ядро} линейной оболочки $\phi$ --- это $\ker \phi := \{v \in V \mid \phi(v) = 0\} \subseteq V$.
+    \textit{Ядро} линейного отображения $\phi$ --- это $\ker \phi := \{v \in V \mid \phi(v) = 0\} \subseteq V$.
 
     \textit{Образ} линейного отображения $\phi$ --- это $\Im \phi := \phi(V) \subseteq W$.
 \end{definition}
@@ -323,9 +323,9 @@ $A_{\phi \circ \psi} = A(\phi \circ \psi, \G, \F)$.
 
     \item
         \begin{enumerate}
-        \item $0_W = \phi(W) \in \Im \phi$,
+        \item $0_W = \phi(0_V) \in \Im \phi$,
         \item $w_1, w_2 \in \Im \phi \implies \exists v_1, v_2 : w_1 = \phi(v_1), w_2 = \phi(v_2) \implies w_1 + w_2 = \phi(v_1) + \phi(v_2) = \phi(v_1 + v_2) \in \Im \phi$,
-        \item $\phi \in F, w \in \Im \phi \implies \exists v \in V : w = \phi(v) \implies \phi(w) = \lambda \phi(v) = \phi(\lambda v) \in \Im \phi$.
+        \item $\phi \in F, w \in \Im \phi \implies \exists v \in V : w = \phi(v) \implies \lambda w = \lambda \phi(v) = \phi(\lambda v) \in \Im \phi$.
             \qedhere
         \end{enumerate}
     \end{enumerate}

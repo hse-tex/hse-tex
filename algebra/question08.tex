@@ -1,0 +1,17 @@
+\section{Классификация циклических групп}
+
+Пусть $G$ --- циклическая группа. Тогда
+\begin{enumerate}
+    \item Если $|G| = \infty$, то $G \simeq (\ZZ, +)$,
+    \item Если $|G| = n < \infty$, то $G \simeq (\ZZ_n, +)$.
+\end{enumerate}
+
+\begin{proof}
+    Пусть $G = \left< g \right>$. Рассмотрим отображение $\phi \colon \ZZ \to G$, $k \mapsto g^{k}$.
+
+    Тогда $\phi(k + l) = g^{k + l} = g^{k}g^{l} = \phi(k) \phi(l)$, поэтому $\phi$ --- гомоморфизм.
+    Из определения циклической группы следует, что $\phi$ сюръективет, то есть $\Im \phi = G$.
+    Тогда по теореме о гомоморфизме мы получаем $G \simeq \ZZ / \ker \phi$.
+    Так как $\ker \phi$ --- подгруппа в $\ZZ$, то получаем $\ker \phi = m\ZZ$ для некоторого $m \geq 0$. (так как любая подгруппа $\ZZ$ имеет вид $k \ZZ$)
+    Если $m = 0$, то $\ker \phi = \{0\}$, откуда $G \simeq \ZZ / \{0\} \simeq \ZZ$. Если $m > 0$, то $G \simeq \ZZ / m \ZZ = \ZZ_m$.
+\end{proof}

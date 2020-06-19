@@ -1,0 +1,38 @@
+\section{Теорема о гомоморфизме для групп}
+
+\begin{theorem}[Теорема о гомоморфизме]
+    Пусть $\phi \colon G \to F$ --- гомоморфизм групп. Тогда группа $\Im \phi$ изоморфна факторгруппе $G / \ker \phi$.
+\end{theorem}
+
+\begin{proof}
+    Рассмотрим отображение $\psi \colon G / \ker \phi \to \Im \phi$, заданное формулой $\psi(g \ker \phi) = \phi(g)$.
+
+    \begin{enumerate}
+    \item Корректность.
+
+        $g_1 \ker \phi = g_2 \ker \phi \implies g_1 h_1 = g_2 h_2$ для некоторых $h_1, h_2 \in \ker \phi$.
+
+        $\psi(g_1 \ker \phi) = \phi(g_1) = \phi(g_1 h_1) = \phi(g_2 h_2) = \phi(g_2) = \psi(g_2 \ker \phi)$.
+
+    \item $\psi$ --- гомоморфизм.
+
+        $\psi\left((g_1 \ker \phi)(g_2 \ker \phi)\right) = \psi((g_1 g_2) \ker \phi) = \phi(g_1 g_2) = \phi(g_1) \phi(g_2) = \psi(g_1 \ker \phi) \psi(g_2 \ker \phi)$.
+
+    \item Сюръектинвость из построения.
+
+    \item Инъективность.
+
+        $\psi(g_1 \ker \phi) = \psi(g_2 \ker \phi) \implies \phi(g_1) = \phi(g_2) \implies \phi(g_1)\phi(g_2)^{-1} = e_F \implies \phi(g_1 g_2^{-1}) = e_F \implies g_1 g_2^{-1} \in \ker \phi \implies g_1 \ker \phi = g_2 \ker \phi$.
+        \qedhere
+    \end{enumerate}
+\end{proof}
+
+Тем самым, чтобы удобно реализовать факторгруппу $G / H$, можно найти такой гомоморфизм $\phi \colon G \to F$ в некоторую группу $F$, что $H = \ker \phi$, и тогда $G / H \simeq \Im \phi$.
+
+\begin{example}
+    Пусть $G = (\RR, +)$ и $H = (\ZZ, +)$. Рассмотрим группу $F = (\CC \setminus \{0\}, \times)$ и гомоморфизм
+    \begin{equation*}
+        \phi \colon G \to F, \quad a \mapsto e^{2 \pi i a} = \cos(2 \pi a) + i \sin (2 \pi a)
+    .\end{equation*}
+    Тогда $\ker \phi = H$ и факторгруппа $G / H$ изоморфна окружности $S^{1}$, рассматриваемой как подгруппа в $F$, состоящая из комплексных чисел с модулем 1.
+\end{example}

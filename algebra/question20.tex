@@ -1,0 +1,70 @@
+\section{Остаток многочлена относительно заданной системы многочленов. Системы Грёбнера. Характеризация систем Грёбнера в терминах цепочек элементарных редукций}
+
+\begin{definition}
+    Если $g \overset{F}{\rightsquigarrow} r$ и $r$ нередуцируем, то $r$ называется \textit{остатком} многочлена $g$ относительно $F$.
+\end{definition}
+
+\begin{comment}
+    Вообще говоря, остаток определен неоднозначно.
+\end{comment}
+
+\begin{definition}
+    Множество $F$ называется \textit{системой Грёбнера}, если $\forall g \in R$ остаток $g$ относительно $F$ определен однозначно, то есть не зависит от цепочки приводящих к нему элементарных преобразований.
+\end{definition}
+
+\begin{proposal}
+    Следующие условия эквивалентны:
+    \begin{enumerate}
+    \item $F$ --- система Грёбнера;
+    \item $\forall g \in R$ обладает свойством:
+
+        Если $g \xrightarrow[]{f_1} g_1$ и $g \xrightarrow[]{f_2} g_2$ --- две элементарных редукции, то $\exists g' \in R$, такой что 
+        \begin{math}
+            g_1 \overset{F}{\rightsquigarrow} g' \text{ и } g_2 \overset{F}{\rightsquigarrow} g'.
+        \end{math}
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}~
+    \begin{description}
+        \item[$(1) \implies (2)$] В качестве $g'$ можно взять остаток $g$ относительно $F$.
+        \item[$(2) \implies (1)$] Пусть
+
+            $B(F) := $ <<все многочлены из $R$, для которых остаток относительно $F$ определен неоднозначно>>.
+
+            $E_F(g) $ --- множество всех элементарных редукций многочлена $g$ относительно $F$.
+
+            Пусть $B(F) \neq \varnothing$ и $g \in B(F)$.
+
+            Если $E_F(g) \cap B(F) \neq \varnothing$, то возьмём $g_1 \in E_F(g) \cap B(F)$.
+
+            Если $E_F(g_1) \cap B(F) \neq \varnothing$, то возьмём $g_2 \in E_F(g_1) \cap B(F)$.
+
+            И так далее.
+
+            По лемме о конечности цепочек элементарных редукций, $\exists i \in \NN$, такой что $E_F(g_i) \cap B(F) = \varnothing$.
+
+            Тогда $\exists$ две такие цепочки элементарных редукций
+
+            \begin{equation*}
+                \left.
+                \begin{array}{c}
+                    g_i \to h_1 \to \dots \to r_1 \\
+                    g_i \to h_2 \to \dots \to r_2
+                \end{array}
+                \right\} \text{ остатки } r_1 \neq r_2
+            .\end{equation*}
+
+            По условию $\exists r \in R$ --- нередуцируемый многочлен, такой что $h_1 \rightsquigarrow r$, $h_2 \rightsquigarrow r$.
+
+            Так как $h_1, h_2 \not\in B(F)$, то $r_1 = r = r_2$ --- противоречие.
+            \qedhere
+    \end{description}
+\end{proof}
+
+\begin{comment}~
+    \begin{enumerate}
+        \item $g \overset{F}{\rightsquigarrow} g_1 \implies \forall m \in M \quad mg \overset{F}{\rightsquigarrow} mg_1$;
+        \item $g_1 - g_2 \overset{F}{\rightsquigarrow} 0 \implies \exists g' : g_1 \rightsquigarrow g'$ и $g_2 \rightsquigarrow g'$.
+    \end{enumerate}
+\end{comment}

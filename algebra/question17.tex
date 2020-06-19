@@ -1,0 +1,51 @@
+\section{Критерий того, что факторкольцо $\KK[x]/(h)$ является полем. Базис и размерность факторкольца $\KK[x]/(h)$ как векторного пространства над полем $\KK$}
+
+Пусть $h = a_n x^n + \dots + a_1 x + a_0 \in K[x]$ --- многочлен, $\deg h = n > 0$.
+
+Тогда, рассмотрим $F := K[x] / (h) \quad f \in K[x] \leadsto \overline{f} := f + (h) \in F$.
+
+\begin{comment}
+    $\overline{f} = \overline{0} \iff f \divby h$.
+\end{comment}
+
+\begin{proposal}
+    $F$ --- поле $\iff h$ неприводим.
+\end{proposal}
+
+\begin{proof}~
+    \begin{description}
+        \item[$\implies$]  Если $h = h_1 \cdot h_2$ и $\deg h_i < n$, то $\overline{h} = \overline{h_1} \cdot \overline{h_2}$.
+
+            Так как $\overline{h} = 0$, то $\overline{h_1} \cdot \overline{h_2} = 0$. 
+            Значит в $F$ есть делители нуля $ \implies F$ --- не поле --- противоречие.
+
+        \item[$\impliedby$] $f \in K[x]$, $\overline{f} \neq \overline{0} \implies f \!\!\not\;\divby h \implies \gcd(f, h) = 1$.
+
+            Значит, $\exists u, v \in K[x]$, такие что $1 = uf + vh$. Отсюда $\overline{1} = \overline{u} \cdot \overline{f} + \overline{v} \cdot \overline{h} = \overline{u} \cdot \overline{f}$.
+
+            Получили, что $\overline{f}$ обратим $\implies F$ --- поле.
+            \qedhere
+    \end{description}
+\end{proof}
+
+\begin{example}~
+    \begin{enumerate}
+        \item $\RR[x] / (x^2 + 1)$ --- поле $(\simeq \CC)$.
+        \item $\RR[x] / (x^2)$ --- не поле, $\overline{x}$ --- нильпотент, $\overline{x}^2 = \overline{0}$.
+    \end{enumerate}
+\end{example}
+
+\bigskip
+Рассмотрим отображение $K \to F, \quad \lambda \mapsto \overline{\lambda} = \lambda + (h)$, оно инъективно. Тогда $K$ отождествляется с подполем в $F$, значит $F$ становится векторным пространством над $K$.
+
+\begin{proposal}
+    Элементы $\overline{1}$, $\overline{x}$, $\dots$, $\overline{x}^{n - 1}$ образуют базис в $F$ над $K$. В частности $\dim_K F = n$.
+\end{proposal}
+
+\begin{proof}
+    Пусть $\overline{f} \in F$, $f \in K[x]$. Поделим $f$ на $h$ с остатком:
+
+    $f = q \cdot h + r$, где $r = 0$ или $\deg r < n$. Тогда, $\overline{f} = \underbrace{\overline{q} \cdot \overline{h}}_{= \overline{0}} + \overline{r} = \overline{r} \in \left< \overline{1}, \overline{x}, \dots, \overline{x}^{n - 1} \right>$.
+
+    Если $b_0 \overline{1} + b_1 \overline{x} + \dots + b_{n - 1} \overline{x}^{n - 1} = \overline{0}$ для некоторых $b_i \in K$, то $b_0 + b_1 x + \dots + b_{n - 1} x^{n - 1} \divby h \implies b_0 = b_1 = \dots = b_{n - 1} = 0$.
+\end{proof}

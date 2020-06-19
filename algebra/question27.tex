@@ -1,0 +1,18 @@
+\section{Присоединение корня неприводимого многочлена. Существование конечного расширения исходного поля, в котором заданный многочлен (а) имеет корень; (б) разлагается на линейные множители}
+
+$K$ -- поле, $h=a_nx^n+...+a_1x+a_0\in K[x], a_n\neq 0$, $\deg{h}=n$\\
+$h$ неприводим $\Rightarrow F:=K[x]/(h)\quad K\subseteq F\quad [F:K]=n$\\
+$\forall f\in K[x]\leadsto \overline{f}=f+(h)\in F$\\
+\textbf{Предложение.} Элемент $\overline{x}$ является корнем многочлена $h$ в $F$.
+\begin{proof}
+    $h(\overline{x})=a_n\overline{x}^n+...+a_1\overline{x}+a_0=\overline{h}=\overline{0}$ в поле $F$.
+\end{proof}
+\noindent \textbf{Замечание.} Переход от $K$ к $F$ называется присоединением корня неприводимого многочлена $h$.\\
+\textbf{Следствие.} $f\in K[x], \deg{f}\geqslant 1 \ \exists $ конечное расширение $K\subseteq F$, такое что $f$ имеет корень в $F$.
+\begin{proof}
+    Достаточно взять $F:=K[x]/(h)$, где $h$ -- неприводимый делитель $f$.
+\end{proof}
+\noindent\textbf{Следствие.} $\forall \ f\in K[x], \deg{f}\geqslant 1\ \exists$ конечное расширение $K\subseteq F$, такое что $f$ разлагается на линейные множители над $F$.
+\begin{proof}
+    Предыдущее следствие + следствие из теоремы Безу + индукция по $\deg{f}$.
+\end{proof}

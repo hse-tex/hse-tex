@@ -115,7 +115,7 @@
 
             База: $n = 2$, по определению выпуклости.
 
-            Пусть утверждение выполнено для $n$ точек. Проверим, что оно выполнено для $n + 1$ точки. Пусть $t := t_1 + \dots + t_n$. Так как $\dfrac{t_1}{t}x_1 + \dots + \dfrac{t_n}{t}x_n \in I$ (проверяется подстановкой во все $t_i$ минимального/максимального из $t$), то
+            Пусть утверждение выполнено для $n$ точек. Проверим, что оно выполнено для $n + 1$ точки. Пусть $t := t_1 + \dots + t_n$. Так как $\dfrac{t_1}{t}x_1 + \dots + \dfrac{t_n}{t}x_n \in I$ (проверяется подстановкой во все $x_i$ минимального/максимального из $x$), то
             \[\begin{gathered}
                 f(t_1x_1 + \dots + t_nx_n + t_{n + 1}x_{n + 1}) \leq tf \left(\dfrac{t_1}{t}x_1 + \dots + \dfrac{t_n}{t}x_n\right) + t_{n + 1}f(x_{n + 1}) \\
                 \leq t \left(\dfrac{t_1}{t}f(x_1) + \dots + \dfrac{t_n}{t}f(x_n)\right) + t_{n + 1}f(x_{n + 1}) = t_1f(x_1) + \dots + t_{n + 1}f(x_{n + 1})
@@ -209,9 +209,24 @@
             \begin{equation*}
                 \dfrac{P(x)}{Q(x)} = p(x) + \sum_{j = 1}^s \sum_{k = 1}^{k_j} \dfrac{a_{j, k}}{(x - x_j)^k} + \sum_{j = 1}^n \sum_{k = 1}^{m_j} \dfrac{b_{j, k}x + c_{j, k}}{(x^2 + p_jx + q_j)^k},
             \end{equation*}
-            где $p$ --- многочлен, а коэффициенты $a_{i, j}, b_{i, j}, c_{i, j}$ --- рациональные числа. То есть частное от деления рациональных многочлен представляется суммой неприводимых дробей (знаменатель имеет степень $1$ или $2$, числитель имеет степень на единицу меньше) и многочлена.
+            где $p$ --- многочлен, а коэффициенты $a_{i, j}, b_{i, j}, c_{i, j}$ --- рациональные числа. То есть частное от деления рациональных многочленов представляется суммой неприводимых дробей (знаменатель имеет степень $1$ или $2$, числитель имеет степень на единицу меньше) и многочлена.
 
-            По линейности нам надо научиться интегрировать каждое слагаемое отдельно. Выделяя у интеграла $\int \dfrac{bx + c}{(x^2 + px + q)^k} \dd x$ в знаменателе целую часть (выделяем полный квадрат) и делая линейную замену приводим его к виду $\int \dfrac{b'u + c'}{(u^2 + a^2)^k} \dd u$.
+            По линейности нам надо научиться интегрировать каждое слагаемое отдельно. Выделяя у интеграла $\int \dfrac{bx + c}{(x^2 + px + q)^k} \dd x$ в знаменателе целую часть (выделяем полный квадрат) и делая линейную замену приводим его к виду $\int \dfrac{b'u + c'}{(u^2 + a^2)^k} \dd u$. 
+
+            Более подробно:
+            \begin{align*}
+                \int \dfrac{bx + c}{(x^2 + px + q)^k} \dd x 
+                &= \int \dfrac{bx + c}{\left(x^2 + 2 \cdot \frac{p}{2} \cdot x + \left(\frac{p^2}{4} - \frac{p^2}{4}\right) + q\right)^k} \dd x
+                = \int \dfrac{bx + c}{\left(\left(x + \frac{p}{2}\right)^2 - \frac{p^2}{4} + q\right)^k} \dd x \\
+                &= \left[\begin{aligned}
+                    &u = x + \dfrac{p}{2} \\
+                    &a = \sqrt{q - \dfrac{p^2}{4}}\\
+                    &bx + c = b' \cdot \left(x + \frac{p}{2}\right) + c' = b'u + c' \\
+                \end{aligned}\right]
+                = \int \dfrac{b'u + c'}{(u^2 + a^2)^k} \dd u
+            \end{align*}
+
+            Заметим, что $q - \dfrac{p^2}{4} > 0$ (а значит, можно брать корень из этого выражения), так как если мы раскладываем такую дробь, то её знаменатель на раскладывается на произведениее двух многочленов степени $1$. Значит, квадратное уравнение имеет комплексные корни и дискриминант отрицательный, т.е. $p^2 - 4q < 0$ (дискриминант), что влечет $p^2 < 4q$.
 
             \subsection{Вычисление интеграла каждого типа}
 
@@ -271,7 +286,7 @@
 
         \begin{definition*}~
 
-            \textbf{Разбиением} $\T$ отрезка $[a; b]$ называется набор точке $a = x_0 < x_1 < \dots < x_n = b$.
+            \textbf{Разбиением} $\T$ отрезка $[a; b]$ называется набор точек $a = x_0 < x_1 < \dots < x_n = b$.
 
             Отрезки $\Delta_k := [x_{k - 1}; x_k]$ называются \textbf{отрезками разбиения}.
 
@@ -374,13 +389,13 @@
 
             \begin{enumerate}
             \item
-                $s(f, \T) \leq \inf_{\xi} \sigma(f, \T, \xi) \leq \sigma(f, \T, \xi) \leq \sup_{\xi} \sigma(f, \T, \xi) \leq S(f, \T)$
+                $s(f, \T) = \inf_{\xi} \sigma(f, \T, \xi) \leq \sigma(f, \T, \xi) \leq \sup_{\xi} \sigma(f, \T, \xi) = S(f, \T)$
 
             \item
                 Если $\T \subseteq \T'$, то $s(f, \T) \leq s(f, \T')$ и $S(f, \T') \leq S(f, \T)$
 
             \item
-                $s(f, \T_1) \leq s(f, \T_1 \cup \T_2) \leq S(f, \T_1 \cap \T_2) \leq S(f, \T_2)$
+                $s(f, \T_1) \leq s(f, \T_1 \cup \T_2) \leq S(f, \T_1 \cup \T_2) \leq S(f, \T_2)$
             \end{enumerate}
         \end{lemma*}
 
@@ -388,7 +403,7 @@
 
             \begin{enumerate}
             \item
-                Рассмотрим первое неравенство, так как последнее аналогично ему, а те, что между ними, следуют из определения. Логика здесь такая: пусть мы нашли инфинум справа и соответствующий ему $\xi$. Но тогда при подсчете слева мы могли брать те же $\xi$, поэтому получим сумму не больше правой.
+                Следует из определения.
 
             \item
                 Рассмотрим на примере первого неравенства. Пусть между какими-то двумя точками из $\T$ появилось несколько точек из $\T'$. Значение, равное инфинуму функции на этом отрезке умноженному на длину отрезка, будет не больше сумме инфинумов на каждом из подотрезков умноженных на их длины.
@@ -405,7 +420,7 @@
         \begin{proof}
             Докажем только первую часть. 
 
-            Для каждого $\eps$ найдется такое разбиение $\T_{\eps}$, для которого $\underline{I} \leq s(f, \T_{\eps}) + \dfrac{\eps}{2} \leq s(f, \T_{\eps} \cup \T)$ для произвольного разбиения $\T$. Первое неравенство выполняется, так как можно в $\T_{\eps}$ подставить разбиение $\T$, которое было выбрано для супремума в $\underline{I}$. Второе неравенство выполняется по третьему пункту из предыдущей леммы.
+            Для каждого $\eps$ найдется такое разбиение $\T_{\eps}$, для которого $\underline{I} \leq s(f, \T_{\eps}) + \dfrac{\eps}{2} \leq s(f, \T_{\eps} \cup \T) + \dfrac{\eps}{2}$ для произвольного разбиения $\T$. Первое неравенство выполняется, так как можно в $\T_{\eps}$ подставить разбиение $\T$, которое было выбрано для супремума в $\underline{I}$. Второе неравенство выполняется по третьему пункту из предыдущей леммы.
 
             Заметим, что среди отрезков, порожденных разбиением $\T_{\eps} \cup \T$ не более чем $2|\T_{\eps}|$ отрезков, не порожденных разбиением $\T$ (худший случай, когда в каждый отрезок, порожденный $\T$, попадает одна точка из $\T_{\eps}$, тем самым порождая 2 новых отрезка). Поэтому $s(f, \T_{\eps} \cup \T) \leq s(f, \T) + 2|\T_{\eps}| \cdot 2 \sup\limits_{x \in [a; b]} |f(x)| \cdot \lambda(\T)$.
 
@@ -454,11 +469,11 @@
 
             Требует пояснения только импликация $\implies$, так как обратное следует из выбора $\T$: для инфинума и супремума в $\overline{I}$ и $\underline{I}$ соответственно будет выбрано то самое $\T$.
 
-            Если $\overline{I} = \underline{I}$, то $\forall \eps > 0$ найдутся разбиения $\T_1$ и $\T_2$: $S(f, \T_1) - s(f, \T_2) < \overline{I} - \dfrac{\eps}{2} - (\underline{I} - \dfrac{\eps}{2}) = \eps$ (так как можно взять $\T_1$ и $\T_2$ равные выбранным в $\overline{I}$ и $\underline{I}$ соответственно).
+            Если $\overline{I} = \underline{I}$, то $\forall \eps > 0$ найдутся разбиения $\T_1$ и $\T_2$: $S(f, \T_1) - s(f, \T_2) < \left(\overline{I} + \dfrac{\eps}{2}\right) - \left(\underline{I} - \dfrac{\eps}{2}\right) = \eps$ (так как можно взять $\T_1$ и $\T_2$ равные выбранным в $\overline{I}$ и $\underline{I}$ соответственно).
 
             Кроме того, $S(f, \T_1 \cup \T_2) - s(f, \T_1 \cup \T_2) \leq S(f, \T_1) - s(f, \T_2)$ (по свойствам для сумм Дарбу). 
 
-            Остается лишь заметить, что верно равенство $S(f, \T) - s(f, \T) = \sum_k \omega(f, \Delta_k) \cdot |\Delta_k|$.
+            Остается лишь заметить, что для $\T = \T_1 \cup \T_2$ верно равенство $S(f, \T) - s(f, \T) = \sum_k \omega(f, \Delta_k) \cdot |\Delta_k|$.
         \end{proof}
 
         \subsection{Интегрируемость модуля и произведения интегрируемых функций. Интегрируемость на подотрезке.}
@@ -474,12 +489,16 @@
                 \omega(f^2, \Delta) \leq 2 \sup_{x \in \Delta} |f(x)| \cdot \omega(f, \Delta)
             \end{gathered}\]
 
+            Во втором неравенстве $2 \sup_{x \in \Delta} |f(x)|$ нужно, например, для случая: $\sup f(x) = 100$, $\inf f(x) = -100$. Тогда, $\omega = 200$. Также, тут важно брать супремум именно по $|f(x)|$, а не модуль супремума.
+
             Интегрируемость на подотрезке доказывается следующим образом. Для каждого $\eps > 0$ найдутся разбиение $\T$ отрезка $[a; b]$ для которого $S_{[a; b]}(f, \T) - s_{[a; b]} < \eps$. Но
             \[\begin{gathered}
                 S_{[c; d]}(f, (\T \cup \{c, d\}) \cap [c; d]) - s_{[c; d]}(f, (\T \cup \{c, d\}) \cap [c; d]) \\
                 \leq S_{[a; b]}(f, \T \cup \{c, d\}) - s_{[a; b]}(f, \T \cup \{c, d\}) \leq S_{[a; b]}(f, \T) - s_{[a; b]}(f, \T),
             \end{gathered}\]
             где $S_{[c; d]}$, $s_{[c; d]}$, $S_{[a; b]}$ и $s_{[a; b]}$ обозначают верхние и нижние суммы Дарбу на отрезках $[c; d]$ и $[a; b]$ соответственно.
+
+            Первое неравенство выполняется, так как то, что записано в правой части, это то, что записано слева, но к этому еще прибавили разность вне отрезка $[c; d]$, а $S(f, \T) \geq s(f, \T)$, поэтому это число не меньше $0$.
         \end{proof}
 
         \begin{consequence*}
@@ -500,10 +519,16 @@
         \end{consequence*}
 
         \begin{proof}
-            Интегрируемость на подотрезках уже доказано. А равенство следует из того, что при вычислении интеграла можно использовать интегральные суммы, соответствующие разбиениям, содержащим точку $c$ (выберем $\T$, в котором будет точка $c$).
+            Интегрируемость на подотрезках уже доказана. А равенство следует из того, что при вычислении интеграла можно использовать интегральные суммы, соответствующие разбиениям, содержащим точку $c$ (выберем $\T$, в котором будет точка $c$).
+
+            \textbf{Более строго.} Пусть $a < c < b$ и функция интегрируема на $[a; b]$. Уже доказано, что она интегрируема на подотрезках. Возьмём произвольное отмеченное разбиение $(\T, \xi): a = \xi_0 < \xi_1 < \dots < \xi_n = b$, такое, что $c$ является одной из точек деления. Выберем промежуточные точки $\xi_i$ и рассмотрим интегральную сумму $\sigma = \sum_{k = 1}^n f(\xi_k) \cdot |\Delta_k|$.
+
+            Если $x_j = c$, то эту сумму разобьем на две: $\sigma = \sum_{k = 1}^j f(\xi_k) \cdot |\Delta_k| + \sum_{k = j + 1}^n f(\xi_k) \cdot |\Delta_k|$. 
+
+            При $\lambda(\T) \to 0$, первая сумма стремится к $\int_a^c f(x) \dd x$, вторая --- к $\int_c^b f(x) \dd x$, а сумма $\sigma$ стремится к $\int_a^b f(x) \dd x$.
         \end{proof}
 
-    \section{Интегрируемость монотонных функций. Равномерная непрерывность. Примеры. Равновероятная непрерывность непрерывной на отрезке функции. Интегрируемость непрерывных функций.}
+    \section{Интегрируемость монотонных функций. Равномерная непрерывность. Примеры. Равномерная непрерывность непрерывной на отрезке функции. Интегрируемость непрерывных функций.}
 
         \subsection{Интегрируемость монотонных функций}
 
@@ -523,7 +548,7 @@
         \subsection{Равномерная непрерывность}
 
         \begin{definition*}
-            Функция $f$ называется равномерно непрерывной на множестве $X$, если $\forall \eps > 0 \ \exists \delta  > 0$, для которого из неравенства $|x - y| < \delta$ следует $|f(x) - f(y)| < \eps$.
+            Функция $f$ называется равномерно непрерывной на множестве $X$, если $\forall \eps > 0 \ \exists \delta  > 0$, для которого (для всех $x, y \in X$) из неравенства $|x - y| < \delta$ следует $|f(x) - f(y)| < \eps$.
         \end{definition*}
 
         \subsection{Примеры}
@@ -535,11 +560,11 @@
                 Функция $f(x) := \sin x$ равномерно непрерывна на $\RR$, так как по теореме Лагранжа $|\sin x - \sin y| = |\cos \xi| \cdot |x - y| \leq |x - y|$.
 
             \item
-                Функция $f(x) = \dfrac{1}{x}$ не раврномерно непрерывна на $(0; 1)$, так как $f \left(\dfrac{1}{2n}\right) - f \left(\dfrac{1}{n}\right) = n$, а $\left|\dfrac{1}{n} - \dfrac{1}{2n}\right| = \dfrac{1}{2n} \to 0$.
+                Функция $f(x) = \dfrac{1}{x}$ не равномерно непрерывна на $(0; 1)$, так как $f \left(\dfrac{1}{2n}\right) - f \left(\dfrac{1}{n}\right) = n$, а $\left|\dfrac{1}{n} - \dfrac{1}{2n}\right| = \dfrac{1}{2n} \to 0$.
             \end{enumerate}
         \end{example*}
 
-        \subsection{Равновероятная непрерывность непрерывной на отрезке функции}
+        \subsection{Равномерная непрерывность непрерывной на отрезке функции}
 
         \begin{theorem*}
             Если функция $f$ непрерывна на отрезке $[a; b]$, то $f$ равномерно непрерывна на $[a; b]$.
@@ -567,6 +592,7 @@
             \begin{equation*}
                 \sum_k \omega(f, \Delta_k) \cdot |\Delta_k| < \eps \cdot |b - a|.
             \end{equation*}
+            Неравенство выполняется, так как $\omega(f, \Delta_k)$ можно заменить на $\eps$.
         \end{proof}
 
     \section{Формула Ньютона-Лейбница и интегрирование по частям. Интеграл с переменным верхним пределом, его свойства. Наличие первообразной у непрерывной функции. Формула замены переменной.}
@@ -590,7 +616,7 @@
         \end{proof}
 
         \begin{consequence*}
-            Пусть $f$, $g$ --- непрерывно дифференцируемы на отрезке $[a; b]$ функции. Тогда
+            Пусть $f$, $g$ --- непрерывно дифференцируемые на отрезке $[a; b]$ функции. Тогда
             \begin{equation*}
                 \int_a^b f(x) g'(x) \dd x = f(b) g(b) - f(a) g(a) - \int_a^b f'(x) g(x) \dd x
             \end{equation*}
@@ -617,22 +643,34 @@
         \end{theorem*}
 
         \begin{proof}
-            Для $x, y \in [a; b]$ выполнено $|F(x) - f(y)| \leq \sup\limits_{z \in [a; b]} |f(z)| \cdot |x - y|$, что влечет непрерывность $F$. Пусть $f$ непрерывна в точке $x_0$. Тогда
+            Так как функция $f(x)$ интегрируема, она ограничена. Тогда
             \begin{equation*}
-                \forall \eps > 0 \ \exists \delta > 0: f(x_0) - \eps < f(x) < f(x_0) + \eps
+                \left|F(x) - F(x_0)\right| = \left|\int_{x_0}^x f(t) \dd t\right| \leq \left|\int_{x_0}^x \sup_{t \in [a; b]} |f(t)| \dd t\right| = \sup_{t \in [a; b]} |f(t)| \cdot \left|\int_{x_0}^x \dd t\right| \leq \sup_{t \in [a; b]} |f(t)| \cdot |x - x_0|.
             \end{equation*}
-            для каждой точки $x$, для которой $|x - x_0| < \delta$.
+            То есть, при $|x - x_0|$ стремящимся к $0$, значение $|F(x) - F(x_0)|$ тоже стремится к $0$, что является определением непрерывной функции.
 
-            Так как $F(X) - F(x_0) = \int_{x_0}^x f(t) \dd t$, то для точек $x$, для которых $|x - x_0| < \delta$, выполнено
+            Докажем вторую часть теоремы. Так как $f$ непрерывна в точке $x_0$, справедливо следующее:
             \begin{equation*}
-                f(x_0) - \eps < \dfrac{F(x) - F(x_0)}{x - x_0} < f(x_0) + \eps,
+                \forall \eps > 0 \ \exists \delta > 0: \forall x \in [a; b]: |x - x_0| < \delta \implies f(x_0) - \eps < f(x) < f(x_0) + \eps
             \end{equation*}
-            что и дает второе утверждение теоремы.
+
+            Используем монотонность (будем считать, что $x > x_0$):
+            \[\begin{gathered}
+                \int_{x_0}^x (f(x_0) - \eps) \dd t < \int_{x_0}^x f(t) \dd t < \int_{x_0}^x (f(x_0) + \eps) \dd t \\
+                \dfrac{1}{x - x_0} \cdot \int_{x_0}^x (f(x_0) - \eps) \dd t < \dfrac{1}{x - x_0} \cdot  \int_{x_0}^x f(t) \dd t < \dfrac{1}{x - x_0} \cdot \int_{x_0}^x (f(x_0) + \eps) \dd t \\
+                \dfrac{f(x_0) - \eps}{x - x_0} \cdot \int_{x_0}^x 1 \dd t < \dfrac{1}{x - x_0} \cdot  \int_{x_0}^x f(t) \dd t < \dfrac{f(x_0) + \eps}{x - x_0} \cdot \int_{x_0}^x 1 \dd t \\
+                \dfrac{f(x_0) - \eps}{x - x_0} \cdot (x - x_0) < \dfrac{1}{x - x_0} \cdot (F(x) - F(x_0)) < \dfrac{f(x_0) + \eps}{x - x_0} \cdot (x - x_0) \\
+                f(x_0) - \eps < F'(x_0) < f(x_0) + \eps \\
+            \end{gathered}\] 
         \end{proof}
 
         \begin{consequence*}
             Пусть $f$ непрерывна на $[a; b]$, тогда у $f$ существует первообразная.
         \end{consequence*}
+
+        \begin{proof}
+            Так как $f$ непрерывна на всём отрезке, то $\forall x_0 \in [a; b]$ $\implies$ $F'(x_0) = f(x_0)$.
+        \end{proof}
 
         \subsection{Формула замены переменной}
 
@@ -686,10 +724,10 @@
     			$e^x = \sum_{n = 0}^{\infty} \dfrac{x^n}{n!}$, $x \in \RR$
 
     		\item
-    			$\sin x = \sum_{n = 0}^{\infty} \dfrac{(-1)^n x^{2n + 1}}{(2x + 1)!}$, $x \in \RR$
+    			$\sin x = \sum_{n = 0}^{\infty} \dfrac{(-1)^n x^{2n + 1}}{(2n + 1)!}$, $x \in \RR$
 
     		\item
-    			$\cos x = \sum_{n = 0}^{\infty} \dfrac{(-1)^n x^{2n}}{(2n + 1)!}$, $x \in \RR$
+    			$\cos x = \sum_{n = 0}^{\infty} \dfrac{(-1)^n x^{2n}}{(2n)!}$, $x \in \RR$
 
     		\item
     			$\ln(1 + x) = \sum_{n = 1}^{\infty} \dfrac{(-1)^{n - 1}x^n}{n}$, $x \in (-1; 1]$
@@ -704,15 +742,26 @@
     		\begin{equation*}
     			\left|e^x - \sum_{n = 0}^m \dfrac{x^n}{n!}\right|
     			= \dfrac{1}{m!} \left|\int_0^x (x - t)^m e^t \dd t\right|
-    			\leq \dfrac{|x|^m \cdot e^x}{m!} \xrightarrow[m \to \infty]{} 0
+                \leq \dfrac{1}{m!} \left|\int_0^x x^m e^x \dd t\right|
+    			= \dfrac{|x|^{m + 1} \cdot e^x}{m!} \xrightarrow[m \to \infty]{} 0
     		\end{equation*}
 
-    		Функции $\sin$ и $\cos$ рассматриваются аналогично. Для $\ln(1 + x)$ имеем
+    		Функции $\sin$ и $\cos$ рассматриваются аналогично:
+            \begin{equation*}
+                \left|\sin x - \sum_{n = 1}^m \dfrac{(-1)^n x^{2n + 1}}{(2n + 1)!}\right|
+                = \dfrac{1}{m!} \cdot \left|\int_0^x (x - t)^m \sin^{(m + 1)} t \dd t\right|
+                \leq \dfrac{1}{m!} \cdot \left|\int_0^x x^m \cdot 1 \dd t\right|
+                = \dfrac{x^{m + 1}}{m!} \to 0
+            \end{equation*}
+
+            Для $\ln(1 + x)$ имеем
     		\begin{equation*}
-    			\left|\ln(1 + x) - \sum_{n = 1}^m \dfrac{(-1)^{n - 1}x^n}{n}\right| = \left|\int_0^x(x - t)^m (1 + t)^{-m - 1} \dd t\right|.
+    			\left|\ln(1 + x) - \sum_{n = 1}^m \dfrac{(-1)^{n - 1}x^n}{n}\right| = \left|\int_0^x(x - t)^m \cdot \dfrac{1}{(1 + t)^{m + 1}} \dd t\right|.
     		\end{equation*}
 
-    		Если $x > 0$, то последнее выражение оценивается через $\dfrac{1}{m + 1}$, а если $x < 0$, то $|x - t| = |x| \cdot (1 - tx^{-1}) \leq |x| \cdot (1 - |t|) = |x| \cdot (1 + t)$, поэтому
+    		Если $x > 0$, то последнее выражение оценивается через $\dfrac{1}{m + 1}$, так как $|(x - t)^m| \leq 1$, а $\left|\int \dfrac{1}{(1 + t)^{m + 1}}\right| = \dfrac{1}{(1 + t)^m \cdot m} \leq \dfrac{1}{m + 1}$ 
+
+            Если $x < 0$, то $|x - t| = |x| \cdot (1 - tx^{-1}) \leq |x| \cdot (1 - |t|) = |x| \cdot (1 + t)$, поэтому
     		\begin{equation*}
     			\left|\int_0^x (x - t)^m \cdot (1 + t)^{-m - 1} \dd t\right| \leq \dfrac{|x|^m}{1 + x} \xrightarrow[m \to \infty]{} 0
     		\end{equation*}
@@ -720,12 +769,49 @@
     		Ряд для функции $(1 + x)^p$ рассматривается похожим образом.
     	\end{proof}
 
+        \subsection{Площадь криволинейной трапеции и длина кривой}
+
+        Пусть $f \geq 0$ на $[a; b]$. И пусть $S(\alpha, \beta)$ площадь под графиком функции $f$ на отрезке $[\alpha; \beta] \subseteq [a; b]$. Разумные требования на $S$ --- это
+
+        \begin{enumerate}
+        \item 
+            аддитивность: $S(\alpha, \gamma) = S(\alpha, \beta) + S(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
+
+        \item
+            монотонность по включению: $\inf\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha) \leq S(\alpha, \beta) \leq \sup\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha)$ 
+        \end{enumerate}
+
+        \begin{proposal*}
+            Пусть $f$ интегрируема по Риману на $[a; b]$. При выполнении выше описанных условий $S(a, b) = \int_a^b f(x) \dd x$.
+        \end{proposal*}
+
+        \begin{proof}
+            Для произвольного разбиения $\T$ выполнено
+            \begin{equation*}
+                \sum_{k = 1}^n \inf\limits_{x \in \Delta_k} f(x) \cdot |\Delta_k| \leq S(a, b) \leq \sum_{k = 1}^n \sup_{x \in \Delta_k} f(x) \cdot |\Delta_k|.
+            \end{equation*}
+
+            Слева и справа стоят нижняя и верхняя суммы Дарбу, которые при малом масштабе разбиения близки к интегралу.
+        \end{proof}
+
+        Пусть $\gamma: [a; b] \to \RR^3$ --- гладкая кривая, те. $\gamma(t) = (x(t), y(t), z(t))$ и функции $x, y, z \in C^1([a; b])$ (принадлежность функции $C^1$ означает, что первая производная непрерывна). Пусть $l(a, b)$ --- длина пути, соответствующая отрезку $[a; b]$. Тогда естественными требованиями будут
+
+        \begin{enumerate}
+        \item
+            $l(\alpha, \gamma) = l(\alpha, \beta) + l(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
+
+        \item
+            $\inf\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha) \leq l(\alpha, \beta) \leq \sup\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha)$, где $v(t) =  (x'(t), y'(t), z'(t))$
+        \end{enumerate}
+
+        Аналогично получаем, $l(a, b) = \int_a^b |v(t)| \dd t$, где $|v(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}$.
+
     \section{Формула Стирлинга.}
 
    		\subsection{Формула Стирлинга}
 
    		\begin{theorem*}
-   			Для некоторой числовой постоянно $c$ выполнено $N! \sim c \sqrt{N} (N / e)^N$
+   			Для некоторой числовой постоянной $c$ выполнено $N! \sim c \sqrt{N} (N / e)^N$
    		\end{theorem*}
 
    		\begin{proof}
@@ -741,22 +827,26 @@
    			\end{gathered}\]
    			Складываем оба равенства, делим на $2$:
    			\begin{equation*}
-   				f \left(\dfrac{a + b}{2}\right) - \dfrac{f(a) + f(b)}{2} = \dfrac{b - a}{4} (f'(\xi_1) - f'(\xi_2)) = \dfrac{b - a}{4} f''(\xi) \cdot (\xi_1 - \xi_2) \leq \dfrac{(b - a)^2}{4} \max\limits_{x \in [a; b]} |f''(x)|.
+   				f \left(\dfrac{a + b}{2}\right) - \dfrac{f(a) + f(b)}{2} = \dfrac{b - a}{4} (f'(\xi_1) - f'(\xi_2)) = \dfrac{b - a}{4} f''(\xi) \cdot (\xi_1 - \xi_2) \leq \dfrac{(b - a)^2}{4} \sup\limits_{x \in [a; b]} |f''(x)|.
    			\end{equation*}
 
-   			В нашем случае,
-   			\begin{equation*}
-   				\dfrac{\ln(n - 1) + \ln n}{2} \leq \int_{n - 1}^n \ln x \dd x \leq \dfrac{\ln( n- 1) + \ln n}{2} + \dfrac{1}{4(n - 1)^2}.
-   			\end{equation*}
+   			В нашем случае, рассмотрим $a = n - 1, b = n$. Тогда, $\sup\limits_{x \in [a; b]} |f''(x)| = \sup\limits_{x \in [n; n + 1]} |\ln''(x)| = \dfrac{1}{(n - 1)^2}$. Применим данную оценку для самого первого неравенства:
+   			\[\begin{gathered}
+                \dfrac{\ln(n - 1) + \ln n}{2} \leq \int_{n - 1}^n \ln x \dd x \leq \dfrac{\ln(n - 1) + \ln n}{2} + \dfrac{1}{4(n - 1)^2} \\
+                \int_{n - 1}^n \ln x \dd x - \dfrac{\ln(n - 1) + \ln n}{2} \leq \dfrac{1}{4(n - 1)^2}
+            \end{gathered}\]
 
-   			Таким образом, последовательность
-   			\begin{equation*}
-   				S_N := \int_1^N \ln x \dd x - \sum_{n = 2}^N \ln n + \dfrac{1}{2} \ln N
-   			\end{equation*}
-   			монотонна и ограничена, а значит имеет предел. Тем самым, предел существует и у последовательности
-   			\begin{equation*}
-   				e^{-S_N} = \dfrac{N!}{(N / e)^N \sqrt{N}}
-   			\end{equation*}
+            Суммируем последнее неравенство по всем парам $a, b = (1, 2), (2, 3), \dots, (n - 1, n)$. Получаем:
+            \begin{equation*}
+                S_N := \int_1^N \ln x \dd x - \sum_{n = 2}^N \ln n + \dfrac{1}{2} \ln N \leq \sum_{n = 2}^N \dfrac{1}{4(n - 1)^2}
+            \end{equation*}
+
+            $S_N$ монотонно и ограничена, а значит, сходится к какому-то числу. Замечаем, что
+            \begin{equation*}
+                e^{-S_N} = \dfrac{N!}{(N / e)^N \sqrt{N}} \to c.
+            \end{equation*}
+
+            А значит, константа $c$ существует.
    		\end{proof}
 
    		\subsection{Вычисление константы в формуле Стирлинга}
@@ -767,9 +857,13 @@
 
    		\begin{proof}
    			Пусть
-   			\begin{equation*}
-   				I_k = \int_0^{\pi/2} \sin^k x \dd x.
-   			\end{equation*}
+   			\[\begin{gathered}
+                I_k = \int_0^{\pi/2} \sin^k x \dd x \\
+                \int \sin^k x \dd x = J_k = -\dfrac{1}{k} \sin^{k - 1} x \cdot \cos x + \dfrac{k - 1}{k} J_{k - 2} \\
+                \int_0^{\pi/2} \sin^k x \dd x = -\dfrac{1}{k} \sin^{k - 1} \dfrac{\pi}{2} \cdot \cos \dfrac{\pi}{2} + \dfrac{k - 1}{k} I_{k - 2} = 0 + \dfrac{k - 1}{k} I_{k - 2} \dd x \\
+                I_0 = \dfrac{\pi}{2} \\
+                I_1 = 1 \\
+            \end{gathered}\]
 
    			Легко проверить, что
    			\begin{equation*}
@@ -778,15 +872,20 @@
    				I_{2n + 1} = \dfrac{2n}{2n + 1}I_{2n - 1} = \dfrac{(2n)!!}{(2n + 1)!!}.
    			\end{equation*}
 
-   			Кроме того,
+   			Кроме того, так как при $x \in [0; \pi/2] \sin x \geq 0$, то $\sin^{n + 1} \leq \sin^{n}$. По монотонности интеграла получаем, что
    			\begin{equation*}
    				1 \geq \dfrac{I_{2n + 1}}{I_{2n}} \geq \dfrac{2n}{2n + 1}.
    			\end{equation*}
 
    			Тем самым,
    			\begin{equation*}
-   				\lim_{n \to \infty} \dfrac{((2n)!!)^2}{(2n + 1)!!(2n - 1)!!} = \dfrac{\pi}{2}.
+   				\lim_{n \to \infty} \dfrac{I_{n + 1}}{I_n} = 1.
    			\end{equation*}
+
+            Тогда
+            \begin{equation*}
+                \lim_{n \to \infty} \dfrac{I_{n + 1}}{I_n} \cdot \frac{\pi}{2} = \dfrac{\pi}{2} = \lim_{n \to \infty} \dfrac{((2n)!!)^2}{(2n + 1)!!(2n - 1)!!}.
+            \end{equation*}
 
    			Но
    			\begin{equation*}
@@ -795,7 +894,7 @@
 
    			Таким образом,
    			\begin{equation*}
-   				\lim_{n \to \infty} \dfrac{c^2n}{2(2n + 1)} = \dfrac{\pi}{2},
+   				\lim_{n \to \infty} \dfrac{c^2n}{2(2n + 1)} = \dfrac{\pi}{2} \implies \dfrac{c^2}{4} = \dfrac{\pi}{2},
    			\end{equation*}
    			откуда следует нужное равенство.
    		\end{proof}
@@ -822,7 +921,7 @@
 
     	\subsection{Примеры}
 
-    	Рассмотрим функци $f_p(x) := \dfrac{1}{x^p}$. Тогда,
+    	Рассмотрим функцию $f_p(x) := \dfrac{1}{x^p}$. Тогда,
     	\begin{equation*}
     		\int_1^x f_p(t) \dd t = \begin{cases}
     			\dfrac{1}{1 - p} \cdot (x^{1 - p} - 1), &p \neq 1, \\
@@ -841,43 +940,6 @@
     	\end{equation*}
     	Предел при $x \to 0$ существует тогда и только тогда, когда $p < 1$ (т.к. иначе из-за $x^{1 - p}$ появляется произведение бесконечно большой последовательности на ограниченную).
 
-    	\subsection{Площадь криволинейной трапеции и длина кривой}
-
-    	Пусть $f \geq 0$ на $[a; b]$. И пусть $S(\alpha, \beta)$ площадь под графиком функции $f$ на отрезке $[\alpha; \beta] \subseteq [a; b]$. Разумные требования на $S$ --- это
-
-    	\begin{enumerate}
-    	\item 
-    		аддитивность: $S(\alpha, \gamma) = S(\alpha, \beta) + S(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
-
-    	\item
-    		монотонность по включению: $\inf\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha) \leq S(\alpha, \beta) \leq \sup\limits_{x \in [\alpha; \beta]} f(x) \cdot (\beta - \alpha)$ 
-    	\end{enumerate}
-
-    	\begin{proposal*}
-    		Пусть $f$ интегрируема по Риману на $[a; b]$. При выполнении выше описанных условий $S(a, b) = \int_a^b f(x) \dd x$.
-    	\end{proposal*}
-
-    	\begin{proof}
-    		Для произвольного разбиения $\T$ выполнено
-    		\begin{equation*}
-    			\sum_{k = 1}^n \inf\limits_{x \in \Delta_k} f(x) \cdot |\Delta_k| \leq S(a, b) \leq \sum_{k = 1}^n \sup_{x \in \Delta_k} f(x) \cdot |\Delta_k|.
-    		\end{equation*}
-
-    		Слева и справа стоят нижняя и верхняя суммы Дарбу, которые при малом масштабе разбиения близки к интегралу.
-    	\end{proof}
-
-    	Пусть $\gamma: [a; b] \to \RR^3$ --- гладкая кривая, те. $\gamma(t) = (x(t), y(t), z(t))$ и функции $x, y, z \in C^1([a; b])$ (принадлежность функции $C^1$ означает, что первяа производная непрерывна). Пусть $l(a, b)$ --- длина пути, соответствующая отрезку $[a; b]$. Тогда естественными требованиями будут
-
-    	\begin{enumerate}
-    	\item
-    		$l(\alpha, \gamma) = l(\alpha, \beta) + l(\beta, \gamma)$ при $a \leq \alpha < \beta < \gamma \leq b$
-
-    	\item
-    		$\inf\limits_{t \in [\alpha; \beta]} |v(t)| \cdot (\beta - \alpha) \leq l(\alpha, \beta) \leq \sup\limits_{t \in [\alpha; \beta]}$, где $v(t) =  (x'(t), y'(t), z'(t))$
-    	\end{enumerate}
-
-    	Аналогично получаем, $l(a, b) = \int_a^b |v(t)| \dd t$, где $|v(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}$.
-
     	\subsection{Регулярность и линейность несобственного интеграла, независимость сходимости интеграла от его <<начала>>}
 
     	\begin{theorem*}
@@ -887,7 +949,7 @@
     			если $b \in \RR$ и $f$ интегрируема на $[a; b]$, то значение несобственного интеграла на промежутке $[a; b)$ совпадает со значение обычного интеграла Римана по отрезку $[a; b]$.
 
     		\item
-    			функция $\alpha f + \beta g$ интегриуема в несобственном смысле на промежутке $[a; b)$ и
+    			функция $\alpha f + \beta g$ интегрируема в несобственном смысле на промежутке $[a; b)$ и
     			\begin{equation*}
     				\int_a^b (\alpha f + \beta g) \dd x = \alpha \int_a^b f(x) \dd x + \beta \int_a^b g(x) \dd x
     			\end{equation*}
@@ -899,6 +961,10 @@
     			\end{equation*}
     		\end{enumerate}
     	\end{theorem*}
+
+        \begin{proof}
+            Первое следует из того, что функция непрерывна на $[a; b]$ (по $8.2$). А значит, $\lim_{x \to b - 0} \int_a^x f(x) \dd x = \int_a^b f(x) \dd x$.
+        \end{proof}
 
     	\begin{remark*}
     		Последнее в частности означает, что интегралы
@@ -924,8 +990,6 @@
             \begin{equation*}
                 \int_{\alpha}^T f(\phi(t))\phi'(t) \dd t = \int_a^{\phi(T)} f(x) \dd x
             \end{equation*}
-
-            /\!/TODO: Добавить нормальное пояснение
         \end{proof}  
 
         \begin{theorem*}
@@ -941,27 +1005,27 @@
         \end{theorem*}      
 
         \begin{proof}
-            Утверждение следует из формулы интегрирования по частями для обычного интеграла Римана.
-
-            Заметим, что сходимость интеграла от функции $f$ на промежутке $[a; b)$ равносильна существованию предела для функции
-            \begin{equation*}
-                F(X) := \int_a^x f(t) \dd t
-            \end{equation*}
-            при $x \to b - 0$.
-
-            Тем самым, для сходимости интеграла верен критерий Коши: пусть $f$ интегрируема на каждом отрезке $[a; x]$ при $x < b$. Тогда интеграл
-            \begin{equation*}
-                \int_a^b f(t) \dd t
-            \end{equation*}
-            сходится тогда и только тогда, когда $\forall \eps > 0 \ \exists x_0: \forall x_1, x_2 \in (x_0, b)$ выполнено
-            \begin{equation*}
-                \left|\int_{x_1}^{x_2} f(t) \dd t\right| < \eps.
-            \end{equation*}
+            Утверждение следует из формулы интегрирования по частями для обычного интеграла Римана. Аналогично предыдущей теореме.
         \end{proof}
 
     \section{Абсолютная и условная сходимость несобственных интегралов. Пример функции, интеграл от которой сходится условно. Исследования сходимости интеграла от неотрицательной функции с помощью неравенств и эквивалентности. Признаки Дирихле-Абеля сходимости несобственного интеграла.}
 
         \subsection{Абсолютная и условная сходимость несобственных интегралов}
+
+        Заметим, что сходимость интеграла от функции $f$ на промежутке $[a; b)$ равносильна существованию предела для функции
+        \begin{equation*}
+            F(X) := \int_a^x f(t) \dd t
+        \end{equation*}
+        при $x \to b - 0$.
+
+        Тем самым, для сходимости интеграла верен критерий Коши: пусть $f$ интегрируема на каждом отрезке $[a; x]$ при $x < b$. Тогда интеграл
+        \begin{equation*}
+            \int_a^b f(t) \dd t
+        \end{equation*}
+        сходится тогда и только тогда, когда $\forall \eps > 0 \ \exists x_0: \forall x_1, x_2 \in (x_0, b)$ выполнено
+        \begin{equation*}
+            \left|\int_{x_1}^{x_2} f(t) \dd t\right| < \eps.
+        \end{equation*}
 
         \begin{definition*}
             Говорят, что несобственный интеграл $\int_a^b f(t) \dd t$ сходится \textbf{абсолютно}, если сходится интеграл $\int_a^b |f(t)| \dd t$.
@@ -970,11 +1034,14 @@
         \begin{remark*}
             В силу критерия Коши ясно, что абсолютно сходящийся интеграл сходится.
 
-            /\!/TODO: разобраться и пояснить.
+            \begin{equation*}
+                \forall \eps > 0 \ \exists x_0: \forall x_1, x_2 \in (x_0, b) \implies \left|\int_a^b |f(x)| \dd x\right| < \eps \implies \left|\int_a^b f(x) \dd x\right| < \eps,
+            \end{equation*}
+            так как по свойству монотонности, $\int_a^b f(x) \dd x \leq \int_a^b |f(x)| \dd x$.
         \end{remark*}
 
         \begin{remark*}
-            Исследования абсолютной сходимости сводится к исследования сходимости интеграла от неотрицательной функции. В случае неотричательной функции $f$ функциия $F$ оказывается монотонной, поэтому сходимость интеграла от неотрицательной функции равносильна ограниченности $F$ на $[a; b)$.
+            Исследования абсолютной сходимости сводится к исследования сходимости интеграла от неотрицательной функции. В случае неотрицательной функции $f$ функциия $F$ оказывается монотонной, поэтому сходимость интеграла от неотрицательной функции равносильна ограниченности $F$ на $[a; b)$.
         \end{remark*}
 
         \begin{proposal*}
@@ -990,7 +1057,7 @@
         \end{proof}
 
         \begin{consequence*}
-            Если $f \geq 0$ и $f(x) \sim g(x)$ при $x \to b - 0$, то интегралы от функций $f$ и $g$ сходятся или расходятся одновременно.
+            Если $f \geq 0$, $g \geq 0$ и $f(x) \sim g(x)$ при $x \to b - 0$, то интегралы от функций $f$ и $g$ сходятся или расходятся одновременно.
         \end{consequence*}
 
         \begin{proof}
@@ -1015,7 +1082,7 @@
         \subsection{Признак Дирихле-Абеля}
 
         \begin{theorem*}
-            Пусть $f$ и $g$ интегрируемы на каждом отрезке $[a; x]$ при $x < g$, $f$ --- непрерывная функция, $g$ --- монотонная, непрерывно дифференцируемая функция. Пусть
+            Пусть $f$ и $g$ интегрируемы на каждом отрезке $[a; x]$ при $x < b$, $f$ --- непрерывная функция, $g$ --- монотонная, непрерывно дифференцируемая функция. Пусть
             \begin{enumerate}
             \item
                 функция $F(x) := \int_a^x f(t) \dd t$ ограничена, а $g(x) \to 0$ при $x \to b - 0$
@@ -1047,4 +1114,5 @@
 
             При каждом из наших предположений, последнее выражение мало при больших $x_1$, $x_2$.
         \end{proof}
+        
 \end{document}

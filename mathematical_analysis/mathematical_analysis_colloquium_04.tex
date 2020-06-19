@@ -1,0 +1,1454 @@
+% The source code is predominantly written by Egor Kosov.
+
+\documentclass[a4paper]{article}
+\usepackage{header}
+\usepackage{float}
+\usepackage{cmap}
+
+\newcommand\enumtocitem[3]{\item\textbf{#1}\addtocounter{#2}{1}\addcontentsline{toc}{#2}{\protect{\numberline{#3}} #1}}
+\newcommand\defitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
+\newcommand\proofitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
+
+\newtheorem{theorem1*}{Theorem}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{}{.5em}{Теорема \thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcommand{\italicbold}[1]{\emph{\textbf{#1}}}
+
+\newlist{colloq}{enumerate}{1}
+\setlist[colloq]{label=\textbf{\arabic*.}}
+
+\everymath{\displaystyle}
+
+\title{\HugeМатематический анализ, Коллоквиум 4}
+\author{
+	Балюк Игорь \\
+	\href{https://teleg.run/lodthe}{@lodthe},
+    \href{https://github.com/LoDThe/hse-tex}{GitHub} \\
+    Материалы предоставил Егор Косов.
+}
+
+\usepackage[yyyymmdd,hhmmss]{datetime}
+\settimeformat{xxivtime}
+\renewcommand{\dateseparator}{.}
+\date{Дата изменения: \today \ в \currenttime}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+
+    \newpage
+
+    Исходный код предоставил Егор Косов. В данном файле я попытался исправить опечатки и облегчить некоторые моменты для понимания.
+
+    \href{https://www.dropbox.com/s/fwquqpjo0hnrwn9/%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D0%BA%D0%BE%D0%BB%D0%BB%D0%BE%D0%BA%D0%B2%D0%B8%D1%83%D0%BC%D0%B0%20%D0%9C%D0%90-2-2.pdf?dl=0}{Оригинальный список вопросов}
+
+    \section{Метрические и нормированные пространства. Скалярное произведение и евклидово пространство. Неравенство Коши-Буняковского. Сходимость в метрических пространствах, открытые и замкнутые множества, предельные точки. Открытость открытого шара. Эквивалентное описание замкнутых множеств.}
+
+    \href{https://www.dropbox.com/s/donysz87em9jfhs/%D0%9B%D0%B5%D0%BA%D1%86%D0%B8%D1%8F%208.pdf?dl=0}{Оригинальный конспект.}
+
+    \subsection{Метрические и нормированные пространства.}
+
+    \begin{definition*}
+        Пусть $X$ --- множество. Функция $d: X \times X \to [0; +\infty)$ называется метрикой, если
+        \begin{enumerate}
+        \item $d(x, y) = 0 \iff x = y$;
+        \item $d(x, y) = d(y, x) \forall x, y \in X$;
+        \item $d(x, z) \leq d(x, y) + d(y, z) \forall x, y, z \in X$.
+        \end{enumerate}
+
+        Пара $(X, d)$ называется метрическим пространством.
+    \end{definition*}
+
+    \begin{definition*}
+        Пусть $X$ --- линейное (= векторное) пространство. Функция $\norm{\cdot}: X \to [0; +\infty)$ называется нормой, если:
+        \begin{enumerate}
+        \item $\norm{x} = 0 \iff x = 0$;
+        \item $\norm{\lambda x} = |\lambda| \norm{x}, \forall x \in X$;
+        \item $\norm{x + y} \leq \norm{x} + \norm{y} \forall x, y \in X$.
+        \end{enumerate}
+
+        Пара $(X, \norm{\cdot})$ называется нормированным пространством.
+    \end{definition*}
+
+    Нормой является привычной нам длина вектора. Аналогично метрике, мы будем часто работать с Евклидовой нормой: пусть $x \in \RR^n$, тогда $\norm{x} = \sqrt{x_1^2 + \dots + x_n^2}$.
+
+    Всякое нормированное пространство является метрическим с метрикой $d(x, y) = \norm{x - y}$.
+
+    \subsection{Скалярное произведение и евклидово пространство.}
+
+    \begin{definition*}
+        Пусть $X$ --- линейное (= векторное) пространство. Функция $\langle \cdot, \cdot \rangle: X \times X \to \RR$ называется скалярным произведением, если для всех $x, y, z \in X$ и всех $a, b \in \RR$ выполнены следующие условия:
+        \begin{enumerate}
+        \item $\langle x, x \rangle \geq 0$ и $\langle x, x \rangle = 0 \iff x = 0$;
+        \item $\langle x, y \rangle = \langle y, x \rangle$;
+        \item $\langle ax + by, z \rangle = a \langle x, z \rangle + b \langle y, z \rangle$.
+        \end{enumerate}
+
+        Линейное пространство $X$ со скалярным произведением называется Евклидовым.
+    \end{definition*}
+
+    Мы будем часто работать со следующим скалярным произведением: пусть $x, y \in \RR^n$, тогда $\langle x, y \rangle = x_1 \cdot y_1 + \dots + x_n \cdot y_n$.
+
+    \subsection{Неравенство Коши-Буняковского}
+
+    \begin{lemma*} (Неравенство Коши-Буняковского) 
+        Пусть $\langle \cdot, \cdot \rangle$ скалярное произведение на линейном пространстве $X$, тогда $\forall x, y \in X$
+        \begin{equation*}
+            |\langle x, y \rangle| \leq \sqrt{\langle x, x \rangle} \cdot \sqrt{\langle y, y \rangle}.
+        \end{equation*}
+    \end{lemma*}
+
+    \begin{proof}
+        Заметим, что для $\lambda \in \RR$ выполнено
+        \begin{equation*}
+            0 \leq \langle x + \lambda y, x + \lambda y \rangle = \lambda^2 \langle y, y \rangle + 2\lambda \langle x, y \rangle + \langle x, x \rangle.
+        \end{equation*}
+
+        Не ограничивая общности, считаем, что $\langle y, y \rangle > 0$ (иначе $y$ --- нулевой вектор, доказательство тривиально). Это означает, что ветви параболы смотрят вверх. Но парабола лежит не ниже оси $Ox$, поэтому дискриминант этого трехчлена неположителен, т.е. $4|\langle x, y \rangle|^2 - 4\langle y, y \rangle \langle x, x \rangle \leq 0$. Откуда получаем:
+        \begin{equation*}
+            |\langle x, y \rangle|^2 \leq \langle y, y \rangle \langle x, x \rangle \implies |\langle x, y \rangle| \leq \sqrt{\langle x, x \rangle} \cdot \sqrt{\langle y, y \rangle}.
+        \end{equation*}
+    \end{proof}
+
+    \begin{consequence*}
+        На евклидовом пространстве функция $\norm{x} := \sqrt{\langle x, x \rangle}$ является нормой.
+    \end{consequence*}
+
+    \begin{proof}
+        Первые два свойства следуют из определения скалярного произведения. Неравенство треугольника следует из неравенства Коши-Буняковского:
+        \begin{equation*}
+            \norm{x + y}^2 = \langle x + y, x + y \rangle \leq \norm{x}^2 + 2 \cdot |\langle x, y \rangle| + \norm{y}^2 \leq \norm{x}^2 + 2\norm{x}\norm{y} + \norm{y}^2 = (\norm{x} + \norm{y})^2.
+        \end{equation*}
+    \end{proof}
+
+    \begin{example*}
+        На линейном пространстве $\RR^k$ всех упорядоченных наборов $(x_1, \dots, x_k)$ задано скалярное произведение $\langle x, y \rangle := \sum_{j = 1}^k x_jy_j$. Тем самым, на $\RR^k$ задана естественная евклидова метрика $\norm{x - y} := \sqrt{|x_1 - y_1|^2 + \dots + |x_k - y_k|^2}$.
+    \end{example*}
+
+    \subsection{Сходимость в метрических пространствах, открытые и замкнутые множества, предельные точки.}
+
+    \begin{definition*}
+        Пусть $(X, d)$ метрическое пространство.
+        \begin{enumerate}
+        \item
+            Множество 
+            \begin{equation*}
+                B_r(x_0) := \{x \in X \mid d(x, x_0) < r\}
+            \end{equation*}
+            называется \textbf{открытым шаром} радиуса $r$.
+
+        \item
+            Множество
+            \begin{equation*}
+                \overline{B_r}(x_0) := \{x \in X \mid d(x, x_0) \leq r\}
+            \end{equation*}
+            называется \textbf{замкнутым шаром} радиуса $r$.
+
+        \item
+            Последовательность точек $x_n \in X$ называется \textbf{сходящейся к точке $x$}, если для всякого $\eps > 0$ найдется такой номер $N(\eps)$, что $d(x, x_n) < \eps$ для каждого $n \geq N(\eps)$.
+
+        \item
+            Последовательность точек $x_n \in X$ называется \textbf{фундаментальной}, если для всякого $\eps > 0$ найдется такой номер $N(\eps)$, что $d(x_k, x_n) < \eps$ для всех $k, n \geq N(\eps)$.
+
+        \item
+            Точка $x$ называется \textbf{предельной} для множества $M \subset X$, если для всякого $\eps > 0$ выполнено $B_{\eps}(x) \cap (M \setminus \{x\}) \neq \varnothing$.
+
+        \item
+            Множество $U \subset X$ называется \textbf{открытым}, если для всякого $x \in U$ найдется такое $\eps > 0$, что $B_{\eps}(x) \subset U$.
+
+        \item
+            Множество $F \subset X$ называется \textbf{замкнутым}, если множество $X \setminus F$ открыто.
+        \end{enumerate}
+    \end{definition*}
+
+    \subsection{Открытость открытого шара. Эквивалентное описание замкнутых множеств.}
+
+    \begin{lemma*}
+        Пусть $(X, d)$ метрическое пространство. Тогда
+        \begin{enumerate}
+        \item
+            если $x_n \to x, y_n \to y$, то $d(x_n, y_n) \to d(x, y)$;
+
+        \item
+            предел сходящейся последовательности единственный;
+
+        \item
+            любой открытый шар является открытым множеством;
+
+        \item
+            множество $F$ замкнуто тогда и только тогда, когда множество $F$ содержит все свои предельные точки.
+        \end{enumerate}
+
+        \begin{proof}
+            ~
+
+            \begin{enumerate}
+            \item
+                Следует из оценки
+                \begin{equation*}
+                    |d(x_n, y_n) - d(x, y)| \leq |d(x_n, y_n) - d(x_n, y)| + |d(x_n, y) - d(x, y)| \leq d(y_n, y) + d(x_n, x) < \dfrac{\eps}{2} + \dfrac{\eps}{2} = \eps.
+                \end{equation*}
+
+                Для всякого $\eps > 0$, для каждого $n \geq N$, для некоторого $N$. 
+
+            \item
+                Следует из пункта $1)$. Предположим обратное. Пусть $\{x_n\} \to a$ и $\{x_n\} \to b$, при этом $a \neq b$. Возьмем некоторые непересекающиеся окрестности $U = U(a)$ и $V = V(b)$ точек $a$ и $b$ соответственно. Согласно определению предела вне окрестности $U$ точки $а$, в частности в окрестности $V$ точки $b$, содержится лишь конечное число членов последовательности $\{x_n\}$. Однако точка $b$ также является ее пределом, и потому в ее окрестности $V$ должны находиться бесконечно много членов последовательности $\{x_n\}$, начиная с некоторого номера, а следовательно, получилось противоречие. 
+
+            \item
+                \begin{definition*}
+                    Множество 
+                    \begin{equation*}
+                        B_r(x_0) := \{x \in X \mid d(x, x_0) < r\}
+                    \end{equation*}
+                    называется \textbf{открытым шаром} радиуса $r$.
+                \end{definition*}
+
+                Если $x \in B_r(x_0)$, то по неравенству треугольника $B_{\eps}(x) \subset B_r(x_0)$ при $\eps < r - d(x, x_0)$. Докажем это.
+
+                Заметим, что для для всех $t \in B_{\eps}(x)$ мы имеем $d(x_0, t) \leq d(x_0, x) + d(x, t) < d(x_0, x) + (r - d(x, x_0)) = r$. Отсюда получили, что $t \in B_r(x_0)$.
+
+            \item
+                Множество $F$ замкнуто тогда и только тогда, когда $\forall x \notin F \ \exists \eps > 0: \ B_{\eps} \cap F = \varnothing \iff$ всякая точка $x \notin F$ --- не предельная для $F$.
+            \end{enumerate}
+        \end{proof}
+    \end{lemma*}
+
+    \section{Полные метрические пространства, полнота $\RR^k$. Непрерывные отображения в метрических пространствах: определения, доказательства их эквивалентностей, основные свойства.}
+
+    \subsection{Полные метрические пространства, полнота $\RR^k$.}
+
+    \begin{definition*}
+        Метрическое пространство называется полным, если каждая фундаментальная последовательность в нем сходится.
+    \end{definition*}
+
+    \begin{remark*}
+        На $\RR^k$ справедливы соотношения
+        \begin{equation*}
+            \max\limits_{1 \leq j \leq k} |x_j| \leq \norm{x} \leq \sqrt{k} \cdot \max\limits_{1 \leq j \leq k} |x_j|
+        \end{equation*}
+        для вектора $x = (x_1, \dots, x_k)$.
+    \end{remark*}
+
+    \begin{theorem*}
+        Для любого конечномерного пространства $\RR^m$ последовательность $\{x_n\} \xrightarrow{n \to \infty} a$ тогда и только тогда, когда для всякого $i$ $\{(x_n)_i\} \xrightarrow{n \to \infty} a_i$.
+    \end{theorem*}
+
+    \begin{proof}~
+
+        \begin{itemize}
+        \item \textbf{Необходимость}. 
+            По определению
+            \begin{equation*}
+                \forall \eps > 0 \ \exists N(\eps) > 0: \ \forall n \geq N(\eps) \implies \sum_{i = 1}^m ((x_n)_i - a_i)^2 < \eps^2 \implies |(x_n)_i - a_i| < \eps \ \forall i,
+            \end{equation*}
+            а это означает, что $\{(x_n)_i\} \xrightarrow{n \to \infty} a_i$.
+
+        \item \textbf{Достаточность}. 
+            По определению для всякого $i$ и всякого $\eps > 0$ существует $N_i(\eps): \ \forall n \geq N_i(\eps) \implies |(x_n)_i - a_i| < \dfrac{\eps}{\sqrt{m}}$. Но если выбрать $N = \max \{N_i \mid 1 \leq i \leq m\}$, то
+            \begin{equation*}
+                \forall n \geq N \implies \sum_{i = 1}^m ((x_n)_i - a_i)^2 < m \cdot \dfrac{\eps^2}{m} = \eps^2 \iff d(x_n, a) < \eps.
+            \end{equation*}
+        \end{itemize}
+    \end{proof}
+
+    \begin{example*}
+        Пространство $\RR^k$ со стандартной евклидовой метрикой полное. Действительно. если последовательность векторов $x_n \in \RR^k$ фундаментальна, то фундаментальны и последовательности координат $\{(x_n)_j\}_{j = 1}^{\infty}$ для всякого $j \in \{1, \dots, k\}$.
+
+        Тем самым, у $j$-ой координаты есть предел $x_j$ для каждого $j \in \{1, \dots, k\}$. То есть $|(x_n)_j - x_j| \to 0$. Значит, $x_n \to x := (x_1, \dots, x_k)$. В доказательстве можно сослаться на одномерный случай.
+    \end{example*}
+
+    \begin{example*}
+        Пусть $X = [0; \pi / 2)$. Пространство $X$ не является полным с метрикой $d_1(x, y) = |x - y|$, но является полным с метрикой $d_2(x, y) = |\tg x - \tg y|$.
+    \end{example*}
+
+    \begin{proof}
+        Докажем, что пространство $X$ не является полным с метрикой $d_1(x, y) = |x - y|$. Возьмем следующую последовательность:
+        \begin{equation*}
+            x_1 = \dfrac{\pi}{2} - 1, \quad x_2 = \dfrac{\pi}{2} - \dfrac{1}{2}, \quad \dots, \quad x_n = \dfrac{\pi}{2} - \dfrac{1}{n}, \quad \dots
+        \end{equation*}
+
+        Тогда данная последовательность является фундаментальной, так как $|x_n - x_m| = \left|\dfrac{1}{n} - \dfrac{1}{m}\right| \leq \dfrac{1}{\min\{n, m\}}$, но она сходится к $\dfrac{\pi}{2}$, а оно не лежит в $X$.
+    \end{proof}
+
+    \subsection{Непрерывные отображения в метрических пространствах: определения, доказательства их эквивалентностей, основные свойства.}
+
+    \begin{definition*}
+        Пусть $(X, d_X)$ и $(Y, d_Y)$ --- два метрических пространства. Отображение $f: X \to Y$ называется непрерывным в точке $x_0 \in X$, если для всякой последовательности $x_n \to x_0$ выполнено $f(x_n) \to f(x_0)$.
+    \end{definition*}
+
+    \begin{lemma*}
+        Пусть $(X, d_X)$ и $(Y, d_Y)$ --- два метрических пространства.
+        \begin{enumerate}
+        \item
+            Отображение $f: X \to Y$ является непрерывным в точке $x \in X$ тогда и только тогда, когда для всякого $\eps > 0$ найдется $\delta > 0$ такое, что $d_Y(f(x), f(x_0)) < \eps$, если $d_X(x, x_0) < \delta$.
+
+        \item
+            Отображение $f: X \to Y$ является непрерывным в каждой точке $x \in X$ тогда и только тогда, когда прообраз каждого открытого множества в $Y$ будет открытым множеством в $X$ (такие отображения будем называть просто непрерывными).
+        \end{enumerate}
+    \end{lemma*}
+
+    \begin{proof}
+        ~
+
+        \begin{enumerate}
+        \item
+            Отображение $f$ разрывно в точке $x_0$ $\iff$ найдется последовательность $x_n \to x_0$, для которой $f(x_n)$ не сходится к $f(x_0)$ $\iff$ найдется число $\eps > 0$ и последовательность $x_n' \to x_0$, для которой $d_Y(f(x_n'), f(x_0)) \geq \eps$ $\iff$ найдется такое число $\eps > 0$, что для произвольного $\delta > 0$ существует $x_{\delta} \in B_{\delta}(x_0)$, для которого $d_Y(f(x_\delta), f(x_0)) \geq \eps$.
+
+        \item
+            Если прообраз любого открытого множества открыт, то для произвольного $\eps > 0$ найдется такое $\delta > 0$, что $f^{-1}(B_{\eps}(f(x_0))) \supset B_{\delta}(x_0)$, и значит отображение $f$ непрерывно в точке $x_0$. Наоборот: пусть $U$ --- открыто в $Y$ и $x_0 \in f^{-1}(U)$. Тогда в силу открытости найдется $\eps > 0$, для которого $B_{\eps}(f(x_0)) \subset U$. Из-за непрерывности в точке $x_0$ найдется такое $\delta > 0$, что $f^{-1}(B_{\eps}(f(x_0))) \supset B_{\delta}(x_0)$, что дает открытость множества $f^{-1}(U)$.
+        \end{enumerate} 
+    \end{proof}
+
+    \begin{proposal*}
+        Пусть $f: X \to Y$ непрерывна в точке $a \in X$, $g: Y \to Z$ непрерывна в точке $f(a) \in Y$. Тогда композиция $g \circ f: X \to Z$ непрерывна в точке $a$.
+    \end{proposal*}
+
+    \begin{proof}
+        Следует из определения непрерывности.
+    \end{proof}
+
+    \begin{consequence*}
+        Пусть $f, g: \RR^k \to \RR^m$ --- непрерывные в точке $a$ функции. Тогда $f + g$ и $f \cdot g$ --- непрерывны в точке $a$.
+    \end{consequence*}
+
+    \begin{proof}
+        Следует из свойства пределов:
+        \begin{equation*}
+            \lim_{x \to x_0} (f(x) + g(x)) = \lim_{x \to x_0} f(x) + \lim_{x \to x_0} g(x) = f(x_0) + g(x_0) = (f + g)(x_0).
+        \end{equation*}
+    \end{proof}
+
+    \begin{definition*}
+        Пусть $(X, d_X)$ и $(Y, d_Y)$ --- метрические пространства и пусть $x_0$ --- предельная точка в $X$. Скажем, что предел функции $f: X \to Y$ в точке $x_0$ равен $y_0$, если функция $g$, определенная соотношением $g(x) = f(x)$ при $x \neq x_0$ и $g(x_0) = y_0$ иначе, непрерывна в точке $x_0$.
+    \end{definition*}
+        
+    \section{Компакты в метрических пространствах: определение и основные свойства. Образ компакта при непрерывном отображении. Критерий компактности в $\RR^k$. Свойства непрерывных на компакте функций.}
+
+    \subsection{Компакты в метрических пространствах: определение и основные свойства. Образ компакта при непрерывном отображении.}
+
+    \begin{definition*}
+        Множество $K$ в метрическом пространстве называется компактным тогда и только тогда, когда из произвольной последовательности $\{x_n\}_{n = 1}^{\infty} \subset K$ можно выделить сходящуюся подпоследовательность $x_{n_k} \to x \in K$.
+    \end{definition*}
+
+    \begin{lemma*}
+        Пусть $K$ --- компакт. Тогда
+        \begin{enumerate}
+        \item
+            $K$ --- ограниченное множество;
+
+        \item
+            $K$ --- замкнутое множество;
+
+        \item
+            образ $K$ при непрерывном отображении компактен.
+        \end{enumerate}
+    \end{lemma*}
+
+    \begin{proof}
+        ~
+
+        \begin{enumerate}
+        \item
+            Зафиксируем произвольную точку $x_0 \in K$. Если $K$ --- неограниченное множество, то найдется последовательность $x_n \in K$, $d(x_n, x_0) \to \infty$. Переходя к подпоследовательности, имеем $x_{n_k} \to x$, $d(x_{n_k}, x_0) \to d(x, x_0)$. Противоречие.
+
+        \item
+            Если $x_n \in K$, $x_n \to x_0$, то переходя к подпоследовательности $x_{n_k} \to x \in K$, в силу единственности предела $x_0 = x \in K$.
+
+        \item
+            Рассмотрим последовательность $\{f(x_n)\}_{n = 1}^{\infty}$, $x_n \in K$. Переходя к подпоследовательности имеем $x_{n_k} \to x \in K$. Так как $f$ --- непрерывное отображение, то $f(x_{n_k}) \to f(x) \in f(K)$.
+        \end{enumerate}
+    \end{proof}
+
+    \subsection{Критерий компактности в $\RR^k$.}
+
+    \begin{proposal*}
+        Множество $K$ в $\RR^k$ со стандартной евклидовой метрикой компактно тогда и только тогда, когда оно замкнуто и ограничено.
+    \end{proposal*}
+
+    \begin{proof}
+        Необходимость этого условия следует из предыдущей леммы. Проверим достаточность. Пусть множество $K$ --- замкнуто и ограничено, и пусть $x_n \in K$. В силу ограниченности $K$ ограниченными будут и все координаты $(x_n)_j$ последовательности $x_n$. Тогда найдется сходящаяся подпоследовательность первых координат $(x_{n_m})_1$. Далее, из последовательности $(x_{n_m})_2$ можно также извлечь сходящуюся подпоследовательность. Повторяя процедуру, получим подпоследовательность $x_n'$, у которой каждая координата сходится, то есть $(x_n')_j \to x_j$ для некоторого $x_j$. Тем самым, $x_n' \to x = (x_1, \dots, x_k)$. В силу замкнутости $K$, вектор $x \in K$.
+    \end{proof}
+
+    \subsection{Свойства непрерывных на компакте функций.}
+
+    \begin{consequence*}
+        Пусть $K$ --- компакт, $f: K \to \RR$ --- непрерывная функция. Тогда образ $f(K)$ --- ограниченное множество и найдутся точки $x_m, x_M \in K$, для которых $f(x_m) = \inf\limits_{x \in K} f(x), f(x_M) = \sup\limits_{x \in K} f(x)$.
+    \end{consequence*}
+
+    \section{Дифференцируемость отображений из $\RR^k$ в $\RR^m$, дифференциал. Непрерывность дифференцируемых отображений. Производная вдоль вектора и ее связь с дифференциалом. Частные производные.}
+
+    \subsection{Дифференцируемость отображений из $\RR^k$ в $\RR^m$, дифференциал.}
+
+    \begin{definition*}
+        Отображение $f: \RR^k \to \RR^m$ называется дифференцируемым в точке $x$, если для каждого $h \in \RR^k$
+        \begin{equation*}
+            f(x + h) = f(x) + Lh + \alpha(h) \norm{h},
+        \end{equation*}
+        где $L: \RR^k \to \RR^m$ --- линейное отображение, $\lim_{\norm{h} \to 0} \norm{\alpha(h)} = 0$. Линейное отображение $L$ называют дифференциалом $f$ в точке $x$ и обозначают $\dd f$.
+    \end{definition*}
+
+    \begin{remark*}
+        Напомним, что отображение $L: \RR^k \to \RR^m$ называется линейным, если
+        \begin{equation*}
+            L(a_1h_1 + a_2h_2) = a_1Lh_1 + a_2Lh_2
+        \end{equation*}
+        для произвольных векторов $h_1, h_2, \in \RR^k$ и произвольных чисел $a_1, a_2 \in \RR$. 
+        
+        Если в $\RR^k$ фиксирован базис $e := \{e_1, \dots, e_k\}$, а в $\RR^m$ фиксирован $e' := \{e_1', \dots, e_m'\}$, то линейное отображение $L$ представимо в виде $L(h) = L(e_1)h_1 + \dots + L(e_k)h_k$, где $h = (h_1, \dots, h_k)$ в базисе $e$, а векторы $L(e_j) = (a_{1,j}, \dots, a_{m, j})$ в базисе $e'$. 
+
+        В частности, каждое линейное отображение при фиксированных базисах $e$ и $e'$ в $\RR^k$ и $\RR^m$ соответственно записывается с помощью матрицы $A = (a_{ij})$. Кроме того,
+        \begin{equation*}
+            \norm{Lh} \leq (\norm{L(e_1)} + \dots + \norm{L(e_k)}) \cdot \max\limits_{1 \leq j \leq k} |h_j| \leq C \norm{h}
+        \end{equation*}
+        и каждое линейное отображение непрерывно на $\RR^k$.
+    \end{remark*}
+
+    \subsection{Непрерывность дифференцируемых отображений.}
+
+    \begin{consequence*}
+        Если отображение $f: \RR^k \to \RR^m$ дифференцируемо в точке $x$, то оно непрерывно в точке $x$.
+    \end{consequence*}
+
+    \begin{proof}
+        Действительно, $\norm{f(x + h) - f(x)} = \norm{\dd f(h) + \alpha(h)\norm{h}} \leq C\norm{h}$ (перенесли $f(x)$ влево, взяли норму от обеих частей) при $h$ из некоторой окрестности нуля.
+    \end{proof}
+
+    \begin{remark*}
+        Так как дифференцируемость $f$ в точке $x$ равносильна тому, что
+        \begin{equation*}
+            \lim_{h \to 0} \dfrac{\norm{f(x + h) - f(x) - Lh}}{\norm{h}} = 0,
+        \end{equation*}
+        и так как сходимость по норме равносильна покоординатной сходимости, то при фиксированном базисе $e' := \{e_1', \dots, e_m'\}$ в $\RR^m$ дифференцируемость отображения $f$ равносильна дифференцируемости каждой координаты $f_j$ в точке $x$. В этом случае $Lh = (L_1h, \dots, L_mh)$ в базисе $e'$, где $L_j = \dd f_j$ --- дифференциал $j$-ой координаты.
+    \end{remark*}
+
+    \begin{lemma*}
+        Если отображение $f: \RR^k \to \RR^m$ дифференцируемо в точке $x$, то для каждого вектора $h \in \RR^k$ функция $t \to f(x + th)$ дифференцируема в точке $0$ и $\left.\dfrac{\dd}{\dd t}f(x + th)\right|_{t = 0} = \dd f(h)$.
+    \end{lemma*}
+
+    \begin{proof}
+        По определению 
+        \begin{equation*}
+            f(x + th) - f(x) = t \dd f(h) + \alpha(th) \cdot |t| \norm{h}.
+        \end{equation*}
+
+        Разделив на $t$ и перейдя к пределу при $t \to 0$, получаем требуемое соотношение.
+        \begin{equation*}
+            \lim_{t \to 0} \dfrac{f(x + th) - f(x)}{t} = \lim_{t \to 0} (\dd f(h) + \alpha(th) \norm{h}) = \dd f(h).
+        \end{equation*}
+
+        Мы явно нашли $\dd f$, поэтому функция дифференцируема по определению.
+    \end{proof}
+
+    \subsection{Производная вдоль вектора и ее связь с дифференциалом.}
+
+    \begin{definition*}
+        Производная $\dfrac{\partial f}{\partial h}(x) := \left.\dfrac{\dd}{\dd t}f(x + th)\right|_{t = 0}$ называется производной вдоль вектора $h$ и может существовать и в случае, когда сама функция $f$ не дифференцируема в точке $x$.
+    \end{definition*}
+
+    Как мы уже поняли, для дифференцируемости отображения достаточно исследовать дифференцируемость его координат, то есть дифференцируемость функции $f: \RR^k \to \RR$. Зафиксировав базис $e := \{e_1, \dots, e_k\}$ в $\RR^k$, условие дифференцируемости в точке $x = (x_1, \dots, x_k)$ переписывается в виде
+    \begin{equation*}
+        f(x_1 + h_1, \dots, x_k + h_k) = f(x_1, \dots, x_k) + c_1h_1 + \dots + c_k h_k + \os(\norm{h}),
+    \end{equation*}
+    то есть $\dd f(h) = c_1h_1 + \dots + c_kh_k$. Из уже доказанного ясно, что $\dfrac{\partial f}{\partial e_j}(x) = \dd f(e_j) = c_j$.
+
+    \subsection{Частные производные.}
+
+    \begin{definition*}
+        Частной производной $\dfrac{\partial f}{\partial x_j}$ функции $f: \RR^k \to \RR$ в точке $x = (x_1, \dots, x_k)$ называется производная вдоль вектора $e_j$, то есть
+        \begin{equation*}
+            \dfrac{\partial f}{\partial x_j}(x) = \left.\dfrac{\dd}{\dd t}f(x_1, \dots, x_{j - 1}, t, x_{j + 1}, \dots, x_k)\right|_{t = x_j}.
+        \end{equation*}
+    \end{definition*}
+
+    \begin{remark*}
+        При фиксированно базисе $e = \{e_1, \dots, e_k\}$ в $\RR^k$ линейные функционалы $\dd x_1, \dots, \dd x_k$ оказываются сопряженным базисом к $e$. То есть $\dd x_i(e_j) = \delta_{i, j}$. Таким образом, $\dd f = \dfrac{\partial f}{\partial x_1}\dd x_1 + \dots + \dfrac{\partial f}{\partial x_k}\dd x_k$.
+    \end{remark*}
+
+    \begin{remark*}
+        В случае отображения $f: \RR^k \to \RR^m$ при фиксированных базисах $e$ и $e'$ в $\RR^k$ и в $\RR^m$ соответственно, компоненты матрицы дифференциала $\dd f$ имеют вид $a_{i, j} = \dfrac{\partial f_i}{\partial x_j}(x)$, то есть по строкам написаны градиенты $\nabla f_i(x)$.
+    \end{remark*}
+
+    \section{Градиент функции и матрица Якоби отображения. Градиент, как направление наибольшего роста функции. Достаточное условие дифференцируемости функции в точке.}
+
+    \subsection{Градиент функции и матрица Якоби отображения.}
+
+    \begin{definition*}
+        При фиксированных базисах $e$ в $\RR^k$ и $e'$ в $\RR^m$ матрицу, соответствующую линейному отображению $\dd f$, называют матрицей Якоби отображения $f$ в точке $x$ и обозначают $J_f(x)$.
+    \end{definition*}
+
+    \begin{definition*}
+        {\it Градиентом} функции $f$ называется вектор
+        $\nabla f:=\left(\dfrac{\partial f}{\partial x_1},\ldots,\dfrac{\partial f}{\partial x_n}\right)$.
+    \end{definition*}
+
+    \subsection{Градиент, как направление наибольшего роста функции.}
+
+    \begin{lemma*}
+        Если $f$ дифференцируема в точке $x$ и $\dd f\ne0$, то наибольшее значение производной вдоль единичного вектора
+        $v$ (т.е. $\|v\|=1$) достигается на векторе $\|\nabla f(x)\|^{-1}\nabla f(x)$.
+    \end{lemma*}
+
+    \begin{proof}
+        Так как $\dfrac{\partial f}{\partial v}(x) = \dd f(v) = \langle\nabla f(x), v\rangle$,
+        то по неравенству Коши--Буняковского $\Bigl|\dfrac{\partial f}{\partial v}(x)\Bigr|\leq \|\nabla f(x)\|\|v\|
+        =\|\nabla f(x)\|$. Если $v=\|\nabla f(x)\|^{-1}\nabla f(x)$, то в неравенстве достигается равенство.
+    \end{proof}
+
+    Заметим, что наличия частных производных в точке недостаточно для дифференцируемости функции в этой точке.
+
+    \begin{example*}
+        Пусть
+        $$
+            f(x,y)=
+            \left\{
+            \begin{aligned}
+                \dfrac{2xy}{x^2+y^2}, &\ (x,y)\ne(0,0), \\
+                0, &\ (x,y)=(0,0).\\
+            \end{aligned}
+            \right.
+        $$
+        Функция $f$ разрывна в нуле, а значит не дифференцируема, но в точке $(0,0)$ существуют обе частных производных.
+        Действительно, если $x=r\cos\varphi, y=r\sin\varphi$, то функция $f(x,y) = \sin2\varphi$. Таким образом, $f(x,y)$ в любой окрестности точки $(0,0)$ принимает значения из $[-1; 1]$, но $\dfrac{\partial f}{\partial x}(0,0) = \dfrac{d}{dx}f(x,0) = 0$.
+        Аналогично $\dfrac{\partial f}{\partial y}(0,0)=0$.
+    \end{example*}
+
+    \subsection{Достаточное условие дифференцируемости функции в точке.}
+
+    В следующей теореме сформулировано достаточное условие дифференцируемости.
+
+    \begin{theorem*}
+        Если все частные производные $\dfrac{\partial f}{\partial x_j}$ существуют в окрестности точки $x_0$ и непрерывны в этой точке, то $f$ --- дифференцируема в точке $x_0$.
+    \end{theorem*}
+
+    \begin{proof}
+        Для сокращения выкладок докажем теорему в случае $k=2$.
+        Заметим, что по теореме Лагранжа
+        \begin{align*}
+            f(x_1+h_1,x_2+h_2) - f(x_1,x_2)
+            &=f(x_1+h_1,x_2+h_2) - f(x_1,x_2+h_2) + f(x_1, x_2+h_2) - f(x_1,x_2) \\
+            &=\dfrac{\partial f}{\partial x_1}(\xi_1, x_2+h_2)h_1 + \dfrac{\partial f}{\partial x_2}(x_1,\xi_2)h_2,
+        \end{align*}
+
+        где $\xi_1$ принадлежит интервалу с концами $x_1$, $x_1+h_1$, а $\xi_2$ --- с концами $x_2$, $x_2+h_2$.
+        Запишем теперь последнюю сумму в виде
+        $$
+            \dfrac{\partial f}{\partial x_1}(x_1, x_2)h_1 + \dfrac{\partial f}{\partial x_2}(x_1,x_2)h_2 + \alpha(h)\|h\|,
+        $$
+        где
+        $$
+            \alpha(h) =
+            \Bigl(\dfrac{\partial f}{\partial x_1}(\xi_1, x_2+h_2) - \dfrac{\partial f}{\partial x_1}(x_1, x_2)\Bigr)\dfrac{h_1}{\|h\|}
+            +
+            \Bigl(\dfrac{\partial f}{\partial x_2}(x_1,\xi_2) - \dfrac{\partial f}{\partial x_2}(x_1, x_2)\Bigr)\dfrac{h_2}{\|h\|}.
+        $$
+        При малой $\|h\|$ выражения в скобках будут малы в силу непрерывности частных производных.
+        Тем самым, $\lim\limits_{h\to 0}\|\alpha(h)\| = 0$, потому что $|h_1| \leq \norm{h}$ и $|h_2| \leq \norm{h}$ $\left(\text{потому что }\norm{h} = \sqrt{h_1^2 + h_2^2}\right)$.
+    \end{proof}
+
+    \section{Частные производные высоких порядков. Теоремы Шварца (б/д) и Юнга. Дифференциалы высоких порядков.}
+
+    \subsection{Частные производные высоких порядков.}
+
+    \begin{definition*}
+        Пусть $f\colon \RR^k\to \RR$ и предположим, что в некоторой окрестности $B_r(x_0)$ точки $x_0$ существует частная производная $\dfrac{\partial f}{\partial x_j}$. Если функция $x\mapsto \dfrac{\partial f}{\partial x_j}(x)$ в точке $x_0$ имеет частную производную по переменной $x_i$, то эта частная производная $\dfrac{\partial}{\partial x_i}\Bigl(\dfrac{\partial f}{\partial x_j}\Bigr) (x_0)$ называется {\it частной производной второго порядка} по переменным $x_j$ и $x_i$
+        и обозначается $\dfrac{\partial^2 f}{\partial x_i\partial x_j}(x_0)$.
+    \end{definition*}
+
+    \begin{remark*}
+        Заметим, что частные производные $\dfrac{\partial^2 f}{\partial x_i\partial x_j}$ и $\dfrac{\partial^2 f}{\partial x_j\partial x_i}$ являются разными объектами и, вообще говоря, не совпадают (пример будет в рамках семинарских задач).
+    \end{remark*}
+
+    \subsection{Теоремы Шварца и Юнга.}
+
+    О совпадении смешанных частных производных позволяют судить следующие две теоремы, которые мы для простоты сформулируем в двумерном случае (общий случай, по сути, ничем не отличается).
+
+    \begin{theorem}[Шварц]
+        Пусть смешанные частные производные $\dfrac{\partial^2f}{\partial x\partial y}$ и $\dfrac{\partial^2f}{\partial y\partial x}$ существуют в окрестности точки $(x_0,y_0)$ и непрерывны в этой точке. Тогда их значения в точке $(x_0,y_0)$ совпадают.
+    \end{theorem}
+
+    \begin{theorem}[Юнг] Пусть $f$ --- дифференцируема в окрестности точки $(x_0,y_0)$,
+    а ее частные производные $\dfrac{\partial f}{\partial x}$ и $\dfrac{\partial f}{\partial y}$
+    дифференцируемы в точке $(x_0,y_0)$.
+    Тогда смешанные частные производные $\dfrac{\partial^2f}{\partial x\partial y}$
+    и $\dfrac{\partial^2f}{\partial y\partial x}$
+    в точке $(x_0,y_0)$ совпадают.
+    \end{theorem}
+
+    Приведем доказательство второй из этих теорем.
+
+    \begin{proof}
+        Не ограничивая общности, будем считать, что $(x_0,y_0)=(0,0)$.
+        Рассмотрим функцию
+        $$
+        F(t,t) = f(t,t) - f(0,t) - f(t,0) + f(0,0).
+        $$
+        Применяя теорему Лагранжа к функции $g(u)= f(t,u)-f(0,u)$,
+        получаем
+        $$
+        F(t,t) = g(t) - g(0) = g'(\xi)t = \Bigl(\dfrac{\partial f}{\partial y}(t,\xi) -  \dfrac{\partial f}{\partial y}(0,\xi)\Bigr)t.
+        $$
+        Дифференцируемость $\dfrac{\partial f}{\partial y}$ в точке $(0,0)$ означает, что
+        $$
+        \dfrac{\partial f}{\partial y}(x,y) = \dfrac{\partial f}{\partial y}(0,0) +
+        \dfrac{\partial^2 f}{\partial x\partial y}(0,0)x + \dfrac{\partial^2 f}{\partial y^2}(0,0)y + \os(\sqrt{x^2+y^2}).
+        $$
+        Таким образом,
+        $$
+        \dfrac{\partial f}{\partial y}(t,\xi) = \dfrac{\partial f}{\partial y}(0,0) +
+        \dfrac{\partial^2 f}{\partial x\partial y}(0,0)t + \dfrac{\partial^2 f}{\partial y^2}(0,0)\xi + \os(\sqrt{t^2+\xi^2}).
+        $$
+        и
+        $$
+        \dfrac{\partial f}{\partial y}(0,\xi) = \dfrac{\partial f}{\partial y}(0,0) +
+        \dfrac{\partial^2 f}{\partial y^2}(0,0)\xi + \os(\xi).
+        $$
+        Т.к. $\xi\leq t$, то $\os(\sqrt{t^2+\xi^2}) = \os(t)$ и $\os(\xi) = \os(t)$.
+        Таким образом,
+        $$
+        F(t,t) = \dfrac{\partial^2 f}{\partial x\partial y}(0,0)t^2 + \os(t^2).
+        $$
+        Аналогично,
+        $$
+        F(t,t) = \dfrac{\partial^2 f}{\partial y\partial x}(0,0)t^2 + \os(t^2).
+        $$
+        Приравняв полученные выражения, поделив на $t^2$ и устремив $t$ к нулю, получаем
+        $$
+        \dfrac{\partial^2 f}{\partial x\partial y}(0,0) = \dfrac{\partial^2 f}{\partial y\partial x}(0,0).
+        $$
+    \end{proof}
+
+    \subsection{Дифференциалы высоких порядков.}
+
+    Предположим, что $f\colon \RR^k\to \RR$ --- дифференцируема в окрестности точки $a$ и предположим, что ее частные производные
+    $\dfrac{\partial f}{\partial x_j}$ дифференцируемы в точке $a$.
+    Тогда при каждом $h\in \RR^k$ возникает функция $x\mapsto df\bigl|_x(h)=\dfrac{\partial f}{\partial x_1}(x)h_1+\ldots+\dfrac{\partial f}{\partial x_k}(x)h_k$, дифференцируемая в точке $a$.
+    
+    Ее дифференциал
+    $\dd(\dd f(h))\bigl|_a (q)=
+    \left(\sum\limits_{j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_1}(a)q_j\right)h_1+\ldots+
+    \left(\sum\limits_{j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_k}(a)q_j\right)h_k$.
+
+    То есть получена билинейная форма
+    $\dd(\dd f(h))\bigl|_a (q)=\sum\limits_{i,j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_i}(a)q_jh_i$.
+    Эта билинейная форма оказывается симметричной по теореме Юнга, а т.к. симметричная билинейная форма однозначно задается своей квадратичной формой
+    $\dd(\dd f(h))\bigl|_a (h) = \sum\limits_{i,j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_i}(a)h_jh_i
+    =\sum\limits_{i,j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_i}(a)dx_j(h)dx_i(h)$,
+    то эту квадратичную форму $d^2f:=\sum\limits_{i,j=1}^{k}\dfrac{\partial^2 f}{\partial x_j\partial x_i}(a)dx_jdx_i$
+    и называют {\bf вторым дифференциалом} функции $f$.
+
+    Аналогично определяется дифференциал $n$-го порядка:
+
+    \begin{definition*}
+        Если $f$ --- $n$ раз дифференцируема в точке $a$, то
+        $$
+            \dd^nf\bigl|_a:=\sum\limits_{1 \leq j_1,\ldots, j_n \leq k}
+            \dfrac{\partial^n f}{\partial x_{j_1}\ldots\partial x_{j_n}}(a)\dd x_{j_1}\ldots \dd x_{j_n}.
+        $$
+        Последняя запись означает лишь то, что при вычислении $n$-го дифференциала на векторе $h\in \RR^k$
+        надо воспользоваться линейностью, а $[\dd x_{j_1}\ldots \dd x_{j_n}] (h) := \dd x_{j_1}(h)\ldots \dd x_{j_n}(h) = h_{j_1}\ldots h_{j_n}$.
+    \end{definition*}
+
+    \section{Дифференциал суммы и произведения. Дифференциал обратного отображения.}
+
+    \subsection{Дифференциал суммы и произведения.}
+
+    \begin{theorem*}
+        Пусть функции $f, g \colon \RR^k\to \RR$ дифференцируемы в некоторой точке $x$. Тогда, для произвольных чисел $a,b \in \RR$,
+        функции $af + bg$ и $fg$ дифференцируемы в точке $x$ и $\dd(af + bg) = a\dd f + b\dd g$ и $d(fg) = f\dd g + g\dd f$.
+    \end{theorem*}
+
+    \begin{proof}
+        Заметим, что
+        \begin{multline*}
+            (af+bg)(x+h) - (af + bg)(x) = a(f(x+h) - f(x)) + b(g(x+h) - g(x))\\
+            = a(\dd f(h) + \os(\|h\|)) + b(\dd g (h) + \os(\|h\|))
+            = a\dd f(h) + b\dd g(h) + \os(\|h\|).
+        \end{multline*}
+        Таким образом, $\dd(af + bg) = a\dd f +b\dd g$.
+
+        Для доказательства второго равенства заметим, что
+        \begin{align*}
+            (fg)(x+h) - (fg)(x) 
+            &= (f(x+h) - f(x))g(x+h) + f(x)(g(x+h) - g(x)) \\
+            &= (\dd f(h) + \os(\|h\|))(g(x) +\os(1)) + f(x)(\dd g (h) + \os(\|h\|)) \\
+            &= g(x)\dd f(h) + f(x)\dd g(h) + (\dd f(h))\os(1) + g(x)\os(\|h\|)+ f(x)\os(\|h\|) + \os(\|h\|).
+        \end{align*}
+
+        Мы использовали непрерывность функции $g$, т.е. $g(x+h)-g(x) = \os(1)$ при $\|h\| \to 0$,
+        в силу ее дифференцируемости в точке $x$.
+
+        Так как $\dd f$ --- линейное отображение, то для некоторого числа $C>0$ выполнено $|\dd f(h)|\leq C\|h\|$, а значит $(\dd f(h))\os(1) = \os(\|h\|)$.
+        Т.к. $f(x)$ и $g(x)$ просто числа, то $ g(x)\os(\|h\|)+ f(x)\os(\|h\|) = \os(\|h\|)$.
+        Таким образом, теорема доказана.
+    \end{proof}
+
+    \subsection{Дифференциал обратного отображения.}
+
+    \begin{theorem*}
+        Пусть $f\colon \RR^k\to \RR^k$ --- есть непрерывная биекция между окрестностями $U(a)$ и $V(f(a))$,
+        причем обратное отображение $f^{-1}\colon V(f(a))\to U(a)$ также непрерывно (т.е. $f$ --- гомеоморфизм между $U(a)$ и $V(f(a))$).
+
+        Предположим, что $f$ --- дифференцируемо в точке $a$ и $\dd f$ --- обратимое линейное отображение.
+        Тогда $f^{-1}$ --- дифференцируемо в точке $f(a)$ и $\dd f^{-1}\bigl|_{f(a)} = \bigr(df\bigl|_a\bigl)^{-1}$.
+    \end{theorem*}
+
+    \begin{proof}
+        Нам нужно проверить, что
+        $$
+            \lim\limits_{\|q\|\to0}\dfrac{\|f^{-1}(f(a) + q)-f^{-1}(f(a)) - (\dd f)^{-1}(q)\|}{\|q\|}=0.
+        $$
+
+        Пусть $h=f^{-1}(f(a) + q)-f^{-1}(f(a))=f^{-1}(f(a) + q)-a$, тогда $q = f(a+h)-f(a)$ и $\|q\|\to 0$ тогда и только тогда, когда $\|h\|\to0$.
+
+        Так как $f$ --- дифференцируемо в точке $a$, то $$f(a+h)-f(a) = \dd f(h)+\alpha(h)\|h\|,$$ где $\lim\limits_{\|h\|\to0}\|\alpha(h)\|=0$.
+
+        Таким образом,
+        $$
+            \lim\limits_{\|q\|\to0}\dfrac{\|f^{-1}(f(a) + q)-f^{-1}(f(a)) - (\dd f)^{-1}(q)\|}{\|q\|}
+            = \lim\limits_{\|h\|\to0}\dfrac{\bigl\|h - (\dd f)^{-1}(\dd f(h)+\alpha(h)\|h\|)\bigr\|}{\bigl\|\dd f(h)+\alpha(h)\|h\|\bigr\|}.
+        $$
+
+        Числитель в последнем выражении равен $\|h\|\bigl\|(df)^{-1}(\alpha(h))\bigr\|$. Для линейного отображения $(\dd f)^{-1}$ найдется число $C>0$, для которого $\|(\dd f)^{-1}(p)\| \leq C\|p\|,\forall p\in \RR^k$.
+
+        Отсюда, подставив $p=\dd f(h)$, получаем $C^{-1}\|h\|\leq\|\dd f(h)\|$. Тем самым $$\bigl\|\dd f(h)+\alpha(h)\|h\|\bigr\|\geq\|\dd f(h)\|-\|h\|\|\alpha(h)\|\geq\|h\|\bigl(C^{-1} - \|\alpha(h)\|\bigr).$$
+
+        Таким образом,
+        $$
+            \dfrac{\bigl\|h - (\dd f)^{-1}(\dd f(h)+\alpha(h)\|h\|)\bigr\|}{\bigl\|\dd f(h)+\alpha(h)\|h\|\bigr\|}
+            \leq \dfrac{C\|h\|\|\alpha(h)\|}{\|h\|\bigl(C^{-1} - \|\alpha(h)\|\bigr)}=
+            \dfrac{C\|\alpha(h)\|}{\bigl(C^{-1} - \|\alpha(h)\|\bigr)}\to0
+        $$
+        при $\|h\|\to 0$.
+    \end{proof}
+
+    \begin{remark*}
+        Отметим, что матрица обратного линейного отображения есть обратная матрица к матрице исходного линейного отображения.
+        Тем самым, матрица Якоби обратного отображения $J_{f^{-1}}(y)$ является обратной к матрице Якоби исходного отображения,
+        т.е. равна $\bigr(J_f(f^{-1}(y))\bigl)^{-1}$.
+    \end{remark*}
+
+    \section{Дифференциал композиции. Матрица Якоби композиции, правило вычисления частной производной сложной функции, инвариантность первого дифференциала.}
+
+    \subsection{Дифференциал композиции.}
+
+    \begin{theorem*}
+        Пусть $f\colon \RR^k\to \RR^m$, $g\colon \RR^m\to \RR^n$, причем отображение $f$ дифференцируемо в точке $a$, отображение $g$ дифференцируемо в точке $f(a)$. Тогда отображение $g\circ f$ дифференцируемо в точке $a$ и $\dd(g\circ f)\bigl|_a = \dd g\bigl|_{f(a)}\circ\, \dd f\bigl|_a$.
+    \end{theorem*}
+
+    \begin{remark*}
+        Поясним запись $\dd(g\circ f)\bigl|_a = \dd g\bigl|_{f(a)}\circ\, \dd f\bigl|_a$.
+        Здесь $\dd f\bigl|_a\colon \RR^k\to \RR^m$ есть линейное отображение и $\dd g\bigl|_{f(a)}\colon \RR^m\to \RR^n$ есть линейное отображение.
+        Тогда их композиция $\dd g\bigl|_{f(a)}\circ\, \dd f\bigl|_a\colon \RR^k\to \RR^n$ есть линейное отображение, действующее по правилу
+        $$\dd g\bigl|_{f(a)}\circ\, \dd f\bigl|_a (h) = \dd g\bigl|_{f(a)} (\dd f\bigl|_a(h)).$$
+    \end{remark*}
+
+    \begin{proof}
+        По условию
+        $f(a+h)-f(a) = \dd f(h) + \alpha(h)\|h\|$, где $\lim\limits_{\|h\|\to0}\|\alpha(h)\|=0$
+        и $g(f(a)+q) - g(f(a)) = \dd g(q)+\beta(q)\|q\|$, где $\lim\limits_{\|q\|\to0}\|\beta(q)\|=0$.
+        Мы также доопределим $\alpha$ и $\beta$ в точке нуль нулем (т.е. считаем $\alpha(0)=0$ и $\beta(0)=0$).
+        Тогда
+        \begin{align*}
+            g\bigl(f(a+h)\bigr) - g\bigl(f(a)\bigr) 
+            &= g\bigl(f(a) + [f(a+h)-f(a)]\bigr) - g\bigl(f(a)\bigr) \\
+            &= \dd g[f(a+h)-f(a)] + \beta\bigl(f(a+h)-f(a)\bigr)\|f(a+h)-f(a)\| \\
+            &= \dd g[\dd f(h) + \alpha(h)\|h\|] + \beta\bigl(f(a+h)-f(a)\bigr)\|\dd f(h) + \alpha(h)\|h\|\|.
+        \end{align*}
+
+        Тем самым,
+        $$
+            g\bigl(f(a+h)\bigr) - g\bigl(f(a)\bigr) = \dd g[\dd f(h)] + \gamma(h)\|h\|,
+        $$
+        где
+        \begin{align*}
+            \|\gamma(h)\|
+            &= \Bigl\|dg[\alpha(h)] +  \beta\bigl(f(a+h)-f(a)\bigr)\|\dd f(h/\|h\|) + \alpha(h)\| \Bigr\| \\
+            &\leq \|dg[\alpha(h)]\| + \bigl\|\beta\bigl(f(a+h)-f(a)\bigr)\bigr\| (\|\dd f(h/\|h\|)\| + \|\alpha(h)\|).
+        \end{align*}
+
+        Напомним, что для линейных отображений $\dd g$ и $\dd f$ существуют такие постоянные $A$ и $B$, что
+        $\|\dd f(h)\|\leq A\|h\|$ и $\|\dd g(q)\|\leq B\|q\|$,
+        поэтому $\|\dd f(h/\|h\|)\| + \|\alpha(h)\|\leq A + \|\alpha(h)\|$ и $\|\dd g[\alpha(h)]\|\leq B\|\alpha(h)\|$.
+
+        Так как $\bigl\|\beta\bigl(f(a+h)-f(a)\bigr)\bigr\|\to0$ при $\|h\|\to 0$, получаем, что $\lim\limits_{\|h\|\to0}\|\gamma(h)\|=0$.
+    \end{proof}
+
+    \subsection{Матрица Якоби композиции, правило вычисления частной производной сложной функции, инвариантность первого дифференциала.}
+
+    \begin{remark*}
+        При фиксированных базисах $e=\{e_1,\ldots, e_k\}$, $e'=\{e_1',\ldots, e_m'\}$, $e''=\{e_1'',\ldots, e_n''\}$
+        в $\RR^k$, $\RR^m$ и $\RR^n$ соответственно, матрица композиции линейных отображений есть произведение матриц этих линейных отображений.
+
+        Таким образом, в нашем случае для композиции функций $g\circ f$, где $f\colon \RR^k\to \RR^m$ и $g\colon \RR^m\to \RR^n$, по предыдущей теореме выполнено
+        $$
+            \begin{pmatrix}
+                \dfrac{\partial (g\circ f)_1}{\partial y_1}(a) & \ldots & \dfrac{\partial (g\circ f)_1}{\partial y_k}(a) \\
+                \ldots \\
+                \dfrac{\partial (g\circ f)_n}{\partial y_1}(a) & \ldots & \dfrac{\partial (g\circ f)_n}{\partial y_k}(a)
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                \dfrac{\partial g_1}{\partial x_1}(f(a)) & \ldots & \dfrac{\partial g_1}{\partial x_m}(f(a)) \\
+                \ldots \\
+                \dfrac{\partial g_n}{\partial x_1}(f(a)) & \ldots & \dfrac{\partial g_n}{\partial x_m}(f(a))
+            \end{pmatrix}
+            \begin{pmatrix}
+                \dfrac{\partial f_1}{\partial y_1}(a) & \ldots & \dfrac{\partial f_1}{\partial y_k}(a) \\
+                \ldots \\
+                \dfrac{\partial f_m}{\partial y_1}(a) & \ldots & \dfrac{\partial f_m}{\partial y_k}(a)
+            \end{pmatrix}
+        $$
+        В частности, в случае, когда $n=1$, для функции $g(x_1,\ldots, x_m)$ и отображения
+        $$f(y_1,\ldots, y_k) = (f_1(y_1,\ldots, y_k),\ldots, f_m(y_1,\ldots, y_k)),$$ выполнено:
+        $$
+            \begin{pmatrix}
+                \dfrac{\partial (g\circ f)}{\partial y_1}(a) & \ldots & \dfrac{\partial (g\circ f)}{\partial y_k}(a)
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                \dfrac{\partial g}{\partial x_1}(f(a)) & \ldots & \dfrac{\partial g}{\partial x_m}(f(a))
+            \end{pmatrix}
+            \begin{pmatrix}
+                \dfrac{\partial f_1}{\partial y_1}(a) & \ldots & \dfrac{\partial f_1}{\partial y_k}(a) \\
+                \ldots \\
+                \dfrac{\partial f_m}{\partial y_1}(a) & \ldots & \dfrac{\partial f_m}{\partial y_k}(a)
+            \end{pmatrix}
+        $$
+
+        Отсюда, во-первых получаем правило вычисления частной производной сложной функции:
+        $$\dfrac{\partial (g\circ f)}{\partial y_j}(a) =
+        \dfrac{\partial g}{\partial x_1}(f(a)) \dfrac{\partial f_1}{\partial y_j}(a)+\ldots+
+        \dfrac{\partial g}{\partial x_m}(f(a)) \dfrac{\partial f_m}{\partial y_j}(a)$$.
+        Во-вторых, получаем следующее свойство инвариантности первого дифференциала:
+        для дифференциала выполнено равенство
+        $\dd g = \dfrac{\partial g}{\partial x_1}\dd x_1+\ldots+\dfrac{\partial g}{\partial x_m}\dd x_m$,
+        где нам не важно, являются ли $
+        \dd x_1,\ldots, \dd x_m$ --- дифференциалами независимых переменных
+        или же являются дифференциалами некоторых функций $x_j = f_j(y_1,\ldots, y_k)$.
+    \end{remark*}
+
+    \begin{example*}
+        Пусть $f(x,y) = \varphi(u, v, w)$, где $u=xy, v= x+y, w=x-y$.
+        Тогда
+        \begin{align*}
+            \dd f 
+            &= \dfrac{\partial \varphi}{\partial u} \dd u + \dfrac{\partial \varphi}{\partial v} \dd v + \dfrac{\partial \varphi}{\partial w} \dd w 
+            = \dfrac{\partial \varphi}{\partial u} \dd(xy) + \dfrac{\partial \varphi}{\partial v} \dd(x+y) + \dfrac{\partial \varphi}{\partial w} \dd(x-y) \\
+            &= \dfrac{\partial \varphi}{\partial u} (x\dd y + y\dd x) +
+            \dfrac{\partial \varphi}{\partial v} (\dd x+\dd y) + \dfrac{\partial \varphi}{\partial w} (\dd x - \dd y).
+        \end{align*}
+
+        В частности,
+        $\dfrac{\partial f}{\partial x} = y\dfrac{\partial \varphi}{\partial u}(xy, x+y, x-y) +
+        \dfrac{\partial \varphi}{\partial v}(xy, x+y, x-y) +  \dfrac{\partial \varphi}{\partial w}(xy, x+y, x-y)$
+        и $\dfrac{\partial f}{\partial y} = x\dfrac{\partial \varphi}{\partial u}(xy, x+y, x-y) +
+        \dfrac{\partial \varphi}{\partial v}(xy, x+y, x-y) -  \dfrac{\partial \varphi}{\partial w}(xy, x+y, x-y)$.
+    \end{example*}
+
+    \section{Теорема о неявной функции: постановка вопроса, формулировка общей теоремы и доказательство в случае функции двух переменных.}
+
+    \subsection{Теорема о неявной функции: постановка вопроса, формулировка общей теоремы.}
+
+    Пусть в $\RR^2$ у нас имеется соотношение $F(x,y)=0$. Нам бы хотелось понять при каких условиях данное уравнение возможно разрешить относительно $y$ в виде явной зависимости $y=f(x)$. 
+    
+    Рассмотрим например $F(x,y)=x^2+y^2-1$. Тогда уравнение $F(x,y)=0$ задает обычную окружность
+    и все решения данного уравнения относительно $y$ имеют вид $y=\pm \sqrt{1-x^2}$.
+    Ясно, что произвольный выбор знаков в разных точках $x$ будет давать бесконечно много решений данного уравнения.
+
+    В тоже время в малой окрестности произвольной точки $(x_0,y_0)$ на окружности (кроме $x_0=\pm1$) кривая $F(x,y)=0$ единственным образом представима в виде графика непрерывной функции $y=f(x)$.
+    В окрестности же точек $(\pm1,0)$ никакая дуга окружности не может быть представлена в виде графика функции $y=f(x)$.
+    Зато эти дуги в окрестности точек $(\pm1,0)$ хорошо расположены относительно оси $y$ и могут быть представлены в виде графика $x=g(y)$.
+
+    Чем же обусловлена такая особенность точек $(\pm1,0)$ в случае окружности? Заметим, что локально функция $F(x,y)$ представима в виде $F(x,y) = \frac{\partial F}{\partial x}(x_0,y_0)(x-x_0) + \frac{\partial F}{\partial y}(x_0,y_0)(y-y_0) + \os(\sqrt{|x-x_0|^2+|y-y_0|^2})$.
+
+    Таким образом, пренебрегая малыми более высокого порядка, наше уравнение $F(x,y)=0$ в окрестности точки $(x_0,y_0)$ похоже на линейное уравнение $\frac{\partial F}{\partial x}(x_0,y_0)(x-x_0) + \frac{\partial F}{\partial y}(x_0,y_0)(y-y_0)=0$, которое в свою очередь разрешимо относительно $y$ только в случае $\frac{\partial F}{\partial y}(x_0,y_0)\ne0$.
+
+    В частности, в случае окружности как раз $\frac{\partial F}{\partial y}(\pm1,0)=0$. Из данного эвристического рассуждения возникает гипотеза, что уравнение $F(x,y)=0$ разрешимо относительно переменной $y$ в некоторой окрестности данной точки $(x_0,y_0)$, если производная $\frac{\partial F}{\partial y}(x_0,y_0)$ отлична от нуля. Именно это мы и докажем в следующей теореме уже в строго сформулированном виде.
+
+    Для сокращения всех записей будем использовать обозначение $F'_y(x,y):=\frac{\partial F}{\partial y}(x,y)$.
+
+    \begin{theorem*}
+        Пусть $F\colon \RR^2\to \RR$ --- определена и непрерывно дифференцируема (т.е. частные производные непрерывно зависят от точки) в некоторой окрестности $U$ точки $(a,b)\in \RR^2$. Пусть $1)\ F(a,b)=0$ и  $2)\ F'_y(a,b)\ne0$.
+
+        Тогда найдутся промежутки $I_x = (a-\alpha, a+\alpha)$ и $I_y=(b-\beta, b+\beta)$ и непрерывно дифференцируемая функция $f\colon I_x\to I_y$, для которых $I_x\times I_y\subset U$ и для каждой точки $(x,y)\in I_x\times I_y$
+        выполнено $F(x,y)=0 \Leftrightarrow y=f(x)$.
+
+        Кроме того, $f'(x)=-\frac{F'_x(x,f(x))}{F'_y(x,f(x))}$.
+    \end{theorem*}
+
+    \subsection{Теорема о неявной функции: доказательство в случае функции двух переменных.}
+
+    \begin{proof}~
+    
+        \begin{enumerate}
+        \item
+            Для определенности считаем, что $F'_y(a,b)>0$. Так как производные функции $F$ непрерывны в $U$, то в малой окрестности
+            $\{(x,y)\colon \sqrt{|x-a|^2+|y-b|^2}<2\beta\}$ точки $(a,b)$ также выполнено $F'_y(x,y)>0$. 
+            
+            Так как $F'_y(a,y)>0$ на отрезке $[b-\beta, b+\beta]$, то функция $y\mapsto F(a,y)$
+            монотонно возрастает на этом отрезке, откуда $$F(a, b-\beta)<F(a,b)=0<F(a,b+\beta).$$
+
+            Так как $F$ непрерывна в $U$, то найдется такое число $\alpha<\beta$, что $F(x,b-\beta)<0<F(x,b+\beta)$ при $x\in(a-\alpha, a+\alpha)$.
+
+            При каждом $x\in(a-\alpha, a+\alpha)$ рассмотрим функцию $y\mapsto F(x,y)$, заданную на отрезке $[b-\beta, b+\beta]$. Рассматриваемая функция есть непрерывная строго возрастающая функция на отрезке, причем на концах отрезка данная функция принимает значения разных знаков. Поэтому при каждом $x\in (a-\alpha, a+\alpha)$ существует единственная точка $y=f(x)$, для которой $F(x, f(x))=0$. Тем самым построена окрестность точки $(a,b)$ вида $I_x\times I_y$ в которой построено единственное решение уравнения $F(x,y)=0$ относительно переменной $y$.
+
+        \item
+            Проверим непрерывность построенного решения в точке $a$. Ясно, что $f(a)=b$ в силу единственности нуля у функции $y\mapsto F(a,y)$ на $I_y$. Пусть теперь фиксировано некоторое $\varepsilon\in(0,\beta)$. Повторяя рассуждения первой части для интервала $(b-\varepsilon, b+\varepsilon)$ найдем интервал $(a-\delta, a+\delta)$ с $\delta<\alpha$ и функцию $\tilde{f}\colon (a-\delta, a+\delta)\to(b-\varepsilon, b+\varepsilon)$ для которых $F(x,y)=0$ при $(x,y)\in (a-\delta, a+\delta)\times(b-\varepsilon, b+\varepsilon)$ $\Leftrightarrow y=\tilde{f}(x), x\in (a-\delta, a+\delta)$.
+
+            Так как $(a-\delta, a+\delta)\subset I_x$ и $(b-\varepsilon, b+\varepsilon)\subset I_y$, то в силу единственности решения $f$ в $I_x\times I_y$ получаем, что $f(x)=\tilde{f}(x)$ при $x\in (a-\delta, a+\delta)$. Это означает, что $|f(x)-b|<\varepsilon$ при $|x-a|<\delta$.
+
+            Теперь проверим непрерывность $f$ в произвольной точке $x\in I_x$. Для этого просто примем за начальную точку построения
+            произвольную точку $(x,y)$ с $x\in I_x, y\in I_y$ и повторим рассуждение выше.
+
+        \item
+            Докажем непрерывную дифференцируемость $f$ на $I_x$ и докажем формулу для вычисления производной. Пусть $x\in I_x$ и рассмотрим достаточно малое $\Delta x$, для которого $x+\Delta x\in I_x$. Пусть $y=f(x)\in I_y$ и $\Delta y= f(x+\Delta x) - f(x)$.
+
+            Применим теорему Лагранжа к функции $t\mapsto F(x+t\Delta x, y+t\Delta y)$:
+            $$
+                0 
+                = F(x+\Delta x, y+\Delta y) - F(x,y)
+                = F'_x(x+\xi\Delta x, y+\xi\Delta y)\Delta x + F'_y(x+\xi\Delta x, y+\xi\Delta y)\Delta y,
+            $$
+            где $\xi\in(0,1)$. Т.к. $F'_y\ne0$ в $I_x\times I_y$,
+            то
+            $$
+                \frac{\Delta y}{\Delta x} = -\frac{F'_x(x+\xi\Delta x, y+\xi\Delta y)}{F'_y(x+\xi\Delta x, y+\xi\Delta y)}.
+            $$
+            В силу непрерывности $f$ при $\Delta x\to 0$ выполнено, что и $\Delta y\to 0$, поэтому, в силу непрерывности производных функции $F$ в $I_x\times I_y$, получается, что $f'(x) = -\frac{F'_x(x,y)}{F'_y(x,y)}$, где $y=f(x)$. Из формулы следует и непрерывность производной.
+        \end{enumerate}
+    \end{proof}
+
+    Аналогично доказывается следующий многомерный аналог предыдущей теоремы.
+
+    \begin{theorem*}
+        Пусть $F\colon \RR^{k+1}\to \RR$ --- определена и непрерывно дифференцируема (то есть частные производные непрерывно зависят от точки) в некоторой окрестности $U$ точки $(a,b)=(a_1,\ldots, a_k,b)\in \RR^{k+1}$.
+
+        Пусть $1)\ F(a,b)=0$ и  $2)\ F'_y(a,b)\ne0$. Найдутся $I_x = (a_1-\alpha_1, a_1+\alpha_1)\times\ldots\times (a_k-\alpha_k, a_k+\alpha_k)$ и $I_y=(b-\beta, b+\beta)$ и непрерывно дифференцируемая функция $f\colon I_x\to I_y$, для которых $I_x\times I_y\subset U$ и для каждой точки $(x,y)\in I_x\times I_y$ выполнено $F(x,y)=0 \Leftrightarrow y=f(x)$. 
+
+        Кроме того, $\frac{\partial f}{\partial x_j}(x)=-\frac{F'_{x_j}(x,f(x))}{F'_y(x,f(x))}$.
+    \end{theorem*}
+
+    \begin{proof}
+        Существование $I_x\times I_y$ и функции $f$, а также ее непрерывность, дословно повторяют рассуждение из предыдущей теоремы.
+
+        Если теперь фиксировать все переменные, кроме $x_j$ и $y$, мы попадем в ситуацию предыдущей теоремы, откуда следует формула для вычисления частной производной. Из формулы следует непрерывность этой частной производной, а значит и непрерывная дифференцируемость $f$.
+    \end{proof}
+
+    \begin{remark*}
+        Отметим, что формула для подсчет производной берется из дифференцирования тождества
+        $F(x,f(x))=0$. Действительно, $\frac{\partial F}{\partial x_1}dx_1 + \ldots + \frac{\partial F}{\partial x_k}+\frac{\partial F}{\partial y}df=0$, откуда выражая $df$ и получаем нужную нам формулу.
+    \end{remark*}
+
+    \section{Многомерная формула Тейлора.} 
+
+    \subsection{Многомерная формула тейлора.}
+    
+    \begin{lemma*}
+        Пусть функция $f$ $m$ раз дифференцируема в окрестности точки $a\in \RR^k$.
+        Рассмотрим функцию $\phi(t):=f(a+th)$. Тогда $\phi$
+        $m$ раз дифференцируема в окрестности точки нуль и
+        $\phi^{(m)}(t)=\dd^mf\bigl|_{a+th}(h)$.
+    \end{lemma*}
+    
+    \begin{proof}
+        Утверждение доказывается по индукции.
+        База $m=1$:
+        $$
+            \phi'(t)=\dfrac{\partial f}{\partial x_1}(a+th)h_1+\ldots+\dfrac{\partial f}{\partial x_n}(a+th)h_n = \dd f\bigl|_{a+th}(h).
+        $$
+        Индуктивный переход:
+        \begin{align*}
+            \phi^{(m+1)}(t)
+            & = \dfrac{d}{dt}\Bigl[\sum_{j_1,\ldots, j_m} \dfrac{\partial^mf}{\partial x_{j_1}\ldots\partial x_{j_m}}(a+th)h_{j_1}\cdot\ldots\cdot h_{j_m}\Bigr] \\
+            & = \sum_{j_1,\ldots, j_m} \Bigl[\sum_{j=1}^{k}\dfrac{\partial^{m+1}f}{\partial x_j\partial x_{j_1}\ldots\partial x_{j_m}}(a+th)h_j\Bigr] h_{j_1}\cdot\ldots\cdot h_{j_m}
+            =\dd^{m+1}f\bigl|_{a+th}(h).
+        \end{align*}
+    \end{proof}
+    
+    \begin{theorem*}
+        Пусть функция $f$ $m$ раз непрерывно дифференцируема в окрестности точки $a$
+        Тогда справедлива следующая формула Тейлора:
+        $$
+            f(a+h)=f(a)+\dd f\bigl|_a(h)+\dfrac{1}{2!}\dd^2f\bigl|_a(h)+\ldots+\dfrac{1}{m!}\dd^{(m)}f\bigl|_a(h) + \os(\|h\|^m).
+        $$
+    \end{theorem*}
+    
+    \begin{proof}
+        Запишем для функции $\phi(t):=f(a+th)$ формулу Тейлора с остаточным членом в интегральной форме:
+        \begin{align*}
+            f(a+h)
+            & = \phi(1) =  \\
+            & \phi(0)+\phi'(0)(1-0)+\dfrac{1}{2!}\phi''(0)(1-0)^2+\ldots+\dfrac{1}{(m-1)!}\phi^{(m-1)}(0)(1-0)^{m-1} +\dfrac{1}{(m-1)!}\int\limits_0^1(1-t)^{m-1}\phi^{(m)}(t)\, \dd t
+            \\
+            &= f(a)+\dd f\bigl|_a(h)+\dfrac{1}{2!}\dd^2f\bigl|_a(h)+\ldots+\dfrac{1}{(m-1)!}\dd^{m-1}f\bigl|_a(h) + \dfrac{1}{m!}d^{m}f\bigl|_a(h)+
+            R_m(h),
+        \end{align*}
+        где
+        $$
+            R_m(h):=\dfrac{1}{(m-1)!}\int\limits_0^1(1-t)^{m-1}\phi^{(m)}(t)\, \dd t - \dfrac{1}{m!}\phi^{(m)}(0)
+            = \dfrac{1}{(m-1)!}\int\limits_0^1(1-t)^{m-1}\bigl(\phi^{(m)}(t)-\phi^{(m)}(0)\bigr)\, \dd t.
+        $$
+    
+        Отсюда
+        \begin{align*}
+            \dfrac{|R_m(h)|}{\|h\|^m}
+            & \leq \dfrac{1}{m!}\dfrac{1}{\|h\|^m} \sup_{[0,1]}\bigl|\phi^{(m)}(t)-\phi^{(m)}(0)\bigr| \\
+            &\leq \dfrac{1}{m!}\sup_{[0,1]} \sum_{j_1,\ldots, j_m} \Bigl|\dfrac{\partial^mf}{\partial x_{j_1}\ldots\partial x_{j_m}}(a+th)-
+            \dfrac{\partial^mf}{\partial x_{j_1}\ldots\partial x_{j_m}}(a)\Bigr|\dfrac{|h_{j_1}|}{\|h\|}\cdot\ldots\cdot \dfrac{|h_{j_m}|}{\|h\|}\to0
+        \end{align*}
+        при $\|h\|\to0$ в силу непрерывности частных производных $m$-го поряка.
+    \end{proof}
+
+    \section{Локальный экстремум: необходимое условие и достаточное условие.}
+
+    \subsection{Определение точки локального экстремума.}
+    
+    \begin{definition*}
+        Точка $a$ называется точкой {\it локального минимума (максимума)} функции $f$ если всех точек $x$ из некоторой окрестности $U(a)$ точки $a$	выполнено $f(x)\geq f(a)$ ($f(x)\leq f(a)$).
+    
+        Если для всех точек $x\in U(a), x\ne a$, выполнено $f(x)> f(a)$ ($f(x)< f(a)$),	то точка $a$ называется	{\it точкой строгого локального минимума (максимума)}.
+    
+        Точки локального минимума и максимума называются точками {\it локального экстремума}.
+    \end{definition*}
+    
+    \subsection{Необходимое условие локального экстремума.}
+    
+    \begin{theorem*}[Необходимое условие локального экстремума]
+        Пусть $a$ --- точка локального экстремума функции $f$
+        и предположим, что $f$ дифференцируема в точке $a$.
+        Тогда $\dd f\bigl|_a = 0$ (или, что тоже самое, $\dfrac{\partial f}{\partial x_j}(a)=0\, \forall j$).
+    \end{theorem*}
+    
+    \begin{proof}
+        Зафиксируем вектор $h$ и функцию $\phi(t):=f(a+th)$.
+        Так как $a$ --- точка локального экстремума функции $f$, $0$ --- точка локального экстремума функции $\phi$.
+        Из одномерного случая известно, что	$\phi'(0)=0$. Но $\phi'(t)=\dd f\bigl|_{a+th}(h)$, поэтому
+        $$\dd f\bigl|_a(h)=\phi'(0)=0.$$
+    \end{proof}
+    
+    \subsection{Достаточное условие локального экстремума.}
+    
+    \begin{theorem*}[Достаточное условие локального экстремума]
+        Пусть $f$ дважды непрерывно дифференцируема в окрестности точки $a$
+        и предположим, что в точке $a$ выполнено необходимое условие локального экстремума:
+        $df\bigl|_a(h)=0\, \forall h$.
+    
+        Тогда
+        \begin{enumerate}
+        \item
+            если $\dd^2f\bigl|_a(h)>0\, \forall h\ne0$, то $a$ --- точка строгого локального минимума;
+    
+        \item
+            если $\dd^2f\bigl|_a(h)<0\, \forall h\ne0$, то $a$ --- точка строгого локального максимума.
+        \end{enumerate}
+    \end{theorem*}
+    
+    \begin{proof}
+        Докажем пункт $1)$, пункт $2)$ получается рассмотрением функции $-f$.
+        По формуле Тейлора
+        $$
+            f(a+h)-f(a) = \frac{1}{2}\dd^2f\bigl|_a(h) + \os(\|h\|^2) =
+            \|h\|^2\bigl(\frac{1}{2}\dd^2f\bigl|_a(\|h\|^{-1}h) + \os(1)\bigr).
+        $$
+    
+        Заметим, что квадратичная функция $\dd^2f\bigl|_a(q) = \sum_{i,j}\dfrac{\partial^2 f}{\partial x_i\partial x_j}(a)q_iq_j$ непрерывна (как функция аргумента $q$).
+        Единичная сфера $\{q\colon \|q\|=1\}$ --- замкнутое и ограниченное множество, а значит компакт. Поэтому непрерывная функция $\dd^2f\bigl|_a(q)$ достигает на сфере
+        своего минимума:
+        $$
+            \min\limits_{\|q\|=1}d^2f\bigl|_a(q) = m=\dd^2f\bigl|_a(q_0)>0.
+        $$
+    
+        Поэтому
+        $$
+            f(a+h)-f(a) \geq \|h\|^2\bigl(\frac{m}{2} + \os(1)\bigr).
+        $$
+    
+        Существует такое $\delta$, что при $\|h\|<\delta$ выполнено	$|\os(1)|<\dfrac{m}{4}$. 
+        Поэтому при $\|h\|<\delta$
+        $$
+            f(a+h)-f(a)\geq	\|h\|^2\bigl(\frac{m}{2} -\frac{m}{4}\bigr)=\dfrac{m\|h\|^2}{2}>0.
+        $$
+    \end{proof}
+    
+    \begin{remark*}
+        Отметим, что $d^2f\bigl|_a(h)$ --- есть квадратичная форма,
+        заданная матрицей
+        $$
+        \begin{pmatrix}
+          \dfrac{\partial^2f}{\partial x_1^2}(a) & \dfrac{\partial^2f}{\partial x_1\partial x_2}(a) & \ldots &  \dfrac{\partial^2f}{\partial x_1\partial x_k}(a) \\
+          \dfrac{\partial^2f}{\partial x_1\partial x_2}(a) & \dfrac{\partial^2f}{\partial x_2^2}(a) & \ldots &  \dfrac{\partial^2f}{\partial x_2\partial x_k}(a)  \\
+          \ldots & \ldots & \ldots
+        \end{pmatrix}
+        $$
+        Предположения из предыдущей теоремы
+        $d^2f\bigl|_a(h)>0$ или $d^2f\bigl|_a(h)<0$
+        $\forall h\ne0$
+        означают положительную или отрицательную определенность
+        квадратичной формы.
+        Как известно из курса линейной алгебры,
+        за положительную или отрицательную определенность
+        квадратичной формы отвечает {\it критерий Сильвестра}:
+    
+        $1)$ все угловые миноры матрицы квадратичной формы $d^2f\bigl|_a$ положительны
+        $\leftrightarrow d^2f\bigl|_a$ --- положительно определена (т.е. $d^2f\bigl|_a(h)>0$ при каждом $h\ne0$);
+    
+        $2)$ угловые миноры матрицы квадратичной формы $d^2f\bigl|_a$
+        начинаются с отрицательного, а затем чередуют знаки
+        $\leftrightarrow d^2f\bigl|_a$ --- отрицательно определена (т.е. $d^2f\bigl|_a(h)<0$ при каждом $h\ne0$).
+    \end{remark*}
+
+    \section{График функции. Касательная плоскость и касательное пространство к графику функции. Описание касательного пространства, как множества скоростей кривых, проходящих через данную точку.} 
+    
+    \subsection{График функции.}
+
+    Для начала рассмотрим график функции $z=f(x,y)$, где $f\colon G\to \RR$ --- непрерывно дифференцируемая функция, и $G$ --- некоторая область в $\RR^2$ (открытый круг, открытый прямоугольник).
+    
+    График функции --- это множество 
+    $$\Gamma_f:=\{(x,y,z)\in \RR^3\colon z-f(x,y)=0,\ (x,y)\in G\}\subset \RR^3.$$
+    
+    Так как график $f$ запараметризован парами чисел $(x,y)$, то его естественно считать двумерной поверхностью в $\RR^3$.
+    
+    Так как $f$ --- дифференцируемая функция, то в окрестности любой точки $(x_0, y_0, z_0)$ справедливо равенство 
+    $$
+        f(x,y)=f(x_0,y_0) +	\frac{\partial f}{\partial x}(x_0,y_0)(x-x_0)+\frac{\partial f}{\partial y}(x_0,y_0)(y-y_0)	+ \os\bigl(\sqrt{(x-x_0)^2+(y-y_0)^2}\bigr).
+    $$
+    
+    То есть расстояние от точки $(x,y,f(x,y))\in \Gamma_f$ до точки плоскости
+    $$
+        z-z_0=\frac{\partial f}{\partial x}(x_0,y_0)(x-x_0)	+\frac{\partial f}{\partial y}(x_0,y_0)(y-y_0)
+    $$
+    есть $\os\bigl(\sqrt{(x-x_0)^2+(y-y_0)^2}\bigr)$.
+    
+    \subsection{ Касательная плоскость и касательное пространство к графику функции.}
+    
+    Плоскость
+    $$
+        z-z_0=\frac{\partial f}{\partial x}(x_0,y_0)(x-x_0)	+\frac{\partial f}{\partial y}(x_0,y_0)(y-y_0)
+    $$
+    естественно назвать касательной плоскостью к графику $\Gamma_f$ в точке $(x_0,y_0, z_0)$.
+    
+    Линейное подпространство
+    $$
+        \Bigl\{h=(h_x, h_y, h_z)\in \RR^3\colon h_z=\frac{\partial f}{\partial x}(x_0,y_0)h_x+\frac{\partial f}{\partial y}(x_0,y_0)h_y\Bigr\}
+    $$
+    будем называть касательным пространством к $\Gamma_f$ в точке $(x_0, y_0, z_0)$ и обозначать $T_{(x_0,y_0,z_0)}\Gamma_f$.
+    
+    Из сказанного ранее ясно, что точка $(x,y,z)$ принадлежит касательной плоскости к графику функции $f$ в точке $(x_0,y_0, z_0)$ тогда и только тогда, когда вектор
+    $$(x-x_0,y-y_0,z-z_0)\in T_{(x_0,y_0,z_0)}\Gamma_f.$$
+    
+    \subsection{Описание касательного пространства, как множества скоростей кривых, проходящих через данную точку.}
+    
+    \begin{definition*}
+        Кривой в $\RR^k$ будем называть непрерывно дифференцируемое отображение	$\gamma\colon (a,b)\to \RR^k$.
+    
+        Если $\gamma(t)=(\gamma_1(t),\ldots,\gamma_k(t))$, то вектор $\dot{\gamma}(t_0)=(\dot{\gamma_1}(t_0),\ldots, \dot{\gamma_k}(t_0))$ называют вектором скорости кривой $\gamma$ в точке $t_0$.
+    \end{definition*}
+    
+    Для касательной плоскости к графику функции существует инвариантное (относительно выбора базиса) описание.
+    
+    \begin{proposal*}
+        Вектор $h\in T_{(x_0,y_0,z_0)}\Gamma_f$	тогда и только тогда, когда	найдется кривая $\gamma\colon (-\varepsilon,\varepsilon)\to \RR^3$	для которой $\gamma(0)=(x_0,y_0,z_0)$, $\gamma(t)\in \Gamma_f\ \forall t\in(-1,1)$
+        и $h=\dot{\gamma}(0)$.
+    \end{proposal*}
+    
+    
+    \begin{proof}
+        Пусть $\gamma$ --- кривая из условия.
+    
+        Тогда она имеет вид	$\gamma(t) = (\gamma_x(t), \gamma_y(t), \gamma_z(t))$, причем $\gamma_z(t) = f(\gamma_x(t),\gamma_y(t))$.
+        Тогда вектор
+        $$
+            \dot{\gamma}(0)= \Bigl(\dot{\gamma_x}(0),\dot{\gamma_y}(0),
+            \frac{\partial f}{\partial x}(\gamma_x(0),\gamma_y(0))\dot{\gamma_x}(0)+
+            \frac{\partial f}{\partial y}(\gamma_x(0),\gamma_y(0))\dot{\gamma_y}(0)\Bigr)\in T_{(x_0,y_0,z_0)}\Gamma_f.
+        $$
+    
+        Наоборот, пусть	$h\in T_{(x_0,y_0,z_0)}\Gamma_f$.
+    
+        Рассмотрим кривую
+        $$\gamma(t)=\bigl(x_0+th_x, y_0+th_y, f(x_0+th_x,y_0+th_y)\bigr).$$
+        Тогда
+        $$
+            \dot{\gamma}(0) = \Bigl(h_x, h_y, \frac{\partial f}{\partial x}(x_0,y_0)h_x+\frac{\partial f}{\partial y}(x_0,y_0)h_y\Bigr)
+            = (h_x, h_y, h_z).
+        $$
+    \end{proof}
+
+    \section{Поверхность в $\RR^k$ и касательное пространство к ней. Описание касательного пространства к поверхности, заданной системой уравнений (доказательство в случае одного уравнения).} 
+    
+    \subsection{Поверхность в $\RR^k$ и касательное пространство к ней.}
+
+    Теперь мы можем дать общее определение $(k-1)$-мерной поверхности в $\RR^k$ и касательного пространства к ней.
+    
+    \begin{definition*}
+        Подмножество $M\subset \RR^k$ называется $(k-1)$-мерной поверхностью, если для каждой точки $a=(a_1,\ldots, a_k)\in M$ найдется номер $j$, окрестности
+        $$
+            I = (a_1-\alpha_1, a_1+\alpha_1)\times\ldots\times (a_{j-1}-\alpha_{j-1}, a_{j-1}+\alpha_{j-1})
+            \times (a_{j+1}-\alpha_{j+1}, a_{j+1}+\alpha_{j+1})	\times\ldots\times (a_k-\alpha_k, a_k+\alpha_k)
+        $$
+        и $J=(a_j - \alpha_j, a_j + \alpha_j)$ и непрерывно дифференцируемая функция $f \colon I \to J$, для которых для каждой точки $b\in I\times J$ выполнено $b \in M \Leftrightarrow x_j = f(x_1,\ldots, x_{j-1},x_{j+1},\ldots, x_k)$.
+    \end{definition*}
+    
+    То есть $(k-1)$-мерной поверхностью называют такое подмножество $M \subseteq \RR^k$, что у каждой точки $a \in M$ есть окрестность, в которой $M$ совпадает с графиком некоторой функции относительной одной из координатных гиперплоскостей.
+    
+    \begin{example*}
+        Пусть $F\colon \RR^k\to \RR$, причем для каждой точки $a\in \RR^k$, в которой $F(a)=0$, выполнено условие ${\rm rk}\nabla F=1$.
+        Тогда по теореме о неявной функции $\{a\in \RR^k\colon F(a)=0\}$ является $(k-1)$-мерной поверхностью в $\RR^k$.
+    \end{example*}
+    
+    \begin{definition*}
+        Касательным пространством $T_aM$ к поверхности $M$ в точке $a\in M$ называется линейное пространство, состоящее из векторов скоростей
+        кривых на $M$, проходящих через точку $a$. Касательной плоскостью называется плоскость $a+T_aM$.
+    \end{definition*}
+
+    \subsection{Описание касательного пространства к поверхности, заданной системой уравнений (доказательство в случае одного уравнения).}
+    
+    Из определения $(k-1)$-мерной поверхности ясно, что касательное пространство действительно есть $(k-1)$-мерное линейное подпространство в $\RR^k$.
+    
+    \begin{proposal*}
+        Пусть $M$ задана уравнением	$F (x) = 0$ и ${\rm rk}\nabla F(x) = 1\ \forall x \in M$. 
+        Тогда $h \in T_aM \Leftrightarrow \langle \nabla F(a), h \rangle = \dd F\bigl|_a(h)=0$.
+    \end{proposal*}
+    
+    \begin{proof}
+        Пусть $\gamma$ --- кривая на $M$, проходящая через точку $a$ при $t=0$ (т.е. $\gamma(0) = a$).
+        Тогда $F(\gamma(t))=0$ и
+        $$
+            \langle\nabla F(a), \dot{\gamma}(0)\rangle=
+            \dfrac{\partial F}{\partial x_1}(\gamma(0))\dot{\gamma_1}(0)
+            +\ldots+
+            \dfrac{\partial F}{\partial x_k}(\gamma(0))\dot{\gamma_k}(0)=
+            \dfrac{\dd}{\dd t}[F(\gamma(t))]=0.
+        $$
+    
+        Значит $T_aM$ входит в пространство решений уравнения $\langle\nabla F(a),h\rangle=0$.
+        С другой стороны, т.к. ${\rm rk}\nabla F(A)=1$,	то пространство решений данного уравнения $(k-1)$-мерное, поэтому пространство $T_aM$ совпадает с пространством решений уравнения $\langle\nabla F(a),h\rangle=0$.
+    \end{proof}
+
+    В конце отметим, что аналогичным образом можно было определить график отображения $$f(x_1,\ldots,x_k) = \bigl(f_1(x_1,\ldots, x_m),\ldots, f_{k-m}(x_1,\ldots, x_m)\bigr)$$ и назвать $m$-мерной поверхностью в $\RR^k$ множество $M$, у каждой точки которого есть окрестность в которой $M$ совпадает с графиком некоторого такого отображения.
+    
+    Например, при таком определении по теореме о неявном отображении $m$-мерной поверхностью будет множество решений системы уравнений $F_1(x)=0,\ldots, F_{k-m}(x)=0$, при условии, что ${\rm rk}J_F=k-m$, где $F=(F_1,\ldots, F_{k-m})$.
+    Определение касательного пространства остается тем же самым, а в случае поверхности, заданной системой уравнений касательное пространство задается системой линейных уравнений $\langle\nabla F_1(a), h\rangle=0,\ldots, \langle\nabla F_{k-m}(a), h\rangle=0$.
+
+    \section{Формулировки теорем о неявном отображении и обратной функции. Параметрически заданные поверхности. Описание касательного пространства к поверхности, заданной параметрически.} 
+    
+    \subsection{Формулировка теоремы о неявном отображении.}
+
+    Пусть мы рассматриваем систему уравнений
+    $$
+        \begin{cases}
+            F_1(x_1,\ldots, x_k, y_1,\ldots, y_n)=0,\\
+            \ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\\
+            F_n(x_1,\ldots, x_k, y_1,\ldots, y_n)=0.
+        \end{cases}
+    $$
+    Обозначим $x=(x_1,\ldots, x_k)$, $y=(y_1,\ldots, y_n)$, $F(x,y)=(F_1(x,y),\ldots, F_n(x,y))$.
+    По аналогии с предыдущей лекцией нам бы хотелось научиться локально, то есть в окрестности некоторой точки $(a,b)=(a_1,\ldots, a_k, b_1,\ldots, b_n)$,
+    для которой $F(a,b)=0$, научиться решать данную систему относительно переменных $y_1,\ldots, y_n$, то есть находить функции $f_1,\ldots, f_n$,
+    для которых система
+    $$
+        \begin{cases}
+            y_1=f_1(x_1,\ldots, x_k),\\
+            \ldots\ldots\ldots\ldots\ldots\ldots\\
+            y_n=f_n(x_1,\ldots, x_k)
+        \end{cases}
+    $$
+    равносильна исходной системе в рассматриваемой окрестности.
+    
+    Приведем теперь строгую формулировку теоремы:
+    
+    \begin{theorem*}[О неявном отображении]
+        Пусть отображение $F\colon \RR^{k+n}\to \RR^n$ --- определено и непрерывно дифференцируемо в некоторой окрестности $U$ точки $(a,b)=(a_1,\ldots, a_k,b_1,\ldots, b_n)\in \RR^{k+n}$.
+        Пусть
+        \begin{enumerate}
+        \item
+            $F(a, b) = 0$;
+    
+        \item
+            матрица
+            $F'_y(a,b):=
+            \begin{pmatrix}
+                \dfrac{\partial F_1}{\partial y_1}(a,b) & \ldots & \dfrac{\partial F_1}{\partial y_n}(a,b) \\
+                \ldots & \ldots & \ldots \\
+                \dfrac{\partial F_n}{\partial y_1}(a,b) & \ldots & \dfrac{\partial F_n}{\partial y_n}(a,b) \\
+            \end{pmatrix}$
+            --- обратима.
+        \end{enumerate}
+    
+        Тогда найдутся
+        $$
+            I_x = (a_1-\alpha_1, a_1+\alpha_1)\times\ldots\times (a_k-\alpha_k, a_k+\alpha_k) 
+            \text{ и }
+            I_y=(b_1-\beta_1, b_1+\beta_1)\times\ldots\times(b_n-\beta_n, b_n+\beta_n)
+        $$
+        и непрерывно дифференцируемое отображение $f=(f_1,\ldots, f_n)\colon I_x\to I_y$, для которых $I_x\times I_y\subset U$ и для каждой точки $(x,y)\in I_x\times I_y$ выполнено 
+        $$F(x,y)=0 \Leftrightarrow y=f(x).$$
+    \end{theorem*}
+
+    Следствием предыдущей теоремы является следующая теорема об обратной функции.
+
+    \begin{theorem*}[Об обратной функции]
+        Пусть отображение $f\colon \RR^{k}\to \RR^k$ --- определено и непрерывно дифференцируемо в некоторой окрестности $G$ точки $a\in \RR^k$.
+        Пусть $\dd f\bigl|_{a}$ --- обратимое линейное отображение.
+        Тогда найдутся такие окрестности $U(a)$ и $V(f(a))$, что $f$ есть диффеоморфизм этих окрестностей, то есть $f$ --- биекция окрестностей $U(a)$ и $V(f(a))$ и отображения $f$ и $f^{-1}$ непрерывно дифференцируемы на $U(a)$ и $V(f(a))$ соответственно.
+    \end{theorem*}
+
+    \subsection{Параметрически заданные поверхности.}
+
+    Из определения $(k-1)$-мерной поверхности ясно, что касательное пространство действительно есть $(k-1)$-мерное линейное подпространство в $\RR^k$. 
+    
+    \begin{proposal*}
+        Пусть $G$ --- область в $\RR^{k-1}$	и пусть $f\colon G\to \RR^k$ --- непрерывно дифференцируемое отображение,
+        причем ${\rm rk}J_f(z) = k-1\ \forall z\in G$.
+        Тогда для каждой точки $z_0\in G$ найдется окрестность $U(z_0)$, для которой образ $f\bigl(U(z_0)\bigr)$ есть $(k-1)$-мерная поверхность в $\RR^k$.
+    
+        Кроме того, касательное пространство к данной поверхности в точке $a=f(z_0)$ совпадает с линейной оболочкой векторов $\dfrac{\partial}{\partial z_1}f(z_0),\ldots, \dfrac{\partial}{\partial z_{k-1}}f(z_0)$.
+    \end{proposal*}
+    
+    \begin{proof}
+        Без ограничения общности считаем, что $\det J_{f_1,\ldots, f_{k-1}}(z_0)\ne 0$.
+        По теореме об обратной функции в некоторой окрестности $U(z_0)$ точки $z_0$	система
+        $$
+            \begin{cases}
+                x_1=f_1(z_1,\ldots, z_{k-1}),\\
+                \ldots\ldots\ldots\ldots\ldots\ldots\\
+                x_{k-1}=f_{k-1}(z_1,\ldots, z_{k-1})
+            \end{cases}
+        $$
+        равносильна системе
+        $$
+            \begin{cases}
+                z_1=\phi_1(x_1,\ldots, x_{k-1}),\\
+                \ldots\ldots\ldots\ldots\ldots\ldots\\
+                z_{k-1}=\phi_{k-1}(x_1,\ldots, x_{k-1})
+            \end{cases}
+        $$
+        для некоторых непрерывно дифференцируемых функции $\phi_j$.
+    
+        Отсюда, для этой окрестности образ $f(U(z_0))$ совпадает с графиком функции
+        $$x_k = f_k\bigl(\phi_1(x_1,\ldots, x_{k-1}),\ldots, \phi(x_1,\ldots, x_{k-1})\bigr).$$
+    
+        Перейдем к доказательству утверждения про касательное пространство.
+        Заметим, что в силу условия ${\rm rk}J_f = k-1$ размерность указанной линейной оболочки равна $k-1$.
+        Пусть $\gamma$ --- кривая на построенной поверхности $M$, имеющая вид $\gamma(t)= f(z(t))$, где $z(t)$ --- кривая в $G$, $z(0) = z_0$.
+        Тогда
+        $$
+            \dot{\gamma}(0)	= \dfrac{\partial}{\partial z_1}f(z(0))\dot{z_1}(0) + \ldots +
+            \dfrac{\partial}{\partial z_{k-1}}f(z(0))\dot{z}_{k-1}(0),
+        $$
+        что является элементом линейно оболочки векторов $\dfrac{\partial}{\partial z_1}f(z_0),\ldots, \dfrac{\partial}{\partial z_{k-1}}f(z_0)$.
+    \end{proof}
+
+    \subsection{Описание касательного пространства к поверхности, заданной параметрически.}
+
+    Если поверхность $M \subset \RR^3$ задана параметрически $x = x(u, v), y = y(u, v), z = z(u, v)$, то касательная плоскость задается уравнением
+    \begin{equation*}
+        \begin{vmatrix}
+            x - x_0 & y - y_0 & z - z_0 \\
+            x'_u(u_0, v_0) & y'_u(u_0, v_0) & z'_u(u_0, v_0) \\
+            x'_v(u_0, v_0) & y'_v(u_0, v_0) & z'_v(u_0, v_0) \\
+        \end{vmatrix}
+        = 0.
+    \end{equation*}
+
+    \section{Условный экстремум и метод множителей Лагранжа. Достаточное условие локального экстремума.}
+
+    \subsection{Условный экстремум и метод множителей Лагранжа.}
+
+    Пусть $f\colon \RR^k\to \RR$ --- непрерывно дифференцируемая функция и пусть $F\colon \RR^k\to \RR$ --- также непрерывно дифференцируемая функция,
+    ${\rm rk}\nabla F(x)=1$ при $F(x)=0$.
+    Предположим, что мы хотим найти точки экстремума функции $f$ при условии, что $F(x)=0$. Тем самым мы ищем точки экстремума функции $f$ на поверхности $\{x\colon F(x)=0\}$.
+    
+    \begin{definition*}
+        Пусть $M$ --- поверхность в $\RR^k$	и пусть $f$ --- функция в $\RR^k$. 
+    
+        Точка $a\in M$ называется точкой {\it условного локального минимума (максимума)}, если для некоторой окрестности $U(a)$ точки $a$
+        выполнено $f(b)\ge f(a)$ ($f(b)\leq f(a)$) $\forall\ b\in M\cap U(a)$. Если неравенство при $b\ne a$ строгое, то $a$ называется точкой {\it строгого условного локального минимума (максимума)}.
+    \end{definition*}
+    
+    \begin{proposal*}[Необходимое условие условного локального экстремума]
+        Если $a$ --- точка условного локального экстремума, то $\nabla f(a)\bot T_aM$.
+    \end{proposal*}
+    
+    \begin{proof}
+        Пусть $h\in T_aM$, тогда $h=\dot{\gamma}(0)$ для некоторой кривой $\gamma$ на $M$, $\gamma(0)=a$.
+        Одномерная функция $f(\gamma(t))$ имеет в точке нуль локальный экстремум, поэтому
+        $$
+            \langle\nabla f(a), \dot{\gamma}(0)\rangle =
+            \dfrac{\partial f}{\partial x_1}(\gamma(0))\dot{\gamma_1}(0)+\ldots+
+            \dfrac{\partial f}{\partial x_k}(\gamma(0))\dot{\gamma_k}(0)=
+            \dfrac{d}{dt}f(\gamma(t))\bigl|_{t=0}=0.
+        $$
+    \end{proof}
+    
+    В частности, в случае, когда $M$ задано уравнением $F(x)=0$, получаем, что в точке условного локального экстремума $\nabla f(a)\bot h\ \forall h\colon h\bot \nabla F(a)$.
+    Отсюда следует, что $\nabla f(a)$ и $\nabla F(a)$ пропорциональны, то есть существует число $\lambda\colon \nabla f(a)= \lambda\nabla F(a)$.
+    
+    В случае, когда поверхность задана системой уравнений $F_1(x)=0,\ldots, F_{k-m}(x)=0$ (условный экстремум при нескольких ограничениях), условие $\nabla f(a)\bot T_aM$ в точке условного локального экстремума равносильно тому, что $\nabla f(a)$ лежит в линейной оболочке векторов $\nabla F_1(a), \ldots, \nabla F_{k-m}(a)$, то есть найдутся числа $\lambda_1,\ldots, \lambda_{k-m}$, для которых
+    $\nabla f(a) = \lambda_1\nabla F_1(a)+\ldots+\lambda_{k-m}\nabla F_{k-m}(a)$.
+    
+    Заметим, что условие $\nabla f(a)= \lambda\nabla F(a)$ ($\nabla f(a) = \lambda_1\nabla F_1(a)+\ldots+\lambda_{k-m}\nabla F_{k-m}(a)$) равносильно тому, что у функции
+    $$
+        L_\lambda(x):= f(x)-\lambda F(x)\quad\bigl(L_{\lambda_1,\ldots,\lambda_{k-m}}(x) = f(x)- \lambda_1F_1(x)-\ldots-\lambda_{k-m}F_{k-m}(x)\bigr)
+    $$
+    в точке $a$ дифференциал обращается в нуль $dL_\lambda\bigl|_a=0$ (то есть все частные производные обращаются в нуль).
+    Функцию $L_\lambda(x)$ называют \textbf{функцией Лагранжа}. Для поиска кандидатов в точки условного локального экстремума используют следующий метод множителей Лагранжа:
+    по функции Лагранжа составляется система уравнений относительно переменных $a=(a_1,\ldots a_k)$ и $\lambda$
+    $$
+        \begin{cases}
+            \dfrac{\partial}{\partial x_1}L_\lambda(a)=0\\
+              \ldots\ldots\ldots\ldots\ldots\\
+            \dfrac{\partial }{\partial x_k}L_\lambda(a)=0\\
+            F(x)=0,
+        \end{cases}
+    $$
+    где в случае нескольких условий $\lambda = (\lambda_1,\ldots,\lambda_{k-m})$, $F=(F_1,\ldots, F_{k-m})$.
+    
+    \subsection{Достаточное условие локального экстремума.}
+    
+    \begin{theorem*}[Достаточное условие условного локального экстремума]
+        Пусть в точке $a\in M$ выполнено необходимое условие условного локального экстрмума, т.е. при некотором $\lambda$ $dL_\lambda\bigl|_a=0$.
+        Тогда
+        \begin{enumerate}
+        \item
+            если $d^2L_\lambda\bigl|_a(h)>0\, \forall h\ne0, h\in T_aM$, то $a$ --- точка строгого локального минимума;
+    
+        \item
+            если $d^2L_\lambda\bigl|_a(h)<0\, \forall h\ne0, h\in T_aM$, то $a$ --- точка строгого локального максимума.
+        \end{enumerate}
+    \end{theorem*}
+    
+    \begin{proof}
+        Доказательство проведем в случае, когда $M$ --- $(k-1)$-мерная поверхность в $\RR^k$ (одно условие). Заметим, что $L_\lambda(x) = f(x)$ на $M$.
+        По определению в некоторой окрестности точки $a$ поверхность $M$ совпадает с графиком некоторой функции относительно одной из координатных осей.
+        Без ограничения общности, считаем, что это график функции $x_k = \phi(x_1,\ldots, x_{k-1})$.
+        Тогда для функции
+        $$
+            g(x_1,\ldots, x_{k-1}) := L_\lambda\bigl(x_1,\ldots, x_{k-1}, \phi(x_1,\ldots, x_{k-1})\bigr)
+        $$
+        точка $\tilde{a}:=(a_1,\ldots, a_{k-1})$ является точкой обычного локального экстремума.
+        Заметим, что
+        $$
+            \dd g = \sum_{j=1}^{k-1}\Bigl[\dfrac{\partial L_\lambda}{\partial x_j}+\dfrac{\partial L_\lambda}{\partial x_k}\dfrac{\partial\phi}{\partial x_j}\Bigr]\dd x_j
+        $$
+        и, так как $\dfrac{\partial L_\lambda}{\partial x_k}(a)=0$,
+        $$
+            \dd^2g\bigl|_{\tilde{a}}
+            = \sum_{i,j=1}^{k-1}\dfrac{\partial^2 L_\lambda}{\partial x_i\partial x_j}(a)\dd x_i \dd x_j
+            +2\sum_{i,j=1}^{k-1}\dfrac{\partial^2 L_\lambda}{\partial x_i\partial x_k}(a)
+            \dfrac{\partial\phi}{\partial x_j}(\tilde{a})\dd x_i \dd x_j
+            +\sum_{i,j=1}^{k-1}\dfrac{\partial^2 L_\lambda}{\partial^2 x_k}(a)
+            \dfrac{\partial\phi}{\partial x_i}(\tilde{a})\dfrac{\partial \phi}{\partial x_j}(\tilde{a})\dd x_i \dd x_j.
+        $$
+        Таким образом,
+        $$
+            \dd^2 g \bigl|_{\tilde{a}}(q)	= \dd^2L_\lambda\bigl|_a(h),
+        $$
+        где $h = \left(q_1,\ldots, q_{k-1}, \sum\limits_{j=1}^{k-1}\dfrac{\partial \phi}{\partial x_j}(\tilde{a})q_j\right)$. Остается применить
+        достаточное условие локального экстремума.
+    \end{proof}
+\end{document}

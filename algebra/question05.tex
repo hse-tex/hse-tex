@@ -1,0 +1,60 @@
+\section{Нормальные подгруппы и факторгруппы}
+
+\begin{definition}
+    Подгруппа $H$ группы $G$ называется \textit{нормальной}, если $gH = Hg$ для любого $g \in G$.
+\end{definition}
+
+\begin{example}~
+    \begin{enumerate}
+    \item $G$ --- абелева. Тогда любая подгруппа $H$ нормальная.
+    \item $G = S_3$, $H = \{\mathrm{Id}, (12)\}$. Тогда $H$ не является нормальной.
+    \item Несобственные подгруппы $H = G$ и $H = \{0\}$ нормальны.
+    \end{enumerate}
+\end{example}
+
+\begin{proposal}
+    Для подгруппы $H \subseteq G$ следующие условия эквивалентны:
+    \begin{enumerate}
+    \item $H$ нормальна;
+    \item $g H g^{-1} = H$ для любого $g \in G$;
+    \item $g H g^{-1} \subseteq H$ для любого $g \in G$. 
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}~
+    \begin{description}
+        \item[$(1) \implies (2)$] $gH = Hg \implies gHg^{-1} = H$.
+        \item[$(2) \implies (3)$] Очев.
+        \item[$(3) \implies (1)$] $gHg^{-1} \subseteq H \implies gH \subseteq Hg$. Теперь возьмем $g = g^{-1}$. Тогда $g^{-1} H g \subseteq H \implies Hg \subseteq gH \implies gH = Hg$.
+            \qedhere
+    \end{description}
+\end{proof}
+
+\bigskip
+Рассмотрим множество смежных классов по нормальной подгруппе $G / H$.
+
+Определим на $G / H$ бинарную операцию, полагая $(g_1 H)(g_2 H) = (g_1 g_2) H$.
+
+\begin{description}
+\item[Корректность] 
+    Пусть $g'_1 H = g_1 H$ и $g_2' H = g_2 H$. 
+    Тогда $g_1' = g_1 h_1$, $g_2' = g_2 h_2$, где $h_1, h_2 \in H$.
+    \begin{equation*}
+        (g_1'H)(g_2' H) = (g_1' g_2')H = (g_1 h_1 g_2 h_2) H = (g_1 g_2 \underbrace{g_2^{-1} h_1 g_2}_{\in H}) h_2 H \subseteq (g_1 g_2) H \implies (g_1' g_2') H = (g_1 g_2) H
+    .\end{equation*}
+\end{description}
+
+Структура группы $G / H$.
+\begin{enumerate}[nosep]
+\item Ассоциативность очевидна.
+\item Нейтральный элемент --- $eH$.
+\item Обратный к $gH$ --- $g^{-1}H$.
+\end{enumerate}
+
+\begin{definition}
+    Множество $G / H$ с указанной операцией называется \textit{факторгруппой} группы $G$ по нормальной подгруппе $H$.
+\end{definition}
+
+\begin{example}
+    Если $G = (\ZZ, +)$ и $H = n\ZZ$, то $G / H$ --- это в точности группа вычетов $(\ZZ_n, +)$.
+\end{example}

@@ -1,0 +1,44 @@
+\section{Экспонента конечной абелевой группы и критерий цикличности}
+
+\begin{definition}
+    \textit{Экспонентой} конечной абелевой группы $A$ называется число
+    \begin{equation*}
+        \exp A := \min \{m \in \NN \mid ma = 0 \ \forall a \in A\}
+    .\end{equation*}
+\end{definition}
+
+\begin{comment}~
+    \begin{enumerate}
+        \item Так как $ma = 0 \iff m \divby \ord(a) \ \forall a \in A $ и $m \in \ZZ$, то определение экспоненты можно переписать ещё в виде $\exp A = \lcm \{\ord(a) \mid a \in A\}$.
+        \item Так как $|A| \divby \ord(a) \ \forall a \in A$, то $|A|$ --- общее кратное множества $ \{\ord(a) \mid a \in A\}$, а значит, $|A| \divby \exp A$.
+
+            В частности, $\exp A \leq |A|$.
+    \end{enumerate}
+\end{comment}
+
+
+\begin{proposal}
+    $\exp A = |A| \iff A $ --- циклическая группа.
+\end{proposal}
+
+\begin{proof}
+    Пусть $|A| = n = p_1^{k_1} \cdot \ldots \cdot p_s^{k_s}$ --- разложение на простые множители, где $p_i$ --- простое и $k_s \in \NN$. ($p_i \neq p_j$ при $i \neq j$)
+
+    \begin{description}
+    \item[$\impliedby$] Если $A = \left< a \right>$, то $\ord a = n$, откуда сразу получаем $\exp A = n$.
+    \item[$\implies$] 
+        Если $\exp A = n$, то для $i = 1, \dots, s$ существует элемент $c_i \in A$, такой что $\ord c_i = p_i^{k_i}m_i$, где $m_i \in \NN$.
+        Для каждого $i = 1, \dots, s$ положим $a_i = m_i c_i$, тогда $\ord(a_i) = p_i^{k_i}$.
+        Теперь рассмотрим элемент $a = a_1 + \dots + a_s$ и покажем, что $\ord(a) = n$.
+        Пусть $ma = 0$ для некоторого $m \in \NN$, то есть $ma_1 + \dots + ma_s = 0$.
+        При фиксированном $i \in \{1, \dots, s\}$ умножим обе части последнего равенства на $n_i := n / p_i^{k_i}$.
+        Легко видеть, что $mn_i a_j = 0$ при всех $i \neq j$, поэтому в левой части выживет только слагаемое $mn_i a_i$, откуда получаем $mn_i a_i = 0$.
+        Следовательно, $mn_i \divby p_i^{k_i}$, а так как $n_i$ не делится на $p_i$, то $m \divby p_i^{k_i}$.
+        В силу произвольности выбора $i$ отсюда вытекает, что $m \divby n$.
+        Так как $na = 0$, то мы окончательно получаем $\ord(a) = n$.
+        Значит, $A = \left< a \right>$ --- циклическая группа.
+        \qedhere
+    \end{description}
+\end{proof}
+
+

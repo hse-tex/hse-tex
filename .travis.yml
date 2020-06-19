@@ -1,13 +1,14 @@
 language: general
 sudo: required
-dist: trusty
+dist: bionic 
 before_install:
-  - sudo apt-get install -y --no-install-recommends
-    texlive-fonts-recommended texlive-generic-recommended
-    texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
-    texlive-base texlive-pictures texlive-lang-cyrillic texlive-science texlive-generic-extra
-    pgf latexmk
+  - gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138
+  - gpg --export 04EE7237B7D453EC 648ACFD622F3D138 | sudo apt-key add -
+  - sudo bash -c 'echo deb http://http.us.debian.org/debian stable main contrib non-free >> /etc/apt/sources.list'
+  - sudo apt-get update
+  - sudo apt-get install -y --no-install-recommends latexmk texlive-full
 script:
+  - export -f travis_fold travis_time_start travis_time_finish travis_nanoseconds
   - ./build.sh
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_db7e1936f109_key -iv $encrypted_db7e1936f109_iv -in github_deploy_key.enc -out github_deploy_key -d
@@ -20,4 +21,5 @@ deploy:
     skip_cleanup: true
     on: 
       branch: master
-
+notifications:
+  email: false

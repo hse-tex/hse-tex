@@ -1,0 +1,79 @@
+\section{Гомоморфизмы групп. Простейшие свойства гомоморфизмов. Изоморфизмы групп. Ядро и образ гомоморфизма групп, их свойства}
+
+\begin{definition}
+    Пусть $(G, \circ)$ и $(F, \cdot)$ --- две группы.
+
+    Отображение $\phi \colon G \to F$ называется \textit{гомоморфизмом}, если
+    \begin{equation*}
+        \phi(g_1 \circ g_2) = \phi(g_1) \cdot \phi(g_2), \quad \forall g_1, g_2 \in G
+    .\end{equation*}
+\end{definition}
+
+\begin{comment}
+    Пусть $\phi \colon G \to F$ --- гомоморфизм групп, и пусть $e_G$ и $e_F$ --- нейтральные элементы группы $G$ и $F$ соответственно. Тогда:
+    \begin{enumerate}[nosep]
+        \item $\phi(e_G) = e_F$.
+        \item $\phi(a^{-1}) = \phi(a)^{-1}$ для любого $a \in G$.
+    \end{enumerate}
+\end{comment}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Имеем $\phi(e_G) = \phi(e_G e_G) = \phi(e_G) \phi(e_G)$. 
+
+            Теперь умножая крайние части этого равенства на $\phi(e_G)^{-1}$, получим $e_F = \phi(e_G)$.
+
+        \item $\phi(g \cdot g^{-1}) = e_F = \phi(g) \phi(g^{-1})$. Умножив обе части на $\phi(g)^{-1}$ получаем необходимое.
+            \qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Гомоморфизм групп $\phi \colon G \to F$ называется \textit{изоморфизмом}, если отображение $\phi$ биективно.
+\end{definition}
+
+\begin{definition}
+    Группы $G$ и $F$ называет \textit{изоморфными}, если между ними существует изоморфизм.
+
+    Обозначение: $G \simeq F$.
+\end{definition}
+
+В алгебре рассматривают с точностью до изоморфизма: изоморфные группы считаются <<одинаковыми>>.
+
+\begin{definition}
+    С каждым гомоморфизмом групп $\phi \colon G \to F$ связаны его \textit{ядро}
+    \begin{equation*}
+        \ker \phi = \{g \in G \mid \phi(g) = e_f\}
+    ,\end{equation*}
+    и \textit{образ}
+    \begin{equation*}
+        \Im \phi = \phi(G) = \{a \in F \mid \exists g \in G : \phi(g) = a\}
+    .\end{equation*}
+\end{definition}
+
+Ясно, что $\ker \phi \subseteq G$ и $\Im \phi \subseteq F$ --- подгруппы.
+
+\begin{lemma}
+    Гомоморфизм групп $\phi \colon G \to F$ инъективен тогда и только тогда, когда $\ker \phi = \{e_G\}$.
+\end{lemma}
+
+\begin{proof}
+    Ясно, что если $\phi$ инъективен то $\ker \phi = \{e_G\}$.
+
+    Обратно, пусть $g_1, g_2 \in G$ и $\phi(g_1) = \phi(g_2)$. Тогда $g_1^{-1} g_2 \in \ker \phi$, поскольку $\phi(g_1^{-1} g_2) = \phi(g_1^{-1}) \phi(g_2) = \phi(g_1)^{-1} \phi(g_2) = e_F$. Отсюда $g_1^{-1} g_2 = e_G$ и $g_1 = g_2$.
+\end{proof}
+
+\begin{corollary}
+    Гомоморфизм групп $\phi \colon G \to F$ является изоморфизмом тогда и только тогда, когда $\ker \phi = \{e_G\}$ и $\Im \phi = F$.
+\end{corollary}
+
+\begin{proposal}
+    Пусть $\phi \colon G \to F$ --- гомоморфизм групп. Тогда подгруппа $\ker \phi$ нормальна в $G$.
+\end{proposal}
+
+\begin{proof}
+    Достаточно проверить, что $g^{-1} h g \in \ker \phi$ для любых $g \in G$ и $h \in \ker \phi$. Это следует из цепочки равенств
+    \begin{equation*}
+        \phi(g^{-1} h g) = \phi(g^{-1}) \phi(h) \phi(g) = \phi(g^{-1}) e_F \phi(g) = \phi(g^{-1}) \phi(g) = \phi(g)^{-1} \phi(g) = e_F
+    .\qedhere\end{equation*}
+\end{proof}

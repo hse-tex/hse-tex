@@ -40,7 +40,7 @@ $\phi(v) := \overrightarrow{0} \quad \forall v \in V$
 
 \subsubsection{Пример 1}
 
-$\phi\colon V \to W$ --- тожественное отображение,
+$\phi\colon V \to V$ --- тождественное отображение,
 
 $\phi(v) := v \quad \forall v \in V$.
 
@@ -134,7 +134,7 @@ $v = x_1 e_1 + \dots + x_n e_n \implies \phi(v) := \begin{pmatrix} x_1 \\ \vdots
 \begin{enumerate}
 \item $\phi(\overrightarrow{0_V}) = \overrightarrow{0_W}$.
 
-    Доказательство: $\phi(\overrightarrow{0_V}) = \phi(0 \cdot \overrightarrow{0_V}) = 0 \cdot \phi(\overrightarrow{0_V}) = \phi(\overrightarrow{0_W})$.
+    Доказательство: $\phi(\overrightarrow{0_V}) = \phi(0 \cdot \overrightarrow{0_V}) = 0 \cdot \phi(\overrightarrow{0_V}) = \overrightarrow{0_W}$.
 
 \item $\phi(-v) = -\phi(v)$.
 
@@ -212,7 +212,7 @@ $v = x_1 e_1 + \dots + x_n e_n \implies \phi(v) := \begin{pmatrix} x_1 \\ \vdots
     \item \label{lec16:comp_1}
         \begin{enumerate}[label=(\arabic*)]
             \item $(\phi \circ \psi)(u_1 + u_2) = \phi(\psi(u_1 + u_2)) = \phi(\psi(u_1) + \psi(u_2)) = \phi(\psi(u_1)) + \phi(\psi(u_2)) = (\phi \circ \psi)(u_1) + (\phi \circ \psi)(u_2)$.
-            \item $(\phi \circ \psi)(\phi u) = \phi(\psi(\lambda u)) = \phi(\lambda \psi(u)) = \lambda \phi(\psi(u)) = \lambda(\phi \circ \psi)(u)$.
+            \item $(\phi \circ \psi)(\lambda u) = \phi(\psi(\lambda u)) = \phi(\lambda \psi(u)) = \lambda \phi(\psi(u)) = \lambda(\phi \circ \psi)(u)$.
         \end{enumerate}
     \item из \ref{lec16:comp_1} следует, что $(\phi \circ \psi)$ линейно, но при этом биективно как композиция двух биекций.
         \qedhere
