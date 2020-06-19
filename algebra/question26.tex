@@ -3,15 +3,15 @@
 \textbf{Поля} $\Q, \R, \CC, \Z_p$, где $p$ -- простое. $K[x]/(h)$ (K -- поле, h -- неприводимый многочлен)\\
 \textbf{Определение.} \textbf{Характеристика} поля k -- наименьшее $p\in \N$, такое что $\underbrace{1+1+...+1}_{p}=0$\\
 Если такого p не существует, то говорят, что характеристика поля K равна 0.\\
-Обозначение: $char K$\\
-Примеры: $char\Q=char\CC=char\R=0$, $char\Z_p=p$\\
-\textbf{Предложение.} K -- поле $\Rightarrow$ либо $char K=0$, либо $char K$ -- простое число.
+Обозначение: $\chara K$\\
+Примеры: $\chara\Q=\chara\CC=\chara\R=0$, $\chara\Z_p=p$\\
+\textbf{Предложение.} K -- поле $\Rightarrow$ либо $\chara K=0$, либо $\chara K$ -- простое число.
 \begin{proof}
-    $char K = p$, пусть $p> 0$. Так как $0\neq 1$, то $p\geqslant 2$.\\
-    Если $p=m\cdot k$, тогда $0=\underbrace{1+...+1}_{p}=\underbrace{1+...+1}_{m\cdot k}=\underbrace{1+...+1}_{m}\cdot\underbrace{(1+...+1)}_{k}$. Но мы знаем, что $\underbrace{(1+..+1)}_{k}\neq 0$ и $\underbrace{1+..+1}_{m}\neq 0$, а значит в K есть делители нуля, из чего следует, что K -- не поле. Противоречие.\\
-    $\Rightarrow$ p -- простое.
+    $\chara K = p$, пусть $p> 0$. Так как $0\neq 1$, то $p\geqslant 2$.\\
+    Если $p=m\cdot k$, тогда $0=\underbrace{1+...+1}_{p}=\underbrace{1+...+1}_{m\cdot k}=\underbrace{(1+...+1)}_{m}\cdot\underbrace{(1+...+1)}_{k}$. Но мы знаем, что $\underbrace{1+..+1}_{k}\neq 0$ и $\underbrace{1+..+1}_{m}\neq 0$, а значит в K есть делители нуля, из чего следует, что K -- не поле. Противоречие.\\
+    $\Rightarrow p$ -- простое.
 \end{proof}
-\noindent \textbf{Определение.} $K, F$ -- поля, $K\subseteq F\Rightarrow f$ называется \textbf{расширением} поля $K$.\\ ($''K\subseteq F''$ -- расширение полей)\\\\
+\noindent \textbf{Определение.} $K, F$ -- поля, $K\subseteq F\Rightarrow F$ называется \textbf{расширением} поля $K$.\\ ($''K\subseteq F''$ -- расширение полей)\\\\
 \textbf{Определение.} \textbf{Степень} расширения полей $K\subseteq F$ -- это размерность F как векторного пространства над K.\\
 Обозначение: $[F:K]$\\
 Примеры: $[\CC:\R]=2$, $[\R:\Q]=\infty$\\\\
