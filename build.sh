@@ -1,44 +1,47 @@
 #!/bin/bash
-set -e 
+set -e
+
+if [[ -r _gh_pages/.git-revision ]]; then
+    prev_revision=$(cat _gh_pages/.git-revision)
+fi
+
+function check_diff {
+    [[ -z "$CHECK_DIFF" ]] && return 0
+
+    # always build without prev revision
+    [[ -z "$prev_revision" ]] && return 0
+
+    ! git diff --quiet $prev_revision $@
+    return $?
+}
 
 function build {
-    pushd $1 > /dev/null
+    workdir=$1
+    basename=$2
 
-    if [ ! -z "$CI" ]; then
-        travis_fold start build_log || true
-        travis_time_start || true
-        echo -ne "\033[1;33m"
-        echo -n "Build $2"
-        echo -e "\033[0m"
+    if check_diff $workdir; then
+        pushd $workdir > /dev/null
+        [ -z "$CI" ] || echo "::group::Build $basename"
+        latexmk -pdf -interaction=nonstopmode -output-directory=.build -file-line-error -halt-on-error $basename.tex
+        [ -z "$CI" ] || echo "::endgroup::"
+        popd > /dev/null
+        cp $workdir/.build/$basename.pdf .pdf/
     fi
-
-    latexmk -pdf -interaction=nonstopmode -output-directory=.build -halt-on-error $2.tex
-
-    if [ ! -z "$CI" ]; then
-        travis_time_finish || true
-        travis_fold end build_log || true
-    fi
-    
-    popd > /dev/null
-
-    cp $1/.build/$2.pdf .pdf/
 }
 
 [ -d .pdf ] || mkdir .pdf
 
+# build [working directory] [.tex file base name]
 build algebra algebra_exam
-
-if [ -z "$CI" ]; then
-    build linear_algebra/source linear_algebra
-    build linear_algebra/colloquium linear_algebra_colloquium_1
-    build linear_algebra/colloquium linear_algebra_colloquium_2
-    build linear_algebra/colloquium linear_algebra_exam_definitions_2
-    build linear_algebra/colloquium only-titles
-    build mathematical_analysis mathematical_analysis_colloquium_01
-    build mathematical_analysis mathematical_analysis_colloquium_02
-    build mathematical_analysis mathematical_analysis_colloquium_03
-    build mathematical_analysis mathematical_analysis_colloquium_04
-    build mathematical_analysis mathematical_analysis_exam_01
-    build discrete_mathematics discrete_mathematics_colloquium_01
-    build discrete_mathematics discrete_mathematics_colloquium_02
-fi
+build linear_algebra/source linear_algebra
+build linear_algebra/colloquium linear_algebra_colloquium_1
+build linear_algebra/colloquium linear_algebra_colloquium_2
+build linear_algebra/colloquium linear_algebra_exam_definitions_2
+build linear_algebra/colloquium only-titles
+build mathematical_analysis mathematical_analysis_colloquium_01
+build mathematical_analysis mathematical_analysis_colloquium_02
+build mathematical_analysis mathematical_analysis_colloquium_03
+build mathematical_analysis mathematical_analysis_colloquium_04
+build mathematical_analysis mathematical_analysis_exam_01
+build discrete_mathematics discrete_mathematics_colloquium_01
+build discrete_mathematics discrete_mathematics_colloquium_02
