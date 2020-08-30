@@ -2,11 +2,10 @@
 set -e
 
 function get_commit_message {
-    if [[ -n "$TRAVIS_COMMIT_MESSAGE" ]]; then
-        echo $TRAVIS_COMMIT_MESSAGE
-    elif [[ -n "$GITHUB_SHA" ]]; then
+    if [[ -n "$GITHUB_SHA" ]]; then
         echo $(git log --format=%B -n 1 $GITHUB_SHA)
     fi
+    echo "pdf updates"
 }
 
 if [[ ! -d _gh_pages ]]; then
@@ -28,7 +27,7 @@ if git diff --quiet; then
     git config user.name "$author"
     git config user.email "$author@users.noreply.github.com"
 
-    git commit --allow-empty -m "${prev_message:=pdf updates}"
+    git commit --allow-empty -m "$commit_message"
     git push origin gh-pages
 fi
 
