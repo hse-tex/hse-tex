@@ -1,4 +1,4 @@
-name: HSE TeX build action
+name: HSE TeX build
 author: darkkeks
 runs:
   using: docker

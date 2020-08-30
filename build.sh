@@ -31,6 +31,7 @@ function build {
 
 [ -d .pdf ] || mkdir .pdf
 
+# build [working directory] [.tex file base name]
 build algebra algebra_exam
 build linear_algebra/source linear_algebra
 build linear_algebra/colloquium linear_algebra_colloquium_1
