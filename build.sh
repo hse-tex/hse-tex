@@ -32,16 +32,15 @@ function build {
 [ -d .pdf ] || mkdir .pdf
 
 # build [working directory] [.tex file base name]
-build algebra algebra_exam
-build linear_algebra/source linear_algebra
-build linear_algebra/colloquium linear_algebra_colloquium_1
-build linear_algebra/colloquium linear_algebra_colloquium_2
-build linear_algebra/colloquium linear_algebra_exam_definitions_2
-build linear_algebra/colloquium only-titles
-build mathematical_analysis mathematical_analysis_colloquium_01
-build mathematical_analysis mathematical_analysis_colloquium_02
-build mathematical_analysis mathematical_analysis_colloquium_03
-build mathematical_analysis mathematical_analysis_colloquium_04
-build mathematical_analysis mathematical_analysis_exam_01
-build discrete_mathematics discrete_mathematics_colloquium_01
-build discrete_mathematics discrete_mathematics_colloquium_02
+build course-1/algebra algebra-exam
+build course-1/linear-algebra/lectures linear-algebra
+build course-1/linear-algebra/colloquium linear-algebra-colloquium-1
+build course-1/linear-algebra/colloquium linear-algebra-colloquium-2
+build course-1/linear-algebra/colloquium linear-algebra-exam-definitions-2
+build course-1/mathematical-analysis mathematical-analysis-colloquium-1
+build course-1/mathematical-analysis mathematical-analysis-colloquium-2
+build course-1/mathematical-analysis mathematical-analysis-colloquium-3
+build course-1/mathematical-analysis mathematical-analysis-colloquium-4
+build course-1/mathematical-analysis mathematical-analysis-exam-1
+build course-1/discrete-mathematics discrete-mathematics-colloquium-1
+build course-1/discrete-mathematics discrete-mathematics-colloquium-2
