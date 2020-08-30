@@ -1,0 +1,5 @@
+name: HSE TeX build action
+author: darkkeks
+runs:
+  using: docker
+  image: Dockerfile

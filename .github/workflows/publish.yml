@@ -1,0 +1,26 @@
+name: Publish pdfs
+on: 
+  push:
+    branches:
+      master
+
+jobs:
+  publish:
+    name: Build changed docs
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with: 
+        fetch-depth: 0
+    - name: Checkout gh-pages
+      uses: actions/checkout@v2
+      with:
+        ref: 'gh-pages'
+        path: '_gh_pages'
+    - name: Build
+      uses: ./.github/actions/hse-tex-build
+      env: 
+        CHECK_DIFF: true
+    - name: Publish
+      run: ./publish.sh
