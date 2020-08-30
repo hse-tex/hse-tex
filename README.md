@@ -1,37 +1,72 @@
 # hse-tex
-Репозиторий создан для публикации затеханых материалов и еще чего-то, связанного с ВШЭ, что может показаться полезным.
+Репозиторий создан для публикации затеханых материалов для студентов Факультета компьютерных наук с образовательной программы Прикладная математика и информатика, НИУ ВШЭ, Москва.
 
-## [Алгебра - Экзамен](https://hse-tex.me/algebra_exam.pdf)
-## [Линейная алгебра - Конспект](https://hse-tex.me/linear_algebra.pdf)
-## [Линейная алгебра - Коллоквиум 1](https://hse-tex.me/linear_algebra_colloquium_1.pdf)
-## [Линейная алгебра - Коллоквиум 2](https://hse-tex.me/linear_algebra_colloquium_2.pdf)
-## [Линейная алгебра - Экзамен 2](https://hse-tex.me/linear_algebra_exam_definitions_2.pdf)
-## [Математический анализ - Коллоквиум 1](https://hse-tex.me/mathematical_analysis_colloquium_01.pdf)
-## [Математический анализ - Коллоквиум 2](https://hse-tex.me/mathematical_analysis_colloquium_02.pdf)
-## [Математический анализ - Коллоквиум 3](https://hse-tex.me/mathematical_analysis_colloquium_03.pdf)
-## [Математический анализ - Коллоквиум 4](https://hse-tex.me/mathematical_analysis_colloquium_04.pdf)
-## [Математический анализ - Экзамен 1](https://hse-tex.me/mathematical_analysis_exam_01.pdf)
-## [Дискретная математика - Коллоквиум 1](https://hse-tex.me/discrete_mathematics_colloquium_01.pdf)
-## [Дискретная математика - Коллоквиум 2](https://hse-tex.me/discrete_mathematics_colloquium_02.pdf)
+Версия этого документа доступна на сайте hse-tex.me.
 
-## Линейная алгебра
-Конспект первых лекций основан на конспекте Левиной Александры от 2017 года. Большая часть лекций написана с нуля по лекциям 2019-2020 года.
-
-В репозитории находятся материалы коллоквиумов и конспект 2019-2020 года. Конспект лекций обновляется по мере появления видео-записей лекций.
-
-## Дискретная математика
-Определения и доказательства для первого коллоквиума взяты из [конспекта](http://rubtsov.su/public/hse/2019-20/dm_lectures.pdf) Александра Александровича Рубцова.
-
-## Математический анализ
-
-Определения и доказательства были взяты с различных источников.
-
-Третий и четвертый коллоквиуму основаны на материалах Егора Косова.
+Актуальные новости публикуются в Telegram-канале [@hse-tex](https://t.me/hsetex).
 
 ---
 
-По поводу ошибок/неточностей в конспекте по линейной алгебре можно написать [@darkkeks](https://teleg.run/darkkeks), по математическому анализу/дискретной математике &mdash; [@lodthe](https://teleg.run/lodthe).
-Также можно написать в Issue.
+При нахождении опечатки можно создать [issue](https://docs.github.com/en/enterprise/2.15/user/articles/creating-an-issue) или исправить её самостоятельно в [pull request'e](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-Обратите внимание, что ваш браузер может кешировать устаревшие pdf файлы (исправления сделанные менее 10 минут назад не всегда будут видны), актуальные файлы всегда находятся [здесь](https://github.com/LoDThe/hse-tex/tree/gh-pages).
+# Навигация
 
+- [1 курс](#1-курс)
+- [2 курс](#2-курс)
+- [Благодарность](#благодарность)
+
+# Материалы
+
+## 1 курс
+
+### Алгебра
+
+- [Экзамен](https://hse-tex.me/algebra_exam.pdf)
+
+### Дискретная математика
+
+- [Коллоквиум I](https://hse-tex.me/discrete_mathematics_colloquium_01.pdf)
+- [Коллоквиум II](https://hse-tex.me/discrete_mathematics_colloquium_02.pdf)
+
+### Линейная алгебра
+
+- [Конспект](https://hse-tex.me/linear_algebra.pdf)
+- [Коллоквиум I](https://hse-tex.me/linear_algebra_colloquium_1.pdf)
+- [Коллоквиум II](https://hse-tex.me/linear_algebra_colloquium_2.pdf)
+- [Экзамен II: определения](https://hse-tex.me/linear_algebra_exam_definitions_2.pdf)
+
+### Математический анализ
+
+- [Коллоквиум I](https://hse-tex.me/mathematical_analysis_colloquium_01.pdf)
+- [Коллоквиум II](https://hse-tex.me/mathematical_analysis_colloquium_02.pdf)
+- [Коллоквиум III](https://hse-tex.me/mathematical_analysis_colloquium_03.pdf)
+- [Коллоквиум IV](https://hse-tex.me/mathematical_analysis_colloquium_04.pdf)
+- [Экзамен I](https://hse-tex.me/mathematical_analysis_exam_01.pdf)
+
+## 2 курс
+
+TBD.
+
+# Благодарность
+
+## Преподаватели
+
+Благодарность выражается
+
+- Авдееву Роману Сергеевичу за прекрасный курс по линейной алгебре
+- Косову Егору Дмитриевичу за предоставленный исходный код записей с лекций
+- Рубцову Александру Александровичу за PDF с конспектом лекций
+
+## Контрибьюторы
+
+Люди, которые помогали пополнять материалы и улучшать их качество:
+
+- [Игорь Балюк](https://github.com/lodthe)
+- [Вячеслав Бобень](https://github.com/darkkeks)
+- [Андрей Филиппов](https://github.com/AIWMUS)
+- [Денис Козлов](https://github.com/DKozl50)
+- [Сергей Лоптев](https://github.com/beastSL)
+- Даниил Казанцев
+- [Сергей Рахманов](https://github.com/shoraii)
+
+Не стесняйтесь добавлять себя в этот списке в pull request'ах.
