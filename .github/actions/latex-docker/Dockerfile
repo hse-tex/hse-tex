@@ -3,6 +3,7 @@ FROM alpine:latest
 RUN apk --no-cache add \
     bash \
     git \
+    jq \
     ghostscript \
     graphviz \
     py-pygments \
