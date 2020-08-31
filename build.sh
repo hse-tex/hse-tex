@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+if [[ ! -f documents.yml ]]; then
+    echo "No documents.yml, cant build anyting"
+    exit -1
+fi
+
 if [[ -r _gh_pages/.git-revision ]]; then
     prev_revision=$(cat _gh_pages/.git-revision)
 fi
@@ -15,32 +20,61 @@ function check_diff {
     return $?
 }
 
-function build {
-    workdir=$1
-    basename=$2
+function build_item {
+    source=$1; shift
+    target=$1; shift
 
-    if check_diff $workdir; then
+    workdir=$(dirname $source)
+    filename=$(basename $source)
+    filename_without_ext="${filename%.*}"
+
+    if check_diff $@; then
         pushd $workdir > /dev/null
-        [ -z "$CI" ] || echo "::group::Build $basename"
-        latexmk -pdf -interaction=nonstopmode -output-directory=.build -file-line-error -halt-on-error $basename.tex
+        [ -z "$CI" ] || echo "::group::Build $filename"
+        latexmk -pdf -interaction=nonstopmode -output-directory=.build -file-line-error -halt-on-error $filename
         [ -z "$CI" ] || echo "::endgroup::"
         popd > /dev/null
-        cp $workdir/.build/$basename.pdf .pdf/
+
+        mkdir -p .pdf/$(dirname $target)
+        cp $workdir/.build/$filename_without_ext.pdf .pdf/$target
     fi
 }
 
-[ -d .pdf ] || mkdir .pdf
+function build {
+    mode=$1
+    source=$2
+    target=$3
 
-# build [working directory] [.tex file base name]
-build course-1/algebra algebra-exam
-build course-1/linear-algebra/lectures linear-algebra
-build course-1/linear-algebra/colloquium linear-algebra-colloquium-1
-build course-1/linear-algebra/colloquium linear-algebra-colloquium-2
-build course-1/linear-algebra/colloquium linear-algebra-exam-definitions-2
-build course-1/mathematical-analysis mathematical-analysis-colloquium-1
-build course-1/mathematical-analysis mathematical-analysis-colloquium-2
-build course-1/mathematical-analysis mathematical-analysis-colloquium-3
-build course-1/mathematical-analysis mathematical-analysis-colloquium-4
-build course-1/mathematical-analysis mathematical-analysis-exam-1
-build course-1/discrete-mathematics discrete-mathematics-colloquium-1
-build course-1/discrete-mathematics discrete-mathematics-colloquium-2
+    if [[ $mode = "directory" ]]; then
+        build_item $source $target \
+            $(dirname $source) \
+            $(dirname $source)/*header.sty \
+            $(dirname $source)/../*header.sty \
+            $(dirname $source)/../../*header.sty \
+            $(dirname $source)/../../../*header.sty \
+            $(dirname $source)/../../../../*header.sty
+    elif [[ $mode = "single" ]]; then
+        build_item $source $target \
+            $(dirname $source)/*header.sty \
+            $(dirname $source)/../*header.sty \
+            $(dirname $source)/../../*header.sty \
+            $(dirname $source)/../../../*header.sty \
+            $(dirname $source)/../../../../../*header.sty
+    fi
+}
+
+function build_type {
+    mode=$1
+
+    keys=$(yq .$mode' | keys[]' documents.yml)
+
+    read -a source <<< $(yq .$mode[].source documents.yml -r)
+    read -a target <<< $(yq .$mode[].target documents.yml -r)
+
+    for key in $keys; do
+        build $mode ${source[$key]} ${target[$key]}
+    done
+}
+
+build_type single
+build_type directory
