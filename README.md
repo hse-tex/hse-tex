@@ -3,7 +3,7 @@
 
 Версия этого документа доступна на сайте [hse-tex.me](https://hse-tex.me/).
 
-Актуальные новости публикуются в Telegram-канале [@hse-tex](https://t.me/hsetex).
+Актуальные новости публикуются в Telegram-канале [@hsetex](https://t.me/hsetex).
 
 ---
 
@@ -21,27 +21,27 @@
 
 ### Алгебра
 
-- [Экзамен](https://hse-tex.me/algebra_exam.pdf)
+- [Экзамен](https://hse-tex.me/course-1/algebra-exam.pdf)
 
 ### Дискретная математика
 
-- [Коллоквиум I](https://hse-tex.me/discrete_mathematics_colloquium_01.pdf)
-- [Коллоквиум II](https://hse-tex.me/discrete_mathematics_colloquium_02.pdf)
+- [Коллоквиум I](https://hse-tex.me/course-1/discrete-mathematics-colloquium-1.pdf)
+- [Коллоквиум II](https://hse-tex.me/course-1/discrete-mathematics-colloquium-2.pdf)
 
 ### Линейная алгебра
 
-- [Конспект](https://hse-tex.me/linear_algebra.pdf)
-- [Коллоквиум I](https://hse-tex.me/linear_algebra_colloquium_1.pdf)
-- [Коллоквиум II](https://hse-tex.me/linear_algebra_colloquium_2.pdf)
-- [Экзамен II: определения](https://hse-tex.me/linear_algebra_exam_definitions_2.pdf)
+- [Конспект](https://hse-tex.me/course-1/linear-algebra.pdf)
+- [Коллоквиум I](https://hse-tex.me/course-1/linear-algebra-colloquium-1.pdf)
+- [Коллоквиум II](https://hse-tex.me/course-1/linear-algebra-colloquium-2.pdf)
+- [Экзамен II: определения](https://hse-tex.me/course-1/linear-algebra-exam-definitions-2.pdf)
 
 ### Математический анализ
 
-- [Коллоквиум I](https://hse-tex.me/mathematical_analysis_colloquium_01.pdf)
-- [Коллоквиум II](https://hse-tex.me/mathematical_analysis_colloquium_02.pdf)
-- [Коллоквиум III](https://hse-tex.me/mathematical_analysis_colloquium_03.pdf)
-- [Коллоквиум IV](https://hse-tex.me/mathematical_analysis_colloquium_04.pdf)
-- [Экзамен I](https://hse-tex.me/mathematical_analysis_exam_01.pdf)
+- [Коллоквиум I](https://hse-tex.me/course-1/mathematical-analysis-colloquium-1.pdf)
+- [Коллоквиум II](https://hse-tex.me/course-1/mathematical-analysis-colloquium-2.pdf)
+- [Коллоквиум III](https://hse-tex.me/course-1/mathematical-analysis-colloquium-3.pdf)
+- [Коллоквиум IV](https://hse-tex.me/course-1/mathematical-analysis-colloquium-4.pdf)
+- [Экзамен I](https://hse-tex.me/course-1/mathematical-analysis-exam-1.pdf)
 
 ## 2 курс
 
