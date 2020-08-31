@@ -68,8 +68,8 @@ function build_type {
 
     keys=$(yq .$mode' | keys[]' documents.yml)
 
-    read -a source <<< $(yq .$mode[].source documents.yml -r)
-    read -a target <<< $(yq .$mode[].target documents.yml -r)
+    mapfile -t source < <(yq .$mode[].source documents.yml -r)
+    mapfile -t target < <(yq .$mode[].target documents.yml -r)
 
     for key in $keys; do
         build $mode ${source[$key]} ${target[$key]}
