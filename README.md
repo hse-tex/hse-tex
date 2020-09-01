@@ -46,7 +46,9 @@
 
 ## 2 курс
 
-TBD.
+### Математический анализ
+
+- [Конспект](https://hse-tex.me/course-2/mathematical-analysis.pdf)
 
 # Благодарность
 
