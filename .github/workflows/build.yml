@@ -13,6 +13,6 @@ jobs:
     - name: Build
       uses: ./.github/actions/hse-tex-build
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.1.4
+      uses: hse-tex/upload-artifact@multiple-artifacts
       with:
         path: .pdf/**/*.pdf
