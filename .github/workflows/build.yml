@@ -12,3 +12,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       uses: ./.github/actions/hse-tex-build
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.1.4
+      with:
+        path: .pdf/**/*.pdf

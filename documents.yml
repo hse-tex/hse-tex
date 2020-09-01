@@ -9,8 +9,10 @@ directory:
   target: course-1/algebra-exam.pdf
 - source: course-1/linear-algebra/lectures/linear-algebra.tex
   target: course-1/linear-algebra.pdf
+- source: course-2/mathematical-analysis/lectures/mathematical-analysis.tex
+  target: course-2/mathematical-analysis.pdf
   
-# Список документов, которые полностью содержатся в одной файле (за исключением *header.sty)
+# Список документов, которые полностью содержатся в одном файле (за исключением *header.sty)
 # Только изменение source файла (или хедеров) будет приводить к пересборке документа
 single:
 - source: course-1/linear-algebra/colloquium/linear-algebra-colloquium-1.tex        
