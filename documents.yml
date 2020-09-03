@@ -1,3 +1,9 @@
+# source -- .tex файл, который надо собрать
+# target -- путь к получившемуся .pdf файлу в сссылке
+#   Например, target: course-1/algebra-exam.pdf  <=>  https://hse-tex.me/course-1/algebra-exam.pdf
+
+# Список документов, которые занимают целую директорию
+# Любое изменение файлов в той же директории, что и .tex файл, будут приводить к пересборке
 directory:
 - source: course-1/algebra/algebra-exam.tex
   target: course-1/algebra-exam.pdf
@@ -5,6 +11,9 @@ directory:
   target: course-1/linear-algebra.pdf
 - source: course-2/mathematical-analysis/lectures/mathematical-analysis.tex
   target: course-2/mathematical-analysis.pdf
+  
+# Список документов, которые полностью содержатся в одном файле (за исключением *header.sty)
+# Только изменение source файла (или хедеров) будет приводить к пересборке документа
 single:
 - source: course-1/linear-algebra/colloquium/linear-algebra-colloquium-1.tex        
   target: course-1/linear-algebra-colloquium-1.pdf
