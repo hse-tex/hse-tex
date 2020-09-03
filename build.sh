@@ -10,6 +10,18 @@ if [[ -r _gh_pages/.git-revision ]]; then
     prev_revision=$(cat _gh_pages/.git-revision)
 fi
 
+function get_dependencies {
+    mode=$1
+    source=$2
+    
+    case "$mode" in
+        single) arg="-s" ;;
+        directory) arg="-d" ;;
+    esac
+
+    python3 get-build-dependencies.py $arg $source
+}
+
 function check_diff {
     [[ -z "$CHECK_DIFF" ]] && return 0
 
@@ -21,6 +33,7 @@ function check_diff {
 }
 
 function build_item {
+    mode=$1; shift
     source=$1; shift
     target=$1; shift
 
@@ -28,7 +41,7 @@ function build_item {
     filename=$(basename $source)
     filename_without_ext="${filename%.*}"
 
-    if check_diff $@; then
+    if check_diff $(get_dependencies $mode $source); then
         pushd $workdir > /dev/null
         [ -z "$CI" ] || echo "::group::Build $filename"
         latexmk -pdf -interaction=nonstopmode -output-directory=.build -file-line-error -halt-on-error $filename
@@ -40,39 +53,14 @@ function build_item {
     fi
 }
 
-function build {
-    mode=$1
-    source=$2
-    target=$3
-
-    if [[ $mode = "directory" ]]; then
-        build_item $source $target \
-            $(dirname $source) \
-            $(dirname $source)/*header.sty \
-            $(dirname $source)/../*header.sty \
-            $(dirname $source)/../../*header.sty \
-            $(dirname $source)/../../../*header.sty \
-            $(dirname $source)/../../../../*header.sty
-    elif [[ $mode = "single" ]]; then
-        build_item $source $target \
-            $(dirname $source)/*header.sty \
-            $(dirname $source)/../*header.sty \
-            $(dirname $source)/../../*header.sty \
-            $(dirname $source)/../../../*header.sty \
-            $(dirname $source)/../../../../../*header.sty
-    fi
-}
-
 function build_type {
     mode=$1
 
-    keys=$(yq .$mode' | keys[]' documents.yml)
+    jq -c ".$mode[]" <(yq . documents.yml) | while read item; do
+        source=$(jq .source -r <<< $item)
+        target=$(jq .target -r <<< $item)
 
-    mapfile -t source < <(yq .$mode[].source documents.yml -r)
-    mapfile -t target < <(yq .$mode[].target documents.yml -r)
-
-    for key in $keys; do
-        build $mode ${source[$key]} ${target[$key]}
+        build_item $mode $source $target
     done
 }
 
