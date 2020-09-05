@@ -18,12 +18,14 @@ $S_N = \sum_{n = 1}^{N} a_n$ -- частичная сумма, сумма ряд
     \begin{enumerate}
         \item $\sum_{n = 1}^{\infty} 0 = 0 + 0 + \dots + 0 = 0$
         \item $\sum_{n = 1}^{\infty} 1 = 1 + 1 + \dots + 1 = \infty$
-        \item $\sum_{n = 1}^{\infty} (-1)^{n} = -1 + 1 + \dots$ не существует
+        \item $\sum_{n = 1}^{\infty} (-1)^{n} = -1 + 1 - \dots$ не существует
     \end{enumerate}
 \end{example}
 
 \begin{definition}
     Если ряд сходится, т.е. $S_N \rightarrow S$ при $N \rightarrow \infty$, то $S - S_N = r_N$ -- остаток ряда
+
+    $r_N = \sum_{n = N + 1}^{\infty} a_n$, $r_N \rightarrow 0$ при $N \rightarrow \infty$
 \end{definition}
 
 \subsection{Необходимое условие сходимости}
@@ -35,7 +37,7 @@ $S_N = \sum_{n = 1}^{N} a_n$ -- частичная сумма, сумма ряд
 \end{proof}
 \subsection{Критерий Коши}
 \begin{definition}
-    ${a_n}$ называется фундаментальной, если $\forall \epsilon > 0$  $\exists N: \forall n > m > N, |S_n - S_m| < \epsilon$
+    ${a_n}$ называется фундаментальной, если $\forall \epsilon > 0$  $\exists N: \forall n > m > N \implies |S_n - S_m| < \epsilon$
 \end{definition}
 \begin{theorem}
     ${S_n}$ -- сходится $\Leftrightarrow {S_n}$ -- фундаментальная
@@ -93,7 +95,7 @@ $|a_{m + 1} + a_{m + 2} + \dots + a_{n}| < \epsilon$
     Рассмотрим ряд $\sum_{n = 0}^{\infty} z^n = 1 + z + z ^ 2 + \dots$
     
 
-    $S_N = 1 + z + z^2 + \dots + z^n = \dfrac{1 - z^{N + 1}}{1 - z}$
+    $S_N = 1 + z + z^2 + \dots + z^N = \dfrac{1 - z^{N + 1}}{1 - z}$
 
     Ряд сходится $\Leftrightarrow |z| < 1$
     
@@ -126,7 +128,7 @@ $S_n \uparrow$, т.к. $S_{n + 1} \geq S_{n}$
 	
 	\item Сравнение отношений.
 	
-	$\frac{a_{n+1}}{a_n} \leqslant \frac{b_{n+1}}{b_n}$
+	$\frac{a_{n+1}}{a_n} \leqslant \frac{b_{n+1}}{b_n}$ при всех $n \geqslant n_0$
 	
 	Ряд $\sum b_n$ cходится $\implies$ ряд $\sum a_n$ сходится
 	
@@ -151,9 +153,9 @@ $S_n \uparrow$, т.к. $S_{n + 1} \geq S_{n}$
 		
 	$c = \lim_{n \to \infty} \frac{a_n}{b_n} > 0$
 	
-	$\forall \epsilon\ \exists n_0:\ c - \epsilon \leqslant \frac{a_n}{b_n} \leqslant c + \epsilon$, при $n \geqslant n_0$
+	$\forall \epsilon\ \exists n_0:\ c - \epsilon \leqslant \frac{a_n}{b_n} \leqslant c + \epsilon$, $\forall n \geqslant n_0$
 	
-	Возьмём $c - \epsilon > 0 \implies (c - \epsilon)\cdot b_n \leqslant a_n \leqslant (c + \epsilon)\cdot b_n$
+	Возьмём $\epsilon : c - \epsilon > 0 \implies (c - \epsilon)\cdot b_n \leqslant a_n \leqslant (c + \epsilon)\cdot b_n$
 	
 	Сходимость следует из правой части неравенства, а расходимость из левой. 
 	\end{proof}
@@ -170,24 +172,24 @@ $S_n \uparrow$, т.к. $S_{n + 1} \geq S_{n}$
 \begin{proof}~
 	
 	\begin{enumerate}
-		\item Если ряд $\sum c_n$ расходится, тогда пусть $S_N = \sum_{n=1}^{N} c_n \to \infty, S_0=0$, то ряд $\sum_{n=1}^{\infty} (\sqrt{S_n} - \sqrt{S_{n - 1}})$, где $\sqrt{S_n} - \sqrt{S_{n - 1}} = a_n$ расходится, так как
+		\item Если ряд $\sum c_n$ расходится, то пусть $S_N = \sum_{n=1}^{N} c_n \to \infty, S_0=0$, тогда ряд $\sum_{n=1}^{\infty} (\underbrace{\sqrt{S_n} - \sqrt{S_{n - 1}}}_{a_n})$ расходится так как:
 		
 		\begin{enumerate}
-			\item $\sum_{n=1}^{N} (\sqrt{S_n} - \sqrt{S_{n-1}}) = \sqrt{S_N} - \sqrt{S_0} = \sqrt{S_N} \to \sqrt{S}$
+			\item $\sum_{n=1}^{N} (\sqrt{S_n} - \sqrt{S_{n-1}}) = \sqrt{S_1} - \sqrt{S_0} + \sqrt{S_2} - \sqrt{S_1} + \dots + \sqrt{S_N} - \sqrt{S_{N-1}} = \sqrt{S_N} - \sqrt{S_0} = \sqrt{S_N} \to \sqrt{S}$
 			
 			\item $\frac{\sqrt{S_n} - \sqrt{S_{n-1}}}{c_n} = \frac{\sqrt{S_n} - \sqrt{S_{n-1}}}{S_n - S_{n - 1}} = \frac{1}{\sqrt{S_n} + \sqrt{S_{n - 1}}} \implies \frac{a_n}{c_n} \to 0$
 		\end{enumerate}
 		
-		Ряд расходится, но по предположению сходится, получили противоречие
+		Ряд расходится, но по предположению сходится, получили противоречие.
 		
-		\item Если ряд $\sum_{n=1}^{\infty} c_n$ сходится, то рассмотрим $r_n$ - его $n$-ный остаток, то ряд $\sum_{n=1}^{\infty} (\sqrt{r_{n-1}} - \sqrt{r_n})$, где $\sqrt{r_{n-1}} - \sqrt{r_n} = b_n, r_0 = S = \sum_{n = 1}^{\infty} c_n$ - сходится, так как
+		\item Если ряд $\sum_{n=1}^{\infty} c_n$ сходится, то рассмотрим $r_n$ - его $n$-ный остаток, тогда ряд $\sum_{n=1}^{\infty} (\underbrace{\sqrt{r_{n-1}} - \sqrt{r_n}}_{b_n})$, $r_0 = S = \sum_{n = 1}^{\infty} c_n$ сходится, так как:
 		
 		\begin{enumerate}
-			\item $\sum_{n=1}^{\infty} (\sqrt{r_{n-1}} - \sqrt{r_n}) = \sqrt{r_0} - \sqrt{r_1} + \sqrt{r_1} - \sqrt{r_2} + ... = \sqrt{r_0} - \sqrt{r_n} = \sqrt{S} - \sqrt{r_n} \to \sqrt{S}$
+			\item $\sum_{n=1}^{N} (\sqrt{r_{n-1}} - \sqrt{r_n}) = \sqrt{r_0} - \sqrt{r_1} + \sqrt{r_1} - \sqrt{r_2} + \dots + \sqrt{r_{N-1}} - \sqrt{r_{N}}= \sqrt{r_0} - \sqrt{r_N} = \sqrt{S} - \sqrt{r_N} \to \sqrt{S}$, т.к. $r_N \to 0$
 			
-			\item $\frac{\sqrt{r_{n-1}} - \sqrt{r_n}}{c_n} = \frac{\sqrt{r_{n-1}} - \sqrt{r_n}}{r_{n-1} - r_n} = \frac{1}{\sqrt{r_{n-1}} + \sqrt{r_n}} \to \infty$
+			\item $\frac{\sqrt{r_{n-1}} - \sqrt{r_n}}{c_n} = \frac{\sqrt{r_{n-1}} - \sqrt{r_n}}{r_{n-1} - r_n} = \frac{1}{\sqrt{r_{n-1}} + \sqrt{r_n}} \to \infty$, т.к. $\sqrt{r_{n-1}} \to 0$ и $\sqrt{r_n} \to 0$
 		\end{enumerate}
 		
-		Ряд сходится, но по предположению расходится, получили противоречие.
+        Ряд сходится, но по предположению расходится, получили противоречие.
 	\end{enumerate}
 \end{proof}
