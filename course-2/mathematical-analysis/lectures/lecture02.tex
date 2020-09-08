@@ -1,0 +1,147 @@
+\section{Лекция 2 - 08.09.2020 - Положительные ряды}
+\subsection{Признак Лобачевского-Коши}
+\begin{proposal}
+    Пусть $a_n > 0$ и $a_n \downarrow$
+
+    Тогда ряды $\sum a_n$ и $\sum 2^n \cdot a_{2^n}$ ведут себя одинаково
+\end{proposal}
+\begin{proof}
+    $a_1 + (a_2) + (a_3 + a_4) + (a_5 + \dots + a_8) + \dots$
+
+    $a_2 \leq a_1$
+    
+    $a_2 \leq a_2$
+
+    
+    $a_3 + a_4 \leq 2a_2$
+    
+    $a_3 + a_4 \geq 2a_4$
+
+    $a_5 + \dots + a_8 \leq 4a_4$
+
+    $a_5 + \dots + a_8 \geq 4a_8$
+
+
+    $\dots$
+
+    $a_1 + \sum_{n=0}^{m - 1} 2^n a_{2n} \leq \sum_{n = 1}^{2^m} a_n \leq a_1 + \dfrac{1}{2} \sum_{n=0}^{m} 2^n a_{2n}$
+
+\end{proof}
+
+\begin{example}
+    $\sum_{n=1}^{\infty} \dfrac{1}{n^p}$ -- обобщённый гармонический ряд, $p>0$
+
+    $a_n = \dfrac{1}{n^p} \downarrow$
+    $a_{2^n} = \dfrac{1}{(2^n)^p}$
+
+    $\sum_{n=1}^{\infty} 2^n \cdot \dfrac{1}{(2^n)^p} = \sum_{n=1}^{\infty} \left(\dfrac{1}{2^{p - 1}}\right)^n$
+
+    Это сумма геометрической прогрессии со знаменателем $q = \dfrac{1}{2^{p - 1}}$
+
+    $q < 1 \iff p > 1$ -- ряды сходятся, иначе расходятся
+\end{example}
+
+\begin{example}
+    $\sum_{n=2}^{\infty} \dfrac{1}{n \cdot \ln^p{n}}, p > 0$
+
+    $\dfrac{1}{n \cdot \ln^p{n}} \downarrow, a_{2^n} = \dfrac{1}{2^n \cdot \ln^p{2^n}} = \dfrac{1}{2^n \cdot n^p \cdot \ln^p{2}}$
+
+    $\sum_{n=1}^{\infty} 2^n \cdot a_{2^n} = \sum_{n=1}^{\infty} 2^n \dfrac{1}{2^n \cdot n^p \cdot \ln^p{2}} = \dfrac{1}{\ln^p 2} \cdot \sum_{n=1}^{\infty} \dfrac{1}{n^p}$
+\end{example}
+
+\subsection{Теорема Штольца и оценка частичных сумм гармонического ряда}
+
+$\sum_{n=1}^{\infty} \dfrac{1}{n} = 1 + \dfrac{1}{2} + \dfrac{1}{3} + \dots$
+
+$A_n = 1 + \dfrac{1}{2} + \dots + \dfrac{1}{n - 1} - \ln n$
+
+$B_n = 1 + \dfrac{1}{2} + \dots + \dfrac{1}{n} - \ln n$
+
+$A_n \uparrow, B_n \downarrow$
+
+$B_n > A_n$
+
+$B_1 > B_2 > \dots > B_n > B_n > \dots A_1 \forall n \in \NN$
+
+$B_n - A_n = \dfrac{1}{n} \to 0$ 
+
+Значит, $\exists \lim A_n = \lim B_n = \gamma \approx 0.5772\dots$ -- число Эйлера-Маскерони
+
+$$ \sum_{n=1}^{N} \dfrac{1}{n} = 1 + \dfrac{1}{2} + \dots + \dfrac{1}{n} = \ln N + \gamma + o(1) $$
+
+\begin{theorem}
+(Штольца.) Если $p_n, q_n \to 0, q_n \downarrow$ и $\exists lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$, то
+$\lim \dfrac{p_n}{q_n} = \lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$
+\end{theorem}
+
+\begin{example}
+$\lim \dfrac{1 + \dfrac{1}{2} + \dots + \dfrac{1}{n} - \ln N - \gamma}{\dfrac{1}{n}} = \lim \dfrac{\dfrac{1}{n + 1} - \ln(n + 1) + \ln n}{\dfrac{1}{n + 1} - \dfrac{1}{n}} =
+\lim \dfrac{\dfrac{1}{n} \cdot \dfrac{1}{1 + \dfrac{1}{n}} - \ln(1 + \dfrac{1}{n})}{\dfrac{1}{n}(\dfrac{1}{1 + \dfrac{1}{n}} - 1)}$
+
+$1 + \dfrac{1}{n} = 1 - \dfrac{1}{n} + \dfrac{1}{n^2} + o\left(\dfrac{1}{n^2}\right)$
+
+$\ln(1 + \dfrac{1}{n}) = \dfrac{1}{n} - \dfrac{1}{2n^2} + o\left(\dfrac{1}{n^2}\right)$
+
+Получаем, что $= \lim \dfrac{-\dfrac{1}{2n^2}}{-\dfrac{1}{n^2}} = \dfrac{1}{2}$
+
+$$ 1 + \dfrac{1}{2} + \dots + \dfrac{1}{n} = \ln n + \gamma + \dfrac{1}{2n} + o\left(\dfrac{1}{n^2}\right) $$
+\end{example}
+
+\subsection{Признак Даламбера и радикальный признак Коши}
+
+\begin{theorem}
+Признак Дарамбера. Пусть $a_n > 0$. $\overline{\lim} \dfrac{a_{n+1}}{a_n} < 1 \implies $ ряд $\sum a_n$ сходится.
+$\underline{\lim} \dfrac{a_{n+1}}{a_n} > 1 \implies $ ряд $\sum a_n$ расходится.
+\end{theorem}
+
+\begin{theorem}
+Радикальный признак Коши. Пусть $a_n \geq 0$. $\overline{\lim} \sqrt[n]{a_n} < 1 \implies$ ряд $\sum a_n$ сходится. $\overline{\lim} \sqrt[n]{a_n} > 1 \implies$ ряд $\sum a_n$ расходится.
+\end{theorem}
+
+\begin{example}
+$\sum_{n=1}^{\infty} \dfrac{p^{n}}{n!}$
+
+$a_n = \dfrac{p^n}{n!}, \dfrac{a_{n+1}}{a_n} = \dfrac{p^{n+1}}{(n+1)!} \cdot \dfrac{n!}{p^n} = \dfrac{p}{n + 1} \to 0 \implies $ ряд сходится
+
+$\sqrt[n]{a_n} = \sqrt[n]{\dfrac{p^n}{n!}} = \dfrac{p}{\sqrt[n]{n!}} \to 0 \implies$ ряд сходится.
+\end{example}
+
+\subsection{Радикальный признак сильнее признака Даламбера}
+
+Пусть $a_n > 0$. Тогда:
+
+$$ \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}\dfrac{a_{n+1}}{a_n}$$
+
+$\overline{\lim}\dfrac{a_{n+1}}{a_n} < 1 \implies \overline{\lim}{\sqrt[n]{a_n}} < 1$
+
+$\underline{\lim}\dfrac{a_{n+1}}{a_n} > 1 \implies \overline{\lim}{\sqrt[n]{a_n}} < 1$
+
+\subsection{Признак Гаусса}
+
+Если $\exists \delta > 0, p$:$ \dfrac{a_{n+1}}{a_n} = 1 - \dfrac{p}{n} + O\left(\dfrac{1}{n^{1 + \delta}}\right) $
+то:
+
+$p \leq 1 \implies$ ряд $\sum a_n$ сходится
+
+$p > 1 \implies$ ряд $\sum a_n$ расходится
+
+\subsection{Сравнение с интегралом}
+
+Рассмотрим $f(x) \downarrow$ при $x \geq n_0 - 1$ и ряд $\sum_{n=n_0}^{\infty} a_n$, где $a_n = f(n)$ 
+$$f(n + t) \leq a_n \leq f(n - 1 + t), t \in [0; 1]$$
+
+$$\int_{n}^{n+1} f(x)dx \leq a_n \leq \int_{n-1}^{n} f(x)dx$$
+
+$$\int_{n_0}^{N+1} f(x)dx \leq \sum_{n=n_0}^{N} a_n \leq \int_{n_0-1}^{N} f(x)dx$$
+
+$\implies \sum a_n$ ведёт себя как несобственный интеграл $\int^{\infty}f(x)dx$
+
+\subsection{Улучшение сходимости ряда}
+
+$S = \sum_{n=1}^{\infty} \dfrac{1}{n^2 + 2} \approx \sum_{n=1}^{\infty} \dfrac{1}{n^2}$
+
+$\sum_{n=1}^{\infty} \dfrac{1}{n(n + 1)} = 1, \sum_{n=1}^{\infty} \dfrac{1}{n(n + 1)} \approx \sum_{n=1}^{\infty} \dfrac{1}{n^2}$
+
+$\sum_{n=1}^{\infty} \left(\dfrac{1}{n^2 + 2} - \dfrac{1}{n(n + 1)}\right) \approx \sum_{n=1}^{\infty} \dfrac{1}{n^3}$
+
+
