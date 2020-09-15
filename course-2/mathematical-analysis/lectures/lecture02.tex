@@ -8,7 +8,7 @@
 \begin{proof}
     $a_1 + (a_2) + (a_3 + a_4) + (a_5 + \dots + a_8) + \dots$
 
-	$a_2 \geq a_2 \geq a_1$
+	$a_1 \geq a_2 \geq a_2$
 	
 	$2a_2 \geq a_3 + a_4 \geq 2a_4$
 	
@@ -16,7 +16,7 @@
 
     $\vdots$
 
-    $a_1 + \sum_{n=0}^{m - 1} 2^n a_{2n} \geq \sum_{n = 1}^{2^m} a_n \geq a_1 + \dfrac{1}{2} \sum_{n=0}^{m} 2^n a_{2n}$
+    $a_1 + \sum_{n=0}^{m - 1} 2^n a_{2^n} \geq \sum_{n = 1}^{2^m} a_n \geq a_1 + \dfrac{1}{2} \sum_{n=1}^{m} 2^n a_{2^n}$
 
 \end{proof}
 
@@ -26,7 +26,7 @@
     $a_n = \dfrac{1}{n^p} \downarrow$\qquad
     $a_{2^n} = \dfrac{1}{\left(2^n\right)^p}$
 
-    $\sum_{n=1}^{\infty} 2^n \cdot \dfrac{1}{\left(2^n\right)^p} = \sum_{n=1}^{\infty} \left(\dfrac{1}{2^{p - 1}}\right)^n$
+    $\sum_{n=1}^{\infty} 2^n \cdot \dfrac{1}{\left(2^n\right)^p} = \sum_{n=1}^{\infty} \dfrac{1}{\left(2^n\right)^{p-1}} = \sum_{n=1}^{\infty} \left(\dfrac{1}{2^{p - 1}}\right)^n$
 
     Это сумма геометрической прогрессии со знаменателем $q = \dfrac{1}{2^{p - 1}}$
 
@@ -56,7 +56,7 @@ $A_n \uparrow, B_n \downarrow$
 
 $B_n > A_n$
 
-$B_1 > B_2 > \dots > B_n > A_n > A_{n-1} > \dots > A_1,\; \forall n \in \NN$
+$B_1 > \dots > B_{n-1}> B_n > A_n > A_{n-1} > \dots > A_1,\; \forall n \in \NN$
 
 $B_n - A_n = \dfrac{1}{n} \to 0$ 
 
@@ -74,13 +74,17 @@ $\lim \dfrac{p_n}{q_n} = \lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$
 $\lim \dfrac{1 + \dfrac{1}{2} + \dots + \dfrac{1}{n} - \ln n - \gamma}{\dfrac{1}{n}} = \lim \dfrac{\dfrac{1}{n + 1} - \ln(n + 1) + \ln n}{\dfrac{1}{n + 1} - \dfrac{1}{n}} =
 \lim \dfrac{\dfrac{1}{n} \cdot \dfrac{1}{1 + \frac{1}{n}} - \ln{\left(1 + \dfrac{1}{n}\right)}}{\dfrac{1}{n} \cdot \left(\dfrac{1}{1 + \frac{1}{n}} - 1\right)} \overset{\heartsuit}{=}$
 
-$1 + \dfrac{1}{n} = 1 - \dfrac{1}{n} + \dfrac{1}{n^2} + o\left(\dfrac{1}{n^2}\right)$
+$\dfrac{1}{1 + \dfrac{1}{n}} = 1 - \dfrac{1}{n} + \dfrac{1}{n^2} + o\left(\dfrac{1}{n^2}\right)$
 
 $\ln\left(1 + \dfrac{1}{n}\right) = \dfrac{1}{n} - \dfrac{1}{2n^2} + o\left(\dfrac{1}{n^2}\right)$
 
 Получаем, что $\overset{\heartsuit}{=} \lim \dfrac{-\dfrac{1}{2n^2}}{-\dfrac{1}{n^2}} = \dfrac{1}{2}$
 
-$$ 1 + \dfrac{1}{2} + \dots + \dfrac{1}{n} = \ln n + \gamma + \dfrac{1}{2n} + o\left(\dfrac{1}{n^2}\right) $$
+$$ 1 + \dfrac{1}{2} + \dots + \dfrac{1}{n} = \ln n + \gamma + \underbrace{\dfrac{1}{2n} + o\left(\dfrac{1}{n}\right)}_{o(1)} $$
+
+Так как 
+
+$$ \dfrac{1 + \dfrac{1}{2} + \dots + \dfrac{1}{n} - \ln n - \gamma - \dfrac{1}{2n}}{\dfrac{1}{n}} \to 0 $$
 
 \subsection{Признак Даламбера и радикальный признак Коши}
 
@@ -101,11 +105,11 @@ $\underline{\lim} \dfrac{a_{n+1}}{a_n} > 1 \implies $ ряд $\sum a_n$ расх
 \end{theorem}
 
 \begin{example}
-$\sum_{n=1}^{\infty} \dfrac{p^{n}}{n!}$
+$\sum_{n=1}^{\infty} \dfrac{p^{n}}{n!}, \ \ \ p > 0$
 
-$a_n = \dfrac{p^n}{n!},\quad \dfrac{a_{n+1}}{a_n} = \dfrac{p^{n+1}}{(n+1)!} \cdot \dfrac{n!}{p^n} = \dfrac{p}{n + 1} \to 0 \implies $ ряд сходится по признаку Даламбера.
+$a_n = \dfrac{p^n}{n!},\quad \dfrac{a_{n+1}}{a_n} = \dfrac{p^{n+1}}{(n+1)!} \cdot \dfrac{n!}{p^n} = \dfrac{p}{n + 1} \to 0 < 1 \implies $ ряд сходится по признаку Даламбера.
 
-$\sqrt[n]{a_n} = \sqrt[n]{\dfrac{p^n}{n!}} = \dfrac{p}{\sqrt[n]{n!}} \to 0 \implies$ ряд сходится по радикальному признаку Коши.
+$\sqrt[n]{a_n} = \sqrt[n]{\dfrac{p^n}{n!}} = \dfrac{p}{\sqrt[n]{n!}} \to 0 < 1 \implies$ ряд сходится по радикальному признаку Коши. ($ \sqrt[n]{n!} \to \infty$)
 \end{example}
 
 \subsection{Радикальный признак сильнее признака Даламбера}
@@ -118,9 +122,10 @@ $$ \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \l
 
 Если $\underline{\lim}\dfrac{a_{n+1}}{a_n} > 1 \implies \overline{\lim}{\sqrt[n]{a_n}} < 1$
 
-Если $\exists \lim \frac{a_{n+1}}{a_n}$, то $\lim \frac{a_{n+1}}{a_n} = \overline{\lim} \frac{a_{n+1}}{a_n} \Rightarrow \exists \lim \sqrt[n]{a_n} = \lim \frac{a_{n+1}}{a_n}$
+Если $\exists \lim \frac{a_{n+1}}{a_n}$, то $\overline{\lim} \frac{a_{n+1}}{a_n} = \underline{\lim} \frac{a_{n+1}}{a_n} \Rightarrow \exists \lim \sqrt[n]{a_n} = \lim \frac{a_{n+1}}{a_n}$
 
 \subsection{Признак Гаусса}
+(Сравнение с $\sum \dfrac{1}{n^p}$)
 
 Если $\exists \delta > 0,\; p$:$ \dfrac{a_{n+1}}{a_n} = 1 - \dfrac{p}{n} + O\left(\dfrac{1}{n^{1 + \delta}}\right) $
 то:
@@ -134,9 +139,9 @@ $p > 1 \implies$ ряд $\sum a_n$ расходится.
 Рассмотрим $f(x) \downarrow$ при $x \geq n_0 - 1$ и ряд $\sum_{n=n_0}^{\infty} a_n$, где $a_n = f(n)$ 
 $$f(n + t) \leq a_n \leq f(n - 1 + t), t \in [0; 1]$$
 
-$$\int_{n}^{n+1} f(x)dx \leq a_n \leq \int_{n-1}^{n} f(x)dx$$
+$$\int_{0}^{1} dt : \ \ \ \ \int_{n}^{n+1} f(x)dx \leq a_n \leq \int_{n-1}^{n} f(x)dx$$
 
-$$\int_{n_0}^{N+1} f(x)dx \leq \sum_{n=n_0}^{N} a_n \leq \int_{n_0-1}^{N} f(x)dx$$
+$$\sum_{n=n_0}^{\infty} : \ \ \ \ \int_{n_0}^{N+1} f(x)dx \leq \sum_{n=n_0}^{N} a_n \leq \int_{n_0-1}^{N} f(x)dx$$
 
 $\implies \sum a_n$ ведёт себя так же как несобственный интеграл $\int^{\infty}f(x)dx$
 
