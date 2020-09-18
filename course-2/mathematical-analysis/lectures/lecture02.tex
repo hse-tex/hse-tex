@@ -101,7 +101,7 @@ $\underline{\lim} \dfrac{a_{n+1}}{a_n} > 1 \implies $ ряд $\sum a_n$ расх
 
  $\overline{\lim} \sqrt[n]{a_n} < 1 \implies$ ряд $\sum a_n$ сходится.
  
-  $\overline{\lim} \sqrt[n]{a_n} > 1 \implies$ ряд $\sum a_n$ расходится.
+  $\underline{\lim} \sqrt[n]{a_n} > 1 \implies$ ряд $\sum a_n$ расходится.
 \end{theorem}
 
 \begin{example}
@@ -120,7 +120,7 @@ $$ \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \l
 
 Если $\overline{\lim}\dfrac{a_{n+1}}{a_n} < 1 \implies \overline{\lim}{\sqrt[n]{a_n}} < 1$
 
-Если $\underline{\lim}\dfrac{a_{n+1}}{a_n} > 1 \implies \overline{\lim}{\sqrt[n]{a_n}} < 1$
+Если $\underline{\lim}\dfrac{a_{n+1}}{a_n} > 1 \implies \underline{\lim} \sqrt[n]{a_n} > 1$
 
 Если $\exists \lim \frac{a_{n+1}}{a_n}$, то $\overline{\lim} \frac{a_{n+1}}{a_n} = \underline{\lim} \frac{a_{n+1}}{a_n} \Rightarrow \exists \lim \sqrt[n]{a_n} = \lim \frac{a_{n+1}}{a_n}$
 
@@ -130,9 +130,9 @@ $$ \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \l
 Если $\exists \delta > 0,\; p$:$ \dfrac{a_{n+1}}{a_n} = 1 - \dfrac{p}{n} + O\left(\dfrac{1}{n^{1 + \delta}}\right) $
 то:
 
-$p \leq 1 \implies$ ряд $\sum a_n$ сходится.
+$p > 1 \implies$ ряд $\sum a_n$ сходится.
 
-$p > 1 \implies$ ряд $\sum a_n$ расходится.
+$p \leq 1 \implies$ ряд $\sum a_n$ расходится.
 
 \subsection{Сравнение с интегралом}
 
