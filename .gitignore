@@ -1,4 +1,11 @@
 .build
 .pdf
+.aux
+.fls
+.log
+.out
+.gz
+.toc
+.fdb_latexmk
 *-converted-to.pdf
 _gh_pages
