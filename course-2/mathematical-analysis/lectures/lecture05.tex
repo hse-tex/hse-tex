@@ -19,7 +19,7 @@
       \end{proof}
 \item $-\infty \leq a < b \leq +\infty$, рассмотрим $D= (a; b)$, $D = [a;b]$
 
-      Пусть $f_n$ дифференцируемы на $D$, $f'_n \to^D g, \exists c \in D: \{f_n(c)\}$ сход
+      Пусть $f_n$ дифференцируемы на $D$, $f'_n \overset{D}{\rightrightarrows} g, \exists c \in D: \{f_n(c)\}$ сход
 
       Тогда $\exists f: f_n \to f$ (причем, если $D$ огр., то сходимость равномерная)
 
@@ -28,7 +28,7 @@
       $(\lim_{n \to \infty} f_n(x))' = \lim_{n \to \infty} f'_n(x)$
 \item $-\infty < a < b < +\infty$, $D=[a;b]$
       
-      Пусть $f_n$ непрерывны на $D$, $f_n \to^D f$ $(\implies f \text{непрерывна на} D)$
+      Пусть $f_n$ непрерывны на $D$, $f_n \overset{D}{\rightrightarrows} f$ $(\implies f \text{непрерывна на} D)$
 
       Тогда $\int_{a}^{x} f_n(t)dt \to^{D} \int_{a}^{x} f(t)dt$
 \end{enumerate}
@@ -44,12 +44,12 @@ $D \subseteq \RR$, $a_n: D \to R$
 
 \subsection{Необходимое условие равномерной сходимости}
 
-Если $\sum_{n=1}^{\infty} a_n(x)$ равномерно сходится к сумме $S(x)$, то $a_n \to^D 0$
+Если $\sum_{n=1}^{\infty} a_n(x)$ равномерно сходится к сумме $S(x)$, то $a_n \overset{D}{\rightrightarrows} 0$
 
 \begin{proof}
 $S_n(x) = a_1(x) + \dots + a_n(x)$, $a_n(x) = S_n(x) - S_{n-1}(x)$
 
-$S_n \to^D S \implies a_n \to^D (S - S) = 0$
+$S_n \overset{D}{\rightrightarrows} S \implies a_n \overset{D}{\rightrightarrows} (S - S) = 0$
 \end{proof}
 
 \begin{example}
@@ -100,7 +100,7 @@ $\left|\dfrac{x}{n + 1}\right| \leq q$. Пусть $n_0: \dfrac{r}{n_0 + 1} < 1$
 Знакочередующийся функциональный ряд: $\sum_{n=1}^{\infty} (-1)^n \cdot u_n(x)$, $u_n(x) \geq 0$ на $D$.
 
 \begin{theorem}
-(Признак Лейбница) Если $u_n(x) \downarrow_{(n)}$ и $u_n \to^D 0$, то ряд сходится равномерно.
+(Признак Лейбница) Если $u_n(x) \downarrow_{(n)}$ и $u_n \overset{D}{\rightrightarrows} 0$, то ряд сходится равномерно.
 \end{theorem}
 
 \begin{example}
@@ -112,7 +112,7 @@ $\sum \dfrac{(-1)^n}{(n + x)^p} \downarrow_{(n)}$, $|u_n(x)| \leq \dfrac{1}{n^p}
 Рассмотрим ряд $\sum_{n=1}^{\infty} a_n(x) \cdot b_n{x}$
 
 \begin{theorem}
-(Признак Дирихле) Если $a_n(x) \downarrow_{(n)}$ и $a_n \to^D 0$, а $||b_1 + \dots + b_n|| \leq C$ $\forall n$, то ряд равномерно сходится на $D$.
+(Признак Дирихле) Если $a_n(x) \downarrow_{(n)}$ и $a_n \overset{D}{\rightrightarrows} 0$, а $||b_1 + \dots + b_n|| \leq C$ $\forall n$, то ряд равномерно сходится на $D$.
 \end{theorem}
 
 \begin{theorem}
