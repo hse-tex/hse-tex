@@ -26,7 +26,10 @@ function check_diff {
     [[ -z "$CHECK_DIFF" ]] && return 0
 
     # always build without prev revision
-    [[ -z "$prev_revision" ]] && return 0
+    if [[ -z "$prev_revision" ]]; then
+        echo "Could not find previous revision"
+        return 0
+    fi
 
     ! git diff --quiet $prev_revision $@
     return $?
@@ -36,21 +39,25 @@ function build_item {
     mode=$1; shift
     source=$1; shift
     target=$1; shift
+    
+    echo Trying to build $source into $target with mode $mode
 
     workdir=$(dirname $source)
     filename=$(basename $source)
     filename_without_ext="${filename%.*}"
 
+    [ -z "$CI" ] || echo "::group::Build $filename"
     if check_diff $(get_dependencies $mode $source); then
         pushd $workdir > /dev/null
-        [ -z "$CI" ] || echo "::group::Build $filename"
         latexmk -pdf -interaction=nonstopmode -output-directory=.build -file-line-error -halt-on-error $filename
-        [ -z "$CI" ] || echo "::endgroup::"
         popd > /dev/null
 
         mkdir -p .pdf/$(dirname $target)
         cp $workdir/.build/$filename_without_ext.pdf .pdf/$target
+    else
+        echo No diff found, skipping build!
     fi
+    [ -z "$CI" ] || echo "::endgroup::"
 }
 
 function build_type {
