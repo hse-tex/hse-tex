@@ -13,7 +13,7 @@ fi
 function get_dependencies {
     mode=$1
     source=$2
-    
+
     case "$mode" in
         single) arg="-s" ;;
         directory) arg="-d" ;;
@@ -39,14 +39,14 @@ function build_item {
     mode=$1; shift
     source=$1; shift
     target=$1; shift
-    
-    echo Trying to build $source into $target with mode $mode
 
     workdir=$(dirname $source)
     filename=$(basename $source)
     filename_without_ext="${filename%.*}"
 
     [ -z "$CI" ] || echo "::group::Build $filename"
+    echo Trying to build $filename into $target with mode $mode
+
     if check_diff $(get_dependencies $mode $source); then
         pushd $workdir > /dev/null
         latexmk -pdf -interaction=nonstopmode -output-directory=.build -file-line-error -halt-on-error $filename
