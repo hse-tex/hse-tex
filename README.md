@@ -72,6 +72,8 @@
 - [Сергей Лоптев](https://github.com/beastSL)
 - Даниил Казанцев
 - [Сергей Рахманов](https://github.com/shoraii)
+- [Болонин Денис](https://github.com/BoloniniD)
+
 
 Не стесняйтесь добавлять себя в этот список в pull request'ах.
 
