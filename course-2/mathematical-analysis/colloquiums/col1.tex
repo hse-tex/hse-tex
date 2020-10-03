@@ -1,0 +1,167 @@
+\documentclass[a4paper]{article}
+\usepackage{header}
+
+
+\title{\Huge Математический Анализ - 2 - Коллоквиум 1}
+\author{
+    Серёжа Рахманов | \href{https://t.me/virg1n}{telegram}, \href{http://shoraii.github.io}{website}
+
+}
+\date{Версия от {\ddmmyyyydate\today} \currenttime}
+
+\begin{document}
+    \maketitle
+
+    \begin{enumerate}
+        \item Дайте определения: числовой ряд, частичная сумма ряда, сумма ряда, сходящийся ряд, расходящийся ряд. Рассмотрим ряд с общим членом $a_n$. Докажите, что $a_n \to 0$.
+        \begin{definition}
+        Пусть $a_{n}$ -- последовательность, т.е. $\NN \rightarrow \RR$. Формальная бесконечная сумма: $a_1 + a_2 + a_3 + \dots = \sum_{n=1}^{\infty} a_n$ называется рядом.
+        $S_N = \sum_{n = 1}^{N} a_n$ -- частичная сумма, сумма ряда: $S = \lim_{N \rightarrow \infty} S_N$
+        \end{definition}
+        
+        Возможны 3 случая:
+        \begin{enumerate}
+            \item $\exists S \in \RR$
+            \item $\exists S = \infty$
+            \item $\nexists S$
+        \end{enumerate}
+        
+        В первом случае говорят, что ряд сходится, иначе -- что ряд расходится.
+
+        \begin{comment}~
+            Если ряд сходится, то $a_n \rightarrow 0$
+        \end{comment}
+        \begin{proof}
+            $a_n = S_n - S_{n - 1} \rightarrow 0$, т.к. $S_n \rightarrow S$ и $S_{n - 1} \rightarrow S$
+        \end{proof}
+        \item Сформулируйте критерий Коши сходимости числовой последовательности. Сформулируйте и докажите критерий Коши сходимости числового ряда.
+        \begin{definition}
+            ${a_n}$ называется фундаментальной, если $\forall \epsilon > 0$  $\exists N: \forall n > m > N, |S_n - S_m| < \epsilon$
+        \end{definition}
+        \begin{theorem}
+            ${S_n}$ -- сходится $\Leftrightarrow {S_n}$ -- фундаментальная
+        \end{theorem}
+        \begin{proof}
+        $S_n - S_m = \sum_{k = m + 1}^{n} a_{k}$
+        Тогда $\sum a_n$ -- сходится $\Leftrightarrow$ $\forall \epsilon > 0$  $\exists N: \forall n > m > N$
+        $|a_{m + 1} + a_{m + 2} + \dots + a_{n}| < \varepsilon$
+        \end{proof}
+        \item Сформулируйте и докажите признак сравнения положительных числовых рядов, основанный на неравенстве $a_n \leq b_n$.
+        
+        $a_n \leqslant b_n$ при всех $n \geqslant n_0$
+	
+	    Ряд $\sum b_n$ cходится $\implies$ ряд $\sum a_n$ сходится
+	
+        Ряд $\sum a_n$ расходится $\implies$ ряд $\sum b_n$ расходится
+        \item Сформулируйте и докажите признак сравнения положительных числовых рядов, основанный на неравенстве $\frac{a_{n+1}}{a_n} \leqslant \frac{b_{n+1}}{b_n}$.
+        
+        Ряд $\sum b_n$ cходится $\implies$ ряд $\sum a_n$ сходится
+	
+        Ряд $\sum a_n$ расходится $\implies$ ряд $\sum b_n$ расходится
+        
+        \begin{proof}~
+        
+        $a_{n_0+1} \leqslant \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + 1}$
+        
+        $a_{n_0+2} \leqslant \frac{a_{n_0 + 1}}{b_{n_0 + 1}}\cdot b_{n_0 + 2} \leqslant \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + 2}$
+        
+        $\vdots$
+        
+        $a_{n_0+k} \leqslant \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + k} \implies \sum_{n=n_0}^{N} a_n \leqslant \frac{a_{n_0}}{b_{n_0}}\cdot \sum_{n=n_0}^{N} b_n$
+        \end{proof}
+
+        \item Сформулируйте и докажите признак сравнения положительных числовых рядов, основанный на пределе $\lim \frac{a_n}{b_n}$.
+        
+        $\lim_{n \to \infty} \frac{a_n}{b_n} \in (0; +\infty) \implies$ сходимость $\sum a_n \iff$ сходимость $\sum b_n$
+        
+        \begin{proof}~
+            
+        $c = \lim_{n \to \infty} \frac{a_n}{b_n} > 0$
+        
+        $\forall \epsilon\ \exists n_0:\ c - \epsilon \leqslant \frac{a_n}{b_n} \leqslant c + \epsilon$, при $n \geqslant n_0$
+        
+        Возьмём $c - \epsilon > 0 \implies (c - \epsilon)\cdot b_n \leqslant a_n \leqslant (c + \epsilon)\cdot b_n$
+        
+        Сходимость следует из правой части неравенства, а расходимость из левой. 
+        \end{proof}
+        \item Пусть последовательности $\{a_n\}$, $\{A_n\}$ таковы, что $a_n - (A_n - A_{n - 1}) = c_n$ и ряд $\sum c_n$ сходится.
+        Докажите, что существует $C$ такое, что $a_1 + a_2 + \dots + a_n = A_n + C + o(1)$. 
+        \item Сформулируйте и докажите признак Лобачевского-Коши.
+        \begin{proposal}
+            Пусть $a_n > 0$ и $a_n \downarrow$
+        
+            Тогда ряды $\sum a_n$ и $\sum 2^n \cdot a_{2^n}$ ведут себя одинаково
+        \end{proposal}
+        \begin{proof}
+            $a_1 + (a_2) + (a_3 + a_4) + (a_5 + \dots + a_8) + \dots$
+        
+            $a_2 \leq a_1$
+            
+            $a_2 \leq a_2$
+        
+            
+            $a_3 + a_4 \leq 2a_2$
+            
+            $a_3 + a_4 \geq 2a_4$
+        
+            $a_5 + \dots + a_8 \leq 4a_4$
+        
+            $a_5 + \dots + a_8 \geq 4a_8$
+        
+        
+            $\dots$
+        
+            $a_1 + \sum_{n=0}^{m - 1} 2^n a_{2n} \leq \sum_{n = 1}^{2^m} a_n \leq a_1 + \dfrac{1}{2} \sum_{n=0}^{m} 2^n a_{2n}$
+        
+        \end{proof}
+        \item Примените признак Лобачевского-Коши к ряду $\sum_{n=2}^{\infty}\dfrac{1}{n \ln n \ln^{p}(\ln n)}$, $p > 0$
+        \item Сформулируйте теорему Штольца о пределе последовательности $\frac{p_n}{q_n}$, $p_n$, $q_n \to 0$.
+        \begin{theorem}
+            (Штольца.) Если $p_n, q_n \to 0, q_n \downarrow$ и $\exists lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$, то
+            $\lim \dfrac{p_n}{q_n} = \lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$
+        \end{theorem}
+        \item Покажите на примере, как с помощью теоремы Штольца можно уточнить асимптотическую оценку для частичной суммы ряда.
+        \item -
+        \item -
+        \item -
+        \item -
+        \item Сформулируйте признак Даламбера для положительного ряда
+        \begin{theorem}
+            Признак Дарамбера. Пусть $a_n > 0$.
+            
+            $\overline{\lim} \dfrac{a_{n+1}}{a_n} < 1 \implies $ ряд $\sum a_n$ сходится.
+            
+            $\underline{\lim} \dfrac{a_{n+1}}{a_n} > 1 \implies $ ряд $\sum a_n$ расходится.
+        \end{theorem}
+        \item Сформулируйте радикальный признак Коши для положительного ряда.
+        \begin{theorem}
+            Радикальный признак Коши. Пусть $a_n \geq 0$.
+            
+            $\overline{\lim} \sqrt[n]{a_n} < 1 \implies$ ряд $\sum a_n$ сходится.
+             
+            $\underline{\lim} \sqrt[n]{a_n} > 1 \implies$ ряд $\sum a_n$ расходится.
+        \end{theorem}
+        \item Докажите, что всякий раз, когда признак Даламбера дает ответ на вопрос о сходимости ряда, то радикальный признак Коши дает тот же ответ на этот вопрос.
+        
+        Пусть $a_n > 0$. Тогда:
+
+        $$ \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}\dfrac{a_{n+1}}{a_n}$$
+
+        Если $\overline{\lim}\dfrac{a_{n+1}}{a_n} < 1 \implies \overline{\lim}{\sqrt[n]{a_n}} < 1$
+
+        Если $\underline{\lim}\dfrac{a_{n+1}}{a_n} > 1 \implies \underline{\lim} \sqrt[n]{a_n} > 1$
+
+        Если $\exists \lim \frac{a_{n+1}}{a_n}$, то $\overline{\lim} \frac{a_{n+1}}{a_n} = \underline{\lim} \frac{a_{n+1}}{a_n} \Rightarrow \exists \lim \sqrt[n]{a_n} = \lim \frac{a_{n+1}}{a_n}$
+        \item -
+        \item -
+        \item -
+        \item Сформулируйте признак Гаусса для положительного ряда. Приведите пример применения признака Гаусса.
+        Если $\exists \delta > 0,\; p$:$ \dfrac{a_{n+1}}{a_n} = 1 - \dfrac{p}{n} + O\left(\dfrac{1}{n^{1 + \delta}}\right) $
+        то:
+
+        $p > 1 \implies$ ряд $\sum a_n$ сходится.
+
+        $p \leq 1 \implies$ ряд $\sum a_n$ расходится.
+    \end{enumerate}
+
+\end{document}
