@@ -29,6 +29,9 @@ def main(args):
             result.append(header)
         current /= part
 
+    if args.single:
+        result.append(source)
+
     print('\n'.join([p.as_posix() for p in result]))
 
 
