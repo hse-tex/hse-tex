@@ -31,6 +31,8 @@ single:
   target: course-1/mathematical-analysis-colloquium-4.pdf
 - source: course-1/mathematical-analysis/mathematical-analysis-exam-1.tex           
   target: course-1/mathematical-analysis-exam-1.pdf
+- source: course-2/mathematical-analysis/colloquiums/col1.tex     
+  target: course-2/mathematical-analysis-colloquium-1.pdf
 - source: course-1/discrete-mathematics/discrete-mathematics-colloquium-1.tex       
   target: course-1/discrete-mathematics-colloquium-1.pdf
 - source: course-1/discrete-mathematics/discrete-mathematics-colloquium-2.tex       
