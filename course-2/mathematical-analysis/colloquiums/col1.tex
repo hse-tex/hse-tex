@@ -115,6 +115,9 @@
         
         \end{proof}
         \item Примените признак Лобачевского-Коши к ряду $\sum_{n=2}^{\infty}\dfrac{1}{n \ln n \ln^{p}(\ln n)}$, $p > 0$
+		
+		Рассмотрим данный нам ряд. Заметим, что $\dfrac{1}{n \ln n \ln^{p}(\ln n)}$ убывает, поскольку $n \ln n \ln^{p}(\ln n)$ является возрастающей функцией ($n, \ln n$ и $\ln^{p}(\ln n)$ сами по себе возрастают). Кроме того, $\forall n, n \geqslant 2, a_n > 0$, поскольку $1 > 0$ и $n \ln n \ln^{p}(\ln n) > 0$. В таком случае, аналогично данному ряду будет вести себя ряд $\sum_{n=2}^{\infty}\dfrac{2^n}{2^n \ln 2^n \ln^{p}(\ln 2^n)} = \sum_{n=2}^{\infty}\dfrac{1}{\ln 2^n \ln^{p}(\ln 2^n)}, p > 0$.
+
         \item Сформулируйте теорему Штольца о пределе последовательности $\frac{p_n}{q_n}$, $p_n$, $q_n \to 0$.
         \begin{theorem}
             (Штольца.) Если $p_n, q_n \to 0, q_n \downarrow$ и $\exists lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$, то
@@ -127,7 +130,7 @@
         \item -
         \item Сформулируйте признак Даламбера для положительного ряда
         \begin{theorem}
-            Признак Дарамбера. Пусть $a_n > 0$.
+            Признак Даламбера. Пусть $a_n > 0$.
             
             $\overline{\lim} \dfrac{a_{n+1}}{a_n} < 1 \implies $ ряд $\sum a_n$ сходится.
             
@@ -154,7 +157,7 @@
         Если $\exists \lim \frac{a_{n+1}}{a_n}$, то $\overline{\lim} \frac{a_{n+1}}{a_n} = \underline{\lim} \frac{a_{n+1}}{a_n} \Rightarrow \exists \lim \sqrt[n]{a_n} = \lim \frac{a_{n+1}}{a_n}$
         \item -
         \item -
-        \item -
+        \item - 
         \item Сформулируйте признак Гаусса для положительного ряда. Приведите пример применения признака Гаусса.
         Если $\exists \delta > 0,\; p$:$ \dfrac{a_{n+1}}{a_n} = 1 - \dfrac{p}{n} + O\left(\dfrac{1}{n^{1 + \delta}}\right) $
         то:
