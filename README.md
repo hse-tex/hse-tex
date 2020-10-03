@@ -49,6 +49,7 @@
 ### Математический анализ
 
 - [Конспект](https://hse-tex.me/course-2/mathematical-analysis.pdf)
+- [Коллоквиум I](https://hse-tex.me/course-2/mathematical-analysis-colloquium-1.pdf)
 
 # Благодарность
 
