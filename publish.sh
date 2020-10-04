@@ -4,9 +4,15 @@ set -e
 function get_commit_message {
     if [[ -n "$GITHUB_SHA" ]]; then
         echo $(git log --format=%B -n 1 $GITHUB_SHA)
+    else
+        echo "pdf updates"
     fi
-    echo "pdf updates"
 }
+
+if [[ ! -d .pdf ]] || !(find .pdf -mindepth 1 | read); then
+   echo "Nothing was built"
+   exit
+fi
 
 if [[ ! -d _gh_pages ]]; then
     git clone --branch gh-pages git@github.com:hse-tex/hse-tex.git _gh_pages
