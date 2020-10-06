@@ -1,0 +1,123 @@
+\section{Лекция 6 - 6.10.2020 - Степенные ряды}
+\subsection{Основные понятия}
+$\sum_{n=0}^{\infty} c_n \cdot(x - x_0)^n$
+
+$\{c_n\}$ -- числовая последовательность (коэффициенты), $x_0 \in \RR$, $x \in \RR$
+
+$S_N(x) = \sum_{n=0}^N c_n \cdot (x - x_0)^n$ -- многочлен.
+\subsection{Теорема Абеля, радиус и интервал последовательности}
+\begin{theorem}
+(Абеля)
+\begin{enumerate}
+\item Если степенной ряд сходится в точке $x_1 \neq x_0$, то он сходится при всех $x : |x - x_0| < |x_1 - x_0|$
+\item Если степенной ряд расходится в точке $x_2 \neq x_0$, то он расходится при всех $x : |x - x_0| > |x_2 - x_0|$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item $\left|\sum_{n = m}^{N} c_n (x - x_0)^n\right| = \left|\sum_{n = m}^{N} c_n \cdot (x_1 - x_0)^n \cdot \left(\frac{x-x_0}{x_1 - x_0}\right)^n\right| \leq 
+\sum_{n = m}^{N} \left|c_n \cdot (x_1 - x_0)^n \right| \cdot \left|\left(\frac{x-x_0}{x_1 - x_0}\right)^n\right| \leq \varepsilon (q^m + \dots + q^N) \leq \varepsilon \cdot q^m \cdot \frac{1}{1-q} \to 0$
+\end{enumerate}
+\end{proof}
+
+Пусть:
+
+$R_{cv} = \sup \{|x - x_0|: \text{ряд сходится}\}$
+
+$R_{dv} = \inf \{|x - x_0|: \text{ряд расходится}\} \text{ или} +\infty \text{, если ряд сходится всюду}$
+
+$\exists R = R_{cv} = R{dv}$ -- радиус сходимости.
+
+$\sum_{n=0}^{\infty} c_n \cdot(x - x_0)^n$
+
+Применим радикальный признак Коши:
+
+$\sqrt[n]{|a_n(x)|} = \sqrt[n]{|c_n|} \cdot |x - x_0|$
+
+$\overline{\lim}\sqrt[n]{|a_n(x)|} = |x - x_0| \cdot \overline{\lim}\sqrt[n]{|c_n|}$
+
+Если $|x - x_0| \cdot \overline{\lim}\sqrt[n]{|c_n|} < 1$, то ряд сходится
+
+Если $|x - x_0| \cdot \overline{\lim}\sqrt[n]{|c_n|} \geq 1$, то ряд сходится
+
+$R = \frac{1}{\overline{\lim}\sqrt[n]{|c_n|}}$ -- формула Коши-Адамара
+
+Pro tip: если $\exists \lim{\left|\frac{c_{n+1}}{c_n}\right|}$, то $\lim\sqrt[n]{|c_n|} = \lim\left|\frac{c_{n+1}}{c_n}\right|$
+
+\subsection{Равномерная сходимость степенного ряда}
+
+Если $R > 0$, то степенной ряд сходится равномерно при $|x - x_0| \leq r$, где $r < R$ (доказательство через признак Вейерштрасса).
+
+\subsection{Сходимость ряда в граничных точках интервала сходимости}
+
+Пусть $\sum c_n R^n$ сходится. Тогда степенной ряд $\sum c_n (x - x_0)^n$ сходится равномерно на $[x_0; x_0 + R]$.
+
+\begin{proof}
+$\sum_{n=0}^{\infty} c_n(x - x_0)^n$ =  $\sum_{n=0}^{\infty} (c_n \cdot R^n) \cdot \left(\frac{x - x_0}{R}\right)^n$
+
+$b_n = c_n \cdot R^n$, $a_n = \left(\frac{x - x_0}{R}\right)^n$
+
+$\sum_{n=0}^{\infty} b_n$ сходится $\implies$ сходится равномерно.
+
+$a_n(x) \downarrow_{(n)}$
+
+Значит, ряд сходится равномерно по признаку Абеля.
+\end{proof}
+
+\subsection{Дифференцирование и интегрирование степенного ряда}
+
+$\sum c_n (x - x_0)^n$, $R > 0$ -- его радиус сходимости.
+
+\begin{enumerate}
+      \item Дифференцирование
+      
+      При почленном дифференцировании получаем $\sum_{n=0}^{\infty} c_n \cdot n \cdot (x - x_0)^{n - 1}$
+      Его радиус сходимости равен радиусу исходного ряда $\implies$ он сходится равномерно при $|x - x_0| \leq r < R$
+      Значит по теореме о почленном дифференцировании функционального ряда:
+      $\left(\sum_{n=0}^{\infty}c_n\cdot (x - x_0)^n\right)' = \sum_{n=0}^{\infty} c_n \cdot n \cdot (x - x_0)^{n - 1} = \sum_{n=0}^{\infty} c_{n+1}(n+1)(x - x_0)^n$
+      \item Интегрирование
+      
+      $\int_{x_0}^{x}\left(\sum_{n=0}^{\infty}c_n(t - x_0)^n\right) dt = \sum_{n=0}^{\infty} \frac{c_n}{n+1} (x - x_0)^{n + 1}$
+\end{enumerate}
+
+\subsection{Бесконечное дифференцирование}
+
+Функция называется бесконечно дифференцируемой в точке $a$, если $\forall n$ она $n$ раз дифференцируема в точке $a$.
+
+Сумма степенного ряда с $R > 0$ является бесконечно дифференцируемой функцией.
+
+\subsection{Ряд Тейлора}
+
+Если функция $f(x)$ бесконечно дифференцируема в точке $x_0$, то функции $f(x)$ можно сопоставить её ряд Тейлора:
+
+$\sum_{n=0}^{\infty} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n$
+
+При этом $f(x) = \sum_{n=0}^{N} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + r_N(x)$
+
+$r_N(x) = \frac{f^{(N+1)}(x_0+\theta)(x - x_0)}{(N+1)!}(x - x_0)^{N+1}$, $\theta \in (0; 1)$ -- формула Лагранжа
+
+$r_N(x) = \frac{f^{(N+1)}(x_0+\theta)(x - x_0)}{N!}(1-\theta)^N(x - x_0)^{N+1}$, $\theta \in (0; 1)$ -- формула Коши
+
+\begin{definition}
+Функция называется аналитической в т.$x_0$, если она представима в окрестности этой точки в виде степенного ряда.
+\end{definition}
+
+Не всякая бесконечно дифференцируемая функция будет аналитической:
+
+\begin{example}
+$f(x) = \begin{cases}
+      e^{-\frac{1}{x^2}}, x \neq 0 \\
+      0, x = 0
+\end{cases}$
+
+$f(0) = f'(0) = f''(0) = \dots = 0$, ряд Тейлора при $x_0 = 0$ равен 0
+\end{example}
+
+\subsubsection{Ряды Тейлора основных элементарных функций}
+
+\begin{enumerate}
+\item $e^x$ --- $\sum_{n=0}^{\infty} \dfrac{x^n}{n!}, R = \infty$
+\item $(1+x)^p$ --- $\sum_{n=0}^{\infty} \dfrac{(p)_n}{n!}x^n$, где $(p)_n = p(p-1)\dots(p - n + 1), R = 1$
+\item $\ln(1 + x)$ --- $\sum_{n=0}^{\infty} \dfrac{(-1)^{(n+1)} x^n}{n!}$
+\end{enumerate}
