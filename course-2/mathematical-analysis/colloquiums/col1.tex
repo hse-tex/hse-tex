@@ -229,7 +229,117 @@
    		\begin{proof}
    			Рассмотрим ряд $\sum a_n$, дополнительный ряд $\sum |a_n|$, а также положительную и отрицательную части $\sum a_n^+$ и $\sum a_n^-$. Поскольку ряд $\sum a_n$ сходится условно, то $\sum |a_n|$ расходится. Рассмотри частичные суммы $\sum |a_n|$, $\sum a_n^+$ и $\sum a_n^-$ - $A_n', P_k, Q_m$ соответственно. Для любого $n = m + k$, $A_n' = P_k + Q_m$. При $n \rightarrow \infty$, $m \rightarrow \infty$ и $k \rightarrow \infty$. Так как ряд $\sum |a_n|$ расходится, то сумма $A_n' \rightarrow \infty$. Поскольку число положительных и отрицательных элементов бесконечно, то получаем $P_k \rightarrow \infty$ и $Q_m \rightarrow \infty$, а значит ряды $\sum a_n^+$ и $\sum a_n^-$ расходятся.
    		\end{proof}
-       	
+           
+        \item Сформулируйте мажорантный признак Вейерштрасса. Приведите пример применения признака
+        
+        \begin{theorem}
+            Если $|a_n| \leq b_n$ при $n > n_0$ и положительный ряд $\sum b_n$ сходится,
+            то $\sum a_n$ сходится, причём абсолютно.
+        \end{theorem}
+        
+        \begin{example}
+        $\sum_{n=1}^{\infty} \dfrac{\sin(nx)}{n^p}$, $p > 0$
+        
+        $|sin(nx)| \leq 1 \implies \left|\dfrac{sin(nx)}{n^P}\right| \leq \dfrac{1}{n^p}$
+        
+        $\sum \dfrac{1}{n^p} $ сходится $(p > 1) \implies \sum_{n=1}^{\infty} \dfrac{\sin(nx)}{n^p}$ сходится абсолютно.
+        \end{example}
+
+        \item Что такое группировка членов ряда? Докажите, что любой ряд, полученный из сходящегося ряда группировкой его членов, сходится и имеет ту же сумму
+        
+        Говорят, что ряд $\sum b_k$ получен из $\sum a_n$ группировкой членов, если $\exists n_1 < n_2 < \dots$:
+
+        $b_1 = a_1 + a_2 + \dots + a_{n_1}$
+
+        $b_2 = a_{n_1 + 1} + a_{n_1 + 2} + \dots + a_{n_2}$
+
+        $\dots$
+
+        \begin{comment}
+            Если $\sum a_n$ сходится, то ряд $\sum b_k$ сходится к той же сумме.
+        \end{comment}
+
+        \begin{proof}
+        $\sum_{k=1}^{m} b_k = \sum_{n=1}^{n_m} a_n$
+        \end{proof}
+
+        \textit{Обратное утверждение неверно:} $(1 - 1) + (1 - 1) + \dots$
+
+        \item Как с помощью группировки преобразовать знакопеременный ряд в знакочередующийся? Что можно утверждать о сходимости полученного знакочередующегося ряда?
+        
+        Знакопеременный ряд при помощи группировки сводится к знакочередующемуся:
+
+        $a_1 \leq 0$, $\dots$, $a_{n_1} \leq 0$; $b_1 = \sum_{i=1}^{n_1} a_i \leq 0$
+
+        $a_{n_1+1} \geq 0$, $\dots$, $a_{n_2} \geq 0$; $b_1 = \sum_{i={n_1 + 1}}^{n_2} a_i \leq 0$
+
+        При такой группировке сходимость исходного ряда $\iff$ сходимость $\sum b_n$
+
+        \item Приведите пример преобразования знакопеременного ряда к знакочередующемуся.
+
+        \begin{example}
+            $\sum_{n=1}^{\infty} \dfrac{(-1)^{[\ln n]}}{n}$
+
+            $\sum_{k=0}^{\infty} b_k$, где $b_k = (-1)^k$
+
+            $|b_k| = \sum_{n=[e^k] + 1}^{[e^{k+1}]} \dfrac{1}{n} \leq \dfrac{1}{[e^k] + 1} \cdot ([e^{k+1}]-[e^k]) \approx \dfrac{e^{k+1} - e^k}{e^k} \to e - 1 > 0$
+        \end{example}
+
+        \item -
+        \item Сформулируйте признак Лейбница для знакочередующегося ряда. Приведите пример применения признака Лейбница.
+        
+        \begin{theorem}
+            Признак Лейбница. Если $u_n \downarrow 0$, то ряд сходится, причём $|r_n| \leq u_{n+1}$
+            \end{theorem}
+            
+            \begin{example}
+                $\sum_{n=1}^{\infty} \dfrac{(-1)^{n}}{n^p}$, $p > 0$
+            
+                $\dfrac{1}{n^p} \downarrow 0 \implies $ ряд сходится (при $\forall p > 0$)
+            \end{example}
+
+        \item -
+        \item -
+        
+        \item Сформулируйте признак Дирихле. Приведите пример его применения.
+        
+        $\sum_{n=1}^{\infty}a_n \cdot b_n$
+
+        \begin{theorem}
+            Признак Дирихле. Если $a_n \downarrow 0$, а частичные суммы $\left| \sum_{n=1}^N b_n \right| \leq C$ ограничены,
+            то $\sum_{n=1}^{\infty}a_n \cdot b_n$ сходится.
+        \end{theorem}
+
+        \begin{example}
+            $\sum_{n=1}^{\infty} \dfrac{\sin(nx)}{n^p}$, $p > 0$
+        
+            $a_n = \dfrac{1}{n^p} \downarrow 0$, $b_n = \sin nx$
+        
+            $b_1 + b_2 + b_3 + \dots + b_N = \sin x+ \sin 2x + \dots + \sin Nx = \dfrac{\cos \dfrac{x}{2} - \cos\left((N + 1/2)x\right)}{2 \sin \dfrac{x}{2}}$; $\left|\sum_{n=1}^{N}b_n\right| \leq \dfrac{2}{2\sin{\dfrac{x}{2}}} = \dfrac{1}{\sin{\dfrac{x}{2}}}$
+        
+            Ряд сходится по признаку Дирихле
+        \end{example}
+
+        \item Сформулируйте признак Абеля. Выведите утверждение признака Абеля из признака Дирихле.
+        
+        \begin{theorem}
+            Признак Абеля. Если $a_n$ монотонна и ограничена, а ряд $\sum_{n=1}^{\infty}b_n$ сходится,
+            то $\sum_{n=1}^{\infty}a_n \cdot b_n$ сходится.
+        \end{theorem}
+        
+        % $a_n \to a$, $a_n = a +- \alpha_n$, $\alpha_n \downarrow 0$; $\sum_{n=1}^{\infty}a_n \cdot b_n = a \sum_{n=1}^{\infty}b_n +- \sum_{n=1}^{\infty}\alpha_n \cdot b_n$
+
+        \item Что такое перестановка членов ряда? Приведите пример.
+        
+        Пусть $f: \NN \to \NN$ -- биекция
+
+        Говорят, что ряд $\sum b_n$ получен из $\sum a_n$ перестановкой членов, если $b_n = a_{f(n)}$
+
+        \item Сформулируйте свойство абсолютно сходящегося ряда, связанное с перестановкой членов. (теорема Римана)
+        
+        \begin{theorem}
+            (Римана) Если ряд $\sum a_n$ сходится условно, то для $\forall S \in [-\infty; +\infty]$ то $\exists$ перестановка $f$ такая, что $\sum a_{f(n)} = S$
+        \end{theorem}
     \end{enumerate}
 
 \end{document}
