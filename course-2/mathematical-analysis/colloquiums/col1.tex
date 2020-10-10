@@ -6,7 +6,7 @@
 \author{
     Серёжа Рахманов | \href{https://t.me/virg1n}{telegram}, \href{http://shoraii.github.io}{website}
     \\
-    Цирк Максимус | \href{https://t.me/ultrakekul}{telegram}
+    Денис Болонин | \href{https://t.me/ultrakekul}{telegram}
 
 }
 \date{Версия от {\ddmmyyyydate\today} \currenttime}
@@ -132,11 +132,13 @@
         \item Пусть $\sum a_n$, $\sum a_n'$ - расходящиеся положительные ряды. Говорят, что ряд $\sum a_n'$ расходится медленнее ряда $\sum a_n$, если $a_n' = o(a_n)$. Докажите, что в этом случае также $S_n' = o(S_n)$, где $S_n$, $S_n'$ - частичные суммы соответствующих рядов.
         
         Оба ряда расходятся, тогда $S_n \rightarrow \infty$ и $S_n' \rightarrow \infty$ при $n \rightarrow \infty$. Мы понимаем, что $S_n = \sum_{n = 1}^{N} a_n$, $S_n' = \sum_{n = 1}^{N} a_n'$. Это значит, что для некоторого $n_1$ мы имеем следующее: $S_{n_1} = \sum_{n = 1}^{n_1} a_n$, $S_{n_1}' = \sum_{n = 1}^{n_1} a_n'$, где для любого $n = 1, 2, 3, \dots, n_1$ выполняется отношение $a_n' = o(a_n)$. В таком случае для частичных сумм справедливо отношение $S_{n_1}' = o(S_{n_1})$. А так как и для всех последующих $a_n$ и $a_n'$ также справедливо отношение $a_n' = o(a_n)$, то мы можем сказать, что $S_n' = o(S_n)$.
-        \item -
+        \item Пусть положительный ряд $\sum a_n$ расходится и $S_n$ его частичная сумма. Докажите, что ряд $\sum (\sqrt{r_{n}} - \sqrt{r_{n+1}})$ также расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
+        
+        $r_n = S - S_n$, тогда $\dfrac{\sqrt{r_{n}} - \sqrt{r_{n+1}}}{a_{n+1}} = \dfrac{\sqrt{S - S_n} - \sqrt{S - S_{n+1}}}{a_{n+1}} = \dfrac{S_{n+1} - S{n}}{(S_{n+1} - S_n)(\sqrt{S - S_n} + \sqrt{S - S_{n+1}})}$, где $(S_{n+1} - S_n)(\sqrt{S - S_n} + \sqrt{S - S_{n+1}}) \rightarrow \infty$, $\dfrac{S_{n+1} - S{n}}{(S_{n+1} - S_n)(\sqrt{S - S_n} + \sqrt{S - S_{n+1}})} \rightarrow 0$. Тогда ряд $\sum (\sqrt{r_{n}} - \sqrt{r_{n+1}})$ расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
         
         \item Пусть положительный ряд $\sum a_n$ расходится и $S_n$ его частичная сумма. Докажите, что ряд $\sum (\sqrt{S_{n+1}} - \sqrt{S_n})$ также расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
         
-        $\dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{a_{n+1}} = \dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{S_{n+1} - S_n} = \dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}}$, где $\sqrt{S_{n+1}} + \sqrt{S_n} \rightarrow \infty$, а значит $\dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}} \rightarrow 0$.
+        $\dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{a_{n+1}} = \dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{S_{n+1} - S_n} = \dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}}$, где $\sqrt{S_{n+1}} + \sqrt{S_n} \rightarrow \infty$, а значит $\dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}} \rightarrow 0$. Тогда ряд $\sum (\sqrt{S_{n+1}} - \sqrt{S_n})$ расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
         
         \item Сформулируйте признак Даламбера для положительного ряда
         \begin{theorem}
