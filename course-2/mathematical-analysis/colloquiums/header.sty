@@ -124,15 +124,20 @@
 \theoremstyle{definition} % "Определение"
 \newtheorem{definition}{Определение}
 \newtheorem{designation}{Обозначение}
-\newtheorem*{properties}{Свойства}
-\newtheorem*{corollary}{Следствие}
+\newtheorem{lemma}[theorem]{Лемма}
 \newtheorem{problem}{Задача}[section]
 \newtheorem*{comment}{Замечание}
-\newtheorem{lemma}[theorem]{Лемма}
-\newtheorem*{fact}{Очевидный факт}
-\newtheorem*{proposal}{Предложение}
 \newtheorem*{convention}{Соглашение}
+\newtheorem*{corollary}{Следствие}
+\newtheorem*{definition*}{Определение}
 \newtheorem*{exercise}{Упражнение}
+\newtheorem*{fact}{Очевидный факт}
+\newtheorem*{lemma*}{Лемма}
+\newtheorem*{properties}{Свойства}
+\newtheorem*{proposal}{Предложение}
+\newtheorem*{proposition*}{Утверждение}
+\newtheorem*{theorem*}{Теорема}
+
 
 \theoremstyle{remark} % "Примечание"
 \newtheorem*{example}{Пример}
@@ -147,6 +152,7 @@
 %% Более привычные греческие буквы
 \renewcommand{\phi}{\varphi}
 \renewcommand{\epsilon}{\varepsilon}
+\newcommand{\eps}{\varepsilon}
 
 %% Перенос знаков в формулах (по Львовскому)
 \newcommand*{\hm}[1]{#1\nobreak\discretionary{}

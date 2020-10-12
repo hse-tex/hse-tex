@@ -1,6 +1,8 @@
 \documentclass[a4paper]{article}
 \usepackage{header}
 
+% Use \begin{theorem*} instead of \begin{theorem}.
+% Use \iff instead of \Leftrightarrow.
 
 \title{\Huge Математический Анализ - 2 - Коллоквиум 1}
 \author{
@@ -16,10 +18,10 @@
 
     \begin{enumerate}
         \item Дайте определения: числовой ряд, частичная сумма ряда, сумма ряда, сходящийся ряд, расходящийся ряд. Рассмотрим ряд с общим членом $a_n$. Докажите, что $a_n \to 0$.
-        \begin{definition}
-        Пусть $a_{n}$ -- последовательность, т.е. $\NN \rightarrow \RR$. Формальная бесконечная сумма: $a_1 + a_2 + a_3 + \dots = \sum_{n=1}^{\infty} a_n$ называется рядом.
-        $S_N = \sum_{n = 1}^{N} a_n$ -- частичная сумма, сумма ряда: $S = \lim_{N \rightarrow \infty} S_N$
-        \end{definition}
+        \begin{definition*}
+        Пусть $a_{n}$ -- последовательность, т.е. $\NN \to \RR$. Формальная бесконечная сумма: $a_1 + a_2 + a_3 + \dots = \sum_{n=1}^{\infty} a_n$ называется рядом.
+        $S_N = \sum_{n = 1}^{N} a_n$ -- частичная сумма, сумма ряда: $S = \lim_{N \to \infty} S_N$
+        \end{definition*}
         
         Возможны 3 случая:
         \begin{enumerate}
@@ -31,36 +33,36 @@
         В первом случае говорят, что ряд сходится, иначе -- что ряд расходится.
 
         \begin{comment}~
-            Если ряд сходится, то $a_n \rightarrow 0$
+            Если ряд сходится, то $a_n \to 0$
         \end{comment}
         \begin{proof}
-            $a_n = S_n - S_{n - 1} \rightarrow 0$, т.к. $S_n \rightarrow S$ и $S_{n - 1} \rightarrow S$
+            $a_n = S_n - S_{n - 1} \to 0$, т.к. $S_n \to S$ и $S_{n - 1} \to S$
         \end{proof}
         \item Сформулируйте критерий Коши сходимости числовой последовательности. Сформулируйте и докажите критерий Коши сходимости числового ряда.
-        \begin{definition}
+        \begin{definition*}
             ${a_n}$ называется фундаментальной, если $\forall \epsilon > 0$  $\exists N: \forall n > m > N, |S_n - S_m| < \epsilon$
-        \end{definition}
-        \begin{theorem}
-            ${S_n}$ -- сходится $\Leftrightarrow {S_n}$ -- фундаментальная
-        \end{theorem}
+        \end{definition*}
+        \begin{theorem*}
+            ${S_n}$ -- сходится $\iff {S_n}$ -- фундаментальная
+        \end{theorem*}
         \begin{proof}
         $S_n - S_m = \sum_{k = m + 1}^{n} a_{k}$
-        Тогда $\sum a_n$ -- сходится $\Leftrightarrow$ $\forall \epsilon > 0$  $\exists N: \forall n > m > N$
-        $|a_{m + 1} + a_{m + 2} + \dots + a_{n}| < \varepsilon$
+        Тогда $\sum a_n$ -- сходится $\iff$ $\forall \epsilon > 0$  $\exists N: \forall n > m > N$
+        $|a_{m + 1} + a_{m + 2} + \dots + a_{n}| < \epsilon$
         \end{proof}
         \item Сформулируйте и докажите признак сравнения положительных числовых рядов, основанный на неравенстве $a_n \leq b_n$.
         
-        $a_n \leqslant b_n$ при всех $n \geqslant n_0$
+        $a_n \leq b_n$ при всех $n \geq n_0$
 	
 	    Ряд $\sum b_n$ cходится $\implies$ ряд $\sum a_n$ сходится
 	
         Ряд $\sum a_n$ расходится $\implies$ ряд $\sum b_n$ расходится
         
         \begin{proof}
-        	На основании того, что отбрасывание конечного числа элементов ряда не отражается на его поведении, мы можем считать, что $a_n \leqslant b_n$ при всех $n = 1, 2, 3, \dots$ Обозначив частные суммы через $A$ и $B$ соответственно, имеем $A_n \leqslant B_n$. Пусть ряд $\sum b_n$ сходится, тогда $B_n$ ограничена, $B_n \leqslant S (S = const, n = 1, 2, 3, \cdots)$. В таком случае $A_n$ также меньше либо равна некоторому $S$, что даёт нам ограниченность $\sum a_n$.
+        	На основании того, что отбрасывание конечного числа элементов ряда не отражается на его поведении, мы можем считать, что $a_n \leq b_n$ при всех $n = 1, 2, 3, \dots$ Обозначив частные суммы через $A$ и $B$ соответственно, имеем $A_n \leq B_n$. Пусть ряд $\sum b_n$ сходится, тогда $B_n$ ограничена, $B_n \leq S (S = const, n = 1, 2, 3, \cdots)$. В таком случае $A_n$ также меньше либо равна некоторому $S$, что даёт нам ограниченность $\sum a_n$.
         \end{proof}
     
-        \item Сформулируйте и докажите признак сравнения положительных числовых рядов, основанный на неравенстве $\frac{a_{n+1}}{a_n} \leqslant \frac{b_{n+1}}{b_n}$.
+        \item Сформулируйте и докажите признак сравнения положительных числовых рядов, основанный на неравенстве $\frac{a_{n+1}}{a_n} \leq \frac{b_{n+1}}{b_n}$.
         
         Ряд $\sum b_n$ cходится $\implies$ ряд $\sum a_n$ сходится
 	
@@ -68,13 +70,13 @@
         
         \begin{proof}~
         
-        $a_{n_0+1} \leqslant \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + 1}$
+        $a_{n_0+1} \leq \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + 1}$
         
-        $a_{n_0+2} \leqslant \frac{a_{n_0 + 1}}{b_{n_0 + 1}}\cdot b_{n_0 + 2} \leqslant \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + 2}$
+        $a_{n_0+2} \leq \frac{a_{n_0 + 1}}{b_{n_0 + 1}}\cdot b_{n_0 + 2} \leq \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + 2}$
         
         $\vdots$
         
-        $a_{n_0+k} \leqslant \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + k} \implies \sum_{n=n_0}^{N} a_n \leqslant \frac{a_{n_0}}{b_{n_0}}\cdot \sum_{n=n_0}^{N} b_n$
+        $a_{n_0+k} \leq \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + k} \implies \sum_{n=n_0}^{N} a_n \leq \frac{a_{n_0}}{b_{n_0}}\cdot \sum_{n=n_0}^{N} b_n$
         \end{proof}
 
         \item Сформулируйте и докажите признак сравнения положительных числовых рядов, основанный на пределе $\lim \frac{a_n}{b_n}$.
@@ -85,9 +87,9 @@
             
         $c = \lim_{n \to \infty} \frac{a_n}{b_n} > 0$
         
-        $\forall \epsilon\ \exists n_0:\ c - \epsilon \leqslant \frac{a_n}{b_n} \leqslant c + \epsilon$, при $n \geqslant n_0$
+        $\forall \epsilon\ \exists n_0:\ c - \epsilon \leq \frac{a_n}{b_n} \leq c + \epsilon$, при $n \geq n_0$
         
-        Возьмём $c - \epsilon > 0 \implies (c - \epsilon)\cdot b_n \leqslant a_n \leqslant (c + \epsilon)\cdot b_n$
+        Возьмём $c - \epsilon > 0 \implies (c - \epsilon)\cdot b_n \leq a_n \leq (c + \epsilon)\cdot b_n$
         
         Сходимость следует из правой части неравенства, а расходимость из левой. 
         \end{proof}
@@ -122,40 +124,40 @@
         
         \end{proof}
         \item Сформулируйте теорему Штольца о пределе последовательности. Покажите на примере, как с помощью теоремы Штольца можно уточнить асимптотическую оценку для частичной суммы ряда. $\frac{p_n}{q_n}$, $p_n$, $q_n \to 0$.
-        \begin{theorem}
+        \begin{theorem*}
             (Штольца.) Если $p_n, q_n \to 0, q_n \downarrow$ и $\exists lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$, то
             $\lim \dfrac{p_n}{q_n} = \lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$
-        \end{theorem}
+        \end{theorem*}
         \item Пусть $\sum a_n$, $\sum a_n'$ - сходящиеся положительные ряды. Говорят, что ряд $\sum a_n'$ сходится быстрее ряда $\sum a_n$, если $a_n' = o(a_n)$. Докажите, что в этом случае также $r_n' = o(r_n)$, где $r_n$, $r_n'$ - остатки соответствующих рядов.
         
-        Рассмотрим остатки каждого из рядов. $r_n = S - S_N$, где $S_N$ - частичная сумма ряда $\sum a_n$ и $S_N \rightarrow S$ при $N \rightarrow \infty$. Для $\sum a_n'$ аналогично $r_n' = S' - S_N'$, где $S_N'$ - частичная сумма ряда $\sum a_n'$ и $S_N' \rightarrow S'$ при $N \rightarrow \infty$. Идёт речь о том, что ряд $a_n'$ сходится быстрее ряда $a_n$, т.е. оба ряда сходятся и $S = S'$. Но, поскольку члены рядов находятся в отношении $a_n' = o(a_n)$, то мы можем сделать выводы о частичных суммах $S_N$ и $S_N'$. $\forall N, S_N' = o(S_N)$, что указывает нам в результате на отношение между остатками $r_n' = o(r_n)$.
+        Рассмотрим остатки каждого из рядов. $r_n = S - S_N$, где $S_N$ - частичная сумма ряда $\sum a_n$ и $S_N \to S$ при $N \to \infty$. Для $\sum a_n'$ аналогично $r_n' = S' - S_N'$, где $S_N'$ - частичная сумма ряда $\sum a_n'$ и $S_N' \to S'$ при $N \to \infty$. Идёт речь о том, что ряд $a_n'$ сходится быстрее ряда $a_n$, т.е. оба ряда сходятся и $S = S'$. Но, поскольку члены рядов находятся в отношении $a_n' = o(a_n)$, то мы можем сделать выводы о частичных суммах $S_N$ и $S_N'$. $\forall N, S_N' = o(S_N)$, что указывает нам в результате на отношение между остатками $r_n' = o(r_n)$.
         \item Пусть $\sum a_n$, $\sum a_n'$ - расходящиеся положительные ряды. Говорят, что ряд $\sum a_n'$ расходится медленнее ряда $\sum a_n$, если $a_n' = o(a_n)$. Докажите, что в этом случае также $S_n' = o(S_n)$, где $S_n$, $S_n'$ - частичные суммы соответствующих рядов.
         
-        Оба ряда расходятся, тогда $S_n \rightarrow \infty$ и $S_n' \rightarrow \infty$ при $n \rightarrow \infty$. Мы понимаем, что $S_n = \sum_{n = 1}^{N} a_n$, $S_n' = \sum_{n = 1}^{N} a_n'$. Это значит, что для некоторого $n_1$ мы имеем следующее: $S_{n_1} = \sum_{n = 1}^{n_1} a_n$, $S_{n_1}' = \sum_{n = 1}^{n_1} a_n'$, где для любого $n = 1, 2, 3, \dots, n_1$ выполняется отношение $a_n' = o(a_n)$. В таком случае для частичных сумм справедливо отношение $S_{n_1}' = o(S_{n_1})$. А так как и для всех последующих $a_n$ и $a_n'$ также справедливо отношение $a_n' = o(a_n)$, то мы можем сказать, что $S_n' = o(S_n)$.
+        Оба ряда расходятся, тогда $S_n \to \infty$ и $S_n' \to \infty$ при $n \to \infty$. Мы понимаем, что $S_n = \sum_{n = 1}^{N} a_n$, $S_n' = \sum_{n = 1}^{N} a_n'$. Это значит, что для некоторого $n_1$ мы имеем следующее: $S_{n_1} = \sum_{n = 1}^{n_1} a_n$, $S_{n_1}' = \sum_{n = 1}^{n_1} a_n'$, где для любого $n = 1, 2, 3, \dots, n_1$ выполняется отношение $a_n' = o(a_n)$. В таком случае для частичных сумм справедливо отношение $S_{n_1}' = o(S_{n_1})$. А так как и для всех последующих $a_n$ и $a_n'$ также справедливо отношение $a_n' = o(a_n)$, то мы можем сказать, что $S_n' = o(S_n)$.
         \item Пусть положительный ряд $\sum a_n$ расходится и $S_n$ его частичная сумма. Докажите, что ряд $\sum (\sqrt{r_{n}} - \sqrt{r_{n+1}})$ также расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
         
-        $r_n = S - S_n$, тогда $\dfrac{\sqrt{r_{n}} - \sqrt{r_{n+1}}}{a_{n+1}} = \dfrac{\sqrt{S - S_n} - \sqrt{S - S_{n+1}}}{a_{n+1}} = \dfrac{S_{n+1} - S{n}}{(S_{n+1} - S_n)(\sqrt{S - S_n} + \sqrt{S - S_{n+1}})}$, где $(S_{n+1} - S_n)(\sqrt{S - S_n} + \sqrt{S - S_{n+1}}) \rightarrow \infty$, $\dfrac{S_{n+1} - S{n}}{(S_{n+1} - S_n)(\sqrt{S - S_n} + \sqrt{S - S_{n+1}})} \rightarrow 0$. Тогда ряд $\sum (\sqrt{r_{n}} - \sqrt{r_{n+1}})$ расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
+        $r_n = S - S_n$, тогда $\dfrac{\sqrt{r_{n}} - \sqrt{r_{n+1}}}{a_{n+1}} = \dfrac{\sqrt{S - S_n} - \sqrt{S - S_{n+1}}}{a_{n+1}} = \dfrac{S_{n+1} - S{n}}{(S_{n+1} - S_n)(\sqrt{S - S_n} + \sqrt{S - S_{n+1}})}$, где $(S_{n+1} - S_n)(\sqrt{S - S_n} + \sqrt{S - S_{n+1}}) \to \infty$, $\dfrac{S_{n+1} - S{n}}{(S_{n+1} - S_n)(\sqrt{S - S_n} + \sqrt{S - S_{n+1}})} \to 0$. Тогда ряд $\sum (\sqrt{r_{n}} - \sqrt{r_{n+1}})$ расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
         
         \item Пусть положительный ряд $\sum a_n$ расходится и $S_n$ его частичная сумма. Докажите, что ряд $\sum (\sqrt{S_{n+1}} - \sqrt{S_n})$ также расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
         
-        $\dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{a_{n+1}} = \dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{S_{n+1} - S_n} = \dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}}$, где $\sqrt{S_{n+1}} + \sqrt{S_n} \rightarrow \infty$, а значит $\dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}} \rightarrow 0$. Тогда ряд $\sum (\sqrt{S_{n+1}} - \sqrt{S_n})$ расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
+        $\dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{a_{n+1}} = \dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{S_{n+1} - S_n} = \dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}}$, где $\sqrt{S_{n+1}} + \sqrt{S_n} \to \infty$, а значит $\dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}} \to 0$. Тогда ряд $\sum (\sqrt{S_{n+1}} - \sqrt{S_n})$ расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
         
         \item Сформулируйте признак Даламбера для положительного ряда
-        \begin{theorem}
+        \begin{theorem*}
             Признак Даламбера. Пусть $a_n > 0$.
             
             $\overline{\lim} \dfrac{a_{n+1}}{a_n} < 1 \implies $ ряд $\sum a_n$ сходится.
             
             $\underline{\lim} \dfrac{a_{n+1}}{a_n} > 1 \implies $ ряд $\sum a_n$ расходится.
-        \end{theorem}
+        \end{theorem*}
         \item Сформулируйте радикальный признак Коши для положительного ряда.
-        \begin{theorem}
+        \begin{theorem*}
             Радикальный признак Коши. Пусть $a_n \geq 0$.
             
             $\overline{\lim} \sqrt[n]{a_n} < 1 \implies$ ряд $\sum a_n$ сходится.
              
             $\underline{\lim} \sqrt[n]{a_n} > 1 \implies$ ряд $\sum a_n$ расходится.
-        \end{theorem}
+        \end{theorem*}
         \item Докажите, что всякий раз, когда признак Даламбера даёт ответ на вопрос о сходимости ряда, то радикальный признак Коши даёт (тот же) ответ на этот вопрос.
         
         Пусть $a_n > 0$. Тогда:
@@ -166,7 +168,7 @@
 
         Если $\underline{\lim}\dfrac{a_{n+1}}{a_n} > 1 \implies \underline{\lim} \sqrt[n]{a_n} > 1$
 
-        Если $\exists \lim \frac{a_{n+1}}{a_n}$, то $\overline{\lim} \frac{a_{n+1}}{a_n} = \underline{\lim} \frac{a_{n+1}}{a_n} \Rightarrow \exists \lim \sqrt[n]{a_n} = \lim \frac{a_{n+1}}{a_n}$
+        Если $\exists \lim \frac{a_{n+1}}{a_n}$, то $\overline{\lim} \frac{a_{n+1}}{a_n} = \underline{\lim} \frac{a_{n+1}}{a_n} \implies \exists \lim \sqrt[n]{a_n} = \lim \frac{a_{n+1}}{a_n}$
         \item -
         \item -
         \item Приведите пример ряда, который сходится медленнее любого ряда геометрической прогрессии, но быстрее любого обобщённого гармонического яда (с обоснованием).
@@ -177,11 +179,11 @@
         
         $\sum \dfrac{1}{n^p}$ - обобщённый гармонический ряд. $\dfrac{1}{n^p} = e^{-p \ln n}$, $p > 1$.
         
-        $p \ln n < \sqrt{n} < n \ln \dfrac{1}{q}$, $\forall p, q$ при $n \geqslant n_0$. 
+        $p \ln n < \sqrt{n} < n \ln \dfrac{1}{q}$, $\forall p, q$ при $n \geq n_0$. 
         
-        $\dfrac{e^{-\sqrt{n}}}{q^n} = e^{-\sqrt{n} + n \ln \dfrac{1}{q}} \rightarrow +\infty$, где $-\sqrt{n} + n \ln \dfrac{1}{q} \rightarrow + \infty$ $\implies$ $\sum e^{-\sqrt{n}}$ сходится медленнее ряда геометрической прогрессии.
+        $\dfrac{e^{-\sqrt{n}}}{q^n} = e^{-\sqrt{n} + n \ln \frac{1}{q}} \to +\infty$, где $-\sqrt{n} + n \ln \dfrac{1}{q} \to + \infty$ $\implies$ $\sum e^{-\sqrt{n}}$ сходится медленнее ряда геометрической прогрессии.
         
-        $\dfrac{e^{-\sqrt{n}}}{\dfrac{1}{n^p}} = e^{-\sqrt{n} + p \ln n} \rightarrow 0$, где $-\sqrt{n} + p \ln n \rightarrow -\infty$ $\implies$ $\sum e^{-\sqrt{n}}$ сходится быстрее гармонического ряда.
+        $\dfrac{e^{-\sqrt{n}}}{1 / n^p} = e^{-\sqrt{n} + p \ln n} \to 0$, где $-\sqrt{n} + p \ln n \to -\infty$ $\implies$ $\sum e^{-\sqrt{n}}$ сходится быстрее гармонического ряда.
         
         \item Сформулируйте признак Гаусса для положительного ряда. Приведите пример применения признака Гаусса.
 
@@ -210,25 +212,25 @@
     
    		\item Дайте определения: знакопеременный ряд, знакочередующийся ряд, абсолютно сходящийся ряд, условно сходящийся ряд, положительная часть ряда, отрицательная часть ряда.
     
-    	\begin{definition}
+    	\begin{definition*}
     		Пусть существует ряд $\sum a_n$. такой, что $\forall i$, $a_i$ может быть, как больше 0, так и меньше 0. В таком случае ряд $\sum a_n$ называется знакопеременным.
-    	\end{definition}
+    	\end{definition*}
     		
-    	\begin{definition}
+    	\begin{definition*}
     		Пусть существует ряд $\sum a_n$. такой, что $\forall i$, $a_i \cdot a_{i+1} < 0$. В таком случае ряд $\sum a_n$ называется знакочередующимся.
-    	\end{definition}
+    	\end{definition*}
     
-    	\begin{definition}
+    	\begin{definition*}
             Ряд $\sum\limits_{n = 1}^\infty {{a_n}}$ называется абсолютно сходящимся, если ряд $\sum\limits_{n = 1}^\infty {\left| {{a_n}} \right|}$ также сходится.
             
             Если ряд $\sum\limits_{n = 1}^\infty {{a_n}}$ сходится абсолютно, то он является сходящимся (в обычном смысле). Обратное утверждение неверно.
-   		\end{definition}
+   		\end{definition*}
         
-        \begin{definition}
+        \begin{definition*}
             Ряд $\sum\limits_{n = 1}^\infty {{a_n}}$ называется условно сходящимся, если сам он сходится, а ряд, составленный из модулей его членов, расходится.
-        \end{definition}
+        \end{definition*}
         
-   		\begin{definition}
+   		\begin{definition*}
    			Введем два ряда: $a_n^+ = \begin{cases}
    			a_n, a_n > 0 \\
    			0
@@ -238,7 +240,7 @@
    			0
    			\end{cases}$.
    			Тогда ряды $\sum a_n^+$ и $a_n^-$ соответственно называются положительной и отрицательной частью ряда $\sum a_n$.
-   		\end{definition}
+   		\end{definition*}
    	
    		\item Докажите, что ряд сходится абсолютно ровно в том случае, когда сходятся его положительная и отрицательная части.
    			
@@ -246,9 +248,9 @@
    		
    			Рассмотрим ряд $\sum a_n$, дополнительный ряд $\sum |a_n|$, а также положительную и отрицательную части $\sum a_n^+$ и $\sum a_n^-$.
    			
-   			1) Пусть ряд $\sum a_n$ сходится абсолютно. В таком случае ряд $\sum |a_n|$ сходится, а так как члены рядов $\sum a_n^+$ и $\sum a_n^-$ все содержатся в ряде $\sum |a_n|$, то для всех их частичных сумм справедливо следующее: $P_k \leqslant A_n'$ и $Q_m \leqslant A_n'$, где $P_k$ и $Q_m$ - частичные суммы положительной и отрицательной части соответственно, а $A_n'$ - частичная сумма дополнительного ряда и $A_n' = P_k + Q_m, n = m + k$. Это значит, что оба ряда $\sum a_n^+$ и $\sum a_n^-$ сходятся.
+   			1) Пусть ряд $\sum a_n$ сходится абсолютно. В таком случае ряд $\sum |a_n|$ сходится, а так как члены рядов $\sum a_n^+$ и $\sum a_n^-$ все содержатся в ряде $\sum |a_n|$, то для всех их частичных сумм справедливо следующее: $P_k \leq A_n'$ и $Q_m \leq A_n'$, где $P_k$ и $Q_m$ - частичные суммы положительной и отрицательной части соответственно, а $A_n'$ - частичная сумма дополнительного ряда и $A_n' = P_k + Q_m, n = m + k$. Это значит, что оба ряда $\sum a_n^+$ и $\sum a_n^-$ сходятся.
    			
-   			2) Исходя из того, что $S_n = P_k - Q_m, n = m + k$ и положительных и отрицательных элементов в $\sum a_n$ бесконечное множество, мы получаем, что при $n \rightarrow \infty$ одновременно $m \rightarrow \infty$ и $k \rightarrow \infty$. Переходя к пределу получаем, что исходный ряд сходится абсолютно и его сумма будет равна $P - Q$.
+   			2) Исходя из того, что $S_n = P_k - Q_m, n = m + k$ и положительных и отрицательных элементов в $\sum a_n$ бесконечное множество, мы получаем, что при $n \to \infty$ одновременно $m \to \infty$ и $k \to \infty$. Переходя к пределу получаем, что исходный ряд сходится абсолютно и его сумма будет равна $P - Q$.
    			
    			
    		\end{proof}
@@ -256,15 +258,15 @@
    		\item Докажите, что если ряд сходится условно, то его положительная и отрицательная части расходятся (имеют бесконечные суммы).
    		
    		\begin{proof}
-   			Рассмотрим ряд $\sum a_n$, дополнительный ряд $\sum |a_n|$, а также положительную и отрицательную части $\sum a_n^+$ и $\sum a_n^-$. Поскольку ряд $\sum a_n$ сходится условно, то $\sum |a_n|$ расходится. Рассмотри частичные суммы $\sum |a_n|$, $\sum a_n^+$ и $\sum a_n^-$ - $A_n', P_k, Q_m$ соответственно. Для любого $n = m + k$, $A_n' = P_k + Q_m$. При $n \rightarrow \infty$, $m \rightarrow \infty$ и $k \rightarrow \infty$. Так как ряд $\sum |a_n|$ расходится, то сумма $A_n' \rightarrow \infty$. Поскольку число положительных и отрицательных элементов бесконечно, то получаем $P_k \rightarrow \infty$ и $Q_m \rightarrow \infty$, а значит ряды $\sum a_n^+$ и $\sum a_n^-$ расходятся.
+   			Рассмотрим ряд $\sum a_n$, дополнительный ряд $\sum |a_n|$, а также положительную и отрицательную части $\sum a_n^+$ и $\sum a_n^-$. Поскольку ряд $\sum a_n$ сходится условно, то $\sum |a_n|$ расходится. Рассмотри частичные суммы $\sum |a_n|$, $\sum a_n^+$ и $\sum a_n^-$ - $A_n', P_k, Q_m$ соответственно. Для любого $n = m + k$, $A_n' = P_k + Q_m$. При $n \to \infty$, $m \to \infty$ и $k \to \infty$. Так как ряд $\sum |a_n|$ расходится, то сумма $A_n' \to \infty$. Поскольку число положительных и отрицательных элементов бесконечно, то получаем $P_k \to \infty$ и $Q_m \to \infty$, а значит ряды $\sum a_n^+$ и $\sum a_n^-$ расходятся.
    		\end{proof}
            
         \item Сформулируйте мажорантный признак Вейерштрасса. Приведите пример применения признака
         
-        \begin{theorem}
+        \begin{theorem*}
             Если $|a_n| \leq b_n$ при $n > n_0$ и положительный ряд $\sum b_n$ сходится,
             то $\sum a_n$ сходится, причём абсолютно.
-        \end{theorem}
+        \end{theorem*}
         
         \begin{example}
         $\sum_{n=1}^{\infty} \dfrac{\sin(nx)}{n^p}$, $p > 0$
@@ -317,9 +319,9 @@
         \item -
         \item Сформулируйте признак Лейбница для знакочередующегося ряда. Приведите пример применения признака Лейбница.
         
-        \begin{theorem}
+        \begin{theorem*}
             Признак Лейбница. Если $u_n \downarrow 0$, то ряд сходится, причём $|r_n| \leq u_{n+1}$
-            \end{theorem}
+            \end{theorem*}
             
             \begin{example}
                 $\sum_{n=1}^{\infty} \dfrac{(-1)^{n}}{n^p}$, $p > 0$
@@ -337,10 +339,10 @@
         
         $\sum_{n=1}^{\infty}a_n \cdot b_n$
 
-        \begin{theorem}
+        \begin{theorem*}
             Признак Дирихле. Если $a_n \downarrow 0$, а частичные суммы $\left| \sum_{n=1}^N b_n \right| \leq C$ ограничены,
             то $\sum_{n=1}^{\infty}a_n \cdot b_n$ сходится.
-        \end{theorem}
+        \end{theorem*}
 
         \begin{example}
             $\sum_{n=1}^{\infty} \dfrac{\sin(nx)}{n^p}$, $p > 0$
@@ -354,10 +356,10 @@
 
         \item Сформулируйте признак Абеля. Выведите утверждение признака Абеля из признака Дирихле.
         
-        \begin{theorem}
+        \begin{theorem*}
             Признак Абеля. Если $a_n$ монотонна и ограничена, а ряд $\sum_{n=1}^{\infty}b_n$ сходится,
             то $\sum_{n=1}^{\infty}a_n \cdot b_n$ сходится.
-        \end{theorem}
+        \end{theorem*}
         
         % $a_n \to a$, $a_n = a +- \alpha_n$, $\alpha_n \downarrow 0$; $\sum_{n=1}^{\infty}a_n \cdot b_n = a \sum_{n=1}^{\infty}b_n +- \sum_{n=1}^{\infty}\alpha_n \cdot b_n$
 
@@ -371,9 +373,9 @@
 
         \item Сформулируйте свойство абсолютно сходящегося ряда, связанное с перестановкой членов. (теорема Римана)
         
-        \begin{theorem}
+        \begin{theorem*}
             (Римана) Если ряд $\sum a_n$ сходится условно, то для $\forall S \in [-\infty; +\infty]$ то $\exists$ перестановка $f$ такая, что $\sum a_{f(n)} = S$
-        \end{theorem}
+        \end{theorem*}
 
         \item -
         \item Как определяется произведение рядов? Что можно утверждать о произведении абсолютно сходящихся рядов?
@@ -384,11 +386,11 @@
 
         Если эта сумма имеет предел при $K, M \to \infty$, не зависящий от порядка суммирования, то говорят, что определено произведение рядов.
 
-        \begin{theorem}
+        \begin{theorem*}
         (Коши) Если $\sum a_k$, $\sum b_m$ сходятся абсолютно, то определено их произведение.
 
         $\left(\sum_{k=1}^{\infty} a_k\right) \cdot \left(\sum_{m=1}^{\infty} b_m \right) = \sum_{n=1}^{\infty} a_{k_n} \cdot b_{m_n}$
-        \end{theorem}
+        \end{theorem*}
 
         \item Что такое произведение рядов в форме Коши? Приведите пример вычисления такого произведения.
         
