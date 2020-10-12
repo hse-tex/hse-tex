@@ -201,9 +201,9 @@
             
             В данном случае нам подойдёт первый ряд в этом списке, поскольку $\dfrac{1}{n^2} \sim \dfrac{1}{n(n+1)}$.
             
-            $\sum_{n = 1}^{\infty} \left( \dfrac{1}{n^2 + 2} - \dfrac{1}{n(n + 1)} \right) = S - 1 \implies S = 1 + \sum_{n = 1}^{\infty} \left( \dfrac{1}{n^2 + 2} - \dfrac{1}{n(n + 1)} \right)$.
-             
-            $\dfrac{1}{n^2 + 2} - \dfrac{1}{n(n + 1)} = \dfrac{1}{n^2} \cdot \left( \dfrac{1}{\frac{2}{n^2}} - \dfrac{1}{1 + \frac{1}{n}} \right) = \dfrac{1}{n^2} \cdot \left( 1 - \dfrac{2}{n^2} + o \left( \dfrac{1}{n^2} \right) - 1 + \dfrac{1}{n} - \dfrac{1}{n^2} - o \left( \dfrac{1}{n^2} \right) \right) = \dfrac{1}{n^3} + o \left( \dfrac{1}{n^3} \right)$.
+			$\sum_{n=1}^{\infty} \left(\frac{1}{n^2+2} - \frac{1}{n(n+1)}\right) = S - 1 \implies S = 1 + \sum_{n=1}^{\infty} \left(\frac{1}{n^2 + 2} - \frac{1}{n(n+1)}\right)$
+			
+			$\frac{1}{n^2+2} - \frac{1}{n(n+1)} = \frac{1}{n^2} \cdot \left(\frac{1}{1 + \frac{2}{n^2}} - \frac{1}{1 + \frac{1}{n}}\right) = \frac{1}{n^2} \cdot \left(1 - \frac{2}{n^2} + o\left(\frac{1}{n^2}\right) - \left(1 - \frac{1}{n} + \frac{1}{n^2} + o\left(\frac{1}{n^2}\right)\right)\right) = \frac{1}{n^3} + o\left(\frac{1}{n^3}\right)$.
          
             Получили ряд $\sum_{n = 1}^{\infty} \dfrac{1}{n^3}$, который сходится быстрее, $1 + \sum_{n = 1}^{\infty} \dfrac{1}{n^3} \approx \sum_{n = 1}^{\infty} \dfrac{1}{n^2 + 2}$.
         \end{example}
