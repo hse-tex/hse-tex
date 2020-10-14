@@ -190,23 +190,41 @@
 
     \defitem{Пусть положительный ряд $\sum a_n$ сходится и $r_n$ --- его остаток. Докажите, что ряд $\sum (\sqrt{r_{n}} - \sqrt{r_{n+1}})$ также сходится, причём медленнее, чем ряд $\sum a_{n+1}$.}
         
-        $r_n = S - S_n$.
-        
-        \begin{enumerate}
-        	\item Сходимость
+        Вспомним, что $r_n = S - S_n$.
+
+        Докажем сходимость:
+        \begin{align*}
+            \sum_{n=0}^{N} (\sqrt{r_{n}} - \sqrt{r_{n+1}}) 
+            &= \sqrt{r_0} - \sqrt{r_1} + \sqrt{r_1} - \sqrt{r_2} + \dots + \sqrt{r_{N}} - \sqrt{r_{N+1}} \\
+            &= \sqrt{r_0} - \sqrt{r_{N+1}} \\
+            &= \sqrt{S} - \sqrt{r_{N+1}} \\
+            &\to \sqrt{S} \text{ (так как } r_{N+1} \to 0)
+        \end{align*}
         	
-        	$\sum_{n=0}^{N} (\sqrt{r_{n}} - \sqrt{r_{n+1}}) = \sqrt{r_0} - \sqrt{r_1} + \sqrt{r_1} - \sqrt{r_2} + \dots + \sqrt{r_{N}} - \sqrt{r_{N+1}}= \sqrt{r_0} - \sqrt{r_{N+1}} = \sqrt{S} - \sqrt{r_{N+1}} \to \sqrt{S}$, т.к. $r_{N+1} \to 0$
-        	
-        	\item Сходится медленнее
-        				
-        	$\frac{\sqrt{r_{n}} - \sqrt{r_{n+1}}}{a_{n+1}} = \frac{\sqrt{r_{n}} - \sqrt{r_{n+1}}}{r_{n} - r_{n+1}} = \frac{1}{\sqrt{r_{n}} + \sqrt{r_{n+1}}} \to \infty$, т.к. $\sqrt{r_{n}} \to 0$ и $\sqrt{r_{n+1}} \to 0$
-        \end{enumerate}
+
+        Докажем, что ряд сходится медленнее:
+        \begin{equation*}
+            \frac{\sqrt{r_{n}} - \sqrt{r_{n+1}}}{a_{n+1}} = \frac{\sqrt{r_{n}} - \sqrt{r_{n+1}}}{r_{n} - r_{n+1}} = \frac{1}{\sqrt{r_{n}} + \sqrt{r_{n+1}}} \to \infty,
+        \end{equation*}
+        так как $\sqrt{r_{n}} \to 0$ и $\sqrt{r_{n+1}} \to 0$.
         
     \defitem{Пусть положительный ряд $\sum a_n$ расходится и $S_n$ его частичная сумма. Докажите, что ряд $\sum (\sqrt{S_{n+1}} - \sqrt{S_n})$ также расходится, причём медленнее, чем ряд $\sum a_{n+1}$.}
-        
-        $\sum_{n=0}^{N} (\sqrt{S_{n+1}} - \sqrt{S_n}) = \sqrt{S_1} - \sqrt{S_0} + \sqrt{S_2} - \sqrt{S_1} + \dots + \sqrt{S_{N+1}} - \sqrt{S_{N}} = \sqrt{S_{N+1}} - \sqrt{S_0} = \sqrt{S_{N+1}} \to \sqrt{S}$ -- расходится.
-        
-        $\dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{a_{n+1}} = \dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{S_{n+1} - S_n} = \dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}}$, где $\sqrt{S_{n+1}} + \sqrt{S_n} \to \infty$, а значит $\dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}} \to 0$. Тогда ряд $\sum (\sqrt{S_{n+1}} - \sqrt{S_n})$ расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
+
+        Докажем расходимость:
+        \begin{align*}
+            \sum_{n=0}^{N} (\sqrt{S_{n+1}} - \sqrt{S_n}) 
+            &= \sqrt{S_1} - \sqrt{S_0} + \sqrt{S_2} - \sqrt{S_1} + \dots + \sqrt{S_{N+1}} - \sqrt{S_{N}} \\
+            &= \sqrt{S_{N+1}} - \sqrt{S_0} \\
+            &= \sqrt{S_{N+1}} \to \sqrt{S}.
+        \end{align*}
+
+        Перейдем ко второй части вопроса:
+        \begin{align*}
+            \dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{a_{n+1}} 
+            &= \dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{S_{n+1} - S_n} \\
+            &= \dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}},
+        \end{align*}
+        где $\sqrt{S_{n+1}} + \sqrt{S_n} \to \infty$. Это значит, что $\dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}}$ стремится к $0$. Тогда ряд $\sum (\sqrt{S_{n+1}} - \sqrt{S_n})$ расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
         
     \defitem{Сформулируйте признак Даламбера для положительного ряда}
         \begin{theorem*}
@@ -270,40 +288,91 @@
 
     \defitem{Приведите пример ряда, который сходится медленнее любого ряда геометрической прогрессии, но быстрее любого обобщённого гармонического ряда (с обоснованием).}
         
-        Рассмотрим $e^{-\sqrt{n}}$
+        Докажем, что ряд $\sum_{n = 1}^{\infty} e^{-\sqrt{n}}$ подходит.
         
-        $\sum q^n$ - ряд геометрической прогрессии, $0 < q < 1$; $q^n = e^{n * \ln q}$, где $\ln q < 0$
-        
-        $\sum \dfrac{1}{n^p}$ - обобщённый гармонический ряд. $\dfrac{1}{n^p} = e^{-p \ln n}$, $p > 1$.
-        
-        $p \ln n < \sqrt{n} < n \ln \dfrac{1}{q}$, $\forall p, q$ при $n \geq n_0$. 
-        
-        $\dfrac{e^{-\sqrt{n}}}{q^n} = e^{-\sqrt{n} + n \ln \frac{1}{q}} \to +\infty$, где $-\sqrt{n} + n \ln \dfrac{1}{q} \to + \infty$ $\implies$ $\sum e^{-\sqrt{n}}$ сходится медленнее ряда геометрической прогрессии.
-        
-        $\dfrac{e^{-\sqrt{n}}}{1 / n^p} = e^{-\sqrt{n} + p \ln n} \to 0$, где $-\sqrt{n} + p \ln n \to -\infty$ $\implies$ $\sum e^{-\sqrt{n}}$ сходится быстрее гармонического ряда.
+        \begin{itemize}
+        \item 
+            $\sum q^n$ --- ряд геометрической прогрессии, $0 < q < 1$; $q^n = e^{n * \ln q}$, где $\ln q < 0$.
+
+        \item 
+            $\sum \dfrac{1}{n^p}$ --- обобщённый гармонический ряд. $\dfrac{1}{n^p} = e^{-p \ln n}$, $p > 1$.
+        \end{itemize}
+
+        Заметим, что при любых $p$, $q$ и при любом $n \geq n_0$ выполняется
+        \begin{equation*}
+            p \ln n < \sqrt{n} < n \ln \dfrac{1}{q}.
+        \end{equation*}
+
+        Перейдем к доказательствам.
+        \begin{itemize}
+        \item 
+            Докажем, что выбранный ряд сходится медленнее геометрической прогрессии:
+            \begin{equation*}
+                \dfrac{e^{-\sqrt{n}}}{q^n} = e^{-\sqrt{n} + n \ln \frac{1}{q}} \to +\infty,
+            \end{equation*}
+            так как $-\sqrt{n} + n \ln \dfrac{1}{q} \to + \infty$.
+
+        \item 
+            Докажем, что выбранный ряд сходится быстрее гармонического ряда:
+            \begin{equation*}
+                \dfrac{e^{-\sqrt{n}}}{1 / n^p} = e^{-\sqrt{n} + p \ln n} \to 0,
+            \end{equation*}
+            так как $-\sqrt{n} + p \ln n \to -\infty$.
+        \end{itemize}
         
     \defitem{Сформулируйте признак Гаусса для положительного ряда. Приведите пример применения признака Гаусса.}
 
-        Если $\exists \delta > 0,\; p$:$ \dfrac{a_{n+1}}{a_n} = 1 - \dfrac{p}{n} + O\left(\dfrac{1}{n^{1 + \delta}}\right) $
-        то:
+        Если существует $\delta > 0$ и $p$ такие, что $\dfrac{a_{n+1}}{a_n} = 1 - \dfrac{p}{n} + \operatorname{O}\left(\dfrac{1}{n^{1 + \delta}}\right) $
+        то справедливо следующее:
+        \begin{itemize}
+        \item 
+            $p > 1 \implies$ ряд $\sum a_n$ сходится.
 
-        $p > 1 \implies$ ряд $\sum a_n$ сходится.
+        \item 
+            $p \leq 1 \implies$ ряд $\sum a_n$ расходится.
+        \end{itemize}
 
-        $p \leq 1 \implies$ ряд $\sum a_n$ расходится.
+        \begin{example}
+            Исследуем на сходимость следующий ряд:
+            \begin{equation*}
+                \sum_{n = 1}^{\infty} \left( \dfrac{(2n - 1)!!}{(2n)!!} \right)^2.
+            \end{equation*}
+    
+            Выполним некоторые преобразования:
+            \begin{align*}
+                \dfrac{a_n}{a_{n + 1}} 
+                &= \left( \dfrac{(2n - 1)!!}{(2n!!)} \cdot \dfrac{(2n + 2)!!}{(2n + 1)!!} \right)^2
+                = \left( \dfrac{2n + 2}{2n + 1} \right)^2
+                = \left( \dfrac{1 + \frac{1}{n}}{1 + \frac{1}{2n}} \right)^2 \\
+                &\sim \left[ \dfrac{1}{1 + x} \sim 1 - x \right] 
+                \sim \left( 1 + \dfrac{1}{n} \right)^2 \cdot \left( 1 - \dfrac{1}{2n} \right)^2 \\
+                &\sim \left( 1 + \dfrac{2}{n} \right) \cdot \left( 1 - \dfrac{1}{n} \right)
+                = 1 + \dfrac{1}{n} + \dfrac{2}{n^2}
+            \end{align*}
+
+            Получили $p = 1$, $\gamma = 1$. Тогда ряд расходится.
+        \end{example}
 
     \defitem{Приведите пример положительного ряда, вопрос о поведении которого не может быть решен с помощью признака Гаусса (с обоснованием).}
 
     \defitem{Выведите двустороннюю оценку для частичной суммы ряда через определённый интеграл. Сформулируйте и докажите интегральный признак Коши-Маклорена}
 
-        Рассмотрим $f(x) \downarrow$ при $x \geq n_0 - 1$ и ряд $\sum_{n=n_0}^{\infty} a_n$, где $a_n = f(n)$ 
+        Рассмотрим $f(x) \downarrow$ при $x \geq n_0 - 1$ и ряд $\sum_{n=n_0}^{\infty} a_n$, где $a_n = f(n)$:
+        \[\begin{gathered}
+            f(n + t) \leq a_n \leq f(n - 1 + t), t \in [0; 1].
+        \end{gathered}\]
 
-        $$f(n + t) \leq a_n \leq f(n - 1 + t), t \in [0; 1]$$
+        Отсюда следует, что
+        \begin{equation*}
+            \int_{0}^{1} dt : \ \ \ \ \int_{n}^{n+1} f(x)dx \leq a_n \leq \int_{n-1}^{n} f(x)dx.
+        \end{equation*}
 
-        $$\int_{0}^{1} dt : \ \ \ \ \int_{n}^{n+1} f(x)dx \leq a_n \leq \int_{n-1}^{n} f(x)dx$$
+        Просуммируем полученное:
+        \begin{equation*}
+            \int_{n_0}^{N+1} f(x)dx \leq \sum_{n=n_0}^{N} a_n \leq \int_{n_0-1}^{N} f(x)dx
+        \end{equation*}
 
-        $$\sum_{n=n_0}^{\infty} : \ \ \ \ \int_{n_0}^{N+1} f(x)dx \leq \sum_{n=n_0}^{N} a_n \leq \int_{n_0-1}^{N} f(x)dx$$
-
-        $\implies \sum a_n$ ведёт себя так же как несобственный интеграл $\int^{\infty}f(x)dx$
+        Тогда $\sum a_n$ ведёт себя так же, как и несобственный интеграл $\int^{\infty}f(x)dx$.
 
     \defitem{Что такое улучшение сходимости положительного ряда? Покажите на примере как можно улучшить сходимость ряда.}
 
