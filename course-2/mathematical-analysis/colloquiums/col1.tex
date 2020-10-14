@@ -152,9 +152,33 @@
     \defitem{Сформулируйте теорему Штольца о пределе последовательности. Покажите на примере, как с помощью теоремы Штольца можно уточнить асимптотическую оценку для частичной суммы ряда. $\frac{p_n}{q_n}$, $p_n$, $q_n \to 0$.}
 
         \begin{theorem*}
-            (Штольца.) Если $p_n, q_n \to 0, q_n \downarrow$ и $\exists lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$, то
+            (Штольца.) Если $p_n, q_n \to 0, q_n \downarrow$ и $\exists \lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$, то
             $\lim \dfrac{p_n}{q_n} = \lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$
         \end{theorem*}
+
+        \begin{example}
+            Дан ряд $\sum_{n = 1}^{\infty} \dfrac{1}{n^2}$. Пусть $S$ --- сумма соответствующего ряда. Необходимо доказать, что 
+            \begin{equation*}
+                S_N = S - \dfrac{1}{N} + \operatorname{o} \left( \dfrac{1}{N} \right).
+            \end{equation*}
+
+            Обозначим $x_n = S - S_n \to 0$ и $y_n = \dfrac{1}{n} \to 0$. Рассмотрим предел отношения разностей:
+            \begin{equation*}
+                \lim_{n \to \infty} 
+                = \dfrac{S - S_n - (S - S_{n - 1})}{\frac{1}{n} - \frac{1}{n - 1}}
+                = \dfrac{1}{n^2} \cdot n \cdot (n - 1) \to 1.
+            \end{equation*}
+
+            По теореме Штольца $\lim_{n \to \infty} \dfrac{x_n}{y_n} = 1$. То есть 
+            \begin{equation*}
+                \dfrac{x_n}{y_n} = 1 + \operatorname{o}(1) \implies x_n = y_n + \operatorname{o}(y_n).
+            \end{equation*}
+
+            Отсюда и получаем то, что было в условии:
+            \begin{equation*}
+                S_n = S - \dfrac{1}{n} + \operatorname{o} \left( \dfrac{1}{n} \right).
+            \end{equation*}
+        \end{example}
 
     \defitem{Пусть $\sum a_n$, $\sum a_n'$ - сходящиеся положительные ряды. Говорят, что ряд $\sum a_n'$ сходится быстрее ряда $\sum a_n$, если $a_n' = o(a_n)$. Докажите, что в этом случае также $r_n' = o(r_n)$, где $r_n$, $r_n'$ - остатки соответствующих рядов.}
         
