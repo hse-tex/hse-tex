@@ -228,9 +228,35 @@
 
     \defitem{Докажите, что всякий раз, когда признак Даламбера даёт ответ на вопрос о сходимости ряда, то радикальный признак Коши даёт (тот же) ответ на этот вопрос.}
         
-        Пусть $a_n > 0$. Тогда:
+        Пусть $a_n > 0$. Тогда заметим, что
 
-        $$ \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}\dfrac{a_{n+1}}{a_n}$$
+        \begin{equation*}
+            \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}\dfrac{a_{n+1}}{a_n}.
+        \end{equation*}
+
+        Докажем правую часто неравенства, левая доказывается аналогично.
+
+        \begin{proof}
+            Пусть $q = \overline{\lim} \sqrt[n]{a_n}$ и $p = \overline{\lim} \dfrac{a_{n + 1}}{a_n}$. Тогда необходимо доказать, что $q \leq p$.
+
+            Докажем от противного. Предположим, что $p < q$. 
+
+            Так как мы берем верхний предел, то для любого $\eps > 0$ существует $\{n_k\}$, что $\sqrt[n_k]{a_{n_k}} \geq q - \eps \iff a_{n_k} \geq (q - \eps)^{n_k}$.
+
+            Из определения $p$ следует, что для любого $\eps > 0$ существует $n_0$, что $\dfrac{a_{n + 1}}{a_n} \leq p + \eps$ для любых $n \geq n_0$, что равносильно $a_{n_0 + m} \leq a_{n_0} \cdot (p + \eps)^m$.
+
+            Теперь взяв $a_{n_k}$ можем получить следующее:
+            \begin{equation*}
+                (q - \eps)^{n_k} \leq a_{n_k} \leq a_{n_0} \cdot (p + \eps)^{n_k - n_0} = a_{n_0} \cdot \dfrac{(p + \eps)^{n_k}}{(p + \eps)^{n_0}}.
+            \end{equation*}
+
+            Отсюда получаем, что $\dfrac{a_{n_0}}{(p + \eps)^{n_0}} \geq \left( \dfrac{q - \eps}{p + \eps} \right)^{n_k}$ при всех $k = 1, 2, \dots$. Но при малом $\eps$ мы имеем
+            \begin{equation*}
+                \dfrac{q - \eps}{p + \eps} > 1.
+            \end{equation*}
+
+            Тогда мы пришли к противоречию, так как в $\dfrac{a_{n_0}}{(p + \eps)^{n_0}} \geq \left( \dfrac{q - \eps}{p + \eps} \right)^{n_k}$ слева записано конечное число, а справа будет бесконечность.
+        \end{proof}
 
         Если $\overline{\lim}\dfrac{a_{n+1}}{a_n} < 1 \implies \overline{\lim}{\sqrt[n]{a_n}} < 1$
 
