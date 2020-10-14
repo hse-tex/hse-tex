@@ -152,9 +152,33 @@
     \defitem{Сформулируйте теорему Штольца о пределе последовательности. Покажите на примере, как с помощью теоремы Штольца можно уточнить асимптотическую оценку для частичной суммы ряда. $\frac{p_n}{q_n}$, $p_n$, $q_n \to 0$.}
 
         \begin{theorem*}
-            (Штольца.) Если $p_n, q_n \to 0, q_n \downarrow$ и $\exists lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$, то
+            (Штольца.) Если $p_n, q_n \to 0, q_n \downarrow$ и $\exists \lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$, то
             $\lim \dfrac{p_n}{q_n} = \lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$
         \end{theorem*}
+
+        \begin{example}
+            Дан ряд $\sum_{n = 1}^{\infty} \dfrac{1}{n^2}$. Пусть $S$ --- сумма соответствующего ряда. Необходимо доказать, что 
+            \begin{equation*}
+                S_N = S - \dfrac{1}{N} + \operatorname{o} \left( \dfrac{1}{N} \right).
+            \end{equation*}
+
+            Обозначим $x_n = S - S_n \to 0$ и $y_n = \dfrac{1}{n} \to 0$. Рассмотрим предел отношения разностей:
+            \begin{equation*}
+                \lim_{n \to \infty} 
+                = \dfrac{S - S_n - (S - S_{n - 1})}{\frac{1}{n} - \frac{1}{n - 1}}
+                = \dfrac{1}{n^2} \cdot n \cdot (n - 1) \to 1.
+            \end{equation*}
+
+            По теореме Штольца $\lim_{n \to \infty} \dfrac{x_n}{y_n} = 1$. То есть 
+            \begin{equation*}
+                \dfrac{x_n}{y_n} = 1 + \operatorname{o}(1) \implies x_n = y_n + \operatorname{o}(y_n).
+            \end{equation*}
+
+            Отсюда и получаем то, что было в условии:
+            \begin{equation*}
+                S_n = S - \dfrac{1}{n} + \operatorname{o} \left( \dfrac{1}{n} \right).
+            \end{equation*}
+        \end{example}
 
     \defitem{Пусть $\sum a_n$, $\sum a_n'$ - сходящиеся положительные ряды. Говорят, что ряд $\sum a_n'$ сходится быстрее ряда $\sum a_n$, если $a_n' = o(a_n)$. Докажите, что в этом случае также $r_n' = o(r_n)$, где $r_n$, $r_n'$ - остатки соответствующих рядов.}
         
@@ -164,7 +188,7 @@
         
         Оба ряда расходятся, тогда $S_n \to \infty$ и $S_n' \to \infty$ при $n \to \infty$. Мы понимаем, что $S_n = \sum_{n = 1}^{N} a_n$, $S_n' = \sum_{n = 1}^{N} a_n'$. Это значит, что для некоторого $n_1$ мы имеем следующее: $S_{n_1} = \sum_{n = 1}^{n_1} a_n$, $S_{n_1}' = \sum_{n = 1}^{n_1} a_n'$, где для любого $n = 1, 2, 3, \dots, n_1$ выполняется отношение $a_n' = o(a_n)$. В таком случае для частичных сумм справедливо отношение $S_{n_1}' = o(S_{n_1})$. А так как и для всех последующих $a_n$ и $a_n'$ также справедливо отношение $a_n' = o(a_n)$, то мы можем сказать, что $S_n' = o(S_n)$.
 
-    \defitem{Пусть положительный ряд $\sum a_n$ сходится и $r_n$ его частичная сумма. Докажите, что ряд $\sum (\sqrt{r_{n}} - \sqrt{r_{n+1}})$ также сходится, причём медленнее, чем ряд $\sum a_{n+1}$.}
+    \defitem{Пусть положительный ряд $\sum a_n$ сходится и $r_n$ --- его остаток. Докажите, что ряд $\sum (\sqrt{r_{n}} - \sqrt{r_{n+1}})$ также сходится, причём медленнее, чем ряд $\sum a_{n+1}$.}
         
         $r_n = S - S_n$.
         
@@ -204,9 +228,35 @@
 
     \defitem{Докажите, что всякий раз, когда признак Даламбера даёт ответ на вопрос о сходимости ряда, то радикальный признак Коши даёт (тот же) ответ на этот вопрос.}
         
-        Пусть $a_n > 0$. Тогда:
+        Пусть $a_n > 0$. Тогда заметим, что
 
-        $$ \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}\dfrac{a_{n+1}}{a_n}$$
+        \begin{equation*}
+            \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}\dfrac{a_{n+1}}{a_n}.
+        \end{equation*}
+
+        Докажем правую часто неравенства, левая доказывается аналогично.
+
+        \begin{proof}
+            Пусть $q = \overline{\lim} \sqrt[n]{a_n}$ и $p = \overline{\lim} \dfrac{a_{n + 1}}{a_n}$. Тогда необходимо доказать, что $q \leq p$.
+
+            Докажем от противного. Предположим, что $p < q$. 
+
+            Так как мы берем верхний предел, то для любого $\eps > 0$ существует $\{n_k\}$, что $\sqrt[n_k]{a_{n_k}} \geq q - \eps \iff a_{n_k} \geq (q - \eps)^{n_k}$.
+
+            Из определения $p$ следует, что для любого $\eps > 0$ существует $n_0$, что $\dfrac{a_{n + 1}}{a_n} \leq p + \eps$ для любых $n \geq n_0$, что равносильно $a_{n_0 + m} \leq a_{n_0} \cdot (p + \eps)^m$.
+
+            Теперь взяв $a_{n_k}$ можем получить следующее:
+            \begin{equation*}
+                (q - \eps)^{n_k} \leq a_{n_k} \leq a_{n_0} \cdot (p + \eps)^{n_k - n_0} = a_{n_0} \cdot \dfrac{(p + \eps)^{n_k}}{(p + \eps)^{n_0}}.
+            \end{equation*}
+
+            Отсюда получаем, что $\dfrac{a_{n_0}}{(p + \eps)^{n_0}} \geq \left( \dfrac{q - \eps}{p + \eps} \right)^{n_k}$ при всех $k = 1, 2, \dots$. Но при малом $\eps$ мы имеем
+            \begin{equation*}
+                \dfrac{q - \eps}{p + \eps} > 1.
+            \end{equation*}
+
+            Тогда мы пришли к противоречию, так как в $\dfrac{a_{n_0}}{(p + \eps)^{n_0}} \geq \left( \dfrac{q - \eps}{p + \eps} \right)^{n_k}$ слева записано конечное число, а справа будет бесконечность.
+        \end{proof}
 
         Если $\overline{\lim}\dfrac{a_{n+1}}{a_n} < 1 \implies \overline{\lim}{\sqrt[n]{a_n}} < 1$
 
