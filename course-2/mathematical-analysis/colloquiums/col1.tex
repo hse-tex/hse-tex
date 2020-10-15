@@ -1,3 +1,5 @@
+
+
 \documentclass[a4paper]{article}
 \usepackage{header}
 
@@ -688,9 +690,17 @@
 
     \defitem{Сформулируйте и докажите необходимое условие сходимости бесконечного произведения.}
 
-        Если $P_N = \prod_{n=1}^N a_n$ сходится, то $a_n = \frac{P_n}{P_{n - 1}} \to 1$
+        Если $P_N = \prod_{n=1}^N a_n$ сходится, то $a_n = \frac{P_n}{P_{n - 1}} \to 1$.
 
     \defitem{Пусть последовательности $\{a_n\}$, $\{A_n\}$, $A_n \neq 0$ таковы, что $a_n = \frac{A_n}{A_{n - 1}} \cdot c_n$ и бесконечное произведение $\prod c_n$ сходится. Докажите, что существует число $C \neq 0$, что $\prod_{n = 1}^N a_n = A_N \cdot (C + \operatorname{o}(1))$.}
+
+        Из условия знаем, что $\prod c_n$ сходится к числу $P \neq 0$. 
+        
+        Рассмотрим, чему равно частичное произведение:
+        \begin{equation*}
+            \prod_{n = 1}^N \dfrac{A_n}{A_{n - 1}} \cdot c_n = \dfrac{A_1}{A_0} \cdot c_1 \cdot \dfrac{A_2}{A_1} \cdot c_2 \cdot \dfrac{A_3}{A_2} \cdot c_3 \cdot \dots \cdot \dfrac{A_N}{A_{N - 1}} \cdot c_N = \dfrac{A_N}{A_0} \cdot P_N = A_N \cdot (C + \operatorname{o}(1)),
+        \end{equation*}
+        где $C = \dfrac{P}{A_0}$,
 
     \defitem{Как определяется соответствующий бесконечному произведению ряд? Сформулируйте и докажите утверждение об их взаимосвязи.}
         
