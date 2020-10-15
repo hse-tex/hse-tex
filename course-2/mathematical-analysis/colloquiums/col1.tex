@@ -546,7 +546,20 @@
         
     \defitem{Покажите, что для любых числовых последовательностей $\{a_n\}$, $\{B_n\}$ справедлива формула суммирования по частям: $\sum_{n=m+1}^{N} a_n(B_n - B_{n-1}) = (a_NB_N-a_mB_m) - \sum_{n=m+1}^{N} (a_n - a_{n - 1}) B_{n-1}$.}
         
-        Суммируем равенство по индексу $n$: $\sum_{n=m+1}^{N}$. $\sum_{n=m+1}^{N} a_n(B_n - B_{n-1}) = \sum_{n=m+1}^{N} (a_nB_n - a_{n-1}B_{n-1}) - \sum_{n=m+1}^{N} (a_n - a_{n-1})B_{n-1}$. Получаем из первой скобки путём сокращения элементов $a_N B_N - a_m B_m$. В итоге получаем $\sum_{n=m+1}^{N} a_n(B_n - B_{n-1}) = (a_NB_N-a_mB_m) - \sum_{n=m+1}^{N} (a_n - a_{n - 1}) B_{n-1}$.
+        Суммируем равенство по индексу $n$: 
+        \begin{equation*}
+            \sum_{n=m+1}^{N} a_n(B_n - B_{n-1}) = \sum_{n=m+1}^{N} (a_nB_n - a_{n-1}B_{n-1}) - \sum_{n=m+1}^{N} (a_n - a_{n-1})B_{n-1}.
+        \end{equation*}
+
+        Замечаем, что 
+        \begin{equation*}
+            \sum_{n=m+1}^{N} (a_nB_n - a_{n-1}B_{n-1}) = a_N B_N - a_m B_m.
+        \end{equation*}
+        
+        В итоге получаем
+        \begin{equation*}
+            \sum_{n=m+1}^{N} a_n(B_n - B_{n-1}) = (a_NB_N-a_mB_m) - \sum_{n=m+1}^{N} (a_n - a_{n - 1}) B_{n-1}.
+        \end{equation*}
         
     \defitem{Сформулируйте признак Дирихле. Приведите пример его применения.}
         
@@ -573,8 +586,22 @@
             Признак Абеля. Если $a_n$ монотонна и ограничена, а ряд $\sum_{n=1}^{\infty}b_n$ сходится,
             то $\sum_{n=1}^{\infty}a_n \cdot b_n$ сходится.
         \end{theorem*}
-        
-        % $a_n \to a$, $a_n = a +- \alpha_n$, $\alpha_n \downarrow 0$; $\sum_{n=1}^{\infty}a_n \cdot b_n = a \sum_{n=1}^{\infty}b_n +- \sum_{n=1}^{\infty}\alpha_n \cdot b_n$
+
+        Заметим, что частичные суммы $B_N$ ограничены. Так как последовательность $\{a_n\}$ монотонна и ограничена, у неё есть предел:
+        \begin{equation*}
+            \lim a_ n = a.
+        \end{equation*}
+
+        Тогда $\lim (a_n - a) = 0$. Заметим, что следующий ряд сходится по признаку Дирихле:
+        \begin{equation*}
+            \sum_{n = 1}^{\infty} (a_n - a) \cdot b_n.
+        \end{equation*}
+
+        Но тогда исходный ряд тоже сходится:
+        \begin{equation*}
+            \sum_{n = 1}^{\infty} a_n \cdot b_n = \sum_{n = 1}^{\infty} (a_n - a) \cdot b_n + a \cdot \sum_{n = 1}^{\infty} b_n = \sum_{n = 1}^{\infty} (a_n - a) \cdot b_n + C,
+        \end{equation*}
+        где $C$ --- некоторое конечное число.
 
     \defitem{Что такое перестановка членов ряда? Приведите пример.}
         
