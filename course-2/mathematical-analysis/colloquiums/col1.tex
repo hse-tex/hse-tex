@@ -591,10 +591,33 @@
     \defitem{Сформулируйте свойство условно сходящегося ряда, связанное с перестановкой членов (теорема Римана).}
         
         \begin{theorem*}
-            (Римана) Если ряд $\sum a_n$ сходится условно, то для $\forall S \in [-\infty; +\infty]$ то $\exists$ перестановка $f$ такая, что $\sum a_{f(n)} = S$
+            (Римана) Если ряд $\sum a_n$ сходится условно, то для $\forall S \in [-\infty; +\infty]$ то существует перестановка $f$ такая, что $\sum a_{f(n)} = S$
         \end{theorem*}
 
     \defitem{Приведите пример условно сходящегося ряда и перестановки, меняющей его сумму (с обоснованием).}
+
+        Рассмотрим следующий ряд:
+        \begin{equation*}
+            \sum_{n = 1}^{\infty} \dfrac{(-1)^n}{n} = -1 + \dfrac{1}{2} - \dfrac{1}{3} + \dfrac{1}{4} - \dots = -\ln{2}
+        \end{equation*}
+
+        Посмотрим, как выглядят положительная и отрицательная части:
+        \[\begin{gathered}
+            S_{2n}^{+} = \dfrac{1}{2} + \dfrac{1}{4} + \dots + \dfrac{1}{2n} = \dfrac{1}{2} \cdot (\ln{n} + \gamma) + \operatorname{o}(1); \\
+            S_{2n}^{-} = 1 + \dfrac{1}{3} + \dots + \dfrac{1}{2n - 1} = \ln{2} + \dfrac{1}{2} \cdot (\ln{n} + \gamma) + \operatorname{o}(1).
+        \end{gathered}\]
+        
+        Возьмём сначала $p$ положительных слагаемых, затем $\displaystyle q$ 
+        отрицательных и так далее. Тогда после $m$ таких действий получим следующее:
+        \[\begin{gathered}
+            S_{2mp}^+ = \dfrac{1}{2} + \dfrac{1}{4} + \dots + \dfrac{1}{2mp} = \dfrac{1}{2} \cdot (\ln{(mp)} + \gamma) + \operatorname{o}(1); \\
+            S_{2mq}^- = 1 + \dfrac{1}{3} + \dots + \dfrac{1}{2mq - 1} = \ln{2} + \dfrac{1}{2} \cdot (\ln{(mq)} + \gamma) + \operatorname{o}(1).
+        \end{gathered}\]
+
+        Теперь заметим, что мы получили, что после перестановки наш ряд сходится к другому числу:
+        \begin{equation*}
+            S_{2mp}^{+} - S_{2mq}^{-} = -\ln{2} + \dfrac{1}{2} \cdot \ln{\left(\dfrac{p}{q}\right)} + \operatorname{o}(1).
+        \end{equation*}
 
     \defitem{Как определяется произведение рядов? Что можно утверждать о произведении абсолютно сходящихся рядов?}
         
