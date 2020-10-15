@@ -928,7 +928,36 @@
 
     \defitem{Сформулируйте теорему о почленном дифференцировании функциональной последовательности.}
 
+        \begin{theorem*}
+            Пусть $a, b \in [-\infty; +\infty]$ и $D = (a; b)$ или $D = [a; b]$.
+
+            Пусть $f_n$ дифференцируема на множестве $D$, $f_n' \overset{D}{\rightrightarrows} g$ и существует точка $c \in D$, что $\{f_n(c)\}$ сходится.
+
+            Тогда существует такая предельная функция $f$, что $f_n \overset{D}{\to} f$. что $f$ дифференцируема и $f' = g$. И если $D$ ограничено, то $f_n \overset{D}{\rightrightarrows} f$.
+
+            Другими словами,
+            \begin{equation*}
+                \left( \lim_{n \to \infty} f_n(x) \right)' = \lim_{n \to \infty} f_n'(x).
+            \end{equation*}
+        \end{theorem*}
+
     \defitem{Сформулируйте теорему о почленном интегрировании функциональной последовательности.}
+
+        \begin{theorem*}
+            Пусть $a, b \in [-\infty; +\infty]$ и $D = (a; b)$ или $D = [a; b]$.
+
+            Пусть $f_n$ непрерывна на $D$ и $f_n \overset{D}{\rightrightarrows} f$. Заметим, что из последнего условия следует непрерывность $f$ на $D$.
+
+            Тогда
+            \begin{equation*}
+                \int_a^x f_n(t) dt \overset{D}{\rightrightarrows} \int_a^x f(t) dt.
+            \end{equation*}
+
+            Или другими словами:
+            \begin{equation*}
+                \int_a^x \lim_{n \to \infty} f_n(t) dt = \lim_{n \to \infty} \int_a^x f_n(t) dt.
+            \end{equation*}
+        \end{theorem*}
 
     \defitem{Как определяются множества абсолютной и условной сходимости функционального ряда? Как они связаны с множеством сходимости?}
         
