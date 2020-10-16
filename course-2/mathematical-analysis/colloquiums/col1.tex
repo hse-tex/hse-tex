@@ -1265,6 +1265,27 @@
 
     \defitem{Докажите, что если степенной ряд $\sum c_n \cdot (x - x_n)^n$ расходится в точке $x_1$, то он расходится во всех точках $x$, для которых $|x - x_0| > |x_1 - x_0|$.}
 
+        \begin{proof}
+            Докажем, что если $\displaystyle \sum c_n (x - x_0)^n$ сходится в точке $x_1$, то он сходится во всех точках $x$, для которых $|x - x_0| < |x_1 - x_0| \;  \circledast.$ Из этого будет следовать сформулированное выше утверждение (методом от противного).
+
+            Итак, доказываем $\circledast$. (Будем рассматривать нетривиальный случай $x_1 \neq x_0$, иначе очевидно).
+
+            $ \Bigg| \displaystyle \sum_{n = m}^{N} c_n (x - x_0)^n \Bigg| =
+            \Bigg| \sum_{n = m}^{N} c_n \cdot (x_1 - x_0)^n \cdot \left( \frac{x - x_0}{x_1 - x_0} \right)^n \Bigg| \leq
+            \sum_{n = m}^{N}  \big| c_n \cdot (x_1 - x_0)^n \big| \cdot \bigg| \frac{x - x_0}{x_1 - x_0} \bigg|^n = \bigstar$.
+
+            Заметим, что $\big| c_n \cdot (x_1 - x_0)^n \big| < \varepsilon $ при $m \geq n_0 (\varepsilon)$ (следствие из необходимого условия сходимости).
+
+            Далее, (при наших условиях) $\sum \bigg| \frac{x - x_0}{x_1 - x_0} \bigg|^n$ образуют геом. прогрессию, где $q = \bigg| \frac{x - x_0}{x_1 - x_0} \bigg| < 1.$
+
+            Так что $\bigstar \leq \varepsilon \cdot (q^m + \dots + q^n)
+            \leq \varepsilon \cdot  q^m \cdot \frac{1}{1 - q} \to 0.$ 
+
+            Почему к нулю? При $m \to \infty $ выражение $q^m \cdot \frac{1}{1 - q}$ остается ограниченным одной и той же константой, а $\varepsilon$ - это произвольная сколь угодно малая величина.
+
+            Итог: ряд сходится по критерию Коши.
+        \end{proof}
+
     \defitem{Выведите формулу Коши-Адамара для радиуса сходимости степенного ряда.}
 
         $\sum_{n=0}^{\infty} c_n \cdot(x - x_0)^n$
@@ -1284,6 +1305,32 @@
     \defitem{Приведите примеры степенных рядов, радиус сходимости $R$ которых: $R \in (0, +\infty)$, $R = 0$, $R = \infty$ (с обоснованием).}
 
     \defitem{Пусть $R$ -- радиус сходимости степенного ряда. Сформулируйте и докажите теорему о равномерной сходимости степенного ряда на $[0; R]$.}
+
+        \begin{theorem*}
+            Пусть $\displaystyle \sum c_n R^n$ сходится. Тогда степенной ряд
+            $\displaystyle \sum c_n(x - x_0)^n$ сходится равномерно на $\displaystyle
+            [x_0, x_0 + R]$
+        \end{theorem*}
+        \begin{proof}
+            В начале доказательства хочу заметить,
+            что доказываю не совсем то, что в вопросе просят, однако это вроде 
+            ошибка Маевского, а не моя. Для того, чтобы всё было, как вопросе, возьмите
+            $\displaystyle x_0 = 0$.
+
+            $\displaystyle \sum_{n = 0}^{\infty}c_n(x - x_0)^n =
+            \sum_{n = 0}^{\infty}(c_nR^n)\cdot \left(\frac{x - x_0}{R}\right)^n$
+
+            $\displaystyle \sum_{n = 0}^{\infty}(c_nR^n)$ -- сходится равномерно 
+            (от $\displaystyle x$ не зависит)
+
+            $\displaystyle \sum_{n = 0}^{\infty}\left(\frac{x - x_0}{R}\right)^n 
+            \downarrow_{(n)}$ \ $\displaystyle \forall x \in [x_0, x_0 + R]$
+
+            $\displaystyle \Rightarrow \sum_{n = 0}^{\infty}c_n(x - x_0)^n$ -- сходится
+            равномерно на $\displaystyle
+            [x_0, x_0 + R]$
+            по признаку Абеля
+        \end{proof}
 
     \defitem{Пусть $R$ -- радиус сходимости степенного ряда. В каком случае можно утверждать, что $\sum_{n = 0}^{\infty} c_n R^n = \lim_{x \to R - 0} \sum_{n = 0}^{\infty} c_n x^n$? Обоснуйте ответ.}
 
@@ -1368,12 +1415,23 @@
         \end{example}
 
     \defitem{Запишите разложения в степенной ряд с центром в нуле для функций $e^x$, $\sin x$, $\cos x$. Каково множество сходимости ряда? На каком множестве сумма ряда представляет собой исходную функцию?}
+    
+    \begin{enumerate}
+        \item $e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$, $R = \infty$
 
-        $e^x = \sum_{k=0}^{\infty} \dfrac{x^k}{k!}$
+                Докажем равенство. Оценим остаток по формуле Лагранжа.
 
-        $\sin x = \sum_{k=0}^{\infty} (-1)^{k} \dfrac{x^{2k+1}}{(2k+1)!}$
-
-        $\cos x = \sum_{k=0}^{\infty} (-1)^{k} \dfrac{x^{2k}}{(2k)!}$
+                $r_N(x) = \underbrace{e^{\Theta x}}_\text{const} \cdot \underbrace{\frac{x^{N+1}}{\left(N + 1\right)!}}_{\to 0 \text{ при }\forall x}$, $\Theta \in \left(0;\ 1\right)$
+            Множество сходимости~--- $\RR$, на множестве $\RR$ сумма ряда представляет собой исходную функцию.
+        \item Для $\cos x$ аналогично:
+            \begin{flalign*}
+                & \cos x = \sum_{n=0}^\infty \left(-1\right)^n \cdot \frac{x^{2n}}{\left(2n\right)!}, x \in \RR, R = \infty
+            \end{flalign*}
+        \item Для $\sin x$ аналогично:
+            \begin{flalign*}
+                & \sin x = \sum_{n=0}^\infty \left(-1\right)^n \cdot \frac{x^{2n+1}}{\left(2n+1\right)!} x \in \RR, R = \infty
+            \end{flalign*}
+    \end{enumerate}
 
     \defitem{Запишите разложение в степенной ряд с центром в нуле для функции $(1+x)^p$. Каково множество сходимости ряда? На каком множестве сумма ряда представляет собой исходную функцию?}
 
