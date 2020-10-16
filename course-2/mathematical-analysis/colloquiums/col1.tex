@@ -11,6 +11,8 @@
 \newcommand\defitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
 \newcommand\proofitem[1]{\enumtocitem{#1}{subsubsection}{\thesubsubsection}}
 
+\renewcommand{\o}{\operatorname{o}}
+
 \newlist{colloq}{enumerate}{1}
 \setlist[colloq]{label=\textbf{\arabic*.}}
 
@@ -312,6 +314,27 @@
 
     \defitem{Докажите, что если для положительного ряда $\sum a_n$ существует $\lim \frac{a_{n + 1}}{a_n} = q$, то существует и $\lim \sqrt[n]{a_n} = q$.}
 
+        Заметим, что
+        \begin{equation*}
+            \lim \frac{a_{n + 1}}{a_n} = q \iff 
+            \overline{\lim} \frac{a_{n + 1}}{a_n} = \underline{\lim} \frac{a_{n + 1}}{a_n}.
+        \end{equation*}
+
+        Вспомним неравенство из предыдущего пункта:
+        \begin{equation*}
+            \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}\dfrac{a_{n+1}}{a_n}.
+        \end{equation*}
+
+        Подставим известные значения:
+        \begin{equation*}
+            q \leq \underline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}{\sqrt[n]{a_n}} \leq q.
+        \end{equation*}
+
+        То есть мы зажали предел с двух сторон с помощью $q$. Тогда
+        \begin{equation*}
+            \lim \sqrt[n]{a_n} = q.
+        \end{equation*}
+
     \defitem{Приведите пример положительного ряда, вопрос о поведении которого не может быть решен с помощью признака Даламбера, но может быть решен с помощью радикального призанка Коши (с обоснованием).}
 
         Выберем какие-то числа $a$ и $b$ такие, что $0 < a < 1$, $b > 1$ и $a \cdot b \neq 1$.
@@ -424,6 +447,34 @@
         \end{example}
 
     \defitem{Приведите пример положительного ряда, вопрос о поведении которого не может быть решен с помощью признака Гаусса (с обоснованием).}
+
+        Анализируем положительный ряд $\sum_{n=1}^{\infty} \dfrac{1}{n \ln^p n}$ с общим членом $a_n = \dfrac{1}{n \ln^p n}$.
+
+        Рассмотрим отношение:
+        \begin{align*}
+            \dfrac{a_{n + 1}}{a_n} 
+            &= \dfrac{n \ln^p n}{(n + 1) \ln^p (n + 1)} \\
+            & = \dfrac{n}{n + 1} \cdot \dfrac{\ln^p n}{\ln^p (n + 1)} \\
+            &= \dfrac{1}{1 + 1/n} \cdot \dfrac{\ln^p n}{\left( \ln n + \ln (1/n)\right)^p} \\
+            &= \left[\text{ По формуле Тейлора для $(1+x)^{-1}$ и $\ln (1+x) \sim x$ }\right] \\
+            &= \left(1 - \dfrac{1}{n} + \dfrac{1}{n^2} + o\left(\dfrac{1}{n^2}\right)\right) \cdot \left(1 + \dfrac{1/n + \o(1/n)}{\ln n}\right)^{-p} \\
+            &= \left[\text{ Перешли к менее строгому приближению и  снова разложили $(1+x)^{-p}$ }\right] \\
+            &= \left(1 - \dfrac{1}{n} + \o\left(\dfrac{1}{n \ln n}\right)\right) \cdot \left(1 - \dfrac{p}{n \ln n} + \o\left(\dfrac{1}{n \ln n}\right)\right) \\
+            &= 1 - \dfrac{1}{n} - \dfrac{p}{n \ln n} + \o\left(\dfrac{1}{n \ln n}\right).
+        \end{align*}
+        
+        Для использования признака Гаусса должны получить приближение 
+        \begin{equation*}
+            1 - \dfrac{q}{n} + \operatorname{O}\left( \dfrac{1}{n^{1+\delta}} \right),
+        \end{equation*}
+        где $\delta > 0$.
+
+        Но при этом имеем
+        \begin{equation*}
+            - \dfrac{1}{n} - \dfrac{p}{n \ln n} + \o\left(\dfrac{1}{n \ln n}\right) \neq \operatorname{O}\left( \dfrac{1}{n^{1+\delta}} \right),
+        \end{equation*}
+        потому что 
+        $\dfrac{1}{\ln n} > \dfrac{1}{n^{\delta}}$ для любых $\delta > 0$ при $n$, стремящемся к $\infty$.
 
     \defitem{Выведите двустороннюю оценку для частичной суммы ряда через определённый интеграл. Сформулируйте и докажите интегральный признак Коши-Маклорена}
 
