@@ -700,13 +700,11 @@
         Если следующая сумма имеет предел при $K, M \to \infty$, не зависящий от порядка суммирования, то говорят, что определено произведение рядов.
 
         \begin{equation*}
-            \left(\sum_{k=1}^{K} a_k\right) \cdot \left(\sum_{m=1}^{M} b_m \right) = \sum_{1 \leq k \leq K, 1 \leq m \leq M} a_k \cdot b_m
+            \left(\sum_{k=1}^{K} a_k\right) \cdot \left(\sum_{m=1}^{M} b_m \right) = \sum_{1 \leq k \leq K, 1 \leq m \leq M} a_k \cdot b_m = \sum_{n=1}^{\infty} c_n,\quad c_n = \sum_{k=1}^{n} a_k\cdot b_{n - k}
         \end{equation*}
 
         \begin{theorem*}
-        (Коши) Если $\sum a_k$, $\sum b_m$ сходятся абсолютно, то определено их произведение.
-
-        $\left(\sum_{k=1}^{\infty} a_k\right) \cdot \left(\sum_{m=1}^{\infty} b_m \right) = \sum_{n=1}^{\infty} a_{k_n} \cdot b_{m_n}$
+        (Коши) Если $\sum a_k$, $\sum b_m$ сходятся абсолютно, то их произведение сходится абсолютно.
         \end{theorem*}
 
     \defitem{Что такое произведение рядов в форме Коши? Приведите пример вычисления такого произведения.}
