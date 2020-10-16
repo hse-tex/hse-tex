@@ -922,9 +922,66 @@
 
     \defitem{Докажите, что если две функциональные последовательности сходятся равномерно к предельным функциям, то их сумма также сходится равномерно к сумме этих предельных функций.}
 
+        \begin{theorem*}
+            Пусть $f_n \overset{D}{\rightrightarrows} f$ и $g_n \overset{D}{\rightrightarrows} g$, тогда $(f_n + g_n) \overset{D}{\rightrightarrows} (f + g)$.
+        \end{theorem*}
+        
+        \begin{proof}
+            По определению равномерной сходимости:
+            \[\begin{gathered}
+                \forall \eps > 0 \; \exists N_1(\eps) : |f_n(x) - f(x)| < \dfrac{\eps}2 \;\;\; \forall n \ge N_1(\eps)\;\; \forall x \in D; \\
+                \forall \eps > 0 \; \exists N_2(\eps) : |g_n(x) - g(x)| < \dfrac{\eps}2 \;\;\; \forall n \ge N_2(\eps)\;\; \forall x \in D.
+            \end{gathered}\]
+
+            Тогда для любого $x$ из $D$ и для любого $n \geq \max\{N_1, N_2\}$:
+            \begin{equation*}
+                |(f_n(x) + g_n(x)) - (f(x) + g(x))|  = |(f_n(x) - f(x)) + (g_n(x) - g(x))| \le |f_n(x) - f(x)| + |g_n(x) - g(x)| < \dfrac{\eps}2 + \dfrac{\eps}2 = \eps.
+            \end{equation*}
+
+            Но тогда
+            \begin{equation*}
+                \forall \eps > 0 \; \exists N = \max\{N_1, N_2\} : |(f_n(x) + g_n(x)) - (f(x) + g(x))| < \eps \;\;\; n \ge N \;\; \forall x \in D,
+            \end{equation*}
+            то есть сумма $(f_n + g_n)$ равномерно сходится к $(f + g)$ на $D$.
+        \end{proof}  
+
     \defitem{Докажите, что если две функциональные последовательности сходятся равномерно к ограниченным предельным функциям, то их произведение также сходится равномерно к произведению этих предельных функций.}
 
+        \begin{proof}
+            Пусть наши последовательности --- $\{f_n\}, \, \{g_n\};$, а их предельные функции --- $f, g$ соотв.
+            
+            Знаем: $\forall \; \eps_1, \eps_2 \; \exists \; N_1(\eps_1), \, N_2(\eps_2): |f_n(x) - f(x)| < \eps_1; \; |g_m(x) - g(x)| < \eps_2$ при $n \geq N_1(\eps_1), \;m \geq N_2(\eps_2).$
+            
+            Пусть $|f(x)|$ ограничен ограничен какой-нибудь константой $C_1$.
+            
+            Так как $|g(x)|$ ограничен, то $|g_n(x)|$ ограничен какой-нибудь константой $C_2$. Следовательно,
+            \begin{flalign}
+            & |f_n(x)\cdot g_n(x) - f(x)\cdot g(x)| = \\
+            & = |f_n(x)\cdot g_n(x) - f(x)\cdot g_n(x) + f(x)\cdot g_n(x) - f(x)\cdot g(x)| \leq \\
+            & \leq |f_n(x)\cdot g_n(x) - f(x)\cdot g_n(x)| + |f(x)\cdot g(x) - f(x)\cdot g_n(x)| =\\
+            & = |g_n(x)| \cdot |f_n(x) - f(x)| + |f(x)| \cdot |g(x) - g_n(x)| \leq C_2 \cdot \epsilon_1 + C_1 \cdot \epsilon_2 \text{ (начиная с $n = \max(N_1(\eps_1), N_2(\eps_2))$.}
+            \end{flalign}
+            Теперь возьмем произвольный $\eps > 0$, и положим $\eps_1 = \frac{\eps}{3 \cdot C_2}; \; \eps_2 = \frac{\eps}{3 \cdot C_1}.$  
+            
+            Начиная с $n = \max\{N_1(\eps_1), N_2(\eps_2)\}$ верно, что $|f_n(x) \cdot g_n(x) - f(x) \cdot g(x)| \leq \eps/3 + \eps/3 < \eps$.
+        \end{proof}
+
     \defitem{Пусть функциональная последовательность $\{f_n\}$ сходится равномерно на множестве $D$ к предельной функции $f$, отделённой от нуля (т.е. $\inf_{x \in D} |f(x)| > 0$), то функциональная последовательность $\{f_n\}$ сходится равномерно на $D$ к $f$.}
+
+        \begin{proof}
+            \begin{flalign*}
+                & \norm{\frac{1}{f_n} - \frac{1}{f}} = \norm{\frac{f_n - f}{f_n \cdot f}} =
+                \sup_{x \in D}{\left|\frac{f_n - f}{f_n \cdot f}\right|} \leq \sup_{x \in D} \frac{\epsilon}{|f_n \cdot f|} \; \text{ при } n \geq N(\epsilon), \;  \text{т.к. } \norm{f_n - f} \leq \epsilon \text{ при } n \geq N(\epsilon).
+                \\ \\
+                & \inf |f(x)| = m > 0 \implies |f(x)| \geq m \; \forall \, x \in D. \\
+                \\
+                & |f_n| + |f_n - f| \geq |f_n - (f_n - f)|  = |f| \iff |f_n| \geq |f| - |f_n - f|. \text{ Поэтому если } \epsilon < m/2 \text{, то }\\ \\
+                & |f_n| \geq |f| - |f_n - f| > m - \epsilon > m - m/2 = m/2 \; \text{ при } n \geq N(\epsilon),  \; \text{ведь } |f| \geq m, \; |f_n - f| < \epsilon < m/2.\\
+                & |f_n| > m/2 \implies \frac{1}{|f_n|} < \frac{2}{m}; ~ |f| \geq m \implies \frac{1}{|f|} \leq \frac{1}{m}. \text{ Поэтому:} \\
+                &  \norm{\frac{1}{f_n} - \frac{1}{f}} \leq \sup_{x \in D} \frac{\epsilon}{|f_n \cdot f|} < \frac{\epsilon}{m/2 \cdot m} = \epsilon \cdot \frac{2 }{m^2} \; \; (\forall \, n \geq N(\epsilon))\\
+            \end{flalign*}
+            Так как $\frac{2}{m^2}$ - фиксированное число, а $\eps$ у нас --- сколь угодно малое, то это означает, что $\norm{\frac{1}{f_n} - \frac{1}{f}} \to 0,$ что является по определению равномерной сходимостью $f_n$ к  $f$.
+        \end{proof}
 
     \defitem{Докажите, что равномерная сходимость последовательности на множестве $D = D_1 \cup D_2$ равносильно равномерной сходимости этой последовательности на $D_1$ и $D_2$ одновременно.}
 
@@ -933,6 +990,28 @@
     \defitem{Сформулируйте критерий Коши равномерной сходимости функциональной последовательности.}
 
     \defitem{Докажите, что предел равномерно сходящейся последовательности непрерывных функций является непрерывной функцией.}
+
+        \begin{proof}
+            Пусть функция $s(x)$ $-$ предел некоторой последовательности непрерывных функций $s_n(x)$. Тогда непрерывность функции $s(x)$, которую нам нужно доказать, по определению будет заключаться в том, что в любой точке $x_0$ для любого $\eps > 0$ можно найти такое $\delta$, что из $|h| < \delta$ следует, что $|s(x_0 + h) - s(x_0)| < \eps$.
+
+            Для любых $x_0, h, n$ имеем
+            \begin{align*}
+                |s(x_0 + h) - s(x_0)| 
+                &= |s(x_0 + h) - s_n(x_0 + h) + s_n(x_0 + h) - s_n(x_0) + s_n(x_0) - s(x_0)| \\
+                &\leq |s(x_0 + h) - s_n(x_0 + h)| + |s_n(x_0 + h) - s_n(x_0)| + |s_n(x_0) - s(x_0)|.
+            \end{align*}
+
+            По определению равномерной сходимости мы можем взять такое $n$, что для любого $x_0$ будет выполняться неравенство $|s(x_0) - s_n(x_0)| < \frac{\eps}{3}$. Значит справедливы неравенства:
+            \[\begin{gathered}
+                |s(x_0 + h) - s_n(x_0 + h)| < \frac{\eps}{3}; \\
+                |s(x_0) - s_n(x_0)| < \frac{\eps}{3}.
+            \end{gathered}\]
+
+            Итак, пусть мы зафиксировали некоторое $n$, тогда, поскольку функция $s_n(x)$ монотонна по условию, найдётся такое $\delta$, что для любого $|h| < \delta$ выполняется неравенство $|s_n(x_0 + h) - s_n(x_0)| < \frac{\eps}{3}$. Таким образом
+            \begin{equation*}
+                |s(x_0 + h) - s(x_0)| \leq |s(x_0 + h) - s_n(x_0 + h)| + |s_n(x_0 + h) - s_n(x_0)| + |s_n(x_0) - s(x_0)| < \frac{\eps}{3} + \frac{\eps}{3} + \frac{\eps}{3} = \eps.
+            \end{equation*}
+        \end{proof}
 
     \defitem{Сформулируйте теорему Дини о монотонной сходимости. Приведите пример её применения для доказательства равномерной сходимости функциональной последовательности (с обоснованием).}
         
@@ -947,9 +1026,7 @@
         \end{example}
 
     \defitem{Приведите контрпример, показывающий, что в формулировке теоремы Дини о монотонной сходимости нельзя отказаться от условия непрерывности предельной функции (с обоснованием)}    
-    
-    \defitem{Покажите на примере как доказать неравномерность сходимости функциональной последовательности с помощью локализации особенности (с обоснованием).}
-        
+
         Рассмотрим функциональную последовательность $f_n(x) = \dfrac{1}{1 + nx}$ на множестве $D = [0;1]$. Поймём, что некоторые условия для теормы Дини выполняются:
         \begin{itemize}
         \item
@@ -973,6 +1050,20 @@
         \end{equation*}
         
         То есть $f_n$ сходится неравномерно на $D$.
+    
+    \defitem{Покажите на примере как доказать неравномерность сходимости функциональной последовательности с помощью локализации особенности (с обоснованием).}
+
+        Надо рассмотреть $f_n = \dfrac{1}{x^n}$ на множестве $D = (1; +\infty)$.
+
+        Заметим, что $f_n \overset{D}{\to} f = 0 $, но при этом имеем
+        \begin{equation*}
+            f_n \to \begin{cases}
+                1, &x = 1; \\
+                0, &x > 1.
+            \end{cases}
+        \end{equation*}
+
+        Получили, что, если добавить точку, непрерывная функция стремится к разрывной. То есть локализовали особенность, а значит функциональная последовательность $f_n$ сходится неравномерно.
 
     \defitem{Сформулируйте и докажите теорему о почленном переходе к пределу в функциональной последовательности.}
 
@@ -1046,17 +1137,17 @@
     \defitem{Сформулируйте критерий Коши равномерной сходимости функционального ряда.}
 
         \begin{theorem*}
-            Функциональный ряд $\sum_{n=1}^{\infty} a_n(x)$ сходится равномерно на $D \iff$ $\forall \varepsilon > 0$ $\exists N(\varepsilon)$, $\forall n \geq N$, $\forall m$: 
-            $$||a_n + a_{n + 1} + \dots + a_{n + m}|| < \varepsilon$$
+            Функциональный ряд $\sum_{n=1}^{\infty} a_n(x)$ сходится равномерно на $D \iff$ $\forall \eps > 0$ $\exists N(\eps)$, $\forall n \geq N$, $\forall m$: 
+            $$||a_n + a_{n + 1} + \dots + a_{n + m}|| < \eps$$
             
-            Т.е. $|a_n(x) + a_{n + 1}(x) + \dots + a_{n + m}(x)| < \varepsilon$ $\forall x \in D$.
+            Т.е. $|a_n(x) + a_{n + 1}(x) + \dots + a_{n + m}(x)| < \eps$ $\forall x \in D$.
         \end{theorem*}
 
     \defitem{Сформулируйте следствие критерия Коши -- достаточное условие того, что функциональный ряд не является сходящимся равномерно.}
         
         \begin{corollary}
-            (Отрицание критерия Коши) Если $\exists \{x_n\} \subset D$, $\exists \{m_n\} \in \NN$, $\exists \varepsilon_0$:
-            $$|a_n(x_n) + a_{n + 1}(x_n) + \dots + a_{m_n}(x_n)| > \varepsilon_0$$            
+            (Отрицание критерия Коши) Если $\exists \{x_n\} \subset D$, $\exists \{m_n\} \in \NN$, $\exists \eps_0$:
+            $$|a_n(x_n) + a_{n + 1}(x_n) + \dots + a_{m_n}(x_n)| > \eps_0$$            
         \end{corollary}
 
     \defitem{Приведите пример функционального ряда, сходящегося на некотором множестве поточечно, но не равномерно (с обоснованием).}
@@ -1168,7 +1259,7 @@
         \begin{proof}
             \begin{enumerate}
                 \item $\left|\sum_{n = m}^{N} c_n (x - x_0)^n\right| = \left|\sum_{n = m}^{N} c_n \cdot (x_1 - x_0)^n \cdot \left(\frac{x-x_0}{x_1 - x_0}\right)^n\right| \leq 
-                \sum_{n = m}^{N} \left|c_n \cdot (x_1 - x_0)^n \right| \cdot \left|\left(\frac{x-x_0}{x_1 - x_0}\right)^n\right| \leq \varepsilon (q^m + \dots + q^N) \leq \varepsilon \cdot q^m \cdot \frac{1}{1-q} \to 0$
+                \sum_{n = m}^{N} \left|c_n \cdot (x_1 - x_0)^n \right| \cdot \left|\left(\frac{x-x_0}{x_1 - x_0}\right)^n\right| \leq \eps (q^m + \dots + q^N) \leq \eps \cdot q^m \cdot \frac{1}{1-q} \to 0$
             \end{enumerate}
         \end{proof}
 
