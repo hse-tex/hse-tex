@@ -1,0 +1,347 @@
+\section{Лекция 1.}
+
+Мы будем рассматривать алгоритм интуитивно, не давая ему точного определения.
+Вместо определения алгоритма мы будем постепенно неформально описывать его свойства.
+
+\begin{enumerate}
+\item Алгоритмов счётно много. (их можно отождествить с словами конечного алфавита)
+\item Алгоритм исполняется по шагам.
+\item Алгоритм работает конечно много шагов или зацикливается.
+
+    Например, \lstinline{while(1); } (вычисляет нигде не определенную функцию)
+\item Алгоритм принимает вход и может подавать что-то на выход.
+
+    Сделать алгоритм, принимающий на вход число $x \in \RR$ и возвращающий $\sin x$ мы не можем. Хотя некоторые числа имеют конечное описание, в общем случае вещественное число это бесконечный поток байт.
+    То есть в общем случае обработать бесконечный поток байт конечной процедурой мы не можем.
+
+    Считаем, что вход и выход --- тоже слова конечного алфавита.
+
+    Так как слов конечного алфавита счётно много, нам удобно отождествить их с натуральными числами. (или $\NN^2$, $\NN^3$, $\dots$)
+\end{enumerate}
+
+Алгоритм может вычислять функцию $f \colon \NN \overset{p}{\to} \NN$.
+Здесь буква $p$ означает, что алгоритм вычисляет \textit{частичную функцию}.
+
+
+\begin{definition}
+    Алгоритм $\mathcal{F}$ вычисляет функцию $f \colon \NN \overset{p}{\to} \NN$, если $\forall x \in \NN$
+    \begin{align*}
+        x \in \dom f &\implies \text{алгоритм $\CF$ на входе $x$ останавливается и выводит $f(x)$}, \\
+        x \notin \dom f &\implies \text{алгоритм $\CF$ на входе $x$ НЕ останавливается на за какое конечное число шагов}
+    .\end{align*}
+\end{definition}
+
+\begin{definition}
+    Функция $f$ \textit{вычислима}, если существует алгоритм, который её вычисляет.
+\end{definition}
+
+\begin{example}
+    \begin{equation*}
+        f(x) = \begin{cases}
+            1, & \text{если бог есть}, \\
+            0, & \text{иначе}.
+        \end{cases}
+    \end{equation*}
+    Утверждается, что функция $f$ вычислима, так как существует алгоритм, ее вычисляюющий. (либо всегда возвращающий 1, либо 0).
+    Например,
+    \begin{lstlisting}
+    int f(int x) {
+        return 1;
+    }
+    \end{lstlisting}   
+\end{example}
+
+\begin{definition}
+    Множество $A \subseteq \NN$ \textit{разрешимо}, если $\exists$ алгоритм $\CA$ такой, что $\forall x \in \NN$
+    \begin{align*}
+        x \in \CA &\implies \text{алгоритм выводит 1 и останавливается} \\
+        x \in \CA &\implies \text{алгоритм выводит 0 и останавливается}
+    .\end{align*}
+\end{definition}
+
+\begin{proposition}
+    $A$ разрешимо $\iff$ вычислима \textit{характеристическая} функция $\chi_A \colon \NN \to \{0, 1\}$ множества $A$:
+    \begin{equation*}
+        \chi_A(n) = \begin{cases}
+            1, &n \in A, \\
+            0, &n \notin A.
+        \end{cases}
+    \end{equation*}
+\end{proposition}
+
+\begin{proposition}
+    Существует неразрешимое множество.
+\end{proposition}
+
+\begin{proof}
+    Алгоритмов лишь счётно много. Подмножеств $\NN$ несчётно много.
+\end{proof}
+
+\begin{corollary}
+    $\exists$ невычислимая функция.
+\end{corollary}
+
+\begin{proposition}
+    Если $A$ конечно, то $A$ разрешимо.
+\end{proposition}
+
+\begin{proof}
+    $A = \left\{a_1, \dots, a_n\right\}$.
+    Тогда, характеристическая функция $A$:
+    \begin{lstlisting}
+int in_A(x) {
+    return (x == a1) || (x == a2) || ... || (x == a_n);
+}
+    \end{lstlisting}
+\end{proof}
+
+\begin{proposition}
+    Если $A$, $B$ разрешимы, то разрешимы $A \cup B$, $A \cap B$, $\overline{A}$, $A \times B$.
+\end{proposition}
+
+\begin{proof}~
+    \begin{itemize}
+    \item $\chi_{A \cap B}(n) = \chi_A(n) \cdot \chi_B(n)$;
+    \item $\chi_{A \cup B}(n) = \chi_A(n) + \chi_B(n)$;
+    \item $\chi_{\overline{A}} = 1 - \chi_A(n)$;
+    \item $\chi_{A \times B}(n, m) = \chi_A(n) \cdot \chi_B(m)$.
+        \qedhere
+    \end{itemize}   
+\end{proof}
+
+\begin{definition}
+    Множество $A \subseteq \NN$ называется \textit{перечислимым}, если существует алгоритм $\CA$ (<<перечислитель>>), такой что работая на пустом входе (или любом) алгоритм $\CA$ никогда не останавливается, но в процессе работы выводит все элементы множества $A$ и только их.
+\end{definition}
+
+То есть для любого элемента $x \in A$ существует конечный момент времени, в который алгоритм $\CA$ выведет элемент~$x$.
+
+\begin{proposition}
+    Если $A$ разрешимо, то $A$ перечислимо. (обратное неверно)
+\end{proposition}
+
+\begin{proof}~
+    \begin{lstlisting}
+    n = 0;
+    while (true) {
+        if (in_A(n)) {
+            return n;
+        }
+        ++n;
+    }
+    \end{lstlisting}
+\end{proof}
+
+\begin{proposition}
+    Из разрешимости не следует конечность. Например, $\NN$ или $2\NN$ (множество четных чисел).
+\end{proposition}
+
+\begin{theorem}[Поста]
+    $A$ разрешимо $\iff A$ и $\overline{A}$ перечислимы.
+\end{theorem}
+
+\begin{proof}~
+    \begin{description}
+    \item[$\implies$]
+        $A$ разрешимо $\implies$ $A$ перечислимо. 
+
+        $A$ разрешимо $\implies \overline{A} $ разрешимо $\implies \overline{A}$ перечислимо.
+    \item[$\impliedby$]
+        Дано $n$, хотим посчитать $\chi_A(n)$.
+
+        Пусть $\CA$ перечисляет $A$ и $\CB$ перечисляет $\overline{A}$.
+        Поочередно будем делать по шагу алгоритмов $\CA$ и $\CA$.
+
+        Если на каком-то шаге $\CA$ вывел $n$, то $n \in A$. Выводим $1$ и останавливаемся.
+
+        Если на каком-то шаге $\CB$ вывел $n$, то $n \in \overline{A}$. Выводим $0$ и останавливаемся.
+
+        Так как $A \cup \overline{A} = \NN$, то одно из событий точно случится, следовательно наш алгоритм обязательно завершится.
+        \qedhere
+    \end{description}
+\end{proof}
+
+\begin{definition}
+    Проекция множества $A \subseteq \NN^k$:
+    \begin{equation*}
+        \pr^i A = \left\{b \in \NN \mid (a_1, \dots, a_{i - 1}, b, a_{i + 1}, \dots, a_n) \in A\right\}
+    .\end{equation*}
+\end{definition}
+
+\begin{proposition}
+    Если $A$ и $B$ перечислимы, то также перечислимы множества $A \cup B$, $A \cap B$, $A \times B$, $\pr^i A$.
+\end{proposition}
+
+\begin{proof}
+    Пусть $\CA$ перечисляет $A$ и $\CB$ перечисляет $B$.
+
+    \begin{itemize}
+        \item[$\pr^i A$]
+            Запустим $\CA$ и для каждого выведенного набора $(a_1, \dots, a_n)$ будем печатать $i$-ю его координату.
+        \item[$A \cup B$]
+            Будем поочередно делать шаги перечислителей $\CA$ и $\CB$.
+            Все выведенные ими числа отправляем в выходной поток.
+        \item[$A \cap B$]
+            Будем поочередно делать шаги перечислителей $\CA$ и $\CB$.
+
+            Будем добавлять весь вывод $\CA$ в буффер $A'$, аналогично для $\CB$ и $B'$.
+
+            $A_i' := $ то, что лежит в буфере $A'$ после $i$-го шага $\CA$.
+
+            Аналогично для $B_i'$.
+
+            После того, как мы сделали $i$-й шаг $\CA$ и $\CB$ выводим множество $A_i' \cap B_i'$ --- оно конечно; это делается за конечное время.
+
+        \item[$A \times B$]
+            Все аналогично $A \cap B$, но выводим $A_i' \times B_i'$.
+            \qedhere
+    \end{itemize}
+\end{proof}
+
+
+\begin{definition}
+    Пусть $f \colon \NN \overset{p}{\to} \NN$.
+    Тогда, \textit{график} функции:
+    \begin{equation*}
+        \Gamma_f = \left\{(x, y) \in \NN^2 \mid f(x) = y\right\}
+    .\end{equation*}
+\end{definition}
+
+\begin{theorem}[о графике]
+    Пусть $f \colon \NN \overset{p}{\to} \NN$. Тогда $f$ вычислима $\iff \Gamma_f$ перечислим.
+\end{theorem}
+
+\begin{proof}~
+    \begin{description}
+        \item[$\impliedby$] Вход: $x$. Хотим $f(x)$ (если $\exists$).
+
+            Алгоритм $\CF$: Запускаем перечислитель $\Gamma_f$ и ждем первой пары вида $(x, y)$.
+
+            $(x, y) \in \Gamma_f \implies y = f(x)$.
+
+            Теперь выводим $y$ и завершаемся.
+
+            Если же $x$ не принадлежит $\dom f$, то мы будем ждать такой пары бесконечно (зациклимся).
+        \item[$\implies$] Дано: $f$ и вычисляющий ее алгоритм $\CF$.
+
+            Хотим сделать перечислитель для $\Gamma_f$.
+
+            Знаем, что $\NN^k$ перечислимо как декартово произведение $\NN$.
+
+            Запустим перечислитель для $\NN^3$.
+            Для каждой выведенной тройки $(x, y, k) \in \NN^3$ делаем $k$ шагов $\CF$ на входе $x$.
+            Если он вывел $y$ и остановился, то $f(x) = y$.
+            Тогда напечатаем пару $(x, y)$.
+
+            Допустим, $(x, y) \in \Gamma_f$.
+            Тогда $f(x) = y$. Значит, существует такое число шагов $k$, что $\CF$ на входе $x$ выведет $y$ за $k$ шагов.
+            Мы рассмотрим тройку $(x, y, k)$ и выведем $(x, y)$.
+            \qedhere
+    \end{description}
+\end{proof}
+
+\begin{corollary}
+    Если $f$ вычислима и $A$ перечислимо, то $f(A)$ перечислимо.
+\end{corollary}
+
+\begin{proof}
+    $f(A) = \pr^2 \left(\Gamma_f \cap \left(A \times \NN\right)\right)$.
+
+    $f$ вычислима $\implies \Gamma_f$ перечислим.
+
+    $A$ перечислимо $\implies A \times \NN$ перечислимо.
+
+    Таким образом $\Gamma_f \cap (A \times \NN)$ перечислим, а значит перечислимо и $\pr^2 \left(\Gamma_f \cap \left(A \times \NN\right)\right)$.
+
+    Аналогично $f^{-1}(A) = \pr^1 \left(\Gamma_f \cap \left(\NN \times A\right)\right)$.
+\end{proof}
+
+\begin{corollary}
+    Если $f \colon \NN \overset{p}{\to} \NN$ вычислима, то $\dom f$ и $\rng f$ перечислимы.
+\end{corollary}
+
+\begin{proof}
+    $\dom f = f^{-1}(\NN)$,
+    $\rng f = f(\NN)$.
+\end{proof}
+
+\begin{definition}
+    Если $A \subseteq \NN$, то \textit{полухарактеристичекая} функция $\omega_A \colon \NN \overset{p}{\to} \NN$ множества $A$:
+    \begin{equation*}
+        \omega_A(n) \simeq \begin{cases}
+            1, &n \in A, \\
+            \text{не определена}, &n \notin A.
+        \end{cases}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    $f(x) \simeq g(x)$ (<<совпадает>>) --- или $f(x)$ и $g(x)$ оба определены и равны, либо оба не определены для любого $x$.
+\end{definition}
+
+\begin{comment}
+    $\dom \omega_A = A$.
+\end{comment}
+
+\begin{proposition}
+    Если $A$ перечислимо, то $\omega_A$ вычислимо.
+\end{proposition}
+
+\begin{proof}
+    Алгоритм для $\omega_A$, вход: $n$.
+
+    Запускаем перечислитель $A$ и ждем появляения $n$; когда появится, выводим $1$ и останавливаемся.
+\end{proof}
+
+\begin{proposal}
+    Если $\omega_A$ вычислима, то $A$ перечислимо.
+\end{proposal}
+
+\begin{proof}
+    $A = \dom \omega_A$.
+\end{proof}
+
+\begin{corollary}
+    $A$ перечислимо $\iff$ $\omega_A$ вычислима ($A$ полуразрешимо).
+\end{corollary}
+
+\begin{proposition}
+    Если $A$ перечислимо и $A \neq \varnothing$, то $\exists$ вычислимая тотальная $f \colon \NN \to \NN$, такая что $A = \rng f$ (то есть $A = \left\{f(0), f(1), \dots\right\}$).
+\end{proposition}
+
+\begin{proof}
+    У $A$ есть перечислитель $\CA$.
+
+    Так как $A \neq \varnothing$, то $\CA$ напечатает какое-то число $a \in A$. Пусть впервые напечатает на шаге $k$.
+
+    Пусть $f(0) := a$, а $f(n + 1) := $ последнее число, которое $\CA$ напечатает за $n + k + 1$ шагов.
+
+    Очевидно, что $f$ вычислима.
+\end{proof}
+
+\begin{corollary}
+    Если $A$ перечислимо, то $\exists$ вычислимая $f \colon \NN \overset{p}{\to} \NN$, такая что $A = \rng f$.
+\end{corollary}
+
+\begin{proposition}
+    Если $A \subseteq \NN$ перечислимо, то $\exists$ разрешимое $B \subseteq \NN^2$ , такое что $A = \pr^1 B$.
+\end{proposition}
+
+\begin{proof}
+    Пусть $\CA$ --- перечислитель $A$.
+
+    $B := \left\{(n, k) \in \NN^2 \mid \text{ алгоритм $\CA$ выводит $n$ на шаге $k$}\right\}$.
+
+    $\pr^1 B = \left\{n \in \NN \mid \exists k : \text{(алгоритм $\CA$ выводит $n$ на шаге $k$)}\right\} = \left\{n \in \NN \mid n \in A\right\} = A$.
+\end{proof}
+
+\begin{theorem}[равносильное определение перечислимого множества]
+    $\forall A \subseteq \NN$ следующие утверждения равносильны:
+    \begin{enumerate}
+    \item $A$ перечислимы;
+    \item $A$ полуразрешимо;
+    \item $\exists f$ вычислимая $\colon \NN \overset{p}{\to} \NN : A \dom f$;
+    \item $\exists f$ вычислимая $\colon \NN \overset{p}{\to} \NN : A \rng f$;
+    \item $A = \varnothing$ или $\exists f$ вычислимая тотальная $\colon \NN \to \NN : A = \rng f$;
+    \item $\exists$ разрешимое $B \subseteq \NN^2 : A = \pr^1 B$.
+\end{enumerate}
+\end{theorem}
