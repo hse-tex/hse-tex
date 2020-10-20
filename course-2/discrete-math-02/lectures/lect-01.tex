@@ -1,0 +1,186 @@
+\ProvidesFile{lect-01.tex}[Лекция 1]
+\newpage
+
+\section{Алгоритм и его неформальное определение}
+
+\begin{enumerate}
+    \item Алгоритмов счетно много;
+    \item Алгоритм исполняется по шагам;
+    \item Алгоритм работает конечно много шагов или зацикливается;
+    \item Алгоритм принимает вход и может выдавать что-то на выход\footnote{Вход и выход --- слова конечного алфавита.};
+\end{enumerate}
+
+\begin{statement}
+    Слов конечного непустого алфавита лишь счетно много.
+\end{statement}
+
+Удобно считать, что на вход подаются конечные пары натуральных чисел.
+Алгоритм может вычислять частичные функции $f: \N \pto \N$.
+
+\begin{definition}
+    Алгоритм $\FF$ вычисляет функцию $f: \N \pto \N$, если для любого $x \in \N$
+    \begin{description}
+        \item[$x \in \dom f \implies$] алгоритм $\FF$ на входе $x$ останавливается за конечное число шагов и выводит $f(x)$.
+        \item[$X \notin \dom f \implies$] алгоритм $\FF$ на входе $x$ не останавливается ни за какое конечное число шагов.  
+    \end{description}
+\end{definition}
+
+\begin{definition}
+    Функция $f$ называется {\it вычислимой}, если существует алгоритм, который ее вычисляет.
+\end{definition}
+
+Рассмотрим следующую тотальную функцию:
+$$
+    f(x) = \begin{cases}
+        1, & \text{если бог есть}, \\
+        0, & \text{иначе}.
+    \end{cases}
+$$
+Утверждается, что $f$ --- вычислима.
+Действительно, рассмотрим следующие два алгоритма:
+
+\noindent\begin{minipage}[t]{0.45\textwidth}
+    \begin{lstlisting}[frame=single, language=C++, numbers=left]
+        int f(int x) {
+            return 0;
+        }
+    \end{lstlisting}
+\end{minipage}
+\noindent\hfill\begin{minipage}[t]{0.45\textwidth}
+    \begin{lstlisting}[frame=single, language=C++, numbers=left]
+        int f(int x) {
+            return 1;
+        }
+    \end{lstlisting}
+\end{minipage}
+
+Какой-то из них вычисляет $f$, однако мы точно не можем сказать какой.
+
+\begin{definition}
+    Множество $A \subseteq \N$ называется {\it разрешимым}, если существует алгоритм $\AA$ такой, что $\forall x \in \N$
+    \begin{description}
+        \item[$x \in A \implies$] $\AA$ выводит 1 и останавливается;
+        \item[$x \notin A \implies$] $\AA$ выводит 0 и останавливается.
+    \end{description}
+\end{definition}
+
+\begin{statement}
+    $A$ разрешимо $\iff$ вычислима характеристическая функция $\chi_{A}: \N \to \left\{0, 1\right\}$ множества $A$:
+    $$
+        \chi_{A}\left(n\right) = \begin{cases}
+            1, & n \in A; \\
+            0, & n \notin A.
+        \end{cases}
+    $$
+\end{statement}
+
+Характеристическая функция существует у любого подмножества натуральных чисел, но не для всякого подмножества она вычислима.
+
+\begin{statement}
+    Существует неразрешимое множество.
+\end{statement}
+\begin{proof}
+    Алгоритмов лишь счетно много, в то время как подмножеств $\N$ несчетно много.
+\end{proof}
+
+\begin{corollary}
+    Существует невычислимая функция.
+\end{corollary}
+
+\begin{statement}
+    Если $A$ конечно, то $A$ разрешимо.
+\end{statement}
+\begin{proof}
+    Положим $A = \left\{a_{1}, \ldots, a_{n}\right\}$, тогда следующий алгоритм вычисляет $\chi_{A}$:
+    \begin{lstlisting}[escapeinside={(*@}{@*)}, language=C++, numbers=left]
+        int in_A((*@$x$@*)) {
+            return ((*@$x$@*) == (*@$a_{1}$@*)) || ((*@$x$@*) == (*@$a_{2}$@*)) || ... || ((*@$x$@*) == (*@$a_{n}$@*));
+        }
+    \end{lstlisting}
+\end{proof}
+
+\begin{statement}
+    $A$, $B$ --- разрешимы $\implies$ разрешимы $A \cup B$, $A \cap B$, $A^{\complement}$, $A \times B$.
+\end{statement}
+\begin{proof}$ $
+    \begin{align}
+        \chi_{A \cap B}(n) &= \chi_{A}\left(n\right) \cdot \chi_{B}\left(n\right); \\
+        \chi_{A \cup B}(n) &= \chi_{A}\left(n\right) + \chi_{B}\left(n\right); \\
+        \chi_{A^{\complement}}(n) &= 1 - \chi_{A}\left(n\right); \\
+        \chi_{A \times B}(n) &= \chi_{A}\left(n\right) \cdot \chi_{B}\left(m\right).
+    \end{align}
+\end{proof}
+
+\begin{definition}
+    Множество $A \subseteq \N$ называется {\it перечислимым}, если существует алгоритм $\AA$ такой, что, работая на пустом входе, $\AA$ никогда не останавливается, но в процессе работы выводит все элементы множества $A$ и только их.
+\end{definition}
+
+\begin{statement}
+    Если А разрешимо, то оно перечислимо.
+\end{statement}
+\begin{proof}$ $
+    \begin{lstlisting}[frame=single, language=C++, numbers=left]
+        n = 0;
+        while (1) {
+            if (in_A(n)) {
+                print(n);
+            }
+            ++n;
+        }
+    \end{lstlisting}
+\end{proof}
+
+Докажем, что из перечислимости не следует конечность.
+Рассмотрим $A = \N$ --- бесконечное множество, $\chi_{A}(n) = \chi_{\N}(n) = 1$ --- вычислима.
+
+\begin{theorem}[Поста]
+    $A$ разрешимо $\iff$ $A$ и $A^{\complement}$ перечислимы.
+\end{theorem}
+\begin{proof}$ $
+    \begin{description}
+        \item[$\implies$] $A$ --- разрешимо $\implies$ $A^{\complement}$ разрешимо $\implies$ $A^{\complement}$ перечислимо, $A$ --- разрешимо $\implies$ $A$ --- перечислимо.
+        \item[$\impliedby$] Пусть $\AA$ перечисляет $A$, и $\BB$ перечисляет $A^{\complement}$.
+        Мы хотим по данному $n$ посчитать $\chi_{A}\left(n\right)$.
+        Поочередно будем делать по шагу алгоритмов $\AA$ и $\BB$.
+        Если на каком-то шаге $\AA$ выведет $n$, то $n \in A \implies$ выведем 1 и остановимся.
+        Если на каком-то шаге $\BB$ выведет $n$, то $n \notin A \implies$ выведем 0 и остановимся.
+        Поскольку $A \cup A^{\complement} = \N$, то одно из этих событий обязательно случится и алгоритм остановится.
+    \end{description}
+\end{proof}
+
+\begin{definition}
+    Пусть $A \subseteq \N^{k}$, $\left(a_{1}, \ldots, a_{k}\right) \in A$.
+    Проекцией множества $A$ на координату $i$ называется
+    $$
+        \pr^{i} A = \left\{b \in \N~:~\left(a_{1}, \ldots, a_{i - 1}, b, a_{i + 1}, \ldots, a_{k} \in A\right)\right\}.
+    $$
+\end{definition}
+
+\begin{statement}
+    $A$, $B$ перечислимы $\implies$ $A \cup B$, $A \cap B$, $A \times B$, $\pr^{i} A$ перечислимы.
+\end{statement}
+\begin{proof}$ $
+    \begin{description}
+        \item[$\pr^{i} A:$] Пусть $\AA$ перечисляет $A$ и $\BB$ перечисляет $B$.
+        Запустим $\AA$, и для каждого напечатанного набора $\left(a_{1}, \ldots, a_{k}\right)$ будем брать $a_{i}$.
+        \item[$A \cup B:$] Будем поочередно делать шаги перечислителей $\AA$ и $\BB$.
+        Все напечатанные кем-то из них числа отправляем на вывод.
+        \item[$A \cap B:$] Будем поочередно делать шаги перечислителей $\AA$ и $\BB$.
+        Будем добавлять весь вывод $\AA$ в буффер $A^{\prime}$; аналогично для $B^{\prime}$.
+        Пусть $A_{i}^{\prime}$ --- состояние буффера $A^{\prime}$ после $i$-ого шага $\AA$.
+        После того, как мы сделали $i$-ый шаг $\AA$ и $i$-ый шаг $\BB$, выведем элементы {\it конечного} множества $A^{\prime}_{i} \cap B^{\prime}_{i}$ и перейдем к $i + 1$ шагу $\AA$ и $\BB$.
+        \item[$A \times B:$] Аналогично $A \cap B$, только выводим $A^{\prime}_{i} \times B^{\prime}_{i}$.
+    \end{description}
+\end{proof}
+
+Пусть есть функция $f: \N \pto \N$.
+Определим для функции ее график:
+$$
+    \Gamma_{f} = \left\{\left(x, y\right) \in \N^{2}~:~f\left(x\right) = y\right\}.
+$$
+
+\begin{theorem}
+    Пусть $f: \N \pto \N$.
+    Тогда $f$ вычислима $\iff$ $\Gamma_{f}$ перечислим.
+\end{theorem}
+

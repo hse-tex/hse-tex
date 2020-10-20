@@ -1,0 +1,263 @@
+\ProvidesFile{lect-02.tex}[Лекция 2]
+\newpage
+
+\section{Универсальный алгоритм}
+
+\begin{definition}
+    Универсальной вычислимой функцией (у. в. ф.) называется такая вычислимая $U: \N^{2} \pto \N$, что для любой вычислимой $f: \N \pto \N$ существует $n \in \N$ (\enquote{программа}) такая, что
+    $$
+        \forall x \in \N \quad U(n, x) \simeq f(x).
+    $$
+\end{definition}
+Пусть $\UU$ --- некоторый алгоритм, который вычисляет у. в. ф. $U$.
+Тогда, по существу, $\UU$ --- интерпретатор универсального языка программирования, где программами являются натуральные числа.
+Если имеется какая-то функция от двух аргументов $V: \N^{2} \pto \N$, то мы можем построить ее график (поверхность в $\N^{3}$).
+Зафиксируем ее первый аргумент, и получим функцию $V_{n}: \N \pto \N$ такую, что для любых $n$, $x$ $V_{n}\left(x\right) \simeq V\left(n, x\right)$.
+Функция $V_{n}$ называется {\it $n$-ым сечением функции $V$ по первому аргументу}.
+Например, если была $V(x, y) = x + y$, то зафиксировав первый аргумент мы получим функцию \enquote{прибавить $x$} от одного аргумента.
+В таком случае, можно переписать условие универсальности следующим образом:
+\begin{statement}
+    Функция $U$ является универсальной в классе вычислимых функций $\iff$ для любой вычислимой $f: \N \pto \N$ существует $n \in \N:~U_{n} = f$.
+\end{statement}
+Тогда можно сформулировать следующее свойство:
+\begin{property}[алгоритмов]
+    Существует универсальная вычислимая функция.
+\end{property}
+Данное утверждение эквивалентно тому, что на Python можно написать интерпретатор Python.
+\begin{definition}
+    Функция $W: \N^{2} \to \N$ называется универсальной вычислимой тотальной функцией, если
+    \begin{enumerate}
+        \item $W$ вычислима.
+        \item Для любой вычислимой тотальной $g:~\N \to \N$ существует $m$ такое, что $W_{m} = g$.
+    \end{enumerate}
+\end{definition}
+\begin{statement}
+    Не существует универсальной вычислимой тотальной функции $W$.
+\end{statement}
+\begin{proof}
+    Рассмотрим функцию $D: \N \to \N$, $D(x) = W(x, x)$, она является вычислимой и тотальной.
+    Рассмотрим теперь функцию $g$ такую, что $g(x) = D(x) + 1$, она также будет вычислимой и тотальной.
+    Раз $W$ универсальна, то существует $m$ такое, что $W_{m} = g$, то есть
+    $$
+        \exists m:~\forall x ~W\left(m, x\right) = g(m).
+    $$
+    Положим $x = m$, тогда
+    $$
+        W\left(m, m\right) = D(m) + 1 = W\left(m, m\right) + 1 \implies 0 = 1.
+    $$
+     Получили противоречие, значит такой $W$ не существует.
+\end{proof}
+В случае для частично определенной у. в. ф. равенство $U\left(m, m\right) \simeq U\left(m, m\right) + 1$ допустимо, так как означает, что на $m$ функция $U$ не определена.
+\begin{theorem}
+    Существует перечислимое неразрешимое множество.
+\end{theorem}
+\begin{proof}
+    Пусть $U$ --- универсальная вычислимая функция (мы знаем, что такая существует).
+    Рассмотрим $K_{U} = \left\{n \in \N~:~U\left(n, n\right)~\text{определена}\right\} = \dom d_{U}$, где $d_{U}\left(x\right) \simeq U\left(x, x\right)$ --- диагональ у. в. ф. $U$.
+    Ясно, что $d_{U}$ вычислима $\implies$ $K_{U} = \dom d_{U}$ перечислимо.
+
+    Допустим, что $K_{U}$ разрешимо.
+    Рассмотрим функцию $r:~\N \pto \N$ такую, что
+    $$
+        r\left(x\right) = \begin{cases}
+            1, & \text{если } x \notin K_{U}, \\
+            \text{undefined}, & \text{если } x \in K_{U}.
+        \end{cases}
+    $$
+    Функция $r$ является полухарактеристической функцией $K_{U}^{\complement}$, $r = w_{K_{U}^{\complement}}$.
+    $K_{U}$ разрешимо $\implies$ $K_{U}^{\complement}$ разрешимо $\implies$ $K_{U}^{\complement}$ перечислимо $\implies$ $w_{K_{U}^{\complement}}$ вычислима.
+
+    Тогда существует $n \in \N$ такое, что $\forall x~U(n, x) \simeq r\left(x\right) \implies$ положим $x = n$ $\implies U\left(n, n\right) = r\left(n\right)$.
+    Рассмотрим несколько случаев:
+    \begin{enumerate}
+        \item $U\left(n, n\right)$ определена $\implies$ $n \in K_{U} \implies r\left(n\right)$ не определено $\implies  U\left(n, n\right)$ не определено.
+        \item $U\left(n, n\right)$ не определено $\implies$ $n \in K_{U} \implies r\left(n\right) = 1 \implies U\left(n, n\right) = 1 \implies U\left(n, n\right)$ определено.
+    \end{enumerate}
+    Ни один из случаев не приводит к чему-то разумному $\implies$ противоречие $\implies$ $K_{U}$ не разрешимо.
+\end{proof}
+Определение $K_{U}$ можно сформулировать следующим образом: 
+$$
+    K_{U} = \left\{n \in \N~:~U \text{  останавливается на входе } \left(n, n\right)\right\},
+$$
+
+или
+
+$$
+    K_{U} = \left\{n \in \N~:~\text{программа $n$ на входе $n$ останавливается}\right\}.
+$$
+
+Поэтому вся эта теория называется \enquote{Проблемой самоприменимости}: остановится ли программа, если ей на вход передать ее же.
+Оказывается, что эта проблем не разрешима, что мы сейчас и доказали.
+
+Рассмотрим $S_{U} = \left\{\left(n,  x\right)  \in \N^{2}~:~U\left(n, x\right)\text{ определена}\right\} = \dom U$.
+Поскольку $U$ вычислима, то $S_{U}$ перечислимо.
+Заметим, что $n \in K_{U} \iff \left(n, n\right) \in S_{U}$, но тогда $S_{U}$ разрешимо $\implies$ $K_{U}$ разрешимо $\implies$ противоречие $\implies$ $S_{U}$ не разрешимо.
+Это называется \enquote{Проблемой остановки}: остановка программы $n$ на входе $x$.
+
+\section{Т-предикаты}
+
+Зафиксируем универсальную вычислимую функцию $U$ и алгоритм $\UU$, ее вычисляющий.
+Рассмотрим следующее множество:
+$$
+    T_{(U)}^{\prime} = \left\{\left(n, x, y, k\right)~:~\text{алгоритм $\UU$ на входе $\left(n, x\right)$ остановится за $k$ шагов и выведет $y$}\right\}.
+$$
+То свойство, что алгоритм можно исполнить по шагам отражено в том, что $T^{\prime}$ разрешимо.
+Рассмотрим также множество
+$$
+    T = \left\{\left(n, x, k\right) \in \N^{3}~:~\text{алгоритм $\UU$ на входе $(n, x)$ остановится за $k$ шагов}\right\}.
+$$
+Множество $T$ также разрешимо.
+
+\section{Альтернативный взгляд на перечислимые неразрешимые множества}
+
+Пусть $U$ --- универсальная вычислимая функция, и $d\left(x\right) \simeq U\left(x, x\right)$.
+\begin{statement} \label{st::02::03::01}
+    Для любой вычислимой $f: \N \pto \N$ существует $n$ такое, что $f\left(n\right) \simeq d(n)$.
+\end{statement}
+\begin{proof}
+    По свойству $U$ универсальна, то существует $n$ такое, что $\forall x$ $U\left(n, x\right) \simeq f\left(x\right)$.
+    Положим $n = x \implies U\left(n, n\right) \simeq f\left(n\right) \simeq d\left(n\right)$.
+\end{proof}
+\begin{definition}
+    Пусть дана $f: \N \pto \N$.
+    Будем говорить, что функция $g$ {\it продолжает} $f$, если $\dom f \subseteq \dom g$ и для любого $x \in \dom f$ $f(x) = g(x)$.
+\end{definition}
+\begin{statement}
+    У функции $d$ не существует вычислимого тотального продолжения.
+\end{statement}
+\begin{proof}
+    Пусть $g: \N \pto \N$ --- вычислимое тотальное продолжение $d$.
+    То есть, для любого $x \in \dom d$ $d\left(x\right) = g\left(x\right)$.
+    Рассмотрим $h: \N \to \N$, $h(x) = g(x) + 1$;
+    Ясно, что $h$ вычислима и тотальна, однако $h$ всюду отличается от $d$, поскольку
+    \begin{description}
+        \item[$x \in \dom d \implies$] $h(x) = g(x) + 1 = d(x) + 1 \neq d(x)$;
+        \item[$x \notin \dom d \implies$] $h(x)$ определена $\cancel{\simeq}$ $d(x)$ не определена.
+    \end{description}
+    Так как любая вычислимая функция где-то совпадает с $d$, то $h$ не вычислима.
+\end{proof}
+\begin{statement}
+    Если функция $f$ вычислима, но не имеет вычислимого тотального продолжения, то $\dom f$ перечислимо, но не разрешимо.
+\end{statement}
+\begin{proof}
+    Если $f$ вычислима, то $\dom f$ перечислимо.
+    Рассмотрим функцию
+    $$
+        g\left(x\right) = \begin{cases}
+            f\left(x\right), & x \in \dom f, \\
+            2020, & x \notin \dom f.
+        \end{cases}
+    $$
+    Функция $g$ является тотальной, и вычислима, если $\dom f$ разрешимо.
+    С другой стороны, $g$ --- это вычислимое тотальное продолжение $f$, которого не существует.
+    Альтернативно, $g\left(x\right)$ можно задать следующим образом: $g(x) = \chi_{\dom f}\left(x\right) \cdot f\left(x\right) + \left(1 - \chi_{\dom f}\left(x\right)\right) \cdot 2020$.
+\end{proof}
+\begin{statement}
+    Существует вычислимая $f:\N \pto \left\{0, 1\right\}$ такая, что у $f$ нет вычислимого тотального продолжения.
+\end{statement}
+\begin{proof}
+    Определим $f$ следующим образом:
+    $$
+        f(x) = \begin{cases}
+            0, & x \in \dom d \text{ и } d(x) > 0, \\
+            1, & x \in \dom d \text{ и } d(x) = 0, \\
+            \text{undefined}, & x \notin \dom d.
+        \end{cases}
+    $$
+    Такая $f$ вычислима, поскольку $f \simeq h\left(d\left(x\right)\right)$, где 
+    $$
+        h\left(y\right) = \begin{cases}
+            0, & y > 0, \\
+            1, & y = 0.
+        \end{cases}
+    $$
+    также является вычислимой функцией $\implies$ $f$ вычислима как композиция вычислимых функций.
+    Тогда для любого $x \in \dom d$ $f(x) \neq d(x) \implies$ у $f$ нет вычислимого тотального продолжения (см. утверждение \ref{st::02::03::01}).
+\end{proof}
+\begin{definition}
+    Пусть $A, B, C \subseteq \N$.
+    Будем говорить, что $C$ {\it отделяет} $A$ от $B$, если $A \subseteq C$ и $B \subseteq C^{\complement}$. 
+\end{definition}
+\begin{corollary}
+    Существуют перечислимые множества $A$ и $B$ такие, что $A \cap B = \varnothing$, но не существует разрешимого $C$ такого, что $C$ отделяет $A$ от $B$.
+\end{corollary}
+Отсюда следует, что $A$ перечислимо, но не разрешимо, так как иначе разрешимое $A$ отделяло бы $A$ от $B$. 
+\begin{proof}
+    Пусть $f$ --- функция из предыдущего утверждения, то есть
+    $$
+        f(x) = \begin{cases}
+            0, & x \in \dom d \text{ и } d(x) > 0, \\
+            1, & x \in \dom d \text{ и } d(x) = 0, \\
+            \text{undefined}, & x \notin \dom d.
+        \end{cases}
+    $$
+    Положим $A = f^{-1}\left(\left\{1\right\}\right)$, $B = f^{-1}\left(\left\{0\right\}\right)$.
+    Очевидно, что $A \cap B = \varnothing$.
+    $A$ и $B$ перечислимы как прообразы перечислимых множеств $\left\{1\right\}$, $\left\{0\right\}$ под действием вычислимой функции $f$.
+    Положим, что $\exists C$, отделяющее $A$ от $B$.
+    Рассмотрим характеристическую функцию множества $C$:
+    \begin{description}
+        \item[$x \in A \implies$] $\chi_{C}\left(x\right) = 1 = f\left(x\right)$;
+        \item[$x \in B \implies$] $\chi_{C}\left(x\right) = 0 = f\left(x\right)$.
+    \end{description}
+    Но тогда для любого $x \in \dom f$ $f(x) = \chi_{C}\left(x\right)$, то есть $\chi_{C}$ --- тотальное вычислимое продолжение $f$ $\implies$ $\chi_{C}$ не вычислима $\implies$ $C$ не разрешимо.
+\end{proof}
+
+\section{Главные универсальные вычислимые функции}
+
+\begin{definition}
+    Функция $U: \N^{2} \pto \N$ называется главной универсальной вычислимой функцией, если
+    \begin{enumerate}
+        \item $U$ вычислима;
+        \item Для любой вычислимой функции $V: \N^{2} \pto \N$ существует вычислимая тотальная функция $S: \N \to \N$ такая, что
+        $$
+            \forall x~U\left(S\left(n\right),~x\right) \simeq V\left(u,~x\right) \iff \forall n~U_{S\left(n\right)} = V_{n}.
+        $$
+    \end{enumerate}
+\end{definition}
+
+\begin{statement}
+    Если $U$ --- главная универсальная вычислимая функция, то $U$ является у. в. ф.
+\end{statement}
+\begin{proof}
+    Мы хотим, чтобы для любой вычислимой $f:\N \pto \N$ существовало $n \in \N$ такое, что $U_{n} = f$.
+    Рассмотрим функцию $V$ такую, что $\forall k, x$ $V\left(k, x\right) \simeq f\left(x\right)$, и $\forall k~V_{k} = f$.
+    Тогда, по свойству (2) из определения главной у. в. ф., существует вычислимая тотальная функция $S$ такая, что $\forall k~U_{S(k)} = V_{k}$.
+    Положив $k$ равным любому числу (например, 2020), получим $U_{S\left(2020\right)} = V_{2020} = f \implies n = S(2020)$.
+\end{proof}
+\begin{statement}
+    Существует вычислимая биекция $h:\N^{2} \to \N$.
+\end{statement}
+    Введем обозначение для кода пары натуральных чисел $\left\langle n, m\right\rangle = h\left(n, m\right)$.
+\begin{statement}
+    Существует вычислимые тотальные функции $\pi_{1}$ и $\pi_{2}$ такие, что $\forall n$ $\forall m$ $\pi_{1}\left(\left\langle n, m\right\rangle\right) = n$ и $\pi_{2}\left(\left\langle n, m\right\rangle\right) = m$.
+\end{statement}
+\begin{proof}
+    Без ограничений общности предъявим алгоритм только для $\pi_{1}$.
+    \begin{enumerate}
+        \item Получаем на вход некоторое $z = \left\langle n, m\right\rangle$ --- код некоторой пары;
+        \item Перечисляем все пары $\left(k, l\right) \in \N^{2}$ и для каждой проверяем равенство $z$ и $\left\langle k, l\right\rangle$.
+        \item Если да, вернем $k$.
+    \end{enumerate}
+    Такой алгоритм корректен, потому что любой код, который нам подают на вход корректен в силу сюръективности $h$, а в силу инъективности такая пара --- единственная.
+\end{proof}
+\begin{theorem}
+    Если существует универсальная вычислимая функция $U$, то существует и главная универсальная вычислимая функция.
+\end{theorem}
+\begin{proof}
+    Рассмотрим функцию $W: \N^{2} \pto \N$ такую, что 
+    $$
+    \forall n~\forall x~W\left(n, x\right) \simeq U\left(\pi_{1}\left(n\right), \left\langle \pi_{2}\left(n\right), x\right\rangle\right).
+    $$
+    Функция $W$ вычислима как композиция вычислимых функций.
+    Покажем, что $W$ является искомой главной универсальной вычислимой функцией.
+    Пусть дана вычислимая $V:~\N^{2} \pto \N$.
+    Рассмотрим $V^{\prime}: \N \pto \N$ таую, что $V^{\prime} \simeq V\left(\pi_{1}\left(x\right), \pi_{2}\left(x\right)\right)$.
+    $V^{\prime}$ также вычислима, а значит $\exists m$ такое, что $U_{m} = V^{\prime}$.
+    Теперь для любого $n$ положим $S\left(n\right) = \left\langle m, n\right\rangle$, она будет вычислимой и тотальной.
+    Проверим, что она подходит:
+    \begin{multline}
+        \forall n~\forall x~W\left(S\left(n\right), x\right) \simeq W\left(\left\langle m, n\right\rangle, x\right) \simeq \\ \simeq U\left(\pi_{1}\left(\left\langle m, n\right\rangle\right), \left\langle \pi_{2}\left(\left\langle m, n\right\rangle\right), x\right\rangle\right) \simeq U\left(m, \left\langle n, x\right\rangle\right) \simeq U_{m}\left(\left\langle n, x\right\rangle\right) \simeq \\ \simeq V^{\prime}\left(\left\langle n, x\right\rangle\right) \simeq V\left(\pi_{1}\left(\left\langle n, x\right\rangle\right), \pi_{2}\left(\left\langle n, x\right\rangle\right)\right) \simeq V\left(n, x\right).
+    \end{multline}
+    Таким образом, $\forall n$ $W_{S\left(n\right)} = V_{n} \implies W$ --- главная у. в. ф.
+\end{proof}
