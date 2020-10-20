@@ -9,11 +9,6 @@ function get_commit_message {
     fi
 }
 
-if [[ ! -d .pdf ]] || !(find .pdf -mindepth 1 | read); then
-   echo "Nothing was built"
-   exit
-fi
-
 if [[ ! -d _gh_pages ]]; then
     git clone --branch gh-pages git@github.com:hse-tex/hse-tex.git _gh_pages
 fi
@@ -23,7 +18,9 @@ git rev-parse HEAD > _gh_pages/.git-revision
 
 pushd _gh_pages
 
-cp -r ../.pdf/* .
+if [[ -d ../.pdf ]] && (find ../.pdf -mindepth 1 | read); then
+    cp -r ../.pdf/* .
+fi
 cp ../README.md .
 
 git add -A
@@ -35,6 +32,8 @@ if git diff --quiet; then
 
     git commit --allow-empty -m "$commit_message"
     git push origin gh-pages
+else
+    echo "No diff found"
 fi
 
 popd
