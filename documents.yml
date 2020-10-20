@@ -11,6 +11,8 @@ directory:
   target: course-1/linear-algebra.pdf
 - source: course-2/mathematical-analysis/lectures/mathematical-analysis.tex
   target: course-2/mathematical-analysis.pdf
+- source: course-2/discrete-math-02/discrete-math-02-lecture-notes.tex
+  target: course-2/discrete-math-02-lecture-notes.pdf
 - source: course-2/discrete-mathematics/discrete-mathematics-2.tex
   target: course-2/discrete-mathematics.pdf
   

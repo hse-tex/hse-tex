@@ -55,6 +55,7 @@
 ### Дискретная математика
 
 - [Конспект](https://hse-tex.me/course-2/discrete-mathematics.pdf)
+- [Конспект [альтернативная версия]](https://hse-tex.me/course-2/discrete-math-02-lecture-notes.pdf)
 
 # Благодарность
 

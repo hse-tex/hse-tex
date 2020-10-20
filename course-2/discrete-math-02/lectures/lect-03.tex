@@ -1,0 +1,203 @@
+\ProvidesFile{lect-03.tex}[Лекция 3]
+\newpage
+
+\section{Лекция 3}
+
+\subsection{Отношение $m$-сводимости}
+
+\begin{definition}
+    Пусть $A, B \subseteq \N$.
+    Говорят, что $A$ $m$-сводится к $B$ (обозн. $A \mreduce^{f} B$) тогда и только тогда, когда существует вычислимая тотальная $f: \N \to \N$ такая, что
+    $$
+        \forall n~ n \in A \iff f(n) \in B.
+    $$
+\end{definition}
+
+\begin{lemma} \label{lemma::03::01::01}
+    Для любых $A, B, C \subseteq \N$ справедливо следующее:
+    \begin{enumerate}
+        \item $A \mreduce A$;
+        \item $A \mreduce^{f} B$ и $B \mreduce^{g} C$ $\implies$ $A \mreduce^{g \circ f} C$;
+        \item $A \mreduce^{f} B \implies A^{\complement} \mreduce^{f} B^{\complement}$.
+        \item $A \mreduce B$ и $B$ разрешимо $\implies$ $A$ разрешимо.
+        \item $A \mreduce B$ и $B$ перечислимо $\implies$ $A$ перечислимо.
+        \item Для любого $n \in \N$, $\omega_{A}\left(n\right) = 1 \iff \omega_{B}\left(f\left(n\right)\right) = 1$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{corollary}
+    Если $A$ неразрешимо (неперечислимо), и $A \mreduce B$, то $B$ неразрешимо (неперечислимо).
+\end{corollary}
+\begin{proof}
+    Записать контрапозицию для пунктов (4), (5) леммы \ref{lemma::03::01::01}.
+\end{proof}
+
+\begin{statement}
+    Если $A$ разрешимо и $B \neq \varnothing \neq \N$, то $A \mreduce B$.
+\end{statement}
+\begin{proof}
+    В силу ограничений на множество $B$, $\exists b \in B$ и $\exists a \in B^{\complement}$.
+    Тогда определим $f$ следующим образом:
+    $$
+        f\left(n\right) = \begin{cases}
+            b, & n \in A, \\
+            a, & n \notin A.
+        \end{cases}
+    $$
+    Функция $f$ является вычислимой $\implies$ $\forall n$ $n \in A \iff f(n) \in B$.
+\end{proof}
+
+\begin{corollary}[Отсутствие антисимметричности у отношения $m$-сводимости]
+    Пусть $A$ --- множество всех четных чисел, $B$ --- множество всех нечетных чисел.
+    Тогда $A \mreduce B$, $B \mreduce A$, однако $A \neq B$.
+\end{corollary}
+
+\begin{corollary}[Несводимость к дополнению]
+    Существует множество $A$ такое, что $A~\cancel{\leqslant}_{m}~A^{\complement}$.
+\end{corollary}
+\begin{proof}
+    Рассмотрим множество $K$ --- перечислимое и неразрешимое.
+    Тогда $K^{\complement}$ неперечислимо (иначе по теореме Поста $K$ разрешимо).
+    Если $K \mreduce K^{\complement}$, то $K^{\complement} \mreduce K^{\complement^{\complement}}$ $\implies$ $K^{\complement} \mreduce K$, то есть неперечислимое множество $m$-сводится к перечислимому, противоречие.
+\end{proof}
+
+\begin{statement}[отсутствие универсального множества сводимости]
+    $\nexists A$ такое что, $\forall B$ $B \mreduce A$.
+\end{statement}
+\begin{proof}
+    $B \mreduce A \iff$ существует тотальная вычислимая $f$ такая, что $\forall n \in \N$ $n \in B \iff f(n) \in A$.
+    Тогда всякое множество $B$ однозначно определяется сводящей функцией:
+    $$
+        B = \left\{n \in B~:~f(n) \in A\right\}.
+    $$
+    Поэтому, таких множеств $B$ не больше, чем сводящих функций, но, поскольку все сводящие функции вычислимы, то их не более чем счетно, а подмножеств $\N$ континуум.
+\end{proof}
+\begin{lemma}
+    Пусть $U$ --- главная универсальная вычислимая функция, и 
+    $$
+        K_{U} = \left\{n \in \N~:~U\left(n, n\right) \text{ определено}\right\}.
+    $$
+    Тогда любое перечислимое множество $A$ $m$-сводится к $K_{U}$.
+\end{lemma}
+\begin{proof}
+    Рассмотрим функцию
+    $$
+        V\left(n, x\right) \simeq \begin{cases}
+            1, & n \in A, \\
+            \text{undefined}, & n \notin A.
+        \end{cases}
+    $$
+    То есть, $V\left(n, x\right) \simeq \omega_{A}\left(n\right) \implies V$ вычислима.
+    Так как $U$ главная, существует вычислимая тотальная $S: \N \to \N$ такая, что
+    $$
+        \forall n~U_{S\left(n\right)} = V_{n} \iff \forall n~\forall x~ U\left(S\left(n\right), x\right) \simeq V\left(n, x\right).
+    $$
+    
+    Если $n \in A$, то $V_{n}$ всюду определена $\implies$ $U_{S\left(n\right)}$ всюду определена $\implies$ определено $U_{S\left(n\right)}\left(S\left(n\right)\right) \implies$ определено $U\left(S\left(n\right), S\left(n\right)\right)$ $\implies S\left(n\right) \in K_{U}$.
+    
+    Если $n \notin A$, то $V_{n}$ нигде не определена $\implies$ $U_{S\left(n\right)}$ нигде не определена $\implies$ не определено $U_{S\left(n\right)}\left(S\left(n\right)\right) \implies S\left(n\right) \notin K_{U}$.
+
+    Таким образом, существует вычислимая тотальная $S$ такая, что $\forall n$ $n \in A \iff S\left(n\right) \in K \iff A \mreduce^{S} K_{U}$.
+\end{proof}
+
+\begin{example}
+    Существует неперечислимое множество такое, что все его элементы четные.
+\end{example}
+\begin{proof}
+    Рассмотрим множество $X = \left\{2n~:~n \in K^{\complement}\right\}$.
+    Заметим, что $\forall n$ $n \in K^{\complement} \iff 2n \in X$, что равносильно $K^{\complement} \mreduce X$.
+    С другой стороны, все элементы $X$ четны, и, поскольку $K^{\complement}$ не перечислимо, то и $X$ не перечислимо.
+\end{proof}
+
+\begin{example}
+    Пусть $U$ --- главная у. в. ф. и пусть $Z = \left\{n \in \N~:~U_{n} \text{ нигде не определена}\right\}$.
+    Рассмотрим функцию
+    $$
+        V\left(n, x\right) = \begin{cases}
+            1, & n \in K, \\
+            \text{undefined}, & n \notin K;
+        \end{cases}
+    $$
+    Поскольку $K$ перечислимо, то $\omega_{K}$ вычислима, но так как $V\left(n, x\right) \simeq \omega_{K}\left(n\right)$, то $V$ вычислима.
+
+    Так как $U$ --- главная, то существует вычислимая тотальная $S$ такая, что
+    $$
+        \forall n~ U_{S\left(n\right)} = V_{n}.
+    $$
+    Мы видим, что если $n \in K \implies$ $V_{n}$ всюду определено.
+    Иначе $V_{n}$ нигде не определено.
+    То есть $n \in K^{\complement} \iff V_{n}$ нигде не определено $\iff U_{S\left(n\right)}$ нигде не определена $\iff S\left(n\right) \in Z$.
+    Тогда $\forall n$ $n \in K^{\complement} \iff S\left(n\right) \in Z$.
+    Отсюда $K^{\complement} \mreduce^{S} Z$, но поскольку $K^{\complement}$ не перечислимо, то и $Z$ не перечислимо.
+
+    По определению, $Z^{\complement} = \left\{n \in \N~:~U_{n} \text{ где-то определена}\right\} = \left\{n \in \N~:~\exists x~U\left(n, x\right)\text{ определена}\right\}$.
+    Вспомним про $T$-предикат $T\left(n, x, k\right) \iff \UU$ останавливается на входе $\left(n, x\right)$ за $k$ шагов.
+    Но такое мгножество $T$ разрешимо, а $Z^{\complement} = \left\{n \in \N~:~\exists x~\exists k~T\left(n, x, k\right)\right\} \implies Z^{\complement}$ перечислимо.
+\end{example}
+
+\begin{example}
+    Рассмотрим перечислимое множество $Z^{\complement} = \left\{n \in \N~:~U_{n} \text{ где-то определена}\right\} \neq \varnothing$.
+    Тогда существует вычислимая тотальная $f: \N \to \N$ такая, что $Z^{\complement} = \range f = \left\{f\left(0\right), f\left(1\right), \ldots\right\}$.
+    Рассмотрим $W: \N^{2} \pto \N$ такую, что
+    $$
+        W\left(m, x\right) = \begin{cases}
+            \text{undefined}, & m = 0, \\
+            U\left(f\left(m - 1\right), x\right), & m \geqslant 1.
+        \end{cases}
+    $$
+    $W$, очевидно, является вычислимой.
+    Докажем, что она универсальна.
+    Рассмотрим произвольную вычислимую функцию $g:\N \pto \N$.
+    Рассмотрим несколько случаев:
+    \begin{enumerate}
+        \item $g$ нигде не определена $\implies$ $g = W_{0}$.
+        \item $g$ где-то определена $\implies $ $\exists k$ такое, что $U_{k} = g$ (в силу универсальности $U$) $\implies \exists k \in Z^{\prime}:~U_{k} = g \implies \exists m \in \N:~U_{f\left(m\right)} = g$.
+        Тогда $g = U_{f\left(m\right)} = W_{m + 1}$.
+    \end{enumerate}
+    Получается, что $W$ является универсальной вычислимой функцией.
+    Введем множество $Z^{\prime} = \left\{m \in \N~:~W_{m}\text{ нигде не определена}\right\}$.
+    Поскольку $\forall m$ $W_{m + 1} = U_{f\left(m\right)}$, где $f$ --- где-то определенная функция, поскольку $\range f = Z^{\complement} \neq \varnothing$, а $f\left(m\right)$ --- индексы относительно $U$ где-то определенных функций $\implies$ единственным номером нигде не определенной функции является 0 $\implies Z^{\prime} = \left\{0\right\}$.
+    Поскольку $Z^{\complement}$ конечно, то оно разрешимо $\implies$ перечислимо, но $Z$ не перечислимо $\implies$ $W$ не является главной универсальной вычислимой функцией.
+\end{example}
+
+\begin{corollary}
+    Существуют не главные у. в. ф.
+\end{corollary}
+
+\subsection{Рекурсия}
+
+\begin{theorem}[Клини]
+    Пусть $U$ --- главная универсальная вычислимая функция.
+    Тогда для любой вычислимой тотальной функции $f: \N \to \N$ существует $n \in \N$ такое, что $U_{f\left(n\right)} = U_{n}$.
+    То есть,
+    $$
+        \forall x~ U\left(f\left(n\right), x\right) \simeq U\left(n, x\right).
+    $$
+\end{theorem}
+\begin{proof}
+    Рассмотрим функцию $V:~\N^{2} \pto \N$ такую, что
+    $$
+        \forall k~ \forall x~ V\left(k, x\right) \simeq U\left(U\left(k, k\right), x\right).
+    $$
+    Такая функция вычислима.
+    Поскольку $U$ --- главная, то существует вычислимая тотальная функция $S:~\N \to \N$ такая, что
+    \begin{equation} \label{eq::03::03::01}
+        \forall k~U_{S\left(k\right)} = V_{k} \iff \forall k~\forall x~U\left(S\left(k\right), x\right) \simeq V\left(k, x\right) \simeq U\left(U\left(k, k\right), x\right)
+    \end{equation}
+    Рассмотрим функцию $f \circ S$.
+    Она вычислима и тотальная как композиция вычислимых тотальных функций.
+    Поскольку $U$ --- у. в. ф. $\implies$ $\exists t$ такое, что $U_{t} = f \circ S$.
+    Тогда
+    \begin{equation} \label{eq::03::03::02}
+        \forall x~U\left(t, x\right) \simeq f\left(s\left(x\right)\right).
+    \end{equation}
+    По формуле \eqref{eq::03::03::01}, 
+    \begin{equation}
+        \forall x~U\left(S\left(t\right), x\right) \simeq U\left(U\left(t, t\right), x\right) \underset{\eqref{eq::03::03::02}}{\simeq} U\left(f\left(S\left(t\right)\right), x\right).
+    \end{equation}
+    Получилось, что
+    $$
+        \forall x~ U\left(S\left(t\right), x\right) \simeq U\left(f\left(S\left(t\right)\right), x\right).
+    $$
+    Положим $n = S\left(t\right)$, тогда $\forall x~ U\left(n, x\right) \simeq U\left(f\left(n\right), x\right) \iff U_{n} = U_{S\left(n\right)}$.
+\end{proof}
