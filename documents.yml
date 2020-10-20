@@ -11,6 +11,8 @@ directory:
   target: course-1/linear-algebra.pdf
 - source: course-2/mathematical-analysis/lectures/mathematical-analysis.tex
   target: course-2/mathematical-analysis.pdf
+- source: course-2/discrete-math-02/discrete-math-02-lecture-notes.tex
+  target: course-2/discrete-math-02-lecture-notes.pdf
   
 # Список документов, которые полностью содержатся в одном файле (за исключением *header.sty)
 # Только изменение source файла (или хедеров) будет приводить к пересборке документа
