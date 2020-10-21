@@ -1,0 +1,39 @@
+\ProvidesFile{lect-05-drawing-01.tex}[Машина Тьюринга 1]
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[every node/.style={block},
+                        block/.style={
+                            minimum height=1.5em,
+                            outer sep=0pt,
+                            draw,
+                            rectangle,
+                            node distance=0pt
+                        },
+                        roundnode/.style={round},
+                        round/.style={
+                            minimum height=1.5em,
+                            outer sep=0pt,
+                            draw,
+                            circle,
+                            node distance=0pt
+                        }]
+        \node (A) {$\sigma$};
+        \node (B) [left=of A] {$\ldots$};
+        \node (C) [left=of B] {$a$};
+        \node (D) [right=of A] {$\ldots$};
+        \node (E) [right=of D] {$\$ $};
+        \node[roundnode] (F) [above = 0.75cm of A, draw=red, thick] {$q$};
+        
+        \draw[-latex] (F) -- (A);
+        \draw[-latex] (A) -- (F);
+        
+        \draw[-latex, blue] ($(F.east)!0.5!(A.east)$) -- ++(7mm, 0);
+        \draw[-latex, blue] ($(F.west)!0.5!(A.west)$) -- ++(-7mm, 0);
+        
+        \draw (C.north west) -- ++(-1cm, 0) 
+              (C.south west) -- ++(-1cm, 0) 
+              (E.north east) -- ++(1cm, 0) 
+              (E.south east) -- ++(1cm, 0);
+    \end{tikzpicture}
+\end{figure}
