@@ -1,0 +1,133 @@
+\ProvidesFile{lect-05-drawing-03.tex}[Машина Тьюринга 3]
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \begin{tikzpicture}[every node/.style={block},
+                            block/.style={
+                                minimum height=1.5em,
+                                outer sep=0pt,
+                                draw,
+                                rectangle,
+                                node distance=0pt
+                            },
+                            roundnode/.style={round},
+                            round/.style={
+                                minimum height=1.5em,
+                                outer sep=0pt,
+                                draw,
+                                circle,
+                                node distance=0pt
+                            }]
+            \node (A) {$1$};
+            \node (LB) [left=of A] {$1$};
+            \node (LC) [left=of LB] {$1$};
+            \node (LD) [left=of LC] {\#};
+            \node (LE) [left=of LD] {$\ldots$};
+            \node (RB) [right=of A] {$0$};
+            \node (RC) [right=of RB] {$1$};
+            \node (RD) [right=of RC] {\#};
+            \node (RE) [right=of RD] {$\ldots$};
+            \node[roundnode] (UA) [above = 0.75cm of A, draw=red, thick] {$q_{0}$};
+            
+            \draw[-latex] (UA) -- (A);
+            \draw[-latex] (A) -- (UA);
+            
+            \draw[-latex, blue] ($(UA.east)!0.5!(A.east)$) -- ++(7mm, 0);
+            \draw[-latex, blue] ($(UA.west)!0.5!(A.west)$) -- ++(-7mm, 0);
+            
+            \draw (LE.north west) -- ++(-0.4cm, 0) 
+                  (LE.south west) -- ++(-0.4cm, 0) 
+                  (RE.north east) -- ++(0.4cm, 0) 
+                  (RE.south east) -- ++(0.4cm, 0);
+        \end{tikzpicture}
+        \caption{Состояние 1.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \begin{tikzpicture}[every node/.style={block},
+                            block/.style={
+                                minimum height=1.5em,
+                                outer sep=0pt,
+                                draw,
+                                rectangle,
+                                node distance=0pt
+                            },
+                            roundnode/.style={round},
+                            round/.style={
+                                minimum height=1.5em,
+                                outer sep=0pt,
+                                draw,
+                                circle,
+                                node distance=0pt
+                            }]
+            \node (A) {$0$};
+            \node (LB) [left=of A] {$1$};
+            \node (LC) [left=of LB] {$1$};
+            \node (LD) [left=of LC] {\#};
+            \node (LE) [left=of LD] {$\ldots$};
+            \node (RB) [right=of A] {$0$};
+            \node (RC) [right=of RB] {$1$};
+            \node (RD) [right=of RC] {\#};
+            \node (RE) [right=of RD] {$\ldots$};
+            \node[roundnode] (UB) [above = 0.75cm of RB, draw=red, thick] {$q_{0}$};
+            
+            \draw[-latex] (UB) -- (RB);
+            \draw[-latex] (RB) -- (UB);
+            
+            \draw[-latex, blue] ($(UB.east)!0.5!(RB.east)$) -- ++(7mm, 0);
+            \draw[-latex, blue] ($(UB.west)!0.5!(RB.west)$) -- ++(-7mm, 0);
+            
+            \draw (LE.north west) -- ++(-0.4cm, 0) 
+                  (LE.south west) -- ++(-0.4cm, 0) 
+                  (RE.north east) -- ++(0.4cm, 0) 
+                  (RE.south east) -- ++(0.4cm, 0);
+        \end{tikzpicture}
+        \caption{Состояние 2.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \begin{tikzpicture}[every node/.style={block},
+                            block/.style={
+                                minimum height=1.5em,
+                                outer sep=0pt,
+                                draw,
+                                rectangle,
+                                node distance=0pt
+                            },
+                            roundnode/.style={round},
+                            round/.style={
+                                minimum height=1.5em,
+                                outer sep=0pt,
+                                draw,
+                                circle,
+                                node distance=0pt
+                            }]
+            \node (A) {$0$};
+            \node (LB) [left=of A] {$1$};
+            \node (LC) [left=of LB] {$1$};
+            \node (LD) [left=of LC] {\#};
+            \node (LE) [left=of LD] {$\ldots$};
+            \node (RB) [right=of A] {$1$};
+            \node (RC) [right=of RB] {$1$};
+            \node (RD) [right=of RC] {\#};
+            \node (RE) [right=of RD] {$\ldots$};
+            \node[roundnode] (UC) [above = 0.75cm of RC, draw=red, thick] {$q_{0}$};
+            
+            \draw[-latex] (UC) -- (RC);
+            \draw[-latex] (RC) -- (UC);
+            
+            \draw[-latex, blue] ($(UC.east)!0.5!(RC.east)$) -- ++(7mm, 0);
+            \draw[-latex, blue] ($(UC.west)!0.5!(RC.west)$) -- ++(-7mm, 0);
+            
+            \draw (LE.north west) -- ++(-0.4cm, 0) 
+                  (LE.south west) -- ++(-0.4cm, 0) 
+                  (RE.north east) -- ++(0.4cm, 0) 
+                  (RE.south east) -- ++(0.4cm, 0);
+        \end{tikzpicture}
+        \caption{Состояние 3.}
+    \end{subfigure}
+\end{figure}

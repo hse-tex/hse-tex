@@ -1,0 +1,45 @@
+\ProvidesFile{lect-05-drawing-02.tex}[Машина Тьюринга 2]
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[every node/.style={block},
+                        block/.style={
+                            minimum height=1.5em,
+                            outer sep=0pt,
+                            draw,
+                            rectangle,
+                            node distance=0pt
+                        },
+                        roundnode/.style={round},
+                        round/.style={
+                            minimum height=1.5em,
+                            outer sep=0pt,
+                            draw,
+                            circle,
+                            node distance=0pt
+                        }]
+        \node (A) {$c$};
+        \node (LB) [left=of A] {$a_{n}$};
+        \node (LC) [left=of LB] {$\ldots$};
+        \node (LD) [left=of LC] {$a_{0}$};
+        \node (LE) [left=of LD] {\#};
+        \node (LF) [left=of LE] {$\ldots$};
+        \node (RB) [right=of A] {$b_{0}$};
+        \node (RC) [right=of RB] {$\ldots$};
+        \node (RD) [right=of RC] {$b_{k}$};
+        \node (RE) [right=of RD] {\#};
+        \node (RF) [right=of RE] {$\ldots$};
+        \node[roundnode] (UA) [above = 0.75cm of A, draw=red, thick] {$q$};
+        
+        \draw[-latex] (UA) -- (A);
+        \draw[-latex] (A) -- (UA);
+        
+        \draw[-latex, blue] ($(UA.east)!0.5!(A.east)$) -- ++(7mm, 0);
+        \draw[-latex, blue] ($(UA.west)!0.5!(A.west)$) -- ++(-7mm, 0);
+        
+        \draw (LF.north west) -- ++(-1cm, 0) 
+              (LF.south west) -- ++(-1cm, 0) 
+              (RF.north east) -- ++(1cm, 0) 
+              (RF.south east) -- ++(1cm, 0);
+    \end{tikzpicture}
+\end{figure}
