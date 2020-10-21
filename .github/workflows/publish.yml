@@ -6,7 +6,7 @@ on:
 
 jobs:
   publish:
-    name: Build changed docs
+    name: Publish changed docs
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -18,9 +18,9 @@ jobs:
       with:
         ref: 'gh-pages'
         path: '_gh_pages'
-    - name: Build
+    - name: Build changed documents
       uses: ./.github/actions/hse-tex-build
-      env: 
+      env:
         CHECK_DIFF: true
     - name: Publish
       run: ./publish.sh
