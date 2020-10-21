@@ -2,7 +2,7 @@
 set -e
 
 if [[ ! -f documents.yml ]]; then
-    echo "No documents.yml, cant build anyting"
+    echo "No documents.yml, cant build anything"
     exit -1
 fi
 
@@ -49,11 +49,11 @@ function build_item {
 
     if check_diff $(get_dependencies $mode $source); then
         pushd $workdir > /dev/null
-        latexmk -pdf -interaction=nonstopmode -output-directory=.build -file-line-error -halt-on-error $filename
+        latexmk -pdf -interaction=nonstopmode -file-line-error -halt-on-error $filename
         popd > /dev/null
 
         mkdir -p .pdf/$(dirname $target)
-        cp $workdir/.build/$filename_without_ext.pdf .pdf/$target
+        cp $workdir/$filename_without_ext.pdf .pdf/$target
     else
         echo No diff found, skipping build!
     fi
@@ -61,7 +61,7 @@ function build_item {
 }
 
 function build_type {
-    mode=$1
+    mode=$1; shift
 
     jq -c ".$mode[]" <(yq . documents.yml) | while read item; do
         source=$(jq .source -r <<< $item)
