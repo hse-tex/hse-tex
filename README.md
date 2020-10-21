@@ -54,8 +54,8 @@
 
 ### Дискретная математика
 
-- [Конспект](https://hse-tex.me/course-2/discrete-mathematics.pdf)
-- [Конспект [альтернативная версия]](https://hse-tex.me/course-2/discrete-math-02-lecture-notes.pdf)
+- [Конспект](https://hse-tex.me/course-2/discrete-math-02-lecture-notes.pdf)
+- [Конспект [другая версия, только первая лекция]](https://hse-tex.me/course-2/discrete-mathematics.pdf)
 
 # Благодарность
 
