@@ -57,6 +57,10 @@
 - [Конспект](https://hse-tex.me/course-2/discrete-math-02-lecture-notes.pdf)
 - [Конспект [другая версия, только первая лекция]](https://hse-tex.me/course-2/discrete-mathematics.pdf)
 
+### Теория вероятностей и математическая статистика
+
+- [Коллоквиум I](https://hse-tex.me/course-2/probability-theory-colloquium-1.pdf)
+
 # Благодарность
 
 ## Преподаватели
