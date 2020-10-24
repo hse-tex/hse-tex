@@ -180,16 +180,135 @@ $$
     \end{enumerate}
 \end{proof}
 
+\subsection{Равносильные определения перечислимости}
+
 \begin{definition}
-    Пусть есть функция $f: \N \pto \N$.
+    Пусть есть функция $f \colon \N \pto \N$.
     Определим для функции ее график:
     $$
-        \Gamma_{f} = \left\{\left(x, y\right) \in \N^{2}~:~f\left(x\right) = y\right\}.
+        \Gamma_{f} = \left\{\left(x, y\right) \in \N^{2} \mid f\left(x\right) = y\right\}.
     $$
 \end{definition}
 
 \begin{theorem}
-    Пусть $f: \N \pto \N$.
+    Пусть $f \colon \N \pto \N$.
     Тогда $f$ вычислима $\iff$ $\Gamma_{f}$ перечислим.
 \end{theorem}
 
+\begin{proof}~
+    \begin{description}
+    \item[$\impliedby$]
+        Дано $x$ и требуется вывести $f(x)$, если оно существует.
+        Запустим перечислитель $\Gamma_f$ и дождемся первой пары вида $(x, y)$.
+        Так как $(x, y) \in \Gamma_f$, то $y = f(x)$.
+        Выводим $y$ и завершаемся.
+        Если же $x$ не принадлежит $\dom f$, то алгоритм будет ждать такой пары бесконечно.
+
+    \item[$\implies$]
+        Дано $f$ и вычисляющий её алгоритм $\FF$. Хотим получить перечислитель $\Gamma_f$.
+        Запустим перечислитель $\N^3$ и для каждой выведенной тройки $(x, y, k) \in \N^3$ сделаем $k$ шагов алгоритма $\FF$ на входе $x$.
+        Если он вывел $y$ и остановился, то $f(x) = y$; напечатаем пару $(x, y)$.
+
+        Допустим $(x, y) \in \Gamma_f$. Тогда $f(x) = y$, а значит существует такое число шагов $k$, что $\FF$ на входе $x$ выведет $y$ за $k$ шагов. Мы когда-нибудь рассмотрим тройку $(x, y, k)$ и выведем $(x, y)$.
+        \qedhere
+    \end{description}
+\end{proof}
+
+\begin{corollary}
+    Если $f$ вычислима и $A$ перечислимо, то $f(A)$ перечислимо.
+\end{corollary}
+
+\begin{proof}
+    $f(A) = \pr^2 \left(\Gamma_f \cap \left(A \times \N\right)\right)$.
+
+    Так как $f$ вычислима, то $\Gamma_f$ перечислим.
+    Так как $A$ перечислимо, то $A \times \N$ перечислимо.
+    Тогда, $\Gamma_f \cap \left(A \times \N\right)$ перечислимо, а значит перечислимо и $\pr^2\left(\Gamma_f \cap \left(A \times \N\right)\right)$.
+    Аналогично $f^{-1}(A) = \pr^{1}\left(\Gamma_f \cap \left(\N \times A\right)\right)$
+\end{proof}
+
+\begin{corollary}
+    Если $f \colon \N \pto \N$ вычислима, то $\dom f$ и $\range f$ перечислимы.
+\end{corollary}
+
+\begin{proof}
+    $\dom f = f^{-1}(\N), \quad \range f = f(\N)$.
+\end{proof}
+
+\begin{definition}
+    $f(x) \simeq g(x)$ (\enquote{совпадает}), если или $f(x)$ и $g(x)$ оба определены и равны, либо оба не определены для любого $x$.
+\end{definition}
+
+\begin{definition}
+    Если $A \subseteq \N$, то \textit{полухарактеристическая функция} $\omega_A \colon \N \pto \N$ множества $A$:
+    $$
+        \omega_A(n) \simeq \begin{cases}
+            1, &n \in A, \\
+            \text{undefined}, &n \notin A.
+        \end{cases}
+    $$
+\end{definition}
+
+\begin{comment*}
+    $\dom \omega_A = A$.
+\end{comment*}
+
+\begin{statement}
+    Если $A$ перечислимо, то $\omega_a$ вычислимо.
+\end{statement}
+
+\begin{proof}
+    Дано число $n$, хотим вывести $1$ если оно есть в $A$.
+    Запустим алгоритм, перечисляющий $A$. Если он вывел $n$, то выводим $1$ и завершаемся.
+    Если чисто $n$ не встречается в $A$, то алгоритм будет работать бесконечно.
+\end{proof}
+
+\begin{proposal}
+    Если $\omega_A$ вычислима, то $A$ перечислимо.
+\end{proposal}
+
+\begin{proof}
+    $A = \dom \omega_A$.
+\end{proof}
+
+\begin{corollary}
+    $A$ перечислимо $\iff \omega_A$ вычислима ($A$ полуразрешимо).
+\end{corollary}
+
+\begin{statement}
+    Если $A$ перечислимо и $A \neq \varnothing$, то существует вычсилимая тотальная $f \colon \N \to \N$, такая что $A = \range f$ (то есть $A = \left\{f(0), f(1), \dots\right\}$).
+\end{statement}
+
+\begin{proof}
+    Пусть $\AA$ перечисляет $A$. Так как $A \neq \varnothing$, то $\AA$ напечатает какое-то число $a \in A$.
+    Пусть впервые $a$ будет напечатано на шаге $k$.
+    Тогда положим $f(0) := a$, а $f(n + 1) := $ \enquote{последнее число, которое $\AA$ напечатает за $n + k + 1$ шагов}.
+    Очевидно, что $f$ вычислима.
+\end{proof}
+
+\begin{corollary}
+    Если $A$ перечислимо, то существует вычислимая $f \colon \N \pto \N$, такая что $A = \range f$.
+\end{corollary}
+
+\begin{statement}
+    Если $A \subseteq \N$ перечислимо, то существует разрешимое $B \subseteq \N^2$, такое что $A = \pr^{1} B$.
+\end{statement}
+
+\begin{proof}
+    Пусть $\AA$ перечисляет $A$.
+    Пусть $B := \left\{(n, k) \in \N^2 \mid \text{алгоритм $\AA$ выводит $n$ на шаге $k$}\right\}$.
+
+    Тогда $\pr^{1} B = \left\{n \in \N \mid \exists k \colon \text{алгоритм $\AA$ выводит $n$ на шаге $k$}\right\} = \left\{n \in \N \mid n \in A\right\} = A$.
+\end{proof}
+
+\begin{theorem}
+    $\forall A \subseteq \N$ следующие утверждения раносильны:
+    \begin{enumerate}[nosep]
+    \item $A$ перечислимо;
+    \item $A$ полуразрешимо;
+    \item $\exists$ вычислимая $f \colon \N \pto \N$, такая что $A = \dom f$;
+    \item $\exists$ вычислимая $f \colon \N \pto \N$, такая что $A = \range f$;
+    \item $A = \varnothing$ или $\exists$ вычислимая $f \colon \N \to \N$, такая что $A = \range f$;
+    \item $\exists$ разрешимое $B \subseteq \N^2$, такое что $A = \pr^{1} B$.
+    \end{enumerate}
+\end{theorem}
