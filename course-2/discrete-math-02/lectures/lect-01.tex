@@ -254,26 +254,20 @@ $$
 \end{comment*}
 
 \begin{statement}
-    Если $A$ перечислимо, то $\omega_a$ вычислимо.
+    $A$ перечислимо $\iff$ $\omega_A$ вычислима ($A$ полуразрешимо).
 \end{statement}
 
-\begin{proof}
-    Дано число $n$, хотим вывести $1$ если оно есть в $A$.
-    Запустим алгоритм, перечисляющий $A$. Если он вывел $n$, то выводим $1$ и завершаемся.
-    Если чисто $n$ не встречается в $A$, то алгоритм будет работать бесконечно.
+\begin{proof}~
+    \begin{description}
+    \item[$\implies$] 
+        Дано число $n$, хотим вывести $1$ если оно есть в $A$.
+        Запустим алгоритм, перечисляющий $A$. Если он вывел $n$, то выводим $1$ и завершаемся.
+        Если чисто $n$ не встречается в $A$, то алгоритм будет работать бесконечно.
+    \item[$\impliedby$] 
+        $A = \dom \omega_A$.
+        \qedhere
+    \end{description}
 \end{proof}
-
-\begin{proposal}
-    Если $\omega_A$ вычислима, то $A$ перечислимо.
-\end{proposal}
-
-\begin{proof}
-    $A = \dom \omega_A$.
-\end{proof}
-
-\begin{corollary}
-    $A$ перечислимо $\iff \omega_A$ вычислима ($A$ полуразрешимо).
-\end{corollary}
 
 \begin{statement}
     Если $A$ перечислимо и $A \neq \varnothing$, то существует вычсилимая тотальная $f \colon \N \to \N$, такая что $A = \range f$ (то есть $A = \left\{f(0), f(1), \dots\right\}$).
