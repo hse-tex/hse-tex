@@ -305,6 +305,22 @@
    	
    	\defitem{Неравенство Чебышёва. Закон больших чисел в слабой форме.}
    	
+	\textbf{Неравенство Чебышёва.}
+	
+	Если $X \geqslant 0$ п.н., то для всякого $t > 0$ верно неравенство $P(\omega: X(\omega) \geqslant t) \leqslant \dfrac{\mathbb{E}X}{t}$.
+	
+	\begin{proof}
+		Пусть $A = {\omega:X(\omega) \geqslant t}$. Тогда $X \geqslant t \cdot I_A$, и значит $\mathbb{E}X \geqslant tP(A)$.
+	\end{proof}
+
+	\begin{proposal}
+		Пусть $\mathbb{E}X^2 < \infty$. Тогда для каждого $\varepsilon > 0$ выполнено $P(|X - \mathbb{E}X| \geqslant \varepsilon) \leqslant \dfrac{\mathbb{D}X}{\varepsilon^2}$.
+	\end{proposal}
+
+	\begin{proof}
+		Применяем неравенство Чебышёва к случайной величине $|X - \mathbb{E}X|^2$.
+	\end{proof}
+		   	
    	\defitem{Теорема Муавра-Лапласа (формулировка локальной и интегральной теорем, доказательство локальной теоремы в симметричном случае, идея доказательства интегральной теоремы).}
 
     \end{colloq}
