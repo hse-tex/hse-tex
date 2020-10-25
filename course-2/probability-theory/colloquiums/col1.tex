@@ -349,7 +349,9 @@
 	Функцию $\phi$ называют плотностью стандартного нормального распределения и как мы	увидим далее $\phi$ играет ключевую роль в теории вероятностей.
 	
 	\begin{proof}
+		Приведём доказательство только в случае $p = q = \dfrac{1}{2}$. Как было сказано выше $P(S_n = m) = C_n^m 2^{-n} = e^{-n \ln 2 + \ln n! - \ln m! - \ln (n-m)!}$. Так как $m = \dfrac{n}{2} + x_m \dfrac{\sqrt{n}}{2} = \dfrac{n}{2} (1 + \dfrac{x_m}{\sqrt{n}}), n-m = \dfrac{n}{2} - x_m \dfrac{\sqrt{n}}{2} = \dfrac{n}{2} (1 - \dfrac{x_m}{\sqrt{n}})$, то по формуле Стирлинга $\ln n! = \ln \sqrt{2 \pi n} + n \ln n - n + \bar o (1)$;
 		
+		$\ln m! = \ln \left( \sqrt{\pi n} \left( 1 + x_m \dfrac{1}{\sqrt{n}} \right) ^{\frac{1}{2}} \right)$.
 	\end{proof}
 
     \end{colloq}
