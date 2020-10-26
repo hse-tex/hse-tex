@@ -12,3 +12,6 @@
 _gh_pages
 .build
 .DS_Store
+
+# github codespaces
+pythonenv*
