@@ -356,8 +356,16 @@
 	\begin{proof}
 		Приведём доказательство только в случае $p = q = \dfrac{1}{2}$. Как было сказано выше $P(S_n = m) = C_n^m 2^{-n} = e^{-n \ln 2 + \ln n! - \ln m! - \ln (n-m)!}$. Так как $m = \dfrac{n}{2} + x_m \dfrac{\sqrt{n}}{2} = \dfrac{n}{2} (1 + \dfrac{x_m}{\sqrt{n}}), n-m = \dfrac{n}{2} - x_m \dfrac{\sqrt{n}}{2} = \dfrac{n}{2} (1 - \dfrac{x_m}{\sqrt{n}})$, то по формуле Стирлинга $\ln n! = \ln \sqrt{2 \pi n} + n \ln n - n + \bar o (1)$;
 		
-		$\ln m! = \ln \left( \sqrt{\pi n} \left( 1 + x_m \dfrac{1}{\sqrt{n}} \right) ^{\frac{1}{2}} \right)$.
+		$\ln m! = \ln \left( \sqrt{\pi n} \left( 1 + x_m \dfrac{1}{\sqrt{n}} \right) ^{\frac{1}{2}} \right) + \left(\dfrac{n}{2} + x_m\dfrac{\sqrt{n}}{2} \right) \left( \ln n - \ln 2 + \ln \left( 1 + \dfrac{x_m}{\sqrt{n}} \right) \right)  - \dfrac{n}{2} - x_m \dfrac{\sqrt{n}}{2} + \bar o (1) = \\ = \ln \sqrt{\pi n} + \bar o (1) + \left( \dfrac{n}{2} + x_m \dfrac{\sqrt{n}}{2}\right) \left(\ln n - \ln 2 + \dfrac{x_m}{\sqrt{n}} - \dfrac{x_m^2}{2n} + \bar o (1) \right) + \dfrac{n}{2} - x_m \dfrac{\sqrt{n}}{2} + \bar o (1)$, где мы использовали формулу Тейлора $\ln(1 + x) = x - \dfrac{x^2}{2} + \bar o (x^2)$, ограниченность $x_m$ и тот факт, что $\ln \left( 1 + x_m \dfrac{1}{\sqrt{n}} \right)^{\frac{1}{2}} = \bar o (1)$. Аналогично, заменяя $x_m$ на $-x_m$, получаем $\ln (n-m)! = \\ = \ln \sqrt{\pi n} + \left( \dfrac{n}{2} - x_m \dfrac{\sqrt{n}}{2}\right) \left(\ln n - \ln 2 + \dfrac{x_m}{\sqrt{n}} - \dfrac{x_m^2}{2n} + \bar o (1) \right) + \dfrac{n}{2} - x_m \dfrac{\sqrt{n}}{2} + \bar o (1)$.
+		
+		Приведём подобные, получаем: $\ln m! + \ln (n-m)! = 2 \ln \sqrt{\pi n} + n \ln n - n \ln 2 + x_m^2 - \dfrac{x_m^2}{2} - n + \bar o (1)$.
+		
+		Наконец, $-n \ln 2 + \ln n! - \ln m! - \ln (n-m)! = -n \ln 2 + \ln \sqrt{2 \pi n} + n \ln n - n - 2 \ln \sqrt{\pi n} - n \ln n + n \ln 2 - \dfrac{x_m^2}{2} + n + \bar o (1) = \\ = - \ln \sqrt{2 \pi} - \ln \sqrt{\dfrac{n}{4}} - \dfrac{x_m^2}{2} + n + \bar o (1)$.
+		
+		Полученное нами тождество равносильно эквивалентности из формулировки теоремы в случае $p = q = \dfrac{1}{2}$.
 	\end{proof}
+
+	
 
     \end{colloq}
 
