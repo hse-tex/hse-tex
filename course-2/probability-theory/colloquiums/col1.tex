@@ -137,7 +137,7 @@
 	вытянул "хороший" билет. Пусть событие $A_j$ заключается в том, что первые $k$ студентов
 	вытянули $j$ "хороших" билетов. 
 	
-	Тогда $P(A_j) = \dfrac{C_n^j C^{k-j}_{N-n}}{C_N^k}$. Таким образом,	$P(A) = \sum_{j=0}^{min\{k, m\}} P(A|A_j)P(A_j) = \sum_{j=0}^{min\{k, m\}} \dfrac{n-j}{N-k} \dfrac{C_n^j C^{k-j}_{N-n}}{C_N^k} = \\ = \dfrac{n}{N} \sum_{j=0}^{min\{k, m\}} \dfrac{C_{n-1}^j C^{k-j}_{(N - 1) - (n - 1)}}{C_{N - 1}^k} = \dfrac{n}{N}$.
+	Тогда $P(A_j) = \dfrac{C_n^j C^{k-j}_{N-n}}{C_N^k}$. Таким образом,	$P(A) = \sum_{j=0}^{min\{k, n\}} P(A|A_j)P(A_j) = \sum_{j=0}^{min\{k, n\}} \dfrac{n-j}{N-k} \dfrac{C_n^j C^{k-j}_{N-n}}{C_N^k} = \\ = \dfrac{n}{N} \sum_{j=0}^{min\{k, n\}} \dfrac{C_{n-1}^j C^{k-j}_{(N - 1) - (n - 1)}}{C_{N - 1}^k} = \dfrac{n}{N}$.
    	
    	\defitem{Задача о сумасшедшей старушке. Парадокс Байеса. Парадокс Монти Холла.}
 	
