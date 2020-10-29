@@ -456,7 +456,7 @@
    	
    	\defitem{Неравенство Чебышёва. Закон больших чисел в слабой форме.}
    	
-	\textbf{Неравенство Чебышёва.}
+	\textbf{Неравенство Чебышёва.} (Фактически, это - неравенство Маркова, но у Косова называется именно так)
 	
 	Если $X \geqslant 0$ п.н., то для всякого $t > 0$ верно неравенство $P(\omega: X(\omega) \geqslant t) \leqslant \dfrac{\mathbb{E}X}{t}$.
 	
@@ -464,7 +464,7 @@
 		Пусть $A = {\omega:X(\omega) \geqslant t}$. Тогда $X \geqslant t \cdot I_A$, и значит $\mathbb{E}X \geqslant tP(A)$.
 	\end{proof}
 
-	\begin{proposal}
+	\begin{proposal} (А это уже неравенство Чебышёва)
 		Пусть $\mathbb{E}X^2 < \infty$. Тогда для каждого $\varepsilon > 0$ выполнено $P(|X - \mathbb{E}X| \geqslant \varepsilon) \leqslant \dfrac{\mathbb{D}X}{\varepsilon^2}$.
 	\end{proposal}
 
@@ -474,14 +474,14 @@
 
 	\textbf{Закон больших чисел в слабой форме.}
 	
-	Пусть ${X_n}_n$ - последовательность таких независимых одинаково распределённых случайных величин (т.е. таблички, задающие их распределения, совпадают), что $\mathbb{E}X^2_n < \infty$. Пусть $\mathbb{E}X_1 = m$ (а значит и $\mathbb{E}X_n = m$ при каждом $n$) тогда для каждого $\varepsilon > 0$:
+	Пусть $\{X_n\}_n$ - последовательность таких независимых одинаково распределённых случайных величин (т.е. таблички, задающие их распределения, совпадают), что $\mathbb{E}X^2_n < \infty$. Пусть $\mathbb{E}X_1 = m$ (а значит и $\mathbb{E}X_n = m$ при каждом $n$) тогда для каждого $\varepsilon > 0$:
 	
 	$\lim_{n \rightarrow \infty} P \left( \left| \dfrac{X_1 + X_2 + \dots + X_n}{n} - m \right| \geqslant \varepsilon \right) = 0$.
 	
 	\begin{proof}
 		Заметим, что $\mathbb{E}\dfrac{X1 \dots Xn}{n} = m$ в силу линейности. Тогда, для всякого $\varepsilon > 0$ имеет место неравенство 
 		
-		$P \left( \left| \dfrac{X_1 + X_2 + \dots + X_n}{n} - m \right| \geqslant \varepsilon \right) \leqslant \dfrac{\mathbb{D}[X_1 + X_2 + \dots + X_n]}{n^2 \varepsilon^2} = \dfrac{\mathbb{D}X_1}{n \varepsilon} \rightarrow 0$
+		$P \left( \left| \dfrac{X_1 + X_2 + \dots + X_n}{n} - m \right| \geqslant \varepsilon \right) \leqslant \dfrac{\mathbb{D}[X_1 + X_2 + \dots + X_n]}{n^2 \varepsilon^2} = \dfrac{\mathbb{D}X_1}{n \varepsilon^2} \rightarrow 0$
 		
 		Предположим теперь, что $X_j$ - независимые бернуллиевские величины с вероятностью успеха $p$ (положительный или отрицательный результат эксперимента). Величины $\dfrac{X1 \dots Xn}{n}$ - частота успешного исхода эксперимента при проведении n экспериментов. Заметим, что $\mathbb{E}X_n = p, \mathbb{D}X_n = pq, q = 1 - p$. Следовательно,
 		
