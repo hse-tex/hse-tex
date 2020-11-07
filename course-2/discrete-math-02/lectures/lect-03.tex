@@ -6,21 +6,22 @@
 
 \begin{definition}
     Пусть $A, B \subseteq \N$.
-    Говорят, что $A$ $m$-сводится к $B$ (обозн. $A \mreduce^{f} B$) тогда и только тогда, когда существует вычислимая тотальная $f: \N \to \N$ такая, что
+    Говорят, что $A$ $m$-сводится к $B$ (обозн. $A \mreduce B$) тогда и только тогда, когда существует вычислимая тотальная $f \colon \N \to \N$ такая, что
     $$
         \forall n~ n \in A \iff f(n) \in B.
     $$
+    В таком случае можно написать $A \mreduce^{f} B$.
 \end{definition}
 
 \begin{lemma} \label{lemma::03::01::01}
     Для любых $A, B, C \subseteq \N$ справедливо следующее:
     \begin{enumerate}
-        \item $A \mreduce A$;
+        \item $A \mreduce^{Id} A$;
         \item $A \mreduce^{f} B$ и $B \mreduce^{g} C$ $\implies$ $A \mreduce^{g \circ f} C$;
         \item $A \mreduce^{f} B \implies A^{\complement} \mreduce^{f} B^{\complement}$.
         \item $A \mreduce B$ и $B$ разрешимо $\implies$ $A$ разрешимо.
         \item $A \mreduce B$ и $B$ перечислимо $\implies$ $A$ перечислимо.
-        \item Для любого $n \in \N$, $\omega_{A}\left(n\right) = 1 \iff \omega_{B}\left(f\left(n\right)\right) = 1$.
+        \item Для любого $n \in \N$, $\omega_{A}(n) = 1 \iff \omega_{B}(f(n)) = 1$.
     \end{enumerate}
 \end{lemma}
 
@@ -32,13 +33,13 @@
 \end{proof}
 
 \begin{statement}
-    Если $A$ разрешимо и $B \neq \varnothing \neq \N$, то $A \mreduce B$.
+    Если $A$ разрешимо и $\varnothing \neq B \neq \N$, то $A \mreduce B$.
 \end{statement}
 \begin{proof}
     В силу ограничений на множество $B$, $\exists b \in B$ и $\exists a \in B^{\complement}$.
     Тогда определим $f$ следующим образом:
     $$
-        f\left(n\right) = \begin{cases}
+        f(n) = \begin{cases}
             b, & n \in A, \\
             a, & n \notin A.
         \end{cases}
@@ -55,7 +56,7 @@
     Существует множество $A$ такое, что $A~\cancel{\leqslant}_{m}~A^{\complement}$.
 \end{corollary}
 \begin{proof}
-    Рассмотрим множество $K$ --- перечислимое и неразрешимое.
+    Рассмотрим множество $K$ --- перечислимое, но неразрешимое.
     Тогда $K^{\complement}$ неперечислимо (иначе по теореме Поста $K$ разрешимо).
     Если $K \mreduce K^{\complement}$, то $K^{\complement} \mreduce K^{\complement^{\complement}}$ $\implies$ $K^{\complement} \mreduce K$, то есть неперечислимое множество $m$-сводится к перечислимому, противоречие.
 \end{proof}
@@ -67,14 +68,14 @@
     $B \mreduce A \iff$ существует тотальная вычислимая $f$ такая, что $\forall n \in \N$ $n \in B \iff f(n) \in A$.
     Тогда всякое множество $B$ однозначно определяется сводящей функцией:
     $$
-        B = \left\{n \in B~:~f(n) \in A\right\}.
+        B = \left\{n \in B \mid f(n) \in A\right\}.
     $$
     Поэтому, таких множеств $B$ не больше, чем сводящих функций, но, поскольку все сводящие функции вычислимы, то их не более чем счетно, а подмножеств $\N$ континуум.
 \end{proof}
 \begin{lemma}
     Пусть $U$ --- главная универсальная вычислимая функция, и 
     $$
-        K_{U} = \left\{n \in \N~:~U\left(n, n\right) \text{ определено}\right\}.
+        K_{U} = \left\{n \in \N \mid U(n, n) \text{ определено}\right\}.
     $$
     Тогда любое перечислимое множество $A$ $m$-сводится к $K_{U}$.
 \end{lemma}
