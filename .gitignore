@@ -1,12 +1,17 @@
-*.build
 *.pdf
 *.aux
 *.fls
 *.log
+*.dvi
 *.out
 *.gz
 *.toc
 *.fdb_latexmk
 *-converted-to.pdf
+
 _gh_pages
+.build
 .DS_Store
+
+# github codespaces
+pythonenv*
