@@ -141,9 +141,9 @@ $$
 Получается, что процесс вычисления на $\MM$ --- это переписывание последовательности конфигураций. 
 Пусть $\Sigma$ --- некоторое конечное множество, которое мы будем называть {\it входным алфавитом}.
 \begin{definition*}
-    Машина $\MM$ вычисляет функцию $f: \Sigma^{*} \pto \Sigma^{*}$, если $\Sigma \subseteq \Gamma$ и для любого слова $\overline{x} \in  \Sigma^{*}$
+    Машина $\MM$ вычисляет функцию $f: \Sigma^{*} \pto \Sigma^{*}$, если $\Sigma \subseteq \Gamma$ и для любого слова $\vec{x} \in  \Sigma^{*}$
     $$
-        \overline{x} \in \dom f \implies q\overline{x} \mto f\left(\overline{x}\right).
+        \vec{x} \in \dom f \implies q\vec{x} \mto f\left(\vec{x}\right).
     $$
 \end{definition*}
 
@@ -159,10 +159,10 @@ $$
 \end{description}
 Тогда определение можно записать следующим образом:
 \begin{definition}[вычислимости функции]
-    Машина $\MM$ {\it вычисляет функцию} $f: \Sigma^{*} \pto \Sigma^{*}$, если $\Sigma \subseteq \Gamma$ и для любого слова $\overline{x} \in  \Sigma^{*}$
+    Машина $\MM$ {\it вычисляет функцию} $f: \Sigma^{*} \pto \Sigma^{*}$, если $\Sigma \subseteq \Gamma$ и для любого слова $\vec{x} \in  \Sigma^{*}$
     \begin{description}
-        \item[$\overline{x} \in \dom f \implies$] $q_{1}\#\overline{x} \mreach q_{0}\#f\left(\overline{x}\right)$.
-        \item[$\overline{x} \in \dom f \implies$] для любой конфигурации $c$ $q_{1} \# \overline{x} \cancel{\mreach} c$, если $c$ содержит $q_{0}$.
+        \item[$\vec{x} \in \dom f \implies$] $q_{1}\#\vec{x} \mreach q_{0}\#f\left(\vec{x}\right)$.
+        \item[$\vec{x} \notin \dom f \implies$] для любой конфигурации $c$ $q_{1} \# \vec{x} \cancel{\mreach} c$, если $c$ содержит $q_{0}$.
     \end{description}
 \end{definition}
 
@@ -299,7 +299,7 @@ $$
     Построим машину $\LL = \left(\Gamma \cup \Gamma^{\prime}, \Sigma, Q \cup Q^{\prime}, q_{0}, q_{1}^{\prime}, \hat{\delta}\right)$, где $\hat{\delta} = \delta \cup \delta^{\prime} \cup \left\{q_{1} \# \to q_{0}^{\prime} \# N\right\}$.
     Поскольку
     $$
-        q_{0}\#\overline{x} \mreach q_{1}\# f(\overline{x}) \underset{\LL}{\twoheadrightarrow}  q_{0}^{\prime} \# f(\overline{x}) \underset{\NN}{\twoheadrightarrow} q_{1}^{\prime} \# g\left(f\left(\overline{x}\right)\right),
+        q_{0}\#\vec{x} \mreach q_{1}\# f(\vec{x}) \underset{\LL}{\twoheadrightarrow}  q_{0}^{\prime} \# f(\vec{x}) \underset{\NN}{\twoheadrightarrow} q_{1}^{\prime} \# g\left(f\left(\vec{x}\right)\right),
     $$
     то машина $\LL$ позволяет вычислить композицию $f \circ g$, ведь она содержит в себе машины $\MM$ и $\NN$.
     Формально, состояние $q_{1}^{\prime}$ не является завершающим для машины $\NN$, поэтому мы должны доопределить $\hat{\delta}$, чтобы все было корректно.
@@ -313,14 +313,14 @@ $$
     \begin{theorem}
         Существует МТ $\UU$ с входным алфавитом $\Sigma$ такая, что для любой МТ $\MM$ с входным алфавитом $\Sigma$
         $$
-            \forall \overline{x} \in \Sigma^{*} \quad \UU\left(\left\langle \code\left(\MM\right), \overline{x}\right\rangle\right) \simeq \MM(\overline{x}).
+            \forall \vec{x} \in \Sigma^{*} \quad \UU\left(\left\langle \code\left(\MM\right), \vec{x}\right\rangle\right) \simeq \MM(\vec{x}).
         $$
     \end{theorem}
     Здесь \enquote{$\simeq$} означает, что либо обе машины приходят к одной завершающей конфигурации, либо обе не останаливаются (никогда не приходят к завершающей конфигурации).
-    \item[\enquote{Возможность выполнять по шагам}:] Можно доказать, что существует машина $\TT$ такая, что для любой машины $\MM$ и для любых $\overline{x}, \overline{y}$, а также для любого $k \in \N$ 
+    \item[\enquote{Возможность выполнять по шагам}:] Можно доказать, что существует машина $\TT$ такая, что для любой машины $\MM$ и для любых $\vec{x}, \vec{y}$, а также для любого $k \in \N$ 
     $$
-        TT\left(\left\langle \code(\MM), \overline{x}, \overline{y}, \UU(k)\right\rangle\right) = \begin{cases}
-            1, & \text{если $M$ на входе $\overline{x}$ останавливается за $k$ шагов и выдает $\overline{y}$,} \\
+        TT\left(\left\langle \code(\MM), \vec{x}, \vec{y}, \UU(k)\right\rangle\right) = \begin{cases}
+            1, & \text{если $M$ на входе $\vec{x}$ останавливается за $k$ шагов и выдает $\vec{y}$,} \\
             0, & \text{иначе}.
         \end{cases}
     $$
