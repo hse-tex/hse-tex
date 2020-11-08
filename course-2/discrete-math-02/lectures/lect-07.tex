@@ -21,7 +21,11 @@ $$
 \subsection{Интерпретация сигнатуры}
 
 Попробуем теперь все тоже самое провести абстрактно.
-Допустим, у нас дана некоторая сигнатура $\sigma = (\Rel_{\sigma}, \Func_{\sigma}, \Const_{\sigma})$, тогда
+Допустим, у нас дана некоторая сигнатура 
+$$
+    \sigma = (\Rel_{\sigma}, \Func_{\sigma}, \Const_{\sigma}),
+$$
+тогда
 \begin{definition}
     Интерпретация сигнатуры $\sigma$ --- это пара $\MM = (M, I_{\MM})$, где $M \neq \varnothing$, а $I_{\MM}$ --- это такое отображение\footnote{Дашков не сказал, откуда и куда, но сказал, что оно страшное :(}, что
     \begin{enumerate}
@@ -163,7 +167,7 @@ $$
         Тогда получается, что
         $$
             [f t_{1} \ldots t_{n}](\pi_{1}) = [f t_{1} \ldots t_{n}](\pi_{2}).
-        $$
+        $$ \qedhere
     \end{enumerate}
 \end{proof}
 
@@ -244,6 +248,7 @@ $$
     \begin{enumerate}
         \item $\varphi \eqcirc R t_{1} \ldots t_{n}$, тогда $[\varphi](\pi_{1}) = 1 \iff R^{\MM}([t_{1}](\pi_{1}), \ldots, [t_{n}](\pi_{1}))$.
         Вспомним, что $\FreeVar(R t_{1} \ldots t_{n}) = V(t_{1}) \cup \ldots \cup V(t_{n})$, тогда $V(t_{i}) \subseteq \FreeVar(R t_{1}, \ldots, t_{n})$, тогда для всех переменных, встречающихся в $t_{i}$, наши оценки ведут себя одинаково $\implies$ значения термов при этих оценках одинаковы по лемме \ref{lem::evaluation-of-variables-in-term}.
+        
         Тогда $R^{\MM}([t_{1}](\pi_{1}), \ldots, [t_{n}](\pi_{1})) \iff R^{\MM}([t_{1}](\pi_{2}), \ldots, [t_{n}](\pi_{2})) \iff [\varphi](\pi_{2}) = 1$;
         \item $[\theta \land \psi](\pi) = \text{И}([\theta](\pi_{1}), [\psi](\pi_{1}))$.
         Вспомним, что $\FreeVar(\theta \land \psi) = \FreeVar(\theta) \cup \FreeVar{\psi} \implies \FreeVar(\theta) \subseteq \FreeVar(\varphi)$, тогда, по предположению индукции, $\text{И}([\theta](\pi_{1}), [\psi](\pi_{2})) = \text{И}([\theta](\pi_{2}), [\psi](\pi_{2})) = [\theta \land \psi](\pi_{2})$.
@@ -264,7 +269,7 @@ $$
             \begin{enumerate}
                 \item $y \in \FreeVar(\forall z~\psi) = \FreeVar(\varphi)$, тогда $y \neq z$ потому что $z$ не входит свободно в $\psi$.
                 Значит, $(\pi_{1} + (z \mapsto m))(y) = \pi_{1}(y) = \pi_{2}(y) = (\pi_{2} + (z \mapsto m))(y)$.
-                \item $y \eqcirc z \implies (\pi_{1} + (z \mapsto m))(y) = m = (\pi_{2} + (z \mapsto m))(y)$.
+                \item $y \eqcirc z \implies (\pi_{1} + (z \mapsto m))(y) = m = (\pi_{2} + (z \mapsto m))(y)$. \qedhere
             \end{enumerate}
         \end{proof}
         По предположению индукции, для более простых формул наше утверждение верно.
@@ -272,7 +277,7 @@ $$
         $$
             [\psi](\pi_{1} + (z \mapsto m)) = [\psi](\pi_{2} + (z \mapsto m)).
         $$
-        Получается, что для любого $m \in M$ $[\psi](\pi_{2} + (z \mapsto m)) = 1 \implies [\forall z~\psi](\pi_{2}) = 1$.
+        Получается, что для любого $m \in M$ $[\psi](\pi_{2} + (z \mapsto m)) = 1 \implies [\forall z~\psi](\pi_{2}) = 1$. \qedhere
     \end{enumerate}
 \end{proof}
 
@@ -296,8 +301,8 @@ $$
 Зафиксируем интерпретации $\MM = (\N; =^{\N}; +^{\N}, \cdot^{\N}; 0, 1, 2)$ и $\NN = (\Z; =^{\Z}; +^{\Z}, \cdot^{\Z}; 0, 1, 2)$.
 Рассмотрим формулу $\varphi \eqcirc = (x + 1 = 0)$, тогда
 \begin{align}
-    &\MM \cancel{\models} \varphi(5), \\
-    &\MM \cancel{\models} \varphi(0), \\
+    &\MM ~\cancel{\models}~ \varphi(5), \\
+    &\MM ~\cancel{\models}~ \varphi(0), \\
     &\NN \models \varphi(-1).
 \end{align}
 Соответственно, мы можем сказать, что
