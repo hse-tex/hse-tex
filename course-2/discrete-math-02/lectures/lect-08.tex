@@ -5,8 +5,8 @@
 Мы уже с вами видели, что у одной и той же сигнатуры возможны разные интерпретации.
 Если я, например, возьму сигнатуру поля $\sigma = \left( =; +^{(2)}, \cdot^{(2)}; 0, 1 \right)$, то можно рассмотреть интерпретации:
 \begin{enumerate}
-    \item $R = \left( \R; =; +, \cdot; 0, 1 \right)$ --- поле вещественных чисел;
-    \item $Q = \left( \Q; =; +, \cdot; 0, 1 \right)$ --- поле рациональных чисел. 
+    \item $\RR = \left( \R; =; +, \cdot; 0, 1 \right)$ --- поле вещественных чисел;
+    \item $\QQ = \left( \Q; =; +, \cdot; 0, 1 \right)$ --- поле рациональных чисел. 
 \end{enumerate}
 Здесь у нас одна и та же структура имеет совершенно разные интерпретации, но прежде чем говорить о {\it разном}, прежде всего полезно поговорить об {\it одинаковом}, а именно: какие интерпретации мы понимаем как {\it существенно одинаковые} (или {\it изоморфные})?
 
@@ -116,7 +116,7 @@ $$
 С другой стороны, наши отношения сохраняются в смысле $R^{\MM}(\vec{a}) \iff R^{\NN}(\alpha \vec{a})$.
 Вот для формул мы хотим доказать именно это.
 
-\begin{theorem}
+\begin{theorem}[о значении формулы при изоморфизме] \label{th::formula-under-isomorphism}
     Формула истинна на $\vec{a}$ в $\MM$ тогда и только тогда, когда она истинна на $\alpha \vec{a}$ в $\NN$.
 \end{theorem}
 
@@ -192,4 +192,104 @@ $$
     \end{enumerate}
 \end{proof}
 
-% Остановился на 1:05:08
+\begin{definition}
+    Отношение $X \subseteq M^{n}$ {\it выразимо} в $\MM$, если
+    $$
+        \exists \varphi(x_{1}, \ldots, x_{n}) \in \Fm_{\sigma} \quad \forall \vec{a} \in M^{n} (a \in \vec{x} \iff \MM \models \varphi(\vec{a})).
+    $$
+\end{definition}
+
+\paragraph{Пример}
+В поле $\RR$ выразимо унарное отношение $\R_{\geqslant 0}$, то есть
+$$
+    \varphi_{+}(x) = \exists y (y \cdot y = x).
+$$
+Мы определяем $\varphi_{+}$ таким образом, потому что из положительных чисел можно извлекать корень (чего нельзя делать с отрицательными числами).
+Тогда $\forall a \in \R$
+$$
+    \RR \models \varphi_{+}(a) \iff a \geqslant 0 \iff a\in \R_{\geqslant 0}. 
+$$
+
+\begin{definition}
+    Если $\MM \overset{\alpha}{\cong} \MM$, то $\alpha$ --- {\it автоморфизм} $\MM$ (обозн. $\alpha \in \Aut(\MM)$).
+\end{definition}
+
+\paragraph{Пример}
+Давайте приведем какой-то нетривиальный автоморфизм для, например, порядка целых чисел, то есть $\MM = (\Z, <)$.
+Тогда
+$$
+    \forall x, y \in \Z \quad x < y \iff \alpha x < \alpha y.
+$$
+Нам подойдет любое биективное $\alpha \colon \Z \to \Z$ с таким свойством.
+Рассмотрим $\alpha(x) = x + 1$ или $\alpha(x) = x + 4$ --- любой целочисленный сдвиг.
+Такое $\alpha$ удовлетворяет нужным свойствам $\implies$ является автоморфизмом.
+
+Автоморфизмы открывают нам возможность доказать, что что-нибудь невыразимо.
+Это очень тупой, очень грубый способ.
+Обычно, отношение невыразимо, но автоморфизма, который позволял бы нам это доказать, не находится.
+
+\begin{corollary}
+    Если отношение $X \subseteq M^{n}$ выразимо в $\MM$, то
+    $$
+        \forall \alpha \in \Aut(\MM) \quad \forall \vec{a} \in M^{n} \quad \vec{a} \in X \iff \alpha \vec{a} \in X.
+    $$ 
+\end{corollary}
+
+Это следствие можно записать и так: \enquote{выразимые отношения сохраняются всеми автоморфизмами структуры}.
+В частности, если какое-то отношение не сохраняется каким-то автоморфизмом, то оно точно невыразимо.
+
+\begin{proof}
+    Если $X$ выразимо, то
+    $$
+        \exists \varphi(x_{1}, \ldots, x_{n}) \quad \forall \vec{a} \in M^{n} \quad \vec{a} \in X \iff \MM \models \varphi(\vec{a}).
+    $$
+    У нас $\alpha$ --- изоморфизм из $\MM$ в $\MM$, тогда $\vec{a} \in X \iff \MM \models \varphi(\vec{a})$.
+    Вспомним теорему \ref{th::formula-under-isomorphism}, в нашем случае $\NN = \MM$, тогда $\MM \models \varphi{\vec{a}} \iff \MM \models \varphi(\alpha \vec{a}) \iff \alpha \vec{a} \in X$.
+\end{proof}
+
+\begin{statement}
+    Множество $\Z_{+} = \{n \in \Z \mid n > 0\}$ невыразимо в $\MM$ из примера.
+\end{statement}
+
+\begin{proof}
+    Рассмотрим $\alpha(x) = x + 1$, $\alpha \in \Aut(\MM)$.
+    Мы знаем, что $0 \notin \Z_{+}$, но $\alpha(0) = 1 \in \Z_{+}$.
+    Таким образом, $\exists a \in \Z$ такое, что $a \in \Z_{+} \centernot\iff \alpha a \in \Z_{+}$.
+    Значит, $\Z_{+}$ не выразимо в $\MM$.
+\end{proof}
+
+\begin{definition}
+    Формула $\varphi$ называется {\it предложением}, если $\FreeVar(\varphi) = \varnothing$. 
+\end{definition}
+
+\begin{definition}
+    Интерпертации сигнатуры $\sigma$ $\MM$ и $\NN$ называются {\it элементарно эквивалентными} ($\MM \equiv \NN$), если $\forall \varphi \in \St_{\sigma}$
+    $$
+        \MM \models \varphi \iff \NN \models \varphi.
+    $$
+\end{definition}
+
+\begin{definition}
+    Будем обозначать через $\St_{\sigma}$ множество предложений в сигнатуре $\sigma$.
+\end{definition}
+
+\begin{corollary}
+    $\MM \cong \NN \implies \MM \equiv \NN$.
+\end{corollary}
+
+\begin{proof}
+    Поскольку $\varphi \in \St_{\sigma}$, то
+    $$
+        \MM \models \varphi \iff \MM \models \varphi(\text{\enquote{пустой набор}}) \overset{\text{\ref{th::formula-under-isomorphism}}}{\iff} \NN \models \varphi(\alpha(\text{\enquote{пустой набор}})) = \varphi(\text{\enquote{пустой набор}}) \iff \NN \models \varphi.
+    $$
+\end{proof}
+
+Что означает элементарная эквивалентность?
+Она означает, что ни одна формула не может отличить одну сигнатуру от другой.
+То есть, с точки зрения логики, такие формулы устроены одинаково.
+
+\paragraph{Факт}
+$\MM \equiv \NN \centernot\implies \MM \cong \NN$
+
+\paragraph{Пример}
+$(\Q, <) \centernot\cong (\R, <)$, но $(\Q, <) \equiv (\R, <)$.
