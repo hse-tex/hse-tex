@@ -2,11 +2,13 @@
 
 \section{Лекция 8}
 
+\subsection{Изоморфизм структур}
+
 Мы уже с вами видели, что у одной и той же сигнатуры возможны разные интерпретации.
 Если я, например, возьму сигнатуру поля $\sigma = \left( =; +^{(2)}, \cdot^{(2)}; 0, 1 \right)$, то можно рассмотреть интерпретации:
 \begin{enumerate}
     \item $\RR = \left( \R; =; +, \cdot; 0, 1 \right)$ --- поле вещественных чисел;
-    \item $\QQ = \left( \Q; =; +, \cdot; 0, 1 \right)$ --- поле рациональных чисел. 
+    \item $\QQ = \left( \Q; =; +, \cdot; 0, 1 \right)$ --- поле рациональных чисел.
 \end{enumerate}
 Здесь у нас одна и та же структура имеет совершенно разные интерпретации, но прежде чем говорить о {\it разном}, прежде всего полезно поговорить об {\it одинаковом}, а именно: какие интерпретации мы понимаем как {\it существенно одинаковые} (или {\it изоморфные})?
 
@@ -66,9 +68,11 @@ $$
     Все свойства отношения изоморфности выполнены, поэтому $\alpha$ --- изоморфизм.
 \end{proof}
 
+\subsection{значение терма и формулы при изоморфизме}
+
 \begin{theorem}[о значении формулы при изоморфизме]
     Пусть $\MM$ и $\NN$ --- интерпретации сигнатуры $\sigma$, и $\varphi(x_{1}, \ldots, x_{n}) \in \Fm_{\sigma}$.
-    Тогда если $\MM \overset{\alpha}{\cong} \NN$, то 
+    Тогда если $\MM \overset{\alpha}{\cong} \NN$, то
     $$
         \forall \vec{a} \in M^{n} \quad \MM \models \varphi(\vec{a}) \iff \NN \models \varphi(\alpha \vec{a}).
     $$
@@ -95,7 +99,7 @@ $$
 Это же свойство будет верно вообще для всех термов.
 
 \begin{lemma} \label{lem::term-isomorphism}
-    Если $\MM \overset{\alpha}{\cong} \NN$, то 
+    Если $\MM \overset{\alpha}{\cong} \NN$, то
     $$
     \forall \vec{a} \in M^{n} \quad \forall t(x_{1}, \ldots, x_{n}) \in \Term_{\sigma} \quad \alpha\left(t^{\MM}(\vec{a})\right) = t^{\NN}(\alpha\vec{a}).
     $$
@@ -207,8 +211,10 @@ $$
 Мы определяем $\varphi_{+}$ таким образом, потому что из положительных чисел можно извлекать корень (чего нельзя делать с отрицательными числами).
 Тогда $\forall a \in \R$
 $$
-    \RR \models \varphi_{+}(a) \iff a \geqslant 0 \iff a\in \R_{\geqslant 0}. 
+    \RR \models \varphi_{+}(a) \iff a \geqslant 0 \iff a\in \R_{\geqslant 0}.
 $$
+
+\subsection{Автоморфизмы}
 
 \begin{definition}
     Если $\MM \overset{\alpha}{\cong} \MM$, то $\alpha$ --- {\it автоморфизм} $\MM$ (обозн. $\alpha \in \Aut(\MM)$).
@@ -224,6 +230,8 @@ $$
 Рассмотрим $\alpha(x) = x + 1$ или $\alpha(x) = x + 4$ --- любой целочисленный сдвиг.
 Такое $\alpha$ удовлетворяет нужным свойствам $\implies$ является автоморфизмом.
 
+\subsection{Cохранение выразимых множеств автоморфизмами}
+
 Автоморфизмы открывают нам возможность доказать, что что-нибудь невыразимо.
 Это очень тупой, очень грубый способ.
 Обычно, отношение невыразимо, но автоморфизма, который позволял бы нам это доказать, не находится.
@@ -232,7 +240,7 @@ $$
     Если отношение $X \subseteq M^{n}$ выразимо в $\MM$, то
     $$
         \forall \alpha \in \Aut(\MM) \quad \forall \vec{a} \in M^{n} \quad \vec{a} \in X \iff \alpha \vec{a} \in X.
-    $$ 
+    $$
 \end{corollary}
 
 Это следствие можно записать и так: \enquote{выразимые отношения сохраняются всеми автоморфизмами структуры}.
@@ -259,8 +267,10 @@ $$
 \end{proof}
 
 \begin{definition}
-    Формула $\varphi$ называется {\it предложением}, если $\FreeVar(\varphi) = \varnothing$. 
+    Формула $\varphi$ называется {\it предложением}, если $\FreeVar(\varphi) = \varnothing$.
 \end{definition}
+
+\subsection{Элементарная эквивалентность структур}
 
 \begin{definition}
     Интерпертации сигнатуры $\sigma$ $\MM$ и $\NN$ называются {\it элементарно эквивалентными} ($\MM \equiv \NN$), если $\forall \varphi \in \St_{\sigma}$
@@ -272,6 +282,8 @@ $$
 \begin{definition}
     Будем обозначать через $\St_{\sigma}$ множество предложений в сигнатуре $\sigma$.
 \end{definition}
+
+\subsection{Изоморфные структуры элементарно эквивалентны}
 
 \begin{corollary}
     $\MM \cong \NN \implies \MM \equiv \NN$.
