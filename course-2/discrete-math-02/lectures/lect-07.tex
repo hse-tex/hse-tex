@@ -30,7 +30,7 @@ $$
     Интерпретация сигнатуры $\sigma$ --- это пара $\MM = (M, I_{\MM})$, где $M \neq \varnothing$, а $I_{\MM}$ --- это такое отображение\footnote{Дашков не сказал, откуда и куда, но сказал, что оно страшное :(}, что
     \begin{enumerate}
         \item $\forall R^{(n)} \in \Rel_{\sigma} \quad I_{\MM}(R) \subseteq M^{n}$, то есть $I_{\MM}(R)$ --- это $n$-арное отношение на $M$;
-        \item $\forall f^{(m)} \in \Func_{\sigma} \quad I_{\MM} \colon M^{m} \to M$;
+        \item $\forall f^{(m)} \in \Func_{\sigma} \quad I_{\MM}(f) \colon M^{m} \to M$;
         \item $\forall c \in \Const_{\sigma} \quad I_{\MM}(c) \in M$.
     \end{enumerate}
     Множество $M$ называется {\it носителем интерпретации} $\MM$.
@@ -251,13 +251,13 @@ $$
         
         Тогда $R^{\MM}([t_{1}](\pi_{1}), \ldots, [t_{n}](\pi_{1})) \iff R^{\MM}([t_{1}](\pi_{2}), \ldots, [t_{n}](\pi_{2})) \iff [\varphi](\pi_{2}) = 1$;
         \item $[\theta \land \psi](\pi) = \text{И}([\theta](\pi_{1}), [\psi](\pi_{1}))$.
-        Вспомним, что $\FreeVar(\theta \land \psi) = \FreeVar(\theta) \cup \FreeVar{\psi} \implies \FreeVar(\theta) \subseteq \FreeVar(\varphi)$, тогда, по предположению индукции, $\text{И}([\theta](\pi_{1}), [\psi](\pi_{2})) = \text{И}([\theta](\pi_{2}), [\psi](\pi_{2})) = [\theta \land \psi](\pi_{2})$.
+        Вспомним, что $\FreeVar(\theta \land \psi) = \FreeVar(\theta) \cup \FreeVar{\psi} \implies \FreeVar(\theta) \subseteq \FreeVar(\theta \land \varphi)$, тогда, по предположению индукции, $\text{И}([\theta](\pi_{1}), [\psi](\pi_{2})) = \text{И}([\theta](\pi_{2}), [\psi](\pi_{2})) = [\theta \land \psi](\pi_{2})$.
         Для других логических функций аналогично.
         \item Разберем только квантор всеобщности.
         Допустим $\varphi = \forall z~ \psi$.
         Нам дано, что $\forall y \in \FreeVar(\forall z~ \psi)$ $\pi_{1}(y) = \pi_{2}(y)$, тогда
         $$
-            [\forall z~ \psi]_{\MM}(\pi) = 1 \iff \forall m \in M~ [\psi](\pi_{1} + (z \mapsto m)) = 1.
+            [\forall z~ \psi]_{\MM}(\pi_1) = 1 \iff \forall m \in M~ [\psi](\pi_{1} + (z \mapsto m)) = 1.
         $$
         По предположению индукции, мы знаем, что если у нас две оценки совпадают на всех переменных, свободных в $\psi$, то и значения соответствующие тоже совпадают.
         Поскольку $\FreeVar(\forall z~\psi) = \FreeVar(\psi) \setminus \{z\}$, то $\FreeVar(\psi) \subseteq \FreeVar(\forall z~ \psi) \cup \{z\}$.
@@ -299,7 +299,7 @@ $$
 
 \paragraph{Пример}
 Зафиксируем интерпретации $\MM = (\N; =^{\N}; +^{\N}, \cdot^{\N}; 0, 1, 2)$ и $\NN = (\Z; =^{\Z}; +^{\Z}, \cdot^{\Z}; 0, 1, 2)$.
-Рассмотрим формулу $\varphi \eqcirc = (x + 1 = 0)$, тогда
+Рассмотрим формулу $\varphi \eqcirc (x + 1 = 0)$, тогда
 \begin{align}
     &\MM ~\cancel{\models}~ \varphi(5), \\
     &\MM ~\cancel{\models}~ \varphi(0), \\
@@ -315,7 +315,7 @@ $$
 \begin{definition}
     Формула $\varphi(x_{1}, \ldots, x_{n}) \in \Fm_{\sigma}$ {\it выражает отношение} $X \subseteq M^{n}$ в интерпретации $\MM$ сигнатуры $\sigma$ $\iff$
     $$
-        \forall \vec{a} \in M^{n}~(M \models \varphi(\vec{a}) \iff \vec{a} \in X).
+        \forall \vec{a} \in M^{n}~(\MM \models \varphi(\vec{a}) \iff \vec{a} \in X).
     $$
     В такой ситуации пишут еще, что $\varphi^{\MM} = X$.
 \end{definition}
