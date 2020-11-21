@@ -1,0 +1,307 @@
+\ProvidesFile{lect-08.tex}[Лекция 8]
+
+\section{Лекция 8}
+
+\subsection{Изоморфизм структур}
+
+Мы уже с вами видели, что у одной и той же сигнатуры возможны разные интерпретации.
+Если я, например, возьму сигнатуру поля $\sigma = \left( =; +^{(2)}, \cdot^{(2)}; 0, 1 \right)$, то можно рассмотреть интерпретации:
+\begin{enumerate}
+    \item $\RR = \left( \R; =; +, \cdot; 0, 1 \right)$ --- поле вещественных чисел;
+    \item $\QQ = \left( \Q; =; +, \cdot; 0, 1 \right)$ --- поле рациональных чисел.
+\end{enumerate}
+Здесь у нас одна и та же структура имеет совершенно разные интерпретации, но прежде чем говорить о {\it разном}, прежде всего полезно поговорить об {\it одинаковом}, а именно: какие интерпретации мы понимаем как {\it существенно одинаковые} (или {\it изоморфные})?
+
+Вспомним определение изоморфизма двух линейных пространств: два векторных пространства называются изоморфными, если существует биективное $\alpha$ такое, что
+$$
+    \alpha(x +_{1} y) = \alpha(x) +_{2} \alpha(y).
+$$
+Будем рассуждать аналогичным образом.
+Пусть $\MM$ и $\NN$ --- две интерпретации одной сигнатуры $\sigma$, то есть
+\begin{align}
+    \MM &= \left( M; R^{\MM} \ldots; f^{\MM} \ldots; c^{\MM} \ldots \right), \\
+    \NN &= \left( N; R^{\NN} \ldots; f^{\NN} \ldots; c^{\NN} \ldots \right).
+\end{align}
+
+\begin{definition} \label{def::isomorphism-on-structures}
+    Будем говорить, что $\alpha$ --- {\it изоморфизм} между $\MM$ и $\NN$, если
+    \begin{enumerate}
+        \item $\alpha \colon M \to N$ --- биекция;
+        \item Сохраняются все отношения, то есть $\forall R^{(n)} \in \Rel_{\sigma}$, $\forall \vec{a} \in M^{n}$ $R^{\MM}(\vec{a}) \iff R^{\NN}(\alpha \vec{a})$;
+        \item \enquote{Уважаются} все функции, то есть $\forall f^{(n)} \in \Func_{\sigma}$, $\forall \vec{a} \in M^{n}$ $\alpha f^{\MM}(\vec{a}) = f^{\NN}(\alpha \vec{a})$;
+        \item $\forall c \in \Const_{\sigma}$, $\alpha c^{\MM} = c^{\NN}$;
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Будем говорить, что структуры $\MM$ и $\NN$ изоморфны (обозн. $\MM \cong \NN$), если существует изоморфизм $\alpha \colon \MM \to \NN$.
+\end{definition}
+
+\begin{statement}~
+    \begin{enumerate}
+        \item $\MM \overset{\Id_{\MM}}{\cong} \MM$.
+        \item $\MM \overset{\alpha}{\cong} \NN \implies \NN \overset{\alpha^{-1}}{\cong} \MM$.
+        \item $\MM \overset{\alpha}{\cong} \NN$ и $\NN \overset{\beta}{\cong} \LL \implies \MM \overset{\beta \circ \alpha}{\cong} \LL$.
+    \end{enumerate}
+\end{statement}
+
+\paragraph{Пример}
+Рассмотрим конкретный пример, который является классическим.
+Положим $\MM = \left( \R; =; +^(2); 0 \right)$ и $\NN = \left( R_{+}; =; \cdot^{(2)}; 1 \right)$.
+Естественно, это интерпретация одной сигнатуры $\sigma = \left( =; \circ^{(2)}; e \right)$.
+\begin{statement}
+    $\MM \cong \NN$.
+\end{statement}
+Словами это можно передать так: \enquote{сложение вещественных чисел устроено также, как умножение положительных вещественных чисел}.
+\begin{proof}
+    Нам нужна функция $\alpha$ на множестве вещественных чисел такая, что
+    $$
+        \alpha(x + y) = \alpha(x) \cdot \alpha(y).
+    $$
+    Рассмотрим $\alpha(x) = 2^{x}$, проверим для нее свойства изоморфизма
+    \begin{enumerate}
+        \item $\alpha$ --- биекция, поскольку переводит все вещественные числа в положительные, и у каждого числа ровно один прообраз.
+        \item Отношение \enquote{$=$} сохраняется, поскольку $x = y \iff 2^{x} = 2^{y}$ в силу инъективности $\alpha$.
+        \item $\forall x, y$ $\alpha\left(x \circ^{\MM} y\right) = \alpha(x) \circ^{\NN} \alpha(y)$.
+        \item $\alpha(0) = 2^{0} = 1$.
+    \end{enumerate}
+    Все свойства отношения изоморфности выполнены, поэтому $\alpha$ --- изоморфизм.
+\end{proof}
+
+\subsection{значение терма и формулы при изоморфизме}
+
+\begin{theorem}[о значении формулы при изоморфизме]
+    Пусть $\MM$ и $\NN$ --- интерпретации сигнатуры $\sigma$, и $\varphi(x_{1}, \ldots, x_{n}) \in \Fm_{\sigma}$.
+    Тогда если $\MM \overset{\alpha}{\cong} \NN$, то
+    $$
+        \forall \vec{a} \in M^{n} \quad \MM \models \varphi(\vec{a}) \iff \NN \models \varphi(\alpha \vec{a}).
+    $$
+\end{theorem}
+
+Можно сказать, что значение формулы $\varphi$ на наборе $\vec{a}$ в структуре $\MM$ равно значению той же формулы на наборе, в который наш набор переходит под действием изоморфизма.
+Чтобы нам это доказать, нам надо рассуждать индукцией по построению формулы.
+Но чтобы рассуждать индукцией по построению формулы, нужно будет возиться с термами.
+Поэтому нам нужно аналогичное рассуждение про термы.
+
+\begin{definition}
+    Пусть у нас есть терм $t(x_{1}, \ldots, x_{n}) \in \Term_{\sigma}$,
+    тогда $t^{\MM}(\vec{a}) = [t]_{\MM}\left( \pi_{x_{1}~\ldots~x_{n}} \right)$.
+\end{definition}
+
+По сути дела, это значит, что $t^{\MM} \colon M^{n} \to M$.
+Давайте поймем, что же это значит.
+Ну представим, что у нас есть структура $\NN = (\N; =; +)$, тогда заведем терм $t = x + x + x$, $V(t) = \{x\}$.
+Тогда $t^{\NN}(a) = [t]_{\NN}(a) = a + a + a = 3a$, то есть $t^{\NN}$ --- функция утроения числа, то есть $t^{\NN} \colon \N \to \N$.
+То есть, по сути дела, у нас был какой-то функциональный символ \enquote{$+$}, обозначающий операцию сложения.
+Из него мы сделали более сложную функцию --- терм.
+Получается, что каждый терм обозначает некоторую функцию.
+Тогда, по определению изоморфизма, если мы $\alpha$ применим к значению функции, соответствующую функциональному символу в точке $a$, то получится значение той же функции из другой структуры в точке $\alpha(a)$.
+Это же свойство будет верно вообще для всех термов.
+
+\begin{lemma} \label{lem::term-isomorphism}
+    Если $\MM \overset{\alpha}{\cong} \NN$, то
+    $$
+    \forall \vec{a} \in M^{n} \quad \forall t(x_{1}, \ldots, x_{n}) \in \Term_{\sigma} \quad \alpha\left(t^{\MM}(\vec{a})\right) = t^{\NN}(\alpha\vec{a}).
+    $$
+\end{lemma}
+
+\begin{proof}
+    Приведем доказательство индукцией по построению терма $t$:
+    \begin{enumerate}
+        \item $t = x_{i} \implies t^{\MM}(a_{1}, \ldots, a_{n}) = a_{i}$, $t^{\NN}(b_{1}, \ldots, b_{n}) = b_{i}$.
+        Тогда $\alpha\left(t^{\MM}(\vec{a})\right) = \alpha a_{i} = t^{\NN}(\alpha \vec{a}) = t^{\NN}(\alpha a_{1}, \ldots, \alpha a_{n})$;
+        \item $t = c \implies t^{\MM}(a_{1}, \ldots, a_{n}) = c^{\MM}$, $t^{\NN}(b_{1}, \ldots, b_{n}) = c^{\NN}$, тогда $\alpha\left(t^{\MM}(\vec{a})\right) = \alpha c^{\MM} = c^{\NN} = t^{\NN}(\alpha \vec{a})$;
+        \item $t = f t_{1} \ldots t_{m} \implies t^{\MM}(\vec{a}) = f^{\MM}\left(t_{1}^{\MM}(\vec{a}), \ldots, t_{m}^{\MM}(\vec{a})\right)$, тогда $\alpha\left(t^{\MM}(\vec{a})\right) = \alpha\left(f^{\MM}\left(t_{1}^{\MM}(\vec{a}), \ldots t_{m}^{\MM}(\vec{a})\right)\right)$.
+        Теперь вспомним про то, что $\alpha$ и $f^{\NN}$ перестановочны (см. определение \ref{def::isomorphism-on-structures}), тогда $\alpha\left(f^{\MM}\left(t_{1}^{\MM}(\vec{a}), \ldots t_{m}^{\MM}(\vec{a})\right)\right) = f^{\NN}\left(\alpha\left(t_{1}^{\MM}(\vec{a}), \ldots t_{m}^{\MM}(\vec{a})\right)\right)$, но ведь $\alpha\left(t_{i}^{\MM}(\vec{a})\right)$ --- более простой терм, потому что он является частью $t$, поэтому здесь применимо предположение индукции, тогда $f^{\NN}\left(t_{1}^{\NN}\left(\alpha\vec{a}\right), \ldots t_{m}^{\NN}(\alpha\vec{a})\right) = t^{\NN}(\alpha \vec{a})$. \qedhere
+    \end{enumerate}
+\end{proof}
+
+Функции, которые описываются термами, ведут себя совершенно также, как и исходные функции (в силу перестановочности с $\alpha$).
+С другой стороны, наши отношения сохраняются в смысле $R^{\MM}(\vec{a}) \iff R^{\NN}(\alpha \vec{a})$.
+Вот для формул мы хотим доказать именно это.
+
+\begin{theorem}[о значении формулы при изоморфизме] \label{th::formula-under-isomorphism}
+    Формула истинна на $\vec{a}$ в $\MM$ тогда и только тогда, когда она истинна на $\alpha \vec{a}$ в $\NN$.
+\end{theorem}
+
+\begin{proof}
+    Приведем доказательство индукцией по построению формулы $\varphi$:
+    \begin{enumerate}
+        \item $\varphi = R t_{1} \ldots t_{n}$, тогда истинность формулы $\varphi$ на наборе $\vec{a}$ равносильна тому, что $\left(t_{1}^{\MM}(\vec{a}), \ldots, t_{m}^{\MM}(\vec{a})\right) \in R^{\MM}$, то есть
+        $$
+            \MM \models \varphi(\vec{a}) \iff \left(t_{1}^{\MM}(\vec{a}), \ldots, t_{m}^{\MM}(\vec{a})\right) \in R^{\MM}.
+        $$
+        Аналогично,
+        $$
+            \NN \models \varphi(\alpha \vec{a}) \iff \left(t_{1}^{\NN}(\alpha \vec{a}), \ldots, t_{m}^{\NN}(\alpha \vec{a})\right) \in R^{\NN}.
+        $$
+        По лемме \ref{lem::term-isomorphism},
+        $$
+            t_{i}^{\NN}(\alpha \vec{a}) = \alpha\left(t_{i}^{\MM}(\vec{a})\right).
+        $$
+        Тогда,
+        $$
+            \left(t_{1}^{\NN}(\alpha \vec{a}), \ldots, t_{m}^{\NN}(\alpha \vec{a})\right) \in R^{\NN} \iff \left(\alpha\left(t_{1}^{\NN}(\vec{a})\right), \ldots, \alpha\left(t_{m}^{\NN}(\vec{a})\right)\right) \in R^{\NN}.
+        $$
+        По определению изоморфизма, $R^{\MM}(\vec{a}) \iff R^{\NN}(\alpha \vec{a})$, тогда
+        $$
+            \left(t_{1}^{\MM}(\vec{a}), \ldots, t_{m}^{\MM}(\vec{a})\right) \in R^{\MM} \iff \left(\alpha\left(t_{1}^{\NN}(\vec{a})\right), \ldots, \alpha\left(t_{m}^{\NN}(\vec{a})\right)\right) \in R^{\NN},
+        $$
+        что и требовалось доказать.
+        \item \begin{enumerate}
+            \item $\varphi \eqcirc \theta \land \psi$, тогда
+        $$
+            \MM \models (\theta \land \psi)(\vec{a}) \iff \MM \models \theta(\vec{a}) \text{ и } \MM \models \psi(\vec{a}).
+        $$
+        Почему мы их рассматриваем том же наборе?
+        Потому что когда мы пишем $\varphi(x_{1}, \ldots, x_{n})$, мы не утверждаем, что все переменные там встречаются, но других там нет.
+        Понятно, что в одном конъюнкте не может быть переменных, которых не было бы во всей конъюнкции.
+        Тогда, по предположению индукции,
+        $$
+            \MM \models \theta(\vec{a}) \text{ и } \MM \models \psi(\vec{a}) \iff \NN \models \theta(\alpha \vec{a}) \text{ и } \NN \models \psi(\alpha \vec{a}) \iff \NN \models (\theta \land \psi)(\alpha \vec{a}).
+        $$
+        \item $\varphi \eqcirc \neg \psi$.
+        $$
+            \MM \models (\neg \psi)(\vec{a}) \iff \MM~\cancel{\models}~\psi(\vec{a}) \iff \NN~\cancel{\models}~\psi(\alpha\vec{a}) \iff \NN \models (\neg \psi)(\alpha \vec{a}).
+        $$
+        \end{enumerate}
+        \item \begin{enumerate}
+            \item $\varphi \eqcirc \exists x~ \psi$.
+        Тогда существует $b \in M$ (соответствующее $x$) такое, что
+        $$
+            M \models (\exists x~\psi)(\vec{a}) \iff \MM \models \psi(\vec{a}, b).
+        $$
+        По предположению индукции,
+        \begin{equation} \label{eq::08::01}
+            \MM \models \psi(\vec{a}, b) \iff \NN \models \psi (\alpha \vec{a}, \alpha b),
+        \end{equation}
+        однако это не совсем то, что нам нужно, поскольку мы хотим, чтобы существовало $c \in N$ такое, что
+        \begin{equation} \label{eq::08::02}
+            \NN \models (\exists x~\psi)(\alpha \vec{a}) \iff \NN \models \psi(\alpha \vec{a}, c).
+        \end{equation}
+        Попытаемся прочувствовать разницу между \eqref{eq::08::01} и \eqref{eq::08::02}.
+        В первом случае сказано, что $\exists b \in M$ такое, что формула в $\NN$ истинна на числе $\alpha b$.
+        Во втором же сказано, что существует какое-то произвольное $c \in N$ такое, что на нем она будет истинна.
+        В чем же разница?
+        Понятно, что если она истинна на $\alpha b \in N$, то такое $c$ найдется.
+        А в обратную сторону?
+        Может ли найтись $c$ такое, что оно не имеет вида $\alpha b$?
+        Нет, такого быть не может, потому что $\alpha$ сюръективна $\implies$ для любого $c \in N$ существует $b \in M$ такое, что $c = \alpha b$.
+        \item $\varphi \eqcirc \forall x~\psi$.
+        Тогда для всех $b \in M$
+        $$
+            \MM \models (\forall x~\psi)(\vec{a}) \iff \MM \models \psi(\vec{a}, b) \iff \NN \models \psi(\alpha \vec{a}, \alpha b) \iff \NN \models (\forall x~\psi)(\alpha \vec{a}).
+        $$ \qedhere
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Отношение $X \subseteq M^{n}$ {\it выразимо} в $\MM$, если
+    $$
+        \exists \varphi(x_{1}, \ldots, x_{n}) \in \Fm_{\sigma} \quad \forall \vec{a} \in M^{n} (a \in \vec{x} \iff \MM \models \varphi(\vec{a})).
+    $$
+\end{definition}
+
+\paragraph{Пример}
+В поле $\RR$ выразимо унарное отношение $\R_{\geqslant 0}$, то есть
+$$
+    \varphi_{+}(x) = \exists y (y \cdot y = x).
+$$
+Мы определяем $\varphi_{+}$ таким образом, потому что из положительных чисел можно извлекать корень (чего нельзя делать с отрицательными числами).
+Тогда $\forall a \in \R$
+$$
+    \RR \models \varphi_{+}(a) \iff a \geqslant 0 \iff a\in \R_{\geqslant 0}.
+$$
+
+\subsection{Автоморфизмы}
+
+\begin{definition}
+    Если $\MM \overset{\alpha}{\cong} \MM$, то $\alpha$ --- {\it автоморфизм} $\MM$ (обозн. $\alpha \in \Aut(\MM)$).
+\end{definition}
+
+\paragraph{Пример}
+Давайте приведем какой-то нетривиальный автоморфизм для, например, порядка целых чисел, то есть $\MM = (\Z, <)$.
+Тогда
+$$
+    \forall x, y \in \Z \quad x < y \iff \alpha x < \alpha y.
+$$
+Нам подойдет любое биективное $\alpha \colon \Z \to \Z$ с таким свойством.
+Рассмотрим $\alpha(x) = x + 1$ или $\alpha(x) = x + 4$ --- любой целочисленный сдвиг.
+Такое $\alpha$ удовлетворяет нужным свойствам $\implies$ является автоморфизмом.
+
+\subsection{Cохранение выразимых множеств автоморфизмами}
+
+Автоморфизмы открывают нам возможность доказать, что что-нибудь невыразимо.
+Это очень тупой, очень грубый способ.
+Обычно, отношение невыразимо, но автоморфизма, который позволял бы нам это доказать, не находится.
+
+\begin{corollary}
+    Если отношение $X \subseteq M^{n}$ выразимо в $\MM$, то
+    $$
+        \forall \alpha \in \Aut(\MM) \quad \forall \vec{a} \in M^{n} \quad \vec{a} \in X \iff \alpha \vec{a} \in X.
+    $$
+\end{corollary}
+
+Это следствие можно записать и так: \enquote{выразимые отношения сохраняются всеми автоморфизмами структуры}.
+В частности, если какое-то отношение не сохраняется каким-то автоморфизмом, то оно точно невыразимо.
+
+\begin{proof}
+    Если $X$ выразимо, то
+    $$
+        \exists \varphi(x_{1}, \ldots, x_{n}) \quad \forall \vec{a} \in M^{n} \quad \vec{a} \in X \iff \MM \models \varphi(\vec{a}).
+    $$
+    У нас $\alpha$ --- изоморфизм из $\MM$ в $\MM$, тогда $\vec{a} \in X \iff \MM \models \varphi(\vec{a})$.
+    Вспомним теорему \ref{th::formula-under-isomorphism}, в нашем случае $\NN = \MM$, тогда $\MM \models \varphi{\vec{a}} \iff \MM \models \varphi(\alpha \vec{a}) \iff \alpha \vec{a} \in X$.
+\end{proof}
+
+\begin{statement}
+    Множество $\Z_{+} = \{n \in \Z \mid n > 0\}$ невыразимо в $\MM$ из примера.
+\end{statement}
+
+\begin{proof}
+    Рассмотрим $\alpha(x) = x + 1$, $\alpha \in \Aut(\MM)$.
+    Мы знаем, что $0 \notin \Z_{+}$, но $\alpha(0) = 1 \in \Z_{+}$.
+    Таким образом, $\exists a \in \Z$ такое, что $a \in \Z_{+} \centernot\iff \alpha a \in \Z_{+}$.
+    Значит, $\Z_{+}$ не выразимо в $\MM$.
+\end{proof}
+
+\begin{definition}
+    Формула $\varphi$ называется {\it предложением}, если $\FreeVar(\varphi) = \varnothing$.
+\end{definition}
+
+\subsection{Элементарная эквивалентность структур}
+
+\begin{definition}
+    Интерпертации сигнатуры $\sigma$ $\MM$ и $\NN$ называются {\it элементарно эквивалентными} ($\MM \equiv \NN$), если $\forall \varphi \in \St_{\sigma}$
+    $$
+        \MM \models \varphi \iff \NN \models \varphi.
+    $$
+\end{definition}
+
+\begin{definition}
+    Будем обозначать через $\St_{\sigma}$ множество предложений в сигнатуре $\sigma$.
+\end{definition}
+
+\subsection{Изоморфные структуры элементарно эквивалентны}
+
+\begin{corollary}
+    $\MM \cong \NN \implies \MM \equiv \NN$.
+\end{corollary}
+
+\begin{proof}
+    Поскольку $\varphi \in \St_{\sigma}$, то
+    $$
+        \MM \models \varphi \iff \MM \models \varphi(\text{\enquote{пустой набор}}) \overset{\text{\ref{th::formula-under-isomorphism}}}{\iff} \NN \models \varphi(\alpha(\text{\enquote{пустой набор}})) = \varphi(\text{\enquote{пустой набор}}) \iff \NN \models \varphi.
+    $$
+\end{proof}
+
+Что означает элементарная эквивалентность?
+Она означает, что ни одна формула не может отличить одну сигнатуру от другой.
+То есть, с точки зрения логики, такие формулы устроены одинаково.
+
+\paragraph{Факт}
+$\MM \equiv \NN \centernot\implies \MM \cong \NN$
+
+\paragraph{Пример}
+$(\Q, <) \centernot\cong (\R, <)$, но $(\Q, <) \equiv (\R, <)$.
