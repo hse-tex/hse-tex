@@ -1,0 +1,409 @@
+\ProvidesFile{lect-09.tex}[Лекция 09]
+
+\section{Лекция 9}
+
+В прошлой лекции мы говорили о структурах, об изоморфизме структур, поняли, что выразимые отношения сохраняются всеми автоморфизмами.
+Вообще, мы показали как себя ведет значение формулы при изоморфизме.
+А теперь мы хотим пойти немножко в другом направлении, и мы хотим установить общие законы нашей логики предикатов.
+Неформально выражаясь, логика предикатов --- это свойства формул первого порядка\footnote{так называются те формулы, которые были нами определены.}, которые имеют место для всех структур (интерпретаций).
+То есть, это такие свойства, которые не зависят от интерпертации (являются законами логики).
+
+Будем считать, что у нас какая-нибудь сигнатура $\sigma$ фиксирована и мы рассматриваем формулы этой сигнатуры.
+
+\begin{definition}
+    Формула $\varphi$ {\it общезначима}, если для любой интерпретации $\MM$, для любой оценки переменных $\pi \colon \Var \to M$
+    $$
+        [\varphi]_{\MM}(\pi) = 1.
+    $$
+\end{definition}
+
+Что такое общезначимая формула?
+Это такая формула, которая всегда, как ее не интерпретируй, что с ней не делай, она будет принимать значение 1, которое всегда истинно.
+
+\paragraph{Пример}
+Формула
+$$
+    Px \implies (\neg Px \implies Qyz)
+$$
+является общезначимой.
+Почему?
+Ну давайте возьмем какую-нибудь интерпретацию, какую-то оценку, то, в конечном счете, значение нашей формулы сведется к
+$$
+    [\varphi]_{\MM}(\pi) = \boolimplies(\sigma, \boolimplies(\boolneg(\sigma), \tau)),
+$$
+где $\sigma, \tau \in \{0, 1\}$.
+Какие бы значения $\sigma, \tau$ не были, значенеи формулы будет 1 (можно проверить по таблице истинности).
+Поэтому эта формула является общезначной.
+
+Следует заметить, что не всякая общезначная формула общезначна в силу импликации и отрицания.
+
+\paragraph{Пример}
+Рассмотрим формулу
+$$
+    \varphi = \forall x Px \implies \exists x Px.
+$$
+Понятно, что в ней ничего не зависит от того, что мы понимаем под свойством $P$.
+Это будет всегда так, если $M \neq \varnothing$ (по определению $M$, это правда).
+
+\paragraph{Контр-пример}
+Рассмотрим формулу
+$$
+    \varphi \eqcirc Px \lor \neg Qy.
+$$
+Придумаем интерпретацию и оценку переменных такие, что $\varphi$ ложна.
+Положим $M = \N$, $P^{\MM} = Q^{\MM} =$ \enquote{равно 0}, $\pi(x) = 2020$, $\pi(y) = 0$.
+Тогда значение $\varphi$ ложно.
+
+И так, общезначимые формулы --- это законы логики.
+Наша задача --- понять, как эти законы устроены.
+Двойственным к общезначности является следующее понятие:
+
+\begin{definition}
+    Формула $\varphi$ {\it выполнима}, если существует интерпретация $\MM$ и оценка $\pi$ такая, что
+    $$
+        [\varphi]_{\MM}(\pi) = 1.
+    $$
+\end{definition}
+
+То есть, общезначимая формула истинна всегда, а выполнимая истинна в каком-то случае.
+
+\begin{lemma}
+    Формула $\varphi$ общезначима $\iff$ $\neg \varphi$ не выполнима.
+\end{lemma}
+
+\begin{lemma}
+    Формула $\varphi$ выполнима $\iff$ $\neg \varphi$ не общезначима.
+\end{lemma}
+
+\begin{definition}
+    Формулы $\varphi$ и $\psi$ (логически) эквивалентны, если для любой структуры $\MM$, для любой оценки $\pi$
+    $$
+        [\varphi]_{\MM}(\pi) = [\psi]_{\MM}(\pi).
+    $$
+\end{definition}
+
+\begin{lemma}
+    Верны следующие утверждения:
+    \begin{enumerate}
+        \item $\varphi \equiv \varphi$;
+        \item $\varphi \equiv \psi \implies \psi \equiv \varphi$;
+        \item $\varphi \equiv \psi \land \psi \equiv \theta \implies \psi \equiv \theta$.
+    \end{enumerate}
+\end{lemma}
+
+Таким образом, наша эквивалентность является отношением эквивалентности на множестве формул.
+
+\begin{lemma}[о конгруэнции отношения эквивалентности]
+    Если $\varphi \equiv \varphi^{\prime}$, то
+    \begin{itemize}
+        \item $\neg \varphi \equiv \varphi^{\prime}$;
+        \item $\varphi \land \psi \equiv \varphi^{\prime} \land \psi$.
+        \item $\varphi \lor \psi \equiv \varphi^{\prime} \lor \psi$.
+        \item $\varphi \implies \psi \equiv \varphi^{\prime} \implies \psi$.
+        \item $\psi \implies \varphi \equiv \psi \implies \varphi^{\prime}$.
+        \item $\forall x \varphi \equiv \forall x \varphi^{\prime}$.
+        \item $\exists x \varphi \equiv \exists x \varphi^{\prime}$.
+    \end{itemize}
+\end{lemma}
+
+Это связано с тем, что значение сложной формулы определяется через значения ее подформул.
+И если значение $\varphi$ всегда можно заменить на значение $\varphi^{\prime}$ в любой интерпретации и при любой оценке, то тогда, конечно же, значение исходной формулы не изменится.
+Проверим один пункт с квантором.
+
+\begin{proof}
+    $[\forall x \varphi]_{\MM}(\pi) = 1 \iff \forall m \in M~[\varphi]\left( \pi_{x}^{m} \right) = 1$, но $[\varphi]\left( \pi_{x}^{m} \right) = [\varphi^{\prime}]\left( \pi_{x}^{m} \right)$, тогда $[\varphi^{\prime}]\left( \pi_{x}^{m} \right) = 1$.
+\end{proof}
+
+\paragraph{Упражнение}
+Существуют $\varphi, \varphi^{\prime}$ такие, что
+$$
+    \forall x \varphi = \forall x \varphi^{\prime},
+$$
+но $\varphi \centernot\equiv \varphi^{\prime}$, то есть снимать квантор таким образом нельзя.
+
+Можно ли через эквивалентность выразить общезначимость (и наоборот)?
+Ну конечно можно!
+
+\begin{lemma}
+    $\varphi \equiv \psi \iff $ общезначима формула
+    $$
+        (\varphi \implies \psi) \land (\psi \implies \varphi).
+    $$
+\end{lemma}
+
+\begin{proof}
+    Значение импликации один тогда и только тогда, когда значение посылки не больше значения заключения, а в лемме сказано, что они одинаковы.
+    Тогда формулы $\varphi$ и $\psi$ эквивалентны.
+\end{proof}
+
+\begin{lemma}
+    Формула $\varphi$ общезначима тогда и только тогда, когда
+    $$
+        \varphi \equiv \text{\enquote{заведомая истина}}.
+    $$
+\end{lemma}
+
+Что это за заведомая истина?
+На самом деле, обычно, логики считают, что есть связки
+\begin{itemize}
+     \item $\top$ --- тождественная истина.
+     \item $\bot$ --- тождественная ложь.
+ \end{itemize}
+Если же их в сигнатуре нет, то приходится как-то выкручиваться.
+Например, если в сигнатуре есть предикатный символ $P$, то в качестве тождественной истины можно взять формулу $Px \lor \neg Px$.
+
+\begin{corollary}
+    Все общезначимые формулы эквивалентны друг другу.
+\end{corollary}
+
+Теперь давайте посмотрим некоторые свойства, которые характерны именно для кванторов.
+Одно из этих свойств очень простое, но в тоже время весьма полезное --- лемма о фиктивном кванторе.
+
+\begin{lemma}[о фиктивном кванторе]
+    Если $x \notin \FreeVar(\varphi)$, то $\forall x \varphi \equiv \varphi$.
+    Аналогично, $\exists \varphi \equiv \varphi$.
+\end{lemma}
+
+\begin{proof}
+    Нам надо доказать эквивалентность, то есть то, что происходит в любой интерпретации $\MM$ и при любой оценке $\pi$.
+    Рассмотрим формулу
+    $$
+        [\forall x \varphi]_{\MM}(\pi) = 1 \iff \forall m \in M~ [\varphi](\pi_{x}^{m}) = 1.
+    $$
+    Мы знаем, что если для любого $z \in \FreeVar(\psi)$ две оценки $\pi_{1}(z)$ и $\pi_{2}(z)$ совпадают, то $[\psi]_{\MM}(\pi_{1}) = [\psi]_{\MM}(\pi_{2})$. % TODO: вставить ссылку на утверждение
+    Мы знаем, что $x \notin \FreeVar(\varphi)$, посмотрим тогда на следующее выражение
+    $$
+        \pi_{x}^{m}(z) = \pi(z),
+    $$
+    где
+    $$
+        \pi_{x}^{m}(z) = \begin{cases}
+            m, & y = x,  \\
+            \pi(y), & y \neq x.
+        \end{cases}
+    $$
+    Заметим, что значение $\pi_{x}^{m}$ совпадает cо значением $\pi$ везде, кроме $x$, тогда $[\psi]_{\MM}(\pi_{1}) = [\psi]_{\MM}(\pi_{2}) \implies [\varphi]_{\MM}\left(\pi_{x}^{m}\right) = [\varphi]_{\MM}(\pi)$.
+    Получается, что $[\varphi]\left(\pi_{x}^{m}\right) = [\varphi](\pi)$.
+    Дальше мы снимаем внешний фиктивный квантор: мы получили, что $\forall m \in M~[\varphi](\pi) = 1$, что не зависит от $m$, тогда это равносильно $[\varphi](\pi) = 1$.
+\end{proof}
+
+\begin{corollary}
+    $\forall x \exists x \varphi \equiv \exists x \varphi$.
+\end{corollary}
+
+\begin{statement}
+    Формула $\varphi$ общезначима $\iff$ $\forall x \varphi$ общезначима.
+\end{statement}
+
+\begin{proof}~
+    \begin{description}
+        \item[$\implies$] Дано: $\forall \MM,~\forall \pi \colon [\varphi]_{\MM}(\pi) = 1$.
+        Хотим: $\forall \MM,~\forall \rho \colon [\forall x \varphi]_{\MM}(\rho) = 1$.
+        Зафиксируем какие-то $\MM$ и $\rho$, тогда
+        $$
+            [\forall x \varphi](\rho) = 1 \iff \forall m \in M~ [\varphi]\left(\rho_{x}^{m}\right) = 1.
+        $$
+        Давайте положим $\pi = \rho_{x}^{m}$, тогда $[\varphi](\pi) = 1$.
+        Поскольку $\varphi$ общезначима, то можно навесить квантор всеобщности, поскольку нам нужно, чтобы $\varphi$ была истинна для некоторых специальных оценок, а она истинна всегда.
+        \item[$\impliedby$] Дано: $\forall \MM,~\forall \pi \colon [\forall\varphi]_{\MM}(\pi) = 1$.
+        Хотим: $\forall \MM,~\forall \rho \colon [\varphi]_{\MM}(\rho) = 1$.
+        Мы знаем, что $\forall m \in M \colon [\varphi]_{\MM}\left(\pi_{x}^{m}\right) = 1$.
+        Положим $\pi = \rho$, $m = \rho(x)$, тогда $\pi_{x}^{m} = \rho_{x}^{\rho(x)}$.
+        Эта оценка ведет себя как $\rho$ везде, кроме $x$, где она также ведет себя как $\rho$, то есть $\pi_{x}^{m} = \rho$.
+        Имеем $[\varphi]_{\MM}(\rho) = 1$. \qedhere
+    \end{description}
+\end{proof}
+
+\paragraph{Упражнение}
+$\varphi$ выполнима $\iff$ $\exists x \varphi$ выполнима.
+
+\paragraph{Эквивалентности алгебры логики}
+\begin{align}
+    \varphi \implies \psi &\equiv \neg \varphi \lor \psi, \\
+    \neg \varphi \implies \neg \psi &\equiv \psi \implies \varphi, \\
+    \neg (\varphi \implies \psi) &\equiv \varphi \land \neg \psi, \\
+    \neg \neg \varphi &\equiv \varphi, \\
+    \neg (\varphi \land \psi) &\equiv \neg \varphi \lor \neg \psi, \\
+    \neg (\varphi \lor \psi) &\equiv \neg \varphi \land \neg \psi, \\
+    \varphi \land (\psi \lor \theta) &\equiv  (\varphi \land \psi) \lor (\varphi \land \theta), \\
+    \varphi \lor (\psi \land \theta) &\equiv (\varphi \lor \psi) \land (\varphi \land \theta), \\
+    \varphi \land (\varphi \lor \psi) &\equiv \varphi, \\
+    \varphi \lor (\varphi \land \psi) &\equiv \varphi, \\
+    \varphi \land \psi &\equiv \psi \land \varphi, \\
+    \varphi \land \varphi &\equiv \varphi, \\
+    (\varphi \land \psi) \land \theta &\equiv \varphi \land (\psi \land \theta).
+ \end{align}
+Последние три эквивалентности также верны, если $\land$ заменить на $\lor$.
+Все эквивалентности доказываются по таблице истинности.
+
+\begin{theorem}[основные эквивалентности с кванторами]~
+    \begin{enumerate}
+        \item \begin{align}
+            \forall x (\varphi \land \psi) &\equiv \forall x \varphi \land \forall x \psi, \\
+            \exists x (\varphi \lor \psi) &\equiv \exists x \varphi \lor \exists x \psi.
+        \end{align}
+        \item Пусть $x \notin \FreeVar(\psi)$, тогда \begin{align}
+            \forall x (\varphi \land \psi) &\equiv \forall x \varphi \land \psi, \\
+            \exists x (\varphi \land \psi) &\equiv \exists x \varphi \land \psi, \\
+            \forall x (\varphi \lor \psi) &\equiv \forall x \varphi \lor \psi, \\
+            \exists x (\varphi \lor \psi) &\equiv \exists x \varphi \lor \psi.
+        \end{align}
+        \item \begin{align}
+            \neg \forall x \varphi &\equiv \exists x \neg \varphi, \\
+            \neg \exists x \varphi &\equiv \forall x \neg \varphi.
+        \end{align}
+    \end{enumerate}
+\end{theorem}
+
+Доказательство проводится за счет нашего определения: мы постепенно превращаем это утверждение в утверждение про наши неформальные кванторы, никакого другого инструментария у нас нет.
+Проверим некоторые из них.
+
+\begin{proof}
+    Зафиксируем $\MM$ и $\pi$.
+
+    \begin{description}
+        \item[2.2] $[\exists x (\varphi \land \psi)](\pi) = 1 \iff \exists m \in M~ [\varphi \land \psi]\left(\pi_{x}^{m}\right) = 1$.
+        Заметим, что $\varphi \land \psi = \text{И}\left([\varphi]\left(\pi_{x}^{m}\right), [\psi]\left(\pi_{x}^{m}\right)\right)$.
+        Мы знаем, что $x$ не входит свободно в $\psi$, то есть $x \notin \FreeVar(\psi)$.
+        Что это означает?
+        Давайте посмотрим на оценки $\pi_{x}^{m}$ и $\pi$.
+        Они ведь совпадают всюду, кроме $x$.
+        В частности, $\forall z \in \FreeVar(\psi)$ $\pi_{x}^{m}(z) = \pi(z)$.
+        Отсюда, по теореме (хз какой, надо найти), $[\psi]\left(\pi_{x}^{m}\right) = [\psi](\pi)$.
+        У нас получается следующая вещь: найдется элемент $m \in M$ такой, что $\text{И}\left([\varphi]\left(\pi_{x}^{m}\right), [\psi]\left(\pi\right)\right) = 1$.
+        Это равносильно тому, что
+        $$
+            \exists m \in M \quad ([\varphi]\left(\pi_{x}^{m}\right) = 1 \text{ и } [\psi](\pi) = 1).
+        $$
+        Теперь заметим, что значение $[\psi](\pi)$ не зависит от $m$, поэтому это можно переписать следующим образом:
+        $$
+            (\exists m \in M [\varphi]\left(\pi_{x}^{m}\right) = 1) \text{ и } [\psi](\pi) = 1 \iff [\exists x \varphi](\pi) = 1 \text{ и } [\psi](\pi) = 1 \iff [\exists x \varphi](\pi) = 1.
+        $$
+    \end{description}
+\end{proof}
+
+\begin{corollary}[Выразимость одного квантора через другой]
+    $\forall x \varphi \equiv \forall x \neg \neg \varphi \equiv \neg \exists x \neg \varphi$.
+    $\exists x \varphi \equiv \neg \forall x \neg \varphi$.
+\end{corollary}
+
+\begin{corollary}
+    Пусть $x \notin \FreeVar(\psi)$, тогда
+    \begin{align}
+        \forall x (\varphi \implies \psi) &\equiv \exists x\varphi \implies \psi, \\
+        \exists x (\varphi \implies \psi) &\equiv \forall x\varphi \implies \psi, \\
+        \forall x (\psi \implies \varphi) &\equiv \psi \implies \forall \varphi, \\
+        \exists x (\psi \implies \varphi) &\equiv \psi \implies \exists \varphi.
+    \end{align}
+\end{corollary}
+
+Как это запомнить?
+При вынесении квантора из посылки, он меняется на противоположный.
+При вынесении квантора из влечения, он остается тем же.
+
+\begin{proof}
+    $\forall x (\varphi \implies \psi) \equiv \forall x (\neg \varphi \lor \psi)$.
+    Мы помним, что $x \notin \FreeVar(\psi)$, тогда
+    $$
+        \forall x (\neg \varphi \lor \psi) \equiv \forall x \neg \varphi \lor \psi \equiv \neg \exists \varphi \lor \psi \equiv \exists x \varphi \implies \psi.
+    $$
+\end{proof}
+
+\subsection{Дизъюнктивные и конъюнктивные нормальные формы}
+
+Будем работать с ДНФ и КНФ для формул первого порядка.
+Давайте рассмотрим формулу
+$$
+    (\forall x Px \lor \neg Qy) \implies \exists x Px.
+$$
+Обратим внимание, что здесь есть кванторы, здесь есть атомы (отношения, в которые подставлены термы).
+Давайте выделим блоки $\forall x Px$, $Qy$ и $\exists x P x$, и посмотрим на структуру нашей формулы
+$$
+    (~\square~ \lor \neg~\square~) \implies \square.
+$$
+Здесь наши квадраты --- либо атомарные формулы, либо формулы, начинающиеся с квантора\footnote{такие вещи называются {\it квазиатомами}}.
+Мы хотим проанализировать формулу с точки зрения логических связок.
+
+Пусть фиксирован набор попарно различных формул (атомарных или вида $\forall x \varphi$, $\exists x \varphi$) $(F_{1}, \ldots, F_{n})$ в сигнатуре $\sigma$.
+\begin{definition}
+    Определим множество $\BB(F_{1}, \ldots, F_{n})$ {\it булевых комбинаций} формул из $(F_{1}, \ldots, F_{n})$ следующим образом:
+    \begin{enumerate}
+        \item $\forall i~F_{i} \in \BB(F_{1}, \ldots, F_{n})$;
+        \item $\varphi, \psi \in \BB(F_{1}, \ldots, F_{n}) \implies \neg \varphi, (\varphi \land \psi), (\varphi \lor \psi), (\varphi \implies \psi), (\varphi \iff \psi) \in \BB(F_{1}, \ldots, F_{n})$.
+    \end{enumerate}
+\end{definition}
+
+Мы хотим понять, как определяется истинность булевой комбинации.
+Это очень просто.
+Каждой $\varphi \in \BB(F_{1}, \ldots, F_{n})$ поставим в соответствие булеву функцию $f_{\varphi} \colon \{0, 1\}^{n} \to \{0, 1\}$ таким образом, что (дальше рекурсией по построению)
+\begin{enumerate}
+    \item $\varphi \eqcirc F_{i} \implies f_{\varphi}(x_{1}, \ldots, x_{n}) = x_{i}$;
+    \item \begin{enumerate}
+        \item $\varphi \eqcirc \neg \psi \implies f_{\varphi}(\vec{x}) = \text{НЕ}(f_{\psi}(\vec{x}))$;
+        \item $\varphi \eqcirc \psi \lor \theta \implies f_{\varphi}(\vec{x}) = \text{ИЛИ}(f_{\psi}(\vec{x}), f_{\theta}(\vec{x}))$;
+        \item Аналогично для других связок.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{lemma} \label{lemma::09::01}
+    Для любой формулы $\varphi \in \BB(F_{1}, \ldots, F_{n})$, $\forall M$, $\forall \pi$
+    $$
+        [\varphi]_{\MM}(\pi) = f_{\varphi}\left([F_{1}]_{\MM}(\pi), \ldots, [F_{n}]_{\MM}(\pi)\right).
+    $$
+\end{lemma}
+
+\begin{proof}
+    Индукцией по построению $\varphi$.
+\end{proof}
+
+\begin{definition}
+    Формула $\varphi \in \BB(F_{1}, \ldots, F_{n})$ называется {\it тавтологией}, если $\forall \vec{x}$ $f_{\varphi}(\vec{x}) = 1$.
+\end{definition}
+
+\begin{statement}
+    Если $\varphi$ тавтология, то $\varphi$ общезначима.
+\end{statement}
+
+\begin{proof}
+    Следует из леммы \ref{lemma::09::01}.
+\end{proof}
+
+Не всякая общезначимая формула является тавтологией.
+Например, формула $\varphi = \forall x Px \implies \exists x Px$ не является тавтологией, потому что, если представить ее в виде булевой комбинации, она будет иметь вид $F_{1} \implies F_{2}$, и ей будет соответствовать функция $\text{ИМП}(x_{1}, x_{2})$, которая не всегда истинна.
+
+\begin{definition}[ДНФ над набором формул]
+    Пусть фиксирован набор формул $(F_{1}, \ldots, F_{n})$ (как прежде).
+    Определим дизъюнктивную нормальную форму следующим образом:
+    \begin{enumerate}
+        \item $F_{i}$ или $\neg F_{i}$ --- {\it литералы};
+        \item Если $l_{1}, \ldots, l_{k}$ --- литералы, то $l_{1} \land \ldots \land  l_{k}$ --- {\it элементарная конъюнкция};
+        \item Если $c_{1}, \ldots, c_{m}$ --- элементарные конъюнкции, то $c_{1} \lor \ldots \lor c_{m}$ --- ДНФ над набором $(F_{1}, \ldots, F_{n})$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[КНФ над набором формул]
+    Пусть фиксирован набор формул $(F_{1}, \ldots, F_{n})$ (как прежде).
+    Определим конъюнктивную нормальную форму следующим образом:
+    \begin{enumerate}
+        \item $F_{i}$ или $\neg F_{i}$ --- {\it литералы};
+        \item Если $l_{1}, \ldots, l_{k}$ --- литералы, то $l_{1} \lor \ldots \lor  l_{k}$ --- {\it элементарная дизъюнкция};
+        \item Если $d_{1}, \ldots, d_{m}$ --- элементарные дизъюнкции, то $d_{1} \land \ldots \land d_{m}$ --- КНФ над набором $(F_{1}, \ldots, F_{n})$.
+    \end{enumerate}
+\end{definition}
+
+ДНФ и КНФ, вообще говоря, являются разными объектами.
+Например,
+$$
+    (F_{1} \land \neg F_{2} \land F_{1}) \lor (\neg F_{3}) \lor (F_{1} \land F_{4})
+$$
+является ДНФ, но не является КНФ, потому что в дереве разбора формулы ниже дизъюнкции стоит конъюнкции.
+
+Однако, существуют формулы, которые являются одновременно КНФ и ДНФ, например
+$$
+    F_{1} \land \neg F_{2}; \quad F_{3} \land \neg F_{4} \land F_{5}.
+$$
+На самом деле, одновременно КНФ и ДНФ являются литералы и элементарные конъюнкции (дизъюнкции).
+
+\begin{corollary}
+    $\CNF\left(\vec{F}\right) \cup \DNF\left(\vec{F}\right) \subseteq \BB\left(\vec{F}\right)$.
+\end{corollary}
