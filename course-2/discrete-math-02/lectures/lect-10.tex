@@ -1,0 +1,59 @@
+\ProvidesFile{lect-10.tex}[Лекция 10]
+
+\section{Лекция 10}
+
+В прошлой лекции мы рассмотрели некоторые конкретные виды булевых комбинаций (ДНФ и КНФ).
+
+\begin{theorem}
+    Любую булеву комбинацию $\varphi \in \BB(F_{1}, \ldots, F_{n})$ существуют $\varphi_{1} \in \DNF(F_{1}, \ldots, F_{n})$ и $\varphi_{2} \in \CNF(F_{1}, \ldots, F_{n})$ такие, что
+    $$
+        \varphi \equiv \varphi_{1} \land \varphi \equiv \varphi_{2}.
+    $$
+\end{theorem}
+
+\begin{proof}
+    Все наше доказательство будет строиться вокруг рассмотрения функции $f_{\varphi} \colon \{0, 1\}^{n} \to \{0, 1\}$, которая истиностные значения формул $F_{1}, \ldots, F_{n}$ превращает в истиностное значение формулы $\varphi$.
+    В любой интерпретации и при любой оценке переменных
+    $$
+        [\varphi](\pi) = f_{\varphi}([F_{1}](\pi), \ldots, [F_{n}](\pi)) = f_{\varphi}([\vec{F}](\pi)).
+    $$
+    Теперь давайте исследуем функцию $f_{\varphi}$.
+    Рассмотрим $U = \{\sigma \in \{0, 1\}^{n} \mid f_{\varphi}(\vec{\sigma}) = 1\}$.
+    Нам надо рассмотреть несколько случаев:
+    \begin{enumerate}
+        \item $U = \varnothing$.
+        Тогда для любого $\pi$ $[\varphi](\pi) = f_{\varphi}([\vec{F}](\pi)) = 0$.
+        Положим $\varphi_{1} = F_{1} \land \neg F_{1}$, тогда $\varphi_{1} \equiv \varphi$.
+        \item $U \neq \varnothing$.
+        Пусть $A \in \Fm$, а $\sigma \in \{0, 1\}$, тогда положим
+        $$
+            A^{\sigma} = \begin{cases}
+                A, & \sigma = 1, \\
+                \neg A, & \sigma = 0.
+            \end{cases}
+        $$
+        \begin{statement}
+            $[A^{\sigma}](\pi) = 1 \iff \sigma = [A](\pi)$.
+        \end{statement}
+        \begin{proof}
+            Действительно, если $\sigma = 1$, то $[A^{1}](\pi) = [A](\pi)$, то есть $[A^{1}](\pi) = 1 \iff [A](\pi) = 1$.
+            Если же $\sigma = 0$, то $[A^{0}](\pi) = 1 \iff [\neg A](\pi) = 1 \iff [A](pi) = 0 = \sigma$.
+        \end{proof}
+        \begin{corollary} \label{corollary::10::01}
+            $\Phi_{\vec{\sigma}} = [F_{1}^{\sigma_{1}} \land \ldots \land F_{n}^{\sigma_{n}}](\pi) = 1 \iff \forall i [F_{i}^{\sigma_{i}}](\pi) = 1 \iff \forall i~\sigma_{i} = [F_{i}](\pi) \iff \vec{\sigma} = [\vec{F}]$.
+        \end{corollary}
+        Тогда мы говорим буквально следующее: когда у нас $[\varphi](\pi) = 1$?
+        Тогда и только тогда, когда $f_{\varphi}([\vec{F}](\pi)) = 1 \iff [\vec{F}](\pi) \in U \iff \exists \vec{\sigma} \in U~ [\vec{F}](\pi) = \vec{\sigma}$.
+        Получилось тоже самое, что и в следствии \ref{corollary::10::01}, поэтому это все равносильно тому, что $\exists \vec{\sigma} \in U~[\Phi_{\vec{\sigma}}](\pi) = 1 \iff [\bigvee\limits_{\vec{\sigma} \in U}\Phi_{\vec{\sigma}}](\pi) = 1$.
+        Но если $\varphi$ и $\bigvee\limits_{\vec{\sigma} \in U}\Phi_{\vec{\sigma}}$ принимают значение 1 одновременно, то и значение 0 они принимают одновременно (поскольку возможных значений всего два), тогда $\varphi \equiv \bigvee\limits_{\vec{\sigma} \in U}\Phi_{\vec{\sigma}} \equiv \bigvee\limits_{\vec{\sigma} \in U} F_{1}^{\sigma_{1}} \land \ldots \land F_{n}^{\sigma_{n}} \in \DNF(F_{1}, \ldots, F_{n})$.
+    \end{enumerate}
+    Таким образом, мы построили ДНФ.
+    Построим теперь КНФ.
+    На этот раз будем анализировать множество $Z = \{\vec{\sigma} \mid f_{\varphi}(\vec{\sigma}) = 0\}$.
+    Рассмотрим несколько случаев:
+    \begin{enumerate}
+        \item $Z = \varnothing$.
+        Тогда для любого $\pi$ $[\varphi](\pi) = 1$.
+        Положим $\varphi = F_{1} \lor \neg F_{1} \equiv \varphi$,
+    \end{enumerate}
+\end{proof}
