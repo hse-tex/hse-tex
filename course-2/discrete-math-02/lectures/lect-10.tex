@@ -4,6 +4,8 @@
 
 В прошлой лекции мы рассмотрели некоторые конкретные виды булевых комбинаций (ДНФ и КНФ).
 
+\subsection{Теорема о ДНФ и КНФ}
+
 \begin{theorem}
     Любую булеву комбинацию $\varphi \in \BB(F_{1}, \ldots, F_{n})$ существуют $\varphi_{1} \in \DNF(F_{1}, \ldots, F_{n})$ и $\varphi_{2} \in \CNF(F_{1}, \ldots, F_{n})$ такие, что
     $$
@@ -54,6 +56,288 @@
     \begin{enumerate}
         \item $Z = \varnothing$.
         Тогда для любого $\pi$ $[\varphi](\pi) = 1$.
-        Положим $\varphi = F_{1} \lor \neg F_{1} \equiv \varphi$,
+        Положим $\varphi_{2} = F_{1} \lor \neg F_{1} \equiv \varphi$.
+        \item Делаем все тоже самое, что и для ДНФ, только наоборот.
+        Рассмотрим формулу $\psi_{\vec{\sigma}} = F_{1}^{\overline{\sigma_{1}}} \lor \ldots \lor F_{n}^{\overline{\sigma_{n}}}$, где $\overline{\sigma_{i}}$ значит отрицание $\sigma_{i}$, тогда
+        $$
+            \left[F_{1}^{\overline{\sigma_{1}}} \lor \ldots \lor F_{n}^{\overline{\sigma_{n}}}\right](\pi) = 0 \iff \forall i~ [F_{i}^{\overline{\sigma_{i}}}](\pi) = 0 \iff \forall i~ \overline{\sigma_{i}} \neq [F_{i}](\pi) \iff \forall i~ \sigma_{i} = [F_{i}](\pi) \iff \vec{\sigma} = [\vec{F}](\pi).
+        $$
+        Что же мы делаем дальше?
+        Дальше мы смотрим, когда $[\varphi](\pi) = 0 \iff f_{\varphi}([\vec{F}](\pi)) = 0 \iff [\vec{F}](\pi) \in Z \iff \exists\vec{\sigma} \in Z~ [\vec{F}](\pi) = \sigma$.
+        Это равносильно тому, что $\exists \vec{\sigma} \in Z~[\psi_{\vec{\sigma}}](\pi) = 0 \iff [\bigwedge\limits_{\vec{\sigma} \in Z}\psi_{\vec{\sigma}}](\pi) = 0$, отсюда $\varphi \equiv \bigwedge\limits_{\vec{\sigma} \in Z}\psi_{\vec{\sigma}} \in \CNF(F_{1}, \ldots, F_{n})$.
+    \end{enumerate}
+\end{proof}
+
+Что нужно делать на практике?
+Если мы хотим использовать это на практике, то нам надо, прежде всего, найти функцию $f_{\varphi}$ (то есть, построить таблицу истинности).
+Такая таблица будет являться таблицей зависимости значений формулы $\varphi$ от значений образующих ее формул.
+Дальше, если строим ДНФ, то мы берем наборы, где наша функция принимает значение 1.
+Каждый такой набор мы кодируем элементарной конъюнкцией $F_{1}^{\sigma_{1}} \land \ldots \land F_{n}^{\sigma_{n}}$ и берем их дизъюнкцию.
+
+На самом деле, можно не пускать каждый раз в ход этот алгоритм, а просто пользоваться элементарными эквивалентностями, и, раскрывая скобки, получить ДНФ (КНФ).
+
+\subsection{Корректные подстановки}
+
+Давайте рассмотрим следующую формулу
+$$
+    \varphi(x) \eqcirc \exists y~ x < y.
+$$
+Рассмотрим также формулу
+$$
+    \forall x \varphi \eqcirc \forall x \exists y~ x < y.
+$$
+Истинна ли такая формула в структуре натуральных чисел $\N$?
+У любого натурального числа существует большее, поэтому такая формула истинна.
+Ну если она истинна для любого $x$, то мы можем вместо $x$ подставить любой терм $t$, тогда
+$$
+    \forall x \varphi \implies \varphi(t/x),
+$$
+и формула так же должна быть верна для любого $t$.
+Ну а теперь подставим вместо $x$ $y$, тогда формула
+$$
+    \varphi(y/x) = \exists y~ y < y
+$$
+не является истинна в натуральных числах.
+Получается очень неприятная ситуация, ведь мы ожидали, что получится истинное утверждение, а получилось ложное.
+В чем же проблема?
+Проблема в том, что в $\varphi$ переменная $x$ входила свободно, но потеряла эту свободу при подстановке $y$, ведь $y$ --- связанная переменная.
+Такая ситуация называется в логике {\it коллизией переменных} и это исключительно синтаксическая проблема, в ней нет глубокого смысла.
+Она связана исключительно с тем, что мы используем один и тот же алфавит для связанных переменных и для свободных.
+
+\begin{definition}
+    {\it Подстановкой} называется функция $(~\cdot~)(~\cdot~/~\cdot~) \colon \Term_{\sigma} \times \Term_{\sigma} \times \Var \to \Term_{\sigma}$, которая принимает на вход терм $t \in \Term_{\sigma}$ и переменную $x \in \Var$, и которая произвольный терм $S \in \Term_{\sigma}$ преобразует в другой терм $S(t/x) \in \Term_{\sigma}$.
+    Аналогично, для формулы можно определить функцию $(~\cdot~)(~\cdot~/~\cdot~) \colon \Fm_{\sigma} \times \Term_{\sigma} \times \Var \to \Fm_{\sigma}$, которая преобразует формулу в другую формулу.
+\end{definition}
+
+Как подстановка работает?
+Неформально, идея очень проста.
+Рассмотрим ее на примере:
+$$
+    \underbrace{((x + z \cdot 3) \cdot (y + x))}_{\text{формула}}\underbrace{((19 \cdot x)/x)}_{\text{подставили } 19 \cdot x \text{ вместо } x} \eqcirc ((19 \cdot x) + z \cdot 3) \cdot (y + (19 \cdot x)).
+$$
+Вроде все просто, однако мы, на самом деле, заменяем только свободные вхождения:
+$$
+    ((x = 3) \lor \forall x (x + z = 7))((x \cdot 19) / x)) \eqcirc (((19 \cdot x) = 3) \lor \forall x (x + z = 7)).
+$$
+Формально, действуем индукцией по построению терма $S$:
+\begin{enumerate}
+    \item $x \in \Term \implies x(t / x) \eqcirc t$; если $y \centernot \eqcirc x$, тогда $y(t/x) \eqcirc y$;
+    \item $c \in \Const \implies c(t / x) \eqcirc c$;
+    \item $(f s_{1} \ldots s_{n})(t / x) = f (s_{1}(t / x)) \ldots (s_{n}(t / x))$.
+\end{enumerate}
+Аналогично для формулы $\varphi$:
+\begin{enumerate}
+    \item $(R s_{1} \ldots s_{n})(t / x) \eqcirc R (s_{1}(t / x)) \ldots (s_{n}(t / x))$;
+    \item $(\varphi \land \psi)(t / x) \eqcirc \varphi(t / x) \land \psi(t / x)$;
+    \item $Q \in \{\forall, \exists\} \implies (Qx \varphi)(t / x) \eqcirc Qx \varphi$; если $y \centernot \eqcirc x$, то $(Qy \varphi)(t / x) \eqcirc Qy(\varphi(t / x))$.
+\end{enumerate}
+
+\begin{definition}
+    Терм $t$ {\it свободен} для $x$ в формуле $\varphi$ (обозн. $t$-$x$-$\varphi$), если ни одно свободное вхождение $x$ в $\varphi$ не попадает под квантор по $y$, если $y \in V(t)$.
+\end{definition}
+
+То есть, не произойдет такой ситуации, что
+$$
+    \varphi \eqcirc \ldots Qy (\ldots x \ldots),
+$$
+или, если по-человечески, то это значит, что в формуле $\varphi$ переменная $x$ не будет попадать в область действия кванторов (если мы подставим вместо $x$ $t$, и этот $y$ попадет под квантор).
+
+Давайте сделаем несколько простых наблюдений.
+Если $x \notin \FreeVar(\varphi)$, тогда людой терм свободен, то есть $t$-$x$-$\varphi$.
+Понятно, что если в $t$ нет переменных, то он свободен.
+Ситуация
+$$
+    t\text{-}x\text{-}Qy\psi
+$$
+Возможна тогда и только тогда, когда
+\begin{enumerate}
+    \item $x \notin \FreeVar(Qy\psi)$\footnote{кроме ситуации, когда $x$ совпадает с $y$};
+    \item $x \in \FreeVar(Qy\psi) \iff x \centernot\eqcirc y$.
+    Если это так, то $y \notin V(t)$, поскольку иначе это свободное вхождение попадает под действие квантора $Q$, а тогда, при подстановке терма $t$ вместо $x$, этот квантор \enquote{поймает} перменную $y$, если она была в $t$.
+    Кроме этого, надо также отметить, что другой коллизии не произойдет, то есть $t$-$x$-$\psi$.
+    Получается тогда, что полное условие выглядит так: $x \in \FreeVar(Qy\psi)$ и $y \in V(t)$, и $t$-$x$-$\psi$.
+\end{enumerate}
+
+\begin{lemma}[о корректной подстановке] \label{lemma::correct-substitution}
+    Пусть $s, t \in \Term_{\sigma}$, $x \in \Var$, $\varphi \in \Fm_{\sigma}$, $\MM$ --- интерпретация, $\pi$ --- оценка.
+    Тогда
+    \begin{enumerate}
+        \item $[s(t/x)](\pi) = [s](\pi_{x}^{[t](\pi)})$ --- значение терма $s$ при подстановке терма $t$ вместо переменной $x$ равняется значению терма $s$, где оценка переменной $x$ заменяется на значение терма $t$.
+        \item $t$-$x$-$\varphi$ $\implies [\varphi(t/x)](\pi) = [\varphi](\pi_{x}^{[t](\pi)})$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    Для $s$ --- идукция по построению $s$, для $\varphi$ --- индукция по построению.
+    Разберем самый важный случай:
+    $$
+        \varphi \eqcirc \forall z \psi.
+    $$
+    Нам дано, что терм $t$ свободен для $x$ в формуле $\forall z \psi$.
+    Тогда возможны два случая:
+    \begin{enumerate}
+        \item $x \notin \FreeVar(\forall z \psi)$;
+        \item $x \in \FreeVar(\forall z \psi)$.
+        Тут мы можем сразу сказать, что $z \centernot \eqcirc x$, $z \notin V(t)$ и $t$-$x$-$\psi$.
+    \end{enumerate}
+    Разберем эти случаи:
+    \begin{enumerate}
+        \item $\varphi(t/x) \eqcirc (\forall z \psi)(t/x) \eqcirc \forall z \psi \eqcirc \varphi$ (мы подставили $t$ вместо $x$, но никаких $x$ в формуле не было), тогда
+        $$
+            [\varphi(t/x)](\pi) = [\varphi](\pi) = [\varphi](\pi_{x}^{[t](x)}),
+        $$
+        потому что значение формулы при оценке зависит только от оценки свободных переменных, которой $x$ не является.
+        \item $(\forall z \psi)(t/x) \eqcirc \forall z (\psi(t/x))$, тогда
+        $$
+            [\varphi(t/x)](\pi) = [\forall z (\psi(t/x))](\pi) = 1 \iff \forall m \in M~ [\psi(t/x)](\pi_{z}^{m}) = 1.
+        $$
+        Теперь заметим, что $\psi$ более простая, чем $\varphi$.
+        Тогда мы можем воспользоваться предположением индукции ($t$-$x$-$\psi$) и получим
+        $$
+            [\psi(t/x)](\pi_{z}^{m}) = [\psi](\pi_{z~~x}^{m~[t](\pi_{z}^{m})}).
+        $$
+        Мы знаем, что $z \in V(t)$, тогда
+        $$
+            [t](\pi) = [t](\pi_{z}^{m}),
+        $$
+        отсюда
+        $$
+            [\psi](\pi_{z~~x}^{m~[t](\pi_{z}^{m})}) = [\psi](\pi_{z~~x}^{m~[t](\pi)}).
+        $$
+        Мы помним, что $z \centernot\eqcirc x$, тогда
+        $$
+            [\psi](\pi_{z~~x}^{m~[t](\pi)}) = [\psi](\pi_{x\quad~~z}^{[t](\pi)~m}).
+        $$
+        Получается, что
+        $$
+            \forall m~[\psi](\pi_{x\quad~~z}^{[t](\pi)~m}) = 1,
+        $$
+        но это эквивалентно тому, что
+        $$
+            [\forall z \psi](\pi_{x}^{[t](\pi)}) = 1 = [\varphi](\pi_{x}^{[t](\pi)}).
+        $$
+        Получается, что значение формулы $\varphi$ при модифицированной оценке равно 1 тогда и только тогда, когда значение результата подстановки при исходной оценке равно 1.
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    Если $t$-$x$-$\varphi$, то формулы
+    $$
+        \forall x \varphi \implies \varphi(t/x)
+    $$
+    и
+    $$
+        \varphi(t/x) \implies \exists \varphi.
+    $$
+    общезначимы.
+\end{corollary}
+\begin{proof}
+    Докажем только второе утверждение.
+    Допустим, что $[\varphi(t/x)](\pi) = 1$, тогда, по лемме \ref{lemma::correct-substitution}, $[\varphi](\pi_{x}^{[t](\pi)}) = [\varphi(t/x)](\pi)$.
+    Тогда $\exists m = [t](\pi) \colon [\varphi](\pi_{x}^{m}) = 1 \iff [\exists x \varphi](\pi) = 1$.
+    То есть, если посылка при какой-то оценке принимает значение один, то и заключение при этой оценке принимает значение 1.
+\end{proof}
+
+Рассмотрим формулы $\forall x Pxy$ и $\forall z Pzy$, они будут эквивалентны.
+Рассмотрим теперь формулы $\forall x Pxy$ и $\forall y Pyy$, будут ли они эквивалентны?
+Нет, потому что из того, что каждый \enquote{дружит} с $y$ не следует, что каждый \enquote{дружит} сам с собой, то есть подстановка некорректна.
+Почему?
+Потому что она исказила структуру формулы.
+
+Нельзя переименовывать свободные переменные!
+Например, обозначим за $Q$ свойство \enquote{быть голубым}.
+Тогда $Qy \centernot \equiv Qx$, потому что легко придумать оценку, в которой $y$ голубой, а $x$ --- нет.
+Поэтому свободные переменные перименовывать нельзя.
+Свободные переменные можно переименовывать, но нам потребуются некоторые дополнительные условия.
+
+\begin{corollary}[переименование связанной переменной] \label{corollary::renaming-linked-variable}
+    Если $y \notin V(\varphi)$, то
+    $$
+        \forall x \varphi \equiv \forall y \varphi(y/x)
+    $$
+    и
+    $$
+        \exists x \varphi \equiv \exists y \varphi(y/x).
+    $$
+\end{corollary}
+
+\begin{proof}
+    Если $y \notin V(\varphi)$, тогда $y$ свободен для $x$ в $\varphi$, потому что в $\varphi$ нет кванторов по $y$.
+    Дальше,
+    $$
+        [\forall y \varphi(y/x)](\pi) = 1 \iff \forall m \in M~ [\varphi(y/x)](\pi_{y}^{m}) = 1.
+    $$
+    По лемме \ref{lemma::correct-substitution},
+    $$
+        [\varphi(y/x)](\pi_{y}^{m}) = [\varphi](\pi_{y~~x}^{[y](\pi_{y}^{m})}) = [\varphi](\pi_{y~x}^{m~m}).
+    $$
+    Мы знаем, что $y$ не входит свободно в $\varphi$ (он туда вообще не входит), тогда
+    $$
+        [\varphi](\pi_{y~x}^{m~m}) = [\varphi](\pi_{x}^{m}),
+    $$
+    тогда
+    $$
+        [\varphi(y/x)](\pi_{y}^{m}) = 1 = [\varphi](\pi_{x}^{m}).
+    $$
+    Получается, что
+    $$
+        \forall m \in M~ [\varphi](\pi_{x}^{m}) = 1 \iff [\forall x \varphi](\pi) = 1.
+    $$
+    Такой цепочкой равносильных преобразований мы показали, что
+    $$
+        [\forall x \varphi](\pi) = 1 \iff [\forall y \varphi(y/x)](\pi) = 1.
+    $$
+\end{proof}
+
+\subsection{Предварённая нормальная форма}
+
+Сейчас мы покажем, как переименование связанной переменной позволяет сделать очень важную и достаточно интересную вещь, которая называется {\it предварённой нормальной формой}.
+Дело в том, что, с точностью до эквивалентности, из формулы можно все кванторы вынести наружу.
+
+\begin{definition}
+    Формула называется {\it безкванторной}, если в ней нет кванторов\footnote{На коллоке могут попросить раскрыть это определение индуктивно.} (то есть, она является булевой комбинацией атомарных формул).
+\end{definition}
+
+\begin{definition}
+    Формула называется {\it предварённой}, если она имеет вид
+    $$
+        Q_{1}x_{1} Q_{2}x_{2} \ldots Q_{n}x_{n}~\varphi_{0},
+    $$
+    где $\varphi_{0}$ --- безкванторная, а $Q_{i} \in \{\exists, \forall\}$.
+\end{definition}
+
+\paragraph{Пример}
+$\forall x~\exists y~(\neg Pxy \implies Qzx)$.
+
+\paragraph{Контрпример}
+$\neg \forall x Pxy \land \exists y Qzx$.
+
+\begin{theorem}
+    Для любой формулы $\varphi \in \Fm_{\sigma}$ существует (не единственная!) предварённая формула $\varphi^{\prime}$ такая, что $\varphi \equiv \varphi^{\prime}$.
+\end{theorem}
+
+Такая $\varphi^{\prime}$ называется предварённой нормальной формой формулы $\varphi$.
+
+\begin{proof}
+    Индукция по построению $\varphi$:
+    \begin{enumerate}
+        \item $\varphi \eqcirc Rt_{1} \ldots t_{n} \implies$ положим $\varphi^{\prime} = \varphi$.
+        \item $\varphi \eqcirc Qx \psi$.
+        По предположению индукции, у нас существует предварённая $psi^{\prime}$ такая, что $\psi \equiv \psi^{\prime}$, тогда $\varphi \equiv Qx\psi \equiv Qx \psi^{\prime}$ является предварённой.
+        \item $\varphi \eqcirc \neg \psi$.
+        По предположению индукции, у нас существует предварённая $\psi^{\prime}$ такая, что $\psi^{\prime} \equiv \psi$, где $\psi^{\prime} = Q_{1}x_{1} Q_{2}x_{2} \ldots Q_{n}x_{n} \psi_{\delta}$, где $\psi_{\delta}$ --- безкванторная формула.
+        Получается, что
+        $$
+            \varphi \equiv \neg \psi \equiv \neg \psi^{\prime} \equiv \neg Q_{1}x_{1} \ldots Q_{n}x_{n} \psi_{\delta} \equiv \overline{Q_{1}}x_{1} \neg Q_{2}x_{2} \ldots Q_{n}x_{n} \psi_{\delta} \equiv \overline{Q_{1}}x_{1} \ldots \overline{Q_{n}}x_{n} \neg \psi_{\delta}.
+        $$
+        Осталось просто положить $\varphi^{\prime} = \overline{Q_{1}}x_{1} \ldots \overline{Q_{n}}x_{n} \neg \psi_{\delta}$.
+        \item $\varphi \eqcirc \psi \land \theta$.
+        По предположению индукции, у нас существуют $\psi \equiv Q_{1}x_{1} \ldots Q_{n}x_{n} \psi_{\delta}$ и $\theta \equiv Q_{1}^{\prime}y_{1} \ldots Q_{m}^{\prime}y_{m} \theta_{\delta}$, где $\psi_{\delta}$ и $\theta_{\delta}$ --- безкванторные формулы.
+        Пусть $(z_{1}, \ldots, z_{n}; w_{1}, \ldots, w_{m})$ --- свежие (то есть, не встречающиеся в $\varphi$) и различные переменные.
+        Тогда, по теореме \ref{corollary::renaming-linked-variable},
+        $$
+            \varphi \equiv Q_{1}z_{1} \ldots Q_{n}z_{n}\psi_{\delta}(\vec{z}/\vec{x}) \land Q_{1}^{\prime}w_{1} \ldots Q_{m}^{\prime} w_{m} \theta_{\delta}(\vec{w}/\vec{y}) \equiv Q_{1}z_{1} \ldots Q_{n}z_{n} Q_{1}^{\prime}w_{1} \ldots Q_{m}^{\prime}w_{m}~(\psi_{\delta}(\vec{z}/\vec{x}) \land \theta_{\delta}(\vec{w}/\vec{y})).
+        $$
+        Осталось просто положить $\varphi^{\prime}$ равной последней формуле. \qedhere
     \end{enumerate}
 \end{proof}
