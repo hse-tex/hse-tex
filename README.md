@@ -55,7 +55,7 @@
 ### Дискретная математика
 
 - [Конспект](https://hse-tex.me/course-2/discrete-math-02-lecture-notes.pdf)
-- [Конспект [другая версия, только первая лекция]](https://hse-tex.me/course-2/discrete-mathematics.pdf)
+- [Коллоквиум [от 195 группы]](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/DKozl50/Matan2-tex/master/Colloquiums/dm.pdf)
 
 ### Теория вероятностей и математическая статистика
 
