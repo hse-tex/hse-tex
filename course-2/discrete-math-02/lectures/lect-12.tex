@@ -1,0 +1,241 @@
+\ProvidesFile{lect-12.tex}[Лекция 12]
+
+\section{Лекция 12}
+
+\subsection{Обобщение логического следования и выполнимости на теории со свободными переменными}
+
+Мы хотим понять, верно ли, что нам достаточно тех предложений, которые содержатся в теории $T$, чтобы выполнялось $\varphi$?
+Иначе говоря, мы хотим понять, следует ли из нашего набора аксиом какое-нибудь утверждение.
+На прошлой лекции мы доказывали, что в теории порядка из аксиом антирефлексивности и транзитивности следует антисимметричность.
+Теперь мы хотим найти способ автоматически (или полуавтоматически) получать все следствия нашей теории.
+Хоть у нас и нет разрешающего алгоритма для этой задачи, тем не менее, есть полуразрешающий алгоритм, который позволяет перечислить все следствия нашей теории (механическим путем получить все теоремы).
+
+Как же это сделать?
+Прежде всего, нам потребуется сделать следующее обобщение:
+\begin{definition}[логическое следование]
+    Пусть $\Gamma \subseteq \Fm_{\sigma}$ и $\varphi \in \Fm_{\sigma}$.
+    Тогда $\Gamma \models \varphi \iff \forall \MM \forall \pi (\forall \GG \in \Gamma \colon [\GG]_{\MM}(\pi) = 1 \implies [\varphi]_{\MM}(\pi) = 1)$.
+    Условие $\forall \GG \in \Gamma \colon [\GG]_{\MM}(\pi) = 1$ равносильно $[\Gamma]_{\MM}(\pi) = 1$.
+\end{definition}
+Понятно, что если мы возьмем в качестве $\Gamma$ теорию, а в качестве $\pi$ --- предложение, то получится ровно тоже самое, что мы сформулировали на прошлой лекции.
+
+\subsection{Сведение задачи установления логического следования к проверке выполнимости}
+
+\begin{statement}
+    $\Gamma \models \varphi \iff \Gamma \cup \{\neg \varphi\}$ не выполнимо.
+\end{statement}
+
+Это утверждение несколько похоже на выражение общезначимости через выполнимость.
+
+\begin{proof}
+    $\Gamma \cup \{\neg \varphi\}$ не выполнимо $\implies \neg \exists \MM \exists \pi~ ([\Gamma]_{\MM}(\pi) = 1 \land [\neg \varphi]_{\MM}(\pi) = 1) \iff \forall M \forall \pi~ (\neg [\Gamma]_{\MM}(\pi) = 1  \lor \neg [\neg\varphi](\pi) = 1)$.
+    Вспомним, что $\neg \alpha \lor \neg \varphi \equiv \alpha \implies \neg \beta$, тогда $\forall M \forall \pi~ (\neg [\Gamma]_{\MM}(\pi) = 1  \lor \neg [\neg\varphi](\pi) = 1) \iff \forall \MM \forall \pi~ ([\Gamma]_{\MM}(\pi) = 1 \implies \neg [\neg\varphi]_{\MM}(\pi) = 1) \iff \forall \MM \forall \pi~ ([\Gamma]_{\MM}(\pi) = 1 \implies [\neg\varphi]_{\MM}(\pi) = 0) \iff \forall \MM \forall \pi~ ([\Gamma]_{\MM}(\pi) = 1 \implies [\varphi]_{\MM}(\pi) = 1) \iff \Gamma \models \varphi$.
+\end{proof}
+
+\paragraph{Простыми словами}
+Что означает, что из $\Gamma$ следует $\varphi$?
+Значит, во всякой структуре, при любой оценке, если верно $\Gamma$, то верно и $\varphi$.
+Значит, не существует такой структуры, где $\Gamma$ было бы верно, а $\varphi$ верно не было бы.
+
+\begin{corollary}
+    $\Gamma \models \bot \iff \Gamma$ не  выполнима
+\end{corollary}
+
+\begin{proof}
+    $\Gamma \models \bot \iff \Gamma \cup \{\neg \bot\}$ не выполнимо.
+    Но ведь отрицание тождественной лжи --- тождественная истина.
+    Но когда выполнима $\Gamma$ и тождественная истина?
+    Ну тогда, когда выполнима $\Gamma$, то есть, из $\Gamma$ следует тождественная ложь тогда и только тогда, когда у $\Gamma$ нет модели.
+\end{proof}
+
+\paragraph{Вывод}
+Проверка логического следования сводится к проверке выполнимости.
+
+\subsection{Сколемизация: теорема о сохранении равновыполнимости}
+
+{\it Тут повторяются все определения и примеры про сколемизацию с прошлой лекции, так что я решил не писать их еще раз.}
+
+\begin{definition}
+    $\Gamma$ выполнимо $\iff$ $\exists \MM \exists \pi~ [\Gamma]_{\MM}(\pi) = 1$.
+\end{definition}
+
+\begin{definition}
+    Множества формул $\Gamma$ и $\Delta$ {\it равновыполнимы} $\iff$ ($\Gamma$ выполнимо $\iff$ $\Delta$ выполнимо).
+\end{definition}
+
+\begin{statement}
+    Для любой предварённой формулы $\varphi$ такой, что она не содержит фиктивных кванторов, существует сколемовская нормальная форма $\psi$ такая, что $\varphi \twoheadrightarrow_{S} \psi$.
+\end{statement}
+
+\begin{proof}
+    Применим алгоритм сколемизации и заметим, что кванторов у нас конечное число, поэтому алгоритм точно остановится.
+\end{proof}
+
+\begin{theorem}[о сколемизации]
+    Пусть $\Gamma \subseteq \Fm$ и $\varphi \to_{S} \psi$.
+    Тогда $\Gamma \cup \{\varphi\}$ и $\Gamma \cup \{\psi\}$ равновыполнимы.
+\end{theorem}
+
+Что это означает?
+Это означает, что у нас было какое-то множество формул (хочется сказать теорий, но в нашем множестве могут быть свободные переменные), мы взяли оттуда одну формулу и подвергли ее сколемизации.
+Тогда то, что получилось, равновыполнимо с исходным множеством.
+
+\begin{proof}
+    Раз у нас была сколемизация, то $\varphi \eqcirc \forall \vec{x} \exists y \theta$, а $\psi \eqcirc \forall \vec{x}~ \theta(f\vec{x}/y)$, где $f$ \enquote{свежая}, то есть, в частности, $f$ \underline{не встречается} в $\Gamma$.
+    Сделаем несколько наблюдений:
+    \begin{enumerate}
+        \item В формуле $\exists y \theta$ нет кванторов по $\vec{x}$ (иначе в $\varphi$ есть фиктивный квантор) $\implies f\vec{x}$-$y$-$\theta$, ну а раз подстановка корректная, то формула $\theta(f\vec{x}/y) \implies \exists y \theta$ общезначима.
+        Поскольку формула общезначима, то, по факту с семинара, формула $\forall \vec{x} \theta(f\vec{x}/y) \implies \forall \vec{x} \exists y \theta$ также общезначима.
+        Вспомним про определение $\varphi$ и $\psi$, и заметим, что $\psi \implies \varphi$, то есть, в любой структуре, где верно $\psi$, верно и $\varphi$.
+        Тогда если $\exists \MM~ \exists \pi$ такие, что $[\Gamma \cup \{\psi\}]_{\MM}(\pi) = 1$, то $[\Gamma \cup \{\varphi\}]_{\MM}(\pi) = 1$.
+        Значит, если $\Gamma \cup \{\psi\}$ выполнима, то $\Gamma \cup \{\varphi\}$ выполнима.
+        \item Допустим, что $\Gamma \cup \{ \forall \vec{x} \exists y \theta \}$ выполнима.
+        Тогда $\exists \MM$ $\exists \pi$ ($[\Gamma]_{\MM}(\pi) = 1$ и $[\forall \vec{x} \exists y \theta]_{\MM}(\pi) = 1$).
+        Заметим, что
+        $$
+            [\forall \vec{x} \exists y \theta]_{\MM}(\pi) = 1 \iff \forall \vec{a} \in M~ \exists b \in M~ [\theta]_{\MM}(\pi_{x~y}^{\vec{a}~b}) = 1.
+        $$
+        Теперь рассмотрим $\MM^{\prime} = (\MM, f^{\MM})$ (мы расширили структуру, добавив\footnote{Такая операция называется {\it обогащением} структуры $\MM$.} в нее интерпертацию символа $f$).
+        Как мы можем ее расширить?
+        Для этого нам нужно определить значение $f^{\MM}(\vec{a})$.
+        Положим его равным $b \in M$ такому, что $\forall \vec{a} [\theta]_{\MM}(\pi_{x~y}^{\vec{a}~b}) = 1$, то есть, $\forall \vec{a} \in M^{n}~ [\theta]_{\MM}(\pi_{x~y}^{\vec{a}~f^{\MM}(\vec{a})}) = 1$.
+        Такая $f^{\MM}$ существует в силу аксиомы выбора.
+        Ну вот мы взяли такую интерпретацию, дальше мы хотим посмотреть, что же будет с $\psi$ и ее значением
+        $$
+            [\forall \vec{x} \theta (f\vec{x}/y)]_{\MM^{\prime}}(\pi).
+        $$
+        В старой структуре у нее вообще не было значения, потому что там у нас не интерпретировался символ $f$.
+        В новой же структуре
+        $$
+            [\forall \vec{x} \theta (f\vec{x}/y)]_{\MM^{\prime}}(\pi) = 1 \iff \forall \vec{a} \in M~ [\theta(f\vec{x}/y)]_{\MM^{\prime}}(\pi_{\vec{x}}^{\vec{a}}) = 1.
+        $$
+        Докажем последнее равенство.
+        Мы можем воспользоваться леммой \ref{lemma::correct-substitution} и получится, что
+        $$
+            [\theta(f\vec{x}/y)]_{\MM^{\prime}}(\pi_{\vec{x}}^{\vec{a}}) = [\theta]_{\MM^{\prime}}\left(\pi_{\vec{x}~y}^{\vec{a}~[f\vec{x}]_{\MM^{\prime}}(\pi_{x}^{\vec{a}})}\right) = [\theta]_{\MM^{\prime}}\left(\pi_{\vec{x}~y}^{\vec{a}~f^{\MM}(\vec{a})}\right) \overset{f\text{ --- свежая}}{=} [\theta]_{\MM}\left(\pi_{x~y}^{\vec{a}~f^{\MM}(\vec{a})}\right) = 1
+        $$
+        Итак, $[\varphi]_{\MM^{\prime}}(\pi) = 1$.
+        А что с $\Gamma$?
+        В $\Gamma$ ничего не изменится, поскольку $f$ не встречается в $\Gamma$, поэтому
+        $$
+            [\Gamma]_{\MM^{\prime}}(\pi) = [\Gamma]_{\MM}(\pi) = 1.
+        $$
+        Таким образом, $[\Gamma \cup \{ \varphi\}]_{\MM^{\prime}}(\pi) = 1$, то есть $\Gamma \cup \{\psi\}$ выполнима. \qedhere
+    \end{enumerate}
+\end{proof}
+
+\subsection{Исчисление резолюций}
+
+\subsubsection{Правила резолюции и подстановки}
+
+Введем два {\it правила вывода}.
+Что это вообще такое?
+Мы не даем общее понятие, но это, своего рода, функции на формулах.
+
+\paragraph{Правило резолюции}
+Если есть формулы $\neg A \lor B$ и $A \lor C$, разрешается получить формулу $B \lor C$.
+В логике это записывается следующим образом:
+$$
+    \Resol{\neg A \lor B}{A \lor C}{B \lor C}.
+$$
+Частный случай:
+$$
+    \Resol{\neg A}{A}{\bot}.
+$$
+
+\begin{statement}[корректность правила резолюции]
+    $\forall \MM~ \forall \pi$ если $[\neg A \lor B]_{\MM}(\pi) = 1$ и $[A \lor C]_{\MM}(\pi) = 1$, то $[B \lor C]_{\MM}(\pi) = 1$.
+\end{statement}
+
+Другими словами, формула $(((\neg A \lor B) \land (A \lor C)) \implies (B \lor C))$ общезначима.
+
+\begin{proof}
+    Пусть $[\neg A \lor B]_{\MM}(\pi) = 1$ и $[A \lor C]_{\MM}(\pi) = 1$, тогда
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|l|l|l|l|}
+            \hline
+            $[A]_{\MM}(\pi)$ & $[B]_{\MM}(\pi)$ & $[C]_{\MM}(\pi)$ & $[\neg A \lor B]_{\MM}(\pi) = 1 \land [A \lor C]_{\MM}(\pi) = 1$ \\ \hline
+            0 & 0 & 0 & 0 \\ \hline
+            0 & 0 & 1 & 1 \\ \hline
+            0 & 1 & 0 & 0 \\ \hline
+            0 & 1 & 1 & 1 \\ \hline
+            1 & 0 & 0 & 0 \\ \hline
+            1 & 0 & 1 & 0 \\ \hline
+            1 & 1 & 0 & 1 \\ \hline
+            1 & 1 & 1 & 1 \\ \hline
+        \end{tabular}
+    \end{table}
+    Заметим, что на всех наборах, на которых истинны наши формулы, истинна либо $B$, либо $C$, поэтому
+    $$
+        [\neg A \lor B]_{\MM}(\pi) = 1 \land [A \lor C]_{\MM}(\pi) = 1 \implies [B \lor C](\pi) = 1
+    $$
+    вне зависимости от $A$.
+\end{proof}
+
+\begin{definition}
+    {\it Универсальной формулой} называется формула вида $\forall \vec{x} \varphi_{0}$, где $\varphi_{0}$ --- безкванторная.
+\end{definition}
+
+\paragraph{Правило подстановки}
+Если $A$ универсальная, то из $\forall y A$ разрешается получить формулу $A(t/y)$, где $t$ --- любой терм.
+
+Не требуется, чтобы подстановка была корректной.
+То есть, мы можем в универсальную формулу подставить любой терм.
+Символически это правило записывают так:
+$$
+    \Subst{\forall y A}{A(t/y)},
+$$
+где $A$ --- универсальная.
+
+\begin{statement}[Корректность правила подстановки]
+    Пусть $A$ --- универсальная, тогда $\forall \MM~ \forall \pi$ если $[\forall y A]_{\MM}(\pi) = 1$, то $[A(t/y)]_{\MM}(\pi) = 1$.
+\end{statement}
+
+\begin{proof}
+    $A \eqcirc \forall \vec{x} A_{0}$, где $A_{0}$ --- безкванторная.
+    Нам дано, что $[\forall y \forall \vec{x} A_{0}]_{\MM}(\pi) = 1$, это равносильно тому, что $\forall a \in M~\forall \vec{b} \in M^{n}~ [A_{0}](\pi_{y~\vec{x}}^{a~\vec{b}}) = 1$.
+    А теперь сделаем следующий фокус: мы же можем переставлять одноименные кванторы местами ($\forall u \forall v \varphi \equiv \forall v \forall u \varphi$), поэтому
+    $$
+        \forall a \in M~\forall \vec{b} \in M^{n}~ [A_{0}](\pi_{y~\vec{x}}^{a~\vec{b}}) = 1 \iff \forall \vec{b} \in M^{n}~ \forall a \in M~ [A_{0}](\pi_{y~\vec{x}}^{a~\vec{b}}) = 1
+    $$
+    Мы хотим, чтобы
+    $$
+        [A(t/y)]_{\MM}(\pi) = 1 \iff [\forall \vec{x}~A_{0}(t/y)]_{\MM}(\pi) = 1.
+    $$
+    Когда эта штука равна 1?
+    Ну тогда и только тогда, когда $\forall \vec{b} \in M^{n}~ [A_{0}(t/y)]_{\MM}(\pi_{\vec{x}}^{\vec{b}}) = 1$, но у нас $A_{0}$ безкванторная, значит совершенно любой терм $t$-$y$-$A_{0}$, потому что там некому связать переменные из терма $t$.
+    Значит, по лемме \ref{lemma::correct-substitution},
+    $$
+        [\forall \vec{x}~A_{0}(t/y)]_{\MM}(\pi) = 1 \iff [A_{0}]_{\MM}\left( \pi_{\vec{x}~y}^{\vec{b}~[t](\pi_{\vec{x}}^{\vec{b}})} \right).
+    $$
+    Для любого $\vec{b}$ положим $a = [t](\pi_{\vec{x}}^{\vec{b}})$, тогда $\forall \vec{b} \in M^{n}~ [A_{0}](\pi_{\vec{x}~y}^{\vec{b}~[t](\pi_{\vec{x}}^{\vec{b}})}) = 1$ потому что $\pi_{\vec{x}~y}^{\vec{b}~a} = \pi_{y~\vec{x}}^{a~\vec{b}}$ в силу того, что переменные $\vec{x}$ и $y$ различаются.
+    Ну все, мы получили, что
+    $$
+        [A_{0}]_{\MM}\left( \pi_{\vec{x}~y}^{\vec{b}~[t](\pi_{x}^{\vec{b}})} \right) = 1 \iff [A(t/y)]_{\MM}(\pi) = 1.
+    $$
+\end{proof}
+
+\subsubsection{Выводимость в ИР}
+
+\paragraph{Исчисление резолюций}
+Будем говорить неформально, пусть $\Vir{\Gamma}{\varphi}$ (читается как \enquote{$\varphi$ выводится из $\Gamma$ в исчислении резолюций}), это равносильно тому, что $\varphi$ можно получить из формул в $\Gamma$, применяя к ним правила резолюции и правила подстановки конечное число раз.
+
+\paragraph{От автора}
+К сожалению, у меня больше нет ни сил, ни времени, чтобы дотехать конспект лекции по дискре, поэтому сорри, дальше нужно только смотреть лекции (продолжение текущей лекции начинается на 1:24:00)
+
+% \subsubsection{Корректность ИР}
+
+% \begin{theorem}
+%     Если $\Vir{\Gamma}{\varphi}$, то $\Gamma \models \varphi$.
+% \end{theorem}
+
+% \begin{proof}
+%     Мы ведь знаем, что само правило резолюций корректно.
+% \end{proof}
+
+% \subsubsection{Универсальные дизъюнкты}
+
+% \subsubsection{Применение ИР к теориям произвольного вида}
+
+% \subsubsection{Формулировка теоремы о полноте ИР}
