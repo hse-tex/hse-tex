@@ -136,15 +136,106 @@
 Если есть формулы $\neg A \lor B$ и $A \lor C$, разрешается получить формулу $B \lor C$.
 В логике это записывается следующим образом:
 $$
-    \neg A \lor B
+    \Resol{\neg A \lor B}{A \lor C}{B \lor C}.
 $$
+Частный случай:
+$$
+    \Resol{\neg A}{A}{\bot}.
+$$
+
+\begin{statement}[корректность правила резолюции]
+    $\forall \MM~ \forall \pi$ если $[\neg A \lor B]_{\MM}(\pi) = 1$ и $[A \lor C]_{\MM}(\pi) = 1$, то $[B \lor C]_{\MM}(\pi) = 1$.
+\end{statement}
+
+Другими словами, формула $(((\neg A \lor B) \land (A \lor C)) \implies (B \lor C))$ общезначима.
+
+\begin{proof}
+    Пусть $[\neg A \lor B]_{\MM}(\pi) = 1$ и $[A \lor C]_{\MM}(\pi) = 1$, тогда
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|l|l|l|l|}
+            \hline
+            $[A]_{\MM}(\pi)$ & $[B]_{\MM}(\pi)$ & $[C]_{\MM}(\pi)$ & $[\neg A \lor B]_{\MM}(\pi) = 1 \land [A \lor C]_{\MM}(\pi) = 1$ \\ \hline
+            0 & 0 & 0 & 0 \\ \hline
+            0 & 0 & 1 & 1 \\ \hline
+            0 & 1 & 0 & 0 \\ \hline
+            0 & 1 & 1 & 1 \\ \hline
+            1 & 0 & 0 & 0 \\ \hline
+            1 & 0 & 1 & 0 \\ \hline
+            1 & 1 & 0 & 1 \\ \hline
+            1 & 1 & 1 & 1 \\ \hline
+        \end{tabular}
+    \end{table}
+    Заметим, что на всех наборах, на которых истинны наши формулы, истинна либо $B$, либо $C$, поэтому
+    $$
+        [\neg A \lor B]_{\MM}(\pi) = 1 \land [A \lor C]_{\MM}(\pi) = 1 \implies [B \lor C](\pi) = 1
+    $$
+    вне зависимости от $A$.
+\end{proof}
+
+\begin{definition}
+    {\it Универсальной формулой} называется формула вида $\forall \vec{x} \varphi_{0}$, где $\varphi_{0}$ --- безкванторная.
+\end{definition}
+
+\paragraph{Правило подстановки}
+Если $A$ универсальная, то из $\forall y A$ разрешается получить формулу $A(t/y)$, где $t$ --- любой терм.
+
+Не требуется, чтобы подстановка была корректной.
+То есть, мы можем в универсальную формулу подставить любой терм.
+Символически это правило записывают так:
+$$
+    \Subst{\forall y A}{A(t/y)},
+$$
+где $A$ --- универсальная.
+
+\begin{statement}[Корректность правила подстановки]
+    Пусть $A$ --- универсальная, тогда $\forall \MM~ \forall \pi$ если $[\forall y A]_{\MM}(\pi) = 1$, то $[A(t/y)]_{\MM}(\pi) = 1$.
+\end{statement}
+
+\begin{proof}
+    $A \eqcirc \forall \vec{x} A_{0}$, где $A_{0}$ --- безкванторная.
+    Нам дано, что $[\forall y \forall \vec{x} A_{0}]_{\MM}(\pi) = 1$, это равносильно тому, что $\forall a \in M~\forall \vec{b} \in M^{n}~ [A_{0}](\pi_{y~\vec{x}}^{a~\vec{b}}) = 1$.
+    А теперь сделаем следующий фокус: мы же можем переставлять одноименные кванторы местами ($\forall u \forall v \varphi \equiv \forall v \forall u \varphi$), поэтому
+    $$
+        \forall a \in M~\forall \vec{b} \in M^{n}~ [A_{0}](\pi_{y~\vec{x}}^{a~\vec{b}}) = 1 \iff \forall \vec{b} \in M^{n}~ \forall a \in M~ [A_{0}](\pi_{y~\vec{x}}^{a~\vec{b}}) = 1
+    $$
+    Мы хотим, чтобы
+    $$
+        [A(t/y)]_{\MM}(\pi) = 1 \iff [\forall \vec{x}~A_{0}(t/y)]_{\MM}(\pi) = 1.
+    $$
+    Когда эта штука равна 1?
+    Ну тогда и только тогда, когда $\forall \vec{b} \in M^{n}~ [A_{0}(t/y)]_{\MM}(\pi_{\vec{x}}^{\vec{b}}) = 1$, но у нас $A_{0}$ безкванторная, значит совершенно любой терм $t$-$y$-$A_{0}$, потому что там некому связать переменные из терма $t$.
+    Значит, по лемме \ref{lemma::correct-substitution},
+    $$
+        [\forall \vec{x}~A_{0}(t/y)]_{\MM}(\pi) = 1 \iff [A_{0}]_{\MM}\left( \pi_{\vec{x}~y}^{\vec{b}~[t](\pi_{\vec{x}}^{\vec{b}})} \right).
+    $$
+    Для любого $\vec{b}$ положим $a = [t](\pi_{\vec{x}}^{\vec{b}})$, тогда $\forall \vec{b} \in M^{n}~ [A_{0}](\pi_{\vec{x}~y}^{\vec{b}~[t](\pi_{\vec{x}}^{\vec{b}})}) = 1$ потому что $\pi_{\vec{x}~y}^{\vec{b}~a} = \pi_{y~\vec{x}}^{a~\vec{b}}$ в силу того, что переменные $\vec{x}$ и $y$ различаются.
+    Ну все, мы получили, что
+    $$
+        [A_{0}]_{\MM}\left( \pi_{\vec{x}~y}^{\vec{b}~[t](\pi_{x}^{\vec{b}})} \right) = 1 \iff [A(t/y)]_{\MM}(\pi) = 1.
+    $$
+\end{proof}
 
 \subsubsection{Выводимость в ИР}
 
-\subsubsection{Корректность ИР}
+\paragraph{Исчисление резолюций}
+Будем говорить неформально, пусть $\Vir{\Gamma}{\varphi}$ (читается как \enquote{$\varphi$ выводится из $\Gamma$ в исчислении резолюций}), это равносильно тому, что $\varphi$ можно получить из формул в $\Gamma$, применяя к ним правила резолюции и правила подстановки конечное число раз.
 
-\subsubsection{Универсальные дизъюнкты}
+\paragraph{От автора}
+К сожалению, у меня больше нет ни сил, ни времени, чтобы дотехать конспект лекции по дискре, поэтому сорри, дальше нужно только смотреть лекции (продолжение текущей лекции начинается на 1:24:00)
 
-\subsubsection{Применение ИР к теориям произвольного вида}
+% \subsubsection{Корректность ИР}
 
-\subsubsection{Формулировка теоремы о полноте ИР}
+% \begin{theorem}
+%     Если $\Vir{\Gamma}{\varphi}$, то $\Gamma \models \varphi$.
+% \end{theorem}
+
+% \begin{proof}
+%     Мы ведь знаем, что само правило резолюций корректно.
+% \end{proof}
+
+% \subsubsection{Универсальные дизъюнкты}
+
+% \subsubsection{Применение ИР к теориям произвольного вида}
+
+% \subsubsection{Формулировка теоремы о полноте ИР}
