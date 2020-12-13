@@ -1,0 +1,45 @@
+\ProvidesPackage{packages}
+
+% Языковые пакеты и различные кодировки
+\RequirePackage[T2A]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[english, russian]{babel}
+\RequirePackage{hyphenat}
+
+% Базовые математические пакеты
+\RequirePackage{mathtools}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}    % Теоремки
+\RequirePackage{cases}     % Нормальная работа с системами уравнений
+\RequirePackage{physics}   % Разного рода операторы дифференциального исчисления
+\RequirePackage{centernot}
+
+% Ссылки мои ссылки
+\RequirePackage[unicode=true, colorlinks=true, linkcolor=red, urlcolor=blue, pdfencoding=auto, psdextra]{hyperref}
+
+% Показывать номера только у уравнений, на которые есть ссылки
+\mathtoolsset{showonlyrefs=true}
+
+% Внешний вид файла
+\RequirePackage[a4paper, left=1cm, right=1cm, top=1cm, bottom=2cm]{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage{multicol}
+
+% Различные пакеты для набора текста и формул
+\RequirePackage{csquotes}  % Нормальные кавычки
+\RequirePackage{cancel}    % Зачеркивание любых символов
+\RequirePackage{graphicx}  % Люблю графики и все что с ними связано
+\RequirePackage{enumitem}  % Более гибкие enumerate/itemize/description
+
+% figures и subfigures для графиков
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+
+% Стиль секций и заголовков
+\RequirePackage[center, medium]{titlesec}
+
+% Аня Смирнова
+\RequirePackage[dvipsnames]{xcolor}
+
+\definecolor{purple}{rgb}{0.858, 0.188, 0.478}
