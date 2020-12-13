@@ -60,7 +60,7 @@
 ### Теория вероятностей и математическая статистика
 
 - [Коллоквиум I](https://hse-tex.me/course-2/probability-theory-colloquium-1.pdf)
-- [Коллоквиум IШ](https://hse-tex.me/course-2/probability-theory-colloquium-2.pdf)
+- [Коллоквиум II](https://hse-tex.me/course-2/probability-theory-colloquium-2.pdf)
 
 # Благодарность
 
