@@ -47,7 +47,7 @@ $$
 
 \paragraph{Пример}
 Рассмотрим конкретный пример, который является классическим.
-Положим $\MM = \left( \R; =; +^(2); 0 \right)$ и $\NN = \left( R_{+}; =; \cdot^{(2)}; 1 \right)$.
+Положим $\MM = \left( \R; =; +^{(2)}; 0 \right)$ и $\NN = \left( \R_{+}; =; \cdot^{(2)}; 1 \right)$.
 Естественно, это интерпретация одной сигнатуры $\sigma = \left( =; \circ^{(2)}; e \right)$.
 \begin{statement}
     $\MM \cong \NN$.
@@ -68,7 +68,7 @@ $$
     Все свойства отношения изоморфности выполнены, поэтому $\alpha$ --- изоморфизм.
 \end{proof}
 
-\subsection{значение терма и формулы при изоморфизме}
+\subsection{Значение терма и формулы при изоморфизме}
 
 \begin{theorem}[о значении формулы при изоморфизме]
     Пусть $\MM$ и $\NN$ --- интерпретации сигнатуры $\sigma$, и $\varphi(x_{1}, \ldots, x_{n}) \in \Fm_{\sigma}$.
@@ -141,11 +141,11 @@ $$
         $$
         Тогда,
         $$
-            \left(t_{1}^{\NN}(\alpha \vec{a}), \ldots, t_{m}^{\NN}(\alpha \vec{a})\right) \in R^{\NN} \iff \left(\alpha\left(t_{1}^{\NN}(\vec{a})\right), \ldots, \alpha\left(t_{m}^{\NN}(\vec{a})\right)\right) \in R^{\NN}.
+            \left(t_{1}^{\NN}(\alpha \vec{a}), \ldots, t_{m}^{\NN}(\alpha \vec{a})\right) \in R^{\NN} \iff \left(\alpha\left(t_{1}^{\MM}(\vec{a})\right), \ldots, \alpha\left(t_{m}^{\MM}(\vec{a})\right)\right) \in R^{\NN}.
         $$
         По определению изоморфизма, $R^{\MM}(\vec{a}) \iff R^{\NN}(\alpha \vec{a})$, тогда
         $$
-            \left(t_{1}^{\MM}(\vec{a}), \ldots, t_{m}^{\MM}(\vec{a})\right) \in R^{\MM} \iff \left(\alpha\left(t_{1}^{\NN}(\vec{a})\right), \ldots, \alpha\left(t_{m}^{\NN}(\vec{a})\right)\right) \in R^{\NN},
+            \left(t_{1}^{\MM}(\vec{a}), \ldots, t_{m}^{\MM}(\vec{a})\right) \in R^{\MM} \iff \left(\alpha\left(t_{1}^{\MM}(\vec{a})\right), \ldots, \alpha\left(t_{m}^{\MM}(\vec{a})\right)\right) \in R^{\NN},
         $$
         что и требовалось доказать.
         \item \begin{enumerate}
@@ -199,7 +199,7 @@ $$
 \begin{definition}
     Отношение $X \subseteq M^{n}$ {\it выразимо} в $\MM$, если
     $$
-        \exists \varphi(x_{1}, \ldots, x_{n}) \in \Fm_{\sigma} \quad \forall \vec{a} \in M^{n} (a \in \vec{x} \iff \MM \models \varphi(\vec{a})).
+        \exists \varphi(x_{1}, \ldots, x_{n}) \in \Fm_{\sigma} \quad \forall \vec{a} \in M^{n} (\vec{a} \in X \iff \MM \models \varphi(\vec{a})).
     $$
 \end{definition}
 
