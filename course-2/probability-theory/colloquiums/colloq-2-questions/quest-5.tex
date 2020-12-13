@@ -1,0 +1,66 @@
+\ProvidesFile{quest-05.tex}[Билет 5]
+
+\section{Билет 5}
+
+\begin{center}
+    \it Случайные величины на общих вероятностных пространствах: определение и основные свойства (прообраз борелевских лежит в $\sigma$-алгебре, сумма и произведение случайных величин --- случайная)
+\end{center}
+
+\sectionbreak
+\subsection{Случайные величины на общих вероятностных пространствах}
+
+\begin{definition}
+    Пусть задано вероятностное пространство $(\Omega, \mathcal{A}, P)$.
+    Функция $X \colon \Omega \to \mathbb{R}$ называется {\it случайной величиной}, если
+    для всякого числа $t \in \mathbb{R}$ выполнено
+    \[
+        X^{-1}((-\infty, t]) = \{\omega \in \Omega \mid X(\omega) \leqslant t\} \in \mathcal{A}.
+    \]
+\end{definition}
+
+\begin{proposal*}
+    Если $X$ случайная величина, то $\{\omega \mid X(\omega) \in B\} = X^{-1}(B) \in \mathcal{A}$ для всякого $B \in \mathcal{B}(\mathbb{R})$.
+\end{proposal*}
+
+\begin{proof}
+    Напомним следующие соотношения для прообраза функции:
+    \[
+        X^{-1}\Bigl( \bigcap\limits_{n=1}^\infty A_n \Bigr) = \bigcap\limits_{n=1}^\infty X^{-1}(A_n), \quad X^{-1}\Bigl(\bigcup\limits_{n = 1}^\infty A_n\Bigr) = \bigcup\limits_{n = 1}^\infty X^{-1}(A_n), \quad X^{-1}(\mathbb{R} \setminus B) = \Omega \setminus X^{-1}(B).
+    \]
+    Рассмотрим систему множеств
+    \[
+        \mathcal{C} := \{B \subset \mathbb{R} \mid X^{-1}(B) \in \mathcal{A}\}.
+    \]
+    Эта система образует $\sigma$-алгебру.
+    Действительно, $X^{-1}(\emptyset) = \emptyset \in \mathcal{A}$ и
+    $X^{-1}(\mathbb{R}) = \Omega \in \mathcal{A}$.
+    Если $B \in \mathcal{C}$, то $X^{-1}(\mathbb{R} \setminus B) = \Omega \setminus X^{-1}(B) \in \mathcal{A}$.
+    Наконец, если $B_n \in \mathcal{C}$, то
+    \[
+        X^{-1}\Bigl(\bigcap\limits_{n = 1}^\infty B_n\Bigr) = \bigcap\limits_{n = 1}^\infty X^{-1}(B_n) \in \mathcal{A}.
+    \]
+    По условию $\sigma$-алгебра $\mathcal{C}$ содержит все лучи вида $(-\infty, t]$.
+    Мы знаем, что $\mathcal{B}(\mathbb{R})$ --- наименьшая по включению $\sigma$ алгебра, содержащая все лучи такого вида, поэтому $\mathcal{B}(\mathbb{R}) \subset \mathcal{C}$, что и требовалось.
+\end{proof}
+
+\begin{comment*}
+    Т. к. $\{ X^2 \leqslant t \} = \{-\sqrt{t} \leqslant x \leqslant \sqrt{t}\}$ (при $t \geq 0$) и отрезок $[-\sqrt{t}, \sqrt{t}]$ --- борелевское множество, получаем, что $X^2$ --- также случайная величина.
+    Можно проверить, что для случайной величины $X$ и для любой \enquote{разумной} функции $f\colon \mathbb{R}\to \mathbb{R}$
+    (например, если $f$ непрерывная), $f(X)$ также будет случайной величиной.
+\end{comment*}
+
+\begin{proposal*}
+    Пусть $X, Y$ --- случайные величины.
+    Тогда случайными величинами будут $\alpha X + \beta Y$, $X \cdot Y$.
+\end{proposal*}
+
+\begin{proof}
+    Ясно, что $\alpha X$ и $\beta Y$ --- случайные величины.
+    Проверим, что $X + Y$ --- случайная величина:
+    \[
+        \{X+Y > t\} = \{ X > t - Y\} = \bigcup\limits_{r_n \in \mathbb{Q}}(\{\omega \mid X(\omega) > r_n\} \cap \{\omega \mid r_n > t - Y(\omega)\}) \in \mathcal{A}.
+    \]
+    В последнем переходе мы воспользовались тем, что $\mathbb{Q}$ всюду плотно в $\mathbb{R}$, поэтому между любыми двумя вещественными числами есть рациональное число.
+    Поэтому и $\{X + Y \leqslant t\} \in \mathcal{A}$, а значит $X + Y$ --- случайная величина.
+    Для произведения заметим, что $X \cdot Y = \frac{1}{2}\bigl((X + Y)^2 - X^2 - Y^2\bigr)$, и утверждение следует из уже доказанных.
+\end{proof}
