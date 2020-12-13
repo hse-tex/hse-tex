@@ -199,20 +199,20 @@ $$
     Определим значение формулы $\varphi$ в интерпретации $\MM$ при оценке переменных $\pi$ рекурсивно:
     \begin{enumerate}
         \item $[R t_{1} \ldots t_{n}]_{\MM}(\pi) = \begin{cases}
-            1, & ([t_{1}](\pi)), \ldots, [t_{n}](\pi)) \in R^{\MM}; \\
-            0, & \text{иначе}.
-        \end{cases}$;
+            1, & ([t_{1}](\pi), \ldots, [t_{n}](\pi)) \in R^{\MM}; \\
+            0, & \text{иначе};
+        \end{cases}$
         \item $[\varphi \land \psi]_{\MM}(\pi) = \text{И}([\varphi]_{\MM}(\pi), [\psi]_{\MM}(\pi))$, $[\varphi \lor \psi]_{\MM}(\pi) = \text{ИЛИ}([\varphi]_{\MM}(\pi), [\psi]_{\MM}(\pi))$, $[\neg\varphi]_{\MM}(\pi) = \text{НЕ}([\varphi]_{\MM}(\pi))$, и так далее;
         \item 
         \begin{align}
             &[\forall x~\varphi]_{\MM}(\pi) = \begin{cases}
                 1, & \text{для всех } m \in M : [\varphi](\pi_{x}^{m}) = 1, \\
                 0, & \text{иначе}.
-            \end{cases}, \\
+            \end{cases} \\
             &[\exists x~\varphi]_{\MM}(\pi) = \begin{cases}
                 1, & \text{существует } m \in M : [\varphi](\pi_{x}^{m}) = 1, \\
                 0, & \text{иначе}.
-            \end{cases}.
+            \end{cases}
         \end{align}
     \end{enumerate}
 \end{definition}

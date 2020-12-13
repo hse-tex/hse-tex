@@ -96,7 +96,7 @@ $$
 \begin{lemma}[о конгруэнции отношения эквивалентности]
     Если $\varphi \equiv \varphi^{\prime}$, то
     \begin{itemize}
-        \item $\neg \varphi \equiv \varphi^{\prime}$;
+        \item $\neg \varphi \equiv \neg \varphi^{\prime}$;
         \item $\varphi \land \psi \equiv \varphi^{\prime} \land \psi$.
         \item $\varphi \lor \psi \equiv \varphi^{\prime} \lor \psi$.
         \item $\varphi \implies \psi \equiv \varphi^{\prime} \implies \psi$.
@@ -161,7 +161,7 @@ $$
 
 \begin{lemma}[о фиктивном кванторе]
     Если $x \notin \FreeVar(\varphi)$, то $\forall x \varphi \equiv \varphi$.
-    Аналогично, $\exists \varphi \equiv \varphi$.
+    Аналогично, $\exists x \varphi \equiv \varphi$.
 \end{lemma}
 
 \begin{proof}
@@ -226,7 +226,7 @@ $\varphi$ выполнима $\iff$ $\exists x \varphi$ выполнима.
     \neg (\varphi \land \psi) &\equiv \neg \varphi \lor \neg \psi, \\
     \neg (\varphi \lor \psi) &\equiv \neg \varphi \land \neg \psi, \\
     \varphi \land (\psi \lor \theta) &\equiv  (\varphi \land \psi) \lor (\varphi \land \theta), \\
-    \varphi \lor (\psi \land \theta) &\equiv (\varphi \lor \psi) \land (\varphi \land \theta), \\
+    \varphi \lor (\psi \land \theta) &\equiv (\varphi \lor \psi) \land (\varphi \lor \theta), \\
     \varphi \land (\varphi \lor \psi) &\equiv \varphi, \\
     \varphi \lor (\varphi \land \psi) &\equiv \varphi, \\
     \varphi \land \psi &\equiv \psi \land \varphi, \\
@@ -276,9 +276,10 @@ $\varphi$ выполнима $\iff$ $\exists x \varphi$ выполнима.
             \exists m \in M \quad ([\varphi]\left(\pi_{x}^{m}\right) = 1 \text{ и } [\psi](\pi) = 1).
         $$
         Теперь заметим, что значение $[\psi](\pi)$ не зависит от $m$, поэтому это можно переписать следующим образом:
-        $$
+        \begin{equation*}
             (\exists m \in M [\varphi]\left(\pi_{x}^{m}\right) = 1) \text{ и } [\psi](\pi) = 1 \iff [\exists x \varphi](\pi) = 1 \text{ и } [\psi](\pi) = 1 \iff [\exists x \varphi](\pi) = 1.
-        $$
+            \qedhere
+        \end{equation*}
     \end{description}
 \end{proof}
 
@@ -304,9 +305,10 @@ $\varphi$ выполнима $\iff$ $\exists x \varphi$ выполнима.
 \begin{proof}
     $\forall x (\varphi \implies \psi) \equiv \forall x (\neg \varphi \lor \psi)$.
     Мы помним, что $x \notin \FreeVar(\psi)$, тогда
-    $$
+    \begin{equation*}
         \forall x (\neg \varphi \lor \psi) \equiv \forall x \neg \varphi \lor \psi \equiv \neg \exists \varphi \lor \psi \equiv \exists x \varphi \implies \psi.
-    $$
+        \qedhere
+    \end{equation*}
 \end{proof}
 
 \subsection{Дизъюнктивные и конъюнктивные нормальные формы}
