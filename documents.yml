@@ -9,37 +9,39 @@ directory:
   target: course-2/mathematical-analysis.pdf
 - source: course-2/discrete-math-02/discrete-math-02-lecture-notes.tex
   target: course-2/discrete-math-02-lecture-notes.pdf
+- source: course-2/probability-theory/colloquiums/colloq-2.tex
+  target: course-2/probability-theory-colloquium-2.pdf
 # - source: course-2/discrete-mathematics/discrete-mathematics-2.tex
 #   target: course-2/discrete-mathematics.pdf
 # - source: course-1/algebra/algebra-exam.tex
 #   target: course-1/algebra-exam.pdf
 # - source: course-1/linear-algebra/lectures/linear-algebra.tex
 #   target: course-1/linear-algebra.pdf
-  
+
 # Список документов, которые полностью содержатся в одном файле (за исключением *header.sty)
 # Только изменение source файла (или хедеров) будет приводить к пересборке документа
 single:
-- source: course-2/mathematical-analysis/colloquiums/col1.tex     
+- source: course-2/mathematical-analysis/colloquiums/col1.tex
   target: course-2/mathematical-analysis-colloquium-1.pdf
-- source: course-2/probability-theory/colloquiums/col1.tex     
+- source: course-2/probability-theory/colloquiums/col1.tex
   target: course-2/probability-theory-colloquium-1.pdf
-# - source: course-1/linear-algebra/colloquium/linear-algebra-colloquium-1.tex        
+# - source: course-1/linear-algebra/colloquium/linear-algebra-colloquium-1.tex
 #   target: course-1/linear-algebra-colloquium-1.pdf
-# - source: course-1/linear-algebra/colloquium/linear-algebra-colloquium-2.tex        
+# - source: course-1/linear-algebra/colloquium/linear-algebra-colloquium-2.tex
 #   target: course-1/linear-algebra-colloquium-2.pdf
-# - source: course-1/linear-algebra/colloquium/linear-algebra-exam-definitions-2.tex  
+# - source: course-1/linear-algebra/colloquium/linear-algebra-exam-definitions-2.tex
 #   target: course-1/linear-algebra-exam-definitions-2.pdf
-# - source: course-1/mathematical-analysis/mathematical-analysis-colloquium-1.tex     
+# - source: course-1/mathematical-analysis/mathematical-analysis-colloquium-1.tex
 #   target: course-1/mathematical-analysis-colloquium-1.pdf
-# - source: course-1/mathematical-analysis/mathematical-analysis-colloquium-2.tex     
+# - source: course-1/mathematical-analysis/mathematical-analysis-colloquium-2.tex
 #   target: course-1/mathematical-analysis-colloquium-2.pdf
-# - source: course-1/mathematical-analysis/mathematical-analysis-colloquium-3.tex     
+# - source: course-1/mathematical-analysis/mathematical-analysis-colloquium-3.tex
 #   target: course-1/mathematical-analysis-colloquium-3.pdf
-# - source: course-1/mathematical-analysis/mathematical-analysis-colloquium-4.tex     
+# - source: course-1/mathematical-analysis/mathematical-analysis-colloquium-4.tex
 #   target: course-1/mathematical-analysis-colloquium-4.pdf
-# - source: course-1/mathematical-analysis/mathematical-analysis-exam-1.tex           
+# - source: course-1/mathematical-analysis/mathematical-analysis-exam-1.tex
 #   target: course-1/mathematical-analysis-exam-1.pdf
-# - source: course-1/discrete-mathematics/discrete-mathematics-colloquium-1.tex       
+# - source: course-1/discrete-mathematics/discrete-mathematics-colloquium-1.tex
 #   target: course-1/discrete-mathematics-colloquium-1.pdf
-# - source: course-1/discrete-mathematics/discrete-mathematics-colloquium-2.tex       
+# - source: course-1/discrete-mathematics/discrete-mathematics-colloquium-2.tex
 #   target: course-1/discrete-mathematics-colloquium-2.pdf

@@ -1,0 +1,94 @@
+\ProvidesFile{quest-04.tex}[Билет 4]
+
+\section{Билет 4}
+
+\begin{center}
+    \it Аддитивные и счетно аддитивные функции множества на алгебрах и $\sigma$-алгебрах.
+    Вероятностная мера и определение вероятностного пространства.
+    Эквивалентность счетной аддитивности и непрерывности в нуле для неотрицательной аддитивной функции множества на алгебре.
+    Свойства непрерывности вероятностной меры.
+\end{center}
+
+\sectionbreak
+\subsection{Аддитивные и счетно аддитивные функции множества на алгебрах и $\sigma$-алгебрах}
+
+\begin{definition}
+    Пусть $\mathcal{A}_0$ --- алгебра множеств.
+    Функция $P \colon \mathcal{A}_0 \to [0, 1]$ называется {\it аддитивной}, если для произвольных $A, B \in \mathcal{A}_0$, $A \cap B = \emptyset$ выполнено
+    \[
+        P(A\cup B) = P(A) + P(B).
+    \]
+\end{definition}
+
+\begin{definition}
+    Функция $P \colon \mathcal{A}_0 \to [0, 1]$ называется {\it счетно аддитивной}, если для всякого не более чем счетного набора попарно непересекающихся событий $A_n \in \mathcal{A}_{0}$, для которых $\bigcup\limits_{n = 1}^\infty A_n \in \mathcal{A}_0$
+    выполняется
+    \[
+        P\left( \bigcup\limits_{n = 1}^\infty A_n \right) = \sum_{n = 1}^\infty P(A_n).
+    \]
+\end{definition}
+
+\sectionbreak
+\subsection{Вероятностная мера и определение вероятностного пространства}
+
+\begin{definition}
+    Пусть $\mathcal{A}$ -- $\sigma$ алгебра. Функция $P\colon\mathcal{A}\to[0, 1]$ называется {\it вероятностной мерой} на $\mathcal{A}$, если $P(\Omega) = 1$ и $P$ --- счетно аддитивна на $\mathcal{A}$.
+\end{definition}
+
+\begin{definition}
+    Пусть $\mathcal{A}$ --- $\sigma$-алгебра подмножеств $\Omega$, тогда тройку $(\Omega, \mathcal{A}, P)$ называют {\it вероятностным пространством}.
+\end{definition}
+
+\sectionbreak
+\subsection{Эквивалентность счетной аддитивности и непрерывности в нуле для неотрицательной аддитивной функции множества на алгебре}
+
+\begin{proposal*}
+    Пусть $P \colon \mathcal{A}_0 \to [0, 1]$ --- аддитивная функция множества на алгебре $\mathcal{A}_0$.
+    Функция $P$ счетно аддитивна на $\mathcal{A}_0$ тогда и только тогда, когда для произвольного набора $A_n \in \mathcal{A}_{0}$, $A_{n + 1}\subset A_n$, $\bigcap\limits_{n = 1}^\infty A_n = \emptyset$ выполнено
+    \[
+        \lim\limits_{n \to \infty}P(A_n) = 0.
+    \]
+\end{proposal*}
+
+\begin{proof}~
+    \begin{description}
+        \item[$\implies$] Пусть $P$ счетно аддитивна на $\mathcal{A}_0$.
+        Рассмотрим множества $C_n = A_n \setminus A_{n + 1}$.
+        Тогда
+        \[
+            A_1 = \bigcup\limits_{n = 1}^\infty C_n, \ldots, A_{N + 1} = \bigcup\limits_{k = N + 1}^{\infty} C_k,
+        \]
+        и
+        \[
+            P(A_1) = \sum\limits_{n = 1}^N P(C_n) + P(A_{N + 1}).
+        \]
+        Если $P$ счетно аддитивна, то $\sum\limits_{n = 1}^N P(C_n) \to P(A_1)$, а $P(A_{N + 1}) \to 0$.
+        \item[$\impliedby$] Пусть $C_n \in \mathcal{A}_0$ --- набор попарно непересекающихся множеств, причем известно, что $\bigcup\limits_{n = 1}^\infty C_n = A_1 \in \mathcal{A}_0$.
+        Пусть
+        \[
+            A_{N + 1} = \bigcup\limits_{k = N + 1}^{\infty} C_k,
+        \]
+        тогда $A_{N + 1} \subset A_N$, причем $\bigcap\limits_{N = 1}^\infty A_N = \emptyset$.
+        Если $P(A_{N+1})\to 0$, то $P(A_1)=\sum\limits_{n=1}^N P(C_n) + P(A_{N+1})$ и переходя к пределу, получаем
+        \[
+            P(A_1) = \sum\limits_{n = 1}^\infty P(C_n). \qedhere
+        \]
+    \end{description}
+\end{proof}
+
+\sectionbreak
+\subsection{Свойства непрерывности вероятностной меры}
+
+\begin{corollary*}[непрерывность вероятностной меры]
+    Пусть $(\Omega, \mathcal{A}, P)$ --- вероятностное пространство.
+    Тогда
+    \begin{enumerate}
+        \item Если $A_n \in \mathcal{A}$, $A_{n + 1} \subset A_n$ и $A = \bigcap\limits_{n = 1}^\infty A_n$, то $\lim\limits_{n \to \infty} P(A_n) = P(A)$;
+        \item Если $A_n \in \mathcal{A}$, $A_n \subset A_{n + 1}$ и $A = \bigcup\limits_{n = 1}^\infty A_n$, то $\lim\limits_{n \to \infty} P(A_n) = P(A)$.
+    \end{enumerate}
+\end{corollary*}
+
+В частности,
+\[
+    P \Bigl(\bigcup\limits_{n = 1}^\infty A_n\Bigr) = \lim\limits_{N \to \infty} P\Bigl(\bigcup\limits_{n = 1}^N A_n\Bigr) \leqslant \sum\limits_{n = 1}^{\infty} P(A_n).
+\]

@@ -1,0 +1,64 @@
+\ProvidesFile{quest-03.tex}[Билет 3]
+
+\section{Билет 3}
+
+\begin{center}
+    \it Вероятностное пространство в общем случае: алгебра и $\sigma$-алгебра подмножеств.
+    Примеры $\sigma$-алгебр, $\sigma$-алгебра, порожденная системой подмножеств, борелевская $\sigma$-алгебра.
+\end{center}
+
+\sectionbreak
+\subsection{Вероятностное пространство в общем случае: алгебра и $\sigma$-алгебра подмножеств}
+
+\begin{definition*}
+    Класс $\mathcal{A}_0$ подмножеств пространства $\Omega$ называется {\it алгеброй}, если
+    \begin{enumerate}
+        \item $\Omega, \emptyset \in \mathcal{A}_0$;
+        \item $A \in \mathcal{A}_0 \implies \Omega \setminus A \in \mathcal{A}_0$;
+        \item $A, B \in \mathcal{A}_0 \implies A \cap B, A \cup B \in \mathcal{A}_0$.
+    \end{enumerate}
+\end{definition*}
+
+\begin{definition*}
+    Класс $\mathcal{A}$ подмножеств пространства $\Omega$ называется {\it $\sigma$-алгеброй}, если
+    \begin{enumerate}
+        \item $\Omega, \emptyset \in \mathcal{A}$;
+        \item $A \in \mathcal{A} \implies \Omega \setminus A \in \mathcal{A}$;
+        \item $A_n \in \mathcal{A},~\forall n\in \mathbb{N} \implies \bigcap\limits_{n = 1}^\infty A_n, \bigcup\limits_{n = 1}^\infty A_n \in \mathcal{A}$.
+    \end{enumerate}
+\end{definition*}
+
+\noindent Отметим, что в силу формул
+\[
+    \Omega \setminus \bigcup\limits_{\alpha} A_\alpha = \bigcap\limits_{\alpha}(\Omega \setminus A_\alpha)
+\]
+и
+\[
+    \Omega \setminus \bigcap\limits_{\alpha} A_\alpha = \bigcup\limits_{\alpha}(\Omega \setminus A_\alpha),
+\]
+в пункте 3 каждого определения достаточно проверять включение либо только для объединений, либо только для пересечений.
+
+\sectionbreak
+\subsection{Примеры $\sigma$-алгебр, $\sigma$-алгебра, порожденная системой подмножеств, борелевская $\sigma$-алгебра}
+
+\paragraph{Примеры $\sigma$-алгебр}
+Множество всех подмножеств $2^{\Omega}$, $\{\emptyset, \Omega\}$, $\{\emptyset, B, \Omega\setminus B, \Omega\}$ являются $\sigma$ алгебрами.
+
+\paragraph{Примеры алгебр}
+Множество всех конечных объединений попарно непересекающихся промежутков $(a, b]$ на $\mathbb{R}$ является алгеброй, но не является $\sigma$ алгеброй, поскольку она не содержит одноточечные множества --- пересечения счетного числа полуинтервалов.
+
+\begin{definition*}
+    Говорят, что $\sigma$ алгебра {\it порождена набором множеств $S$}, если эта $\sigma$ алгебра является наименьшей по включению среди всех $\sigma$-алгебр, которые содержат данный набор множеств $S$.
+    Такую $\sigma$-алгебру обозначают $\sigma(S)$.
+\end{definition*}
+
+\begin{definition*}
+    $\sigma$-алгебра называется {\it борелевской $\sigma$-алгеброй $\mathcal{B}(\mathbb{R})$} подмножеств прямой $\mathbb{R}$, если она порождена всеми промежутками (отрезками, интервалами, лучами).
+\end{definition*}
+
+Несложно показать, что в определении не обязательно в качестве порождающего множества брать все промежутки.
+Например, можно ограничиться только отрезками или только интервалами или только лучами $(-\infty, c]$.
+Например, проверим, что $\mathcal{B}(\mathbb{R})$ порождена всеми лучами вида $(-\infty, c]$.
+Действительно, $(-\infty, c] \in \mathcal{B}(\mathbb{R})$, как счетное объединение промежутков вида $(-n, c]$, поэтому $\sigma(\{(-\infty, c]\}) \subset \mathcal{B}(\mathbb{R})$.
+С другой стороны $(a, b] = (-\infty, b] \setminus (-\infty, a]$, отрезки получаются счетным пересечением промежутков вида $(a-\frac{1}{n}, b]$, интервалы получаются счетным объединением промежутков вида $(a, b-\frac{1}{n}]$, а полуинтервалы вида $[a, b)$ получаются объединением уже полученных отрезков вида $[a, b-\frac{1}{n}]$.
+Тем самым, все промежутки принадлежат $\sigma(\{(-\infty, c]\})$, а значит имеет место и включение $\mathcal{B}(\mathbb{R})\subset \sigma(\{(-\infty, c]\})$.
