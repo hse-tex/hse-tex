@@ -1,3 +1,159 @@
 \ProvidesFile{quest-12.tex}[Билет 12]
 
 \section{Билет 12}
+
+\begin{center}
+    \it Математическое ожидание функции от случайной величины с абсолютно непрерывным распределением.
+    Математическое ожидание произведения независимых случайных величин.
+    Дисперсия, ковариация, коэффициент корреляции и их свойства.
+    Неравенство Чебышева.
+\end{center}
+
+\sectionbreak
+\subsection{Математическое ожидание функции от случайной величины с абсолютно непрерывным распределением}
+
+\begin{lemma}\label{key-lemma}
+    Пусть случайная величина $X \geqslant 0$ и пусть $A_n \subset A_{n + 1}$, $A_n \in \mathcal{A}$, причем $\bigcup\limits_{n = 1}^\infty A_n = \Omega$.
+    Тогда $X$ имеет конечное математическое ожидание тогда и только тогда, когда
+    \[
+        \sup\limits_{n}\mathbb{E}[X I_{A_n}] := M < \infty.
+    \]
+    При этом $\mathbb{E} X = \lim\limits_{n \to \infty}\mathbb{E}[X I_{A_n}] = M$.
+\end{lemma}
+
+\begin{proof}
+    Пусть $U$ --- произвольная ограниченная случайная величина, причем $0 \leqslant U \leqslant X$.
+    Тогда $P(\Omega \setminus A_n) \to 0$ (из-за свойства непрерывности вероятностной меры) и $\mathbb{E}[U I_{\Omega \setminus A_n}] \leqslant [\max U] P(\Omega \setminus A_n) \to 0$.
+    Отсюда
+    \[
+        \mathbb{E} U = \lim\limits_{n \to \infty}\mathbb{E}[U I_{A_n}] \leqslant M,
+    \]
+    т. к. имеет место оценка $\mathbb{E}[U I_{A_n}] \leqslant \mathbb{E}[X I_{A_n}] \leqslant M$.
+    Значит $\mathbb{E} X \leqslant M$.
+    С другой стороны $X \geqslant X I_{A_n}$, откуда $\mathbb{E}X \geqslant \mathbb{E}[X I_{A_n}]$.
+\end{proof}
+
+
+\begin{proposal*}
+    Пусть $X$ --- случайная величина, распределение которой имеет плотность $\rho_X$.
+    Пусть задана непрерывная функция $f$.
+    Тогда математическое ожидание $\mathbb{E}f(X)$ существует тогда и только тогда, когда сходится несобственный интеграл
+    \[
+        \int_{-\infty}^{+\infty}\abs{f(x)} \rho_{X}(x) \dd x.
+    \]
+    Более того, в случае сходимости
+    \[
+        \mathbb{E}f(X) = \int_{-\infty}^{+\infty} f(x) \rho_{X}(x) \dd x.
+    \]
+\end{proposal*}
+
+\begin{proof}
+    Пусть $R > 0$.
+    Для непрерывной функции $f$ на отрезке $[-R, R]$ найдется последовательность ступенчатых функций $g_n$, равномерно сходящаяся к $f$ на $[-R, R]$.
+    Функции $g_n$ имеют вид $g_n = \sum\limits_{j = 1}^{N_n} c_j I_{[a_j, b_j]}$, где $\{[a_j, b_j]\}$ --- разбиение отрезка $[-R, R]$.
+    Заметим, что
+    \[
+        \mathbb{E} g_n(X) = \sum\limits_{j = 1}^{N_n} c_j \mathbb{E}I_{\{a_j \leqslant X \leqslant b_j\}} = \sum\limits_{j = 1}^{N_n} c_j P(X \in [a_j, b_j]) = \sum\limits_{j = 1}^{N_n} c_j \int_{a_j}^{b_j} \rho_X(x) \dd x = \int_{-R}^R g_n(x) \rho_X(x) \dd x.
+    \]
+    Заметим, что
+    \[
+        \abs{\mathbb{E}[f(X) I_{\{-R \leqslant X \leqslant R\}}] - \mathbb{E}g_n(X)} \leqslant \mathbb{E}[\abs{f(X) - g_n(X)}I_{\{-R \leqslant X \leqslant R\}}] \leqslant \sup\limits_{x \in [-R, R]}\abs{f(x) - g_n(x)} \to 0.
+    \]
+    Аналогично $\displaystyle\int_{-R}^R g_n(x) \rho_X(x) \dd x \to \int_{-R}^R f(x) \rho_X(x) \dd x$, откуда получаем равенство
+    \[
+        \mathbb{E}[f(X) I_{\{-R \leqslant X \leqslant R\}}] = \int_{-R}^R f(x)\rho_X(x) \dd x.
+    \]
+    Достаточно доказать исходное утверждение для неотрицательных функций $f$, для которых оно теперь следует из леммы \ref{key-lemma}.
+\end{proof}
+
+\sectionbreak
+\subsection{Математическое ожидание произведения независимых случайных величин}
+
+\begin{proposal*}
+    Пусть $X, Y$ --- независимые случайные величины, имеющие математическое ожидание.
+    Тогда $X \cdot Y$ также обладает математическим ожиданием и
+    \[
+        \mathbb{E}[X\cdot Y] = [\mathbb{E}X]\cdot[\mathbb{E}Y].
+    \]
+\end{proposal*}
+
+\begin{proof}
+    Заметим, что
+    \[
+        X \cdot Y = (X^+ - X^-)(Y^+ - Y^-) = X^+ Y^+ + X^-Y^- - X^+ Y^- - X^-Y^+.
+    \]
+    Таким образом, достаточно доказать утверждение только для неотрицательных $X, Y$.
+    Если $X, Y$ ограничены, $\abs{X} < R$, $\abs{Y} < R$, то рассмотрим
+    \[
+        X_n(\omega) := \sum_{j = 1}^{n}(-R + \tfrac{2R}{n}(k - 1)) I_{\{ \omega \mid -R + \frac{2R}{n}(k - 1) \leqslant X(\omega) < -R + \frac{2R}{n} k\}},
+    \]
+    \[
+        Y_n(\omega) := \sum_{j = 1}^{n}(-R + \tfrac{2R}{n}(k - 1)) I_{\{\omega \mid -R + \frac{2R}{n}(k - 1) \leqslant Y(\omega) < -R + \frac{2R}{n} k\}}.
+    \]
+    Т.к. $X_n$ имеет вид $f_n(X)$, а $Y_n$ имеет вид $f_n(Y)$ для некоторой функции $f_n$, то $X_n$ и $Y_n$ также независимы.
+    Кроме того, $X_n \rightrightarrows X$, $Y_n \rightrightarrows Y$.
+    Поэтому
+    \[
+        [\mathbb{E} X] \cdot [\mathbb{E} Y] = \lim\limits_{n \to \infty}[\mathbb{E} X_n] \cdot [\mathbb{E} Y_n]
+     = \lim\limits_{n \to \infty}\mathbb{E}[X_n \cdot Y_n] = \mathbb{E}[X \cdot Y].
+    \]
+    Для общих неотрицательных независимых $X$ и $Y$, рассмотрим независимые ограниченные случайные величины $X I_{\{\abs{X} < R\}}$ и $Y I_{\{\abs{Y} < R\}}$.
+    Тогда
+    \[
+        \mathbb{E}[X I_{\{\abs{X} < R\}} \cdot Y I_{\{\abs{Y} < R\}}] = \mathbb{E}[X I_{\{\abs{X} < R\}}] \cdot \mathbb{E}[Y I_{\{\abs{Y} < R\}}].
+    \]
+    Утверждение теперь следует из леммы \ref{key-lemma}.
+\end{proof}
+
+\sectionbreak
+\subsection{Дисперсия, ковариация, коэффициент корреляции и их свойства}
+
+\begin{definition*}
+    {\it Дисперсией} случайной величины $X$ называется число $\mathbb{D}X = \mathbb{E}(X - \mathbb{E}X)^2$.
+\end{definition*}
+
+\begin{definition*}
+    {\it Ковариацией} пары случайных величин $X, Y$ называется число $\operatorname{cov}(X, Y) = \mathbb{E} \left( (X - \mathbb{E}X)(Y - \mathbb{E}Y) \right)$.
+\end{definition*}
+
+\begin{definition*}
+    {\it Коэффициентом корреляции} называется величина $\rho(X, Y) = \dfrac{\mathrm{cov}(X, Y)}{\sqrt{\mathbb{D}X} \sqrt{\mathbb{D}Y}}$.
+\end{definition*}
+
+\begin{theorem*}[Свойства дисперсии]~
+    \begin{enumerate}
+        \item Если $\mathbb{D}X = 0$, то $X = \mathbb{E}X$ почти наверное;
+        \item Для произвольных чисел $\alpha, \beta$ верно $\mathbb{D}(\alpha X + \beta) = \alpha^2 \mathbb{D}X$;
+        \item Если $X$ и $Y$ независимы, то $\mathrm{cov}(X, Y) = 0$ и $\mathbb{D}(X + Y) = \mathbb{D}X + \mathbb{D}Y$.
+    \end{enumerate}
+\end{theorem*}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Исходя из свойства (3) мат. ожидания неотрицательной случайной величины с нулевым мат. ожиданием, $(X - \mathbb{E}X)^2 = 0 \implies X = \mathbb{E}X$ почти наверное;
+        \item Исходит из линейности математического ожидания;
+        \item Так как $\operatorname{cov}(X, Y) = \mathbb{E}(XY) - (\mathbb{E}X)(\mathbb{E}Y)$, то из независимости $X$ и $Y$ следует $\operatorname{cov}(X, Y) = (\mathbb{E}X)(\mathbb{E}Y) - (\mathbb{E}X)(\mathbb{E}Y) = 0$.
+        Поэтому, $\mathbb{D}(X + Y) = \mathbb{D}X + 2 \mathrm{\mathrm{cov}}(X, Y) + \mathbb{D}Y  = \mathbb{D}X + \mathbb{D}Y$. \qedhere
+    \end{enumerate}
+\end{proof}
+
+\sectionbreak
+\subsection{Неравенство Чебышева}
+
+\begin{proposal*}
+    Пусть у неотрицательной случайной величины $X$ определено математическое ожидание.
+    Тогда $P(X \geqslant t) \leqslant \frac{\mathbb{E}X}{t}$ для каждого $t > 0$.
+    Пусть у случайной величины $X$ конечный второй момент, т.е. $\mathbb{E}X^2 < \infty$.
+    Тогда
+    \[
+        P(\abs{X - \mathbb{E}X} \geqslant \varepsilon) \leqslant \varepsilon^{-2} \mathbb{D}X.
+    \]
+\end{proposal*}
+
+\begin{proof}
+    Заметим, что $t \cdot I_{\{X \geqslant t\}} \leqslant X$, поэтому
+    \[
+        t P(X \geqslant t) = \mathbb{E}[t \cdot I_{\{X \geqslant t\}}] \leqslant \mathbb{E}X.
+    \]
+    Второе неравенство обосновывается рассмотрением случайной величины $\abs{X-\mathbb{E}X}^2$ и применением первого неравенства.
+\end{proof}

@@ -1,3 +1,174 @@
 \ProvidesFile{quest-11.tex}[Билет 11]
 
 \section{Билет 11}
+
+\begin{center}
+    \it Математическое ожидание в общем случае: построение математического ожидания для ограниченных, неотрицательных и общих случайных величин.
+    Корректность определений и основные свойства (линейность, монотонность, равенство нулю неотрицательной случайной величины с нулевым ожиданием, ожидание модуля случайной величины).
+\end{center}
+
+\sectionbreak
+\subsection{Математическое ожидание в общем случае}
+
+\begin{definition*}
+    Случайные величины с конечным числом значений будем называть {\it простыми}.
+\end{definition*}
+
+\begin{definition*}
+    Пусть $X$ --- простая случайная величина на $(\Omega, \mathcal{A}, P)$, принимающая конечное число значений $\{x_1, \ldots, x_N\}$.
+    Тогда по определению полагаем, что $\mathbb{E} X := \sum\limits_{j = 1}^{N} x_j P(X = x_j)$.
+\end{definition*}
+
+% \paragraph*{Свойства матожидания простой случайной величины}
+% При построении математического ожидания для случайных величин на дискретных вероятностных пространствах и при доказательстве свойств математического ожидания для таких случайных величин
+% использовалось лишь то, что случайные величины принимают не более чем счетное число значений.
+% Таким образом, для простых случайных величин $X, Y$ на общих вероятностных
+% пространствах справедливы все те же самые
+% свойства математического ожидания:
+
+% \begin{enumerate}
+%     \item $\mathbb{E}(\alpha X + \beta Y) = \alpha\mathbb{E} X + \beta\mathbb{E} Y$;
+%     \item Если $X \geqslant 0$ п.н., то $\mathbb{E} X \geqslant 0$, в частности, если $X \geqslant Y$ п.н., то $\mathbb{E} X \geqslant \mathbb{E} Y$;
+%     \item Если $X \geqslant 0$ почти наверное и $\mathbb{E}X = 0$, то $X = 0$ почти наверное;
+%     \item $\abs{\mathbb{E} X} \leqslant \mathbb{E} \abs{X}$;
+%     \item Если случайные величины $X$ и $Y$ независимы и существуют математические ожидания $\mathbb{E} X$ и $\mathbb{E} Y$, то $\mathbb{E}[X \cdot Y] = [\mathbb{E} X] \cdot [\mathbb{E} Y]$;
+%     \item $\mathbb{E} \varphi(X) = \sum\limits_{j = 1}^N \varphi(x_j) P(X = x_j)$.
+% \end{enumerate}
+
+\begin{definition*}
+    Пусть $X$ --- ограниченная случайная величина, тогда ее {\it математическим ожиданием} называют предел $\lim\limits_{n \to \infty}\mathbb{E} X_n$ математических ожиданий произвольной последовательности простых случайных величин $X_n$, равномерно сходящейся к $X$.
+\end{definition*}
+
+\begin{definition*}
+    Пусть $X \geqslant 0$ --- неотрицательная случайная величина.
+    Скажем, что у нее есть конечное математическое ожидание, если конечен следующий супремум
+    \[
+        \mathbb{E} X := \sup\{\mathbb{E} U \mid 0 \leqslant U \leqslant X;~ U \text{--- ограниченная}\}.
+    \]
+\end{definition*}
+
+\begin{definition*}
+    Пусть $X$ --- случайная величина и пусть $X^+ := \max\{X, 0\} \geqslant 0$, $X^- := \max\{-X, 0\} \geqslant 0$ (в частности, $X = X^+ - X^-$).
+    Скажем, что $X$ обладает математическим ожиданием, если $X^+$ и $X^-$ имеют конечные математические ожидания.
+    В этом случае определим математическое ожидание $X$ равенством:
+    \[
+        \mathbb{E} X := \mathbb{E}X^+ - \mathbb{E}X^-.
+    \]
+\end{definition*}
+
+\sectionbreak
+\subsection{Корректность определений и основные свойства}
+
+\begin{lemma*}
+    Пусть $X$ --- ограниченная случайная величина.
+    Тогда найдется последовательность простых случайных величин $X_n$, равномерно сходящаяся к $X$.
+\end{lemma*}
+
+\begin{proof}
+    Пусть $\abs{X(\omega)} < R$ для каждого $\omega \in \Omega$.
+    Рассмотрим случайную величину\footnote{Мы поделили $[-R, R - \frac{2R}{n}]$ на $n$ частей и представили $X$ в виде взвешенной суммы индикаторов попадания в подотрезки.}
+    \[
+        X_n(\omega) := \sum_{j = 1}^{n}(-R + \tfrac{2R}{n}(k - 1)) I_{\{\omega \mid -R + \frac{2R}{n}(k - 1) \leqslant X(\omega)< -R + \frac{2R}{n} k\}}.
+    \]
+    Возьмем теперь произвольный элемент $\omega_0 \in \Omega$.
+    Тогда, т.к. $\abs{X(\omega_0)} < R$, то найдется\footnote{Тут мы пользуемся \enquote{взвешеностью} с.в., чтобы получить ограничение на область ее значений.} число $k_0 \in \{1, \ldots, n \}$, для которого $-R + \frac{2R}{n}(k_0 - 1) \leqslant X(\omega_0) < -R + \frac{2R}{n} k_0$.
+    Таким образом
+    \[
+        \abs{X(\omega_0) - X_n(\omega_0)} \leqslant \frac{2R}{n} = \varepsilon.
+    \]
+\end{proof}
+
+\begin{proposal*}
+    Определение матожидания неотрицательной случайной величины корректно в том смысле, что для произвольной ограниченной случайной величины $X$ и для произвольной последовательности простых случайных величин $X_n$, равномерно сходящейся к $X$, существует предел $\lim\limits_{n \to \infty} \mathbb{E} X_n$.
+    Кроме того, для произвольной другой последовательности простых случайных величин $Y_n$, равномерно сходящейся к $X$, выполнено
+    \[
+        \lim\limits_{n \to \infty}\mathbb{E} Y_n = \lim\limits_{n \to \infty}\mathbb{E} X_n.
+    \]
+\end{proposal*}
+
+\begin{proof}
+    Заметим что,
+    \[
+        \abs{\mathbb{E} X_n - \mathbb{E} X_k} \leqslant \mathbb{E}\abs{X_n - X_k} \leqslant \sup\limits_{\omega \in \Omega}\abs{X_n(\omega) - X_k(\omega)}.
+    \]
+    Тем самым, последовательность $\{\mathbb{E}X_n\}$ фундаментальна, а значит сходится. Если $Y_n$ другая последовательность простых случайных величин, равномерно сходящаяся к $X$, то последовательность $Z_m$, для которой $Z_{2k - 1} := X_k$, $Z_{2k} := Y_k$, также образует последовательность простых случайных величин, равномерно сходящуюся к $X$.
+    Тогда последовательность чисел $\mathbb{E}Z_m$ сходится, а значит $\lim\limits_{n \to \infty}\mathbb{E} Y_n = \lim\limits_{n \to \infty}\mathbb{E} X_n$, как пределы двух подпоследователностей сходящейся последовательности чисел.
+\end{proof}
+
+\begin{proposal*}
+    Для ограниченных случайных величин $X, Y$ выполнены свойства:
+    \begin{enumerate}
+        \item $\mathbb{E}(\alpha X+\beta Y)=\alpha\mathbb{E}X+\beta\mathbb{E}Y$;
+        \item Если $X \geqslant 0$ п.н., то $\mathbb{E} X \geqslant 0$, в частности, если $X \geqslant Y$ п.н., то $\mathbb{E} X \geqslant \mathbb{E} Y$.
+    \end{enumerate}
+\end{proposal*}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Если $X_n \rightrightarrows X$, $Y_n \rightrightarrows Y$, $X_n, Y_n$ --- простые, то $\alpha X_n + \beta Y_n \rightrightarrows \alpha X + \beta Y$.
+        Отсюда
+        \[
+            \mathbb{E}(\alpha X + \beta Y) = \lim\limits_{n \to \infty}\mathbb{E}(\alpha X_n + \beta Y_n) = \lim\limits_{n \to \infty}(\alpha \mathbb{E} X_n + \beta \mathbb{E} Y_n) = \alpha \mathbb{E} X + \beta \mathbb{E} Y.
+        \]
+        \item Пусть сначала $X_n(\omega) \geqslant 0$ для каждой $\omega \in \Omega$.
+        Пусть $X_n$ --- последовательность простых случайных величн, равномерно сходящаяся к $\sqrt{X}$.
+        Тогда $X_n^2 \rightrightarrows X$, откуда $\mathbb{E}X = \lim\limits_{n \to \infty}\mathbb{E}X_n^2 \geqslant 0$.
+        Теперь, для произвольного $X \geqslant 0$ п.н., выполнено $\mathbb{E}X = \mathbb{E}[X I_{\{x \geqslant 0\}}] + \mathbb{E}[X I_{\{X < 0\}}]$.
+        Покажем, что $\mathbb{E}[X I_{\{X < 0\}}] = 0$.
+        По доказанному $\mathbb{E}[-X I_{\{ X < 0 \}}] \geqslant 0$ и $\mathbb{E}[(M + X) I_{\{X < 0\}}] \geqslant 0$, где $M = \sup\limits_{\omega \in \Omega}|X(\omega)|$.
+        Таким образом, $0 \leqslant \mathbb{E}[-X I_{\{ X < 0 \}}] \leqslant M P(X < 0) = 0$.
+        В случае, когда $X \geqslant Y$ п.н., получаем, что $X - Y \geqslant 0$ п.н. и $\mathbb{E}X - \mathbb{E}Y = \mathbb{E}(X - Y) \geqslant 0$.
+    \end{enumerate}
+\end{proof}
+
+
+\begin{proposal*}
+    Для неотрицательных случайных величин $X, Y$ выполнены свойства:
+    \begin{enumerate}
+        \item $\mathbb{E}(\alpha X + \beta Y) = \alpha\mathbb{E} X + \beta\mathbb{E} Y$, если $\alpha, \beta \geqslant 0$;
+        \item Если $X \geqslant Y \geqslant 0$, то $\mathbb{E} X \geqslant \mathbb{E} Y$, в частности, если $X$ имеет конечное математическое ожидание, то и $Y$ также имеет конечное математическое ожидание;
+        \item Если $X = 0$ п.н., то $\mathbb{E}X = 0$.
+    \end{enumerate}
+\end{proposal*}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Достаточно доказать утверждение при $\alpha = \beta = 1$.
+        Если $0 \leqslant U \leqslant X$, $0 \leqslant V \leqslant Y$, $U, V$ --- ограниченные, то $U + V \leqslant X + Y$, откуда $\mathbb{E} X + \mathbb{E} Y \leqslant \mathbb{E}(X + Y)$.
+        Наоборот, пусть $0 \leqslant Z \leqslant X + Y$, $Z$ --- ограниченная случайная величина.
+        Пусть $U := \min(X, Z)$, $V := Z - U$.
+        Тогда $0 \leqslant U \leqslant X$, $U$ --- ограниченная, $V = (Z - X) I_{\{ X < Z \}} \leqslant X + Y - X = Y$, $V$ --- ограниченная.
+        Таким образом, $\mathbb{E} Z = \mathbb{E}(U + V) = \mathbb{E} U + \mathbb{E} V \leqslant \mathbb{E} X + \mathbb{E} Y$.
+        А значит аналогичная оценка верна и для $\mathbb{E}(X + Y)$.
+        \item Следует из определния;
+        \item Произвольная ограниченная случайная величина $U$, $0\le U\le X$, также обращается в нуль п.н.
+        Поэтому $\mathbb{E} U = \mathbb{E}[UI_{\{ U \neq 0 \}}] \leqslant [\sup U] P(U \neq 0) = 0$.
+    \end{enumerate}
+\end{proof}
+
+\begin{proposal*}
+    Для случайных величин $X, Y$, обладающих математическим ожиданием,
+    выполнены свойства:
+    \begin{enumerate}
+        \item $\mathbb{E}(\alpha X+\beta Y)=\alpha\mathbb{E}X+\beta\mathbb{E}Y$;
+        \item Если $X \geqslant 0$ почти наверное, то $\mathbb{E}X\ge 0$, в частности, если $X \geqslant Y$, то $\mathbb{E} X \geqslant \mathbb{E} Y$;
+        \item Если $X \geqslant 0$ почти наверное и $\mathbb{E}X = 0$, то $X = 0$ почти наверное;
+        \item $\abs{\mathbb{E} X} \leqslant \mathbb{E} \abs{X}$.
+    \end{enumerate}
+\end{proposal*}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Заметим, что $\mathbb{E}[-X] = -\mathbb{E}X$, т.к. для произвольного представления $X = U - V$, $U, V \geqslant 0$, выполнено $-X = V - U$, откуда $\mathbb{E}[-X] = \mathbb{E}V -\mathbb{E}U = -(\mathbb{E}U -\mathbb{E}V) = -\mathbb{E}X$.
+        Тогда достаточно доказать линейность только в случае $\alpha, \beta \geqslant 0$.
+        В этом случае $\alpha X + \beta Y = \alpha X^+ + \beta Y^+ - (\alpha X^- + \beta Y^-)$, причем $\alpha X^+ + \beta Y^+ \geqslant 0$ и $\alpha X^- + \beta Y^- \geqslant 0$.
+        Поэтому
+        \begin{multline*}
+            \mathbb{E}(\alpha X + \beta Y) = \mathbb{E}(\alpha X^+ + \beta Y^+) - \mathbb{E}(\alpha X^- + \beta Y^-) = \alpha \mathbb{E}X^+ + \beta \mathbb{E}Y^+ - \alpha \mathbb{E}X^- - \beta \mathbb{E} Y^- \\
+            = \alpha(\mathbb{E}X^+ - \mathbb{E}X^-) + \beta(\mathbb{E}Y^+ - \mathbb{E}\beta Y^-) = \alpha\mathbb{E}X + \beta\mathbb{E}Y.
+        \end{multline*}
+        \item В этом случае $X^- = 0$ п.в., а значит и $\mathbb{E}X^- = 0$. Таким образом, $\mathbb{E}X = \mathbb{E}X^+ \geqslant 0$.
+        \item Заметим, что $k^{-1} P(X \geqslant k^{-1}) = \mathbb{E}[k^{-1} I_{\{X \geqslant k^{-1} \}}] \leqslant \mathbb{E}X = 0$, откуда получаем, что $P(X > 0) = P(\bigcup\limits_{k = 1}^\infty \{X \geqslant k^{-1}\}) \leqslant \sum\limits_{k = 1}^\infty P(X\geqslant k^{-1}) = 0$.
+        \item Заметим, что $-\abs{X} \leqslant X \leqslant \abs{X}$, откуда по свойствам $(2)$ и $(1)$ получаем, неравенства $-\mathbb{E}\abs{X} \leqslant \mathbb{E} X \leqslant \mathbb{E}\abs{X}$.
+    \end{enumerate}
+\end{proof}
