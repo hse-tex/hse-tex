@@ -61,6 +61,7 @@
 
 - [Коллоквиум I](https://hse-tex.me/course-2/probability-theory-colloquium-1.pdf)
 - [Коллоквиум II](https://hse-tex.me/course-2/probability-theory-colloquium-2.pdf)
+- [Коллоквиум II [первые 5 билетов, альтернативная версия]](https://hse-tex.me/course-2/probability-theory-colloquium-2-alternative.pdf)
 
 # Благодарность
 
@@ -85,6 +86,7 @@
 - [Сергей Рахманов](https://github.com/shoraii)
 - [Сергей Пилипенко](https://github.com/territhing)
 - [Болонин Денис](https://github.com/BoloniniD)
+- Егор Гутров
 
 
 Не стесняйтесь добавлять себя в этот список в pull request'ах.
