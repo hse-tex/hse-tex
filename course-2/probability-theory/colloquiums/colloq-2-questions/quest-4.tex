@@ -84,7 +84,16 @@
     Тогда
     \begin{enumerate}
         \item Если $A_n \in \mathcal{A}$, $A_{n + 1} \subset A_n$ и $A = \bigcap\limits_{n = 1}^\infty A_n$, то $\lim\limits_{n \to \infty} P(A_n) = P(A)$;
+        \begin{proof}
+            Рассмотрим $A_n' = A_n \setminus A$. Очевидно, $\bigcap\limits_{i=1}^{\infty} A_i' = \varnothing \implies \lim\limits_{n \to \infty} P(A_n') = 0$. В то же время $P(A_n) = P(A_n' \sqcup A) = P(A_n') + P(A)$. Значит, $\lim\limits_{n \to \infty} P(A_n) = P(A)$
+        \end{proof}
         \item Если $A_n \in \mathcal{A}$, $A_n \subset A_{n + 1}$ и $A = \bigcup\limits_{n = 1}^\infty A_n$, то $\lim\limits_{n \to \infty} P(A_n) = P(A)$.
+        \begin{proof}
+            Рассмотрим $A_n' = \Omega \setminus A_n$. Тогда $\bigcap\limits_{i=1}^{\infty} A_n' = \Omega \setminus A$. По п. 1:
+            \[
+                1 - P(A) = P(\Omega \setminus A) = P\left(\bigcap\limits_{i=1}^{\infty} A_n'\right) = \lim\limits_{n \to \infty} P(A_n') = \lim\limits_{n \to \infty}P(\Omega \setminus A_n) = 1 - \lim\limits_{n \to \infty}P(A_n)
+            \]
+        \end{proof}
     \end{enumerate}
 \end{corollary*}
 
