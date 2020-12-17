@@ -23,6 +23,47 @@
         \end{equation*}
     \end{enumerate}
     Значит, $\nu$~--- мера.
-
+\end{proof}
     
+Пусть $U, X \subset \RR^m$, $\varphi:U \to X$~--- диффеоморфизм. Пусть $A$~--- жорданово, $A \subseteq U$. Рассмотрим меру $\nu(A) = \mu(\varphi(A))$. 
+
+\begin{proposition*}
+    $\nu$ имеет плотность, равную $\lvert J_\varphi \rvert$.
+\end{proposition*}
+
+\begin{proof}
+    Воспользуемся тем, что $\varphi$ непрерывно дифференцируемо, то есть имеет непрерывные частные производные и напишем разложение по формуле Тейлора (первого порядка) в окрестности любой точки $u^0$:
+    \begin{equation*}
+        x-x^0 = \frac{\partial x}{\partial u}\Bigg|_{u^0} \cdot (u - u^0) + o(\lvert du \rvert), \hspace{2em} du = u-u^0,\ x^0 = \varphi(u^0),\ x = \varphi(u)
+    \end{equation*}
+
+    Посмотрим, как действует линейное отображение (предполагаем, что $o(|du|)$ мало) на простые множества~--- объединения дизъюнктных параллелепипедов. Пусть $P$~--- прямоугольный параллелепипед $\subset U$ и $P = p_1 \times p_2 \times \dots \times p_m$.
+
+    Под действием преобразования $U \mapsto \frac{\partial x}{\partial u} \Bigg|_{u^0} \cdot (u - u^0)$ $P$ перейдёт в (необязательно прямоугольный) параллелепипед объёма (пользуемся геометрическим смыслом определителя):
+    \begin{equation*}
+        \left\lvert \det \frac{\partial x}{ \partial u} \Bigg|_{u^0} \right\rvert \cdot p_1 \cdot \dots \cdot p_m = \left\lvert J_\varphi(u^0) \right\rvert \cdot \mu(P)
+    \end{equation*}
+
+    Теперь разберёмся с $o(|du|)$. По определению:
+    \begin{equation*}
+        \forall \varepsilon > 0 \exists \delta > 0 : \lvert o(\lvert du \rvert) \leq \varepsilon \cdot \lvert du \rvert \text{ если только } \lvert u - u^0 \rvert < \delta
+    \end{equation*}
+    Если $P$ находится в $\delta$-окрестности точки $u^0$, то
+    \begin{equation*}
+        (1 - \varepsilon)^m \cdot \lvert J_\varphi(u^0) \rvert \cdot \mu(P) \leq \nu(P) \leq (1 + \varepsilon)^m \cdot \lvert J_\varphi(u^0) \rvert \cdot \mu(P)
+    \end{equation*}
+    Простое множество~--- это $\sqcup P_i = F \subset \delta$-окрестности точки $u^0$.
+    \begin{align*}
+        &(1 - \varepsilon)^m \cdot \lvert J_\varphi(u^0) \rvert \cdot \mu(P_i) \leq \nu(P_i) \leq (1 + \varepsilon)^m \cdot \lvert J_\varphi(u^0) \rvert \cdot \mu(P_i) \hspace{2em} \Bigg| \sum_i\\[1em]
+        &(1 - \varepsilon)^m \cdot \lvert J_\varphi(u^0) \rvert \cdot \mu(F) \leq \nu(F) \leq (1 + \varepsilon)^m \cdot \lvert J_\varphi(u^0) \rvert \cdot \mu(F)
+    \end{align*}
+    Измеримое множество $G \subset \delta$-окрестности точки $u^0$ сколь угодно точно приближается простыми, то есть
+    \begin{align*}
+        &\exists F: (1 - \varepsilon) \cdot \mu(F) \leq \mu(G) \leq (1 + \varepsilon) \cdot \mu(F) \implies\\
+        &\implies (1 - \varepsilon)^{m + 1} \cdot \lvert J_\varphi(u^0) \rvert \cdot \mu(G) \leq \nu(G) \leq (1 + \varepsilon)^{m + 1} \cdot \lvert J_\varphi(u^0) \rvert \cdot \mu(G)
+    \end{align*}
+    Поэтому, если измеримое множество $A$ стягивается к точке $u^0$, то 
+    \begin{equation*}
+        \frac{\nu(A)}{\mu(A)} \to \lvert J_\varphi(u^0) \rvert
+    \end{equation*}
 \end{proof}
