@@ -4,5 +4,31 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\subsection{}
+\subsection*{1. Что такое кольцо множеств? Дайте определение меры на кольце.}
+    
+    \begin{definition}[Маевский]
+        Множество $\mathcal{F}$ называется кольцом, если:\\[-25 pt]
+        \begin{enumerate}
+            \item $\forall A \in \mathcal{F} : \varnothing \in A$;
+            \item $\forall A,  B \in \mathcal{F} : A \cup B, A \cap B, A \setminus B \in \mathcal{F}$.
+        \end{enumerate}
+    \end{definition}
 
+    \begin{definition}
+        Пусть $\mathcal{F}$ --- некоторое семейство подмножеств множества $X$, 
+        т.е $\mathcal{F} \subseteq 2^X$.
+        
+        Функция $\mu : \mathcal{F} \to [0; +\infty)$ называется мерой на $\mathcal{F}$, 
+        если она обладает свойством аддитивности:
+        \[ \mu(A \sqcup B) = \mu(A) + \mu(B), \]
+        где $\sqcup$ --- операция объединения непересекающихся (дизъюнктных) множеств.
+    \end{definition}
+        
+    \begin{properties}
+        Если $\mu$ --- мера на кольце множеств $\mathcal{F}$ и $A, B \in \mathcal{F}$, то:\\[-25 pt]
+        \begin{enumerate}
+            \item $\mu(\varnothing) = 0$;
+            \item $A \subseteq B \implies \mu(A) \le \mu(B)$ (монотонность);
+            \item $\mu(A \cup B) = \mu(A) + \mu(B) - \mu(A \cap B)$ (ФВИ).
+        \end{enumerate}
+    \end{properties}
