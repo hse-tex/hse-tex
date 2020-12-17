@@ -4,5 +4,36 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\subsection{}
+\subsection{Сформулируйте и докажите формулы включения-исключения для 2-х и 3-х множеств.}
 
+    Если $\mu : \mathcal{F} \to [0; +\infty)$ --- мера на кольце $\mathcal{F}$, 
+    то верна формула включения-исключения:
+    \[ \mu(A \cup B) = \mu(A) + \mu(B) - \mu(A \cap B) \]
+    \begin{proof}
+        Покажем сначала, что $\mu(A \setminus B) = \mu(A) - \mu(A \cap B)$:
+        \[ A = (A \setminus B) \sqcup (A \cap B) \implies \mu(A) = \mu(A \setminus B) + \mu(A \cap B) \; 
+        \Leftrightarrow \; \mu(A \setminus B) = \mu(A) - \mu(A \cap B) \]
+        
+        При этом: 
+        \begin{align*}
+            & A \cup B = (A \setminus B) \sqcup (B \setminus A) \sqcup (A \cap B) \implies \\[5 pt]
+            & \implies \mu(A \cup B)
+            = \mu((A \setminus B) \sqcup (B \setminus A) \sqcup (A \cap B)) = \\[5 pt]
+            & = \mu(A \setminus B) + \mu(B \setminus A) + \mu(A \cap B) = \\[5 pt]
+            & = \mu(A) - \mu(A \cap B) + \mu(B) - \mu(A \cap B) + \mu(A \cap B) = \\[5 pt]
+            & = \mu(A) + \mu(B) - \mu(A \cap B), \text{что и требовалось доказать.}
+        \end{align*}
+        
+        Для трех множеств:
+        \begin{align*}
+            & A \cup B \cup C = (A \cup B) \cup C \implies \mu(A \cup B \cup C)
+            = \mu((A \cup B) \cup C) = \\[5 pt]
+            & = \mu(A \cup B) + \mu(C) - \mu((A \cup B) \cap C)
+            = \mu(A \cup B) + \mu(C) - \mu((A \cap C) \cup (B \cap C)) = \\[5 pt]
+            & = \mu(A) + \mu(B) - \mu(A \cap B) + \mu(C)
+            - (\mu(A \cap C) + \mu(B \cap C) - \mu((A \cap C) \cap (B \cap C)) = \\[5 pt]
+            & = \mu(A) + \mu(B) + \mu(C) - \mu(A \cap B) - \mu(A \cap C) - \mu(B \cap C)
+            + \mu(A \cap B \cap C)
+        \end{align*}
+    \end{proof}
+    
