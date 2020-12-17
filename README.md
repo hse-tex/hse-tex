@@ -105,9 +105,13 @@
     ```
 
     Было
+    <br/><br/>
     ![Красные ссылки](https://i.imgur.com/nVDsk2t.png)
+    <br/><br/>
     Стало
+    <br/><br/>
     ![Синие ссылки](https://i.imgur.com/hcgLZiC.png)
+
 
 - Старайтесь не писать много операторов подряд без пробельных символов, чтобы TeX читался лучше.
     Например, вместо `F\simeq\FF_{p^m}\implies\RR^n\simeqS` лучше написать `F \simeq \FF_{p^m} \implies \RR^n \simeq S`.
