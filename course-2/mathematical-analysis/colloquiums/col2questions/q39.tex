@@ -4,5 +4,19 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\subsection{}
-
+\subsection*{39. Сформулируйте теорему (Фубини) о сведении интеграла по декартову произведению жордановых множеств к повторному интегралу.}
+    \begin{theorem}[Фубини]
+        $f : G \times H \to \mathbb{R} \; (G \subset \mathbb{R}^k, \, H \subset \mathbb{R}^l)$
+        --- ограничена и интегрируема.
+        
+        Её интегральная сумма: $\sum\limits_{i, j} f(\xi_i, \eta_j) \cdot \mu(G_i \times H_j) \implies 
+        \hspace{50 pt} (\xi_i \in G_i, \, \eta_j \in H_j) \\
+        \underset{\Delta \to 0}{\implies} \int\limits_{G \times H} f(w)\, dw = \iint\limits_{G \times H}
+        f(x, y)\, dxdy \hspace{50 pt} (w = (x, y),\, x \in G,\, y \in H)$
+        
+        Пусть $f(x, y)$ интегрируема по $x \; \forall y \in H$. Положим $g(y) = \int\limits_G f(x, y)\, dx$.
+        
+        Тогда $g$ интегрируема на $H$ и 
+        \[ \iint\limits_{G \times H} f(x, y)\, dxdy = \int\limits_H g(y)\, dy
+        = \int\limits_H dy \left( \int\limits_G f(x, y)\, dx \right) \]
+    \end{theorem}
