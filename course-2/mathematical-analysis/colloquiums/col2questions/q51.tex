@@ -4,5 +4,43 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\subsection{}
+\subsection{Сформулируйте и докажите теорему о замене переменных в кратном интеграле}
 
+Так как плотность меры $\nu$, равная $|J_\varphi(u)|$, непрерывна, то
+\begin{equation*}
+    \nu(A) = \int_A |J_\varphi(u)| du
+\end{equation*}
+
+\begin{theorem*}[о замене переменных в кратном интеграле]
+    Пусть функция $f$ ограничена и интегрируема на замкнутом связном жордановом множестве $D$; $\varphi$~--- диффеоморфизм, $\varphi: G \to D$, $\varphi(G) = D$. Тогда $f(\varphi(u)) \cdot |J_\varphi(u)|$ интегрируема на $G$, причём 
+    \begin{equation*}
+        \int_D f(x)dx = \int_G f(\varphi(u)) \cdot |J_\varphi(u)| \cdot du
+    \end{equation*}
+\end{theorem*}
+\begin{proof}
+    Рассмотрим разбиение множества $G = \bigsqcup G_i$, $D_i = \varphi(G_i)$, $D = \bigsqcup D_i$. 
+
+    \begin{equation*}
+        \mu(D_i) = \mu(\varphi(G_i)) = \nu(G_i) = \int_{G_i} |J_\varphi(u)| du
+    \end{equation*}
+    По теореме о среднем:
+    \begin{equation*}
+        \exists \eta_i \in \overline{G_i}: \nu(G_i) = |J_\varphi(\eta_i)| \cdot \mu(G_i)
+    \end{equation*}
+    Обозначим $\xi_i = \varphi(\eta_i) \in \overline{D_i}$.
+    \begin{equation*}
+        \sum f(\xi_i) \cdot \mu(D_i) = \sum f(\xi_i) \cdot |J_\varphi(\eta_i)| \cdot \mu(G_i) = \sum f(\varphi(\eta_i)) \cdot |J_\varphi(\eta_i)| \cdot \mu(G_i).
+    \end{equation*}
+    Так как $f \in \mathcal{R}(D)$, то 
+    \begin{equation*}
+        \sum f(\xi_i) \cdot \mu(D_i) \to \int_D f(x) dx
+    \end{equation*}
+    $\sum f(\varphi(\eta_i)) \cdot |J_\varphi(\eta_i)| \cdot \mu(G_i)$~--- в точности интегральная сумма для функции $f(\varphi(u)) \cdot |J_\varphi(u)|$, следовательно
+    \begin{equation*}
+        \sum f(\varphi(\eta_i)) \cdot |J_\varphi(\eta_i)| \cdot \mu(G_i) \to \int_G f(\varphi(u)) \cdot |J_\varphi(u)| du
+    \end{equation*}
+    Но $\sum f(\xi_i) \cdot \mu(D_i) = \sum f(\varphi(\eta_i)) \cdot |J_\varphi(\eta_i)| \cdot \mu(G_i)$, а значит,
+    \begin{equation*}
+        \int_D f(x) dx = \int_G f(\varphi(u)) \cdot |J_\varphi(u)| du
+    \end{equation*}
+\end{proof}
