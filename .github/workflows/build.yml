@@ -1,9 +1,5 @@
 name: Build
-on:
-  push:
-    branches-ignore:
-      master
-  pull_request:
+on: pull_request
 
 jobs:
   build:
