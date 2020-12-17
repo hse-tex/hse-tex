@@ -4,5 +4,16 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\subsection{}
+\subsection{Сформулируйте и докажите свойство линейности интеграла}
+
+\textbf{\underline{Св-во:} } Из того, что $f, g \in \mathcal{R}(D)$ следует, что $f + g \in \mathcal{R}(D)$, причем 
+\[\int\limits_D(f(x) + g(x))dx = \int\limits_Df(x)dx + \int\limits_Dg(x)dx \]
+\textbf{\underline{Док-во:} } Рассмотрим интегральную сумму 
+\begin{multline*}
+    I_D(f + g, \tau, p) = \sum\limits_i(f + g)(\xi_i)\mu(D_i) = \sum\limits_if(\xi_i)\mu(D_i) + \sum\limits_ig(\xi_i)\mu(D_i) = \\ = I_D(f, \tau, p) + I_D(g, \tau, p)
+\end{multline*}
+Обе интегральные суммы имеют предел при $\Delta(\tau) \rightarrow 0$, а значит и интегральная сумма от $f + g$ имеет предел. Следовательно $f + g \in \mathcal{R}(D)$
+\begin{flushright}
+$\blacksquare$
+\end{flushright}
 
