@@ -89,7 +89,7 @@
 \begin{proof}
     Заметим что,
     \[
-        \abs{\mathbb{E} X_n - \mathbb{E} X_k} \leqslant \mathbb{E}\abs{X_n - X_k} \leqslant \sup\limits_{\omega \in \Omega}\abs{X_n(\omega) - X_k(\omega)}.
+        \abs{\mathbb{E} X_n - \mathbb{E} X_k} \leqslant \mathbb{E}\abs{X_n - X_k} \leqslant \sup\limits_{\omega \in \Omega}\abs{X_n(\omega) - X_k(\omega)} \leqslant \sup\limits_{\omega \in \Omega}\abs{X_n(\omega) - X(\omega)} + \sup\limits_{\omega \in \Omega}\abs{X(\omega) - X_k(\omega)}.
     \]
     Тем самым, последовательность $\{\mathbb{E}X_n\}$ фундаментальна, а значит сходится. Если $Y_n$ другая последовательность простых случайных величин, равномерно сходящаяся к $X$, то последовательность $Z_m$, для которой $Z_{2k - 1} := X_k$, $Z_{2k} := Y_k$, также образует последовательность простых случайных величин, равномерно сходящуюся к $X$.
     Тогда последовательность чисел $\mathbb{E}Z_m$ сходится, а значит $\lim\limits_{n \to \infty}\mathbb{E} Y_n = \lim\limits_{n \to \infty}\mathbb{E} X_n$, как пределы двух подпоследователностей сходящейся последовательности чисел.
