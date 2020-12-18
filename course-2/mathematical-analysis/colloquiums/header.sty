@@ -13,7 +13,8 @@
 \usepackage[inline]{enumitem}
 
 %%% Дополнительная работа с математикой
-\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage[intlimits]{amsmath}
+\usepackage{amsfonts,amssymb,amsthm,mathtools}
 \usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
 
 %% Номера формул
@@ -242,3 +243,9 @@
 
 % Большие знаки суммы
 \everymath{\displaystyle} % math everywhere
+
+% Убрать отступ первой строки нового абзаца
+\setlength{\parindent}{0em}
+
+% Межстрочное расстояние
+\renewcommand{\baselinestretch}{1.3}
