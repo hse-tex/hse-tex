@@ -4,4 +4,18 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\subsection{}
+\subsection{Выведите формулу для меры жорданова множества в криволинейных координатах}
+
+\begin{proposition*}
+    Так как плотность меры $\nu$, равная $|J_\varphi(u)|$, непрерывна, то
+    \begin{equation*}
+        \nu(A) = \int_A |J_\varphi(u)| du
+    \end{equation*}    
+\end{proposition*}
+\begin{proof}
+    Рассмотрим разбиение множества $G = \bigsqcup G_i$, $D_i = \varphi(G_i)$, $D = \bigsqcup D_i$. 
+
+    \begin{equation*}
+        \mu(D_i) = \mu(\varphi(G_i)) = \nu(G_i) = \int_{G_i} |J_\varphi(u)| du
+    \end{equation*}
+\end{proof}

@@ -6,11 +6,6 @@
 % Здесь формулировка билета
 \subsection{Сформулируйте и докажите теорему о замене переменных в кратном интеграле}
 
-Так как плотность меры $\nu$, равная $|J_\varphi(u)|$, непрерывна, то
-\begin{equation*}
-    \nu(A) = \int_A |J_\varphi(u)| du
-\end{equation*}
-
 \begin{theorem*}[о замене переменных в кратном интеграле]
     Пусть функция $f$ ограничена и интегрируема на замкнутом связном жордановом множестве $D$; $\varphi$~--- диффеоморфизм, $\varphi: G \to D$, $\varphi(G) = D$. Тогда $f(\varphi(u)) \cdot |J_\varphi(u)|$ интегрируема на $G$, причём 
     \begin{equation*}
@@ -20,9 +15,6 @@
 \begin{proof}
     Рассмотрим разбиение множества $G = \bigsqcup G_i$, $D_i = \varphi(G_i)$, $D = \bigsqcup D_i$. 
 
-    \begin{equation*}
-        \mu(D_i) = \mu(\varphi(G_i)) = \nu(G_i) = \int_{G_i} |J_\varphi(u)| du
-    \end{equation*}
     По теореме о среднем:
     \begin{equation*}
         \exists \eta_i \in \overline{G_i}: \nu(G_i) = |J_\varphi(\eta_i)| \cdot \mu(G_i)
