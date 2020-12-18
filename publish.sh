@@ -3,7 +3,7 @@ set -e
 
 function get_commit_message {
     if [[ -n "$GITHUB_SHA" ]]; then
-        echo $(git log --format=%B -n 1 $GITHUB_SHA)
+        git log --format=%B -1 $GITHUB_SHA
     else
         echo "pdf updates"
     fi
@@ -13,7 +13,10 @@ if [[ ! -d _gh_pages ]]; then
     git clone --branch gh-pages git@github.com:hse-tex/hse-tex.git _gh_pages
 fi
 
+echo "Getting commit message from commit $GITHUB_SHA"
 commit_message=$(get_commit_message)
+echo "Commit message is $commit_message"
+
 git rev-parse HEAD > _gh_pages/.git-revision
 
 pushd _gh_pages
@@ -30,6 +33,7 @@ if git diff --quiet; then
     git config user.name "$author"
     git config user.email "$author@users.noreply.github.com"
 
+    echo "Commiting with message $commit_message"
     git commit --allow-empty -m "$commit_message"
     git push origin gh-pages
 else
