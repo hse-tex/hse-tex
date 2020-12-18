@@ -4,5 +4,15 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\subsection{}
+\subsection{При каких значениях параметра p > 0 сходятся несобственные интегралы $\int\int_{x^2 + y^2 \leqslant 1}\frac{dxdy}{(x^2 + y^2)^p}$, $\int\int_{x^2 + y^2 \geqslant 1}\frac{dxdy}{(x^2 + y^2)^p}$}
+\[\int\int_{x^2 + y^2 \leqslant 1}\frac{dxdy}{(x^2 + y^2)^p}\]
+Перейдем к полярным координатам (см. вопрос 44)
+
+\[\int_{0}^{2\pi}d\phi\int_{0}^{1}\frac{dr}{r^{2p}} = 2\pi\cdot\int_{0}^{1}\frac{dr}{r^{2p - 1}}\]
+сходится при p < $1$
+
+\[\int\int_{x^2 + y^2 \geqslant 1}\frac{dxdy}{(x^2 + y^2)^p}\]
+
+\[\int_{0}^{2\pi}d\phi\int_{1}^{+\infty}\frac{dr}{r^{2p}} = 2\pi\cdot\int_{1}^{+\infty}\frac{dr}{r^{2p-1}}\]
+сходится при p $>1$
 
