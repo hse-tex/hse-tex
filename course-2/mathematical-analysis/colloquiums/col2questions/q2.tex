@@ -4,5 +4,14 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\subsection{}
+\subsection{Сформулируйте и докажите свойство монотонности меры}
+        
+    Если $\mu : \mathcal{F} \to [0; +\infty)$ --- мера на кольце $\mathcal{F}$, 
+    то выполнено свойство монотонности:
+    \[ A \subseteq B \implies \mu(A) \le \mu(B) \]
+    \begin{proof}
+        \[ A \subseteq B \implies B = A \sqcup (B \setminus A) \implies \mu(B)
+        = \mu(A) + \mu(B \setminus A) \]
+        \[ \forall X\: \mu(X) \ge 0 \implies \mu(B) \ge \mu(A), \text{что и требовалось доказать}. \]
+    \end{proof}
 

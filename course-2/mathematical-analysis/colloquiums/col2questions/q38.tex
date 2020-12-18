@@ -4,5 +4,23 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\subsection{}
+\subsection*{38. Сформулируйте и докажите теорему о мере декартова произведения жордановых множеств.}
+    \begin{theorem}[О мере декартова произведения жордановых множеств]
+        $E \subset \mathbb{R}^k, \, F \subset \mathbb{R}^l$ --- простые множества 
+        ($E = \bigsqcup\limits_{i=1}^n Q_i, \, F = \bigsqcup\limits_{j=1}^m P_j$).
+        
+        Рассмотрим декартово произведение $E \times F = \bigsqcup\limits_{i, j} \left( Q_i \times P_j \right)$ .
+        
+        Для меры декартова произведения множеств верно:
+        \[ \mu(Q_i \times P_j) = \mu(Q_i) \cdot \mu(P_j) \implies \mu(E \times F) = \mu(E) \cdot \mu(F) \]
+    \end{theorem}
+    \begin{proof}
+        Из определения меры: 
+        $\mu(E) = \sum\limits_{i=1}^n \mu(Q_i), \; \mu(F) = \sum\limits_{j=1}^m \mu(P_j)$.
+        
+        $E \times F = \bigsqcup\limits_{i, j} \left( Q_i \times P_j \right) \implies \mu(E \times F) 
+        = \sum\limits_{i, j} \mu\left( Q_i \times P_j \right) =\\
+        = \sum\limits_{i, j} \mu(Q_i) \cdot \mu(P_j) = \sum\limits_{i} \mu(Q_i) \cdot \sum\limits_{j} \mu(P_j) 
+        = \mu(E) \cdot \mu(F)$.
+    \end{proof}
 
