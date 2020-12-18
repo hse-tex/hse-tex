@@ -4,5 +4,36 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\subsection{}
+\subsection{Что такое внешнее произведение векторов? Как определяется линейная дифференциальная форма?}
 
+\textbf{Внешнее произведение векторов}~--- это некая абстрактная (то есть, ``пощупать'' её мы не можем) линейная кососимметричная операция $(\wedge)$.
+\begin{itemize}
+    \item Линейность:
+    \begin{equation*}
+        (\alpha\vec{a} + \beta\vec{b}) \wedge \vec{c} = \alpha \cdot \vec{a} \wedge \vec{c} + \beta \cdot \vec{b} \wedge \vec{c}
+    \end{equation*}
+    \item Кососимметричность:
+    \begin{equation*}
+        \vec{a} \wedge \vec{b} = -\vec{b} \wedge \vec{a} (\implies \vec{a} \wedge \vec{a} = 0)
+    \end{equation*}       
+\end{itemize}
+
+\textbf{Линейная дифференциальная форма} от переменных $u, v$~--- формальная линейная комбинация их дифференциалов.
+
+Например,
+\begin{equation*}
+    dx = d\varphi(u, v) = \varphi'_udu + \varphi'_vdv
+\end{equation*}
+~--- линейная дифференциальная форма от $du$, $dv$. 
+
+Можем заметить, что дифференциал какой-то функции является линейной дифференциальной формой, но обратное неверно.
+
+\begin{example}
+    Перемножим две линейные дифференциальные формы и посмотрим, что получится.
+    \begin{equation*}
+        (\alpha du + \beta dv) \wedge (\gamma du + \delta dv) = \alpha \gamma \underbrace{du \wedge du}_0 + \alpha \delta du \wedge dv + \beta \gamma dv \wedge du + \beta \delta \underbrace{dv \wedge dv}_0 = (\alpha \delta - \beta \gamma) \cdot du \wedge dv = \begin{vmatrix}
+            \alpha & \beta\\
+            \gamma & \delta
+        \end{vmatrix} \cdot du \wedge dv
+    \end{equation*}
+\end{example}

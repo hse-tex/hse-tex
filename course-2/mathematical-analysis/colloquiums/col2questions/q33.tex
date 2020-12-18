@@ -1,8 +1,47 @@
-% Здесь НЕ НУЖНО делать begin document, включать какие-то пакеты..
-% Все уже подрубается в головном файле
-% Хедер обыкновенный хсе-теха, все его команды будут здесь работать
-% Пожалуйста, проверяйте корректность теха перед пушем
+\subsection{Как вводится понятие заряда на кольце множеств? Покажите, что для заряда справедлива формула включения-исключения.}
 
-% Здесь формулировка билета
-\subsection{}
+\begin{definition*}
+    Функция $\nu$, определенная на некотором кольце множеств, называется зарядом, если
+    \begin{enumerate}[label=\alph*)]
+    \item 
+        $\nu(\varnothing) = 0$;
 
+    \item 
+        $\nu(A \sqcup B) = \nu(A) + \nu(B)$ (аддитивность).
+    \end{enumerate}
+\end{definition*}
+
+Таким образом, мера --- это неотрицательный заряд.
+
+\begin{theorem*}
+    Для заряда справедлива формула включений-исключений:
+    \begin{equation*}
+        \nu(A \cup B) = \nu(A) + \nu(B) - \nu(A \cap B).
+    \end{equation*}
+\end{theorem*}
+
+\begin{proof}
+    Заметим, что $A \cup B = A \sqcup (B \setminus A)$ и $B = (B \setminus A) \sqcup (A \cap B)$.
+
+    \begin{itemize}
+    \item 
+        С одной стороны имеем
+        \begin{equation*}
+            \nu(A \cup B) = \nu(A \sqcup (B \setminus A)) = \nu(A) + \nu(B \setminus A).
+        \end{equation*}
+
+    \item 
+        С другой стороны имеем
+        \begin{equation*}
+            \nu(A) + \nu(B) - \nu(A \cap B) 
+            = \nu(A) + \nu((B \setminus A) \sqcup (A \cap B)) - \nu(A \cap B)
+            = \nu(A) + \nu(B \setminus A) + \nu(A \cap B) - \nu(A \cap B)
+            = \nu(A) + \nu(B \setminus A).
+        \end{equation*}
+    \end{itemize}
+
+    То есть оба выражения равны $\nu(A) + \nu(B \setminus A)$, из чего делаем вывод:
+    \begin{equation*}
+        \nu(A \cup B) = \nu(A) + \nu(B \setminus A) = \nu(A) + \nu(B) - \nu(A \cap B).
+    \end{equation*}
+\end{proof}

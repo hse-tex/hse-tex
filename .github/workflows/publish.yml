@@ -13,6 +13,10 @@ jobs:
       uses: actions/checkout@v2
       with: 
         fetch-depth: 0
+    - name: Lock
+      uses: softprops/turnstyle@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Checkout gh-pages
       uses: actions/checkout@v2
       with:
