@@ -4,5 +4,23 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\subsection{}
+\subsection{При каких значениях параметра $p > 0$ сходятся несобственные интегралы: \\ $\iiint_{x^2 + y^2 + z^2 \leqslant 1}\frac{dx~dy~dz}{(x^2+y^2+z^2)^p}, ~ \iiint_{x^2+y^2+z^2 \geqslant 1} \frac{dx~dy~dz}{(x^2+y^2+z^2)^p}$}
+\begin{enumerate}
+    \item $\iiint_{x^2 + y^2 + z^2 \leqslant 1}\frac{dx~dy~dz}{(x^2+y^2+z^2)^p} = 
+    \begin{bmatrix}
+        x &=& r\cos \varphi \cos \psi \\
+        y &=& r \sin \varphi \cos \psi \\
+        z &=& r \sin \psi
+    \end{bmatrix} = 
+    \int_0^{2\pi} d\varphi \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos \psi d\psi
+    \int_0^1 \frac{dr}{r^{2p-2}}$
 
+    Очевидно, что $\int_0^1\frac{dr}{r^{2p-2}}$ сходится при $p < \frac{3}{2}$ и расходится при $p \geqslant \frac{3}{2}$.
+
+    \item $\iiint_{x^2+y^2+z^2 \geqslant 1} \frac{dx~dy~dz}{(x^2+y^2+z^2)^p} =
+    [\text{та же замена, что и в предыдущем}] =
+    \int_0^{2\pi} d\varphi \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos \psi d\psi \int_1^{+\infty}\frac{dr}{r^{2p-2}} =
+    4\pi \int_1^{+\infty}\frac{dr}{r^{2p - 2}}$
+
+    Эта штука сходится при $p > \frac{3}{2}$ и расходится при $p \leqslant \frac{3}{2}$.
+\end{enumerate}
