@@ -11,12 +11,32 @@
 
 # Навигация
 
-- [1 курс](#1-курс)
 - [2 курс](#2-курс)
+- [1 курс](#1-курс)
 - [Благодарность](#благодарность)
 - [Style guide](#style-guide)
 
 # Материалы
+
+## 2 курс
+
+### Математический анализ
+
+- [Конспект](https://hse-tex.me/course-2/mathematical-analysis.pdf)
+- [Коллоквиум I](https://hse-tex.me/course-2/mathematical-analysis-colloquium-1.pdf)
+- [Коллоквиум I [альтернативная версия]](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/DKozl50/Matan2-tex/master/Colloquiums/colloq1.pdf)
+- [Коллоквиум II](https://hse-tex.me/course-2/mathematical-analysis-colloquium-2.pdf)
+
+### Дискретная математика
+
+- [Конспект](https://hse-tex.me/course-2/discrete-math-02-lecture-notes.pdf)
+- [Коллоквиум [от 195 группы]](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/DKozl50/Matan2-tex/master/Colloquiums/dm.pdf)
+
+### Теория вероятностей и математическая статистика
+
+- [Коллоквиум I](https://hse-tex.me/course-2/probability-theory-colloquium-1.pdf)
+- [Коллоквиум II](https://hse-tex.me/course-2/probability-theory-colloquium-2.pdf)
+- [Коллоквиум II [первые 5 билетов, альтернативная версия]](https://hse-tex.me/course-2/probability-theory-colloquium-2-alternative.pdf)
 
 ## 1 курс
 
@@ -44,25 +64,6 @@
 - [Коллоквиум IV](https://hse-tex.me/course-1/mathematical-analysis-colloquium-4.pdf)
 - [Экзамен I](https://hse-tex.me/course-1/mathematical-analysis-exam-1.pdf)
 
-## 2 курс
-
-### Математический анализ
-
-- [Конспект](https://hse-tex.me/course-2/mathematical-analysis.pdf)
-- [Коллоквиум I](https://hse-tex.me/course-2/mathematical-analysis-colloquium-1.pdf)
-- [Коллоквиум I [альтернативная версия]](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/DKozl50/Matan2-tex/master/Colloquiums/colloq1.pdf)
-- [Коллоквиум II](https://hse-tex.me/course-2/mathematical-analysis-colloquium-2.pdf)
-
-### Дискретная математика
-
-- [Конспект](https://hse-tex.me/course-2/discrete-math-02-lecture-notes.pdf)
-- [Коллоквиум [от 195 группы]](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/DKozl50/Matan2-tex/master/Colloquiums/dm.pdf)
-
-### Теория вероятностей и математическая статистика
-
-- [Коллоквиум I](https://hse-tex.me/course-2/probability-theory-colloquium-1.pdf)
-- [Коллоквиум II](https://hse-tex.me/course-2/probability-theory-colloquium-2.pdf)
-- [Коллоквиум II [первые 5 билетов, альтернативная версия]](https://hse-tex.me/course-2/probability-theory-colloquium-2-alternative.pdf)
 
 # Благодарность
 
