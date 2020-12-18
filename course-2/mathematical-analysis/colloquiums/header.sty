@@ -28,6 +28,9 @@
 %% Табличика там где хочецца
 \usepackage{float}
 
+%% Дифференциалы и все что с ними связано
+\usepackage{physics}
+
 %% Графички функций
 \usepackage{pgfplots}
 \usepackage{tikz}
@@ -52,21 +55,21 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.95}
 
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
+    backgroundcolor=\color{backcolour},
     commentstyle=\color{codegreen},
     keywordstyle=\color{codeblue},
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codeorange},
     basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
     showstringspaces=false,
-    showtabs=false,                  
+    showtabs=false,
     tabsize=2
 }
 
@@ -103,7 +106,6 @@
 
 %% Свои команды
 \DeclareMathOperator{\rk}{\mathop{\mathrm{rk}}}
-\DeclareMathOperator{\tr}{\mathop{\mathrm{tr}}}
 \DeclareMathOperator{\pr}{\mathop{\mathrm{pr}}}
 \DeclareMathOperator{\ort}{\mathop{\mathrm{ort}}}
 \DeclareMathOperator{\vol}{\mathop{\mathrm{vol}}}
@@ -212,9 +214,6 @@
    \hypertarget{#1}{#2}
 }
 \makeatother
-
-%% Команда для ||w||
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 
 \makeatletter
 \let\oldnorm\norm
