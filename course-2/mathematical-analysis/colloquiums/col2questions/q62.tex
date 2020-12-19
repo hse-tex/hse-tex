@@ -31,7 +31,7 @@
 \]
 Подставим это в выражение $\mu(S)$:
 \begin{multline}
-    \mu(S) = \int_{H} \sqrt{\det\pqty{\pqty{\pdv{x}{u}}^{T} \times \pqty{\pdv{x}{u}}}} \cdot \abs{\det\pqty{\pdv{u}{v}}} \dd v = \\ = \int_{H} \sqrt{\det\pqty{\pqty{\pdv{x}{u}}^{T} \times \pqty{\pdv{x}{u}}}} \cdot \underbrace{\abs{\det\pqty{\pdv{v}{u}}} \cdot \abs{\det\pqty{\pdv{u}{v}}}}_{= 1} \dd v = \\ = \int_{H} \sqrt{\det\pqty{\pqty{\pdv{x}{u}}^{T} \times \pqty{\pdv{x}{u}}}} \dd v.
+    \mu(S) = \int_{H} \sqrt{\det\pqty{\pqty{\pdv{x}{u}}^{T} \times \pqty{\pdv{x}{u}}}} \cdot \abs{\det\pqty{\pdv{u}{v}}} \dd v = \\ = \int_{H} \sqrt{\det\pqty{\pqty{\pdv{x}{v}}^{T} \times \pqty{\pdv{x}{v}}}} \cdot \underbrace{\abs{\det\pqty{\pdv{v}{u}}} \cdot \abs{\det\pqty{\pdv{u}{v}}}}_{= 1} \dd v = \\ = \int_{H} \sqrt{\det\pqty{\pqty{\pdv{x}{v}}^{T} \times \pqty{\pdv{x}{v}}}} \dd v.
 \end{multline}
 Произведение определителей равно 1, поскольку это произведение определителей двух взаимно обратных матриц.
 Таким образом, утверждение доказано.
