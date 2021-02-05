@@ -319,22 +319,10 @@ $v = x_1 e_1 + \dots + x_n e_n \implies \phi(v) := \begin{pmatrix} x_1 \\ \vdots
 
 \begin{proposal}~
     \label{lec16:propopop}
-    \begin{enumerate}
-    \item Если $\phi \colon V \to W$ --- линейное отображение, то $\phi$ однозначно определяется векторами $\phi(e_1), \dots, \phi(e_n)$,
-    \item $\forall w_1, \dots, w_n \in W \ \exists!$ линейное отображение $\phi$, такое что, $\phi(e_1) = w_1, \dots, \phi(e_n) = w_n$.
-    \end{enumerate}
+    Если $\phi \colon V \to W$ --- линейное отображение, то $\phi$ однозначно определяется векторами $\phi(e_1), \dots, \phi(e_n)$.
 \end{proposal}
 
 \begin{proof}~
-    \begin{enumerate}
-    \item \label{lec16:kekek}
-        $v \in V \implies v = x_1 e_1 + \dots + x_n e_n \implies \phi(v) = x_1 \phi(e_1) + \dots + x_n \phi(e_n)$.
-    \item 
-        Зададим $\phi \colon V \to W$ формулой $\phi(x_1 e_1 + \dots + x_n e_n) = x_1 w_1 + \dots + x_n w_n$.
-
-        Тогда $\phi$ --- линейное отображение из $V$ в $W$ (упражнение).
-
-        Единственность следует из \ref{lec16:kekek}
-        \qedhere
-    \end{enumerate}
+    $v \in V \implies v = x_1 e_1 + \dots + x_n e_n \implies \phi(v) = x_1 \phi(e_1) + \dots + x_n \phi(e_n)$.
+    \qedhere
 \end{proof}
