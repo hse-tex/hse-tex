@@ -1,3 +1,107 @@
 \subsection{Абстрактные ряды фурье. Коэффициенты и ряды Фурье (определение). Коэффициенты и ряд Фурье по стандартной тригонометрической системе на $[-\pi; \pi]$. Лемма о перпендикуляре. Неравенство Бесселя. Из полноты пространства следует сходимость ряда Фурье. Ряд и частичная сумма ряда Фурье как наилучшее приближение. Полная ортогональная система (определение). Критерии полноты ортогональной системы (представимость любого элемента его рядом Фурье; равенство Парсеваля; отсутствие ненулевого элемента, ортогонального всем элементам системы).}
 
-\subsubsection{TBD}
+\subsubsection{Коэффициенты и ряды Фурье (определение). \label{subsubsec:label1}}
+Введём следующие обозначения:
+\[\left\{ l_n \right\} \quad l_1,\, l_2,\, \ldots\text{~--- ортогональная система (без нулевых элементов)}\]
+\[\left\{ e_n \right\} \quad e_1,\, e_2,\, \ldots\text{~--- ортонормированная система}\]
+Заметим, что $f \underset{\mathcal{R}_2}{=} \sum_{n=1}^\infty a_n l_n$ и $l_k \underset{\mathcal{R}_2}{=} \sum_{n=1}^\infty \delta_{nk} l_n$. Воспользуемся следствием 2 из непрерывности скалярного произведения. Здесь будет небольшое отличие~--- так как наша система ортогональна, а не ортонормированна, то в произведении появится $\lvert \lvert l_n \rvert \rvert^2$.
+Распишем: \[\langle f,\, l_k \rangle = \sum_{n=1}^\infty a_n \cdot \delta_{nk}^*  \cdot \lvert \lvert l_n \rvert \rvert^2 = a_k \cdot \lvert \lvert l_k \rvert \rvert^2 \implies a_n = \frac{\langle f, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2}\]
+\begin{definition*}
+    $a_n = \frac{\langle f, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2}$~--- \textbf{коэффициенты Фурье} элемента $f$ по ортогональной системе $l_n$. 
+\end{definition*}
+
+\begin{definition*}
+    В соответствие элементу $f$ ставится ряд $\sum_{n=1}^\infty \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} l_n$~--- \textbf{ряд Фурье} (элемента $f$ по ортогональной системе $l_n$).
+\end{definition*}
+\begin{designation*}
+    $f \sim \sum_{n=1}^\infty \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} l_n$
+\end{designation*}
+Мы пока не можем тут писать знак =, потому что ещё не доказали сходимость ряда хотя бы в $\mathcal{R}_2$.
+
+\subsubsection{Коэффициенты и ряд Фурье по стандартной тригонометрической системе на $[-\pi; \pi]$.}
+Рассмотрим следующую ортогональную систему:
+\[1,\, \cos x,\, \sin x,\, \cos 2x,\, \sin 2x,\, \ldots \]
+Для такой системы есть два типа коэффициентов Фурье:
+\[a_n = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos (nx) dx, \quad n \in \NN_0\]
+\[b_n = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \sin (nx) dx, n \in \NN\]
+Тогда наш ряд Фурье для элемента $f$ по стандартной тригонометрической системе (помним, что норма единицы~--- это $\sqrt{2\pi}$, поэтому $a_0$ надо дополнительно поделить на 2. Если непонятно, обратите внимание на определение коэффициентов Фурье и на определение $a_n$):
+\[f \sim \frac{a_0}{2} + \sum_{n=1}^\infty \left( a_n \cos nx + b_n \sin nx \right)\]
+
+\subsubsection{Лемма о перпендикуляре.}
+\begin{theorem*}
+    Пусть $f \sim \sum_{n=1}^\infty \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} l_n \underset{\mathcal{R}_2}{=} f'$. Тогда $h = f - f' \bot f'$ и вообще $\bot$ подпространству, порождённому в $\mathcal{R}_2$ элементами $\left\{ l_n \right\}$ и подпространству, являющемуся его замыканием.
+\end{theorem*}
+\begin{proof}
+    Рассмотрим разность:
+    \[h = f - f' \underset{\mathcal{R}_2}{=} f - \sum_{n=1}^\infty \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} l_n \quad \Big| \cdot l_k\]
+    По следствиям 1 и 2 непрерывности скалярного произведения:
+    \[\langle h,\, l_k \rangle = \langle f,\, l_k \rangle  - \sum_{n=1}^\infty \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} \cdot \langle l_n,\, l_k \rangle = \langle f,\, l_k \rangle - \frac{\langle f ,\, l_k \rangle}{\lvert \lvert l_k \rvert \rvert^2} \cdot \langle l_k,\, l_k \rangle = 0\]
+    Следовательно, $\langle h,\, f' \rangle = 0$ и вообще для $g \underset{\mathcal{R}_2}{=} \sum_{n=1}^\infty a_n \cdot l_n$ верно, что $\langle h,\, g \rangle = 0$.
+
+    Более того, если $g = \lim_{N \to \infty} \sum_{n = 1}^N a_{Nn} l_n$, то так как $\langle h,\, \sum_{n=1}^N a_{Nn} l_n \rangle = 0 \implies \langle h,\, g \rangle = 0$.
+\end{proof}
+
+\subsubsection{Неравенство Бесселя.\label{subsubsec:label2}}
+\begin{theorem*}
+    Ряд $\sum_{n=1}^\infty \frac{\lvert \langle f,\, l_n \rangle \rvert^2}{\lvert \lvert l_n \rvert \rvert^2}$ cходится и справедливо неравенство $\lvert \lvert f \rvert \rvert^2 \geq \sum_{n=1}^\infty \frac{\lvert \langle f,\, l_n \rangle \rvert^2}{\lvert \lvert l_n \rvert \rvert^2}$.
+\end{theorem*}
+\begin{proof}
+    Распишем $\lvert \lvert f \rvert \rvert^2$:
+    \[\lvert \lvert f \rvert \rvert^2 = \lvert \lvert f - f' + f' \rvert \rvert^2 = [f - f' \bot f'] = \lvert \lvert f - f' \rvert \rvert^2 + \lvert \lvert f' \rvert \rvert^2 \geq \lvert \lvert f' \rvert \rvert^2 = [\text{равенство Парсеваля}] = \sum_{n=1}^\infty \frac{\lvert \langle f,\, l_n \rangle \rvert^2}{\lvert \lvert l_n \rvert \rvert^2}\]
+    Отсюда автоматически следует условие теоремы (мы показали неравенство, а сходимость ряда следует из того, что его сумма равна $\lvert \lvert f' \rvert \rvert^2$).\\
+\end{proof}
+
+\subsubsection{Из полноты пространства следует сходимость ряда Фурье.}
+\begin{theorem*}
+    Если пространство полное, то ряд Фурье любого элемента $f$ сходится к некоторому элементу $f'$ этого пространства.
+\end{theorem*}
+\begin{proof}
+    Воспользуемся критерием Коши. По равенству Парсеваля: 
+    \[\forall \varepsilon > 0\ \exists N: \forall m > N, \forall k \implies \lvert \lvert \sum_{n=m}^{m+k} \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} \cdot l_n \rvert \rvert^2 = \sum_{n=m}^{m+k} \frac{\lvert \langle f,\, l_n \rangle \rvert^2}{\lvert \lvert l_n \rvert \rvert^2}.\]
+    Но по неравенству Бесселя ряд $\sum_{n=1}^\infty \frac{\lvert \langle f,\, l_n \rangle \rvert^2}{\lvert \lvert l_n \rvert \rvert^2}$ сходится, значит, $\sum_{n=m}^{m+k} \frac{\lvert \langle f,\, l_n \rangle \rvert^2}{\lvert \lvert l_n \rvert \rvert^2} < \varepsilon$.
+
+    Следовательно, \textbf{при условии полноты пространства} $\sum_{n=1}^\infty \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} \cdot l_n$ сходится к некоторому элементу пространства  (в полном пространстве любая фундаментальная последовательность элементов пространства сходится к некоторому элементу этого пространства).\\  
+\end{proof}
+
+Если $f \in \mathcal{R}_2$, то $f' \in L_2$~--- пополнение пространства $\mathcal{R}_2$ (пространство Лебега).
+
+\subsubsection{Ряд и частичная сумма ряда Фурье как наилучшее приближение. \label{subsubsec:label3}}
+\begin{theorem*}
+    Если $f \sim \sum_{n=1}^\infty \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} \cdot l_n \underset{\mathcal{R}_2}{=}f'$, то $f'$ является наилучшим приближением для $f$ среди всех элементов $g \underset{\mathcal{R}_2}{=} \sum_{n=1}^\infty a_n l_n$.    
+\end{theorem*}
+\begin{proof}
+    \[\lvert \lvert f - g \rvert \rvert^2 = \lvert \lvert (f - f') + (f' - g) \rvert \rvert^2 = [f - f' \bot f' - g] = \lvert \lvert f - f' \rvert \rvert^2 + \lvert \lvert f' - g \rvert \rvert^2 \geq \lvert \lvert f - f' \rvert \rvert^2 \]
+    У нас получилось, что расстояние между элементами $f$ и $g$ больше расстояния между $f$ и $f'$, то есть $\lvert \lvert f - g \rvert \rvert \geq \lvert \lvert f - f' \rvert \rvert$ (в каком-то смысле $f'$~--- это проекция элемента $f$ на пространство всех $g$).\\
+\end{proof}
+
+\subsubsection{Полная ортогональная система (определение).}
+\begin{definition*}
+    Ортогональная система $\left\{ l_n \right\}$ называется \textbf{полной} в пространстве $\mathcal{R}_2$, если $\forall f \in \mathcal{R}_2$
+    \[\forall \varepsilon > 0 \exists \left\{ a_n \right\}, N \in \NN \subset \CC: \lvert \lvert f - \sum_{n=1}^N a_n l_n \rvert \rvert < \varepsilon\]        
+\end{definition*}
+
+\subsubsection{Критерии полноты ортогональной системы (представимость любого элемента его рядом Фурье; равенство Парсеваля; отсутствие ненулевого элемента, ортогонального всем элементам системы).}
+
+\begin{theorem*}[Критерии полноты ортогональной системы]
+    Следующие утверждения равносильны:
+    \begin{enumerate}[label=\alph*),leftmargin=*]
+        \item Ортогональная система $\{l_n\}$ полная в $\mathcal{R}_2$
+        \item $\forall f \in \mathcal{R}_2 \quad f \underset{\mathcal{R}_2}{=} \sum_{n=1}^\infty \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} \cdot l_n$
+        \item $\forall f \in \mathcal{R}_2 \quad \lvert \lvert f \rvert \rvert^2 = \sum_{n=1}^\infty \frac{\lvert \langle f,\, l_n \rangle\rvert^2}{\lvert \lvert l_n \rvert \rvert^2}$
+        \item В полном пространстве $L_2$ нет элемента $g \underset{L_2}{\neq} 0$ (т.е. $\lvert \lvert g \rvert \rvert \neq 0$), ортогонального всем $l_n$.
+    \end{enumerate}
+\end{theorem*}
+\begin{proof}~
+    \begin{itemize}
+        \item $(a) \implies (b)$. Раз система полная, то любой элемент может быть сколько угодно точно приближен линейной комбинацией ортогональной системы. Но так как ряд Фурье~--- наилучшее приближение элемента $f$, то $\lvert \lvert f - \sum_{n=1}^N a_n l_n \rvert \rvert < \varepsilon \implies \lvert \lvert f - \sum_{n=1}^N \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} \cdot l_n \rvert \rvert < \varepsilon$. Значит, ряд Фурье сходится к $f$.
+        \item $(b) \implies (a)$. Если любая функция равна сумме своего ряда Фурье, то автоматически любую функцию мы можем по норме пространства $\mathcal{R}_2$ представить сколь угодно точно линейной комбинацией элементов $l_n$ (можно взять частичную сумму ряда Фурье).
+        \item $(a) \implies (c)$. $a \implies b$, а в прошлом билете показали, что $b \implies c$. (см. равенство Парсеваля)
+        \item $(c) \implies (b)$ Выполнено равенство Парсеваля. Рассмотрим:
+        \[\lvert \lvert f - \underbracket{\sum_{n=1}^N \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} \cdot l_n} \rvert \rvert^2_{f'} + \lvert \lvert f' \rvert \rvert^2 = [f - f' \bot f'; \text{по теореме Пифагора}] = \lvert \lvert f \rvert \rvert^2\]
+        Но так как $\lvert \lvert f' \rvert \rvert^2 = \sum_{n=1}^\infty \frac{\lvert \langle f,\, l_n \rangle\rvert^2}{\lvert \lvert l_n \rvert \rvert^2}$, то:
+        \[\lvert \lvert f - \sum_{n=1}^N \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} \cdot l_n \rvert \rvert^2 = \lvert \lvert f \rvert \rvert^2 - \sum_{n=1}^\infty \frac{\lvert \langle f,\, l_n \rangle\rvert^2}{\lvert \lvert l_n \rvert \rvert^2} \xrightarrow[N \to \infty]{} 0\]
+        \item $(a) \implies (d)$. От противного. Пусть $g \bot $ всем $l_n$. Тогда $g \underset{L_2}{=}  \sum_{n=1}^\infty \frac{ \overbracket{\langle g,\, l_n \rangle}^{=0}}{\lvert \lvert l_n \rvert \rvert^2} \underset{L_2}{=} 0$, то есть $\lvert \lvert g\rvert \rvert = 0$.
+        \item $(d) \implies (b)$. Сопоставим элементу $f$ его ряд Фурье: $f \sim \sum_{n=1}^\infty \frac{\langle f,\, l_n \rangle}{\lvert \lvert l_n \rvert \rvert^2} l_n = f' \in L_2$.
+        Рассмотрим $f - f' \bot$ всем $l_n \implies f - f' \underset{L_2}{=} 0$ по условию теоремы.
+    \end{itemize}
+\end{proof}

@@ -1,3 +1,114 @@
 \subsection{Абстрактные ряды Фурье. Пространство квадратично-интегрируемых функций $\mathcal{R}_2$ (определение). Скалярное произведение и норма в этом пространстве (определение). Ортогональная и ортонормированная система элементов (определение). Стандартная тригонометрическая система на $[-\pi; \pi]$, ее ортогональность и нормы элементов. Ряд в пространстве квадратично-интегрируемых функций и его сходимость (определение). Непрерывность скалярного произведения. Равенство Парсеваля.}
 
-\subsubsection{TBD}
+\subsubsection{Пространство квадратично-интегрируемых функций $\mathcal{R}_2$ (определение).}
+Пусть $D \subset \RR^m$~--- ограниченное замкнутое жорданово множество.
+\begin{definition*}
+    Пространство квадратично интегрируемых функций \[\mathcal{R}_2 := \left\{ f : D \to \RR\ \Bigg|\  \begin{matrix}
+        \text{$f$ интегрируема на $D$ в собственном или несобственном смысле} \\
+        \text{$\lvert f(x) \rvert^2$ интегрируема на $D$ в собственном или несобственном смысле}
+    \end{matrix} \right\}\]
+\end{definition*} 
+Здесь понадобится рассматривать не только числовые функции, но и комплексные функции (от действительных переменных). Для этого будет использоваться символ $\mathcal{R}_2(D, \CC) = \left\{ f : D \to \CC \mid \ldots \right\}$.
+
+Для комплекснозначной функции мы можем расписать её как $f(x) = u(x) + iv(x)$. Интегрируемость понимается как интегрируемость одновременно действительной части и мнимой. Кроме того,
+\[\int_D f(x)dx = \int_D u(x)dx + i\int_Dv(x)dx\]
+\subsubsection{Скалярное произведение и норма в этом пространстве (определение).}
+
+Раскроем квадрат модуля квадратично интегрируемой функции:
+\[\lvert f(x) \rvert^2 = f(x) \cdot f(x)^* = (u(x) + iv(x))(u(x) - iv(x)) = u(x)^2 + v(x)^2\]
+
+Благодаря интегрируемости квадрата модуля можно ввести скалярное произведение:
+\[\forall f, g \in \mathcal{R}_2(D, \CC) \quad \int_D f(x) g(x)^* dx\text{ сходится, так как } \lvert f \cdot g^* \rvert \leq \frac{1}{2}\left( \lvert f \rvert^2 + \lvert g \rvert^2 \right)\]
+
+\begin{definition*}
+    \textbf{Скалярное произведение} двух квадратично интегрируемых функций введём следующим образом: 
+    \[\langle f, g \rangle = \int_D f(x)g(x)^*dx \quad \text{удовлетворяет аксиомам скалярного произведения}\]
+\end{definition*}
+
+\begin{definition*}
+    \textbf{Норма} в пространстве квадратично интегрируемых функций вводится так:
+    \[\lvert \lvert f \rvert \rvert^2 = \langle f,\, f \rangle = \int_D \lvert f(x) \rvert^2 dx \quad \text{удовлетворяет аксиомам нормы, если понимать $f = 0$ в смысле $f \underset{\mathcal{R}_2}{=} 0$}\]
+\end{definition*}
+Для нормы выполняются все аксиомы нормы, кроме того, что если норма равна нулю, это необязательно значит, что функция поточечно равна нулю. Но она будет равна нулю почти всюду (везде кроме множества жордановой меры нуль) в Жордановом смысле (что мы и отражаем значком $f \underset{\mathcal{R}_2}{=} 0$).
+
+\subsubsection{Ортогональная и ортонормированная система элементов (определение).}
+\begin{definition*}
+    Система $f_1,\, \ldots,\, f_n$ называется \textbf{ортогональной}, если $\langle f_i,\, f_j \rangle = 0$ при $i \neq j$.    
+\end{definition*}
+\begin{definition*}
+    Ортогональная система называется \textbf{ортонормированной}, если выполнено условие 
+    \[\langle f_i,\, f_j \rangle = \begin{dcases}
+        0, &i \neq j \\
+        1, &i = j
+    \end{dcases}.\]
+\end{definition*}
+
+Любая ортогональная система без нулевых элементов может быть преобразована в ортонормированную:
+\[f_1,\, \ldots,\, f_n \to \frac{f_1}{\lvert\lvert f_1 \rvert \rvert},\, \ldots,\, \frac{f_n}{\lvert\lvert f_n \rvert \rvert}\]
+Заметим, что ортогональная система линейно независима (знаем из курса линейной алгебры).
+\subsubsection{Стандартная тригонометрическая система на $[-\pi; \pi]$, ее ортогональность и нормы элементов.}
+\begin{example}
+    Рассмотрим следующие функции:
+    \[\cos nx, \quad n \in \NN_0 = \left\{ 0,\, 1,\, 2,\, \ldots \right\}\]
+    \[\sin nx, \quad n \in \NN\]
+    Заметим, что:
+    \[\int_{-\pi}^{\pi} \cos nx \cdot \cos kx dx = \begin{cases}
+        0, &n \neq k \\
+        \pi, &n = k \neq 0 \\
+        \lvert \lvert 1 \rvert \rvert^2 = 2\pi, &n = k = 0
+    \end{cases}\]
+    Следовательно, $\lvert \lvert \cos nx \rvert \rvert = \begin{cases}
+        \sqrt{\pi}, &n \in \NN \\
+        \lvert \lvert 1 \rvert \rvert = \sqrt{2\pi}, &n = 0
+    \end{cases}.$
+
+    Теперь разберёмся с синусом:
+    \[\int_{-\pi}^\pi \sin nx \cdot \sin kx dx = \begin{cases}
+        0, &n \neq k \\
+        \pi, &n = k \in \NN
+    \end{cases}\]
+    Кроме того, 
+    \[\int_{-\pi}^\pi \cos nx \cdot \sin kx dx = 0\]
+    Получаем, что следующая система ортогональна в пространстве $\mathcal{R}_2 ([-\pi,\, \pi], \RR)$:
+    \[1,\, \cos x,\, \sin x,\, \cos 2x,\, \sin 2x,\, \ldots\]
+\end{example}
+\subsubsection{Ряд в пространстве квадратично-интегрируемых функций и его сходимость (определение).}
+    Мы определяем сходимость ряда в пространстве кв-но интегр. функций так:
+    \[\sum_{n=1}^\infty f_n \text{ сходится } \iff \exists f \in \mathcal{R}_2: \lvert \lvert f - \sum_{n=1}^N f_n \rvert \rvert \xrightarrow[N\to \infty]{} 0\]
+    При этом $f$~--- сумма ряда в $\mathcal{R}_2$, то есть $f \underset{\mathcal{R}_2}{=} \sum_{n=1}^{\infty} f_n$. Это новый вид сходимости~--- не поточечная или равномерная, а в среднеквадратичном. С точки зрения поточечной сходимости ряд вообще может быть расходящимся при том, что он сходится в среднеквадратичном.
+\subsubsection{Непрерывность скалярного произведения.}
+\begin{theorem*}
+    Если $\lvert \lvert f - f_n \rvert \rvert \to 0$, $\lvert \lvert g - g_n \rvert \rvert \to 0$, то $\langle f_n,\, g_n \rangle \to \langle f,\, g \rangle$.
+\end{theorem*}
+\begin{proof}
+    Рассмотрим модуль разности:
+    \begin{align*}
+&\lvert\langle f_n,\, g_n \rangle - \langle f,\, g \rangle \rvert = \lvert \langle (f_n - f) + f,\, (g_n - g) + g \rangle - \langle f,\, g \rangle \rvert \leq \\
+& \leq  \underbracket{\lvert \langle f_n - f,\, g_n - g \rangle \rvert}_{\leq \lvert \lvert f_n - f \rvert \rvert \cdot \lvert \lvert g_n - g \rvert \rvert} + \underbracket{\lvert \langle f_n - f,\, g \rangle \rvert}_{\leq \lvert \lvert f_n - f \rvert \rvert \cdot \lvert \lvert g \rvert \rvert} + \underbracket{\lvert \langle f,\, g_n - g \rangle \rvert}_{\leq \lvert \lvert f \rvert \rvert \cdot \lvert \lvert g_n - g \rvert \rvert} < \varepsilon \quad \text{в силу неравенства Коши-Буняковского}
+    \end{align*}
+\end{proof}
+
+\begin{corollary}[1]
+    Если $f \underset{\mathcal{R}_2}{=} \sum_{n=1}^{\infty} f_n$, то $\langle f,\, g \rangle = \sum_{n=1}^\infty \langle f_n,\, g \rangle$.
+\end{corollary}
+\begin{proof}
+    \[f = \sum_{n=1}^N f_n + \sum_{n = N+1}^{\infty} f_n \quad \Big| \cdot g\]
+    \[\langle f,\, g \rangle = \sum_{n=1}^N \langle f_n ,\, g \rangle + \underbracket{\langle\overbracket{\sum_{N+1}^{\infty} f_n}^{\xrightarrow[\mathcal{R}_2]{} 0},\, g \rangle}_{\to 0}\]
+    (Поскольку ряд сходится, то остаток стремится в $\mathcal{R}_2$ к нулю.) Осталось только устремить $N$ к бесконечности.\\
+\end{proof}
+
+\begin{corollary}[2]
+    Если $\left\{ e_n \right\}$~--- ортонормированная система и $f \underset{\mathcal{R}_2}{=} \sum_{n = 1}^\infty a_n \cdot e_n,\ g \underset{\mathcal{R}_2}{=} \sum_{n=1}^{\infty} b_n \cdot e_n$, то $\langle f,\, g \rangle = \sum_{n=1}^\infty a_n \cdot b_n^*$.
+\end{corollary}
+\begin{proof}
+    Докажем, пользуясь предыдущим свойством:
+    \[\langle f,\, g \rangle = \sum_{n=1}^{\infty} a_n \cdot \langle e_n,\, g \rangle; \quad \langle e_n,\, g \rangle = \sum_{k=1}^\infty \langle e_n,\, b_k e_k \rangle = \sum_{k=1}^\infty b_k^* \langle e_n ,\, e_k \rangle = b_n^*.\]        
+\end{proof}
+\subsubsection{Равенство Парсеваля.}
+\begin{corollary}[3]
+    Если $f \underset{\mathcal{R}_2}{=} \sum_{n = 1}^{\infty} a_n e_n$, то $\lvert \lvert f \rvert \rvert^2 = \sum_{n = 1}^{\infty} \lvert a_n \rvert^2$
+\end{corollary}
+\begin{proof}
+    Воспользуемся предыдущим следствием:
+    \[\lvert \lvert f \rvert \rvert^2 = \langle f,\, f \rangle = \sum_{n=1}^\infty a_n \cdot a_n^* = \sum_{n=1}^{\infty} \lvert a_n \rvert^2 \]
+\end{proof}
