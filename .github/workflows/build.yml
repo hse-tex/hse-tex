@@ -25,5 +25,7 @@ jobs:
     - name: Post diff
       run: ./post-diff.sh
       env:
+        GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+        PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
         DRAFTABLE_API_ID: ${{ secrets.DRAFTABLE_API_ID }}
         DRAFTABLE_API_TOKEN: ${{ secrets.DRAFTABLE_API_TOKEN }}

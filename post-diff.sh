@@ -2,18 +2,20 @@
 set -e
 
 function post_diff {
-    left=$1; shift
-    right=$1; shift
+    left="$1"; shift
+    right="$1"; shift
 
-    response=$(curl "https://api.draftable.com/v1/comparisons" \
-        -H "Authorization: Token $DRAFTABLE_API_TOKEN" \
-        -F "left.file_type=pdf" -F "left.file=@$left" \
-        -F "right.file_type=pdf" -F "right.file=@$right" \
-        -F "public=true")
+    # response=$(curl "https://api.draftable.com/v1/comparisons" \
+    #     -H "Authorization: Token $DRAFTABLE_API_TOKEN" \
+    #     -F "left.file_type=pdf" -F "left.file=@$left" \
+    #     -F "right.file_type=pdf" -F "right.file=@$right" \
+    #     -F "public=true")
 
-    id=$(echo "$response" | jq .identifier -r)
+    # id=$(echo "$response" | jq .identifier -r)
 
-    echo "https://api.draftable.com/v1/comparisons/viewer/$DRAFTABLE_API_ID/$id"
+    # echo "https://api.draftable.com/v1/comparisons/viewer/$DRAFTABLE_API_ID/$id"
+
+    ehco "https://api.draftable.com/v1/comparisons/viewer/rOboyG/TczjdkwY"
 }
 
 function build_content {
@@ -43,7 +45,19 @@ function build_content {
     popd
 }
 
+function post_comment {
+    content="$1"; shift
+
+    curl -X POST \
+        -u hse-tex-bot:$GH_BOT_TOKEN \
+        -H "Accept: application/vnd.github.v3+json" \
+        $GITHUB_API_URL/repos/$GITHUB_REPOSITORY/issues/$PULL_REQUEST_NUMBER/comments \
+        -d "{\"body\":\"$content\"}"
+}
+
 content=$(build_content)
 
 echo "Content:"
 echo "$content"
+
+post_comment "$content"
