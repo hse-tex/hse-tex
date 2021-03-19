@@ -34,7 +34,7 @@ function build_content {
 
         url=$(post_diff "$left" "$right")
         
-        if [[ "$left" != "$right"]]; then
+        if [ "$left" != "$right" ]; then
             echo "[$item]($url)"
         else
             echo "[$item]($url) &mdash; new document"
