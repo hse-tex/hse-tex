@@ -19,7 +19,7 @@ function post_diff {
 }
 
 function build_content {
-    pushd .pdf
+    pushd .pdf > /dev/null
 
     echo "Build successfully finished. Document diff:"
 
@@ -42,13 +42,13 @@ function build_content {
         fi
     done
 
-    popd
+    popd > /dev/null
 }
 
 function post_comment {
     content="$1"; shift
 
-    body=$(jq -n --arg content "$kekos" '{body: ($content)}')
+    body=$(jq -n --arg content "$content" '{body: ($content)}')
 
     curl -X POST \
         -u hse-tex-bot:$GH_BOT_TOKEN \
