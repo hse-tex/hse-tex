@@ -4,13 +4,27 @@
 % Пожалуйста, проверяйте корректность теха перед пушем
 
 % Здесь формулировка билета
-\textcolor{red}{\subsection{Докажите, что множество измеримо по Жордану ровно тогда, когда его граница имеет Жорданову меру нуль}}
+\subsection{Докажите, что множество измеримо по Жордану ровно тогда, когда его граница имеет Жорданову меру нуль}
+\begin{theorem}
+    Ограниченное множество $A$ измеримо тогда и только тогда, когда мера Жордана его границы равна нулю:
+    $\mu(\partial A) = 0$.
+\end{theorem}
+\begin{proof}
+    
+    Необходимость.
 
-***МУТНАЯ ТЕМА, ЕСТЬ ВОПРОСЫ***\\
-\textbf{\underline{Теор.:} } Пусть $A \subseteq \mathbb{R}^m$ - произвольное множество, тогда 
-множество измеримо тогда и только тогда, когда $\overline{\mu}(\partial A) = 0$, где $\partial A$ - граница множества $A$. \\
-\textbf{\underline{Док-во:} } \\
-$\Rightarrow$ Пусть множество $A$ - измеримо по Жордану. Пусть $E_1 \subseteq A$ - простое множество, такое что $\mu(E_1) = \underline{\mu}(A)$, а также $E_2 \supseteq A$ - такое, что $\mu(E_2) = \overline{\mu}(A)$ \\
-По определению границы знаем, что $\partial A \subseteq E_2 \backslash E_1$. Можно заметить, что так как $E_1 \subseteq A \subseteq E_2$, то $E_2 \backslash E_1 = (E_2 \backslash A) \cup (A \backslash E_1)$
+    В силу другого определения измеримости по Жордану для любого положительного $\varepsilon$ найдутся простые
+    множества $E_1$ и $E_2$ такие, что $E_1 \subset A \subset E_2$ и $|E_2 \backslash E_1|$. При этом поскольку объём
+    внутренности $\text{int}E$ совпадает с замыканием $\overline{E}$ простого множества, поэтому можем считать, что
+    $E_1$ открыто, а $E_2$ --- замкнуто. Но тогда $\partial A = \overline A \backslash \text{int}A \subset E_2 \backslash E_1$,
+    откуда $\overline{\mu}(\partial A) < \varepsilon$. Отсюда в силу произвольности $\varepsilon > 0$ получаем
+    $\overline{\mu}(\partial A) = 0$
+
+    Достаточность.
+
+    $\overline{\mu}(A) \leqslant \overline{\mu}(\overline(A)) = \mu(\overline(A)) = \mu(\text{int}A) + \mu(\partial A) =
+    \mu(\text{int} A)$. Учитывая, что внутренность --- открытое множество, отсюда имеем $\underline{\mu}(A) \geqslant
+    \underline{\mu}(\text{int} A) = \mu(\text{int} A) \geqslant \overline \mu(A)$.
+\end{proof}
 
 
