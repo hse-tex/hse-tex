@@ -1,3 +1,325 @@
 \subsection{Эйлеровы B- и $\Gamma$- функции. Определение B-функции, ее область определения и свойства: симметричность, формула понижения, случайно натурально-значных аргументов. Формула Эйлера -- Гаусса. Формула дополнения (с использованием разложения $\sin$ в бесконечное произведение без доказательства). Связь между B- и $\Gamma$- функциями.}
 
-\subsubsection{TBD}
+\subsubsection{Бета-функция Эйлера}
+\(
+B(p, q) = \int_0^1 x^{p-1}(1 - x)^{q-1}dx
+\)
+
+Чтобы понять что это за интеграл, нам нужно внимательно присмотреться
+к нашей функции, зависящей от двух парметров $p$ и $q$. Мы понимаем, что потенциально
+здесь возможна неприятность в 0 и 1 из-за того, что степень может оказаться отрицательной.
+Нам никто не запрещает рассматривать степени $p < 1$ или $q < 1$, поэтому степень
+$x$ или $(1 - x)$ может оказаться отрицательной. Это означает, что нам нужно
+посмотреть как себя ведёт подинтегральная функция при $x \to 0$ и при $x \to 1$.
+
+\(
+x \to 0: x^{p-1}(1-x)^{q - 1} = x^{p-1} \cdot (1 + o(1)) \implies
+\text{инт. сходится при } p-1 > -1 \implies p > 0
+\)
+
+\(
+x \to 1: x^{p-1}(1-x)^{q - 1} = (1 - x)^{q-1} \cdot (1 + o(1)) \implies
+\text{инт. сходится при } q-1 > -1 \implies q > 0
+\)
+
+Из этого следует, что область определения Бета функции --- первая четверть на плоскости $pq$
+(положительные $p$ и $q$)
+
+Отметим ещё одну важную формулу Бета-функции, сделав замену
+\(
+x = \frac{t}{1 + t}, t \in [0; +\infty)
+\)
+
+\(
+B(p, q) = \int_0^{+\infty}\frac{t^{p-1}}{(1 + t)^{p + q}}dt
+\)
+
+Свойства:
+\begin{enumerate}
+    \item Симметричность
+          \(
+          x = 1 - y, ~ y \in [0; 1]
+          \)
+
+          \(
+          B(p, q) = \int_0^1(1 - y)^{p - 1} \cdot y^{q - 1}dy =
+          \int_0^1 x^{q - 1} \cdot (1 - x)^{p - 1}dx = B(q, p)
+          \)
+    \item Формула понижения
+          $p > 0, ~ q > 0$
+
+          здесь юзнём интегрирование по частям: $\int udv = uv - \int vdu$
+
+          $
+              B(p + 1, q) = \int_0^1 x^p \cdot (1 - x)^{q - 1} dx =
+              -\frac{1}{q} \int_0^1 x^p \cdot d((1 - x)^q) =
+              \left[
+                  \begin{array}{cc}
+                      u = x^p         & v = (1-x)^q          \\
+                      du = px^{p-1}dx & dv = -q(1-x)^{q-1}dx \\
+                  \end{array}
+                  \right] =
+              \\
+              = -\frac{1}{q}x^p \cdot (1 - x)^q \Bigg|_0^1 + \frac{1}{q}\cdot
+              \int_0^1(1-x)^{q} \cdot px^{p - 1} dx =
+              \left[ (1 - x)^q = (1 - x) \cdot (1 - x)^{q - 1} = (1 - x)^{q - 1} -
+                  x \cdot (1 - x)^{q - 1} \right] =
+              \\
+              = \frac{p}{q} \cdot \int_0^1 x^{p - 1} \cdot ((1 - x)^{q - 1} -
+              x \cdot (1 - x)^{q - 1}) dx = \frac{p}{q} \cdot B(p, q) -
+              \frac{p}{q}B(p + 1, q)
+              \\
+              (1 + \frac{p}{q})B(p + 1, q) = \frac{p}{q}B(p, q) \implies
+              B(p + 1, q) = \frac{p}{p + q} \cdot B(p, q)
+          $
+
+          Воспользовавшись тем, что функция симметрична можно легко
+          вывести аналогичную формулу для $B(p, q+1)$
+
+          Итог:
+
+          $B(p + 1, q) = \frac{p}{p + q} \cdot B(p, q)$
+
+          $B(p, q + 1) = \frac{q}{p + q} \cdot B(p, q)$
+    \item Поведение при натуральных аргументах
+
+          \begin{itemize}
+              \item $q = n \in \NN$
+
+                    $
+                        B(p, 1) = \int_0^1 x^{p - 1}dx = \frac{1}{p}
+                        \\
+                        B(p, n) = \frac{n - 1}{p + n - 1} \cdot B(p, n - 1) = \dots =
+                        \frac{n-1}{p + n - 1} \cdot \dots \cdot \frac{1}{p + 1} \cdot B(p, 1) =
+                        \frac{(n - 1)!}{p(p+1)\dots(p + n - 1)}
+                    $
+              \item $p = n \in \NN, q = m \in \NN$
+
+                    $
+                        B(n, m) = \frac{(n - 1)!(m - 1)!}{(n + m - 1)!}
+                    $
+          \end{itemize}
+
+\end{enumerate}
+
+\subsubsection{Гамма-функция Эйлера}
+
+$\Gamma(p) = \int_0^{+\infty}x^{p - 1} \cdot e^{-x} dx$
+
+Аналогично с Бета-функцией можно вывести, что область определения Гамма-функции ---
+$p > 0$:
+
+В бесконечности отсутствие проблем очевидно, проверим 0.
+
+$x \to 0 \colon x^{p - 1} \cdot e^{-x} = x^{p - 1} \cdot (1 + \mathrm{o}(1))
+    \implies$ инт. сходится при $p-1 > -1 \implies p > 0$
+
+Свойства:
+
+\begin{enumerate}
+    \item Формула понижения
+
+          здесь юзнём интегрирование по частям: $\int udv = uv - \int vdu$
+
+          $\Gamma(p + 1) = \int_0^{+\infty}x^p \cdot e^{-x}dx =
+              -\int_0^{+\infty}x^p \cdot d(e^{-x}) =
+              \left[
+                  \begin{array}{cc}
+                      u = x^p         & v = e^{-x}     \\
+                      du = px^{p-1}dx & dv = -e^{-x}dx \\
+                  \end{array}
+                  \right] =
+              \\
+              = -x^p \cdot e^{-x} \Bigg|_0^{+\infty} + \int_0^{+\infty}
+              e^{-x} \cdot px^{p-1}dx = p \cdot \Gamma(p)
+          $
+
+          Итог: $\Gamma(p + 1) = p \cdot \Gamma(p)$
+
+    \item Случай натурального аргумента, $p = n \in \NN$
+
+          $\Gamma(1) = \int_0^{+\infty}e^{-x}dx = 1$
+
+          $
+              \Gamma(n + 1) = n \cdot \Gamma(n) = n \cdot (n - 1) \Gamma(n - 1) =
+              \dots = n!
+          $
+
+    \item Формула Эйлера-Гаусса
+
+          $
+              \Gamma(p) = \int_0^{+\infty}x^{p - 1} e^{-x} dx = \left[x =
+                  -\ln t = \ln\frac{1}{t}, ~ t \in [0; 1] \right] = \int_0^1
+              \ln^{p - 1}\left(\frac{1}{t}\right) dt
+          $
+
+          \begin{minipage}{.50\textwidth}
+              Пусть $\varphi(z) = t^z, t \in (0; 1)$ --- выпуклая $\implies$ при
+              стремлении $z \to +0$ наклонный коэффициент секущей, проведённой
+              через $(0, \varphi(0))$ и $(z, \varphi(z))$ будет убывать в силу выпуклости
+              функции, а в пределе даст нам производную:
+
+              $\frac{t^z - t^0}{z - 0} \underset{z \to +0}{\searrow} \varphi'(0) = \ln t$
+
+              $z = \frac{1}{n} \colon n \cdot(t^\frac{1}{n} - 1)
+                  \underset{n \to +\infty}{\searrow} \ln t$, а если мы поменяем знак,
+              то получится $n \cdot(1 - t^\frac{1}{n}) \underset{n \to +\infty}{\nearrow}
+                  \ln \frac{1}{t}$. И сама функция, и её предельная функция непрерывны,
+              сходимость монотонная, по теореме Дини получаем равномерную сходимость
+              по $t$ на любом отрезке $[a, b] \subset (0; 1)$
+          \end{minipage}\hfill
+          \begin{minipage}{.40\textwidth}
+              \definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+              \definecolor{qqqqff}{rgb}{0,0,1}
+              \begin{tikzpicture}[line cap=round,line join=round,x=1cm,y=1cm]
+                  \begin{axis}[
+                          x=1.5cm,y=1.5cm,
+                          axis lines=middle,
+                          ymajorgrids=true,
+                          xmajorgrids=true,
+                          xmin=-2,
+                          xmax=2,
+                          ymin=-1,
+                          ymax=3,
+                          xtick={-2,-1,...,2},
+                          ytick={-1,0,...,3},
+                          xlabel=$z$,
+                          ylabel=$\varphi(z)$,
+                          x label style={at={(axis description cs: 1.06, 0.28)}, anchor=north}]
+                      %\clip(-4.973001254650355,-2.8738695450002516) rectangle (2.0559109591260905,4.437045164815357);
+                      %\draw[line width=2pt,color=qqqqff,smooth,samples=100,domain=-4.973001254650355:2.0559109591260905] plot(\x,{0.4});
+                      \addplot[line width=1pt,color=qqqqff,smooth,samples=100,domain=-2:2]{0.4^x};
+                      \addplot[line width=1pt,color=uuuuuu,smooth,samples=100,domain=-2:2]{(0.4^1.5 - 1)* x/1.5 + 1};
+                      \node[circle,fill,inner sep=1.5pt] at (axis cs:1.5,0.4^1.5) {};
+                      \node[circle,fill,inner sep=1.5pt] at (axis cs:0,1) {};
+                      \node at (axis cs:1.5, -0.15) {z};
+                      \node at (axis cs:0.15, -0.15) {0};
+                      \addplot[line width=1pt,color=uuuuuu] coordinates {(1.5, 0) (1.5, 0.4^1.5)};
+                      \addplot[line width=1pt,color=uuuuuu] coordinates {(0, 0) (0, 1)};
+                      %\draw [line width=2pt,domain=-4.973001254650355:2.0559109591260905] plot(\x,{(--1.4848559046467604-0.74348283681205=triangle 45,05*\x)/1.4848559046467604});
+                      %\draw [line width=2pt] (1.4848559046467604,-2.8738695450002516) -- (1.4848559046467604,4.437045164815357);
+                      %\draw (1.5201062166516575,-0.01859427260360577) node[anchor=north west] {z};
+                      %\begin{scriptsize}
+                      %    \draw[color=qqqqff] (-1.5255207405714362,4.40531988401095) node {$f$};
+                      %    \draw [fill=black] (0,1) circle (2pt);
+                      %    \draw [fill=black] (1.4848559046467604,0.2565171631879494) circle (2.5pt);
+                      %    \draw[color=black] (-4.909550693041541,3.4253612102748177) node {$g$};
+                      %    \draw[color=black] (1.4002551558350078,4.40531988401095) node {$h$};
+                      %    \draw [fill=uuuuuu] (1.4848559046467604,0) circle (0.5pt);
+                      %\end{scriptsize}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{minipage}
+
+          Получаем $\Gamma(p) = \int_0^1 \ln^{p - 1}\left(\frac{1}{t}\right) dt,
+              \ln \frac{1}{t} = \lim_{n \to \infty}
+              \underbrace{n \cdot (1 - t^\frac{1}{n})}_{f_n(t)}$
+
+          $
+              \begin{rcases*}
+                  f_n(t) \geq 0 ~ \text{и непрерывны при } t \in (0; 1), \forall n \\
+                  n \to \infty ~ f_n(t) \searrow \ln \frac{1}{t}                   \\
+                  \ln \frac{1}{t} \text{ --- непрерывна}                           \\
+                  \int_0^1 \ln^{p - 1}\left(\frac{1}{t}\right)dt ~ \text{сходися}
+              \end{rcases*} \implies
+          $
+          можем внести предел под знак интеграла
+          (следует из теоремы Дини по пункту 5.2)
+
+          $
+              \lim_{n \to \infty} \int_0^1(n\cdot(1 - t^\frac{1}{t}))^{p-1}dt =
+              \int_0^1 \ln^{p-1}\left(\frac{1}{t}\right)dt
+              \\
+              \implies \Gamma(p) = \lim_{n \to \infty}\int_0^1n^{p-1} \cdot (1 -
+              \frac{1}{n})^{p-1}dt = \left[t = z^n \right] = \lim_{n \to \infty}
+              n^p \cdot \underbrace{\int_0^1 z^{n-1} \cdot (1 - z)^{p-1}dz}_{B(n, p)} =
+              \lim_{n \to \infty} n^p \cdot \mathrm{B}(n, p) =
+              \\
+              = \lim_{n \to \infty}\frac{n^p \cdot (n - 1)!}{p(p+1)\dots(p+n-1)}
+          $
+
+          Итог:
+
+          $\Gamma(p) = \lim_{n \to \infty} \frac{n^p \cdot (n - 1)!}{p(p+1)\dots(p+n-1)}$
+          --- формула Эйлера-Гаусса
+
+    \item Формула дополнения, $p \in (0; 1)$
+
+          $\Gamma(p) \cdot \Gamma(1 - p) = \left[\text{формула Эйлера-Гаусса}
+                  \right] = \lim_{n \to \infty} \left(
+              \frac{n^p \cdot (n-1)!}{p(p+1)\dots(p+n-1)} \cdot
+              \frac{n^{1-p}\cdot(n-1)!}{(1-p)(2-p)\dots(n-p)}
+              \right) =
+              \\
+              = \left[\text{поделили в обеих дробях числитель и знаменатель
+                      на } (n-1)!\right] =
+              \\
+              = \lim_{n \to \infty} \frac{p}{p(n-p)} \cdot
+              \frac{1}{(\frac{p}{1} + 1)(\frac{p}{2} + 1)\dots(\frac{p}{n-1}+1)}
+              \cdot \frac{1}{(1 - \frac{p}{1})(1 - \frac{p}{2})\dots(1 - \frac{p}{n - 1})} =
+              \\
+              = \frac{1}{p} \cdot \prod_{k=1}^\infty \frac{1}{\left(1 -
+                  \left(\frac{p}{k}\right)^2\right)}
+          $
+
+          Далее нам придётся воспользоваться формулой бесконечного произведения
+          для синуса
+
+          $
+              \sin(\pi p) = \pi p \cdot \prod_{k=1}^\infty(1 - \frac{p^2}{k^2})
+          $
+
+          $
+              \implies \Gamma(p) \cdot \Gamma(1 - p) = \frac{\pi}{\sin(\pi p)}
+          $ --- формула дополнения
+
+          Если мы возьмём $p = \frac{1}{2}$, то получим $\Gamma\left(\frac{1}{2}\right)^2 =
+              \frac{\pi}{\sin \frac{\pi}{2}} \implies \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}$
+
+          Это даёт нам ещё один способ вычисления интеграла Эйлера-Пуассона
+
+          $\Gamma\left(\frac{1}{2}\right) = \int_0^{+\infty}x^{-\frac{1}{2}}e^{-x}dx =
+              \left[x = t^2\right] = 2 \cdot \int_0^{+\infty}e^{-t^2}dt \implies
+              \int_0^{+\infty}e^{-t^2}dt = \frac{\sqrt{\pi}}{2}$
+\end{enumerate}
+
+\subsubsection{Связь между $\mathrm{B}$ и $\Gamma$}
+
+$
+    \Gamma(p) = \int_0^{+\infty}t^{p-1} e^{-t}dt = [t = x(y + 1), y > 0, y = \mathrm{const}] =
+    (1 + y)^p\int_0^{+\infty}x^{p-1}e^{-x(1+y)}dx
+$
+
+$
+    \frac{\Gamma(p + q) \cdot y^{p-1}}{(1+y)^{p+q}} = y^{p-1} \cdot \int_0^{+\infty}
+    x^{p+q+1} \cdot e^{-x(1+y)}dx
+$
+
+$
+    \Gamma(p + q) \cdot \mathrm{B}(p, q) = \Gamma(p + q) \cdot \int_0^{+\infty}
+    \frac{y^{p-1}}{(1+y)^{p+q}}dy = \int_0^{+\infty}dy \int_0^{+\infty}
+    y^{p-1} \cdot x^{p + q - 1} \cdot e^{-x(1 + y)}dx = \left[\text{потом обоснуем}\right] =
+    \\
+    = \int_0^{+\infty}dx \int_0^{+\infty}
+    y^{p-1} \cdot x^{p + q - 1} \cdot e^{-x(1 + y)}dy = \int_0^{+\infty}dx \cdot
+    x^{q - 1} \cdot e^{-x} \cdot \int_0^{+\infty}(xy)^{p-1}\cdot e^{-xy}\cdot x \cdot dy =
+    \Gamma(p) \cdot \int_0^{+\infty}dx \cdot x^{q - 1} \cdot e^{-x} = \Gamma(p)
+    \cdot \Gamma(q)
+    \\
+    \implies \mathrm{B}(p, q) = \frac{\Gamma(p) \cdot \Gamma(q)}{\Gamma{p + q}}
+$
+\\
+\\
+"Потом обоснуем": нам надо обосновать внесение одного несобственного интеграла
+внутрь другого несобственного интеграла
+
+$f(x, y) = x^{p+q-1} \cdot y^{p - 1} \cdot e^{-(1 + y)x} \geq 0$ и непрерывна
+на $(0; +\infty)\times(0; \infty)$
+
+$\int_0^{+\infty}dx \int_0^{+\infty}f(x, y)dy$ --- сходится в силу того что равен
+произведению Гамма функций и там всё хорошо
+
+Оба интеграла $\int_0^{+\infty}f(x, y)dx$ и $\int_0^{+\infty}dy$ сходятся равномерно
+на любом вложенном $[a; b]$, потому что любую из степеней икса и игрека мы можем
+мажорировать через экспоненту $\implies \int_0^{+\infty}dy$ можно внести
+внутрь $\int_0^{+\infty}dx$
