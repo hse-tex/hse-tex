@@ -21,9 +21,8 @@ function build_content {
 
     echo "Build successfully finished. Document diff:"
 
-    pairs=()
     for item in $(find . -name '*.pdf'); do
-        gh_pages_one="_gh_pages/$item"
+        gh_pages_one="../_gh_pages/$item"
         right="$item"
 
         if [[ ! -f "$gh_pages_one" ]]; then
