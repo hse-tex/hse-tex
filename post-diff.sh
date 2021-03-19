@@ -48,11 +48,13 @@ function build_content {
 function post_comment {
     content="$1"; shift
 
+    body=$(jq -n --arg content "$kekos" '{body: ($content)}')
+
     curl -X POST \
         -u hse-tex-bot:$GH_BOT_TOKEN \
         -H "Accept: application/vnd.github.v3+json" \
         $GITHUB_API_URL/repos/$GITHUB_REPOSITORY/issues/$PULL_REQUEST_NUMBER/comments \
-        -d "{\"body\":\"$content\"}"
+        -d "$body"
 }
 
 content=$(build_content)
