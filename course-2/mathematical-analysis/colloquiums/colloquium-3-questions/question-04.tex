@@ -43,7 +43,7 @@
 \begin{theorem*}
     Пусть $f(x,y)$ интегрируема по $x\in[a,t],\ \forall t\in(a,\omega),\ \forall y\in H$, и пусть $|f(x,y)|\leqslant g(x,y)$, где $(x,y)\in [a,\omega]\times H$ (в силу свойств несобственного интеграла можем требовать, чтобы неравенство выполнялось в сколь угодно близких точках по $x$ к $\omega$), причем $g(x,y)$ интегрируема по $x\in[a,\omega)$ в несобственном смысле при $\forall y\in H$ и $\int\limits_a^\omega g(x,y)dx$ сходится равномерно по $y$, тогда
     \begin{equation*}
-        \int\limits_{a}^{\omega} f(x,y)dx\ \text{равномерно сходится и удовлетворяет неравеснтву } \Big|\int\limits_a^\omega f(x,y)dx\Big|\leqslant \int\limits_a^\omega g(x,y)dx
+        \int\limits_{a}^{\omega} f(x,y)dx\ \text{равномерно сходится и удовлетворяет неравенcтву } \Big|\int\limits_a^\omega f(x,y)dx\Big|\leqslant \int\limits_a^\omega g(x,y)dx
     \end{equation*}
 \end{theorem*}
 \begin{proof}
@@ -51,9 +51,9 @@
    \begin{equation*}
         \Big|\int\limits_{t_1}^{t_2} f(x,y)dx\Big|\leqslant \int\limits_{t_1}^{t_2} g(x,y)dx
     \end{equation*}
-    тогда, так как $g(x,y)$ по условию сходится равномерно, значит для него выполнется критерий Коши, то есть $\int\limits_{t_1}^{t_2} g(x,y)dx <\varepsilon$, тогда получаем, что
+  так как $g(x,y)$, по условию, сходится равномерно, значит для него выполнется критерий Коши, то есть $\int\limits_{t_1}^{t_2} g(x,y)dx <\varepsilon$, тогда получаем, что
     \begin{equation*}
-        \Big|\int\limits_{t_1}^{t_2} f(x,y)dx\Big|\leqslant \int\limits_{t_1}^{t_2} g(x,y)dx < \varepsilon\implies \Big|\int\limits_{t_1}^{t_2} f(x,y)dx\Big| < \varepsilon\  \implies[\text{по критерию Коши}] \  f(x,y)\  \text{равномерно сходится}
+        \Big|\int\limits_{t_1}^{t_2} f(x,y)dx\Big|\leqslant \int\limits_{t_1}^{t_2} g(x,y)dx < \varepsilon\implies \Big|\int\limits_{t_1}^{t_2} f(x,y)dx\Big| < \varepsilon\  \implies[\text{по критерию Коши}] \  \int\limits_{t_1}^{t_2} f(x,y)dx\  \text{равномерно сходится}
     \end{equation*}
 
     Для доказателства неравенства, заметим, что для любой точки $t$ оно выполнено (по свойству интеграла), затем устремляем $t$ к $\omega$ и в пределе получаем нужное нам неравенсвто с $\omega$, а именно 
