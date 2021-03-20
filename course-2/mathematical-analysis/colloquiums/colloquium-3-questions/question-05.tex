@@ -85,11 +85,11 @@
             
             Докажем, что $\psi(y) \xrightarrow[y \to y_0]{} 0$. От противного: пусть $\psi(y) \ge \varepsilon > 0$.
     
-            Тогда $\exists \{ (x_n, y_n) \} : \: y_n \nearrow y_0, \ \varphi(x_n) - f(x_n, y_n) \ge \varepsilon / 2$
+            Тогда $\forall \textrm{ фиксированного } \textrm{"} y \textrm{"} \exists \{ x_n \} \colon \varphi(x_n) - f(x_n, y) \ge \varepsilon / 2$
             
             $\{ x_n \} \subset [a; t] \;\Rightarrow\;$ из нее можно выделить сходящуюся подпоследовательность $\{ x_{n_k} \}$ такую, что $x_{n_k} \xrightarrow[k \to \infty]{} c \in [a; t]$.
             \[ \varphi(x_{n_k}) - f(x_{n_k}, y) \ge \varepsilon / 2 \]
-            \[ k \to \infty: \ \varphi(c) - f(c, y) \ge \varepsilon / 2 \ \ \ \forall y \in U(y_0) \]
+            \[ k \to \infty: \ \varphi(c) - f(c, y) \ge \varepsilon / 2 \ \ \ \forall y \in U(y_0) \textrm{ - малая окрестность точки } y_0 \]
             --- противоречит тому, что $f(x, y) \to \varphi(x)$.
         \end{proof}
         \begin{corollary}
