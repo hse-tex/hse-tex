@@ -5,17 +5,15 @@ function post_diff {
     left="$1"; shift
     right="$1"; shift
 
-    # response=$(curl "https://api.draftable.com/v1/comparisons" \
-    #     -H "Authorization: Token $DRAFTABLE_API_TOKEN" \
-    #     -F "left.file_type=pdf" -F "left.file=@$left" \
-    #     -F "right.file_type=pdf" -F "right.file=@$right" \
-    #     -F "public=true")
+    response=$(curl "https://api.draftable.com/v1/comparisons" \
+        -H "Authorization: Token $DRAFTABLE_API_TOKEN" \
+        -F "left.file_type=pdf" -F "left.file=@$left" \
+        -F "right.file_type=pdf" -F "right.file=@$right" \
+        -F "public=true")
 
-    # id=$(echo "$response" | jq .identifier -r)
+    id=$(echo "$response" | jq .identifier -r)
 
-    # echo "https://api.draftable.com/v1/comparisons/viewer/$DRAFTABLE_API_ID/$id"
-
-    ehco "https://api.draftable.com/v1/comparisons/viewer/rOboyG/TczjdkwY"
+    echo "https://api.draftable.com/v1/comparisons/viewer/$DRAFTABLE_API_ID/$id"
 }
 
 function build_content {
