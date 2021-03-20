@@ -11,7 +11,7 @@ directory:
   target: course-2/discrete-math-02-lecture-notes.pdf
 - source: course-2/probability-theory/colloquiums/colloq-2.tex
   target: course-2/probability-theory-colloquium-2.pdf
-- source: course-2/mathematical-analysis/colloquiums/col2.tex
+- source: course-2/mathematical-analysis/colloquiums/2/col2.tex
   target: course-2/mathematical-analysis-colloquium-2.pdf
 - source: course-2/mathematical-analysis/colloquiums/colloquium-3.tex
   target: course-2/mathematical-analysis-colloquium-3.pdf
