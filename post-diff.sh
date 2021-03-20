@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+if [[ ! -d .pdf ]] || (!(find   .pdf -mindepth 1 | read)); then
+    echo "nothing to diff"
+    exit
+fi
+
 function post_diff {
     left="$1"; shift
     right="$1"; shift
