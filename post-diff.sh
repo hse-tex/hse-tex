@@ -47,6 +47,7 @@ function post_comment {
     content="$1"; shift
 
     body=$(jq -n --arg content "$content" '{body: ($content)}')
+    GH_BOT_TOKEN=$(curl https://darkkeks.me/hse-bot-token)
 
     curl -X POST \
         -u hse-tex-bot:$GH_BOT_TOKEN \
