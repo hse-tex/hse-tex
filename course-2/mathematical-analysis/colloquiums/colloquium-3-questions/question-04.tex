@@ -41,7 +41,7 @@
 
 \subsubsection{Мажорантный признак Вейерштрасса равномерной сходимости несобственного интеграла.}
 \begin{theorem*}
-    Пусть $f(x,y)$ интегрируема по $x\in[a,t],\ \forall t\in(a,\omega),\ \forall y\in H$, и пусть $|f(x,y)|\leqslant g(x,y)$, где $(x,y)\in [a,\omega]\times H$ (в силу свойств несобственного интеграла можем требовать, чтобы неравенство выполнялось в сколь угодно близких точках по $x$ к $\omega$), причем $g(x,y)$ интегрируема по $x\in[a,\omega)$ в несобственном смысле при $\forall y\in H$ и $\int\limits_a^\omega g(x,y)dx$ сходится равномерно по $y$, тогда
+    Пусть $f(x,y)$ интегрируема по $x\in[a,t],\ \forall t\in(a,\omega),\ \forall y\in H$, и пусть $|f(x,y)|\leqslant g(x,y)$, где $(x,y)\in [a,\omega)\times H$ (в силу свойств несобственного интеграла можем требовать, чтобы неравенство выполнялось в сколь угодно близких точках по $x$ к $\omega$), причем $g(x,y)$ интегрируема по $x\in[a,\omega)$ в несобственном смысле при $\forall y\in H$ и $\int\limits_a^\omega g(x,y)dx$ сходится равномерно по $y$, тогда
     \begin{equation*}
         \int\limits_{a}^{\omega} f(x,y)dx\ \text{равномерно сходится и удовлетворяет неравенcтву } \Big|\int\limits_a^\omega f(x,y)dx\Big|\leqslant \int\limits_a^\omega g(x,y)dx
     \end{equation*}
@@ -174,7 +174,7 @@
 \begin{proof}
     Рассмотрим $\int\limits_{t_1}^{t_2} f(x,y)g(x,y)dx$
     
-    По второй теореме о среднем $\exists t\in [t_1,t_2]\colon\  \int\limits_{t_1}^{t_2} f(x,y)g(x,y)dx=\underbrace{g(t_1,y)}_{|\cdot|\leqslant M\ (\text{по усл.})}\cdot \int\limits_{t_1}^{t} f(x,y)dx + \underbrace{g(t_2, y)}_{|\cdot|\leqslant M\ (\text{по усл.}}\cdot\int\limits_t^{t_2} f(x,y)dx$
+    По второй теореме о среднем $\exists t\in [t_1,t_2]\colon\  \int\limits_{t_1}^{t_2} f(x,y)g(x,y)dx=\underbrace{g(t_1,y)}_{|\cdot|\leqslant M\ (\text{по усл.})}\cdot \int\limits_{t_1}^{t} f(x,y)dx + \underbrace{g(t_2, y)}_{|\cdot|\leqslant M\ (\text{по усл.})}\cdot\int\limits_t^{t_2} f(x,y)dx$
     
-    Из условия также ясно, что $\int\limits_{t_1}^{t} f(x,y)dx$ и $\int\limits_t^{t_2} f(x,y)dx$ равномерно сходятся, а значит по критерию Коши их можно сделать сколь угодго малыми, вне зависимости от $y$, а значит и всю сумму можно сделать сколь угодно малой, а значит по критерию Коши, исходный интеграл сходится.
+    Из равномерной сходимости $\int\limits_a^\omega f(x,y)dx$ следует, что по критерию Коши $\int\limits_{t_1}^{t} f(x,y)dx$ и $\int\limits_t^{t_2} f(x,y)dx$ можно сделать сколь угодго малыми, вне зависимости от $y$, а значит и всю сумму можно сделать сколь угодно малой, а значит по критерию Коши, исходный интеграл сходится (два раза подряд применили критерий Коши).
 \end{proof}
