@@ -68,6 +68,7 @@
 \end{example}
 
 \subsubsection{ Теорема о собственном интегрировании по параметру под знаком несобственного интеграла.}
+\label{subsubsec:6.2}
 \[ \int\limits_c^d F(y)\,dy = \int\limits_c^d dy \int\limits_a^{\omega} f(x, y)\,dx \]
 Пусть \\
 \phantom{Пусть} $f(x, y)$ непрерывна на $[a, \omega) \times [c, d]$ \\
@@ -112,9 +113,9 @@ $dy$ а снаружи $dx$.
 
 \begin{proof}
     \[ \forall \tau \in (c; \tilde \omega) \ \ \ \int\limits_c^{\tau} dy \int\limits_a^{\omega} f(x, y)\,dx = 
-    \int\limits_a^{\omega} dx \int\limits_c^{\tau} f(x, y)\,dy \]
+    \int\limits_a^{\omega} dx \int\limits_c^{\tau} f(x, y)\,dy \text{ по \hyperref[subsubsec:6.2]{6.2}}\] 
     Рассмотрим предельный переход $\tau \to \tilde \omega$:
-    \[ \lim_{\tau \to \tilde \omega} \int\limits_a^{\omega} dx \int\limits_c^{\tau} f(x, y)\,dy \]
+    \[ \lim_{\tau \to \tilde \omega} \int\limits_a^{\omega} dx \int\limits_c^{\tau} f(x, y)\,dy ~ \text{(1)}\]
     \[ \varphi(\tau, x) = \int\limits_c^{\tau} f(x, y)\,dy \overset{x \in [a; t]}{\underset{\tau \to \tilde \omega}
     {\rightrightarrows}} \Phi(x) = \int\limits_c^{\tilde \omega} f(x, y)\,dy \]
     --- по условию
@@ -122,4 +123,15 @@ $dy$ а снаружи $dx$.
     \le \int\limits_a^{\omega} dx \int\limits_c^{\tilde \omega} |f(x, y)|\,dy \]
     --- сходятся по условию \\
     $\Rightarrow$ по признаку Вейерштрасса $\int\limits_a^{\omega} \varphi(\tau, x)\,dx$ сходится равномерно
+
+    С одной стороны $\int_a^\omega \varphi(\tau, x)\,dx$ сходится равномерно, а с другой стороны
+    $\varphi(\tau, x) \overset{x \in [a; t]}{\underset{\tau \to \tilde \omega}
+    {\rightrightarrows}} \int\limits_c^{\tilde \omega} f(x, y)\,dy$ по условию.
+    Из этих двух пунктов вытекает, что знак предела по переменной $\tau$ мы можем внести внести внутрь
+    интеграла по переменной $x$ в выражении (1). Так мы получим
+    несобственный интеграл по $x$ от несобственного интеграла по $y$. Так мы с вами показали, что
+    правая $\int\limits_a^{\omega} dx \int\limits_c^{\tau} f(x, y)\,dy \to \int_a^\omega\,dx\int_c^{\tilde \omega}
+    f\,dy$, а $\int\limits_c^{\tau} dy \int\limits_a^{\omega} f(x, y)\,dx$ будет стремится к
+    соответствующему несобственному интегралу просто по определению несобственного интеграла, а поскольку
+    равенство между этими частями всегда сохраняется, значит равенство будет верно и в пределе.
 \end{proof}
