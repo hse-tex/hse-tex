@@ -87,6 +87,7 @@
 - [Сергей Лоптев](https://github.com/beastSL)
 - Даниил Казанцев
 - [Сергей Рахманов](https://github.com/shoraii)
+- [Максим Николаев](https://github.com/maximkm)
 - [Сергей Пилипенко](https://github.com/territhing)
 - [Денис Болонин](https://github.com/BoloniniD)
 - [Егор Гутров](https://github.com/e-gutrov)
