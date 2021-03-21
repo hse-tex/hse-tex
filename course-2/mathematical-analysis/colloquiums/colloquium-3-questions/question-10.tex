@@ -159,7 +159,7 @@ $\sum_{n = -N}^N c_n e^{inx} = \frac{a_0}{2} + \sum_{n=1}^{N} \left( a_n \cos nx
 \end{enumerate}
 
 Тогда разложение Фурье функции $f$ сходится в точке $x_0$:
-$\sum_{n=-N}^{N} c_n e^{inx} \to \frac{f(x_0 - 0) + f(x_0 + 0)}{2} $
+$\sum_{n=-N}^{N} c_n e^{inx_0} \to \frac{f(x_0 - 0) + f(x_0 + 0)}{2} $
 
 \end{theorem*}
 
@@ -218,7 +218,7 @@ $\sum_{n=-N}^{N} c_n e^{inx} \to \frac{f(x_0 - 0) + f(x_0 + 0)}{2} $
     \sum_{n=1}^{\infty} \frac{(-1)^n}{a^2 - n^2} \cos nx  \right) \text{ верно } \forall x \in [-\pi, \pi] \\
     & \pmb{x = \pi\colon} \ctg \pi a - \frac{1}{\pi a} = \frac{2a}{\pi} \sum_{n=1}^{\infty} \frac{1}{a^2 - n^2}
     \text{ сходится равномерно при } a \in [-a_0, a_0]; a_0 < 1
-    \text{ — проинтегрируем!} \\
+    \text{ — проинтегрируем! (в $a = 0$ доопр.)} \\
     & \int_0^x \left( ctg \pi a - \frac{1}{\pi a} \right) da = 
     \frac{1}{\pi} \sum_{n=1}^{\infty} \int_0^x \frac{2a}{a^2 - n^2} da \quad \text{ интегрируем обе стороны} \\
     & \ln \frac{\sin \pi x}{\pi x} = \sum_{n=1}^{\infty} \ln(1 - \frac{x^2}{n^2}), \quad |x| < 1 \\
