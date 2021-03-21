@@ -71,9 +71,9 @@
 
     Пусть \\
     \phantom{Пусть} $f(x, y) \ge 0$ и непрерывна $\forall y \in H$ по $x \in [a; \omega)$, \\
-    \phantom{Пусть} при $\forall x \in [a; \omega) \ \ f(x, y) \uparrow$ по $y$ и $f(x, y) \xrightarrow[y \to y_0]{} \varphi(x)$, \\
+    \phantom{Пусть} при $\forall x \in [a; \omega) \ \ f(x, y) \uparrow$ по $y$ и $f(x, y) \nearrow[y \to y_0]{} \varphi(x)$, \\
     \phantom{Пусть} $\varphi$ --- непрерывна на $[a; \omega)$.
-    \[ \text{Тогда} \ \ f(x, y) \overset{[a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x) \ \ \forall t \in (a; \omega) \]
+    \[ \text{Тогда} \ \ f(x, y) \overset{x \in [a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x) \ \ \forall t \in (a; \omega) \]
 \end{theorem*}
 \begin{proof}
     В силу монотонности по $y$:
@@ -85,12 +85,17 @@
     
     Докажем, что $\psi(y) \xrightarrow[y \to y_0]{} 0$. От противного: пусть $\psi(y) \ge \varepsilon > 0$.
 
-    Тогда $\forall \textrm{ фиксированного \textquotedblleft} y \textrm{\textquotedblright} \exists \{ x_n \} \colon \varphi(x_n) - f(x_n, y) \ge \varepsilon / 2$
+    Тогда $\forall$ фиксированного ``$y$'' $\exists \{ x_n \} \colon \varphi(x_n) - f(x_n, y) \ge \varepsilon / 2$
     
     $\{ x_n \} \subset [a; t] \;\Rightarrow\;$ из нее можно выделить сходящуюся подпоследовательность $\{ x_{n_k} \}$ такую, что $x_{n_k} \xrightarrow[k \to \infty]{} c \in [a; t]$.
     \[ \varphi(x_{n_k}) - f(x_{n_k}, y) \ge \varepsilon / 2 \]
     \[ k \to \infty: \ \varphi(c) - f(c, y) \ge \varepsilon / 2 \ \ \ \forall y \in U(y_0) \textrm{ - малая окрестность точки } y_0 \]
-    --- противоречит тому, что $f(x, y) \to \varphi(x)$.
+
+    Пусть $c(y) := $ такая точка, что $\varphi(c(y)) - f(c(y), y) \geq \varepsilon / 2$. Рассмотрим $\{y_n\} \to y_0$ и соответствующую
+    $\{c_n\} := \{c(y_n)\}$. Поскольку $\{c_n\} \subset [a; t] \implies$ из неё можно выделить сходящуюся
+    подпоследовательность $\{c_{n_k}\} \xrightarrow[k\to\infty]{} z$. Тогда в точке $z$ не будет поточечной сходимости
+    потому что $y_{n_k}$ к $y_0$ стремится, а разница к 0 --- нет, потому что $\varphi(c_{n_k}) - f(c_{n_k}, y_{n_k}) \geq \varepsilon/2$
+    $\forall y_{n_k}$.
 \end{proof}
 \subsubsection{Следствие из теоремы Дини о монотонном предельном переходе под знаком несобственного интеграла.}
 \begin{corollary}
@@ -101,12 +106,14 @@
     \[ \text{Тогда} \ \ \lim_{y \to y_0} \int\limits_a^{\omega} f(x, y)\,dx = \int\limits_a^{\omega} \varphi(x)\,dx \]
 \end{corollary}
 \begin{proof}
-    По теореме Дини: $f(x, y) \overset{[a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x) \qquad
+    По теореме Дини: $f(x, y) \overset{x \in [a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x) \qquad
     \forall t \in (a; \omega)$
     
     $0 \le f(x, y) \le \varphi(x)$
     
-    Т.к. $\int\limits_a^{\omega} \varphi(x)\,dx$ сходится, то $\int\limits_a^{\omega} f(x, y)\,dx$ сходится равномерно (по признаку Вейерштрасса) 
+    Т.к. $\int\limits_a^{\omega} \varphi(x)\,dx$ сходится, то $\int\limits_a^{\omega} f(x, y)\,dx$ сходится равномерно (по признаку Вейерштрасса),
+    а поскольку выполнены все условия теоремы о предельном переходе под знаком несобственного интеграла (5.1),
+    то $\lim_{y \to y_0} \int\limits_a^{\omega} f(x, y)\,dx = \int\limits_a^{\omega} \varphi(x)\,dx$.
 \end{proof}
 
 \begin{example}
