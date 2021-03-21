@@ -1,158 +1,157 @@
-\subsection{Свойства равномерно сходящегося несобственного интеграла. Теорема о предельном переходе под знаком несобственного интеграла. Монотонный предельный переход и теорема Дини и равномерной сходимости семейства функций. Следствие из теоремы Дини о монотонном предельном переходе под знаком несобственного интеграла. Теорема о непрерывности несобственного интеграла по параметру.}
+\subsection{Свойства равномерно сходящегося несобственного интеграла.
+Теорема о предельном переходе под знаком несобственного интеграла.
+Монотонный предельный переход и теорема Дини и равномерной сходимости семейства функций.
+Следствие из теоремы Дини о монотонном предельном переходе под знаком несобственного интеграла.
+Теорема о непрерывности несобственного интеграла по параметру.}
 
-\subsubsection{Свойства равномерно сходящегося несобственного интеграла.}
-    \begin{properties}
-    \begin{enumerate}
-        \item Предельный переход под знаком интеграла.
-        \begin{example}
-            \[ \int\limits_{0}^{+\infty} f(x, n)\,dx \xrightarrow[n \to \infty]{} \int\limits_{0}^{+\infty} \varphi(x)\,dx \]
-        \end{example}
-        
-        Покажем, что $f(x, n) \rightrightarrows \varphi(x)$ недостаточно:
-        \[ f(x, n) = \left\{\begin{array}{ll} \frac{n}{x^3}\,e^{-\frac{n}{2x^2}}, & x > 0; \\ 0, & x = 0. \end{array}\right. 
-        \ \ \ \forall n \in \NN \text{ непрерывна на } \; [0; +\infty) \]
-        
-        Проверяем равномерную сходимость $f(x, n) \rightrightarrows \varphi(x) = 0$:
-        \[ \underset{x \ge 0}{\sup}\:\left| f(x, n) - \varphi(x) \right| = 
-        \underset{x > 0}{\sup}\:\frac{n}{x^3}\,e^{-\frac{n}{2x^2}} \underset{\underset{x = \sqrt{\frac{n}{3}}}{\uparrow}}= 
-        3 \sqrt{\frac3n}\,e^{-3/2} \xrightarrow[n \to \infty]{} 0 \;\Rightarrow\; \text{ сходимость равномерная} \]
-        
-        Проверяем значение интеграла:
-        \[ \int\limits_{0}^{+\infty} \varphi(x)\,dx = 0 \]
-        \[ \int\limits_{0}^{+\infty} f(n, x)\,dx = \int\limits_{0}^{+\infty} \frac{n}{x^3}\,e^{-\frac{n}{2x^2}}\,dx = 
-        \int\limits_{-\infty}^{0} e^{z}\,dz = e^z \Bigm|_{-\infty}^0 = 1 \]
-        \[ z = -\frac{n}{2x^2}, \; dz = \frac{n}{x^3}\,dx \]
-        \[ \lim_{n \to \infty} \int\limits_{0}^{+\infty} f(x, n)\,dx \ne \int\limits_{0}^{+\infty} \lim_{n \to \infty} f(x, n)\,dx \]
-        
-        Требуется равномерная сходимость несобственного интеграла.
-        
-        \begin{theorem*} О предельном переходе под знаком несобственного интеграла.
-        
-            Рассмотрим $f(x, y)$, определенную на $[a; \omega) \times H$ ($\omega$ --- особая точка).
-            
-            Пусть \\
-            \phantom{Пусть} $\forall y \in H \ \ f(x, y)$ несобственно интегрируема на $[a; \omega)$, \\
-            \phantom{Пусть} причем $\int\limits_{a}^{\omega} f(x, y)\,dx$ сходится равномерно по $y \in H$, \\
-            \phantom{Пусть} $\forall t \in [a; \omega) \ \ 
-            f(x, y) \overset{x \in [a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x), \; y_0 \in H$.
-            
-            Тогда $\varphi$ несобственно интегрируема на $[a; \omega)$, причем 
-            \[ \lim_{y \to y_0} \int\limits_{a}^{\omega} f(x, y)\,dx = \int\limits_{a}^{\omega} \varphi(x)\,dx \]
-        \end{theorem*}
-        \begin{proof}
-        \begin{enumerate}
-            \item Покажем, что $\int\limits_{a}^{\omega} \varphi(x)\,dx$ сходится: \\[5 pt]
-            $a \le t_1 < t_2 < \omega$ \\[3 pt]
-            По критерию Коши для равномерно сходящегося несобственного интеграла $\int\limits_{a}^{\omega} f(x, y)\,dx$
-            \[ \left| \int\limits_{t_1}^{t_2} f(x, y)\,dx \right| < \varepsilon \ \ \ \forall t_1, t_2 \in U(\omega), \; \forall y \in H \]
-            \[ y \to y_0: \ \ \ \lim_{y \to y_0} \int\limits_{t_1}^{t_2} f(x, y)\,dx = 
-            \int\limits_{t_1}^{t_2} \left( \lim_{y \to y_0} f(x, y) \right) dx = \int\limits_{t_1}^{t_2} \varphi(x)\,dx \ \ \ 
-            \text{(т.к. $f(x, y) \overset{x \in [a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x)$)} \]
-            \[ \Rightarrow\; \left| \int\limits_{t_1}^{t_2} \varphi(x)\,dx \right| \le \varepsilon \ \ \ \forall t_1, t_2 \in U(\omega) \]
-            \[ \Rightarrow\; \varphi \text{ несобственно интегрируема} \]
-            
-            \item Покажем, что $\left| \int\limits_{a}^{\omega} f(x, y)\,dx - \int\limits_{a}^{\omega} \varphi(x)\,dx \right|
-            \xrightarrow[y \to y_0]{} 0$:
-            \[ \left| \int\limits_{a}^{\omega} f(x, y)\,dx - \int\limits_{a}^{\omega} \varphi(x)\,dx \right| \le 
-            \underset{< \text{\large$\frac{\varepsilon}{3}$} \ \begin{array}{l} \forall t \in U(\omega) \\[-7 pt] 
-            \forall y \in H \end{array}}{\underbrace{\left| \int\limits_{a}^{\omega} f(x, y)\,dx - \int\limits_{a}^{t} f(x, y)\,dx \right|}} + \]
-            \[ + \underset{< \text{\large$\frac{\varepsilon}{3}$} \ \begin{array}{c} 
-            \text{\footnotesize При фикс. } t \in U(\omega) \\[-7 pt] |y - y_0| < \delta \end{array}}
-            {\underbrace{\left| \int\limits_{a}^{t} f(x, y)\,dx - \int\limits_{a}^{t} \varphi(x)\,dx \right|}} + 
-            \underset{< \text{\large$\frac{\varepsilon}{3}$} \ \displaystyle\forall t \in U(\omega)}
-            {\underbrace{\left| \int\limits_{a}^{t} \varphi(x)\,dx - \int\limits_{a}^{\omega} \varphi(x)\,dx \right|}} < \varepsilon \ \ 
-            \forall \varepsilon > 0, \ \ \text{что и требовалось} \]
-        \end{enumerate}
-        \end{proof}
-        
-        \item Монотонный предельный переход
-        
-        \begin{theorem*} Теорема Дини
-        
-            Пусть \\
-            \phantom{Пусть} $f(x, y) \ge 0$ и непрерывна $\forall y \in H$ по $x \in [a; \omega)$, \\
-            \phantom{Пусть} при $\forall x \in [a; \omega) \ \ f(x, y) \uparrow$ по $y$ и $f(x, y) \xrightarrow[y \to y_0]{} \varphi(x)$, \\
-            \phantom{Пусть} $\varphi$ --- непрерывна на $[a; \omega)$.
-            \[ \text{Тогда} \ \ f(x, y) \overset{[a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x) \ \ \forall t \in (a; \omega) \]
-        \end{theorem*}
-        \begin{proof}
-            В силу монотонности по $y$:
-            \[ (\varphi(x) - f(x, y)) \downarrow \text{ по } y, \ \varphi(x) - f(x, y) \ge 0 \]
-            \[ \forall y_1 < y_2 \ \ \ \varphi(x) - f(x, y_1) \ge \varphi(x) - f(x, y_2) \;\Rightarrow \]
-            \[ \Rightarrow\; \underset{x}{\sup}\:\left| \varphi(x) - f(x, y_1) \right| \ge 
-            \underset{x}{\sup}\:\left| \varphi(x) - f(x, y_2) \right| \;\Rightarrow \]
-            \[ \Rightarrow\; \psi(y) = \underset{x}{\sup}\:\left| \varphi(x) - f(x, y) \right| \ \text{--- убывает и } \ge 0 \]
-            
-            Докажем, что $\psi(y) \xrightarrow[y \to y_0]{} 0$. От противного: пусть $\psi(y) \ge \varepsilon > 0$.
+\subsubsection{Теорема о предельном переходе под знаком несобственного интеграла.}
+\begin{example}
+    \[ \int\limits_{0}^{+\infty} f(x, n)\,dx \xrightarrow[n \to \infty]{} \int\limits_{0}^{+\infty} \varphi(x)\,dx \]
+\end{example}
+
+Покажем, что $f(x, n) \rightrightarrows \varphi(x)$ недостаточно:
+\[ f(x, n) = \left\{\begin{array}{ll} \frac{n}{x^3}\,e^{-\frac{n}{2x^2}}, & x > 0; \\ 0, & x = 0. \end{array}\right. 
+\ \ \ \forall n \in \NN \text{ непрерывна на } \; [0; +\infty) \]
+
+Проверяем равномерную сходимость $f(x, n) \rightrightarrows \varphi(x) = 0$:
+\[ \underset{x \ge 0}{\sup}\:\left| f(x, n) - \varphi(x) \right| = 
+\underset{x > 0}{\sup}\:\frac{n}{x^3}\,e^{-\frac{n}{2x^2}} \underset{\underset{x = \sqrt{\frac{n}{3}}}{\uparrow}}= 
+3 \sqrt{\frac3n}\,e^{-3/2} \xrightarrow[n \to \infty]{} 0 \;\Rightarrow\; \text{ сходимость равномерная} \]
+
+Проверяем значение интеграла:
+\[ \int\limits_{0}^{+\infty} \varphi(x)\,dx = 0 \]
+\[ \int\limits_{0}^{+\infty} f(n, x)\,dx = \int\limits_{0}^{+\infty} \frac{n}{x^3}\,e^{-\frac{n}{2x^2}}\,dx = 
+\int\limits_{-\infty}^{0} e^{z}\,dz = e^z \Bigm|_{-\infty}^0 = 1 \]
+\[ z = -\frac{n}{2x^2}, \; dz = \frac{n}{x^3}\,dx \]
+\[ \lim_{n \to \infty} \int\limits_{0}^{+\infty} f(x, n)\,dx \ne \int\limits_{0}^{+\infty} \lim_{n \to \infty} f(x, n)\,dx \]
+
+Требуется равномерная сходимость несобственного интеграла.
+
+\begin{theorem*} О предельном переходе под знаком несобственного интеграла.
+
+    Рассмотрим $f(x, y)$, определенную на $[a; \omega) \times H$ ($\omega$ --- особая точка).
     
-            Тогда $\forall \textrm{ фиксированного \textquotedblleft} y \textrm{\textquotedblright} \exists \{ x_n \} \colon \varphi(x_n) - f(x_n, y) \ge \varepsilon / 2$
-            
-            $\{ x_n \} \subset [a; t] \;\Rightarrow\;$ из нее можно выделить сходящуюся подпоследовательность $\{ x_{n_k} \}$ такую, что $x_{n_k} \xrightarrow[k \to \infty]{} c \in [a; t]$.
-            \[ \varphi(x_{n_k}) - f(x_{n_k}, y) \ge \varepsilon / 2 \]
-            \[ k \to \infty: \ \varphi(c) - f(c, y) \ge \varepsilon / 2 \ \ \ \forall y \in U(y_0) \textrm{ - малая окрестность точки } y_0 \]
-            --- противоречит тому, что $f(x, y) \to \varphi(x)$.
-        \end{proof}
-        \begin{corollary}
-            Пусть $f(x, y) \ge 0$ и непрерывна по $x \in [a; \omega)$ $\forall y \in H$, \\
-            \phantom{Пусть} $\forall x \in [a; \omega) \ \ f(x, y) \uparrow$ по $y$ и $f(x, y) \underset{y \to y_0}{\nearrow} 
-            \varphi(x)$, \\
-            \phantom{Пусть} $\int\limits_a^{\omega} \varphi(x)\,dx$ --- сходится.
-            \[ \text{Тогда} \ \ \lim_{y \to y_0} \int\limits_a^{\omega} f(x, y)\,dx = \int\limits_a^{\omega} \varphi(x)\,dx \]
-        \end{corollary}
-        \begin{proof}
-            По теореме Дини: $f(x, y) \overset{[a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x) \varphi(x) \ \ \ 
-            \forall t \in (a; \omega)$
-            
-            $0 \le f(x, y) \le \varphi(x)$
-            
-            Т.к. $\int\limits_a^{\omega} \varphi(x)\,dx$ сходится, то $\int\limits_a^{\omega} f(x, y)\,dx$ сходится равномерно (по признаку Вейерштрасса) 
-        \end{proof}
-        
-        \begin{example}
-            \[ \int\limits_0^{+\infty} e^{-x^2}\,dx = ? \]
-            \[ \left( 1 + \frac{x^2}{n} \right)^n \underset{n \to \infty}{\nearrow} e^{x^2} \ \ \forall x \ge 0 \]
-            Т.к. функции непрерывны, сходимость равномерная (по теореме Дини) \\
-            $\Rightarrow$ равномерно сходится $f(x, n) = \left( 1 + \frac{x^2}{n} \right)^{-n} 
-            \underset{n \to \infty}{\rightrightarrows} e^{-x^2} = \varphi(x)$
-            
-            Но последовательность $f(x, n)$ убывает --- рассмотрим разность
-            \[ g(x, n) = f(x, 1) - f(x, n) = \left( 1 + x^2 \right)^{-1} - \left( 1 + \frac{x^2}{n} \right)^{n} \ge 0 \ \ 
-            \uparrow \text{ по } n \]
-            \[ g(x, n) \rightrightarrows \psi(x) = (1  +x^2)^{-1} - e^{-x^2} \ge 0 \ \ \ \int\limits_0^{+\infty} \psi(x)\,dx \ \ 
-            \text{ сходится} \]
-            
-            По следствию из теоремы Дини:
-            \[ \Rightarrow\; \int\limits_0^{+\infty} g(x, n)\,dx \to \int\limits_0^{+\infty} \psi(x)\,dx \]
-            \[ \int\limits_0^{+\infty} \left( \frac1{1 + x^2} - \frac1{\left( 1 + \frac{x^2}n \right)^n} \right) dx \to
-            \int\limits_0^{+\infty} \left( \frac1{1 + x^2} - e^{-x^2} \right) dx \]
-            \[ \int\limits_0^{+\infty} e^{-x^2}\,dx = 
-            \lim_{n \to \infty} \int\limits_0^{+\infty} \frac{dx}{\left( 1 + \frac{x^2}n \right)^n} \]
-            \[ \int\limits_0^{+\infty} \frac{dx}{\left( 1 + \frac{x^2}n \right)^n} = 
-            \frac{(2n - 3)!!}{(2n - 2)!!} \cdot \sqrt{n} \cdot \frac{\pi}2 \]
-            Формула Валлиса: $\ \prod\limits_{k = 1}^n \frac{4k^2}{4k^2 - 1} \to \frac{\pi}2$
-        \end{example}
-        
-        \item Непрерывность интеграла
-        \[ f(x, y) \ \ \ [a; \omega) \times [c; d] \]
-        Пусть $\ f(x, y)$ непрерывна на $[a; \omega) \times [c; d]$ \\
-        \phantom{Пусть} $F(y) = \int\limits_a^{\omega} f(x, y)\,dx$ сходится равномерно на $[c; d]$
-        
-        Тогда $F(y)$ непрерывна на $[c; d]$
-        \begin{proof}
-            \[ g(t, y) = \int_a^t f(x, y)\,dx \text{ --- непрерывна по } y \in [c; d] \ \ \forall t \in (a; \omega) \]
-            \[ \int_a^t f(x, y)\,dx \text{ --- сходится равномерно} \;\Leftrightarrow\; g(t, y) 
-            \overset{y \in [c; d]}{\underset{t \to \omega}{\rightrightarrows}} F(y) \]
-            Равномерно сходящееся семейство непрерывных функций сходится к непрерывной функции:
-            \[ |F(y) - F(y_0)| \le \underset{< \text{\large$\frac{\varepsilon}{3}$} \ 
-            \begin{array}{l} \forall t \in U(\omega) \\[-7 pt] 
-            \forall y \in H \end{array}}{\underbrace{\left| F(y) - g(t, y) \right|}} + 
-            \underset{< \text{\large$\frac{\varepsilon}{3}$} \ \begin{array}{c} 
-            \text{\footnotesize При фикс. } t \in U(\omega) \\[-7 pt] |y - y_0| < \delta \end{array}}
-            {\underbrace{\left| g(t, y) - g(t, y_0) \right|}} + 
-            \underset{< \text{\large$\frac{\varepsilon}{3}$} \ \begin{array}{l} \forall t \in U(\omega) \\[-7 pt] 
-            \forall y \in H \end{array}}
-            {\underbrace{\left| g(t, y_0) - F(y_0) \right|}} < \varepsilon \ \ 
-            \forall \varepsilon > 0 \]
-        \end{proof}
-    \end{enumerate}
-    \end{properties}
+    Пусть \\
+    \phantom{Пусть} $\forall y \in H \ \ f(x, y)$ несобственно интегрируема на $[a; \omega)$, \\
+    \phantom{Пусть} причем $\int\limits_{a}^{\omega} f(x, y)\,dx$ сходится равномерно по $y \in H$, \\
+    \phantom{Пусть} $\forall t \in [a; \omega) \ \ 
+    f(x, y) \overset{x \in [a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x), \; y_0 \in H$.
+    
+    Тогда $\varphi$ несобственно интегрируема на $[a; \omega)$, причем 
+    \[ \lim_{y \to y_0} \int\limits_{a}^{\omega} f(x, y)\,dx = \int\limits_{a}^{\omega} \varphi(x)\,dx \]
+\end{theorem*}
+\begin{proof}
+\begin{enumerate}
+    \item Покажем, что $\int\limits_{a}^{\omega} \varphi(x)\,dx$ сходится: \\[5 pt]
+    $a \le t_1 < t_2 < \omega$ \\[3 pt]
+    По критерию Коши для равномерно сходящегося несобственного интеграла $\int\limits_{a}^{\omega} f(x, y)\,dx$
+    \[ \left| \int\limits_{t_1}^{t_2} f(x, y)\,dx \right| < \varepsilon \ \ \ \forall t_1, t_2 \in U(\omega), \; \forall y \in H \]
+    \[ y \to y_0: \ \ \ \lim_{y \to y_0} \int\limits_{t_1}^{t_2} f(x, y)\,dx = 
+    \int\limits_{t_1}^{t_2} \left( \lim_{y \to y_0} f(x, y) \right) dx = \int\limits_{t_1}^{t_2} \varphi(x)\,dx \ \ \ 
+    \text{(т.к. $f(x, y) \overset{x \in [a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x)$)} \]
+    \[ \Rightarrow\; \left| \int\limits_{t_1}^{t_2} \varphi(x)\,dx \right| \le \varepsilon \ \ \ \forall t_1, t_2 \in U(\omega) \]
+    \[ \Rightarrow\; \varphi \text{ несобственно интегрируема} \]
+    
+    \item Покажем, что $\left| \int\limits_{a}^{\omega} f(x, y)\,dx - \int\limits_{a}^{\omega} \varphi(x)\,dx \right|
+    \xrightarrow[y \to y_0]{} 0$:
+    \[ \left| \int\limits_{a}^{\omega} f(x, y)\,dx - \int\limits_{a}^{\omega} \varphi(x)\,dx \right| \le 
+    \underset{< \text{\large$\frac{\varepsilon}{3}$} \ \begin{array}{l} \forall t \in U(\omega) \\[-7 pt] 
+    \forall y \in H \end{array}}{\underbrace{\left| \int\limits_{a}^{\omega} f(x, y)\,dx - \int\limits_{a}^{t} f(x, y)\,dx \right|}} + \]
+    \[ + \underset{< \text{\large$\frac{\varepsilon}{3}$} \ \begin{array}{c} 
+    \text{\footnotesize При фикс. } t \in U(\omega) \\[-7 pt] |y - y_0| < \delta \end{array}}
+    {\underbrace{\left| \int\limits_{a}^{t} f(x, y)\,dx - \int\limits_{a}^{t} \varphi(x)\,dx \right|}} + 
+    \underset{< \text{\large$\frac{\varepsilon}{3}$} \ \displaystyle\forall t \in U(\omega)}
+    {\underbrace{\left| \int\limits_{a}^{t} \varphi(x)\,dx - \int\limits_{a}^{\omega} \varphi(x)\,dx \right|}} < \varepsilon \ \ 
+    \forall \varepsilon > 0, \ \ \text{что и требовалось} \]
+\end{enumerate}
+\end{proof}
+\subsubsection{Монотонный предельный переход и теорема Дини и равномерной сходимости семейства функций.}
+
+\begin{theorem*} Теорема Дини
+
+    Пусть \\
+    \phantom{Пусть} $f(x, y) \ge 0$ и непрерывна $\forall y \in H$ по $x \in [a; \omega)$, \\
+    \phantom{Пусть} при $\forall x \in [a; \omega) \ \ f(x, y) \uparrow$ по $y$ и $f(x, y) \xrightarrow[y \to y_0]{} \varphi(x)$, \\
+    \phantom{Пусть} $\varphi$ --- непрерывна на $[a; \omega)$.
+    \[ \text{Тогда} \ \ f(x, y) \overset{[a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x) \ \ \forall t \in (a; \omega) \]
+\end{theorem*}
+\begin{proof}
+    В силу монотонности по $y$:
+    \[ (\varphi(x) - f(x, y)) \downarrow \text{ по } y, \ \varphi(x) - f(x, y) \ge 0 \]
+    \[ \forall y_1 < y_2 \ \ \ \varphi(x) - f(x, y_1) \ge \varphi(x) - f(x, y_2) \;\Rightarrow \]
+    \[ \Rightarrow\; \underset{x}{\sup}\:\left| \varphi(x) - f(x, y_1) \right| \ge 
+    \underset{x}{\sup}\:\left| \varphi(x) - f(x, y_2) \right| \;\Rightarrow \]
+    \[ \Rightarrow\; \psi(y) = \underset{x}{\sup}\:\left| \varphi(x) - f(x, y) \right| \ \text{--- убывает и } \ge 0 \]
+    
+    Докажем, что $\psi(y) \xrightarrow[y \to y_0]{} 0$. От противного: пусть $\psi(y) \ge \varepsilon > 0$.
+
+    Тогда $\forall \textrm{ фиксированного \textquotedblleft} y \textrm{\textquotedblright} \exists \{ x_n \} \colon \varphi(x_n) - f(x_n, y) \ge \varepsilon / 2$
+    
+    $\{ x_n \} \subset [a; t] \;\Rightarrow\;$ из нее можно выделить сходящуюся подпоследовательность $\{ x_{n_k} \}$ такую, что $x_{n_k} \xrightarrow[k \to \infty]{} c \in [a; t]$.
+    \[ \varphi(x_{n_k}) - f(x_{n_k}, y) \ge \varepsilon / 2 \]
+    \[ k \to \infty: \ \varphi(c) - f(c, y) \ge \varepsilon / 2 \ \ \ \forall y \in U(y_0) \textrm{ - малая окрестность точки } y_0 \]
+    --- противоречит тому, что $f(x, y) \to \varphi(x)$.
+\end{proof}
+\subsubsection{Следствие из теоремы Дини о монотонном предельном переходе под знаком несобственного интеграла.}
+\begin{corollary}
+    Пусть $f(x, y) \ge 0$ и непрерывна по $x \in [a; \omega)$ $\forall y \in H$, \\
+    \phantom{Пусть} $\forall x \in [a; \omega) \ \ f(x, y) \uparrow$ по $y$ и $f(x, y) \underset{y \to y_0}{\nearrow} 
+    \varphi(x)$, \\
+    \phantom{Пусть} $\int\limits_a^{\omega} \varphi(x)\,dx$ --- сходится.
+    \[ \text{Тогда} \ \ \lim_{y \to y_0} \int\limits_a^{\omega} f(x, y)\,dx = \int\limits_a^{\omega} \varphi(x)\,dx \]
+\end{corollary}
+\begin{proof}
+    По теореме Дини: $f(x, y) \overset{[a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x) \varphi(x) \ \ \ 
+    \forall t \in (a; \omega)$
+    
+    $0 \le f(x, y) \le \varphi(x)$
+    
+    Т.к. $\int\limits_a^{\omega} \varphi(x)\,dx$ сходится, то $\int\limits_a^{\omega} f(x, y)\,dx$ сходится равномерно (по признаку Вейерштрасса) 
+\end{proof}
+
+\begin{example}
+    \[ \int\limits_0^{+\infty} e^{-x^2}\,dx = ? \]
+    \[ \left( 1 + \frac{x^2}{n} \right)^n \underset{n \to \infty}{\nearrow} e^{x^2} \ \ \forall x \ge 0 \]
+    Т.к. функции непрерывны, сходимость равномерная (по теореме Дини) \\
+    $\Rightarrow$ равномерно сходится $f(x, n) = \left( 1 + \frac{x^2}{n} \right)^{-n} 
+    \underset{n \to \infty}{\rightrightarrows} e^{-x^2} = \varphi(x)$
+    
+    Но последовательность $f(x, n)$ убывает --- рассмотрим разность
+    \[ g(x, n) = f(x, 1) - f(x, n) = \left( 1 + x^2 \right)^{-1} - \left( 1 + \frac{x^2}{n} \right)^{n} \ge 0 \ \ 
+    \uparrow \text{ по } n \]
+    \[ g(x, n) \rightrightarrows \psi(x) = (1  +x^2)^{-1} - e^{-x^2} \ge 0 \ \ \ \int\limits_0^{+\infty} \psi(x)\,dx \ \ 
+    \text{ сходится} \]
+    
+    По следствию из теоремы Дини:
+    \[ \Rightarrow\; \int\limits_0^{+\infty} g(x, n)\,dx \to \int\limits_0^{+\infty} \psi(x)\,dx \]
+    \[ \int\limits_0^{+\infty} \left( \frac1{1 + x^2} - \frac1{\left( 1 + \frac{x^2}n \right)^n} \right) dx \to
+    \int\limits_0^{+\infty} \left( \frac1{1 + x^2} - e^{-x^2} \right) dx \]
+    \[ \int\limits_0^{+\infty} e^{-x^2}\,dx = 
+    \lim_{n \to \infty} \int\limits_0^{+\infty} \frac{dx}{\left( 1 + \frac{x^2}n \right)^n} \]
+    \[ \int\limits_0^{+\infty} \frac{dx}{\left( 1 + \frac{x^2}n \right)^n} = 
+    \frac{(2n - 3)!!}{(2n - 2)!!} \cdot \sqrt{n} \cdot \frac{\pi}2 \]
+    Формула Валлиса: $\ \prod\limits_{k = 1}^n \frac{4k^2}{4k^2 - 1} \to \frac{\pi}2$
+\end{example}
+
+\subsubsection{Теорема о непрерывности несобственного интеграла по параметру.}
+\[ f(x, y) \ \ \ [a; \omega) \times [c; d] \]
+Пусть $\ f(x, y)$ непрерывна на $[a; \omega) \times [c; d]$ \\
+\phantom{Пусть} $F(y) = \int\limits_a^{\omega} f(x, y)\,dx$ сходится равномерно на $[c; d]$
+
+Тогда $F(y)$ непрерывна на $[c; d]$
+\begin{proof}
+    \[ g(t, y) = \int_a^t f(x, y)\,dx \text{ --- непрерывна по } y \in [c; d] \ \ \forall t \in (a; \omega) \]
+    \[ \int_a^t f(x, y)\,dx \text{ --- сходится равномерно} \;\Leftrightarrow\; g(t, y) 
+    \overset{y \in [c; d]}{\underset{t \to \omega}{\rightrightarrows}} F(y) \]
+    Равномерно сходящееся семейство непрерывных функций сходится к непрерывной функции:
+    \[ |F(y) - F(y_0)| \le \underset{< \text{\large$\frac{\varepsilon}{3}$} \ 
+    \begin{array}{l} \forall t \in U(\omega) \\[-7 pt] 
+    \forall y \in H \end{array}}{\underbrace{\left| F(y) - g(t, y) \right|}} + 
+    \underset{< \text{\large$\frac{\varepsilon}{3}$} \ \begin{array}{c} 
+    \text{\footnotesize При фикс. } t \in U(\omega) \\[-7 pt] |y - y_0| < \delta \end{array}}
+    {\underbrace{\left| g(t, y) - g(t, y_0) \right|}} + 
+    \underset{< \text{\large$\frac{\varepsilon}{3}$} \ \begin{array}{l} \forall t \in U(\omega) \\[-7 pt] 
+    \forall y \in H \end{array}}
+    {\underbrace{\left| g(t, y_0) - F(y_0) \right|}} < \varepsilon \ \ 
+    \forall \varepsilon > 0 \]
+\end{proof}
