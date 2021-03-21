@@ -2,8 +2,141 @@
 
 \subsubsection{Собственный интеграл, зависящий от параметра.}
 
+\begin{definition*}
+    Собственным интегралом, зависящем от параметра, будем называть интеграл вида
+    \begin{equation*}
+        F(y) = \int_{\alpha(y)}^{\beta(y)} f(x, y) \dd x,
+    \end{equation*}
+    где $\alpha$ и $\beta$ это некие функции, определенные для $y$ из некоторого отрезка $[c; d]$. 
+
+    Часто $\alpha$ и $\beta$ являются константами и интеграл принимает следующий вид:
+    \begin{equation*}
+        F(y) = \int_{\alpha}^{\beta} f(x, y) \dd x.
+    \end{equation*}
+\end{definition*}
+
 \subsubsection{Теорема о непрерывности по параметру}
+
+\begin{theorem*}
+    Рассмотрим $G = [a; b] \times [c; d]$ и пусть функция $f\colon G \to \RR$ --- непрерывна на ограниченном замкнутом множестве, откуда следует, что она равномерно непрерывна.
+
+    Пусть $\alpha$, $\beta$ непрерывны на отрезке $[c; d]$, тогда функция
+    \begin{equation*}
+        F(y) = \int_{\alpha(y)}^{\beta(y)} f(x, y) \dd x
+    \end{equation*}
+    равномерно непрерывна на $[c; d]$.
+\end{theorem*}
+
+\begin{proof}
+    Докажем непрерывность. 
+    
+    Пусть функция $f$ ограничена каким-то числом $M$.
+
+    В силу непрерывности $\alpha$ и $\beta$ для любого $\eps > 0$ существует $\delta > 0$, что из условия $|y - y_0| < \delta$ следует $|\alpha(y) - \alpha(y_0)| < \eps$ и $|\beta(y) - \beta(y_0)| < \eps$.
+
+    В силу равномерной непрерывности $f$ для любого $\eps > 0$ существует $\delta > 0$, что из условия $|y - y_0| < \delta$ следует $|f(x, y) - f(x, y_0)| < \eps$.
+
+    Воспользуемся этим:
+    \begingroup
+    \allowdisplaybreaks
+    \begin{align*}
+        |F(y) - F(y_0)|
+        &= \Big|\int_{\alpha(y)}^{\beta(y)} f(x, y) \dd x - \int_{\alpha(y_0)}^{\beta(y_0)} f(x, y_0) \dd x\Big| \\
+        &\left[\text{ --- прибавим и вычтем член }\int_{\alpha(y_0)}^{\beta(y_0)} f(x, y) \dd x\right] \\
+        &= \Big|\int_{\alpha(y)}^{\beta(y)} f(x, y) \dd x - \int_{\alpha(y_0)}^{\beta(y_0)} f(x, y) \dd x + \int_{\alpha(y_0)}^{\beta(y_0)} f(x, y) \dd x - \int_{\alpha(y_0)}^{\beta(y_0)} f(x, y_0) \dd x\Big| \\
+        &\leq \Big|\int_{\alpha(y)}^{\beta(y)} f(x, y) \dd x - \int_{\alpha(y_0)}^{\beta(y_0)} f(x, y) \dd x\Big| + \Big|\int_{\alpha(y_0)}^{\beta(y_0)} f(x, y) \dd x - \int_{\alpha(y_0)}^{\beta(y_0)} f(x, y_0) \dd x\Big| \\
+        &\left[\text{ --- оценим слагаемое с модулем интеграла как интеграл модуля }\right] \\
+        &\leq \Big|\int_{\alpha(y)}^{\beta(y)} f(x, y) \dd x - \int_{\alpha(y_0)}^{\beta(y_0)} f(x, y) \dd x\Big| + \int_{\alpha(y_0)}^{\beta(y_0)} \Big|f(x, y) - f(x, y_0)\Big| \dd x \\
+        &\left[\text{ --- раскроем первое  слагаемое; для понимания представьте, что $\alpha(y) < \alpha(y_0) < \beta(y_0) < \beta(y)$ }\right] \\
+        &= \Big|\int_{\alpha(y)}^{\alpha(y_0)} f(x, y) \dd x + \int_{\beta(y_0)}^{\beta(y)} f(x, y) \dd x\Big| + \int_{\alpha(y_0)}^{\beta(y_0)} \Big|f(x, y) - f(x, y_0)\Big| \dd x \\
+        &\leq \int_{\alpha(y)}^{\alpha(y_0)} \underbrace{|f(x, y)|}_{\leq M} \dd x + \int_{\beta(y_0)}^{\beta(y)} \underbrace{|f(x, y)|}_{\leq M} \dd x + \int_{\alpha(y_0)}^{\beta(y_0)} \underbrace{\Big|f(x, y) - f(x, y_0)\Big|}_{\leq \eps} \dd x \\
+        &\leq (\alpha(y_0) - \alpha(y)) \cdot M + (\beta(y) - \beta(y_0)) \cdot M + (\beta(y_0) - \alpha(y_0)) \cdot \eps \\
+        &= 2 \cdot \eps \cdot M + (\beta(y) - \alpha(y)) \cdot \eps = \eps',
+    \end{align*}
+    то есть выбирая $\delta > 0$ мы можем сделать так, что $|F(y) - F(y_0)| < \eps'$ для любого $\eps' > 0$.
+    \endgroup
+\end{proof}
+
+Теперь немного о том, зачем нам эта теорема. Если вместо отрезка $[c; d]$ рассмотреть $[c; +\infty)$, то утверждение из теоремы остается верным и из равномерной непрерывности $f(x, y)$ на $[a; b] \times [c; +\infty)$ следует
+\begin{equation*}
+    \exists \lim_{y \to +\infty} F(y) = \lim_{y \to +\infty} \int_{\alpha(y)}^{\beta(y)} f(x, y) \dd x = \int_{\alpha(y)}^{\beta(y)} \lim_{y \to +\infty} f(x, y) \dd x.
+\end{equation*}
 
 \subsubsection{Теорема о дифференцировании по параметру под знаком интеграла.}
 
+Для простоты изложения будем рассматривать $a = \alpha(y)$ и $b = \beta(y)$. Тогда
+\begin{equation*}
+    F(y) = \int_a^b f(x, y) \dd x.
+\end{equation*}
+
+\begin{theorem*}
+    Если $f$ непрерывна на $G = [a; b] \times [c; d]$, а также производная $\dfrac{\partial f}{\partial y}$ существует и непрерывна на $G$, то $F$ непрерывно дифференцируема на $[c; d]$.
+
+    Причем эта производная может быть вычислена:
+    \begin{equation*}
+        F'(y) = \int_a^b \dfrac{\partial f}{\partial y} (x, y) \dd x.
+    \end{equation*}
+\end{theorem*}
+
+\begin{proof}
+    Необходимо доказать, что отношение стремится в пределе к интегралу:
+    \begin{align*}
+        D = \dfrac{F(y) - F(y_0)}{y - y_0} - \int_a^b \dfrac{\partial f}{\partial y} (x, y_0) \dd x
+        &= \int_a^b \dfrac{f(x, y) - f(x, y_0)}{y - y_0} \dd x - \int_a^b \dfrac{\partial f}{\partial y} (x, y_0) \dd x.
+    \end{align*}
+
+    По теореме о среднем (теорема Лагранжа, 1 курс) на отрезке $[y_0; y]$ найдется точка $y^*$ такая, что
+    \begin{equation*}
+        f(x, y) - f(x, y_0) = \dfrac{\partial f}{\partial y} (x, y^*) \cdot (y - y_0).
+    \end{equation*}
+
+    Подставим в нашу разность:
+    \begin{align*}
+        |D| = \dots
+        &= \Big|\int_a^b \dfrac{f(x, y) - f(x, y_0)}{y - y_0} \dd x - \int_a^b \dfrac{\partial f}{\partial y} (x, y_0) \dd x \Big| 
+        = \Big|\int_a^b \dfrac{\partial f}{\partial y}(x, y^*) \dd x - \int_a^b \dfrac{\partial f}{\partial y} (x, y_0) \dd x \Big|\\
+        &= \Big|\int_a^b \left(\dfrac{\partial f}{\partial y}(x, y^*) - \dfrac{\partial f}{\partial y} (x, y_0) \right) \dd x \Big|
+        \leq \int_a^b \underbrace{\Big|\dfrac{\partial f}{\partial y}(x, y^*) - \dfrac{\partial f}{\partial y} (x, y_0) \Big|}_{\leq \eps} \dd x
+        \leq (b - a) \cdot \eps.
+    \end{align*}
+
+    Последний переход получается в силу равномерной непрерывности $\dfrac{\partial f}{\partial y}$ на $G$ и того, что $|y^* - y^*| \leq |y - y_0| < \eps$.
+
+    То есть мы доказали, что $\dfrac{F(y) - F(y_0)}{y - y_0}$ равномерно стремится к числу $\int_a^b \dfrac{\partial f}{\partial y} (x, y_0) \dd x$, то есть существует предел, который мы и называем производной $F'(y)$.
+
+    Непрерывность производной получается как следствие предыдущей теоремы (о непрерывности по параметру), где в роли непрерывной функции выступает $\dfrac{\partial f}{\partial y}$.
+\end{proof}
+
+Иногда мы не можем взять какой-то интеграл, но с помощью этой теоремы мы можем взять производную интеграла, а зная производную потом найти сам интеграл.
+
 \subsubsection{Теорема об интегрировании по параметру под знаком интеграла.}
+
+Пусть $F(y) = \int_a^b f(x, y) \dd x$. Мы хотим эту функцию проинтегрировать, то есть найти $\int_c^d F(y) \dd y$. Возникает вопрос, можно ли переставить интегралы.
+
+\begin{theorem*}
+    Если $f$ непрерывна на множестве $G = [a; b] \times [c; d]$ (то есть она интегрируема на $G$), и выполняются следующие два пункта:
+    \begin{itemize}
+    \item 
+        при любом значении $y \in [c; d]$ функция $f(x, y)$ интегрируема по $x$, то есть существует $\int_a^b f(x, y) \dd x$;
+
+    \item 
+        при любом значении $x \in [a; b]$ функция $f(x, y)$ интегрируема по $y$, то есть существует $\int_c^d f(x, y) \dd y$;
+    \end{itemize}
+
+    то эти интегралы равны друг другу, то есть
+    \begin{equation*}
+        \int_a^b \int_c^d f(x, y) \dd x \dd y
+        = \int_c^d \int_a^b f(x, y) \dd y \dd x.
+    \end{equation*}
+\end{theorem*}
+
+\begin{proof}
+    Доказательство следует из теоремы Фубини о том, что повторные интегралы равны двойном интегралу по прямоугольнику:
+    \begin{equation*}
+        \int_a^b \int_c^d f(x, y) \dd x \dd y
+        = \iint_G f(x, y) \dd x \dd y
+        = \int_c^d \int_a^b f(x, y) \dd y \dd x.
+    \end{equation*}
+\end{proof}
+
+Интегрирование по параметру также иногда позволяет вычислить интеграл, который по-другому вычислить невозможно.

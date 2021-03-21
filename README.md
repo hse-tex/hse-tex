@@ -87,9 +87,16 @@
 - [Сергей Лоптев](https://github.com/beastSL)
 - Даниил Казанцев
 - [Сергей Рахманов](https://github.com/shoraii)
+- [Максим Николаев](https://github.com/maximkm)
 - [Сергей Пилипенко](https://github.com/territhing)
-- [Болонин Денис](https://github.com/BoloniniD)
-- Егор Гутров
+- [Денис Болонин](https://github.com/BoloniniD)
+- [Егор Гутров](https://github.com/e-gutrov)
+- [Ульяна Виноградова](https://github.com/ulvivl)
+- [Яна Долватова](https://github.com/yanadlv)
+- [Александр Богданов](https://github.com/SphericalPotatoInVacuum)
+- [Анастасия Григорьева](https://github.com/weifoll)
+- [Елизавета Орешонок](https://github.com/eaoresh)
+- [Алиса Вернигор](https://github.com/alisa-vernigor)
 
 
 Не стесняйтесь добавлять себя в этот список в pull request'ах.
