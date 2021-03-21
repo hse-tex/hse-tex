@@ -114,11 +114,11 @@
         
         Оценим, нашу сумму $\sum\limits_{k=1}^n g(x_{k-1})\int\limits_{x_{k-1}}^{x_k} f(x)dx\colon$
         \begin{equation*}
-        \begin{cases}
+        \begin{rcases*}
            g(x)\downarrow\implies \ \forall k:\ g(x_{k})-g(x_{k-1}) \leqslant 0\\
             \sum\limits_{k=1}^{n} g(x_{k})-g(x_{k-1}) = g(x_n)-g(x_0)=g(b)-g(a)\\
             m\leqslant F(x_k)\leqslant M
-        \end{cases} \implies m\cdot g(a)\leqslant\sum\limits_{k=1}^n g(x_{k-1})\int\limits_{x_{k-1}}^{x_k} f(x)dx\leqslant M\cdot g(a)
+        \end{rcases*} \implies m\cdot g(a)\leqslant\sum\limits_{k=1}^n g(x_{k-1})\int\limits_{x_{k-1}}^{x_k} f(x)dx\leqslant M\cdot g(a)
         \end{equation*}
         Так как в полученном неравенстве нигде не фигурирует разбиение ортрезка $[a,b]$, то,  устремляя $\triangle$ к $0$, мы получим в пределе, что 
         \begin{equation*} 
