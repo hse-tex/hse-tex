@@ -68,6 +68,7 @@
 \end{example}
 
 \subsubsection{ Теорема о собственном интегрировании по параметру под знаком несобственного интеграла.}
+\label{subsubsec:6.2}
 \[ \int\limits_c^d F(y)\,dy = \int\limits_c^d dy \int\limits_a^{\omega} f(x, y)\,dx \]
 Пусть \\
 \phantom{Пусть} $f(x, y)$ непрерывна на $[a, \omega) \times [c, d]$ \\
@@ -80,19 +81,22 @@
     \[ g(t, y) = \int\limits_a^t f(x, y)\,dx \]
     возможность внесения $\int\limits_c^d dy$ следует из непрерывности $f$:
     \[ \int\limits_c^d g(t, y)\,dy = \int\limits_c^d dy \int\limits_a^t f(x, y)\,dx = 
-    \underset{\text{непр. ф-ция}}{\underbrace{\int\limits_a^t dx \int\limits_c^d f(x, y)\,dy}} \]
+    \int\limits_a^t dx \underset{\text{непр. ф-ция}}{\underbrace{\int\limits_c^d f(x, y)\,dy}} \]
     \phantom{$\int\limits_c^d g(t, y)\,dy =\ \ \ \ \ $} $\overset{\downarrow}{\int\limits_c^d F(y)\,dy} \ \ \ \ \ = \ \ \ \ \ 
     \overset{\downarrow}{\int\limits_a^{\omega} dx \int\limits_c^d f(x, y)\,dy}$
     \[ \lim_{t \to \omega}\int\limits_c^d  dy \left( \int\limits_a^t f(x, y)\,dx \right) = 
     \int\limits_c^d \left( \lim_{t \to \omega} \int\limits_a^t f(x, y)\,dx \right) dy = \int\limits_c^d F(y)\,dy \]
+    Имеем право на такой предельный переход, потому что $g(t, y)$ непрерывна.
 \end{proof}
 
 \subsubsection{Теорема о несобственном интегрировании по параметру под знаком несобственного интеграла.}
-\[ \int\limits_c^{\tilde \omega} F(y)\,dy = \int\limits_c^{\tilde \omega} dy \int\limits_ac^{\omega} f(x, y)\,dx \]
+\[ \int\limits_c^{\tilde \omega} F(y)\,dy = \int\limits_c^{\tilde \omega} dy \int\limits_a^{\omega} f(x, y)\,dx \]
 Пусть \\
-\phantom{Пусть} $f(x, y)$ непрерывна на $[a, \omega) \times [c, \tilde \omega]$ \\
+\phantom{Пусть} $f(x, y)$ непрерывна на $[a, \omega) \times [c, \tilde \omega)$ \\
 \phantom{Пусть} $F(y) = \int\limits_a^{\omega} f(x, y)\,dx$ --- сходится равномерно на $[c, \tau]$, 
-где $c < \tau < \omega$, \\
+где $c < \tau < \tilde \omega$, \\
+\phantom{Пусть} $\Phi(x) = \int\limits_c^{\tilde \omega} f(x, y)\,dy$ --- сходится равномерно на $[a, t]$, 
+где $a < t < \omega$, \\
 \phantom{Пусть} хотя бы 1 из интегралов:
 \[ \int\limits_c^{\tilde \omega} dy \int\limits_a^{\omega} |f(x, y)|\,dx, \ \ 
 \int\limits_a^{\omega} dx \int\limits_c^{\tilde \omega} |f(x, y)|\,dy \]
@@ -100,11 +104,18 @@
 
 Тогда $\int\limits_c^{\tilde \omega} dy \int\limits_a^{\omega} f(x, y)\,dx = 
 \int\limits_a^{\omega} dx \int\limits_c^{\tilde \omega} f(x, y)\,dy$
+
+Заметим, что условия сформулированы симметрично относительно $x$ и $y$, как и 
+утверждение самой теоремы. Поэтому когда мы говорим ``существует хотя бы один из интегралов'',
+то мы можем договориться какой именно, потому что если что мы можем просто переобозначить
+$x$ и $y$. Поэтому будем считать что сходится именно правый интеграл, где внутри 
+$dy$ а снаружи $dx$.
+
 \begin{proof}
     \[ \forall \tau \in (c; \tilde \omega) \ \ \ \int\limits_c^{\tau} dy \int\limits_a^{\omega} f(x, y)\,dx = 
-    \int\limits_a^{\omega} dx \int\limits_c^{\tau} f(x, y)\,dy \]
+    \int\limits_a^{\omega} dx \int\limits_c^{\tau} f(x, y)\,dy \text{ по \hyperref[subsubsec:6.2]{6.2}}\] 
     Рассмотрим предельный переход $\tau \to \tilde \omega$:
-    \[ \lim_{\tau \to \tilde \omega} \int\limits_a^{\omega} dx \int\limits_c^{\tau} f(x, y)\,dy \]
+    \[ \lim_{\tau \to \tilde \omega} \int\limits_a^{\omega} dx \int\limits_c^{\tau} f(x, y)\,dy ~ \text{(1)}\]
     \[ \varphi(\tau, x) = \int\limits_c^{\tau} f(x, y)\,dy \overset{x \in [a; t]}{\underset{\tau \to \tilde \omega}
     {\rightrightarrows}} \Phi(x) = \int\limits_c^{\tilde \omega} f(x, y)\,dy \]
     --- по условию
@@ -112,4 +123,15 @@
     \le \int\limits_a^{\omega} dx \int\limits_c^{\tilde \omega} |f(x, y)|\,dy \]
     --- сходятся по условию \\
     $\Rightarrow$ по признаку Вейерштрасса $\int\limits_a^{\omega} \varphi(\tau, x)\,dx$ сходится равномерно
+
+    С одной стороны $\int_a^\omega \varphi(\tau, x)\,dx$ сходится равномерно, а с другой стороны
+    $\varphi(\tau, x) \overset{x \in [a; t]}{\underset{\tau \to \tilde \omega}
+    {\rightrightarrows}} \int\limits_c^{\tilde \omega} f(x, y)\,dy$ по условию.
+    Из этих двух пунктов вытекает, что знак предела по переменной $\tau$ мы можем внести внести внутрь
+    интеграла по переменной $x$ в выражении (1). Так мы получим
+    несобственный интеграл по $x$ от несобственного интеграла по $y$. Так мы с вами показали, что
+    правая $\int\limits_a^{\omega} dx \int\limits_c^{\tau} f(x, y)\,dy \to \int_a^\omega\,dx\int_c^{\tilde \omega}
+    f\,dy$, а $\int\limits_c^{\tau} dy \int\limits_a^{\omega} f(x, y)\,dx$ будет стремится к
+    соответствующему несобственному интегралу просто по определению несобственного интеграла, а поскольку
+    равенство между этими частями всегда сохраняется, значит равенство будет верно и в пределе.
 \end{proof}
