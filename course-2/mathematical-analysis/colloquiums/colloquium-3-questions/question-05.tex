@@ -97,11 +97,11 @@
     Пусть $f(x, y) \ge 0$ и непрерывна по $x \in [a; \omega)$ $\forall y \in H$, \\
     \phantom{Пусть} $\forall x \in [a; \omega) \ \ f(x, y) \uparrow$ по $y$ и $f(x, y) \underset{y \to y_0}{\nearrow} 
     \varphi(x)$, \\
-    \phantom{Пусть} $\int\limits_a^{\omega} \varphi(x)\,dx$ --- сходится.
+    \phantom{Пусть} $\varphi(x)$ непр. на $[a; \omega)$, а $\int\limits_a^{\omega} \varphi(x)\,dx$ --- сходится.
     \[ \text{Тогда} \ \ \lim_{y \to y_0} \int\limits_a^{\omega} f(x, y)\,dx = \int\limits_a^{\omega} \varphi(x)\,dx \]
 \end{corollary}
 \begin{proof}
-    По теореме Дини: $f(x, y) \overset{[a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x) \varphi(x) \ \ \ 
+    По теореме Дини: $f(x, y) \overset{[a; t]}{\underset{y \to y_0}{\rightrightarrows}} \varphi(x) \qquad
     \forall t \in (a; \omega)$
     
     $0 \le f(x, y) \le \varphi(x)$
@@ -117,20 +117,22 @@
     \underset{n \to \infty}{\rightrightarrows} e^{-x^2} = \varphi(x)$
     
     Но последовательность $f(x, n)$ убывает --- рассмотрим разность
-    \[ g(x, n) = f(x, 1) - f(x, n) = \left( 1 + x^2 \right)^{-1} - \left( 1 + \frac{x^2}{n} \right)^{n} \ge 0 \ \ 
+    \[ g(x, n) = f(x, 1) - f(x, n) = \left( 1 + x^2 \right)^{-1} - \left( 1 + \frac{x^2}{n} \right)^{-n} \ge 0 \ \ 
     \uparrow \text{ по } n \]
     \[ g(x, n) \rightrightarrows \psi(x) = (1  +x^2)^{-1} - e^{-x^2} \ge 0 \ \ \ \int\limits_0^{+\infty} \psi(x)\,dx \ \ 
     \text{ сходится} \]
     
     По следствию из теоремы Дини:
-    \[ \Rightarrow\; \int\limits_0^{+\infty} g(x, n)\,dx \to \int\limits_0^{+\infty} \psi(x)\,dx \]
+    \[\int\limits_0^{+\infty} g(x, n)\,dx \to \int\limits_0^{+\infty} \psi(x)\,dx \]
     \[ \int\limits_0^{+\infty} \left( \frac1{1 + x^2} - \frac1{\left( 1 + \frac{x^2}n \right)^n} \right) dx \to
     \int\limits_0^{+\infty} \left( \frac1{1 + x^2} - e^{-x^2} \right) dx \]
     \[ \int\limits_0^{+\infty} e^{-x^2}\,dx = 
-    \lim_{n \to \infty} \int\limits_0^{+\infty} \frac{dx}{\left( 1 + \frac{x^2}n \right)^n} \]
+    \lim_{n \to \infty} \int\limits_0^{+\infty} \frac{dx}{\left( 1 + \frac{x^2}n \right)^n} \] 
+    Интегрируем правый по частям, постепенно понижая степень $n$ — появится рекуррента и придем к
     \[ \int\limits_0^{+\infty} \frac{dx}{\left( 1 + \frac{x^2}n \right)^n} = 
     \frac{(2n - 3)!!}{(2n - 2)!!} \cdot \sqrt{n} \cdot \frac{\pi}2 \]
-    Формула Валлиса: $\ \prod\limits_{k = 1}^n \frac{4k^2}{4k^2 - 1} \to \frac{\pi}2$
+    Формула Валлиса: $\ \prod\limits_{k = 1}^n \frac{4k^2}{4k^2 - 1} \to \frac{\pi}2$. Подставляем 
+    формулу Валлиса у равенство выше, а дальше ``дел минут на двадцать''. Хорошо, что это пример, а не билет.
 \end{example}
 
 \subsubsection{Теорема о непрерывности несобственного интеграла по параметру.}
