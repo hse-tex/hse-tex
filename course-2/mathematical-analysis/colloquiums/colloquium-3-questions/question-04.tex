@@ -76,9 +76,9 @@
         \begin{align*}
                 \int\limits_a^b f(x)g(x)dx
                 &= \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} f(x)g(x)dx
-                = \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)(g(x)\underbrace{+g(x_{k-1})-g(x_{k-1})}_{\text{прибавили и вычли}})\Big)dx=\\
-                &=\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)(g(x)-g(x_{k-1}))\Big)dx + \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} f(x)\cdot\underbrace{g(x_{k-1})}_{\text{не зависит от x}}dx=\\
-                &=\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)(g(x)-g(x_{k-1}))\Big)dx + \sum\limits_{k=1}^n\ g(x_{k-1}) \int\limits_{x_{k-1}}^{x_k} f(x)dx = \textcolor{blue}{(*)}
+                = \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)g(x)+\underbrace{g(x_{k-1})-g(x_{k-1})}_{\text{прибавили и вычли}}\Big)dx=\\
+                &=\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)\Big(g(x)-g(x_{k-1})\Big)\Big)dx + \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} f(x)\cdot\underbrace{g(x_{k-1})}_{\text{не зависит от x}}dx=\\
+                &=\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)\Big(g(x)-g(x_{k-1})\Big)\Big)dx + \sum\limits_{k=1}^n\ g(x_{k-1}) \int\limits_{x_{k-1}}^{x_k} f(x)dx = \textcolor{blue}{(*)}
         \end{align*}
         $\bullet$ $f(x)$ интегрируема на отрезке, значит она ограничена, то есть $|f(x)|<const$
         
@@ -88,7 +88,7 @@
         
         Тогда из выше сказанного следует, что 
         \begin{equation*}
-            \Big|\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)(g(x)-g(x_{k-1}))\Big)dx\Big| <\varepsilon
+            \Big|\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)\Big(g(x)-g(x_{k-1})\Big)\Big)dx\Big| <\varepsilon
         \end{equation*}
         Следовательно,
         \begin{align*}
@@ -127,7 +127,7 @@
         \item Рассмотрим подробнее полученное двойное неравенство $m\cdot g(a)\leqslant\int\limits_a^b f(x)g(x)dx\leqslant M\cdot g(a)$, возникает два случая:
         
         \begin{enumerate}
-            \item $g(a) = 0\implies \int\limits_a^b f(x)g(x)dx = 0 = g(a)\cdot \int\limits_c^b f(x)dx$
+            \item $g(a) = 0\implies \int\limits_a^b f(x)g(x)dx = 0 = g(a)\cdot \int\limits_a^cf(x)dx$
             
             \item $g(a) > 0 \implies$ поделим обе части неравенства на $g(a)$, получим $m\leqslant\dfrac{1}{g(a)}\int\limits_a^b f(x)g(x)dx\leqslant M$, так как $F(x)$ непрерывная функция, принимающая значения от $m$ до $M$, то $\exists c\colon\ F(c)=\dfrac{1}{g(a)}\int\limits_a^b f(x)g(x)dx$, а это и есть то, что нам надо доказать
         \end{enumerate}
@@ -141,7 +141,7 @@
     \end{equation*}
 \end{theorem*}
 \begin{proof} 
-    Сведем наше докозательство к докозательству предыдущей теоремы(частного случая). Так как $g(x)$ монотонная =6 то возникает два случая:
+    Сведем наше докозательство к докозательству предыдущей теоремы(частного случая). Так как $g(x)$ монотонная, то возникает два случая:
     \begin{enumerate}
         \item $g(x)\uparrow$, тогда берем $G(x)=g(b)-g(x)$
         \item $g(x)\downarrow$, тогда берем $G(x)=g(x)-g(b)$
