@@ -16,7 +16,7 @@
 \begin{definition}
     Семейство $f(x, y)$ сходится при $x \to a$ {\it равномерно} по $y \in H$, если
     \[
-         \forall \varepsilon > 0~ \exists \delta(\varepsilon) > 0 \colon 0 < \abs{x - a} < \delta \implies \forall y \in H~ \abs{f(x, y) - g(y)} < \varepsilon.
+         \forall \varepsilon > 0~ \exists \delta(\varepsilon) > 0 \colon \forall x \in D ~ 0 < \abs{x - a} < \delta \implies \forall y \in H ~ \abs{f(x, y) - g(y)} < \varepsilon.
     \]
     Равномерность здесь состоит в том, что при данном $\varepsilon$ мы можем найти $\delta > 0$ одинаковое для всех $y$.
     Альтернативно, определение можно переписать через супремумы,
@@ -49,10 +49,10 @@
 \begin{theorem}
     Семейство функций $f(x, y)$ сходится равномерно по $y \in H$, при $x \to a$, к функции $g(y)$ тогда и только тогда, когда
     \[
-        \forall \varepsilon > 0~ \exists \delta(\varepsilon) > 0 \colon \begin{cases}
+        \forall \varepsilon > 0~ \exists \delta(\varepsilon) > 0 \colon \forall x_1, x_2 \in D ~ \begin{cases}
             0 < \abs{x_{1} - a} < \delta, \\
             0 < \abs{x_{2} - a} < \delta;
-        \end{cases} \implies \abs{f(x_{1}, y) - f(x_{2}, y)} < \varepsilon.
+        \end{cases} \implies \forall y \in H ~ \abs{f(x_{1}, y) - f(x_{2}, y)} < \varepsilon.
     \]
 \end{theorem}
 
