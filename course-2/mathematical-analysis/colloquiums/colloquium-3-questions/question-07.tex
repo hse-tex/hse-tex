@@ -227,11 +227,11 @@ $x \to 0 \colon x^{p - 1} \cdot e^{-x} = x^{p - 1} \cdot (1 + \mathrm{o}(1))
           (следует из теоремы Дини по пункту 5.2)
 
           $
-              \lim_{n \to \infty} \int_0^1(n\cdot(1 - t^\frac{1}{t}))^{p-1}dt =
+              \lim_{n \to \infty} \int_0^1(n\cdot(1 - t^\frac{1}{n}))^{p-1}dt =
               \int_0^1 \ln^{p-1}\left(\frac{1}{t}\right)dt
               \\
               \implies \Gamma(p) = \lim_{n \to \infty}\int_0^1n^{p-1} \cdot (1 -
-              \frac{1}{n})^{p-1}dt = \left[t = z^n \right] = \lim_{n \to \infty}
+              t^\frac{1}{n})^{p-1}dt = \left[t = z^n \right] = \lim_{n \to \infty}
               n^p \cdot \underbrace{\int_0^1 z^{n-1} \cdot (1 - z)^{p-1}dz}_{B(n, p)} =
               \lim_{n \to \infty} n^p \cdot \mathrm{B}(n, p) =
               \\
