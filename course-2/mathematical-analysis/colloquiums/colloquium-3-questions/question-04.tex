@@ -76,8 +76,8 @@
         \begin{align*}
                 \int\limits_a^b f(x)g(x)dx
                 &= \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} f(x)g(x)dx
-                = \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)g(x)+\underbrace{g(x_{k-1})-g(x_{k-1})}_{\text{прибавили и вычли}}\Big)dx=\\
-                &=\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)\Big(g(x)-g(x_{k-1})\Big)\Big)dx + \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} f(x)\cdot\underbrace{g(x_{k-1})}_{\text{не зависит от x}}dx=\\
+                = \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} f(x)\Big(g(x)+\underbrace{g(x_{k-1})-g(x_{k-1})}_{\text{прибавили и вычли}}\Big)dx=\\
+                &=\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)\Big(g(x)-g(x_{k-1})\Big)\Big)dx + \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} f(x)\cdot\underbrace{g(x_{k-1})}_{\mathclap{\text{не зависит от x}}}dx=\\
                 &=\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)\Big(g(x)-g(x_{k-1})\Big)\Big)dx + \sum\limits_{k=1}^n\ g(x_{k-1}) \int\limits_{x_{k-1}}^{x_k} f(x)dx = \textcolor{blue}{(*)}
         \end{align*}
         $\bullet$ $f(x)$ интегрируема на отрезке, значит она ограничена, то есть $|f(x)|<const$
