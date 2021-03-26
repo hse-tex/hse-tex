@@ -125,17 +125,17 @@
 
     то эти интегралы равны друг другу, то есть
     \begin{equation*}
-        \int_a^b \int_c^d f(x, y) \dd x \dd y
-        = \int_c^d \int_a^b f(x, y) \dd y \dd x.
+        \int_a^b \int_c^d f(x, y) \dd y \dd x
+        = \int_c^d \int_a^b f(x, y) \dd x \dd y.
     \end{equation*}
 \end{theorem*}
 
 \begin{proof}
     Доказательство следует из теоремы Фубини о том, что повторные интегралы равны двойном интегралу по прямоугольнику:
     \begin{equation*}
-        \int_a^b \int_c^d f(x, y) \dd x \dd y
+        \int_a^b \int_c^d f(x, y) \dd y \dd x
         = \iint_G f(x, y) \dd x \dd y
-        = \int_c^d \int_a^b f(x, y) \dd y \dd x.
+        = \int_c^d \int_a^b f(x, y) \dd x \dd y.
     \end{equation*}
 \end{proof}
 
