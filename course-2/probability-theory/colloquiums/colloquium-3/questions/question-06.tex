@@ -1,1 +1,134 @@
 \subsection{Подстановка сходящейся по распределению последовательности случайных величин в непрерывную функцию. Сходимость суммы и произведения сходящихся по распределению последовательностей случайных величин в случае, когда одна из предельных случайных величин постоянная. Примеры применения: выборочная дисперсия и взаимосвязь с ЦПТ. Теорема о сходимости последовательности вида $\dfrac{f(a + h_n X_n) - f(a)}{h_n}$ для сходящейся по распределению последовательности $X_n$. Взаимосвязь с ЦПТ.}
+	\begin{theorem*}
+		Если последовательность случайных величин $ X_n $ сходится по распределению к X, то для всякой непрерывной функции f случайные величины $  f(X_n) $ сходятся по распределению к $ f(X) $.
+	\end{theorem*}
+	\begin{proof}
+		\text{ }\\
+		Из лекции 2 мы знаем, что
+		$$ X_n\xrightarrow{d} X \Leftrightarrow \forall g\text{ }\mathbb{E}g(X_n)\xrightarrow[n\to\infty]{}\mathbb{E}g(X),\text{ где g -- непрерывная, ограниченная функция}$$
+	$ g\circ f:= h $ -- непрерыная функция (т.к. композиция непрерывных функция), ограниченная(т.к. g ограниченная)
+	$$\mathbb{E}g(f(X_n)) = \mathbb{E}h(X_n),\text{ }\mathbb{E}g(f(X)) = \mathbb{E}h(X)$$
+	Значит из утверждения выше
+	$$X_n\xrightarrow{d} X \Rightarrow \mathbb{E}h(X_n)\xrightarrow[n\to\infty]{}\mathbb{E}h(X)$$
+	Снова применяем утверждение
+	$$\mathbb{E}g(f(X_n))\xrightarrow[n\to\infty]{}\mathbb{E}g(f(X)) \Rightarrow f(X_n)\xrightarrow{d} f(X) $$
+	\end{proof}
+	
+	\begin{lemma*}
+		Пусть X, Y, Z случайные величины. Тогда $ \forall t \in \mathbb{R}$ $\forall\epsilon > 0 $ выполнено 
+		$$ P(X + Z \leqslant t - \epsilon)- P(|Y - Z|\geqslant\epsilon)\leqslant P(X + Y\leqslant t) \leqslant P(X + Z\leqslant t + \epsilon) + P(|Y - Z|\geqslant\epsilon) $$
+	\end{lemma*}
+	\begin{proof}
+		$$P(X + Y\leqslant t) \leqslant P(X + Y\leqslant t, |Y - Z|\geqslant\epsilon) + P(X + Y \leqslant t, |Y - Z|\geqslant\epsilon) \leqslant P(X + Y\leqslant t, |Y - Z|\geqslant\epsilon) + P(|Y - Z|\geqslant\epsilon)$$
+		Расскроем модуль
+		$$ -\epsilon \leqslant Y - Z \Rightarrow Z - \epsilon \leqslant Y$$
+		Подставим вместо Y $ Z - \epsilon $\\
+		Cобытие $  X + Z - \epsilon\leqslant t $ вложено в событие $ X + Y\leqslant t \cap |Y - Z|\geqslant\epsilon $
+		$$ \leqslant P(X + Z - \epsilon\leqslant t) + P(|Y - Z|\geqslant\epsilon)$$
+		Ищем другую оценку\\
+		Заменим в получившемся неравенстве Y на Z, Z на Y
+		$$ P(X + Z\leqslant t) \leqslant P(X + Y - \epsilon\leqslant t) + P(|Z - Y|\geqslant\epsilon) =$$
+		$$ = P(X + Y \leqslant t + \epsilon) + P(|Y - Z|\geqslant\epsilon)$$
+		Обозначим $ t + \epsilon:= t$
+		$$ P(X + Z\leqslant t - \epsilon)\leqslant P(X + Y \leqslant t) + P(|Y - Z|\geqslant\epsilon)$$
+		$$  P(X + Y \leqslant t) \geqslant P(X + Z\leqslant t - \epsilon) - P(|Y - Z|\geqslant\epsilon)$$
+	\end{proof}
+	\begin{theorem*}
+		Если $ X_n\xrightarrow{d}X $ и $ Y_n\xrightarrow{d}C = const $ 
+		то $$ X_n + Y_n \xrightarrow{d} X + C $$
+		$$ X_n \cdot Y_n \xrightarrow{d} X \cdot C $$
+	\end{theorem*}
+	\begin{proof}
+		Вспомним доказательство того что
+		$$Y_n\xrightarrow{d}C = const \Rightarrow Y_n\xrightarrow{p}C$$
+		$$\lim_{n\to\infty}P(|X_n - C| \geqslant \epsilon) = \lim_{n\to\infty}P(X_n - C \geqslant \epsilon\text{ }or\text{ } -X_n + C \geqslant \epsilon)\leqslant$$
+		$$ \lim_{n\to\infty}P(X_n - C\geqslant \epsilon) + \lim_{n\to\infty}P(X_n \leqslant C - \epsilon) =$$ 
+		$$= 1 - F_{X_n}(\epsilon + C) + F_{X_n}(C - \epsilon) \underbrace{=}_{n\to\infty} 0$$
+		\text{ }\\
+		Используем лемму
+		$$ P(X_n + C \leqslant t - \epsilon)- P(|Y_n - C|\geqslant\epsilon)\leqslant P(X_n + Y_n\leqslant t) \leqslant P(X_n + C\leqslant t + \epsilon) + P(|Y_n - C|\geqslant\epsilon) $$
+		$$ F_{X_n}(t - \epsilon - C)- P(|Y_n - C|\geqslant\epsilon)\leqslant F_{X_n + Y_n}(t) \leqslant F_{X_n} (t + \epsilon - C)+ P(|Y_n - C|\geqslant\epsilon) $$
+		1) $ n\to\infty $\\
+		Заметим, что мы всегда можем выбрать точки $ t - \epsilon - C, t + \epsilon - C $ в которых функция $ F_X $ непрерывна, т.к. точек разрыва счетное количество, а $ \epsilon $ континуальная переменная.\\
+		Т.к. $ Y_n\xrightarrow{p}C \Leftrightarrow_{def} \lim_{n\to\infty}P(|Y_n - C|\geqslant\epsilon) = 0 $
+		$$ F_{X}(t - \epsilon - C)\leqslant \underline{lim}_{n\to\infty}F_{X_n + Y_n}(t)\leqslant \overline{lim}_{n\to\infty}F_{X_n + Y_n}(t) \leqslant F_{X} (t + \epsilon - C)$$
+		2) $ \epsilon \to 0 $\\
+		Заметим, что t - C точка непрерывности функции $ F_X $ тогда и только тогда, когда t точка непрерывности функции $ F_{X + C}  $.
+		$$ F_{X}(t - C)\leqslant \underline{\lim}_{n\to\infty}F_{X_n + Y_n}(t)\leqslant \overline{\lim}_{n\to\infty}F_{X_n + Y_n}(t) \leqslant F_{X} (t  - C)$$
+		Так как слева и справа у нас одно и тоже значение $ \Rightarrow $
+		$\exists \lim_{n\to\infty}F_{X_n + Y_n}(t) = F_{X} (t  - C) = F_{X + C} (t)$
+		\text{ }\\
+		\text{ }\\
+		1) C = 0\\
+		$$ \{|X_n\cdot Y_n \geqslant \epsilon\} \subset \{|X_n| > R\}\cup \{|Y_n| \geqslant \frac{\epsilon}{R}\}$$
+		$$ P(|X_n\cdot Y_n \geqslant \epsilon ) \leqslant P(|X_n| > R) + P(|Y_n| \geqslant \frac{\epsilon}{R}) $$
+		$$ P(|X_n| \geqslant R) = P(X_n \geqslant R) + P(X_n \leqslant -R) \leqslant P(X_n > \frac{R}{2}) + F_{X_n}(-R) = 1 - F_{X_n}(\frac{R}{2}) + F_{X_n}(-R)$$
+		$$ P(|X_n\cdot Y_n \geqslant \epsilon ) \leqslant P(|X_n| > R) + P(|Y_n| \geqslant \frac{\epsilon}{R}) \leqslant 1 - F_{X_n}(\frac{R}{2}) + F_{X_n}(-R) + P(|Y_n| \geqslant \frac{\epsilon}{R})$$
+		a) $ n\to\infty $\\
+		$$ \overline{\lim}_{n\to\infty}P(|X_n\cdot Y_n\geqslant \epsilon ) \leqslant 1 - F_{X}(\frac{R}{2}) + F_{X}(-R) + 0$$
+		b) $ R\to\infty $\\
+			R -- точка непрерывности $ F_X $
+			$$ 0 \leqslant \underline{\lim}_{n\to\infty}P(|X_n\cdot Y_n\geqslant \epsilon ) \leqslant\overline{\lim}_{n\to\infty}P(|X_n\cdot Y_n\geqslant \epsilon ) \leqslant 1 - F_{X}(\frac{R}{2}) + F_{X}(-R) \leqslant 0$$
+	$$\Rightarrow X_n\cdot Y_n \xrightarrow{p}0 \Rightarrow_{\text{Лекция 1}} X_n\cdot Y_n \xrightarrow{d}0$$
+	2) Общий случай\\
+	$$X_n(Y_n - C) \xrightarrow{d} 0 \text{ по 1)} $$
+	$$CX_n \xrightarrow{d} CX$$
+	$$ CX + 0 \xrightarrow{d} CX \text{ сумму разбирали выше} $$
+	\end{proof}
+	\begin{center}
+		Примеры применения: выборочная дисперсия и взаимосвязь с ЦПТ.
+	\end{center}
+	\textbf{Пример 1}(Выборочная дисперсия)\\
+	Пусть задана последовательность независимых и одинаково распределенных случайных величин $ X_j $, причем $ \mathbb{E}X_j = a $ и $ \mathbb{D}Xj = \sigma^2$. Тогда последовательность случайных величин	
+	$$ s^2_n = \frac{1}{n - 1}\sum_{j = 1}^{n}(X_j - \overline{X_n})^2, \text{ где }\overline{X_n} = \frac{X_1 + \cdots + X_n}{n} $$
+	Проверим это\\
+	$$ \overline{X_n} \xrightarrow{p} a(\text{ЗБЧ})$$
+	$$ s^2_n = \frac{1}{n - 1}\sum_{j = 1}^{n}(X_j - \overline{X_n})^2 = \frac{n}{n - 1}\frac{1}{n}\sum_{j = 1}^{n}X_j^2 - \frac{1}{n - 1}\left(-2\underbrace{\sum_{j = 1}^{n}X_j}_{n\overline{X_n}} \cdot \overline{X_n} + n\overline{X_n}^2\right) = \frac{n}{n - 1}\left(\frac{1}{n}\sum_{j = 1}^nX_j^2 - \overline{X_n}^2\right)$$
+	$$ \frac{1}{n}\sum_{j = 1}^nX_j^2 \xrightarrow{p} \mathbb{E}X_1^2\text{(ЗБЧ)}$$
+	$$\overline{X_n}^2 \xrightarrow{p} (\mathbb{E}X_1)^2$$
+	$$\frac{n}{n - 1}\xrightarrow{}1$$
+	$$\xrightarrow{p}\mathbb{D}X_1 = \sigma^2$$
+	$$\mathbb{E}s_n^2 = \frac{n}{n - 1}\left(\frac{1}{n}\cdot n\cdot\mathbb{E}X_1^2 - \mathbb{E}(\overline{X_n})^2\right)=$$
+	$$ \mathbb{E}(\overline{X_n})^2 = \mathbb{E}(\overline{X_n} - a + a)^2 = \mathbb{E}(\overline{X_n} - a)^2 + a^2 - 2a\underbrace{\mathbb{E}(\overline{X_n} - a)}_0 = a^2 + \mathbb{D}\overline{X_n} = a^2 + \frac{1}{n^2}\mathbb{D}(X_1 + \ldots + X_n) = a^2 + \frac{\sigma^2}{n}$$
+	$$ = \frac{n}{n - 1}(\sigma^2 + a^2 - a^2 - \frac{\sigma^2}{n}) = \sigma^2$$
+	\textbf{Пример 2}(Взаимосвязь с ЦПТ)\\
+	Обозначения сохранятется с прошлого примера\\
+	Хотип показать, что
+	$$ \frac{\sqrt{n}(\overline{X_n} - a)}{\sqrt{s^2_n}}\to Z\sim\mathcal{N}(0, 1) $$
+	$$ \frac{\sqrt{n}(\overline{X_n} - a)}{\sqrt{s^2_n}} = \frac{\sqrt{n}(\overline{X_n} - a)}{\sigma} \cdot\sqrt{\frac{\sigma^2}{s^2_n}} $$
+	$$\frac{\sqrt{n}(\overline{X_n} - a)}{\sigma} \to  Z\sim\mathcal{N}(0, 1) \text{из лекции 4}$$ 
+	$$\sqrt{\frac{\sigma^2}{s^2_n}}\xrightarrow{p}\sqrt{\frac{\sigma^2}{\sigma^2}} = 1(\text{Обсуждали выше})$$
+	Значит 
+	$$ \frac{\sqrt{n}(\overline{X_n} - a)}{\sqrt{s^2_n}}\to Z\cdot 1 \xrightarrow{d}Z\sim\mathcal{N}(0, 1)$$
+	\begin{theorem*}
+		Пусть$  a, h_n \in \mathbb{R}, h_n\to0 $и $ f $ непрерывная на $ \mathbb{R} $ и дифференцируемая в точке a функция. Если последовательность случайных величин $ X_n \xrightarrow{d} X $, то
+		$$\frac{f(a + h_nX_n) - f(a)}{h_n}\xrightarrow{d}f^{'}(a)X$$
+	\end{theorem*}
+	\begin{proof}
+		Введем функция
+		\begin{equation*}
+			g(x) = 
+			\begin{cases}
+				\frac{f(a + x) - f(a)}{x} & x\neq 0\\
+				f^(a) & x = 0
+			\end{cases}
+		\end{equation*}
+		g -- непрерывная
+		$$h_n\xrightarrow{d} 0$$
+		$$X_n\xrightarrow{d}X$$
+		$$h_nX_n\xrightarrow{d}0(\text{ теорема про произведения})\Rightarrow$$
+		$$g(h_nX_n)\xrightarrow{d}g(0)\text{(первая теорема в билете6)} = f^{'}(a)$$
+		$$\frac{f(a + h_nX_n) - f(a)}{h_n} = X_n\cdot g(h_nX_n) = X_n\cdot\frac{f(a + h_nX_n) - f(a)}{h_nX_n} \xrightarrow{d}f^{'}(a)X(\text{ теорема про произведения})$$
+	\end{proof}
+	\textbf{Пример}\\
+	Обозначения сохранятется с прошлого примера\\
+	Пусть задана последовательность независимых и одинаково распределенных
+	случайных величин $ X_j $, причем $  \mathbb{E}X_j = a$ и $\mathbb{D}X_j = \sigma^2 > 0 $. Если f дифференцируемая функция, то
+	$$\sqrt{n}(f(\overline{X_n}) - f(a))\xrightarrow{d}Y\sim\mathcal{N}(0, q^2),\text{ }q=\sigma f^{'}(a)$$
+	Докажем это\\
+	Введем
+	$$ Z_n = \frac{\sqrt{n}(\overline{X_n} - a)}{\sigma}\xrightarrow{d}Z\sim\mathcal{N}(0,1)$$
+	Тогда
+	$$\frac{\sqrt{n}(f(\overline{X_n}) - f(a))}{\sigma} = \frac{f(a + \frac{\sigma}{\sqrt{n}} Z_n) - f(a)}{\frac{\sigma}{\sqrt{n}}}\xrightarrow{d}f^{'}(a)Z$$
+	$$\sqrt{n}(f(\overline{X_n}) - f(a)) = \sigma \cdot \frac{\sqrt{n}(f(\overline{X_n}) - f(a))}{\sigma}\xrightarrow{d}\sigma f^{'}(a)Z\sim \mathcal{N}(0, q^2)$$
+\end{document}
