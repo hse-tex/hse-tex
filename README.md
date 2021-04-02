@@ -98,6 +98,7 @@
 - [Анастасия Григорьева](https://github.com/weifoll)
 - [Елизавета Орешонок](https://github.com/eaoresh)
 - [Алиса Вернигор](https://github.com/alisa-vernigor)
+- [Анастасия Смородинникова](https://github.com/AnaSomi)
 
 
 Не стесняйтесь добавлять себя в этот список в pull request'ах.
