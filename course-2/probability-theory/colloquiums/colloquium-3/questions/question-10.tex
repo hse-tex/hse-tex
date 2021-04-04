@@ -52,17 +52,17 @@
 
 \subsubsection{Эквивалентное определение условного математического ожидания и геометрическая интерпретация.}
 
-Для условного математического ожидания выполнено $\mathbb{E}(g(Y)X) = \mathbb{E}g(Y)\mathbb{E}(X|Y)$ для произвольной функции $g$. Кроме того, если для какой-то случайной величины вида $Z = f(Y)$ выполнено $\mathbb{E}(g(Y)X) = \mathbb{E}(g(Y)Z)$ для произвольной функции $g$, то $Z = \mathbb{E}(X|Y)$ п.н.
+Для условного математического ожидания выполнено $\mathbb{E}(g(Y)X) = \mathbb{E}(g(Y)\mathbb{E}(X|Y))$ для произвольной функции $g$. Кроме того, если для какой-то случайной величины вида $Z = f(Y)$ выполнено $\mathbb{E}(g(Y)X) = \mathbb{E}(g(Y)Z)$ для произвольной функции $g$, то $Z = \mathbb{E}(X|Y)$ п.н.
 
-\begin{proof} По уже доказанному $\mathbb{E}(g(Y)\mathbb{E}(X|Y))= \mathbb{E}(\mathbb{E}(g(Y)X|Y)))=\mathbb{E}(g(Y)X)$. Наоборот, если $Z = f(Y)$ и обладает указанным свойством, то $\mathbb{E}(g(Y)\mathbb{E}(X|Y))=\mathbb{E}(g(Y)Z)$ для произвольной $g$. Т.к. $\mathbb{E}(X|Y)$ также имеет вид $h(Y)$, то, взяв $g = f - h$, получаем $\mathbb{E}|\mathbb{E}(X|Y)Z|^2 = 0$, что даёт равенство $Z = E(X|Y)$ почти наверное.
+\begin{proof} По уже доказанному $\mathbb{E}(g(Y)\mathbb{E}(X|Y))= \mathbb{E}(\mathbb{E}(g(Y)X|Y)))=\mathbb{E}(g(Y)X)$. Наоборот, если $Z = f(Y)$ и обладает указанным свойством, то $\mathbb{E}(g(Y)\mathbb{E}(X|Y))=\mathbb{E}(g(Y)Z)$ для произвольной $g$. Т.к. $\mathbb{E}(X|Y)$ также имеет вид $h(Y)$, то, взяв $g = f - h$, получаем $\mathbb{E}|\mathbb{E}(X|Y)-Z|^2 = 0$, что даёт равенство $Z = \mathbb{E}(X|Y)$ почти наверное.
 \end{proof}
 
 \begin{proposal}
-	Условное математическое ожидание $\mathbb{E}(X|Y)$ среди всех случайных	величин вида $g(Y)$ является лучшим среднеквадратическим приближением для $X$, т.е. $\underset{Z:Z=g(Y )}{min}	\mathbb{E}|X-Z|^2 = \mathbb{E}|X\mathbb{E}(X|Y)|^2$.
+	Условное математическое ожидание $\mathbb{E}(X|Y)$ среди всех случайных	величин вида $g(Y)$ является лучшим среднеквадратическим приближением для $X$, т.е. $\underset{Z:Z=g(Y )}{min}	\mathbb{E}|X-Z|^2 = \mathbb{E}|X-\mathbb{E}(X|Y)|^2$.
 \end{proposal}
 
 \begin{proof}
-	Пусть $Z = g(Y)$. Так как по предыдущей лемме $\mathbb{E}[(X - \mathbb{E}(X|Y))(\mathbb{E}(X|Y) - Z) = 0]$, то $\mathbb{E}|X - Z|^2 = \mathbb{E}|(Z\mathbb{E}(X|Y)) + (\mathbb{E}(X|Y)Z)|^2 = \mathbb{E}|X-\mathbb{E}(X|Y)|^2 + \mathbb{E}|\mathbb{E}(X|Y)-Z|^2 E|X E(X|Y)|^2$.
+	Пусть $Z = g(Y)$. Так как по предыдущей лемме $\mathbb{E}[(X - \mathbb{E}(X|Y))(\mathbb{E}(X|Y) - Z) = 0]$, то $\mathbb{E}|X - Z|^2 = \mathbb{E}|(Z-\mathbb{E}(X|Y)) + (\mathbb{E}(X|Y)-Z)|^2 = \mathbb{E}|X-\mathbb{E}(X|Y)|^2 + \mathbb{E}|\mathbb{E}(X|Y)-Z|^2 \geqslant \mathbb{E}|X - \mathbb{E}(X|Y)|^2$.
 	
 	ч.т.д.
 \end{proof}
