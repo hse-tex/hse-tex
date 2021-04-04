@@ -1,1 +1,136 @@
-\subsection{Абсолютная непрерывность математического ожидания. Теорема Лебега о мажорируемой сходимости. Подстановка сходящейся по вероятности последовательности случайных величин в непрерывную функцию. Взаимосвязь сходимостей по вероятности и по распределению.}
+\subsection{Абсолютная непрерывность математического ожидания.
+Теорема Лебега о мажорируемой сходимости.
+Подстановка сходящейся по вероятности последовательности случайных величин в непрерывную функцию.
+Взаимосвязь сходимостей по вероятности и по распределению.}
+
+\subsubsection{Абсолютная непрерывность математического ожидания.}
+
+\begin{proposal} 
+Имеем случайную величину $Y \geq 0$ п.н., матожидание конечно.
+
+Хотим показать $\forall \eps \exists \delta > 0: P(A) \leq \delta \Rightarrow \EE \left( Y I_A \right) < \eps$.
+Словами: если множество $A$ маленькое, то матожидание случайной величины, которая много где ноль, тоже маленькое.
+\end{proposal} 
+
+\begin{proof} 
+Так как $Y \geq 0, \EE Y = \EE Y_{+} = \sup \left\{ \EE U: U \leq Y_{+}, \text{огр.} \right\}$. 
+
+Фиксируем $U$ так, чтобы $\EE U \leq \EE Y_{+} \leq \EE U + \frac{\eps}{2}$
+— будем пользоваться тем, что $U$ ограничена, то есть $\exists R \in \operatorname{const} : R \geq U$. 
+
+\[ 
+    \EE \left( Y I_A \right) = \EE \left( Y_{+} I_A \right) = 
+    \EE \left( \left( Y_{+} - U \right) I_A \right) + \EE \left( U I_A \right) \leq
+    \EE \left( Y_{+} - U \right) + R P(A) \leq 
+    \frac{\eps}{2} + R \delta
+\]
+
+Выбрав $\delta = \frac{\eps}{2 R}$ получаем то что требовали.
+\end{proof} 
+
+Абсолютная непрерывность потому что на самом деле можно было взять $|Y|$ и работать с ним, 
+но мы решили просто сказать что он неотрицателен удобства ради.
+
+\subsubsection{Теорема Лебега о мажорируемой сходимости.}
+\begin{theorem*}
+Если
+\begin{itemize} 
+    \item $X_n \xrightarrow{P} X$ (или $X_n \xrightarrow{\text{п. н.}} X$ потому что следует); 
+    \item существует случайная величина $Y$ такая что $|X_n| \leq Y$ п. н.; $|X| \leq Y$ п. н.,
+\end{itemize} 
+
+То $\EE X_n \rightarrow \EE X$
+\end{theorem*} 
+
+\begin{proof} 
+\[
+    |\EE X_n - \EE X| \leq \EE |X_n - X| = 
+    \EE \left[ |X_n - X| I_{\left\{ |X_n - X| \leq \eps \right\}} \right] + 
+    \EE \left[ |X_n - X| I_{\left\{ |X_n - X| > \eps \right\}} \right]
+\]
+
+$\EE \left[ |X_n - X| I_{\left\{ |X_n - X| \leq \eps \right\}} \right] \leq \eps$
+
+$\EE \left[ |X_n - X| I_{\left\{ |X_n - X| > \eps \right\}} \right] \leq 
+\EE \left[ 2 Y I_{\left\{ |X_n - X| > \eps \right\}} \right]$. Так как $X_n \xrightarrow{P} X \implies$ 
+$P \left( |X_n - X| > \eps \right) \rightarrow 0$.
+
+По Абсолютной непрерывности математического ожидания: 
+$\forall \eps \exists \delta: P(A) < \delta \implies \EE \left[ Y I_A \right] < \eps$.
+Здесь $P(|X_n - X| > \eps) < \delta$, поэтому применимо.
+
+Получается $|\EE X_n - \EE X| \leq \EE |X_n - X| = \mathellipsis \leq 3 \eps$
+\end{proof} 
+
+\subsubsection{Подстановка сходящейся по вероятности последовательности случайных величин в непрерывную функцию.}
+Это лекция 1, если что
+
+\begin{proposition} 
+$X_n \xrightarrow{P} X$, $g: \RR \to \RR$ — непрерывная $\implies g(X_n) \xrightarrow{P} g(X)$
+\end{proposition} 
+
+\begin{proof} 
+Для фиксированного $R$, $g$ равномерно непрерывна на отрезке $[-R, R]$, то есть 
+\[
+    \forall \eps > 0 \exists \delta > 0: x, y \in [-R, R], |x - y| < \delta \implies |g(x) - g(y)| < \eps
+\]
+
+Рассмотрим множество 
+\begin{multline*} 
+    \left\{ |g(X_n) - g(X) | \geq \eps \right\} \subseteq \\
+    \subseteq \left\{ |g(X_n) - g(X) | \geq \eps, X_n, X \in [-R, R] \right\} \cup
+    \left\{ |g(X_n) - g(X) | \geq \eps, X_n \notin [-R, R] \right\} \cup
+    \left\{ |g(X_n) - g(X) | \geq \eps, X \notin [-R, R] \right\}
+\end{multline*}
+\[
+    P \left( |g(X_n) - g(X)| \geq \eps \right) \leq P \left( |g(X_n) - g(X) | \geq \eps, X_n, X \in [-R, R] \right) + 
+    P (|X_n| > R) + P(|X| > R) 
+\]
+
+По условию равномерной непрерывности 
+$P \left( |g(X_n) - g(X) | \geq \eps, X_n, X \in [-R, R] \right) \leq P \left( |X_n - X| \geq \delta \right)$ 
+— иначе условие выполнялось бы, и разница между образами была бы меньше эпсилона.
+
+Заметим, что $ \left\{ |X_n - X + X| > R \right\} \subseteq 
+\left\{ |X_n - X| > \frac{R}{2} \right\} \cup \left\{ |X| > \frac{R}{2} \right\}$, тогда
+$P(|X_n| > R) \leq P \left( |X_n - X| > \frac{R}{2} \right) + P \left( |X| > \frac{R}{2} \right)$
+
+Получается 
+\[
+    P \left( |g(X_n) - g(X) | \geq \eps \right) \leq
+    P \left( |X_n - X| \geq \delta \right) + 
+    P \left( |X_n - X| > \frac{R}{2} \right) + P \left( |X| > \frac{R}{2} \right) + P ( |X| > R)
+\]
+
+Взяв большие $R$ получаем $P \left( |X| > \frac{R}{2} \right) + P \left( |X| > R \right) \to 0$ очев.
+
+Взяв большие $n$ из-за сходимости по вероятности получаем 
+$P \left( |X_n - X| \geq \delta \right) + P \left( |X_n - X| > \frac{R}{2} \right) \to 0$.
+
+Получается 
+\[ 
+    0 \leq \liminf P(| g(X_n) - g(X) | \geq \eps) \leq \limsup P(| g(X_n) - g(X) | \geq \eps) \leq 0
+\]
+то есть $g(X_n) \xrightarrow{P} g(X)$
+
+\end{proof} 
+
+
+\subsubsection{Взаимосвязь сходимостей по вероятности и по распределению.}
+
+\begin{corollary} 
+$X_n \xrightarrow{P} X \implies X_n \xrightarrow{d} X$
+\end{corollary} 
+
+\begin{proof} 
+Нужно доказать, что для любой ограниченной непрерывной $g$ верно $\EE g(X_n) \to \EE g(X)$ 
+
+В силу ограниченности имеем $|g(t)| \leq M \forall t \implies g(X_n) \leq M, g(X) \leq M$
+
+По предыдущему пункту $g(X_n) \xrightarrow{P} g(X)$
+
+Введем случайную величину $Y = M$ и применим Лебега (оба условия выполняются), тогда $\EE X_n \to \EE X$, то есть
+$X_n \xrightarrow{d} X$
+
+\end{proof} 
+
