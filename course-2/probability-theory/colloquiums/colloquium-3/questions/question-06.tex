@@ -20,11 +20,11 @@
 		$$ P(X + Z \leqslant t - \epsilon)- P(|Y - Z|\geqslant\epsilon)\leqslant P(X + Y\leqslant t) \leqslant P(X + Z\leqslant t + \epsilon) + P(|Y - Z|\geqslant\epsilon) $$
 	\end{lemma*}
 	\begin{proof}
-		$$P(X + Y\leqslant t) \leqslant P(X + Y\leqslant t, |Y - Z|\geqslant\epsilon) + P(X + Y \leqslant t, |Y - Z|\geqslant\epsilon) \leqslant P(X + Y\leqslant t, |Y - Z|\geqslant\epsilon) + P(|Y - Z|\geqslant\epsilon)$$
+		$$P(X + Y\leqslant t) \leqslant P(X + Y\leqslant t, |Y - Z|\leqslant\epsilon) + P(X + Y \leqslant t, |Y - Z|\geqslant\epsilon) \leqslant P(X + Y\leqslant t, |Y - Z|\leqslant\epsilon) + P(|Y - Z|\geqslant\epsilon)$$
 		Расскроем модуль
 		$$ -\epsilon \leqslant Y - Z \Rightarrow Z - \epsilon \leqslant Y$$
 		Подставим вместо Y $ Z - \epsilon $\\
-		Cобытие $  X + Z - \epsilon\leqslant t $ вложено в событие $ X + Y\leqslant t \cap |Y - Z|\geqslant\epsilon $
+		Cобытие $ X + Y\leqslant t \cap |Y - Z|\geqslant\epsilon $ вложено в событие $  X + Z - \epsilon\leqslant t $ 
 		$$ \leqslant P(X + Z - \epsilon\leqslant t) + P(|Y - Z|\geqslant\epsilon)$$
 		Ищем другую оценку\\
 		Заменим в получившемся неравенстве Y на Z, Z на Y
@@ -61,17 +61,18 @@
 		\text{ }\\
 		\text{ }\\
 		1) C = 0\\
-		$$ \{|X_n\cdot Y_n \geqslant \epsilon\} \subset \{|X_n| > R\}\cup \{|Y_n| \geqslant \frac{\epsilon}{R}\}$$
-		$$ P(|X_n\cdot Y_n \geqslant \epsilon ) \leqslant P(|X_n| > R) + P(|Y_n| \geqslant \frac{\epsilon}{R}) $$
-		$$ P(|X_n| \geqslant R) = P(X_n \geqslant R) + P(X_n \leqslant -R) \leqslant P(X_n > \frac{R}{2}) + F_{X_n}(-R) = 1 - F_{X_n}(\frac{R}{2}) + F_{X_n}(-R)$$
-		$$ P(|X_n\cdot Y_n \geqslant \epsilon ) \leqslant P(|X_n| > R) + P(|Y_n| \geqslant \frac{\epsilon}{R}) \leqslant 1 - F_{X_n}(\frac{R}{2}) + F_{X_n}(-R) + P(|Y_n| \geqslant \frac{\epsilon}{R})$$
+		$$ \{|X_n\cdot Y_n| \geqslant \epsilon\} \subset \{|X_n| > R\}\cup \{|Y_n| \geqslant \frac{\epsilon}{R}\}$$
+		$$ P(|X_n\cdot Y_n| \geqslant \epsilon ) \leqslant P(|X_n| > R) + P(|Y_n| \geqslant \frac{\epsilon}{R}) $$
+		$$ P(|X_n| \geqslant R) = P(|X_n| \geqslant R) + P|(X_n| \leqslant -R) \leqslant P(|X_n| > \frac{R}{2}) + F_{X_n}(-R) = 1 - F_{X_n}(\frac{R}{2}) + F_{X_n}(-R)$$
+		$$ P(|X_n\cdot Y_n| \geqslant \epsilon ) \leqslant P(|X_n| > R) + P(|Y_n| \geqslant \frac{\epsilon}{R}) \leqslant 1 - F_{X_n}(\frac{R}{2}) + F_{X_n}(-R) + \underbrace{P(|Y_n - C(=0)| \geqslant \frac{\epsilon}{R})}_{\xrightarrow{n\to\infty} 0(\text{т.к. сх-сть по вер.})}$$
 		a) $ n\to\infty $\\
 		$$ \overline{\lim}_{n\to\infty}P(|X_n\cdot Y_n\geqslant \epsilon ) \leqslant 1 - F_{X}(\frac{R}{2}) + F_{X}(-R) + 0$$
 		b) $ R\to\infty $\\
 			R -- точка непрерывности $ F_X $
-			$$ 0 \leqslant \underline{\lim}_{n\to\infty}P(|X_n\cdot Y_n\geqslant \epsilon ) \leqslant\overline{\lim}_{n\to\infty}P(|X_n\cdot Y_n\geqslant \epsilon ) \leqslant 1 - F_{X}(\frac{R}{2}) + F_{X}(-R) \leqslant 0$$
+			$$ 0 \leqslant \underline{\lim}_{n\to\infty}P(|X_n\cdot Y_n|\geqslant \epsilon ) \leqslant\overline{\lim}_{n\to\infty}P(|X_n\cdot Y_n|\geqslant \epsilon ) \leqslant 1 - F_{X}(\frac{R}{2}) + F_{X}(-R) \leqslant 0$$
 	$$\Rightarrow X_n\cdot Y_n \xrightarrow{p}0 \Rightarrow_{\text{Лекция 1}} X_n\cdot Y_n \xrightarrow{d}0$$
 	2) Общий случай\\
+	$$X_nY_n = X_n(Y_n - C) + X_nC$$
 	$$X_n(Y_n - C) \xrightarrow{d} 0 \text{ по 1)} $$
 	$$CX_n \xrightarrow{d} CX$$
 	$$ CX + 0 \xrightarrow{d} CX \text{ сумму разбирали выше} $$
@@ -82,11 +83,11 @@
 	$$ s^2_n = \frac{1}{n - 1}\sum_{j = 1}^{n}(X_j - \overline{X_n})^2, \text{ где }\overline{X_n} = \frac{X_1 + \cdots + X_n}{n} $$
 	Проверим это\\
 	$$ \overline{X_n} \xrightarrow{p} a(\text{ЗБЧ})$$
-	$$ s^2_n = \frac{1}{n - 1}\sum_{j = 1}^{n}(X_j - \overline{X_n})^2 = \frac{n}{n - 1}\frac{1}{n}\sum_{j = 1}^{n}X_j^2 - \frac{1}{n - 1}\left(-2\underbrace{\sum_{j = 1}^{n}X_j}_{n\overline{X_n}} \cdot \overline{X_n} + n\overline{X_n}^2\right) = \frac{n}{n - 1}\left(\frac{1}{n}\sum_{j = 1}^nX_j^2 - \overline{X_n}^2\right)$$
+	$$ s^2_n = \frac{1}{n - 1}\sum_{j = 1}^{n}(X_j - \overline{X_n})^2 = \frac{n}{n - 1}\frac{1}{n}\sum_{j = 1}^{n}X_j^2 + \frac{1}{n - 1}\left(-2\underbrace{\sum_{j = 1}^{n}X_j}_{n\overline{X_n}} \cdot \overline{X_n} + n\overline{X_n}^2\right) = \frac{n}{n - 1}\left(\frac{1}{n}\sum_{j = 1}^nX_j^2 - \overline{X_n}^2\right)(*)$$
 	$$ \frac{1}{n}\sum_{j = 1}^nX_j^2 \xrightarrow{p} \mathbb{E}X_1^2\text{(ЗБЧ)}$$
 	$$\overline{X_n}^2 \xrightarrow{p} (\mathbb{E}X_1)^2$$
 	$$\frac{n}{n - 1}\xrightarrow{}1$$
-	$$\xrightarrow{p}\mathbb{D}X_1 = \sigma^2$$
+	$$(*)\xrightarrow{p}\mathbb{D}X_1 = \sigma^2$$
 	$$\mathbb{E}s_n^2 = \frac{n}{n - 1}\left(\frac{1}{n}\cdot n\cdot\mathbb{E}X_1^2 - \mathbb{E}(\overline{X_n})^2\right)=$$
 	$$ \mathbb{E}(\overline{X_n})^2 = \mathbb{E}(\overline{X_n} - a + a)^2 = \mathbb{E}(\overline{X_n} - a)^2 + a^2 - 2a\underbrace{\mathbb{E}(\overline{X_n} - a)}_0 = a^2 + \mathbb{D}\overline{X_n} = a^2 + \frac{1}{n^2}\mathbb{D}(X_1 + \ldots + X_n) = a^2 + \frac{\sigma^2}{n}$$
 	$$ = \frac{n}{n - 1}(\sigma^2 + a^2 - a^2 - \frac{\sigma^2}{n}) = \sigma^2$$
@@ -110,7 +111,7 @@
 			g(x) = 
 			\begin{cases}
 				\frac{f(a + x) - f(a)}{x} & x\neq 0\\
-				f^(a) & x = 0
+				f^{'}(a) & x = 0
 			\end{cases}
 		\end{equation*}
 		g -- непрерывная
