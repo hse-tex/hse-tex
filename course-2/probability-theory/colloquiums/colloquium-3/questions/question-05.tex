@@ -1,1 +1,83 @@
 \subsection{Переформулировка сходимости по распределению в терминах характеристических функций. Однозначность задания распределения случайной величины ее характеристической функцией. Центральная предельная теорема.}
+
+\subsubsection{Переформулировка сходимости по распределению в терминах характеристических функций.}
+
+\begin{theorem*}
+    Последовательность $X_n$ сходится по распределению к $X$ $(X_n \xrightarrow{d} X)$ $\Leftrightarrow \lim_{n \to \infty} \varphi_{X_n}(t) = \varphi_{X}(t)$ $\forall t \in \mathbb{R}$.
+\end{theorem*}
+
+\begin{proof}
+    \text{}
+    \renewcommand{\labelitemi}{$\boldsymbol{\Rightarrow}$}
+    \begin{itemize}
+        \item \text{}
+        
+        $\varphi_{X_n}(t) = \mathbb{E}[\cos{tX_n}] + i\mathbb{E}[\sin{tX_n}]$, при этом функции $x \mapsto \cos{tx}$ и $x \mapsto \sin{tx}$ - непрерывные и ограниченные.
+        
+        Мы знаем, что $X_n \xrightarrow{d} X \Leftrightarrow \forall g$ - непреревной ограниченной $\mathbb{E}g(X_n) \xrightarrow[n \rightarrow \infty]{} \mathbb{E}g(X)$ \textit{(см. билет 2)}.
+        
+        Тогда возьмем в качестве $g(x)$ функцию $x \mapsto \cos{tx}$: $\mathbb{E}[\cos{tX_n}] \xrightarrow[n \rightarrow \infty]{} \mathbb{E}[\cos{tX}]$.
+        
+        Теперь возьмем в качестве $g(x)$ функцию $x \mapsto \sin{tx}$: $\mathbb{E}[\sin{tX_n}] \xrightarrow[n \rightarrow \infty]{} \mathbb{E}[\sin{tX}]$.
+        
+        Таким образом, получаем необходимое равенство: $$ \lim_{n \to \infty} \varphi_{X_n}(t) = \lim_{n \to \infty} (\mathbb{E}[\cos{tX_n}] + i\mathbb{E}[\sin{tX_n}]) = \lim_{n \to \infty} (\mathbb{E}[\cos{tX_n}]) + \lim_{n \to \infty} (i\mathbb{E}[\sin{tX_n}]) = $$ $$ = \lim_{n \to \infty} (\mathbb{E}[\cos{tX_n}]) + i\lim_{n \to \infty} (\mathbb{E}[\sin{tX_n}]) = \mathbb{E}[\cos{tX}] + i\mathbb{E}[\sin{tX}] = \varphi_{X}(t) $$
+    \end{itemize}
+    
+    \renewcommand{\labelitemi}{$\boldsymbol{\Leftarrow}$}
+    \begin{itemize}
+        \item \text{}
+        
+        Докажем в предположении ограниченности вторых моментов, то есть $\mathbb{E}|X_n|^2 \leq C < \infty$ $\forall n \in \mathbb{N}$, и, соответственно, $\mathbb{E}|X|^2 \leq C < \infty$, где $C = const$. (Доказываемое равенство мы хотим применять в ЦПТ, где ограниченность вторых моментов выполняется, поэтому для наших нужд этого достаточно. Однако на самом деле и общий факт верен)
+        
+        Нам известно, что $\varphi_{X_n}(t) = \mathbb{E}[\cos{tX_n}] + i\mathbb{E}[\sin{tX_n}] \xrightarrow[n \rightarrow \infty]{} \varphi_{X}(t) = \mathbb{E}[\cos{tX}] + i\mathbb{E}[\sin{tX}]$ $\forall t \in \mathbb{R}$. Понятно, что если комплексные числа сходятся, то вещественная часть сходится к вещественной и мнимая - к мнимой. $\mathbb{E}[\cos{tX_n}] \xrightarrow[n \rightarrow \infty]{} \mathbb{E}[\cos{tX}]$ и $ \mathbb{E}[\sin{tX_n}] \xrightarrow[n \rightarrow \infty]{} \mathbb{E}[\sin{tX}]$ $\forall t \in \mathbb{R}$.
+        
+        По линейности будут также сходиться и всевозможные комбинации $$ \forall t_1 \ldots t_N: \frac{a_0}{2} + \sum_{k = 1}^{N} a_k\cos{t_kx} + b_k\sin{t_kx} = f(x) \Rightarrow \mathbb{E}f(X_n) \xrightarrow[n \rightarrow \infty]{} \mathbb{E}f(X) $$
+        
+        \underline{Хотим}, чтобы такая сходимость была выполнена для каждой непрерывной ограниченной функции. То есть $\mathbb{E}g(X_n) \xrightarrow[n \rightarrow \infty]{} \mathbb{E}g(X)$ $\forall g$ - непр. огр., что эквивалентно сходимости по распределению.
+        
+        Мы попадаем в ситуацию леммы \textit{(см. билет 2)}: $\mathcal{F} = \{f\}$, $\mathcal{G} = \{g\}$
+        \begin{enumerate}
+            \item $\forall f \in \mathcal{F}$ $\mathbb{E}f(X_n) \xrightarrow[n \rightarrow \infty]{} \mathbb{E}f(X)$
+            \item $\forall g \in \mathcal{G}$ $\forall \epsilon > 0$ $\exists f_{\epsilon}$: $\mathbb{E}|g(X_n) - f_{\epsilon}(X_n)| < \epsilon$ $\forall n$ и $\mathbb{E}|g(X) - f_{\epsilon}(X)| < \epsilon$
+        \end{enumerate}
+        $\Rightarrow \forall g \in \mathcal{G}$: $\mathbb{E}g(X_n) \xrightarrow[n \rightarrow \infty]{} \mathbb{E}g(X)$.
+        
+        В нашем случае $\mathcal{F} = \Big\{ \frac{a_0}{2} + \sum_{k = 1}^{N} a_k\cos{t_kx} + b_k\sin{t_kx} = f(x) \Big\}$, $\mathcal{G}$ - класс непрерывных ограниченных функций. Первый пункт леммы выполняется, осталось доказать выполнение второго.
+        
+        \underline{Известно} $\eta(\cdot)$ - непрерывная на $\mathbb{R}$ и периодическая с периодом $2t$, тогда $$ \forall \epsilon > 0 \textrm{ } \exists a_0, a_1 \ldots a_N, b_1 \ldots b_N \textrm{: } \sup_{x \in \mathbb{R}}\Big|\eta(x) - \Big(\frac{a_0}{2} + \sum_{k = 1}^{N}a_k\cos{\frac{\pi k}{T}x} + b_k\sin{\frac{\pi k}{T}x} \Big) \Big| < \epsilon \textrm{, по теореме Вейерштрасса}$$ $$ \textrm{(знаем из матанализа, любая непрерывная периодическая функция равномерно приближается } $$ $$ \textrm{тригонометрическим многочленом)} $$
+        
+        Запишем неравенство Чебышёва для $X_n$ и $X$ (можем это сделать в силу ограниченности второго момента,
+        
+        $\mathbb{E}|X_n|^2 \leq C < \infty$ $\forall n \in \mathbb{N}$ и $\mathbb{E}|X|^2 \leq C < \infty$): $$ P(|X_n| \geq A) \leq \frac{C}{A^2} $$ $$ P(|X| \geq A) \leq \frac{C}{A^2} $$
+        
+        Для достаточно большого $A$ будет выполнено: $$ P(|X_n| > A) < \epsilon $$ $$ P(|X| > A) < \epsilon $$
+        
+        Теперь введем непрерывную ограниченную периодическую функцию $g_{\epsilon}$. Она совпадает с непрерывной ограниченной $g$ на отрезке $[-A, A]$, равна нулю на концах отрезка $[-A - 1, A + 1]$, а вне отрезка $[-A - 1, A + 1]$ продолжена как периодическая с периодом $T = 2A + 2$. Очевидно, что $|g_{\epsilon}(x)| \leq \sup|g|$.
+        
+        Проведем оценку: $$ \mathbb{E}|g(X_n) - g_{\epsilon}(X_n)| = \Big[ \textrm{так как } g_{\epsilon}(x) = g(x) \textrm{ на } [-A, A] \Big] = \mathbb{E}\big[ |g(X_n) - g_{\epsilon}(X_n)| \cdot I_{|X_n| \geq A} \big] \leq 2\sup|g| \cdot \epsilon $$
+        
+        Получается, мы приблизили функцию $g$ непрерывной периодической функцией $g_{\epsilon}$, которую в свою очередь можно приблизить равномерным тригонометрическим многочленом. Для $g_{\epsilon}$ $\exists f \in \mathcal{F}$: $\sup_{x \in \mathbb{R}}|g_{\epsilon}(x) - f_{\epsilon}(x)| < \epsilon \Rightarrow$ $\mathbb{E}|g_{\epsilon}(X_n) - f_{\epsilon}(X_n)| < \epsilon \Rightarrow$ $\mathbb{E}|g(X_n) - f_{\epsilon}(X_n)| < \epsilon + 2\sup|g| \cdot \epsilon$ - константа, умноженная на $\epsilon$.
+        
+        Доказали выполнение второго пункта леммы, поэтому $\forall g \in \mathcal{G}$: $\mathbb{E}g(X_n) \xrightarrow[n \rightarrow \infty]{} \mathbb{E}g(X) \Leftrightarrow X_n \xrightarrow{d} X$.
+    \end{itemize}
+\end{proof}
+
+\subsubsection{Однозначность задания распределения случайной величины ее характеристической функцией.}
+
+\begin{theorem*}
+    Если у двух случайных величин совпадают характеристические функции, то эти величины имеют одинаковые распределения.
+\end{theorem*}
+
+\subsubsection{Центральная предельная теорема.}
+
+\begin{theorem*}
+    Пусть $\{X_n\}$ - последовательность независимых одинаково распределенных случайных величин, причем
+    
+    $\mathbb{E}X_1 = a$ и $\mathbb{D}X_1 = \sigma^2$. Тогда для всех $t$:
+    
+    $$ \lim_{n \to \infty} P \Big( \frac{X_1 + \ldots + X_n - na}{\sqrt{n\sigma^2}} \leq t \Big) = \frac{1}{\sqrt{2\pi}} \int^{t}_{-\infty} e^{-\frac{x^2}{2}} dx $$
+    
+    или, равносильно:
+    
+    $$ \frac{S_n - \mathbb{E}S_n}{\sqrt{\mathbb{D}S_n}} \xrightarrow{d} Z \textrm{, где } Z \sim \mathcal{N}(0, 1) - \textrm{стандартная нормальная случайная величина, а } S_n := X_1 + \ldots + X_n \textrm{.} $$
+\end{theorem*}
