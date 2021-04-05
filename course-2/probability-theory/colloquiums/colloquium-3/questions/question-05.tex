@@ -14,7 +14,7 @@
         
         $\varphi_{X_n}(t) = \mathbb{E}[\cos{tX_n}] + i\mathbb{E}[\sin{tX_n}]$, при этом функции $x \mapsto \cos{tx}$ и $x \mapsto \sin{tx}$ - непрерывные и ограниченные.
         
-        Мы знаем, что $X_n \xrightarrow{d} X \Leftrightarrow \forall g$ - непреревной ограниченной $\mathbb{E}g(X_n) \xrightarrow[n \rightarrow \infty]{} \mathbb{E}g(X)$ \textit{(см. билет 2)}.
+        Мы знаем, что $X_n \xrightarrow{d} X \Leftrightarrow \forall g$ - непрерывной ограниченной $\mathbb{E}g(X_n) \xrightarrow[n \rightarrow \infty]{} \mathbb{E}g(X)$ \textit{(см. билет 2)}.
         
         Тогда возьмем в качестве $g(x)$ функцию $x \mapsto \cos{tx}$: $\mathbb{E}[\cos{tX_n}] \xrightarrow[n \rightarrow \infty]{} \mathbb{E}[\cos{tX}]$.
         
@@ -76,8 +76,26 @@
 \subsubsection{Однозначность задания распределения случайной величины ее характеристической функцией.}
 
 \begin{theorem*}
-    Если у двух случайных величин совпадают характеристические функции, то эти величины имеют одинаковые распределения.
+    Если у двух случайных величин совпадают характеристические функции, то эти величины имеют одинаковые распределения ($\varphi_{X}(t) = \varphi_{Y}(t)$ $\forall t \in \mathbb{R} \Rightarrow F_X = F_Y$ $(\mu_X = \mu_Y)$).
 \end{theorem*}
+
+\begin{proof}
+    \text{}
+    
+    Пусть $\varphi_{X}(t) = \varphi_{Y}(t)$ $\forall t \in \mathbb{R}$. Рассмотрим последовательность случайных величин равных $X$.
+    
+    $X_n := X$, тогда $\varphi_{X_n}(t) = \varphi_{X}(t) = \varphi_{Y}(t) \xrightarrow[n \rightarrow \infty]{} \varphi_{Y}(t)$ $\forall t \in \mathbb{R}$.
+    
+    Значит $X_n \xrightarrow{d} Y$, согласно переформулировке сходимости по распределению в терминах характеристических функций (доказывали выше). При этом $X_n := X$, поэтому $X \xrightarrow{d} Y \Leftrightarrow F_X(x) = F_Y(x)$ $\forall x$ - т. непрерывности $F_Y$ (равносильность по определению сходимости по распределению).
+    
+    Проверим, что происходит в точках разрыва. Заметим, что у монотонных функций (а функция распределения случайной величины монотонна) не более чем счетное число точек разрыва. Тогда к каждой точке разрыва функции $F_Y$ сходится справа некоторая последовательность точек непрерывности этой функции (в которых $F_Y$ и $F_X$ совпадают).
+    
+    $x_0$ - точка разрыва $F_Y$ $\exists x_n$ - последовательность т. непрерывности $F_Y$: $x_n \geq x_0$ и $x_n \xrightarrow[n \rightarrow \infty]{} x_0$.
+    
+    При этом $F_X(x_n) = F_Y(x_n)$ и $F_X(x_n) \xrightarrow[n \rightarrow \infty]{} F_X(x_0)$, $F_Y(x_n) \xrightarrow[n \rightarrow \infty]{} F_Y(x_0)$ в силу непрерывности функции распределения справа $\Rightarrow F_X(x_0) = F_Y(x_0)$ - в точках разрыва функции распределения совпадают.
+    
+    Получили, что действительно $\varphi_{X}(t) = \varphi_{Y}(t)$ $\forall t \in \mathbb{R} \Rightarrow F_X(x) = F_Y(x)$ $\forall x$.
+\end{proof}
 
 \subsubsection{Центральная предельная теорема.}
 
@@ -90,3 +108,28 @@
     или, равносильно:
     $$\frac{S_n - \mathbb{E}S_n}{\sqrt{\mathbb{D}S_n}} \xrightarrow{d} Z \textrm{, где } Z \sim \mathcal{N}(0, 1) - \textrm{стандартная нормальная случайная величина, а } S_n := X_1 + \ldots + X_n \textrm{.}$$
 \end{theorem*}
+
+\begin{proof}
+    \text{}
+    
+    Перейдем от случайных величин $X_j$ к центрированным случайным величинам $X_j' = (X_j - a)$. Математическое ожидание полученных случайных величин равно 0, $\mathbb{E}X_j' = 0$. Дисперсия при сдвиге не изменится, $\mathbb{D}X_j' = \sigma^2$. Тогда
+    $$\frac{X_1 + \ldots + X_n - na}{\sqrt{n\sigma^2}} = \frac{X_1' + \ldots + X_n'}{\sqrt{n\sigma^2}} \textrm{ и}$$
+    $$\frac{X_1 + \ldots + X_n - na}{\sqrt{n\sigma^2}} \xrightarrow{d} Z \sim \mathcal{N}(0, 1) \Leftrightarrow \frac{X_1' + \ldots + X_n'}{\sqrt{n\sigma^2}} \xrightarrow{d} Z \sim \mathcal{N}(0, 1)$$
+    
+    Вычислим характеристическую функцию случайной величины $\frac{X_1' + \ldots + X_n'}{\sqrt{n\sigma^2}}$.
+    $$\varphi_{\frac{X_1' + \ldots + X_n'}{\sqrt{n\sigma^2}}}(t) = \Big[ \textrm{так как } X_1, \ldots, X_n \textrm{ независимые} \Big] = \varphi_{\frac{X_1'}{\sqrt{n\sigma^2}}}(t) \cdot \ldots \cdot \varphi_{\frac{X_n'}{\sqrt{n\sigma^2}}}(t) =$$
+    $$= \varphi_{X_1'}(\frac{t}{\sqrt{n\sigma^2}}) \cdot \ldots \cdot \varphi_{X_n'}(\frac{t}{\sqrt{n\sigma^2}}) = \Big( \varphi_{X_1'}(\frac{t}{\sqrt{n\sigma^2}}) \Big)^n$$
+    
+    Заметим, что
+    $$\varphi_{X_1'}(0) = 1 \textrm{, } \varphi_{X_1'}'(0) = i\mathbb{E}X_1' = 0 \textrm{, } \varphi_{X_1'}''(0) = -\mathbb{E}(X_1')^2 = -\mathbb{D}X_1' = -\sigma^2$$
+    
+    По формуле Тейлора
+    $$\varphi_{X_1'}(\frac{t}{\sqrt{n\sigma^2}}) = \varphi_{X_1'}(0) + \frac{t}{\sqrt{n\sigma^2}}\varphi_{X_1'}'(0) + \frac{1}{2}\big(\frac{t}{\sqrt{n\sigma^2}}\big)^2\varphi_{X_1'}''(0) + o\Big(\big(\frac{t}{\sqrt{n\sigma^2}}\big)^2\Big) =$$
+    $$= 1 - \frac{\sigma^2}{2} \cdot \frac{t^2}{n\sigma^2} + o\big( \frac{1}{n} \big) = 1 - \frac{t^2}{2n} + o\big( \frac{1}{n} \big)$$
+    
+    Тогда
+    $$\Big( \varphi_{X_1'}(\frac{t}{\sqrt{n\sigma^2}}) \Big)^n = \Big( 1 - \frac{t^2}{2n} + o\big( \frac{1}{n} \big) \Big)^n = e^{n \ln{\big( 1 - \frac{t^2}{2n} + o(\frac{1}{n}) \big)}} = \Big[ \textrm{логарифм раскладываем по формуле Тейлора} \Big] =$$
+    $$= e^{n \big(-\frac{t^2}{2n} + o(\frac{1}{n}) \big)} = e^{-\frac{t^2}{2} + o(1)} \xrightarrow[n \rightarrow \infty]{} e^{-\frac{t^2}{2}}$$
+    
+    Остается заметить, что $e^{-\frac{t^2}{2}}$ - характеристическая функция стандартной нормальной случайной величины $Z \sim \mathcal{N}(0, 1)$, $\varphi_{\frac{S_n - \mathbb{E}S_n}{\sqrt{\mathbb{D}S_n}}}(t) \xrightarrow[n \rightarrow \infty]{} e^{-\frac{t^2}{2}} = \varphi_{Z}(t) \Rightarrow \frac{S_n - \mathbb{E}S_n}{\sqrt{\mathbb{D}S_n}} \xrightarrow{d} Z \sim \mathcal{N}(0, 1)$.
+\end{proof}
