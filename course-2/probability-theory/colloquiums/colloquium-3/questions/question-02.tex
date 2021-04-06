@@ -13,16 +13,16 @@
     Пусть $\{X_n\}_{n=0}^{\infty}$ --- последовательность случайных величин; $\mathcal{F} := \{f\}$ и $\mathcal{G} := \{g\}$ --- системы функций на $\RR$. Пусть также
     \begin{enumerate}
         \item[$1)$] $\forall f \in \mathcal{F} \ \ \EE\,f(X_n) \to \EE\,f(X_0)$;
-        \item[$2)$] $\forall g \in \mathcal{G} \ \forall \varepsilon > 0 \ \ \ f_{\varepsilon} \in \mathcal{F}$: $\EE\,|g(X_n) - f_{\varepsilon}(X_n)| \le \varepsilon \ \ \forall n \in \NN \cup \{0\} 
-        \ \ (X_0 = X)$
+        \item[$2)$] $\forall g \in \mathcal{G} \ \forall \varepsilon > 0 \ \exists f_{\varepsilon} \in \mathcal{F} : \EE\,|g(X_n) - f_{\varepsilon}(X_n)| \le \varepsilon \ \ \forall n \in \NN \cup \{0\}$
 \end{enumerate}
-$\Rightarrow\; \forall g \in \mathcal{G} : \ \EE\,g(X_n) \to \EE\,g(X_0)$
+
+Тогда матожидание $\EE\,g(X_n)$ любой функции из $\mathcal{G}$ от $X_n$ сходится к матожиданию $\EE\,g(X_0)$ этой функции от $X_0$ при $n \to \infty \ \ \left( \forall g \in \mathcal{G} : \EE\,g(X_n) \to \EE\,g(X_0) \right)$.
 \end{lemma*}
 
 \begin{proof} В силу условий
     \begin{multline*} 
         |\EE\,g(X_n) - \EE\,g(X_0)| = \EE |(g(X_n) - f_{\varepsilon/3}(X_n)) + (f_{\varepsilon/3}(X_0) - g(X_0)) + (f_{\varepsilon/3}(X_n) - f_{\varepsilon/3}(X_0))| \le \\[3 pt]
-         \le \underset{\le \varepsilon/3}{|g(X_n) - f_{\varepsilon/3}(X_n)|} + \underset{\le \varepsilon/3}{|f_{\varepsilon/3}(X_0) - g(X_0)|} + \underset{\le \varepsilon/3}{|f_{\varepsilon/3}(X_n) - f_{\varepsilon/3}(X_0)|} \le \varepsilon,
+         \le \underset{\le \varepsilon/3}{\EE\,|g(X_n) - f_{\varepsilon/3}(X_n)|} + \underset{\le \varepsilon/3}{\EE\,|f_{\varepsilon/3}(X_0) - g(X_0)|} + \underset{\le \varepsilon/3}{\EE\,|f_{\varepsilon/3}(X_n) - f_{\varepsilon/3}(X_0)|} \le \varepsilon,
      \end{multline*}
      что и требовалось.
 \end{proof}
@@ -35,7 +35,7 @@ $\Rightarrow\; \forall g \in \mathcal{G} : \ \EE\,g(X_n) \to \EE\,g(X_0)$
 \begin{proof}
     \begin{itemize}
         \item[$\Leftarrow$] Пусть $t$ --- точка непрерывности $F_X$. Заметим, что 
-        $\underset{\overset{\diagdown\!\!\diagdown \ \ \ \ \ \ \diagup\!\!\diagup}{P(X \le x)}}{F_X(x) = \EE I_{(-\infty; x]}(x)}$.
+        $F_X(t) = P(X \le t) = \EE I_{(-\infty; t]}(X)$.
         
         Для всякого $\delta > 0$ определим непрерывные и ограниченные функции
         \[ g_{\delta}(x) = 
@@ -47,11 +47,11 @@ $\Rightarrow\; \forall g \in \mathcal{G} : \ \EE\,g(X_n) \to \EE\,g(X_0)$
         \left\{\begin{array}{ll} 
         1, & x < t, \\ 
         \delta^{-1}(t + \delta - x), & t \le x \le t + \delta, \\ 
-        0, & x + \delta > t. 
+        0, & x > t + \delta. 
         \end{array}\right. \]
     \end{itemize}
     При этом 
-    \[ I_{(-\infty; x - \delta]}(t) \le g_{\delta}(t) \le  I_{(-\infty; x]}(t) \le h_{\delta}(t) \le I_{(-\infty; x + \delta]}(t), \]
+    \[ I_{(-\infty; t - \delta]}(X) \le g_{\delta}(X) \le  I_{(-\infty; t]}(X) \le h_{\delta}(X) \le I_{(-\infty; t + \delta]}(X), \]
     следовательно, 
     \[ \EE\,g_{\delta}(X_n) \le F_{X_n}(t) \le \EE\,h_{\delta}(X_n). \]
     
@@ -62,28 +62,28 @@ $\Rightarrow\; \forall g \in \mathcal{G} : \ \EE\,g(X_n) \to \EE\,g(X_0)$
     
     При $\delta \to 0$ приходим к равенству $\lim_{n \to \infty} F_{X_n}(t) = F_X(t)$. \\
     
-    \item[$\Rightarrow$] Известно, что $F_{X_n} \to F_X$ в каждой точке непрерывности, т.е. 
-    $\EE I_{(-\infty;x]}(X_n) \to \EE I_{(-\infty;x]}(X)$.
+    \item[$\Rightarrow$] Известно, что $F_{X_n} \to F_X$ в каждой точке непрерывности $t$, т.е. 
+    $\EE I_{(-\infty; t]}(X_n) \to \EE I_{(-\infty; t]}(X)$. \\
     
-    Заметим, что $I_{(-\infty;b]}(t) - I_{(-\infty;a]}(t) = I_{(a;b]}(t)$ и обозначим $f_x(t) = I_{(-\infty;x]}(t)$. 
+    Заметим, что $I_{(-\infty; b]}(x) - I_{(-\infty; a]}(x) = I_{(a; b]}(x)$ и обозначим $f_t(x) = I_{(-\infty; t]}(x)$. \\
     
-    В силу линейности предела $\EE (f_b(X_n) - f_a(X_n)) \to \EE (f_b(X) - f_a(X))$.
+    В силу линейности предела $\EE (f_b(X_n) - f_a(X_n)) \to \EE [f_b(X) - f_a(X)]$.
     
-    Обозначим $f(t) = \sum\limits_{j=1}^N c_j I_{(a_j, b_j]}(t)$, где $(a_j, b_j]$ --- точки непрерывности $F_X$. 
+    Обозначим $f(x) = \sum\limits_{j=1}^N c_j I_{(a_j, b_j]}(x)$, где $a_j,\, b_j$ --- точки непрерывности $F_X$. 
     
-    Т.к. $f(t) = \sum\limits_{j=1}^N c_j (f_b(t) - f_a(t))$, по линейности предела имеем $\EE\,f(X_n) \to \EE\,f(X)$. \\
+    Т.к. $f(x) = \sum\limits_{j=1}^N c_j (f_b(x) - f_a(x))$, по линейности предела имеем $\EE\,f(X_n) \to \EE\,f(X)$. \\
     
-    Обозначим $\mathcal{F}$ систему функций $f$. По лемме 2.3 достаточно показать, что $\EE\,g(X_n) \to \EE\,f(X_n) \ \forall n \in \NN \cup \{0\}$, т.е.
+    Обозначим $\mathcal{F}$ систему функций $f$. Для применения леммы 2.2 достаточно показать, что $\EE\,g(X_n) \to \EE\,f(X_n) \ \forall n \in \NN \cup \{0\}$, т.е.
     \[ \forall \text{ непр. огр. } g \; \forall \varepsilon > 0 \  \exists f \in \mathcal{F} : 
     \EE |g(X_n) - f_{\varepsilon}(X_n)| \le \varepsilon \ \ \forall n \in \NN \cup \{0\} \ (X_0 = X). \]
     
-    Пусть $g$ --- произвольная непре. огр. функция на $\RR$ и пусть $\varepsilon > 0$ фиксирован. 
+    Пусть $g$ --- произвольная непр. огр. функция на $\RR$ и пусть $\varepsilon > 0$ фиксирован. 
     \[ \left\{\begin{array}{rcl} \lim_{x \to -\infty} F_X(x) &=& 0, \\ \lim_{x \to +\infty} F_X(x) &=& 1 \end{array}\right. \Rightarrow\; \exists A : \left\{\begin{array}{rcl} F_X(-A) &<& \varepsilon, \\ 1 - F_X(A) &<& \varepsilon \end{array}\right. \]
     
     Так как у монотонной функции счетное число точек разрыва, без ограничения общности будем считать, что $A$ --- точка непрерывности $F_X$. Тогда (в силу $F_{X_n} \to F_X$)
     \[ \exists n_0 : \forall n > n_0 \ F_{X_n}(-A) < 2\varepsilon, \; 1 - F_{X_n}(A) < 2\varepsilon \]
     Увеличив $A$, можно считать, что последнее верно для всех $n$ (перешли от $n_0(A)$ к $A(n)$). Таким образом
-    \[ \EE \left| I_{\{-A \le X_n \le A\}} g(X_n) - g(X_n) \right| = \EE | \overline{I_{\{-A \le X_n \le A\}}} g(X_n)| \le \sup\,|g| \cdot \underset{\overset{\parallel}{=F_{x_n}(-A) + (1 - F_{X_n}(A))}}{P(|X_n| > A)} \le \sup\,|g| \cdot 4\varepsilon \]
+    \[ \EE \left| I_{\{-A \le X_n \le A\}} g(X_n) - g(X_n) \right| = \EE | \overline{I_{\{-A \le X_n \le A\}}} g(X_n)| \le \sup\,|g| \cdot \underset{\overset{\parallel}{=F_{X_n}(-A) + (1 - F_{X_n}(A))}}{P(|X_n| > A)} \le \sup\,|g| \cdot 4\varepsilon \]
     Та же оценка верна и для предельной случайной величины $X$.
     
     Непрерывная на отрезке $[-A; A]$ функция $g$ равномерно непрерывна на этом отрезке ($\forall \varepsilon > 0 \; \exists \delta : |g(x) - g(x + \delta)| < \varepsilon$), следовательно, ее можно приблизить кусочно-постоянной (ступенчатой) функцией $f_{\varepsilon}$: 
@@ -94,7 +94,7 @@ $\Rightarrow\; \forall g \in \mathcal{G} : \ \EE\,g(X_n) \to \EE\,g(X_0)$
     \[ \EE \left| I_{\{-A \le X_n \le A\}} g(X_n) - f_{\varepsilon}(X_n) \right| = \EE \left[ \left| g(X_n) - f_{\varepsilon}(X_n) \right| I_{\{-A \le X_n \le A\}} \right] \le \varepsilon \]
     
     Та же оценка верна и для предельной случайной величины $X$. Таким образом
-    \[ \EE \left| g(X_n) - f_{\varepsilon}(X_n) \right| \le 2M\varepsilon + \varepsilon. \]
+    \[ \EE \left| g(X_n) - f_{\varepsilon}(X_n) \right| \le \sup\,|g| \cdot 4\varepsilon + \varepsilon. \]
     
     Теорема доказана.
 \end{proof}
