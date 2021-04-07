@@ -21,8 +21,8 @@
 
 \begin{proof} В силу условий
     \begin{multline*} 
-        |\EE\,g(X_n) - \EE\,g(X_0)| = \EE |(g(X_n) - f_{\varepsilon/3}(X_n)) + (f_{\varepsilon/3}(X_0) - g(X_0)) + (f_{\varepsilon/3}(X_n) - f_{\varepsilon/3}(X_0))| \le \\[3 pt]
-         \le \underset{\le \varepsilon/3}{\EE\,|g(X_n) - f_{\varepsilon/3}(X_n)|} + \underset{\le \varepsilon/3}{\EE\,|f_{\varepsilon/3}(X_0) - g(X_0)|} + \underset{\le \varepsilon/3}{\EE\,|f_{\varepsilon/3}(X_n) - f_{\varepsilon/3}(X_0)|} \le \varepsilon,
+        |\EE\,g(X_n) - \EE\,g(X_0)| \le |\EE [g(X_n) - f_{\varepsilon/3}(X_n)] + \EE [f_{\varepsilon/3}(X_0) - g(X_0)] + (\EE\,f_{\varepsilon/3}(X_n) - \EE\,f_{\varepsilon/3}(X_0))| \le \\[3 pt]
+         \le \underset{\le \varepsilon/3}{\EE\,|g(X_n) - f_{\varepsilon/3}(X_n)|} + \underset{\le \varepsilon/3}{\EE\,|f_{\varepsilon/3}(X_0) - g(X_0)|} + \underset{\le \varepsilon/3}{|\EE\,f_{\varepsilon/3}(X_n) - \EE\,f_{\varepsilon/3}(X_0)|} \le \varepsilon,
      \end{multline*}
      что и требовалось.
 \end{proof}
