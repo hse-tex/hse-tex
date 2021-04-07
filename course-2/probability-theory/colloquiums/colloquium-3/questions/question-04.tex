@@ -165,7 +165,7 @@
 \subsubsection{Производные характеристических функций.}
 
 \begin{theorem*}
-    Пусть $X$ это случайная величина с конечным $k$-ым моментом ($\E[|X|^k] < \infty$). Тогда $\phi_X$ $k$ раз дифференцируема и
+    Пусть $X$ это случайная величина с конечным $k$-ым моментом ($\E[|X|^k] < \infty$). Тогда $\phi_X$ $k$ раз дифференцируема в точке $0$ и
     \begin{equation*}
         \phi_{X}^{(k)}(0) = i^k \cdot \E[X^k].
     \end{equation*}
@@ -237,6 +237,10 @@
 
     Возвращаемся в самое начало:
     \begin{equation*}
-        \phi_X(t)' = \lim_{n \to \infty} \E[g_n] = i \cdot \E[X \cdot e^{itX}].
+        \phi_X(t)' = \lim_{n \to \infty} \E[g_n] = i \cdot \E[X \cdot e^{itX}],
+    \end{equation*}
+    откуда получаем
+    \begin{equation*}
+        \phi_X(0)' = i \cdot \E[X \cdot e^{0}] = i \cdot \E[X].
     \end{equation*}
 \end{proof} 
