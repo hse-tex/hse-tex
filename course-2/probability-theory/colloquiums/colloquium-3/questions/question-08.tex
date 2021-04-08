@@ -1,116 +1,132 @@
-	\subsection{Многомерная характеристическая функция. Сходимость по распределению последовательности случайных векторов. Эквивалентное описание сходимости по распределению через сходимость характеристических функций (без доказательства). Независимость случайных величин в терминах характеристической функции совместного распределения. Матрица ковариаций, смысл задаваемой ей билинейной формы, ее изменение при линейных преобразованиях. Многомерная ЦПТ.}
-	\subsubsection{Многомерная характеристическая функция.}
-	\begin{designation}
-		$\langle x, y \rangle = x_1y_1 + \cdots + x_my_m$, где $ x = (x_1, \ldots , x_m)\in \mathbb{R}^m,\text{ } y = (y_1, \ldots , y_m)\in \mathbb{R}^m$
-	\end{designation}
-	\begin{definition}
-		Характеристическая функция случайного вектора $ X = (X_1, \ldots , X_m)\ $ определяется равенством
-		$$\varphi_{X}(t) = \mathbb{E}(e^{i\langle X, t \rangle})$$
-	\end{definition}
-	\subsubsection{Сходимость по распределению последовательности случайных векторов.}
-	\begin{definition}
-		Последовательность случайных векторов $ X^n = (X^n_1, \ldots, X^n_m) $ \textbf{сходится по распределению} к случайному вектору $ X = (X_1,\ldots, X_m) $, если для каждой непрерывной, ограниченной функции $ g : \mathbb{R}^m\to \mathbb{R} $ выполнено $ \mathbb{E}g(X^n)\to \mathbb{E}g(X) $ (обозначение $ X^n \xrightarrow{d} X $).
-	\end{definition}
-	\subsubsection{Эквивалентное описание сходимости по распределению через сходимость характеристических функций (без доказательства).}
-	\begin{theorem}
-		\textbf{Без доказательства}\\
-		Последовательность случайных векторов $ X^n $ сходится по распределению к случайному вектору X тогда и только тогда, когда $ \varphi_{X^n}(y)\to\varphi_X(y) $ для каждого $ y \in \mathbb{R}^m $.
-	\end{theorem}
-	\begin{corollary}
-		\textbf{Без доказательства}\\
-		Если $ \varphi_X = \varphi_Y $, то векторы X и Y имеют одинаковые распределения.
-	\end{corollary}
-	\subsubsection{Независимость случайных величин в терминах характеристической функции совместного распределения.}
-	\begin{theorem}
-		Случайные величины $ X_1,\ldots, X_m $ независимы тогда и только тогда, когда 
-		$$\varphi_X(y_1,\ldots, y_m) = \varphi_{X_1}(y_1)\cdot\ldots\cdot\varphi_{X_m}(y_m)\text{ }\forall y\in\mathbb{R}^m$$
-		где $X = (X_1, \ldots, X_m)$
-	\end{theorem}
-	\begin{proof}
-		\text{ }\\
-		$\Rightarrow$\\
-		$$\varphi_X(y_1,\ldots,y_m) = \mathbb{E}e^{i(X_1y_1 + \ldots + X_my_m)} = \mathbb{E}\prod_{i = 1}^{m}e^{iX_iy_i} \underbrace{=}_{\text{незав.}} \prod_{i = 1}^m\mathbb{E}e^{iX_iy_i} = \prod_{i = 1}^m\varphi_{X_i}(y_i)$$
-		$\Leftarrow$\\
-		Зададим случаный вектор Y
-		\begin{itemize}
-			\item 
-			$Y = (Y_1,\ldots, Y_m)$ -- независимые компоненты
-			
-			\item 
-			$F_Y(x_1,\ldots, x_m):= F_{X_1}(x_1)\cdot\ldots\cdot F_{X_m}(x_m)$, т.е. $ Y_j $ имеет такое же распределение как и $ X_j $
-		\end{itemize}
-		Почему мы можем задать такой вектор?
-		\begin{itemize}
-			\item Произведение функций распределения -- функция распределения
-			\item По любой функции распределения можно построить случайный вектор
-			\item У этого вектора компоненты независимы, т.к. функция совместного распределения распалась в произведение. 
-		\end{itemize}
-		$$\varphi_Y(y) = \varphi_{Y_1}(y_1)\cdot\ldots\cdot\varphi_{Y_m}(y_m) = $$
-		Т.к. независимость компоненты; но если непонятно, то можно посмотреть выше как это расписывается
-		$$ = \varphi_{X_1}(y_1)\cdot\ldots\cdot\varphi_{X_m}(y_m) = $$
-		Т.к. $ Y_j $ сходится по распределению к $ X_j $, то хар.функии тоже сходятся(Лекция 3, теорема 5)
-		$$ = \varphi_X(y)\text{ }(\text{cм.условие})$$
-		Получили
-		$$\varphi_X(y) = \varphi_{Y}(y)\text{ }\forall y\Rightarrow F_x = F_y\text{(см. следствие выше)}$$
-		Если совпадают функции распределения, то и свойства независимости совпадают. Значит компоненты X тоже независимы.
-	\end{proof}
-	\subsubsection{Матрица ковариаций, смысл задаваемой ей билинейной формы, ее изменение при линейных преобразованиях. }
-	\begin{definition}
-		Пусть $ X = (X_1,\ldots, X_m) $ случайный вектор. Матрица $ R_X $ с компонентами $ r_{kj}~:=~cov(X_k, X_j ) $ называется ковариационной матрицей вектора X.
-	\end{definition}
-	\begin{theorem}
-		Симметричная неотрицательно определенная матрица R является ковариационной матрицей случайного вектора X тогда и только тогда, когда
-		$$\langle Rx, y\rangle = cov(\langle x, X\rangle, \langle y, X\rangle) = \mathbb{E}(\langle x, X - a\rangle, \langle y, X - a\rangle)$$
-		, где $ a = (a_1, \ldots, a_m) $ вектор средних, т.е. $ a = \mathbb{E}X_j $
-	\end{theorem}
-	\begin{proof}
-		\text{ }\\
-		%То есть нам нужно достаточно доказать, что эти две билинейные формы совпадают на базистных векторах. \\
-		$$e_k = (0, \ldots 0, \underbrace{1}_k, \ldots 0) $$
-		$$e_j = (0, \ldots 0, \underbrace{1}_j, \ldots 0) $$
-		$$x = \sum_{k}x_ke_k;\text{ }y = \sum j_je_j $$
-		$$\langle \sum_{k}x_kR_x e_k, \sum_j y_je_j \rangle = \sum_{k}\sum_j\underbrace{\langle R_x e_k ,e_j\rangle}_{(def)cov(x_k, x_j)} x_ky_j (*)$$
-		$$cov(x_k, x_j) = cov(\langle x, e_k\rangle, \langle x,e_j\rangle)$$
-		$$ (*) =\sum_{k}\sum_j(cov(\langle x , e_k\rangle, \langle y, e_j\rangle)) x_ky_j = \sum_{k}\sum_j( cov(\langle x, x_ke_k\rangle, \langle x, y_je_j\rangle)) =$$
-		$$ =  \sum_{k}( cov(\langle x, x_ke_k\rangle, \sum_j\langle x, y_je_j\rangle)) = cov(\langle x, x\rangle, \langle x, y\rangle)$$
-	\end{proof}
-	\begin{theorem}
-		Пусть X -- случайный вектор с ковариационной матрицей, тогда случайный вектор AX + b имеет ковариационную матрицу $ ARA^* $
-	\end{theorem}
-	\begin{proof}
-		$$ Y = AX + b $$
-		$$ \langle R_yu, v\rangle = cov(\langle AX, u \rangle + \langle b, u \rangle, \langle AX, v \rangle + \langle b, v \rangle) =_{*} cov(\langle AX, u \rangle, \langle AX, v \rangle) = cov(\langle X, A^*u \rangle, \langle X, A^{*}v \rangle) =_{**}$$
-		* -- сдвиг на константу на ковариацию не влиятет\\
-		** -- см. теорему выше
-		$$ = \langle R_xA^*u,A^*v\rangle =  \langle AR_xA^*u,v\rangle$$
-		$$R_y = AR_xA^*$$
-	\end{proof}
-	\subsubsection{Многомерная ЦПТ.}
-	\begin{theorem}
-		Пусть случайные вектора $ X^n = (X^n_1,\ldots, X^n_m) $ независимы, одинаково распределены и имеют конечные $ a_j = \mathbb{E}X^n_j, r_{k,j} = cov(X^1_k, X^1_j) $\\
-		Тогда последовательность случайных векторов $Y^n = (Y^n_1,\ldots, Y^n_m) $ с компонентами
-		$$Y_j^n = \frac{X^1_j + \ldots + X^n_j - na_j}{\sqrt{n}}$$
-		сходится по распределению к вектору Z, характеристическая функция, которого имеет вид
-		$$\varphi_{Z}(y) = e^{-\frac{1}{2}\langle R_y,y\rangle}, R = r_{k,j}$$
-	\end{theorem}
-	\begin{proof}
-		\text{ }\\
-		Фиксируем $ y\in\mathbb{R}^m $\\
-		Рассмотри последовательность случайных величин
-		$$\xi_n:=\frac{\langle X^1, y\rangle + \ldots + \langle X^n, y\rangle - n\langle a, y\rangle}{\sqrt{n}} = \langle Y^n, y \rangle$$
-		\begin{itemize}
-			\item $\{X^i, y\}$ независимы, одинаковы распределенные
-			\item $\mathbb{E}(\langle X^1, y\rangle) = \langle a^1, y\rangle$
-		\end{itemize}
-	Значит по одномерной цпт
-	$$\xi_n\xrightarrow{d}Z_y\sim \mathcal{N}(0,\mathbb{D}\langle X^1, y\rangle)$$
-	$$\varphi_{\xi_n}(t)\to\varphi_{Z_y} = e^{-\frac{1}{2}t^2\mathbb{D}\langle X^1, y\rangle}$$
-	Заметим что
-	$$\varphi_{Y^n}(y) = \mathbb{E}e^{i\langle Y^n, y\rangle}$$
-	$$\varphi_{\langle Y^n, y\rangle}(1) = \mathbb{E}e^{i\cdot1\cdot\langle Y^n, y\rangle}$$
-	$$\Rightarrow \varphi_{Y^n}(y) = \varphi_{\langle Y^n, y\rangle}(1) = \varphi_{\xi_n}(1) \to_{*} \varphi_{Z_y}(1) = e^{-\frac{1}{2}\mathbb{D}\langle X^1, y\rangle}$$
-	* -- т.к. $ \xi_n\xrightarrow{d} Z_y $
-	$$\mathbb{D}\langle X^1, y\rangle = cov(\langle X^1, y\rangle , \langle X^1, y\rangle ) = \langle R_Y, y\rangle $$
-	Получили
-	$$\varphi_{Y^n}\to e^{-\frac{1}{2}\langle R_Y, y\rangle } \Rightarrow Y^n\xrightarrow{d}Z$$
-	\end{proof}
+\newcommand{\cov}{\operatorname{cov}}
+
+    \subsection{Многомерная характеристическая функция. Сходимость по распределению последовательности случайных векторов. Эквивалентное описание сходимости по распределению через сходимость характеристических функций (без доказательства). Независимость случайных величин в терминах характеристической функции совместного распределения. Матрица ковариаций, смысл задаваемой ей билинейной формы, ее изменение при линейных преобразованиях. Многомерная ЦПТ.}
+    \subsubsection{Многомерная характеристическая функция.}
+    \begin{designation}
+        $\langle x, y \rangle = x_1y_1 + \cdots + x_my_m$, где $ x = (x_1, \ldots , x_m)\in \mathbb{R}^m,\text{ } y = (y_1, \ldots , y_m)\in \mathbb{R}^m$
+    \end{designation}
+    \begin{definition}
+        Характеристическая функция случайного вектора $ X = (X_1, \ldots , X_m)\ $ определяется равенством
+        $$\varphi_{X}(t) = \mathbb{E}(e^{i\langle X, t \rangle})$$
+    \end{definition}
+    \subsubsection{Сходимость по распределению последовательности случайных векторов.}
+    \begin{definition}
+        Последовательность случайных векторов $ X^n = (X^n_1, \ldots, X^n_m) $ \textbf{сходится по распределению} к случайному вектору $ X = (X_1,\ldots, X_m) $, если для каждой непрерывной, ограниченной функции $ g : \mathbb{R}^m\to \mathbb{R} $ выполнено $ \mathbb{E}g(X^n)\to \mathbb{E}g(X) $ (обозначение $ X^n \xrightarrow{d} X $).
+    \end{definition}
+    \subsubsection{Эквивалентное описание сходимости по распределению через сходимость характеристических функций (без доказательства).}
+    \begin{theorem}
+        \textbf{Без доказательства}\\
+        Последовательность случайных векторов $ X^n $ сходится по распределению к случайному вектору X тогда и только тогда, когда $ \varphi_{X^n}(y)\to\varphi_X(y) $ для каждого $ y \in \mathbb{R}^m $.
+    \end{theorem}
+    \begin{corollary}
+        \textbf{Без доказательства}\\
+        Если $ \varphi_X = \varphi_Y $, то векторы X и Y имеют одинаковые распределения.
+    \end{corollary}
+    \subsubsection{Независимость случайных величин в терминах характеристической функции совместного распределения.}
+    \begin{theorem}
+        Случайные величины $ X_1,\ldots, X_m $ независимы тогда и только тогда, когда 
+        $$\varphi_X(y_1,\ldots, y_m) = \varphi_{X_1}(y_1)\cdot\ldots\cdot\varphi_{X_m}(y_m)\text{ }\forall y\in\mathbb{R}^m$$
+        где $X = (X_1, \ldots, X_m)$
+    \end{theorem}
+    \begin{proof}
+        \text{ }\\
+        $\Rightarrow$\\
+        $$\varphi_X(y_1,\ldots,y_m) = \mathbb{E}e^{i(X_1y_1 + \ldots + X_my_m)} = \mathbb{E}\prod_{i = 1}^{m}e^{iX_iy_i} \underbrace{=}_{\text{незав.}} \prod_{i = 1}^m\mathbb{E}e^{iX_iy_i} = \prod_{i = 1}^m\varphi_{X_i}(y_i)$$
+        $\Leftarrow$\\
+        Зададим случаный вектор Y
+        \begin{itemize}
+            \item 
+            $Y = (Y_1,\ldots, Y_m)$ -- независимые компоненты
+            
+            \item 
+            $F_Y(x_1,\ldots, x_m):= F_{X_1}(x_1)\cdot\ldots\cdot F_{X_m}(x_m)$, т.е. $ Y_j $ имеет такое же распределение как и $ X_j $
+        \end{itemize}
+        Почему мы можем задать такой вектор?
+        \begin{itemize}
+            \item Произведение функций распределения -- функция распределения
+            \item По любой функции распределения можно построить случайный вектор
+            \item У этого вектора компоненты независимы, т.к. функция совместного распределения распалась в произведение. 
+        \end{itemize}
+        $$\varphi_Y(y) = \varphi_{Y_1}(y_1)\cdot\ldots\cdot\varphi_{Y_m}(y_m) = $$
+        Т.к. независимость компоненты; но если непонятно, то можно посмотреть выше как это расписывается
+        $$ = \varphi_{X_1}(y_1)\cdot\ldots\cdot\varphi_{X_m}(y_m) = $$
+        Т.к. $ Y_j $ сходится по распределению к $ X_j $, то хар.функии тоже сходятся(Лекция 3, теорема 5)
+        $$ = \varphi_X(y)\text{ }(\text{cм.условие})$$
+        Получили
+        $$\varphi_X(y) = \varphi_{Y}(y)\text{ }\forall y\Rightarrow F_X = F_Y\text{(см. следствие выше)}$$
+        Если совпадают функции распределения, то и свойства независимости совпадают. Значит компоненты X тоже независимы.
+    \end{proof}
+    \subsubsection{Матрица ковариаций, смысл задаваемой ей билинейной формы, ее изменение при линейных преобразованиях. }
+    \begin{definition}
+        Пусть $ X = (X_1,\ldots, X_m) $ случайный вектор. Матрица $ R_X $ с компонентами $ r_{kj}~:=~\cov(X_k, X_j ) $ называется ковариационной матрицей вектора X.
+    \end{definition}
+    \begin{theorem}
+        Симметричная неотрицательно определенная матрица R является ковариационной матрицей случайного вектора X тогда и только тогда, когда
+        $$\langle Rx, y\rangle = \cov(\langle x, X\rangle, \langle y, X\rangle) = \mathbb{E}(\langle x, X - a\rangle \langle y, X - a\rangle)$$
+        , где $ a = (a_1, \ldots, a_m) $ вектор средних, т.е. $ a_j = \mathbb{E}X_j $
+    \end{theorem}
+    \begin{proof}
+        \text{ }\\
+        %То есть нам нужно достаточно доказать, что эти две билинейные формы совпадают на базистных векторах. \\
+        \[e_k = (0, \ldots 0, \underbrace{1}_k, \ldots 0) \]
+        \[e_j = (0, \ldots 0, \underbrace{1}_j, \ldots 0) \]
+        \[x = \sum_{k}x_ke_k;\text{ }y = \sum_{j} y_je_j \]
+        \[\langle \sum_{k}x_kR_x e_k, \sum_j y_je_j \rangle = \sum_{k}\sum_j\underbrace{\langle R_x e_k ,e_j\rangle}_{(def)\cov(X_k, X_j)} x_ky_j (*)\]
+        \[\cov(X_k, X_j) = \cov(\langle X, e_k\rangle, \langle X,e_j\rangle)\]
+        \[ (*) =\sum_{k}\sum_j(\cov(\langle X , e_k\rangle, \langle X, e_j\rangle)) x_ky_j = \sum_{k}\sum_j( \cov(\langle X, x_ke_k\rangle, \langle X, y_je_j\rangle)) =\]
+        \[ =  \sum_{k}( \cov(\langle X, x_ke_k\rangle, \sum_j\langle X, y_je_j\rangle)) = \cov(\langle X, x\rangle, \langle X, y\rangle)\]
+        \[ \cov \left( \left\langle X, x \right\rangle, \left\langle X, y \right\rangle \right) = 
+        \EE \left( 
+            \Big( \left\langle X, x \right\rangle - \EE \left\langle X, x \right\rangle \Big)  
+            \Big( \left\langle X, y \right\rangle - \EE \left\langle X, y \right\rangle \Big)  
+        \right) = 
+        \EE \left( 
+            \Big( \left\langle X, x \right\rangle - \left\langle a, x \right\rangle \Big)  
+            \Big( \left\langle X, y \right\rangle - \left\langle a, y \right\rangle \Big)  
+    \right) = \]
+        \[ = \EE \left( 
+            \left\langle X - a , x \right\rangle
+            \left\langle X - a, y \right\rangle 
+        \right)
+        \] 
+    \end{proof}
+    \begin{theorem}
+        Пусть X -- случайный вектор с ковариационной матрицей, тогда случайный вектор AX + b имеет ковариационную матрицу $ ARA^* $
+    \end{theorem}
+    \begin{proof}
+        $$ Y = AX + b $$
+        $$ \langle R_yu, v\rangle = \cov(\langle AX, u \rangle + \langle b, u \rangle, \langle AX, v \rangle + \langle b, v \rangle) =_{*} \cov(\langle AX, u \rangle, \langle AX, v \rangle) = \cov(\langle X, A^*u \rangle, \langle X, A^{*}v \rangle) =_{**}$$
+        * -- сдвиг на константу на ковариацию не влиятет\\
+        ** -- см. теорему выше
+        $$ = \langle R_xA^*u,A^*v\rangle =  \langle AR_xA^*u,v\rangle$$
+        $$R_y = AR_xA^*$$
+    \end{proof}
+    \subsubsection{Многомерная ЦПТ.}
+    \begin{theorem}
+        Пусть случайные векторы $ X^n = (X^n_1,\ldots, X^n_m) $ независимы, одинаково распределены и имеют конечные $ a_j = \mathbb{E}X^n_j, r_{k,j} = \cov(X^1_k, X^1_j) $\\
+        Тогда последовательность случайных векторов $Y^n = (Y^n_1,\ldots, Y^n_m) $ с компонентами
+        $$Y_j^n = \frac{X^1_j + \ldots + X^n_j - na_j}{\sqrt{n}}$$
+        сходится по распределению к вектору Z, характеристическая функция, которого имеет вид
+        $$\varphi_{Z}(y) = e^{-\frac{1}{2}\langle R_y,y\rangle}, R = r_{k,j}$$
+    \end{theorem}
+    \begin{proof}
+        \text{ }\\
+        Фиксируем $ y\in\mathbb{R}^m $\\
+        Рассмотри последовательность случайных величин
+        $$\xi_n:=\frac{\langle X^1, y\rangle + \ldots + \langle X^n, y\rangle - n\langle a, y\rangle}{\sqrt{n}} = \langle Y^n, y \rangle$$
+        \begin{itemize}
+            \item $\{X^i, y\}$ независимы, одинаковы распределенные
+            \item $\mathbb{E}(\langle X^1, y\rangle) = \langle a^1, y\rangle$
+        \end{itemize}
+    Значит по одномерной цпт
+    $$\xi_n\xrightarrow{d}Z_y\sim \mathcal{N}(0,\mathbb{D}\langle X^1, y\rangle)$$
+    $$\varphi_{\xi_n}(t)\to\varphi_{Z_y} = e^{-\frac{1}{2}t^2\mathbb{D}\langle X^1, y\rangle}$$
+    Заметим что
+    $$\varphi_{Y^n}(y) = \mathbb{E}e^{i\langle Y^n, y\rangle}$$
+    $$\varphi_{\langle Y^n, y\rangle}(1) = \mathbb{E}e^{i\cdot1\cdot\langle Y^n, y\rangle}$$
+    $$\Rightarrow \varphi_{Y^n}(y) = \varphi_{\langle Y^n, y\rangle}(1) = \varphi_{\xi_n}(1) \to_{*} \varphi_{Z_y}(1) = e^{-\frac{1}{2}\mathbb{D}\langle X^1, y\rangle}$$
+    * -- т.к. $ \xi_n\xrightarrow{d} Z_y $
+    $$\mathbb{D}\langle X^1, y\rangle = \cov(\langle X^1, y\rangle , \langle X^1, y\rangle ) = \langle R_Y, y\rangle $$
+    Получили
+    $$\varphi_{Y^n}\to e^{-\frac{1}{2}\langle R_Y, y\rangle } \Rightarrow Y^n\xrightarrow{d}Z$$
+    \end{proof}
