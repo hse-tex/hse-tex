@@ -80,7 +80,7 @@
 	\subsubsection{Примеры применения: выборочная дисперсия и взаимосвязь с ЦПТ.}
 	\textbf{Пример 1}(Выборочная дисперсия)\\
 	Пусть задана последовательность независимых и одинаково распределенных случайных величин $ X_j $, причем $ \mathbb{E}X_j = a $ и $ \mathbb{D}Xj = \sigma^2$. Тогда последовательность случайных величин	
-    $$ s^2_n = \frac{1}{n - 1}\sum_{j = 1}^{n}(X_j - \overline{X_n})^2, \text{ где }\overline{X_n} = \frac{X_1 + \cdots + X_n}{n} \text{сходится по вероятности к } \sigma^2$$
+    $$ s^2_n = \frac{1}{n - 1}\sum_{j = 1}^{n}(X_j - \overline{X_n})^2, \text{ где }\overline{X_n} = \frac{X_1 + \cdots + X_n}{n} \text{, сходится по вероятности к } \sigma^2$$
 	Проверим это\\
 	$$ \overline{X_n} \xrightarrow{p} a(\text{ЗБЧ})$$
 	$$ s^2_n = \frac{1}{n - 1}\sum_{j = 1}^{n}(X_j - \overline{X_n})^2 = \frac{n}{n - 1}\frac{1}{n}\sum_{j = 1}^{n}X_j^2 + \frac{1}{n - 1}\left(-2\underbrace{\sum_{j = 1}^{n}X_j}_{n\overline{X_n}} \cdot \overline{X_n} + n\overline{X_n}^2\right) = \frac{n}{n - 1}\left(\frac{1}{n}\sum_{j = 1}^nX_j^2 - \overline{X_n}^2\right)(*)$$
@@ -102,7 +102,7 @@
 	$$ \frac{\sqrt{n}(\overline{X_n} - a)}{\sqrt{s^2_n}}\to Z\cdot 1 \xrightarrow{d}Z\sim\mathcal{N}(0, 1)$$
 	\subsubsection{Теорема о сходимости последовательности вида $\dfrac{f(a + h_n X_n) - f(a)}{h_n}$ для сходящейся по распределению последовательности $X_n$. }
 	\begin{theorem*}
-		Пусть$  a, h_n \in \mathbb{R}, h_n\to0 $и $ f $ непрерывная на $ \mathbb{R} $ и дифференцируемая в точке a функция. Если последовательность случайных величин $ X_n \xrightarrow{d} X $, то
+		Пусть $  a, h_n \in \mathbb{R}, h_n\to0 $ и $ f $ непрерывная на $ \mathbb{R} $ и дифференцируемая в точке a функция. Если последовательность случайных величин $ X_n \xrightarrow{d} X $, то
 		$$\frac{f(a + h_nX_n) - f(a)}{h_n}\xrightarrow{d}f^{'}(a)X$$
 	\end{theorem*}
 	\begin{proof}
