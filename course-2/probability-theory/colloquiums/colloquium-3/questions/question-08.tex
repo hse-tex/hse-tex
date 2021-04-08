@@ -91,7 +91,7 @@
         \] 
     \end{proof}
     \begin{theorem}
-        Пусть X -- случайный вектор с ковариационной матрицей, тогда случайный вектор AX + b имеет ковариационную матрицу $ ARA^* $
+        Пусть X -- случайный вектор с ковариационной матрицей $R_x$, тогда случайный вектор AX + b имеет ковариационную матрицу $ AR_xA^* $
     \end{theorem}
     \begin{proof}
         $$ Y = AX + b $$
@@ -126,7 +126,7 @@
     $$\varphi_{\langle Y^n, y\rangle}(1) = \mathbb{E}e^{i\cdot1\cdot\langle Y^n, y\rangle}$$
     $$\Rightarrow \varphi_{Y^n}(y) = \varphi_{\langle Y^n, y\rangle}(1) = \varphi_{\xi_n}(1) \to_{*} \varphi_{Z_y}(1) = e^{-\frac{1}{2}\mathbb{D}\langle X^1, y\rangle}$$
     * -- т.к. $ \xi_n\xrightarrow{d} Z_y $
-    $$\mathbb{D}\langle X^1, y\rangle = \cov(\langle X^1, y\rangle , \langle X^1, y\rangle ) = \langle R_Y, y\rangle $$
+    $$\mathbb{D}\langle X^1, y\rangle = \cov(\langle X^1, y\rangle , \langle X^1, y\rangle ) = \langle R y, y\rangle $$
     Получили
-    $$\varphi_{Y^n}\to e^{-\frac{1}{2}\langle R_Y, y\rangle } \Rightarrow Y^n\xrightarrow{d}Z$$
+    $$\varphi_{Y^n}\to e^{-\frac{1}{2}\langle R y, y\rangle } \Rightarrow Y^n\xrightarrow{d}Z$$
     \end{proof}
