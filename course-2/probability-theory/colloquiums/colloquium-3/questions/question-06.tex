@@ -80,7 +80,7 @@
 	\subsubsection{Примеры применения: выборочная дисперсия и взаимосвязь с ЦПТ.}
 	\textbf{Пример 1}(Выборочная дисперсия)\\
 	Пусть задана последовательность независимых и одинаково распределенных случайных величин $ X_j $, причем $ \mathbb{E}X_j = a $ и $ \mathbb{D}Xj = \sigma^2$. Тогда последовательность случайных величин	
-	$$ s^2_n = \frac{1}{n - 1}\sum_{j = 1}^{n}(X_j - \overline{X_n})^2, \text{ где }\overline{X_n} = \frac{X_1 + \cdots + X_n}{n} $$
+    $$ s^2_n = \frac{1}{n - 1}\sum_{j = 1}^{n}(X_j - \overline{X_n})^2, \text{ где }\overline{X_n} = \frac{X_1 + \cdots + X_n}{n} \text{сходится по вероятности к } \sigma^2$$
 	Проверим это\\
 	$$ \overline{X_n} \xrightarrow{p} a(\text{ЗБЧ})$$
 	$$ s^2_n = \frac{1}{n - 1}\sum_{j = 1}^{n}(X_j - \overline{X_n})^2 = \frac{n}{n - 1}\frac{1}{n}\sum_{j = 1}^{n}X_j^2 + \frac{1}{n - 1}\left(-2\underbrace{\sum_{j = 1}^{n}X_j}_{n\overline{X_n}} \cdot \overline{X_n} + n\overline{X_n}^2\right) = \frac{n}{n - 1}\left(\frac{1}{n}\sum_{j = 1}^nX_j^2 - \overline{X_n}^2\right)(*)$$
