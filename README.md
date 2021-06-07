@@ -38,6 +38,7 @@
 - [Коллоквиум I](https://hse-tex.me/course-2/probability-theory-colloquium-1.pdf)
 - [Коллоквиум II](https://hse-tex.me/course-2/probability-theory-colloquium-2.pdf)
 - [Коллоквиум II [первые 5 билетов, альтернативная версия]](https://hse-tex.me/course-2/probability-theory-colloquium-2-alternative.pdf)
+- [Коллоквиум III](https://hse-tex.me/course-2/probability-theory-colloquium-3.pdf)
 
 ## 1 курс
 
@@ -97,6 +98,7 @@
 - [Анастасия Григорьева](https://github.com/weifoll)
 - [Елизавета Орешонок](https://github.com/eaoresh)
 - [Алиса Вернигор](https://github.com/alisa-vernigor)
+- [Анастасия Смородинникова](https://github.com/AnaSomi)
 
 
 Не стесняйтесь добавлять себя в этот список в pull request'ах.

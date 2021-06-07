@@ -51,7 +51,7 @@
         &= \Big|\int_{\alpha(y)}^{\alpha(y_0)} f(x, y) \dd x + \int_{\beta(y_0)}^{\beta(y)} f(x, y) \dd x\Big| + \int_{\alpha(y_0)}^{\beta(y_0)} \Big|f(x, y) - f(x, y_0)\Big| \dd x \\
         &\leq \int_{\alpha(y)}^{\alpha(y_0)} \underbrace{|f(x, y)|}_{\leq M} \dd x + \int_{\beta(y_0)}^{\beta(y)} \underbrace{|f(x, y)|}_{\leq M} \dd x + \int_{\alpha(y_0)}^{\beta(y_0)} \underbrace{\Big|f(x, y) - f(x, y_0)\Big|}_{\leq \eps} \dd x \\
         &\leq (\alpha(y_0) - \alpha(y)) \cdot M + (\beta(y) - \beta(y_0)) \cdot M + (\beta(y_0) - \alpha(y_0)) \cdot \eps \\
-        &= 2 \cdot \eps \cdot M + (\beta(y) - \alpha(y)) \cdot \eps = \eps',
+        &= 2 \cdot \eps \cdot M + (\beta(y_0) - \alpha(y_0)) \cdot \eps = \eps',
     \end{align*}
     то есть выбирая $\delta > 0$ мы можем сделать так, что $|F(y) - F(y_0)| < \eps'$ для любого $\eps' > 0$.
     \endgroup
@@ -100,7 +100,7 @@
         \leq (b - a) \cdot \eps.
     \end{align*}
 
-    Последний переход получается в силу равномерной непрерывности $\dfrac{\partial f}{\partial y}$ на $G$ и того, что $|y^* - y^*| \leq |y - y_0| < \eps$.
+    Последний переход получается в силу равномерной непрерывности $\dfrac{\partial f}{\partial y}$ на $G$ и того, что $|y^* - y_0| \leq |y - y_0| < \eps$.
 
     То есть мы доказали, что $\dfrac{F(y) - F(y_0)}{y - y_0}$ равномерно стремится к числу $\int_a^b \dfrac{\partial f}{\partial y} (x, y_0) \dd x$, то есть существует предел, который мы и называем производной $F'(y)$.
 
@@ -125,17 +125,17 @@
 
     то эти интегралы равны друг другу, то есть
     \begin{equation*}
-        \int_a^b \int_c^d f(x, y) \dd x \dd y
-        = \int_c^d \int_a^b f(x, y) \dd y \dd x.
+        \int_a^b \int_c^d f(x, y) \dd y \dd x
+        = \int_c^d \int_a^b f(x, y) \dd x \dd y.
     \end{equation*}
 \end{theorem*}
 
 \begin{proof}
     Доказательство следует из теоремы Фубини о том, что повторные интегралы равны двойном интегралу по прямоугольнику:
     \begin{equation*}
-        \int_a^b \int_c^d f(x, y) \dd x \dd y
+        \int_a^b \int_c^d f(x, y) \dd y \dd x
         = \iint_G f(x, y) \dd x \dd y
-        = \int_c^d \int_a^b f(x, y) \dd y \dd x.
+        = \int_c^d \int_a^b f(x, y) \dd x \dd y.
     \end{equation*}
 \end{proof}
 

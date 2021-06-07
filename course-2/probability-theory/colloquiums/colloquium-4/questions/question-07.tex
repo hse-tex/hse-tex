@@ -1,0 +1,78 @@
+\subsection{Теорема Неймана-Пирсона и пример её применения.}
+
+\subsubsection{Теорема Неймана-Пирсона.}
+Пусть гипотеза $H_0$ утверждает, что плотность выборки -- это $f_0$, а альтернативная
+гипотеза $H_1$ утверждает, что плотность выборки -- это $f_1$. \\
+Предположим, что
+ $\forall \alpha \in [0, 1] \ \exists t := t(\alpha): P_0(f_1(x) \geqslant tf_0(x)) = \alpha$. 
+
+\begin{theorem*}[Неймана-Пирсона]
+     В такой постановке наиболее мощный критерий уровня значимости $\alpha$ имеет вид \\
+    $K_{t(\alpha)} := \{ f_1(x) \geqslant t(\alpha)f_0(x)\}$.
+\end{theorem*}
+\begin{proof}
+    Пусть $S$ -- тоже критерий уровня значимости $\alpha$: $P_0(X \in S) \leqslant \alpha = P_0(X \in K_{t(\alpha)})$.
+    Хотим сравнить $P_1(X \in K_{t(\alpha)}) - P_1(X \in S)$. Хотим, чтобы это было больше либо равно нуля. Это и будет
+    означать, что у нас критерий наиболее мощный. \\
+    $\displaystyle P_1(X \in K_{t(\alpha)}) - P_1(X \in S) = \int_{K_{t(\alpha)}}f_1dx - \int_{S}f_1dx$ = [
+        можем выкинуть пересечение, так как на пересечении эти интегралы просто сократятся
+    ] = $\int_{K_{t(\alpha)}\backslash S}f_1dx - \int_{S\backslash K_{t(\alpha)}}f_1dx$. \\
+    Заметим, что на $S\backslash K_{t(\alpha)}$ выполнено $f_1 < t(\alpha)f_0$, так как это взято из
+    дополнения к $K_{t(\alpha)}$, где по условию выполняется $ f_1(x) \geqslant t(\alpha)f_0(x)$. Поэтому имеем: 
+    $\int_{K_{t(\alpha)}\backslash S}f_1dx - \int_{S\backslash K_{t(\alpha)}}f_1dx \geqslant
+    t(\alpha) \int_{K_{t(\alpha)}\backslash S}f_0dx - t(\alpha)\int_{S\backslash K_{t(\alpha)}}f_0dx$ = [снова добавим пересечение
+    и вынесем $t(\alpha)$] = $t(\alpha) \cdot (\int_{K_{t(\alpha)}}f_0dx - \int_{S}f_0dx) =
+    t(\alpha) \cdot (P_0(X \in K_{t(\alpha)}) - P_0(X \in S)) \geqslant 0$ из построения критерия
+     $S$ ($P_0(X \in S) \leqslant \alpha = P_0(X \in K_{t(\alpha)})$). \\
+     
+    Получили: $P_1(X \in K_{t(\alpha)}) - P_1(X \in S) \geqslant 0$, что и требовалось доказать.
+\end{proof}
+
+\subsubsection{Пример применения теоремы Неймана-Пирсона.}
+\begin{example}
+    Пусть у нас выборка из нормального закона $N(\theta, 1)$. Пусть наша гипотеза $H_0$ говорит, что
+    $\theta = \theta_0$, а альтернативная гипотеза $H_1$ говорит, что $\theta = \theta_1 > \theta_0$. \\
+    
+    $f_1(X) = \dfrac{1}{\sqrt{2\pi}^n} \cdot \exp(-\dfrac{1}{2} \sum_{j = 1}^{n} (X_j - \theta_1)^2)$ \\
+    $f_0(X) = \dfrac{1}{\sqrt{2\pi}^n} \cdot \exp(-\dfrac{1}{2} \sum_{j = 1}^{n} (X_j - \theta_0)^2)$ \\
+
+    Зададим критерий $K_t$ из теоремы Неймана-Пирсона (ничего в 0 не обращается --
+    сразу можем поделить): \\ $K_t = \left\{\dfrac{f_1}{f_0} \geqslant t\right\} =
+    \left \{exp \left( \dfrac{1}{2} \sum_{j = 1}^{n}[(X_j - \theta_0)^2 - (X_j - \theta_1)^2] \right) \geqslant t \right \}$ =
+    [логарифмируем, расскрываем скобки, умножаем на два]  = $\left \{\sum_{j = 1}^n[2X_j(\theta_1 - \theta_0) +
+     n(\theta_0^2 + \theta_1^2)] \geqslant 2\ln t \right \} =
+     \left \{(\theta_1 - \theta_0) \overline{X_n} \geqslant \dfrac{\ln t}{n} - \dfrac{(\theta_0^2 + \theta_1^2)}{2} \right \}$
+     = [по условию $\theta_1 > \theta_0 \Rightarrow$ поделим] =
+     $\left \{\overline{X_n} \geqslant \dfrac{\dfrac{\ln t}{n} - \dfrac{(\theta_0^2 + \theta_1^2)}{2}}{\theta_1 - \theta_0} \right \}$ \\
+     
+     Таким образом пришли к тому, что $K_t =\left\{\dfrac{f_1}{f_0} \geqslant t\right\}$ равносильно
+     множеству $\widetilde{K}_{s} = \left \{\overline{X_n} \geqslant s \right \}$. Равносильно в
+     том смысле, что для каждого $t$ мы можем подобрать $s(t)$, что множество $K_t$ совпадает с
+     $\widetilde{K}_{s(t)}$. Теперь будем искать критические множества именно в таком виде (для удобства). \\
+     
+    Должно выполняться: $P_0(X \in K_t) = \alpha \Leftrightarrow P_0(X \in \widetilde{K}_{s(t)}) = \alpha$.
+    А что это за вероятности? Это вероятность \\ $P_{\theta_0}(\overline{X_n} \geqslant s) = \alpha$ \\
+    То есть, $P_{\theta_0}(\sqrt{n}(\overline{X_n} - \theta_0) \geqslant \sqrt{n}(s - \theta_0)) = \alpha$,
+    где $\sqrt{n}(\overline{X_n} - \theta_0) \sim N(0, 1)$, поэтому тут просто написано,\\ что
+    $1 - \Phi(\sqrt{n}(s - \theta_0)) = \alpha$. \\
+    
+    Значит, выбираем квантиль нормального закона уровня $1 - \alpha$:
+    $Z_{1 - \alpha} = \sqrt{n}(s - \theta_0) \Rightarrow \\ s = \theta_0 + \dfrac{Z_{1 - \alpha}}{\sqrt{n}}$. Выразили
+    $s$.  \\
+    
+    Таким образом, наше критическое множество $\left \{ \overline{X_n} \geqslant \theta_0 + \dfrac{Z_{1 - \alpha}}{\sqrt{n}}\right \}$. Это
+    критерий уровня значимости $\alpha$. \\
+
+    Теперь посчитаем мощность (это же самый мощный критерий): \\
+    $P_{\theta_1}\left (\overline{X_n} \geqslant \theta_0 + \dfrac{Z_{1 - \alpha}}{\sqrt{n}} \right) = 
+    P_{\theta_1}\left (\sqrt{n}(\overline{X_n} - \theta_1) \geqslant \sqrt{n}(\theta_0
+    - \theta_1) + Z_{1 - \alpha} \right) = 1 - \Phi(\sqrt{n}(\theta_0
+    - \theta_1) + Z_{1 - \alpha})$. \\
+    
+    Заметим, что если объём выборки $n$ устремить к бесконечности, то точка, в которой мы берём
+    $\Phi$ стремится к минус бесконечности (так как $(\theta_0
+    - \theta_1) < 0$ по условию), поэтому мощность стремится к 1.\\
+    
+    По теореме Неймана-Пирсона выписанная мощность максимальна.
+
+\end{example}
