@@ -1,1 +1,231 @@
 \subsection{Доверительные интервалы. Различимые методы построения доверительных интервалов (с помощью неравенств на вероятность больших уклонений, с помощью центральной статистики, с помощью асимптотически нормальной оценки). Примеры.}
+
+\subsubsection{Доверительные интервалы}
+
+Знать, что оценка $\hat{\theta}_n(X)$ состоятельна (сходится по вероятности к $\theta$)
+это, конечно, круто, но особо много информации о ней нам не даёт. Нам хотелось
+бы знать как быстро она куда-то там сходится -- хотим для фиксированного
+$\alpha \in (0, 1)$ и фиксированного $\varepsilon > 0$ знать такой номер $n$,
+что $P_\theta(|\hat{\theta}_n(X) - \theta| < \varepsilon) > 1 - \alpha$.
+
+\begin{definition*}
+    $(\hat{\theta}_1(X), \hat{\theta}_2(X))$ --- доверительный интервал уровня 
+    доверия $1 - \alpha$, если 
+    \[
+        P_\theta(\theta \in (\hat{\theta}_1(X), 
+    \hat{\theta}_2(X))) \geq 1 - \alpha
+    \]
+
+    \[
+    P_\theta(\hat{\theta}_1(X) \leq
+    \theta \leq \hat{\theta}_2(X)) \geq 1 - \alpha
+    \]
+\end{definition*}
+
+\begin{definition*}
+    Последовательность оценок $\displaystyle \hat{\theta}_1^n(X), \hat{\theta}_2^n(X)$ образует
+    асимтотический доверительный интервал, если $\displaystyle 
+    \liminf_{n \to \infty}P_\theta(\hat{\theta}_1^n(X) \leq \theta \leq 
+    \hat{\theta}_2^n(X)) \geq 1 - \alpha
+    $
+\end{definition*}
+
+\begin{example} 
+    Пусть есть выборка из случайных величин с нормальным распределением $X_j \sim \mathcal{N}(\theta, 1)$.
+    
+    Знаем, что $\overline{X}_n = \frac{X_1 + \dots + X_n}{n} \xrightarrow{P_\theta} \theta ~ 
+    \text{(ЗБЧ)}$ --- среднее хорошо приближает $\theta$.
+    
+    Посмотрим на разность эмпирического среднего и реальной $\theta$: 
+    $\frac{X_1 + \dots + X_n}{n} - \theta = \frac{\overbrace{(X_1 - \theta)}^{\sim \mathcal{N}(0, 1)} + \dots 
+    + \overbrace{(X_n - \theta)}^{\sim \mathcal{N}(0, 1)}}{n} \sim \mathcal{N}(0, \frac{1}{n})$
+
+    $
+        \implies \sqrt{n}(\frac{X_1 + \dots + X_n}{n} - \theta) \sim \mathcal{N}(0, 1)
+    $
+
+    Теперь по таблице значений функции распределения нормального закона найдём
+    квантили $z_{\frac{\alpha}{2}}$ и $z_{1 - \frac{\alpha}{2}}$: $\Phi(z_{\frac{\alpha}{2}}) = \frac{\alpha}{2},
+    \Phi(z_{1 - \frac{\alpha}{2}}) = 1 - \frac{\alpha}{2}$.
+
+    $
+        \implies$
+        \begin{align}
+            P_\theta(z_{\frac{\alpha}{2}} \leq \sqrt{n}(\frac{X_1 + \dots + X_n}{n} - \theta) 
+        \leq z_{1 - \frac{\alpha}{2}}) &= \Phi(z_{1 - \frac{\alpha}{2}}) - \Phi(z_{\frac{\alpha}{2}}) =
+        1 - \frac{\alpha}{2} - \frac{\alpha}{2} = 1 - \alpha
+        \\
+        P(\frac{z_{\frac{\alpha}{2}}}{\sqrt{n}} - \overline{X_n} \leq -\theta \leq
+        \frac{z_{1 - \frac{\alpha}{2}}}{\sqrt{n}} - \overline{X_n}) &= 1 - \alpha
+        \\
+        P(\overline{X_n} - \frac{z_{1 - \frac{\alpha}{2}}}{\sqrt{n}} \leq \theta \leq \overline{X_n} 
+        - \frac{z_{\frac{\alpha}{2}}}{\sqrt{n}}) &= 1 - \alpha
+        \end{align}
+
+    Заметим, что мы взяли симметричный интервал: $z_{\frac{\alpha}{2}} = -z_{1 - \frac{\alpha}{2}}$.
+    В таком случае наш интервал принимает вид: 
+    
+    $(\overline{X_n} - \frac{z_{1 - \frac{\alpha}{2}}}{\sqrt{n}},
+    \overline{X_n} + \frac{z_{1 - \frac{\alpha}{2}}}{\sqrt{n}})$. В таком случае длина этого
+    интервала равна $\text{O}(\frac{1}{\sqrt{n}})$
+
+    Но зачем мы решили взять симметричный интервал? Вспомним, что мы от него хотим: минимальной длины.
+    А какой интервал на графике нормального распределения будет захватывать нужную площадь и при этом
+    быть самым коротким среди всех? Правильно, симметричный с центром в пике колокола нормального распределения.
+\end{example}
+
+\subsubsection{Различимые методы построения доверительных интер-валов (с помощью неравенств на вероятность больших уклонений, с помощью цен-тральной статистики, с помощью асимптотически нормальной оценки)}
+
+\begin{enumerate}
+    \item Неравенства Чебышёва или Чернова
+    
+    $X_1, \dots, X_n \sim \text{Bern}(\theta), P(X_j = 1) = \theta$
+
+    Чебышёв: 
+    
+    $P_\theta(|\overline{X_n} - \theta| \geq \varepsilon) \leq \frac{\mathbb{D}X_1}{n\varepsilon^2} = 
+    \frac{\theta(1 - \theta)}{n \varepsilon^2} \leq \frac{1}{4n\varepsilon^2} = \alpha
+    \implies \varepsilon = \frac{1}{\sqrt{2n\alpha}}
+    \implies P_\theta(\overline{X_n} - \frac{1}{\sqrt{2n\alpha}} < \theta < \overline{X_n} + \frac{1}{\sqrt{2n\alpha}}) \geq 1 - \alpha$.
+
+    Чернов: 
+    $
+    P_\theta(|\overline{X_n} - \theta| \geq \varepsilon) \leq 2e^{-\frac{n\varepsilon^2}{4}} = \alpha
+    \\
+    -\frac{n\varepsilon^2}{4} = \ln{\frac{\alpha}{2}}
+    \\
+    \varepsilon = 2\sqrt{-\frac{\ln{\frac{\alpha}{2}}}{n}}
+    \\
+    \implies P_\theta(\overline{X_n} - 2\sqrt{-\frac{\ln{\frac{\alpha}{2}}}{n}} < \theta < \overline{X_n} + 2\sqrt{-\frac{\ln{\frac{\alpha}{2}}}{n}}) \geq 1 - \alpha
+    $
+
+    Заметим, что в обоих оценках мы получили, что длина интервала равна $\text{O}(\frac{1}{\sqrt{n}})$,
+    но несложно заметить, что константа Чернова значительно лучше, чем у Чебышёва.
+
+    \item Метод центральной статистики
+    
+    \begin{definition*}
+        $\text{V}(X, \theta)$ называется центральной статистикой, если:
+        \begin{enumerate}
+            \item её распределение не зависит
+            от $\theta$: $P_\theta(\text{V}(X, \theta) \leq t) = F(t)$
+            \item $\forall X \colon \theta \mapsto \text{V}(X, \theta)$ --- монотонная
+        \end{enumerate} 
+    \end{definition*}
+
+    Пусть у нас есть такая статистика. Вопрос: как с её помощью строить доверительные интервалы?
+    Предельно просто: подберём числа $t_1$ и $t_2$ таким образом, чтобы
+    $P_\theta(t_1 \leq \text{V}(X, \theta) \leq t_2) \geq 1 - \alpha$. Мы можем так сделать,
+    потому что распределение V не зависит от $\theta$. Теперь поскольку при любом $X$
+    наша функция монотонна, то данная оценка равносильна тому, что $P_\theta(\hat{\theta}_1(X) \leq
+    \theta \leq \hat{\theta}_2(X)) \geq 1 - \alpha$ --- чисто из-за монотонности по $\theta$.
+
+    \begin{example}
+        $
+        X_j \sim \mathcal{U}(0, \theta) \implies \theta^{-1}X_j \sim \mathcal{U}(0, 1)
+        $. Это уже центральная статистика, однако она зависит всего от одного элемента выборки.
+        Рассмотрим $X_{(n)} = \max_{1 \leq j \leq n}X_j$:
+        $P_\theta(\theta^{-1} X_{(n)} \leq t) = P_\theta(\max_{1 \leq j \leq n}\theta^{-1}X_j \leq t)
+        = \prod_{j = 1}^n P_\theta(\underbrace{\theta^{-1}X_j}_{\sim \mathcal{U}(0, 1)} \leq t) = t^n
+        $
+
+        Теперь грубо попробуем оценить, куда там наша статистика попадает:
+
+        $
+            P_\theta(\underbrace{t}_{t_1} \leq \theta^{-1}X_{(n)} \leq \underbrace{1}_{t_2}) = 
+            1 - t^n = 1 - \alpha \implies t = \alpha^{\frac{1}{n}}
+        $
+
+        Теперь попробуем вытащить отсюда $\theta$:
+
+        $
+            P_\theta(\alpha^{\frac{1}{n}} \leq \theta^{-1}X_{(n)} \leq 1) = 1 - \alpha
+            \\
+            P_\theta(\frac{\alpha^{\frac{1}{n}}}{X_{(n)}} \leq \theta^{-1} \leq \frac{1}{X_{(n)}}) = 1 - \alpha
+            \\
+            P_\theta(\underbrace{X_{(n)}}_{\hat{\theta}_1(X)} \leq \theta \leq 
+            \underbrace{\frac{X_{(n)}}{\alpha^{\frac{1}{n}}}}_{\hat{\theta}_2(X)}) = 1 - \alpha
+        $
+
+        Теперь посмотрим на длину полученного доверительного интервала:
+
+        $
+            (\alpha^{-\frac{1}{n}} - 1)X_{(n)}
+        $
+        
+        Что мы можем сказать про $\alpha^{-\frac{1}{n}} - 1$? Разложим это дело по Тейлору:
+        
+        $
+            \alpha^{-\frac{1}{n}} - 1 \sim e^{-\frac{\ln \alpha}{n}} - 1 \sim \frac{-\ln{\alpha}}{n} = 
+            \underline{\text{O}}(\frac{1}{n}) \to \infty
+        $
+
+        Получается длина доверительного интервала с ростом количества элементов выборки стремится к нулю.
+        Получается мы построили что-то более менее разумное.
+
+        Часто в роли центральной статистики можно взять следующую лабуду: 
+        $\text{V}(X, \theta) = -\sum_{j = 1}^n \ln F_\theta(X_j)$ --- это сумма независимых распределений,
+        поэтому достаточно показать что одно не зависит от $\theta$ --- тогда в силу независимости сумма тоже
+        будет не зависеть от $\theta$:
+
+        $P_\theta(-\ln F_\theta(X_j) \leq) = P_\theta(F_\theta(X_j) \geq e^{-t}) =
+        P_\theta(X_j \geq F_\theta^{-1}(e^{-t})) = 1 - F_\theta(F_\theta^{-1}(e^{-t})) = 1 - e^{-t}$, а это
+        экспоненциальное распределение. Сумма экспоненциальных распределений это Гамма распределение
+        $\implies \text{V}(X, \theta) = \Gamma(n, 1)$
+    \end{example}
+
+    \item Построение асимптотических доверительных интервалов
+    
+    Пусть у нас есть $\hat{\theta}_n(X)$ --- асимптотически нормальная оценка $\theta$ с
+    асимптотической дисперсией $\sigma^2(\theta)$. Это значит, что
+
+    $\frac{\sqrt{n}(\hat{\theta}_n(X) - \theta)}{\sigma(\theta)} \xrightarrow{d_\theta} Z \sim \mathcal{N}(0, 1)$
+
+    Теперь мы хотим получить доверительный интервал. Если бы у нас $\sigma(\theta)$ была константой,
+    то мы могли бы уже привычно взять там квантили нормального распределения, туды сюды и получить
+    интервал: 
+    
+    $P_\theta(t_1 \leq \frac{\sqrt{n}(\hat{\theta}_n(X) - \theta)}{\sigma(\theta)} \leq t_2)
+    \to \Phi(t_2) - \Phi(t_1) = 1 - \alpha$. 
+    
+    Тогда мы могли бы просто взять такие $\Phi(t_2) = 1 - \frac{\alpha}{2}$
+    и $\Phi(t_1) = \frac{\alpha}{2}$ и получить, что 
+    
+    $P_\theta(\hat{\theta}_n(X) - \frac{t_{1 - \frac{\alpha}{2}}\sigma(\theta)}{\sqrt{n}}
+    \leq \theta \leq \hat{\theta}_n(X) + \frac{t_{1 - \frac{\alpha}{2}}\sigma(\theta)}{\sqrt{n}}) 
+    \to 1 - \alpha$
+
+    Но тут есть проблема --- у нас слева и справа есть $\sigma(\theta)$ в числителе,
+    что совершенно ломает корректность статистики, мы ведь хотим чтобы штуки слева и спрва от $\theta$
+    в неравенстве не зависили от $\theta$. Как это решать? Очень просто, перейти от $\sigma(\theta)$ 
+    к состоятельной оценке $\sigma(\theta)$. Возможны следующие случаи:
+
+    \begin{enumerate}
+        \item $\sigma$ --- непрерывная функция
+        
+        Тогда $\sigma(\hat{\theta}_n(X)) \xrightarrow{P_\theta} \sigma(\theta)$ и мы можем
+        везде в наших рассуждениях заменить $\sigma(\theta)$ на $\sigma(\hat{\theta}_n(X))$ и
+        сходимость сохранится:
+
+        $P_\theta(\hat{\theta}_n(X) - \frac{t_{1 - \frac{\alpha}{2}}\sigma(\hat{\theta}_n(X))}{\sqrt{n}}
+    \leq \theta \leq \hat{\theta}_n(X) + \frac{t_{1 - \frac{\alpha}{2}}\sigma(\hat{\theta}_n(X))}{\sqrt{n}}) 
+    \to 1 - \alpha$
+
+        \item Изначально было ЦПТ
+        
+        $\hat{\theta}_n(X) = \overline{X_n}, \sigma^2(\theta) = \mathbb{D}_\theta X$
+
+        В таком случае мы можем использовать выборочную дисперсию в качестве состоятельной
+        оценки дисперсии:
+
+        $s^2 = \frac{1}{n - 1} \sum_{j = 1}^n (X_j - \overline{X_n})^2$ --- выборочная дисперсия
+
+        \item Можно поправить нашу асимптотическую дисперсию: подобрать такую функцию $\varphi$,
+        что 
+        
+        $\sqrt{n}(\varphi(\hat{\theta}_n(X)) - \varphi(\theta)) \to 
+        \underbrace{\mathcal{N}(0, 1)}_{=\varphi'(\theta) \cdot \mathcal{N}(0, \sigma^2(\theta))} 
+        \implies \varphi^{'2}(\theta)\sigma^2(\theta) = 1$
+
+    \end{enumerate}
+\end{enumerate}
