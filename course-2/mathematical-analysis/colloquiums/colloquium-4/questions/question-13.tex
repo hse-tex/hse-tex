@@ -1,1 +1,104 @@
 \subsection{Однозначные особые точки: устранимая особенность, полюс, существенная особенность. Голоморфность функции, доопределенной по непрерывности в устранимой особой точке. Порядок полюса функции $f(z)$ и порядок нуля функции $\frac{1}{f(z)}$. Теорема Сохоцкого о существенно особой точке.}
+
+
+\subsubsection{Однозначные особые точки: устранимая особенность, полюс, существенная особенность.}
+\begin{definition*}
+Точка $z_0$ называется изолированной особой точкой однозначного характера функции $f$, если
+$\\\exists\delta:$ $f$ голоморфна в проколотой окрестности $0<|z-z_0|<\delta$, но не является голоморфной ни в каком круге $|z-z_0|<r$
+\end{definition*}
+Классификация:
+\begin{itemize}
+    \item $\exists\lim\limits_{z\rightarrow z_0} f(z)\in\mathbb{C}\iff$ устранимая особенность
+    \item $\exists\lim\limits_{z\rightarrow z_0} f(z)=\infty\iff$полюс
+    \item $\not\exists\lim\limits_{z\rightarrow z_0}f(z)\iff$ существенная особенность
+\end{itemize}
+
+
+\subsubsection{Голоморфность функции, доопределенной по непрерывности в устранимой особой точке.}
+\begin{theorem*}
+Если $z_0~-~$устранимая особенность функции $f$ и $\lim\limits_{z\rightarrow z_0} f(z)=a\in\mathbb{C}$, то $\tilde{f}(z)=\ $\begin{cases}
+f(z),\ z\ne z_0\\
+a,\ z=z_0.
+\end{cases}
+
+\text{голоморфна в окрестности точки} $z_0$
+\end{theorem*}
+\begin{proof}
+Пусть $f$ голоморфна в $0<|z-z_0|<\delta$, $\varepsilon_1<\varepsilon<\delta$  и $\varepsilon_1<|z-z_0|<\varepsilon$
+Тогда по формуле Коши, получаем, что 
+$$
+f(z)=\dfrac{1}{2\pi i}\oint\limits_{\partial D}\dfrac{f(\zeta)}{\zeta-z}d\zeta\underbrace{=}_{\textcolor{red}{(*_1)}} \dfrac{1}{2\pi i}\oint\limits_{|\zeta-z_0|=\varepsilon}\dfrac{f(\zeta)}{\zeta-z}d\zeta-\dfrac{1}{2\pi i}\oint\limits_{|\zeta-z_0|=\varepsilon_1}\dfrac{f(\zeta)}{\zeta-z}d\zeta\underbrace{=}_{\textcolor{red}{(*_2)}}\dfrac{1}{2\pi i}\oint\limits_{|\zeta-z_0|=\varepsilon}\dfrac{f(\zeta)}{\zeta-z}d\zeta\  \ \begin{bmatrix} \text{при}\ \varepsilon_1\rightarrow 0 \\ z\ne z_0 \end{bmatrix}
+$$
+
+Объяснения:
+   $\\\textcolor{red}{(*_1)}$: Граница множества $D$ состоит из двух окружностей: внешней (радиуса $\varepsilon$,  которая обходится в положительном направлении (против часовой стрелки) и внутренней (радиуса $\varepsilon_1$), которая обходится в отрицательном направлении (по часовой стрелке). Заодно сразу поменяем знак перед интегралом по внутренней окружности, для того, чтобы написать его в положительном направлении.
+
+   $\textcolor{red}{(*_2)}$: Оценим сверху модуль второго интеграла:
+   $$
+   \underbrace{\left|\dfrac{1}{2\pi i}\oint \limits_{|\zeta-z_0|=\varepsilon_1}\dfrac{f(\zeta)}{\zeta-z}d\zeta\right|}_{\text{интеграл второго рода}}\leq\dfrac{1}{2\pi i}\underbrace{\oint\limits_{|\zeta-z_0|=\varepsilon_1}\left|\dfrac{f(\zeta)}{\zeta-z}\right|dl}_{\text{интеграл первого рода}}
+   $$
+   Затем оценим саму подынтегральную функцию:
+   $$
+   \left.
+     \begin{array}{ccc}
+       f(\zeta)=a+o(1)\ \text{при}\ \varepsilon_1\rightarrow 0 \\
+       |\zeta-z|\geq|\underbrace{t-z_0}_{\text{число}}|-\varepsilon_1 \\
+       \oint\limits_{|\zeta-z_0|=\varepsilon_1} dl=2\pi\varepsilon_1
+     \end{array}
+   \right\}\Rightarrow \dfrac{1}{2\pi i}\underbrace{\oint\limits_{|\zeta-z_0|=\varepsilon_1}\left|\dfrac{f(\zeta)}{\zeta-z}\right|dl}_{\text{интеграл первого рода}}\xrightarrow[\varepsilon_1\rightarrow 0]{}0
+   $$
+Вернемся к получившемуся выражению для функции $f(z)$
+
+Так как мы перешли к пределу, мы можем сказать, что во всех точка $z$, включая $z_0$, можно понимать левую часть выражения как $\tilde{f}(z)$, тогда получим:
+$$
+\widetilde{f}(z)=\dfrac{1}{2\pi i}\oint\limits_{|\zeta-z_0|=\varepsilon}\dfrac{f(\zeta)}{\zeta-z}d\zeta\  \ \begin{bmatrix} \text{при}\ \varepsilon_1\rightarrow 0 \\ |z- z_0|<\delta \end{bmatrix}
+$$
+Если мы применим к данному интегралу рассуждения, которые мы применяли при доказательстве аналитичности голоморфной функции (11 билет), получим, что функция представленная данным образом аналитична в точке $z_0$, а отсюда следует, что она голоморфна в точке $z_0$.
+Ну и напоследок, если мы в этот интеграл вместо $z$ подставим $z_0$, в силу произвольности $\varepsilon$, устремив $\varepsilon$ к нулю, мы получим, что $\widetilde{f}(z_0)=a$.
+\end{proof}
+
+
+\subsubsection{Порядок полюса функции $f(z)$ и порядок нуля функции $\frac{1}{f(z)}$.}
+\begin{definition*}
+Полюс это точка, такая что в проколотой окрестности этой точки функция голоморфна, а в самой этой точке в пределе получается бесконечное значение.
+\end{definition*}
+
+Пускай $f(z)\xrightarrow[z\rightarrow z_0]{}\infty$, то есть $z_0~-~$ полюс
+
+Рассмотрим функцию $g(z)=\dfrac{1}{f(z)}$, тогда $g(z)\xrightarrow[z\rightarrow z_0]{}0$ и $g(z)$ будет голоморфной в проколотой окрестности точки $z_0$ (так как $f(z)$ голоморфна в проколотой окрестности точки $z_0$ и не обращается в 0), отсюда делаем вывод, что $g(z)$ имеет устранимую особенность.
+
+Доопределим функцию $g(z)$ в точке $z_0$, получим новую функцию $\widetilde{g}(z)=\begin{cases}
+\dfrac{1}{f(z)},\ z\ne z_0,\\
+0,\ z= z_0.
+\end{cases}$ которая будет голоморфной в точке $z_0$, а значит будет аналитической, мы можем представить ее в виде степенного ряда:
+$$
+\widetilde{g}(z)=\sum\limits_{k=0}^\infty c_{k}(z-z_0)^k\text{ так как}\ \widetilde{g}(z_0)=0 \text{ то}\ c_0=..=c_n=0, c_{n+1}\ne 0\Rightarrow\\ \widetilde{g}(z)=(z-z_0)^n(\underbrace{c_{n+1}+c_{n+2}(z-z_0)+..)}_{h(z)}
+$$
+\begin{definition*}
+В такой ситуации говорят, что $\widetilde{g}(z)$ имеет нуль $n-$ого порядка.
+\end{definition*}
+
+Распишем тогда как будет выглядеть изначальная функция $f(z)$:
+$$
+f(z)=\dfrac{1}{g(z)}=\dfrac{1}{(z-z_0)^n}\cdot \underbrace{\dfrac{1}{h(z)}}_{\text{голоморфна в}\ z_0}
+$$
+\begin{definition*} Число $n$ в полученном выражении называется называется порядком полюса. Функция $f(z)$ имеет полюс $n-$ого порядка.
+\end{definition*}
+\subsubsection{Теорема Сохоцкого о существенно особой точке.}
+\begin{theorem*}
+Если $z_0~-~$существенно особая точка функции $f$, то
+$$
+\forall a\in\overline{\mathbb{C}}\  \exists\{z_n\}\colon z_n\rightarrow z_0,\ f(z_n)\rightarrow a
+$$
+\end{theorem*}
+\begin{proof}
+$\\$
+\begin{itemize}
+    \item $a=\infty$ Если функция ограничена в $0<|z-z_0|<\delta$ то $z_0~-~$ устранимая особенность, но так как мы знаем, что $z_0$ не является устранимой особенностью, то функция $f$ не ограничена в кольце  $0<|z-z_0|<\delta$, а значит $\exists\{z_n\}:\ z_n\rightarrow z_0,\ f(z_n)\rightarrow \infty$
+    \item Если $\forall\delta\ \exists z:\ 0<|z-z_0|<\delta\ f(z)=a$, тогда $\exists\{z_n\}:\ 0<|z_n- z_0|<\dfrac{1}{n}\ f(z_n)=a$ (выбрали последовательность, на которой функция в точности принимает значение $a$)
+    \item $\exists\delta:\ 0<|z-z_0|<\delta\ f(z)\ne a$
+    Рассмотрим функцию $g(z)=\dfrac{1}{f(z)-a}$, так как $f(z)$ в некоторой проколотой окрестности не принимает значение $a$, то функция $g(z)~-~$голоморфна в кольце $0<|z-z_0|<\delta$
+    
+    Тогда функция f выглядит следующим образом $f(z)=a+\dfrac{1}{g(z)}$ отсюда следует, что $g$ в точке $z_0$ имеет существенную особенность. По первому рассмотренному случаю получаем, что для функции $g$ верно, что $\exist\{z_n\}:\ \ g(z_n)\rightarrow \infin$, тогда $f(z_n)\rightarrow a$.
+\end{itemize}
+\end{proof}
