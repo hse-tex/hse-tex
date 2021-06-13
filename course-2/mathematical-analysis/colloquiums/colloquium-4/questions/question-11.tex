@@ -1,1 +1,64 @@
 \subsection{Аналитическая функция. Аналитичность голоморфной функции. Неравенство Коши для коэффициентов ряда. Радиус сходимости ряда как максимальный радиус круга, в котором функция голоморфна. Теорема Лиувилля.}
+
+\begin{definition*}
+    Функция называется аналитической в точке $z_0$, если $\exists \{c_n\} \in \CC$:
+
+    \[
+        f(z) = \sum_{k=0}^{\infty} c_k \cdot (z - z_0)^k \text{, } |z - z_0| < \delta
+    \]
+\end{definition*}
+
+\begin{theorem*}
+    Если функция $f$ голоморфна в окрестности $z_0$, то она аналитична в $z_0$.
+\end{theorem*}
+\begin{proof}
+    Пусть $|z - z_0| < \varepsilon < \delta$, $L = \{\zeta: |\zeta - z_0| = \varepsilon\}$
+
+    Тогда по формуле Коши:
+    $
+    f(z) = \dfrac{1}{2\pi i} \oint_{L} \dfrac{f(\zeta)}{\zeta - z} d\zeta = \dfrac{1}{2\pi i}\oint_{L} \dfrac{f(\zeta)}{\zeta - z_0} \cdot \dfrac{1}{1 - \frac{z - z_0}{\zeta - z_0}} d\zeta = \\ = \dfrac{1}{2\pi i} \oint_{L} \dfrac{f(\zeta)}{\zeta - z_0} \left( 1 + \dfrac{z - z_0}{\zeta - z_0} + \dots + \left(\dfrac{z - z_0}{\zeta - z_0}\right)^n + \dfrac{\left(\dfrac{z - z_0}{\zeta - z_0}\right)^{n + 1}}{1 - \dfrac{z - z_0}{\zeta - z_0}} \right) d\zeta = \\
+    = \sum_{k=0}^{n} \left( \dfrac{1}{2\pi i} \oint_{L} \dfrac{f(\zeta)}{(\zeta - z_0)^{k + 1}} d\zeta \right) \cdot (z - z_0)^{k} + \underbrace{\dfrac{1}{2\pi i} \oint_{L} f(\zeta) \cdot \dfrac{\left(\dfrac{z - z_0}{\zeta - z_0}\right)^{n + 1}}{\zeta - z} d\zeta}_{r_n(z, z_0)}
+    $
+
+    Пусть $M = \sup_{|\zeta - z_0| = \varepsilon} |f(\zeta)|$, а также заметим, что $|\zeta - z| \geq |\zeta - z_0| - |z - z_0| = \varepsilon(1 - \alpha)$, тогда:
+    
+    $|r_n(z, z_0)| \leq \dfrac{1}{2\pi}\oint_{L}|f(\zeta)| \cdot \dfrac{\left|\dfrac{z - z_0}{\zeta - z_0}\right|^{n + 1}}{|\zeta - z|} dl \leq \dfrac{M \cdot \alpha^{n + 1}}{2\pi \cdot \varepsilon(1 - \alpha)} \cdot \underbrace{2\pi \varepsilon}_{\text{длина кривой}} \leq \dfrac{M \cdot \alpha^{n + 1}}{\varepsilon(1 - \alpha)} \to 0$ при $n \to \infty$
+
+    Значит, $f(z) = \sum_{k=0}^{\infty} c_k(z - z_0)^{k}$, $c_k = \dfrac{1}{2\pi i} \oint_{L} \dfrac{f(\zeta)}{(\zeta - z_0)^{k + 1}} d\zeta$ при $\forall z: |z - z_0| < \delta$.
+
+    Так как $\dfrac{f(\zeta)}{(\zeta - z_0)^{k + 1}}$ голоморфна в кольце $\varepsilon_1 \leq |z - z_0| \leq \varepsilon_2$, то $\oint_{|z-z_0| = \varepsilon_2} \dfrac{f(\zeta)}{(\zeta - z_0)^{k + 1}}d\zeta - \oint_{|z - z_0| = \varepsilon_1} \dfrac{f(\zeta)}{(\zeta - z)^{k + 1}} d\zeta = 0 \implies c_k$ не зависит от $\varepsilon$.
+\end{proof}
+
+\begin{corollary}
+    (Неравенство Коши)
+
+    $|c_k| \leq \oint_{L} \dfrac{|f(\zeta)|}{|\zeta - z_0|^{k + 1}} dl \leq \dfrac{M}{2\pi\varepsilon^{k+1}} \cdot 2\pi\varepsilon = \dfrac{M}{\varepsilon^{k}}$, подставим $M$:
+
+    $|c_k| \leq \dfrac{1}{\varepsilon^{k}} \cdot \sup_{|z - z_0| = \varepsilon} |f(z)|$  $\forall \varepsilon < \delta$
+\end{corollary}
+
+\begin{theorem*}
+    Пусть $f(z)$ голоморфна в $|z - z_0| < r$, но не является голоморфной в круге большего радиуса, $f(z) = \sum_{k=0}^{\infty} c_k(z - z_0)^k$, $|z - z_0| < R = \dfrac{1}{\overline{\lim_{k \to \infty}} \sqrt[k]{|c_k|}}$. Тогда $R = r$.
+\end{theorem*}
+
+\begin{proof}
+    Пусть $M = \sup_{|z - z_0| = \varepsilon} |f(z)|$, $|c_k| \leq \dfrac{M}{\varepsilon^{k}}$  $\forall \varepsilon < r$
+
+    $\overline{\lim}\sqrt[k]{|c_k|} \leq \dfrac{1}{\varepsilon} \implies R \geq \varepsilon$  $\forall \varepsilon < r \implies R \geq$.
+
+    Но если $R > r$, то ряд сходится в $z$: $|z - z_0| > r$, что противоречит условию.
+
+    Значит, $R = r$.
+\end{proof}
+
+\begin{theorem*}
+    (Лиувилля)
+
+    Если функция $f(z)$ голоморфна и ограничена на $\CC$, то она -- константа.
+\end{theorem*}
+
+\begin{proof}
+    Пусть $M = \sup_{z \in \CC} |f(z)|$, $f(z) = \sum_{k=0}^{\infty} c_k z^{k}$
+
+    Так как $|c_k| \leq \dfrac{M}{\varepsilon^{k}}$  $\forall \varepsilon$, то при $\varepsilon \to \infty$ получаем, что $c_1 = c_2 = \dots = 0 \implies f(z) = c_0$ 
+\end{proof}
