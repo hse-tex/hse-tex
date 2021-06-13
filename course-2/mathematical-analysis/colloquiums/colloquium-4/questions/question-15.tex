@@ -1,16 +1,16 @@
 \subsection{Вычет голоморфной функции в однозначной особой точке. Теорема Коши о вычетах. Вычет как коэффициент $c_{-1}$ ряда Лорана. Вычисления вычета в полюсе.}
 
-\begin{definition}
+\begin{definition*}
 	Пусть функция $f(z)$ голоморфна в $0 < |z - z_0| < \delta$, тогда вычет функции $f$ в точке $z_0(res_{z_0}f)$ это величина, равная $\dfrac{1}{2\pi i} \oint_{|z - z_0| = \varepsilon} f(z)dz$, где $0 < \varepsilon < \delta$.
-\end{definition}
+\end{definition*}
 
-\begin{theorem}
+\begin{theorem*}
 	Теорема Коши о вычетах.
 	
 	Пусть $f$ голоморфна в области $D$ всюду, за исключением конечного числа однозначных особых точек $z_1, \dots, z_n$, тогда
 	
 	$$\oint_{\partial D} f(z)dz = 2\pi i \sum_{k = 1}^{n} res_{z_k}f$$
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
 	Окружим каждую точку маленьким кругом, которые не пересекаются и не вылезают за предел множества. Каждая точка - $z_i$, а её круг - $U_i$.
@@ -20,9 +20,9 @@
 	$$\oint_{\partial D} f(z)dz = 0 \implies \oint_{\partial D} f(z)dz = \sum_{k=1}^{n} \oint_{\partial U_k} f(z)dz = 2\pi i \sum_{k = 1}^{n} res_{z_k}f$$ $$(\oint_{\partial U_k} f(z)dz = 2\pi i res_{z_k}f )$$
 \end{proof}
 
-\begin{theorem}
+\begin{theorem*}
 	Вычет как коэффициент $c_{-1}$ ряда Лорана: $res_{z_0}f = c_{-1}$.
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
 	Пусть $f(z) = \sum_{k = -\inf}^{\inf} c_k(z-z_0)^k$ в некоторой проколотой окрестности $0 < |z - z_0| < \delta$. Так как этот ряд
