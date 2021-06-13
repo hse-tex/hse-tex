@@ -1,1 +1,90 @@
 \subsection{Голоморфная функция нескольких переменных. Голоморфность композиции (в том числе: суммы, произведения, частного) голоморфных функций. Голоморфность обратной функции.}
+
+\begin{definition*}
+    Пусть $D \subseteq \RR^2$ -- область определения
+
+    $f: D \to \RR^2$ -- непрерывно дифференцируема.
+
+    $f$ называется голоморфной в $D$, если она удовлетворяет условию Коши-Римана:
+    
+    \begin{equation}
+        \begin{cases}
+            \dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y} \\
+            \dfrac{\partial v}{\partial x} = -\dfrac{\partial u}{\partial y}
+        \end{cases}
+    \end{equation}
+
+\end{definition*}
+
+\begin{definition*}
+    Пусть $G_1, G_2 \subseteq \CC$ -- области определения. Функция $F: G_1 \times G_2 \to \CC$:
+
+    \begin{equation}
+            F(z_1, z_2) = U(x_1, y_1, x_2, y_2) + i V(x_1, y_1, x_2, y_2)
+    \end{equation}
+    
+    называется голоморфной, если она непрерывно дифференцируема и голоморфна по каждой переменной в отдельности.
+\end{definition*}
+
+\begin{theorem*}
+    Пусть $D \subseteq \CC$ -- область, $\varphi_1: D \to G_1$, $\varphi_2: D \to G_2$ -- голоморфны. 
+
+    Тогда $f(z) = F\left( \varphi_1(z), \varphi_2(z) \right)$ -- голоморфна.
+\end{theorem*}
+
+\begin{proof}
+    Для удобства будем иметь в виду, что $\varphi_k(z) = \xi_k(x, y) + i \eta_k(x, y)$, $k \in \{1, 2\}$ и $f(z) = u(x, y) + iv(x, y)$
+    
+    Тогда
+    \[
+        u'_x = U'_{x_1}\dfrac{\partial \xi_1}{\partial x} + U'_{y_1}\dfrac{\partial \eta_1}{\partial x} + U'_{x_2}\dfrac{\partial \xi_2}{\partial x} + U'_{y_1}\dfrac{\partial \eta_2}{\partial x} = V'_{y_1}\dfrac{\partial \eta_1}{\partial y} + \left(-V'_{x_1}\right) \cdot \left( - \dfrac{\partial \xi_1}{\partial y} \right) + V'_{y_2} \dfrac{\partial \eta_2}{\partial y} + \left( -V'_{x_2} \right) \cdot \left( - \dfrac{\partial \xi_2}{\partial y} \right) = v'_y
+    \]
+        
+    Аналогично, $u'_y = -v'_x$
+\end{proof}
+
+\begin{corollary}
+    Голоморфны следующие функции:
+
+    \begin{enumerate}
+        \item $F(z_1, z_2) = az_1 + bz_2$
+        \item $F(z_1, z_2) = z_1 \cdot z_2$
+        \item $F(z_1, z_2) = \dfrac{z_1}{z_2}$, $z_2 \neq 0$
+    \end{enumerate}
+\end{corollary}
+
+\begin{theorem*}
+    Пусть $w = f(z)$, $w_0 = f(z_0)$, $f'(z_0) \neq 0$ и $f$ -- голоморфна в окрестности точки $z_0$.
+
+    Тогда в некоторой окрестности точки $w_0$ существует единственная обратная функция $f^{-1}(w): f^{-1}(w_0) = z_0$, которая является голоморфной.
+\end{theorem*}
+
+\begin{proof}
+    Пусть $f(z) = u(x, y) + iv(x, y)$, тогда:
+    \begin{equation}
+        \begin{cases}
+            u = u(x, y)\\
+            v = v(x, y)
+        \end{cases}\text{, причем}
+        \begin{cases}
+            u_0 = u(x_0, y_0)\\
+            v_0 = v(x_0, y_0)
+        \end{cases}
+    \end{equation}
+
+    Посчитаем Якобиан отображения в $z_0$:
+
+    \[
+    \left|\begin{matrix} u'_x & u'_y \\ v'_x & v'_y \end{matrix}\right| \Bigg|_{z_0} = \left| f'(z_0) \right|^2 > 0 \implies \text{Существует единственное обратное отображение по теореме о неявной функции}
+    \]
+
+    Найдем матрицу Якоби обратного отображения:
+
+    \[
+    \begin{pmatrix} x'_u & x'_v \\ y'_u & y'_v \end{pmatrix} \Bigg|_{w_0} = \begin{pmatrix} u'_x & u'_y \\ v'_x & v'_y \end{pmatrix}^{-1} \Bigg|_{z_0} = \dfrac{1}{\left|f'(z_0)^2\right|}\begin{pmatrix} v'_y & -u'_y \\ -v'_x & u'_x \end{pmatrix}
+    \]
+
+    Рассмотрим элементы на главных диагоналях первой и последней матриц. Т.к. исходное отображение голоморфно, то $v'_y = u'_x$, а значит и $x'_u = y'_u$.
+
+    Аналогично, рассмотрев элементы на побочных диагоналях, получим, что $x'_v = -y'_u$. Условие Коши-Римана выполнено, значит, обратная функция является голоморфной.
+\end{proof}
