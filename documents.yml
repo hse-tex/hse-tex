@@ -19,6 +19,8 @@ directory:
   target: course-2/mathematical-analysis-colloquium-2.pdf
 - source: course-2/mathematical-analysis/colloquiums/colloquium-3.tex
   target: course-2/mathematical-analysis-colloquium-3.pdf
+- source: course-2/mathematical-analysis/colloquiums/colloquium-4/colloquium-4.tex
+  target: course-2/mathematical-analysis-colloquium-4.pdf
 - source: course-2/archive/discrete-mathematics/discrete-mathematics-2.tex
   target: course-2/archive/discrete-mathematics.pdf
 - source: course-1/algebra/algebra-exam.tex
