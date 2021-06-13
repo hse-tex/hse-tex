@@ -37,24 +37,22 @@
     \end{equation*}
 \end{example}
 
-Когда проводится серия независимых экспериментов с функцией распределения $F_{\theta}$ ($\theta$ неизвестно), мы получаем выборку $X = (X_1, \dots, X_n)$. По выборе хочется определить значение $\widehat{\theta}$, которое в каком-либо смысле близко к реальному $\theta$.
+Когда проводится серия независимых экспериментов с функцией распределения $F_{\theta}$ ($\theta$ неизвестно), мы получаем выборку $X = (X_1, \dots, X_n)$. По выборке хочется определить значение $\widehat{\theta}$, которое в каком-либо смысле близко к реальному~$\theta$.
 
 \begin{definition*}
-    Статистика $\widehat{\theta}(X_1, \dots, X_n)$ со значением из множества параметров $\Theta$ называется \textbf{оценкой} неизвестного параметра.
+    Статистика $\widehat{\theta}(X_1, \dots, X_n)$ со значением из множества параметров $\Theta$ называется \textbf{оценкой} неизвестного параметра $\theta$.
 \end{definition*}
 
 \subsection{Несмещенность, состоятельность, асимптотическая нормальность и эффективность оценок}
 
-Хотим, чтобы оценка $\widehat{\theta}(X)$ была в каком-то смысле близка к реальному $\theta$. Далее описаны вещи, под которыми можно понимать близость.
-
 \begin{definition*}
-    Оценка $\widehat{\theta}_n(X)$ является \textbf{несмещенной}, если $\E_{\theta} \left[\widehat{\theta}_n(X)\right] = \theta$.
+    Оценка $\widehat{\theta}_n(X)$ является \textbf{несмещенной}, если $\E_{\theta} \left[\widehat{\theta}_n(X)\right] = \theta$ для любого $\theta \in \Theta$.
 \end{definition*}
 
-Напомним, что последовательность случайных величин $X_n$ сходится к случайной величине $X$ \textit{по вероятности}, если для любого $\eps > 0$ выполняется
+Напомним определение сходимости случайных величин $X_n$ к случайной величине $X$ \textit{по вероятности}:
 \begin{equation*}
-    \lim_{n \to \infty} \P[|X_n - X| \geq \eps] = 0.
-\end{equation*}
+    X_n \xrightarrow[n \to \infty]{\P} X \iff \forall \epsilon > 0 \lim_{n \to \infty} \P\left[ \left|X_n - X\right| \geq \epsilon\right] = 0
+.\end{equation*}
 
 \begin{definition*}
     Оценка $\widehat{\theta}_n(X)$ является \textbf{состоятельной}, если $\widehat{\theta}_n(X) \xrightarrow[n \to \infty]{\P_{\theta}} \theta$ для любого $\theta \in \Theta$.
@@ -62,19 +60,26 @@
 
 Обычно состоятельность оценки является следствием закона больших чисел.
 \begin{example}
-    Пусть $\widehat{\theta}_n = \overline{X_n} = \dfrac{X_1 + \dots + X_n}{n}$ и $\E[X_1] = \theta$. Тогда $\widehat{\theta}_n = \overline{X_n} \xrightarrow[\text{ЗБЧ}]{\P} \E[X_1] = \theta$, откуда следует, что оценка $\widehat{\theta}_n$ состоятельная.
+    Пусть $\widehat{\theta}_n = \overline{X_n} = \dfrac{X_1 + \dots + X_n}{n}$ и $\E[X_1] = \theta$.
+    Тогда $\widehat{\theta}_n = \overline{X_n} \xrightarrow[\text{ЗБЧ}]{\P} \E[X_1] = \theta$, откуда следует, что оценка $\widehat{\theta}_n$ состоятельная.
 \end{example}
 
-Напомним, что последовательность случайных величин $X_n$ сходится к случайной величине $X$ \textit{почти наверное}, если выполняется $\P\left[\lim_{n \to \infty} X_n = X \right] = 1$.
+Напомним определение сходимости случайных величин $X_n$ к случайной величине $X$ \textit{почти наверное}:
+\begin{equation*}
+    X_n \xrightarrow[n \to \infty]{\text{п.н.}} X \iff \P \left[\lim_{n \to \infty} X_n = X\right]= 1
+.\end{equation*}
 
 \begin{definition*}
     Оценка $\widehat{\theta}_n(X)$ является \textbf{сильно состоятельной}, если $\widehat{\theta}_n(X) \xrightarrow[n \to \infty]{\text{п.н.}} \theta$ для любого $\theta \in \Theta$.
 \end{definition*}
 
-Напомним, что последовательность случайных величин $X_n$ сходится к случайной величине $X$ \textit{по распределению}, если $\lim_{n \to \infty} F_{X_n}(x) = F_X(x)$ в каждой точке $x$, где непрерывна $F_X$.
+Напомним определение сходимости случайных величин $X_n$ к случайной величине $X$ \textit{по распределению}:
+\begin{equation*}
+    X_n \xrightarrow[n \to \infty]{\operatorname{d}} X \iff \lim_{n \to \infty} F_{X_n}(x) = F_X(x) \text{ в каждой точке } x \text{, где непрерывна } F_X
+.\end{equation*}
 
 \begin{definition*}
-    Оценка $\widehat{\theta}_n(X)$ является \textbf{асимптотически нормальной} оценкой параметра $\theta$ с коэффициентом $\sigma^2 (\theta)$, если
+    Оценка $\widehat{\theta}_n(X)$ является \textbf{асимптотически нормальной} с коэффициентом $\sigma^2 (\theta)$, если
     \begin{equation*}
         \sqrt{n} \left( \widehat{\theta}_n(X) - \theta \right) \xrightarrow[n \to \infty]{\operatorname{d}_{\theta}} \mathcal{N}(0, \sigma^2 (\theta)),
     \end{equation*}
@@ -94,7 +99,7 @@
 
 Если $K$ это класс несмещенных оценок, то условие можно переписать следующим образом:
 \begin{equation*}
-    \D_{\theta} \left[ \widehat{\theta}_n(X) \right] \leq \D_{\theta} \left[ \theta_n^*(X) \right]
+    \D_{\theta} \left[ \widehat{\theta}_n(X) \right] \leq \D_{\theta} \left[ \theta_n^*(X) \right].
 \end{equation*}
 
 \begin{definition*}
@@ -104,15 +109,14 @@
 \subsection{Пример отсутствия несмещенной оценки}
 
 \begin{example}
-    Пусть $X_i$ это случайная величина Бернулли, то есть $X_i$ принимает значение $1$ с вероятностью $p \in (0; 1)$ и $0$ с вероятностью $1 - p$, и $\theta = \sin(p)$.
-
+    Пусть $X_i$ это случайная величина Бернулли (то есть $X_i$ принимает значение $1$ с вероятностью $p \in (0; 1)$ и $0$ с вероятностью $1 - p$) и $\theta = \sin(p)$.
     Запишем математическое ожидание оценки по определению:
     \begin{equation*}
         \E \left[\widehat{\theta}_n(X)\right]
         = \sum_{(x_1, \dots, x_n) \in \{0, 1\}^n} \widehat{\theta}_n (x_1, \dots, x_n) \cdot p^{x_1 + \dots + x_n} \cdot (1 - p)^{n - x_1 - \dots - x_n}.
     \end{equation*}
 
-    То есть математическое ожидание оценки это некий полином от $p$, а полином не может быть равняться $\sin p$, поэтому оценка не может быть несмещенной. Вместо синуса можно было рассмотреть что-то другое.
+    То есть математическое ожидание оценки это некий полином от $p$, а полином не может равняться $\sin p$, поэтому оценка не может быть несмещенной. Вместо синуса можно было рассмотреть что-то другое.
 \end{example}
 
 \subsection{Отсутствие эффективной оценки в классе всех оценок}
@@ -122,11 +126,13 @@
 \end{proposition*}
 
 \begin{proof}
-    Пусть $\widehat{\theta}_n(X)$ эффективна в классе всех оценок. Тогда должно выполняться
+    Пусть $\widehat{\theta}_n(X)$ эффективна в классе всех оценок. Тогда для любой $\theta_n^*(X)$ должно выполняться
     \begin{equation*}
         \E_{\theta} \left[ \widehat{\theta}_n(X) - \theta \right]^2 \leq \E_{\theta} \left[ \theta^*_n(X) - \theta \right]^2
-    \end{equation*}
-    для любой $\theta_n^*(X)$. В том числе, это должно выполняться для любой $\theta_n^*(X) = C = \operatorname{const}$:
+    .\end{equation*}
+
+    В том числе, это должно выполняться для любой $\theta_n^*(X) = C = \operatorname{const}$:
+
     \begin{equation*}
         \E_{\theta} \left[ \widehat{\theta}_n(X) - \theta \right]^2 \leq \E_{\theta} \left[ C - \theta \right]^2.
     \end{equation*}
@@ -136,7 +142,7 @@
         \E_{\theta} \left[ \widehat{\theta}_n(X) - \theta \right]^2 \leq 0.
     \end{equation*}
 
-    Это означает, что $\widehat{\theta}_n(X) = C$ почти наверное. Но мы ведь могли взять и другое $C' \neq C$ и ровно по тем же соображениям получить
+    Это означает, что $\widehat{\theta}_n(X) = \theta = C$ почти наверное. Но мы ведь могли взять и другое $C' \neq C$ и ровно по тем же соображениям получить
     \begin{equation*}
         \widehat{\theta}_n(X) = C \neq C' = \widehat{\theta}_n(X).
     \end{equation*}
@@ -156,39 +162,42 @@
     Тогда по определению эффективности:
     \begin{itemize}
     \item 
-        $\E_{\theta}\left[\widehat{\theta}_n(X)\right] = \theta = \E_{\theta}\left[\theta_n^*\right]$ для любого $\theta$.
+        $\E_{\theta}\left[\widehat{\theta}_n(X)\right] = \theta = \E_{\theta}\left[\theta_n^*(X)\right]$ для любого $\theta$.
     
     \item 
         $\D_{\theta}\left[\widehat{\theta}_n(X)\right] \leq \D_{\theta}\left[\tilde{\theta}(X)\right]$ и $\D_{\theta}\left[\theta_n^*(X)\right] \leq \D_{\theta}\left[\tilde{\theta}(X)\right]$ для любой несмещенной $\tilde{\theta}_n(X)$.
     \end{itemize}
 
-    Рассмотрим полусумму $T_n = \dfrac{\widehat{\theta}_n(X) + \theta_n^*(X)}{2}$. $T_n$ является несмещенной оценкой (по свойству для суммы математического ожидания).
-
-    Кратко напомним, что $\cov(\xi, \nu)$ это билинейная форма и по неравенству параллелограмма
+    Рассмотрим равенство параллелограмма для билинейной формы $\cov(\xi, \nu)$:
     \begin{equation*}
         \cov(\xi + \nu, \xi + \nu) + \cov(\xi - \nu, \xi - \nu) = 2 \cdot \cov(\xi, \xi) + 2 \cdot \cov(\nu, \nu).
     \end{equation*}
 
-    Делим обе части на $4$, вспоминаем, что $\D[\xi] = \cov(\xi, \xi)$, и получаем
+    Так как $\cov(\xi, \xi) = \D[\xi]$, поделив обе стороны на 4 получаем равенство
     \begin{align*}
         \D\left[ \dfrac{\xi + \nu}{2} \right] + \D\left[ \dfrac{\xi - \nu}{2} \right] = \dfrac{1}{2} \D[\xi] + \dfrac{1}{2} \D[\nu].
     \end{align*}
 
-    Тогда
-    \begin{align*}
-        \D_{\theta}\left[ \dfrac{\widehat{\theta}_n(X) + \theta_n^*(X)}{2} \right] 
-        &= \dfrac{\D[\widehat{\theta}_n(X)] + \D[\theta_n^*(X)]}{2} - \D_{\theta}\left[ \dfrac{\widehat{\theta}_n(X) - \theta_n^*(X)}{2} \right] \\ \text{ [вычитается неотрицательное значение (дисперсия)]}
-        &\leq \dfrac{\D[\widehat{\theta}_n(X)] + \D[\theta_n^*(X)]}{2} \\ \text{ [так как оценки эффективные] }
-        &\leq \D_{\theta}\left[ \dfrac{\widehat{\theta}_n(X) + \theta_n^*(X)}{2} \right].
-    \end{align*}
+    Воспользовавшись этим равенством для оценки $\frac{\widehat{\theta}_n(X) + \theta_n^*(X)}{2}$ получаем
+    \begin{equation*}
+        \D_{\theta}\left[ \dfrac{\widehat{\theta}_n(X) + \theta_n^*(X)}{2} \right]
+        = \dfrac{\D[\widehat{\theta}_n(X)] + \D[\theta_n^*(X)]}{2} - \D_{\theta}\left[ \dfrac{\widehat{\theta}_n(X) - \theta_n^*(X)}{2} \right]
+        \leq \dfrac{\D[\widehat{\theta}_n(X)] + \D[\theta_n^*(X)]}{2}
+    \end{equation*}
 
-    Последнее равенство может показаться неочевидным. Так как $\widehat{\theta}_n(X)$ это эффективная оценка, выполняется неравенство 
+    При этом, так как обе оценки эффективные,
+    \begin{equation*}
+        \dfrac{\D[\widehat{\theta}_n(X)] + \D[\theta_n^*(X)]}{2} \leq \D_{\theta}\left[ \dfrac{\widehat{\theta}_n(X) + \theta_n^*(X)}{2} \right].
+    \end{equation*}
+
+    Последнее равенство может показаться неочевидным. Так как $\widehat{\theta}_n(X)$ это эффективная оценка (а значит имеет дисперсию не превосходящую дисперсию любой другой несмещенной оценки) и оценка $\frac{\widehat{\theta}_n(X) + \theta_n^*(X)}{2}$ несмещенная (по линейности матожидания), то выполняется неравенство 
     \begin{equation*}
         \D_{\theta}[\widehat{\theta}_n(X)] \leq \D_{\theta}\left[ \dfrac{\widehat{\theta}_n(X) + \theta_n^*(X)}{2} \right] 
         \iff
         \dfrac{1}{2} \D_{\theta}[\widehat{\theta}_n(X)] \leq \dfrac{1}{2} \D_{\theta}\left[ \dfrac{\widehat{\theta}_n(X) + \theta_n^*(X)}{2} \right].
     \end{equation*}
-    Аналогичное неравенство получается и для оценки $\theta_n^*(X)$. Суммируем эти два неравенства и получаем
+
+    Аналогичное неравенство выполняется и для оценки $\theta_n^*(X)$. Суммируем эти два неравенства и получаем
     \begin{equation*}
         \dfrac{\D_{\theta}[\widehat{\theta}_n(X)] + \D_{\theta}[\theta_n^*(X)]}{2}
         \leq \D_{\theta}\left[ \dfrac{\widehat{\theta}_n(X) + \theta_n^*(X)}{2} \right].
@@ -196,7 +205,7 @@
 
     Мы закончили тем же, с чего и начали. Тогда все неравенства это равенство. Значит, $\D_{\theta}\left[ \dfrac{\widehat{\theta}_n(X) - \theta_n^*(X)}{2} \right] = 0$. 
 
-    Из этого следует, что 
+    Из этого следует, что почти наверное
     \begin{equation*}
         \widehat{\theta}_n(X) - \theta_n^*(X)
         = \E_{\theta}\left[ \widehat{\theta}_n(X) - \theta_n^*(X) \right] 
@@ -206,7 +215,7 @@
         = 0.
     \end{equation*}
 
-    Получается, $\widehat{\theta}_n(X) = \theta_n^*(X)$ почти наверное.
+    То есть, $\widehat{\theta}_n(X) = \theta_n^*(X)$ почти наверное.
 \end{proof}
 
 \subsection{Состоятельность асимптотической нормальной оценки}
