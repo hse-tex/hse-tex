@@ -16,6 +16,8 @@ function post_diff {
         -F "right.file_type=pdf" -F "right.file=@$right" \
         -F "public=true")
 
+    >&2 echo "Draftable response: $response"
+
     id=$(echo "$response" | jq .identifier -r)
 
     echo "https://api.draftable.com/v1/comparisons/viewer/$DRAFTABLE_API_ID/$id"
