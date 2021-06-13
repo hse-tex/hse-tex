@@ -204,6 +204,32 @@
   \mathrel{\text{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}}%
 }
 
+% write text above symbols and draw a vertical arrow!
+% Syntax: \darrowwtextover{<text above>}{<arrow height>}{<math the arrow will point to>}
+\newcommand{\darrowwtextover}[3]{%
+\raisebox{0pt}[0pt][0pt]{%
+$\overset{\mathclap{\substack{#1\\\left\downarrow\vcenter{\hrule height #2}\right.}}}{#3}%
+$}%
+}
+
+% Симолы в кружочках
+\makeatletter
+\newcommand\incircbin
+{%
+  \mathpalette\@incircbin
+}
+\newcommand\@incircbin[2]
+{%
+  \mathbin%
+  {%
+    \ooalign{\hidewidth$#1#2$\hidewidth\crcr$#1\bigcirc$}%
+  }%
+}
+\newcommand{\oeq}{\incircbin{=}}
+\newcommand{\oneq}{\incircbin{\neq}}
+\makeatother
+
+
 \makeatletter
 \newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
 \newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
