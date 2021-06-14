@@ -1,1 +1,101 @@
 \subsection{Ряд Лорана и его сходимость. Единственность разложения Лорана. Главная часть ряда Лорана и классификация особых точек.}
+
+
+\subsubsection{Ряд Лорана и его сходимость.}
+Пускай $f$ голоморфна в кольце $r_1<|z-z_0|<r_2$. Зафиксируем $\forall z$ и $\forall \varepsilon_1,\varepsilon_2:\ r_1<\varepsilon_1<|z-z_0|<\varepsilon_2<r_2$
+
+Рассмотрим в плоскости $\zeta$ кольцо $\varepsilon_1\leq|z-z_0|\leq\varepsilon_2$
+Тогда по формуле Коши мы получим, что 
+$$
+f(z)=\dfrac{1}{2\pi i}\oint\limits_{\partial D}\dfrac{f(\zeta)}{\zeta-z}d\zeta= \underbrace{\dfrac{1}{2\pi i}\oint\limits_{|\zeta-z_0|=\varepsilon_2}\dfrac{f(\zeta)}{\zeta-z}d\zeta}_{(1)}\underbrace{-\dfrac{1}{2\pi i}\oint\limits_{|\zeta-z_0|=\varepsilon_1}\dfrac{f(\zeta)}{\zeta-z}d\zeta}_{(2)}
+$$
+Рассмотрим эти два интеграла отдельно:
+$$
+(1)\colon\  \dfrac{1}{2\pi i}\oint\limits_{\varepsilon_2}\dfrac{f(\zeta)}{\zeta-z}d\zeta=\dfrac{1}{2\pi i}\oint\limits_{\varepsilon_2}\dfrac{f(\zeta)}{\zeta-z}d\zeta\cdot\dfrac{1}{1-\frac{z-z_0}{\zeta-z_0}}d\zeta=\sum\limits_{k=0}^{n}c_k(z-z_0)^k+\dfrac{1}{2\pi i} \oint\limits_{\varepsilon_2}f(\zeta)\frac{\left(\frac{z-z_0}{\zeta-z_0}\right)^{n+1}}{\zeta-z}d\zeta
+$$
+Заметим, что модуль остаточного члена $\left|\dfrac{1}{2\pi i} \oint\limits_{\varepsilon_2}f(\zeta)\frac{\left(\frac{z-z_0}{\zeta-z_0}\right)^{n+1}}{\zeta-z}d\zeta\right|$ стремится к нулю, а значит ряд будет сходиться
+
+Аналогично:
+\begin{align}
+            (2)\colon-\dfrac{1}{2\pi i}\oint\limits_{\varepsilon_1}\dfrac{f(\zeta)}{\zeta-z}d\zeta=\dfrac{1}{2\pi i}\oint\limits_{\varepsilon_1}\dfrac{f(\zeta)}{\zeta-z}&\cdot \dfrac{\frac{\zeta-z_0}{z-z_0}}{1-\frac{\zeta-z_0}{z-z_0}}d\zeta=\dfrac{1}{2\pi i}\oint\limits_{\varepsilon_1}\dfrac{f(\zeta)}{\zeta-z}\cdot\left(\dfrac{\zeta-z_0}{z-z_0}+..+\left(\dfrac{\zeta-z_0}{z-z_0}\right)^m+\frac{\left(\frac{\zeta-z}{z-z_0}\right)^{m+1}}{1-\frac{\zeta-z_0}{z-z_0}}\right)d\zeta=
+            \\
+            &=\sum\limits_{k=1}^m \dfrac{c_{-k}}{(z-z_0)^k}+\dfrac{1}{2\pi i}\oint\limits_{\varepsilon_1}f(\zeta)\cdot\dfrac{\left(\frac{\zeta-z_0}{z-z_0}\right)^m}{z-\zeta}
+        \end{align}
+
+В данном случае, дробь в числителе остаточного члена по модулю меньше 1, поэтому при возведении в степень мы будем получать число стремящееся к 0, то есть остаточный член будет стремиться к 0, а значит ряд сходится.
+
+Объединяя (1) и (2) получаем обобщенный степенной ряд:
+\begin{align}
+    f(z)=\sum\limits_{k=0}^{\infty}&c_k(z-z_0)^{k} + \sum\limits_{k=1}^\infty \dfrac{c_{-k}}{(z-z_0)^k} 
+    \\
+    c_k=\dfrac{1}{2\pi i}\oint\limits_{|\zeta-z_0|=\varepsilon}&\dfrac{f(\zeta)}{(\zeta-z)^{k+1}}d\zeta,\ k\in\mathbb{Z},\ r_1<\varepsilon<r_2
+\end{align}
+
+\begin{definition*}
+\begin{align}
+    &1)\ \sum\limits_{k=0}^{\infty}c_k(z-z_0)^k+\sum\limits_{k=1}^\infty \dfrac{c_{-k}}{(z-z_0)^k}~-~\text{ряд Лорана}.
+    \\
+    &2)\ \sum\limits_{k=0}^{n}c_k(z-z_0)^k~-~\text{правильная часть ряда Лорана}
+    \\
+    &3)\ \sum\limits_{k=1}^\infty \dfrac{c_{-k}}{(z-z_0)^k}~-~\text{главная часть ряда Лорана}
+\end{align}
+\end{definition*}
+
+
+\subsubsection{Единственность разложения Лорана.}
+\begin{theorem*}
+Пусть $f(z)$ представлена в некотором кольце $r_1<|z-z_0|<r_2$ в виде 
+$$
+f(z)=\sum\limits_{k=0}^{\infty}a_k(z-z_0)^k+\sum\limits_{k=1}^\infty \dfrac{a_{-k}}{(z-z_0)^k}=\sum\limits_{k=-\infty}^{\infty}a_k(z-z_0)^k
+$$
+Покажем, что это и есть разложение в ряд Лорана.
+\end{theorem*}
+\begin{proof}
+$\\$
+\begin{itemize}
+    \item Для начала докажем голоморфность функции $f(z)$ в кольце:
+    
+    Заметим, что $\sum\limits_{k=0}^{\infty}a_k(z-z_0)^k$ и $\sum\limits_{k=1}^\infty \dfrac{a_{-k}}{(z-z_0)^k}$ сходятся на соответствующих множествах, а мы знаем, что степенной рад внутри интервала сходимости будет сходиться абсолютно, а если мы возьмем замкнутое подмножество множества сходимости, то на нем ряд будет сходиться равномерно. Тогда в кольце $r_1+\delta\leq|z-z_0|\leq r_2-\delta$ наш ряд сходится абсолютно и равномерно. 
+    
+    Итого получили абсолютно и равномерно сходящихся ряд, сосотящий из аналитических функций, тогда (по теореме, которую мы не доказывали) сумма ряда, а именно функция $f(z)~-~$аналитическая функция, а значит она голоморфная, тогда мы можем $f(z)$ разложить в ряд Лорана.
+    $$\dfrac{f(\zeta)}{(\zeta-z_0)^{n+1}}=\sum\limits_{k=-\infty}^\infty a_{k+n+1}(\zeta-z_0)^k$$
+    \item Так как наш ряд сходится абсолютно и равномерно, то мы можем его проинтегрировать почленно, тогда
+    $$c_n=\dfrac{1}{2\pi i}\oint\limits_{|\zeta-z_0|<\varepsilon}\dfrac{f(\zeta)}{(\zeta-z)^{n+1}}d\zeta=\dfrac{1}{2\pi i}\sum\limits_{k=-\infty}^{\infty}a_{k+n+1}\oint\limits_{\varepsilon}(\zeta-z_0)^{k}d\zeta=\textcolor{red}{(*)}$$
+    Вычислим отдельно интеграл $\oint\limits_{\varepsilon}(\zeta-z_0)^{k}d\zeta$, для этого перейдем к другой переменной интегрирования:
+    \begin{align}
+        \zeta=&z_0+\varepsilon e^{i\varphi},\ \varphi\in[0;2\pi]
+        \\
+        &d\zeta=\varepsilon \cdot i\cdot e^{i\varphi}d\varphi
+        \\
+        \oint\limits_{\varepsilon}(\zeta-z_0)^{k}d\zeta=\int\limits_0^{2\pi}i\cdot\varepsilon^{k+1}&e^{i(k+1)\varphi}d\varphi=i\cdot\varepsilon^{k+1}\int\limits_0^{2\pi}e^{i(k+1)\varphi}d\varphi\ \underbrace{=}_{\text{Формула Эйлера}}\ i\cdot\varepsilon^{k+1}\cdot \begin{cases}
+        0, &\ k+1\ne0\\
+        2\pi,&\ k+1=0
+        \end{cases}
+    \end{align}
+    Возвращаясь к исходному неравенству получим, что
+    $$\textcolor{red}{(*)}=\dfrac{\varepsilon}{2\pi i}\sum\limits_{k=-\infty}^{\infty}a_{k+n+1}\cdot i\cdot\varepsilon^{k}\cdot \int\limits_0^{2\pi}e^{i(k+1)\varphi}d\varphi=\dfrac{\varepsilon}{2\pi}\cdot a_n\cdot \varepsilon^{-1}\cdot 2\pi=a_n$$
+\end{itemize}
+\end{proof}
+
+
+\subsubsection{Главная часть ряда Лорана и классификация особых точек.}
+\begin{definition*}
+\begin{align}
+    &1)\ \sum\limits_{k=0}^{\infty}c_k(z-z_0)^k+\sum\limits_{k=1}^\infty \dfrac{c_{-k}}{(z-z_0)^k}~-~\text{ряд Лорана}.
+    \\
+    &2)\ \sum\limits_{k=0}^{n}c_k(z-z_0)^k~-~\text{правильная часть ряда Лорана}
+    \\
+    &3)\ \sum\limits_{k=1}^\infty \dfrac{c_{-k}}{(z-z_0)^k}~-~\text{главная часть ряда Лорана}
+\end{align}
+\end{definition*}
+
+Пускай $z_0~-~$однозначно особая точка функции $f$.
+Рассмотрим ряд Лорана функции $f$ в кольце $0<|z-z_0|<\delta$: 
+$$f(z)=\sum\limits_{k=0}^{\infty}c_k(z-z_0)^k+\sum\limits_{k=1}^\infty \dfrac{c_{-k}}{(z-z_0)^k}$$
+
+Рассмотрим множество $I=\{k\ |\ c_{-k}\ne 0\}$,  тогда
+\begin{enumerate}
+    \item $z_0~-~\text{устранимая особенность}\iff I=\varnothing,\ \text{т.е. все}\ c_{-k}=0$
+    \item $z_0~-~\text{полюс}\iff I~-~ \text{конечное}$
+    \item $z_0~-~\text{существенная особенность}\iff I ~-~\text{бесконечное}$
+\end{enumerate}
