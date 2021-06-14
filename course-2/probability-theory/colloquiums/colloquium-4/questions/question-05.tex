@@ -31,9 +31,11 @@
 		
 		$\{ u_{\sigma} \}$ --- незав., $\mathbb{E} u_j = 0, \, \mathbb{D} u_j = \sigma^2$.
 		
-		\[ \sum_{j=2}^n u_j^2 = |u|^2 - u_1^2 = |u|^2 - \left( \frac{\sum X_j}{\sqrt{n}} \right)^2 = |X|^2 - nX^2_{(n)} \text{ (т.к. $U$ --- орт.)} \]
-		\[ \sum_{j=1}^n (X_j - \overline{X_n})^2 = \sum_{j=1}^n X_j^2 - 2n \overline{X_n} \sum_{j=1}^n X_j + n\overline{X_n}^2 = \sum_{j=1}^n X_j^2 - n\overline{X_n}^2 \]
-		\[ \sum_{j=2}^n u_j^2 = \sum_{j=1}^n (X_j - \overline{X_n})^2 \text{ --- независимо с } u_1 = \sqrt{n} \overline{X_n} \]
+		Далее $|u|$ --- вторая векторная норма, т.е. $|u| = \sqrt{u_1^2 + \ldots + u_n^2}$. К слову, вторая норма --- унитарно-инвариантна, поэтому $|u| = |UX| = |X|$ в силу ортогональности $U$.
+		
+		\[ \sum_{j=2}^n u_j^2 = |u|^2 - u_1^2 = |u|^2 - \left( \frac{\sum X_j}{\sqrt{n}} \right)^2 = |X|^2 - n\overline{X_n}^2 \text{ (т.к. $U$ --- орт.)} \]
+		\[ \sum_{j=1}^n (X_j - \overline{X_n})^2 = \sum_{j=1}^n X_j^2 - 2n \overline{X_n} \frac{1}{n} \sum_{j=1}^n X_j + n\overline{X_n}^2 = \sum_{j=1}^n X_j^2 - n\overline{X_n}^2 \]
+		\[ \sum_{j=2}^n u_j^2 = \sum_{j=1}^n (X_j - \overline{X_n})^2 \text{ --- независимо с } u_1 = \frac{X_1 + \ldots + X_n}{\sqrt{n}} = \sqrt{n}\ \overline{X_n} \]
 		
 		При этом $\sum_{j=2}^n u_j^2 = \sigma^2 \sum_{j=2}^n (\sigma^{-1} u_j)^2$, и $\sigma^{-1} u_j \sim \mathcal{N}(0, 1)$, то есть
 		\[ \chi_n^2 = \sum_{j=1}^n (X_j - \overline{X_n}s)^2 = \sum_{j=1}^n \xi_k^2, \, \{ \xi_k \} \text{ --- незав.}, \xi_k \sim \mathcal{N}(0, 1), \]
