@@ -1,6 +1,8 @@
 \section{Билет 5}
 
-\subsection{Построение точных доверительных интервалов для параметров нормального распределения}
+\subsection{Построение точных доверительных интервалов для параметров нормального распределения.}
+
+\subsubsection{Матожидание.}
 
 Оцениваем параметры случайной величины $\sim \mathcal{N}(a, \sigma^2)$ по выборке $X_1, \dots, X_n$:
 \begin{enumerate}
@@ -62,3 +64,13 @@
 	P_{\theta} \left( \underset{\hat\Theta_1(x)}{\underbrace{\overline{X_n} - \frac{t_{1 - \frac{\alpha}2} \sqrt{s^2}}{\sqrt{n}}}} \le a \le 
 	\underset{\hat\Theta_2(x)}{\underbrace{\overline{X_n} + \frac{t_{1 - \frac{\alpha}2} \sqrt{s^2}}{\sqrt{n}}}} \right) = 1 - \alpha \]
 \end{enumerate}
+
+\subsubsection{Дисперсия.}
+
+Из доказательства леммы выше:
+\[ \sigma^{-2}(n - 1) S_n^2 \sim \chi_{n-1}^2 \]
+
+Выберем $x_{\alpha/2}$ и $x_{1-\alpha/2}$ такое, что $F_{\chi_{n-1}^2}(x_{\alpha/2}) = \alpha/2$ и $F_{\chi_{n-1}^2}(1-x_{\alpha/2}) = 1-\alpha/2$ ($F_{\chi_{n-1}^2}$ --- функция распределения случайной величины $\chi_{n-1^2}$). Тогда
+\[ P \left( x_{\alpha/2} \le \frac{(n-1) S_n^2}{\sigma^2} \le x_{1-\alpha/2} \right) = 1 - \alpha, \]
+и интервал уровня $1 - \alpha$ имеет вид 
+\[ \left( \frac{\sqrt{n-1}\,S_n}{\sqrt{x_{1-\alpha/2}}}, \; \frac{\sqrt{n-1}\,S_n}{\sqrt{x_{\alpha/2}}} \right). \] 
