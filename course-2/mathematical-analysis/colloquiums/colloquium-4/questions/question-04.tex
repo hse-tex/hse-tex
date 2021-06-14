@@ -1,1 +1,58 @@
 \subsection{Формула Грина и её приложение к вычислению площади клоской фигуры. Внешний дифференциал 2-мерный 1-формы и краткая запись формулы Грина.}
+$n = 2$\\
+    Область $D \subset \mathbb{R}^2$ называется \textbf{$y$-проектором} (то есть проектируемой вдоль оси $y$), если она задается неравенствами:\\
+    $$D:  a \leq x \leq b, h_1(x)\leq y \leq h_2(x),$$\\
+    $h_1, h_2$ - непрерывные функции, $h_1(x) \leq h_2(x)$\\
+    Аналогично \textbf{$x$-проектор}.\\
+    Область называется \textbf{проектируемой}, если она является $x$- и $y$-проектируемой.\\
+    Область $D$ называется \textbf{простой}, если она есть объединение конечного числа проектируемых областей.\\
+    \begin{center}
+        \textbf{Формула Грина}
+    \end{center}
+    Пусть $D$ - простая область с кусочно гладкой границей $L = \partial D$, ориентация которой соответствует ориентации области $D$. Пусть $P, Q$ непрерывно дифференцируемы в $D$. Тогда:\\
+    $$\oint_{\partial D} (P dx + Q dy) = \iint_D (\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y})dx dy$$\\
+    \textbf{Доказательство} \vartriangleright \\
+    
+    \begin{enumerate}
+        \item 
+        Рассмотрим $y$-проектируемую область $D: a \leq x \leq b, h_1(x) \leq y \leq h_x(x)$\\
+        $$-\iint_D \frac{\partial P}{\partial y} dxdy = 
+        -\int_a^b dx \int_{h_1(x)}^{h_2(x)}\frac{\partial P}{\partial y}dy =
+        -\int_a^b dx (P(x, h_2(x)) - P(x, h_1(x))) = $$
+        $$= -\int_a^bP(x, h_2(x))dx + \int_a^b P(x, h_1(x))dx + \int_a^a Pdx + \int_b^b Pdx = $$
+        $$= \int_b^aP(x, h_2(x))dx + \int_a^b P(x, h_1(x))dx + \int_a^a Pdx + \int_b^b Pdx = 
+        \oint_{\partial D} Pdx$$\\
+        \item
+        Аналогично для $x$-проектируемой области $D$ получим\\
+        $$\iint_D\frac{\partial Q}{\partial x}dxdy = \oint_{\partial D} Q dy$$\\
+        \item
+        $D$ - $x$- и $y$-проектируемая область, то \\
+        $$\oint_{\partial D}(Pdx + Qdy) = \iint_D (\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}dxdy)$$
+        \item (Нет четкой формулировки, записано со слов лектора)\\
+        $D$ - простая область. В соседних областях по границе будем интегрировать в правильном направлении. Двойные интегралы (правые части) частей простой области будут складываться по аддитивности. Криволинейные интегралы (при разбиении в суммы) дадут интегралы по внешним границам и интегралы по внутренним границам. Интегралы по всем внутренним кусочкам границы будут взаимно уничтожаться (так как при обходе в противоположных направлениях будут давать разные знаки).
+    \end{enumerate}
+    
+    \blacksquare
+    
+    \begin{center}
+        \textbf{Внешний дифференциал 2-мерной 1-формы}
+    \end{center}
+    $\omega(\overline{x}, d\overline{x}) = a_1(\overline{x})dx_1 + ... + a_n(\overline{x})dx_x$\\
+    $a_1, ..., a_n$ - непрерывно дифференцируемы\\
+    Внешний дифференциал формы $\omega$:\\
+    $$d\omega = da_1 \wedge dx_1 + ... + da_n \wedge dx_n,$$
+    где $da_1 = \frac{\partial a_1}{\partial x_1} dx_1 + ... + \frac{\partial a_1}{\partial x_n}dx_n$ - обычный дифференциал.\\
+    Операция $\wedge$ линейна и кососимметрична:\\
+    $$dx_1 \wedge dx_2 = - dx_2 \wedge dx_1 \Rightarrow dx_1 \wedge dx_1 = 0$$\\
+    
+    \begin{center}
+        \textbf{Пример}
+    \end{center}
+    $n=2$\\
+    $d(Pdx + Qdy) = dP \wedge dx + dQ \wedge dy = (\frac{\partial P}{\partial x}dx + \frac{\partial P}{\partial y}dy) \wedge dx + (\frac{\partial Q}{\partial x}dx + \frac{\partial Q}{\partial y}dy) \wedge dy = (\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y})dx \wedge dy$\\
+    
+    \begin{center}
+        \textbf{Краткая запись формулы Грина}
+    \end{center}
+    $$\iint_D d(x, y)dx \wedge dy = \iint_D f(x, y) dxdy$$
+    $$\Rightarrow \oint_{\partial D} \omega = \iint_D d\omega, \omega = Pdx + Qdy$$
