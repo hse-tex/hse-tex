@@ -1,44 +1,51 @@
 \subsection{Кусочно-гладкая поверхность и её площадь. Элемент площади для параметрически заданной поверхности. Поверхностный интеграл I-го рода.}
-\begin{center}
-        \textbf{Кусочно-гладкая поверхность}
-    \end{center}
-    \textbf{Область} - открытое связное множество в $\mathbb{R}^k$\\
-    Замкнутая область - это замыкание некоторой области\\
-    Жорданова область - ограниченная область, измеримая по Жордану\\
-    Пусть $G \subset \mathbb{R}^k, k<m$ - замкнутая жорданова область и $\varphi: G \rightarrow \mathbb{R}^m$ - непрерывно дифференцируемая инъективная функция.\\
-    $x= \varphi(u), x_i = \phi_i(u_1, ..., u_k)$\\
-    $x \in \mathbb{R}^m, u \in G$, причем \\
-    $$\frac{\partial x}{\partial u} = 
-    \begin{pmatrix}
-    \frac{\partial x_1}{\partial u_1} & ... & \frac{\partial x_1}{\partial }u_k \\
-    \vdots & ... & \vdots \\
-    \frac{\partial x_m}{\partial u_1} & ... & \frac{\partial x_m}{\partial u_k} \\
-    \end{pmatrix}$$\\
-    имеет в любом $u \in G$ максимальный ранг $k$.\\
-    Тогда образ $\varphi(G)$ называется гладкой $k$-мерной поверхностью $S$ (при $k \geq 2$).\\
-    $S = \bigsqcup_{i=1}^{n} S_i$ - кусочно гладкая поверхность\\
-    
-    \begin{center}
-        \textbf{Элемент площади для параметрически заданной поверхности}
-    \end{center}
+\subsubsection{Кусочно-гладкая поверхность}
+    \begin{definition*}
+        \textbf{Область} - открытое связное множество в $\mathbb{R}^k$\\
+    \end{definition*}
+    \begin{definition*}
+        Замкнутая область - это замыкание некоторой области\\
+    \end{definition*}
+    \begin{definition*}
+        Жорданова область - ограниченная область, измеримая по Жордану\\
+    \end{definition*}
+    \begin{definition*}
+        Пусть $G \subset \mathbb{R}^k, k<m$ - замкнутая жорданова область и $\varphi: G \rightarrow \mathbb{R}^m$ - непрерывно дифференцируемая инъективная функция.\\
+        $x= \varphi(u), x_i = \phi_i(u_1, ..., u_k)$\\
+        $x \in \mathbb{R}^m, u \in G$, причем \\
+        $$\frac{\partial x}{\partial u} = 
+        \begin{pmatrix}
+        \frac{\partial x_1}{\partial u_1} & ... & \frac{\partial x_1}{\partial }u_k \\
+        \vdots & ... & \vdots \\
+        \frac{\partial x_m}{\partial u_1} & ... & \frac{\partial x_m}{\partial u_k} \\
+        \end{pmatrix}$$\\
+        имеет в любом $u \in G$ максимальный ранг $k$.\\
+        Тогда образ $\varphi(G)$ называется гладкой $k$-мерной поверхностью $S$ (при $k \geq 2$).\\
+        $S = \bigsqcup_{i=1}^{n} S_i$ - кусочно гладкая поверхность\\
+    \end{definition*}
+\subsubsection{Элемент площади для параметрически заданной поверхности}
+    \begin{theorem*}
     $G \subset \mathbb{R}^2$ - замкнутая жорданова область\\
     $\varphi: G \rightarrow \mathbb{R}^m$ - параметризующее отображение\\
     $(u, v) \in G$ - параметры поверхности\\
     $$\mu(S) = \iint_G \sqrt{
     \begin{vmatrix}
-    |\frac{\partial x}{\partial u}|^2 & <\frac{\partial x}{\partial u}, \frac{\partial x}{\partial v}>\\
-    <\frac{\partial x}{\partial u}, \frac{\partial x}{\partial v}> & |\frac{\partial x}{\partial v}|^2\\
+    \left|\frac{\partial x}{\partial u}\right|^2 & \left\langle \frac{\partial x}{\partial u}, \frac{\partial x}{\partial v}\right\rangle \\
+    \left\langle \frac{\partial x}{\partial u}, \frac{\partial x}{\partial v}\right\rangle  & \left|\frac{\partial x}{\partial v}\right|^2\\
     \end{vmatrix}
-    }\ dudv = \iint_G \sqrt{|\frac{\partial x}{\partial u}|^2 \cdot |\frac{\partial x}{\partial v}|^2 - <\frac{\partial x}{\partial u}, \frac{\partial x}{\partial v}>^2}\ dudv$$
-    
-    \begin{center}
-        \textbf{Поверхностный интеграл I-го рода}
-    \end{center}
-    $G \subset \mathbb{R}^2$\\
-    $\varphi: G \rightarrow \mathbb{R}^m$\\
-    $S = \varphi(G)$\\
-    $f: S \rightarrow \mathbb{R}$\\
-    $f(x) = f(\varphi)$\\
-    $f(x_1, x_2, x_3) = f(\varphi_1(u, v), \varphi_2(u, v), \varphi_3(u, v))$\\
-    $ds = \sqrt{|\frac{\partial x}{\partial u}|^2 \cdot |\frac{\partial x}{\partial v}|^2 - <\frac{\partial x}{\partial u}, \frac{\partial x}{\partial v}>^2}\ dudv$
-    $$\int_S f(x) ds = \iint_G f(\phi(u, v)) \cdot \sqrt{|\frac{\partial x}{\partial u}|^2 \cdot |\frac{\partial x}{\partial v}|^2 - <\frac{\partial x}{\partial u}, \frac{\partial x}{\partial v}>^2}\ dudv$$
+    }\ dudv = \iint_G \sqrt{\left|\frac{\partial x}{\partial u}\right|^2 \cdot \left|\frac{\partial x}{\partial v}\right|^2 - \left\langle \frac{\partial x}{\partial u}, \frac{\partial x}{\partial v}\right\rangle ^2}\ dudv$$
+    \end{theorem*}
+\subsubsection{Поверхностный интеграл I-го рода}
+    \begin{theorem*}
+        Пусть:
+
+        $G \subset \mathbb{R}^2$\\
+        $\varphi: G \rightarrow \mathbb{R}^m$\\
+        $S = \varphi(G)$\\
+        $f: S \rightarrow \mathbb{R}$\\
+        $f(x) = f(\varphi)$\\
+        $f(x_1, x_2, x_3) = f(\varphi_1(u, v), \varphi_2(u, v), \varphi_3(u, v))$\\
+        $ds = \sqrt{\left|\frac{\partial x}{\partial u}\right|^2 \cdot \left|\frac{\partial x}{\partial v}\right|^2 - \left\langle \frac{\partial x}{\partial u}, \frac{\partial x}{\partial v}\right\rangle ^2}\ dudv$, тогда:
+        
+        $$\int_S f(x) ds = \iint_G f(\phi(u, v)) \cdot \sqrt{\left|\frac{\partial x}{\partial u}\right|^2 \cdot \left|\frac{\partial x}{\partial v}\right|^2 - \left\langle \frac{\partial x}{\partial u}, \frac{\partial x}{\partial v}\right\rangle ^2}\ dudv$$        
+    \end{theorem*}
