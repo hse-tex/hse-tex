@@ -64,12 +64,13 @@ P(x, \theta_0) dx
 Предположения про $P(x, \theta)$ очень натуральны, поэтому их никто не проверяет 
 
 \begin{proposition*} 
-Пусть выполнены условия регулярности. 
-
-Тогда
-$I(\theta) = \mathbb{D}_{\theta} \left( \frac{\partial }{\partial \theta} L(x, \theta) \right) = ni(\theta)$ и 
-$i(\theta) = \EE_{\theta} \left( \frac{\partial }{\partial \theta} \rho_{\theta} (X_1) \right)^2$ —
-информация Фишера выборки из одного элемента
+Пусть выполнены условия регулярности. Тогда
+\begin{equation*}
+    I(\theta) = \mathbb{D}_{\theta} \left( \frac{\partial }{\partial \theta} L(x, \theta) \right) = n \cdot i(\theta)
+    \text{, где }
+    i(\theta) = \EE_{\theta} \left( \frac{\partial }{\partial \theta} \ln \rho_{\theta} (X_1) \right)^2
+.\end{equation*}
+Здесь $i(\theta)$ --- информация Фишера выборки из одного элемента
 \end{proposition*} 
 \begin{proof} 
 \begin{flalign*}
@@ -84,12 +85,12 @@ $i(\theta) = \EE_{\theta} \left( \frac{\partial }{\partial \theta} \rho_{\theta}
     } \implies 
     \mathbb{D}_\theta \left( \frac{\partial }{\partial \theta} L(x, \theta) \right) = 
     n \mathbb{D}_\theta \left( \frac{\partial }{\partial \theta} \ln \rho_{\theta} (X_1) \right) =
-    n \EE_\theta \left( \frac{\partial }{\partial \theta} \ln \rho_{\theta} (X_1) \right)^2 = n i(\theta)
+    n \EE_\theta \left( \frac{\partial }{\partial \theta} \ln \rho_{\theta} (X_1) \right)^2 = n \cdot i(\theta)
 \end{flalign*}
 \end{proof} 
 
 \begin{theorem*} \textbf{Неравенство Рао-Крамера}
-Пусть выполняются условия регулярности, а $\theta_n(x)$ — несмещенная оценка $\tau(\theta)$ 
+Пусть выполняются условия регулярности, а $\theta_n(x)$ — несмещенная оценка функции $\tau(\theta)$ 
 (как правило $\tau(\theta) = \theta$, но иногда мы пытаемся оценить не саму $\theta$, 
 а какую-то функцию $\theta$), тогда
 \[
@@ -97,12 +98,13 @@ $i(\theta) = \EE_{\theta} \left( \frac{\partial }{\partial \theta} \rho_{\theta}
 \]
 \end{theorem*} 
 
+\noindent
 Неравенство нужно чтобы находить эффективные оценки: там где достигается равенство,
-так и оценка эффективна.
+там и оценка эффективна.
 
 \begin{proof} 
 \begin{flalign*}
-    & \tau(\theta) = \EE_\theta (\theta_n (x) ) = \int_{\RR_n} \theta_n (x) P(x, \theta) dx \\
+    & \tau(\theta) = \EE_\theta (\theta_n (x) ) = \int_{\RR_n} \theta_n (x) P(x, \theta) dx. \\
     & \tau'(\theta) =
     \int_{\RR^n} \theta_n (x) \frac{\partial }{\partial \theta}  P(x, \theta) dx =
     \int_{\RR^n} \theta_n (x) \frac{\partial }{\partial \theta}  P(x, \theta) dx - 
@@ -132,7 +134,7 @@ $i(\theta) = \EE_{\theta} \left( \frac{\partial }{\partial \theta} \rho_{\theta}
     \sqrt{ I(\theta) } \implies
     (\tau'(\theta))^2 \leq 
     \mathbb{D}_\theta \left( \theta_n (x) \right)
-    I(\theta)
+    I(\theta).
 \end{flalign*}
 \end{proof} 
 
@@ -147,7 +149,7 @@ $i(\theta) = \EE_{\theta} \left( \frac{\partial }{\partial \theta} \rho_{\theta}
 Пример в ситуации бернулли:
 \begin{flalign*}
     & \frac{\partial }{\partial \theta} L(x, \theta) = \frac{\sum_i X_i - n \theta}{\theta(1-\theta)} = 
-    \underbracket{\frac{n}{\theta(1-\theta)}}_{\text{const}} (\bar{X}_n - \theta) \implies
+    \underbracket{\frac{n}{\theta(1-\theta)}}_{\text{const}} (\overline{X}_n - \theta) \implies
     \text{ в Рао-Крамере достигается равенство} \implies \bar{X}_n \text{ эфф оценка}
 \end{flalign*}
 
