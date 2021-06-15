@@ -1,1 +1,162 @@
-\subsection{Дифференциал, дифференцируемость и производная комплексной функции. Условия Коши-Римана и голоморфность. Интеграл от голоморфной функции по кусочно-гладкой кривой. Теорема Коши. Интегральная формула Коши.}
+\subsection{Дифференциал, дифференцируемость и производная комплексной функции. Условия Коши--Римана и голоморфность. Интеграл от голоморфной функции по кусочно-гладкой кривой. Теорема Коши. Интегральная формула Коши.}
+
+\subsubsection{Дифференциал, дифференцируемость и производная комплексной функции.}
+
+\begin{definition*}
+	Функция $f: D \to \mathbb{R}^2, D \subseteq  \mathbb{R}^2$  называется \textit{дифференцируемой} (в общем случае) в точке $(x_0, y_0)$, если 
+	$$
+	\Delta f:= \begin{pmatrix}
+	\Delta u \\ \Delta v
+	\end{pmatrix} = P \cdot \begin{pmatrix}
+	\Delta x \\ \Delta y
+	\end{pmatrix}
+	 + \overline{o}\sqrt{(\Delta x^2 + \Delta y^2)}
+	 $$  
+	 Тогда $P$ -- матрица Якоби, т.е. $P = \begin{pmatrix}
+	 \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\
+	 \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
+	 \end{pmatrix}\Biggl|_{(x_0, y_0)}$.
+	
+\end{definition*}
+
+ В комплексном случае: $
+\Delta f := \Delta u + i \Delta v = p \Delta z + q \Delta \overline{z} + \overline{o}(|\Delta z|) \implies $ 
+\begin{align*}
+\implies  p = \frac{\partial f}{\partial x} \cdot \frac 12 + \frac{\partial f}{\partial y} \cdot \frac{1}{2i} \left(= \frac{\partial f}{\partial z}\right) \qquad  
+q = \frac{\partial f}{\partial x} \cdot \frac 12 + \frac{\partial f}{\partial y} \cdot \left( -\frac{1}{2i} \right) \left(= \frac{\partial f}{\partial \overline{z}}\right) 
+\end{align*}
+
+\begin{definition*}
+	Тогда $p \Delta z + q \Delta \overline{z} $ -- это \textit{дифференциал} функции $f$.	 
+\end{definition*}
+
+\begin{definition*}
+	$\mathbb{R}$--дифференцируемая функция называется \textit{$\mathbb{C}$--дифференцируемой}, если ее дифференциал $df =  \frac{\partial f}{\partial z}\, dz +  \frac{\partial f}{\partial \overline{z}}\, d\overline{z}$ является $\mathbb{C}$ -- линейным, т.е. $df =  \frac{\partial f}{\partial z}\, dz$. 
+	
+	Следовательно, получим следующее равенство:
+	\begin{align*}
+		\frac{\partial f}{\partial \overline{z}} =  \frac{\partial f}{\partial x} \cdot \frac 12 + \frac{\partial f}{\partial y} \cdot \left( -\frac{1}{2i} \right)  = 0 \iff 
+		\begin{cases}
+		\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}  \\
+		\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} 
+		\end{cases} \text{-- условия Коши--Римана}
+	\end{align*}
+\end{definition*}
+
+\begin{definition*}	
+	Если существует предел
+	\begin{align*}
+	 \lim\limits_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0} = \lim\limits_{(x, y) \to( x_0, y_0)} \frac{(u(x,y) - u(x_0, y_0) + i(v(x,y) - v(x_0, y_0))}{(x - x_0) + i (y - y_0)},
+	\end{align*}
+	то он называется \textit{производной} $f$ по $z$ и обозначается $\dfrac{\partial f}{\partial z}$.
+\end{definition*}
+
+\begin{definition*} 
+	(эквивалентное определение $\mathbb{C}$--дифференцируемости) 
+	
+	Пусть существует предел из определения выше (длинный такой). 
+	
+	Пусть $y = y_0$, тогда $\dfrac{\partial f}{\partial z} =\lim\limits_{x\to( x_0} \dfrac{(u(x,y) - u(x_0, y_0) + i(v(x,y) - v(x_0, y_0))}{x - x_0}  = \dfrac{\partial u}{\partial x} + i \dfrac{\partial v}{\partial x} $.
+	
+	Аналогично при $x = x_0$ получим, что $\dfrac{\partial f}{\partial z} = \frac 1i \left( \dfrac{\partial u}{\partial y} + i \dfrac{\partial v}{\partial y}\right)$. 
+	
+	Тогда получим, что $\dfrac{\partial u}{\partial x} + i \dfrac{\partial v}{\partial x} =\frac 1i \left( \dfrac{\partial u}{\partial y} + i \dfrac{\partial v}{\partial y}\right) \implies
+	\begin{cases}
+	\dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y} \\
+	\dfrac{\partial u}{\partial y} =-\dfrac{\partial v}{\partial x} 
+	\end{cases} \implies
+	\dfrac{\partial f}{\partial \overline{z}}  = 0,
+	$ 
+	
+	поэтому в этом случае $\dfrac{\partial f}{\partial z}$ логично обозначать как $\dfrac{df}{dz}$. Тогда\textit{ $\mathbb{C}$ -- дифференцируемость} равносильна существованию и конечности производной $\dfrac{df}{dz}$ (доказательство было в курсе МА--1).
+\end{definition*}
+
+\subsubsection{Условия Коши--Римана и голоморфность.}
+
+\begin{definition*}
+	Пусть $D \subseteq \RR^2$ -- область определения и $f: D \to \RR^2$ -- непрерывно дифференцируема.
+	
+	$f$ называется \textit{голоморфной} в $D$, если она удовлетворяет условиям Коши-Римана:
+	
+	\begin{equation}
+	\begin{cases}
+	\dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y} \\
+	\dfrac{\partial v}{\partial x} = -\dfrac{\partial u}{\partial y}
+	\end{cases}
+	\end{equation}
+\end{definition*}
+
+\subsubsection{Интеграл от голоморфной функции по кусочно-гладкой кривой.}
+
+\begin{definition*}
+	Пусть $L$ -- кусочно--гладкая ориентированная (по умолчанию положительная ориентированность) кривая в области $D$, тогда \textit{интеграл по кривой на комплексной плоскости}  равен сумме двух криволинейных интегралов второго рода: 
+	
+	\begin{align*}
+	\int_{L} f(z)\,dz = \int_{L} (u(x, y) + iv(x,y)) \cdot (dx + i\,dy) :=  \int_{L}  (u\,dx -v\,dy) + i  \int_{L} (v\,dx + u\,dy) 
+	\end{align*}
+\end{definition*}
+
+\subsubsection{Теорема Коши.}
+\begin{theorem*}
+	Если функция $f$ голоморфна в замыкании $\overline{D}$ жордановой области $D$, то $\oint_{\partial D} f(z)\,dz = 0.$
+\end{theorem*}
+\begin{proof}
+	Распишем интеграл по определению:
+	\begin{align*}
+		\oint_{\partial D} f(z)\,dz &= 	\oint_{\partial D} (u\,dx - v\,dy) + i 	\oint_{\partial D} (v\,dx + u\, dy) = \text{ по формуле Грина } = \\		
+		&= \iint_{D} \left(-\frac{\partial u}{\partial y} - \frac{\partial v}{\partial x}\right)\, dx \wedge dy + i \iint_{D} \left(-\frac{\partial v}{\partial y} + \frac{\partial u}{\partial x}\right)\, dx \wedge dy  = 0
+	\end{align*}
+
+	Заметим, что так как функция голоморфна, то есть непрерывно дифференцируема на $D$ и выполнены условия Коши--Римана. Тогда в силу условий Коши--Римана оба подыинтегральных выражения равны нулю, и весь интеграл тоже равен нулю.
+\end{proof}	
+
+\subsubsection{Интегральная формула Коши.}
+\begin{theorem*}(Формула Коши--Грина)
+	Если функция $f$ непрерывно дифференцируема в замыкании $\overline{D}$ жордановой области $D$, граница области $L = \partial D$ -- кусочно--гладкая. Пусть $z_0 \in D$. Тогда $$	f(z_0) =\dfrac{1}{2\pi i} \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz - \dfrac{1}{\pi} \lim\limits_{\epsilon \to 0} \iint_{D_{\epsilon}} \dfrac{\partial f}{\partial \overline{z}} \cdot \dfrac{dx \wedge dy}{z - z_0}$$
+\end{theorem*}
+\begin{proof}
+	Рассмотрим функцию $\dfrac{f(z)}{z - z_0}$, она непрерывна в $\overline{D} \backslash \{z_0\}$. Рассмотрим область $D$ без окрестности точки $z_0$: если $U_{\epsilon}(z_0)$ -- круг $|z - z_0 |\leqslant \epsilon$, то рассматриваемая область $D_{\epsilon} = D \backslash U_{\epsilon}(z_0)$. Ее граница $L_{\epsilon} = \partial D_{\epsilon}$ получается объединением двух границ $\partial D$ и  $\partial U_{\epsilon}(z_0)$.
+	
+	Рассмотрим криволинейный интеграл по границе области $\partial D_{\epsilon}$:
+	\begin{align*}
+		\oint_{\partial D_{\epsilon}} \dfrac{f(z)}{z - z_0}\, dz  &= \begin{bmatrix}
+			(x, y) \to (z, \overline{z}) \\
+			df = \frac{\partial f}{\partial z}\, dz + \frac{\partial f}{\partial \overline{z}}\, d\overline{z}, dz \wedge dz = 0
+		\end{bmatrix}, \text{ и по формуле Грина } = \iint_{D_{\epsilon}} d \left(\dfrac{f(z)}{z - z_0}\right) \wedge dz	= \\
+		&=\iint_{D_{\epsilon}} \dfrac{\partial f/\partial \overline{z}}{z - z_0}\, d\overline{z} \wedge dz
+	\end{align*}
+Переходим к обычным переменным, вычисляя матрицу Якоби:
+ $$
+\dfrac{\partial(\overline{z}, z)}{\partial (x,y)} = \begin{pmatrix}
+1 & -i \\
+1 & i
+\end{pmatrix} \implies \operatorname{det} \dfrac{\partial(\overline{z}, z)}{\partial (x,y)} = 2i \implies  d\overline{z} \wedge dz = 2i dx\wedge dy
+$$
+Тогда получим следующее:
+\begin{align*}
+	\iint_{D_{\epsilon}} \dfrac{\partial f/\partial \overline{z}}{z - z_0}\, d\overline{z} \wedge dz = 2i \iint_{D_{\epsilon}} \dfrac{\partial f}{\partial \overline{z}} \cdot \dfrac{1}{z - z_0}\, dx\wedge dy
+\end{align*}
+С другой стороны:
+\begin{align*}
+	\oint_{L_{\epsilon}} =\varointctrclockwise_{L} + \varointclockwise_{|z - z_0| = \epsilon} = \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz - \varointctrclockwise_{|z - z_0| = \epsilon} \dfrac{f(z)}{z - z_0}\, dz
+\end{align*}
+Интеграл  по малой окружности (тот, что справа) можем посчитать. Представим $z = z_0 + \epsilon \cdot e^{i\varphi}, \varphi \in [0; 2\pi],$ тогда $f(z) = f(z_0 + \epsilon e^{i\varphi}) = f(z_0) + \overline{o}(1)$ при $\epsilon \to 0$. При этом,  $dz = \epsilon i e^{i\varphi}\, d\varphi$. Подставляя, получим:
+\begin{align*}
+	\oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz - \varointctrclockwise_{|z - z_0| = \epsilon} \dfrac{f(z)}{z - z_0}\, dz = \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz -  \int_{0}^{2\pi} \dfrac{f(z_0) + \overline{o}(1)}{\epsilon e^{i\varphi}} \cdot  \epsilon i e^{i\varphi}\, d\varphi &=\oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz -  i \int_{0}^{2\pi} f(z_0) + \overline{o}(1) \, d\varphi  = \\
+	&= \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz - 2\pi i f(z_0) + \overline{o}(1) 
+\end{align*}
+
+При устремлении  $\epsilon \to 0$ и приравнивая оба значения интеграла, получаем:
+\begin{align*}
+	f(z_0) =\dfrac{1}{2\pi i} \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz - \dfrac{1}{\pi} \lim\limits_{\epsilon \to 0} \iint_{D_{\epsilon}} \dfrac{\partial f}{\partial \overline{z}} \cdot \dfrac{dx \wedge dy}{z - z_0}
+\end{align*}
+\end{proof}
+
+\begin{comment}
+	$\lim\limits_{\epsilon \to 0} \iint_{D_{\epsilon}} \dfrac{\partial f}{\partial \overline{z}} \cdot \dfrac{dx \wedge dy}{z - z_0}$ называется  \textit{главным значением} несобственного интеграла.
+\end{comment}
+
+\begin{corollary} (Интегральная формула Коши)
+	
+	Если функция $f$ голоморфна в замыкании $\overline{D}$ жордановой области $D$, то $f(z_0) = \dfrac{1}{2\pi i} \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz$.
+\end{corollary}
