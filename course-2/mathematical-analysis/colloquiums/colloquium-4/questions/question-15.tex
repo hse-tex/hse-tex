@@ -15,7 +15,7 @@
 \begin{proof}
 	Окружим каждую точку маленьким кругом, которые не пересекаются и не вылезают за предел множества. Каждая точка - $z_i$, а её круг - $U_i$.
 	
-	Рассмотрим множество $D' = D \\ (U_1 \cup U_2 \cup \dots \cup U_n)$, тогда по теореме Коши: 
+	Рассмотрим множество $D' = D \setminus (U_1 \cup U_2 \cup \dots \cup U_n)$, тогда по теореме Коши: 
 	
 	$$\oint_{\partial D} f(z)dz = 0 \implies \oint_{\partial D} f(z)dz = \sum_{k=1}^{n} \oint_{\partial U_k} f(z)dz = 2\pi i \sum_{k = 1}^{n} res_{z_k}f$$ $$(\oint_{\partial U_k} f(z)dz = 2\pi i res_{z_k}f )$$
 \end{proof}
