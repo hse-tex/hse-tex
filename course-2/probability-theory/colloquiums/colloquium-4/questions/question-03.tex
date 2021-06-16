@@ -1,0 +1,162 @@
+\section{Билет 3}
+
+\begin{center}
+    \it
+    Информация Фишера и неравенство Рао-Крамера.
+    Критерий равенства в неравенстве Рао-Крамера.
+\end{center}
+
+\subsection{Информация Фишера и неравенство Рао-Крамера}
+
+\begin{definition*} 
+    Информация Фишера $I(\theta) = \EE_{\theta} \left( \frac{\partial }{\partial \theta} L(x, \theta) \right)^2$
+\end{definition*} 
+
+Выведение и альтернативные варианты (здесь $\theta_0$ — реальный параметр):
+\begin{flalign*}
+& L(x, \theta) \darrowwtextover{\text{ф-ла Тейлора}}{0.5em}{\simeq} L(x, \hat{\theta}_n(x)) + 
+\frac{1}{2} \underbracket{\frac{\partial^2 }{\partial \theta^2} L(x, \hat{\theta}_n(x) )}_{
+    \mathclap{\leq 0 \text{ тк точка максимума}}
+} \left( \theta - \hat{\theta}_n(x) \right)^2 \\
+& \text{Точка максимума близка к параметру, посмотрим на вторую производную в реальном параметре:} \\
+& - \EE_{\theta_0} \frac{\partial^2}{\partial \theta^2} L(x, \theta_0) = 
+- \EE_{\theta_0} \frac{\partial }{\partial \theta} 
+\left( \frac{\frac{\partial }{\partial \theta} P(x, \theta_0)}{P(x, \theta_0)}  \right) = 
+- \EE_{\theta_0} \left( \frac{\frac{\partial^2}{\partial \theta^2} P(x, \theta_0)}{P(x, \theta_0)} - 
+\frac{\left( \frac{\partial }{\partial \theta} P(x, \theta_0) \right)^2}{P(x, \theta_0)^2} \right) \oeq \\
+& \left[ \text{трюки с производными так как} 
+\left( \frac{a}{b} \right)' = \frac{a'}{b} - \frac{ab'}{b^2}, \text{ но здесь } a = b' \implies
+\left( \frac{b'}{b} \right)' = \frac{b''}{b} - \frac{(b')^2}{b^2} \right] \\
+& \oeq -\int_{\RR^n} \left( \frac{\frac{\partial^2}{\partial \theta^2} P(x, \theta_0)}{P(x, \theta_0)} - 
+\frac{\left( \frac{\partial }{\partial \theta} P(x, \theta_0) \right)^2}{P(x, \theta_0)^2} \right) 
+P(x, \theta_0) dx =
+- \int_{\RR^n} \frac{\partial^2}{\partial \theta^2} P(x, \theta_0) dx + 
+\int_{\RR^n} \left( \frac{\frac{\partial }{\partial \theta} P(x, \theta_0)}{P(x, \theta_0)} \right)^2 
+P(x, \theta_0) dx
+\end{flalign*}
+
+Предположим, что выполнены условия регулярности
+\begin{itemize} \itemsep 0em
+\item $P(x, \theta)$ дважды непрерывно дифференцируема по $\theta$
+\item $P(x, \theta) > 0$ на каком-то множесте иксов (прямая, отрезок, точки в дискретном случае) 
+    $\forall \theta$
+\item Производную и интеграл можно переставить 
+\end{itemize} 
+
+Из этого следует 
+\begin{flalign*}
+    & \int_{\RR^n} P(x, \theta) dx = 1 \implies 
+    \int_{\RR^n} \frac{\partial }{\partial \theta} P(x, \theta) dx = \frac{\partial 1}{\partial \theta} = 0,
+    \qquad \int_{\RR^n} \frac{\partial^2}{\partial \theta^2} P(x, \theta) dx = 0
+\end{flalign*}
+
+Итак 
+\begin{flalign*}
+    & - \EE_{\theta_0} \frac{\partial^2}{\partial \theta^2} L(x, \theta_0) = 
+    \underbracket{- \int_{\RR^n} \frac{\partial^2}{\partial \theta^2} P(x, \theta_0) dx}_{=0} + 
+    \int_{\RR^n} \left( \frac{\frac{\partial }{\partial \theta} P(x, \theta_0)}{P(x, \theta_0)} \right)^2 
+    P(x, \theta_0) dx = 
+    \EE_{\theta_0} \left( \frac{\partial }{\partial \theta} L(x, \theta_0) \right)^2 = I(\theta)
+\end{flalign*}
+
+В дискретном случае меняем интегралы на суммы
+
+Предположения про $P(x, \theta)$ очень натуральны, поэтому их никто не проверяет 
+
+\begin{proposition*} 
+Пусть выполнены условия регулярности. Тогда
+\begin{equation*}
+    I(\theta) = \mathbb{D}_{\theta} \left( \frac{\partial }{\partial \theta} L(x, \theta) \right) = n \cdot i(\theta)
+    \text{, где }
+    i(\theta) = \EE_{\theta} \left( \frac{\partial }{\partial \theta} \ln \rho_{\theta} (X_1) \right)^2
+.\end{equation*}
+Здесь $i(\theta)$ --- информация Фишера выборки из одного элемента
+\end{proposition*} 
+\begin{proof} 
+\begin{flalign*}
+    & \EE_{\theta} \left( \frac{\partial }{\partial \theta} L(x, \theta) \right) = 
+    \int_{\RR^n} \frac{\frac{\partial }{\partial \theta} P(x, \theta)}{P(x, \theta)} P(x, \theta) dx = 
+    \int_{\RR^n} \frac{\partial }{\partial \theta} P(x, \theta) dx = 0 \implies 
+    \mathbb{D}_{\theta} \left( \frac{\partial }{\partial \theta} L(x, \theta) \right) = 
+    \EE_{\theta} \left( \frac{\partial }{\partial \theta} L(x, \theta) \right)^2 \\
+    & \frac{\partial }{\partial \theta} L(x, \theta) = 
+    \sum_i \underbracket{\frac{\partial}{\partial \theta} \ln \rho_\theta (X_i)}_{
+        \mathclap{ \substack{\text{независимые}\\\text{одинаково распределенные}} }
+    } \implies 
+    \mathbb{D}_\theta \left( \frac{\partial }{\partial \theta} L(x, \theta) \right) = 
+    n \mathbb{D}_\theta \left( \frac{\partial }{\partial \theta} \ln \rho_{\theta} (X_1) \right) =
+    n \EE_\theta \left( \frac{\partial }{\partial \theta} \ln \rho_{\theta} (X_1) \right)^2 = n \cdot i(\theta)
+\end{flalign*}
+\end{proof} 
+
+\begin{theorem*} \textbf{Неравенство Рао-Крамера}
+Пусть выполняются условия регулярности, а $\theta_n(x)$ — несмещенная оценка функции $\tau(\theta)$ 
+(как правило $\tau(\theta) = \theta$, но иногда мы пытаемся оценить не саму $\theta$, 
+а какую-то функцию $\theta$), тогда
+\[
+    \mathbb{D}_\theta (\theta_n(x)) \geq \frac{\left( \tau'(\theta) \right)^2}{I(\theta)}
+\]
+\end{theorem*} 
+
+\noindent
+Неравенство нужно чтобы находить эффективные оценки: там где достигается равенство,
+там и оценка эффективна.
+
+\begin{proof} 
+\begin{flalign*}
+    & \tau(\theta) = \EE_\theta (\theta_n (x) ) = \int_{\RR_n} \theta_n (x) P(x, \theta) dx. \\
+    & \tau'(\theta) =
+    \int_{\RR^n} \theta_n (x) \frac{\partial }{\partial \theta}  P(x, \theta) dx =
+    \int_{\RR^n} \theta_n (x) \frac{\partial }{\partial \theta}  P(x, \theta) dx - 
+    \tau(\theta) \overbracket{\int_{\RR^n} \frac{\partial }{\partial \theta} P(x, \theta) dx}^{
+        \parbox[t][1sp][b]{3em}{$=0$}
+    } =
+    \int_{\RR^n} \left( \theta_n (x) - \tau (\theta) \right) 
+    \frac{\partial }{\partial \theta}  P(x, \theta) dx = \\
+    & = \int_{\RR^n} \left( \theta_n (x) - \tau (\theta) \right) 
+    \underbracket{\frac{\frac{\partial }{\partial \theta}  P(x, \theta)}{P(x, \theta)}}_{
+        \mathclap{=\frac{\partial }{\partial \theta} \ln P(x, \theta) 
+        = \frac{\partial }{\partial \theta} L(x, \theta)}
+    } P(x, \theta)  dx = 
+    \EE_\theta \left( \left( \theta_n (x) - \tau (\theta) \right) 
+    \frac{\partial }{\partial \theta} L(x, \theta) \right) 
+    \darrowwtextover{\text{Коши-Буняковский}}{0.5em}{\leq} \\
+    & \leq \sqrt{
+        \EE_\theta \left( \theta_n (x) - \tau (\theta) \right)^2
+    }
+    \sqrt{ 
+        \EE_\theta \left( \frac{\partial }{\partial \theta} L(x, \theta) \right)^2
+    } = 
+    \sqrt{ \mathbb{D}_\theta \left( \theta_n (x) \right) }
+    \sqrt{ I(\theta) } \\
+    & \tau'(\theta) \leq 
+    \sqrt{ \mathbb{D}_\theta \left( \theta_n (x) \right) }
+    \sqrt{ I(\theta) } \implies
+    (\tau'(\theta))^2 \leq 
+    \mathbb{D}_\theta \left( \theta_n (x) \right)
+    I(\theta).
+\end{flalign*}
+\end{proof} 
+
+\subsection{Критерий равенства в неравенстве Рао-Крамера}
+
+Равенство достигается когда достигается равенство в Коши-Буняковском, то есть 
+\[
+    \theta_n(x) - \tau(\theta) = \underbracket{c_n(\theta)}_\text{const}
+    \frac{\partial }{\partial \theta} L(x, \theta)
+\]
+
+Пример в ситуации бернулли:
+\begin{flalign*}
+    & \frac{\partial }{\partial \theta} L(x, \theta) = \frac{\sum_i X_i - n \theta}{\theta(1-\theta)} = 
+    \underbracket{\frac{n}{\theta(1-\theta)}}_{\text{const}} (\overline{X}_n - \theta) \implies
+    \text{ в Рао-Крамере достигается равенство} \implies \bar{X}_n \text{ эфф оценка}
+\end{flalign*}
+
+Если (в случае оценки $\theta$, то есть $\tau(\theta) = \theta$) существует несмещенная оценка $\hat{\theta}_n$,
+на которой достигается равенство в Рао-Крамере, то это оценка максимального правдоподобия
+\begin{flalign*}
+    & \hat{\theta}_n(x) - \theta = c_n(\theta) \frac{\partial }{\partial \theta} L(x, \theta) \quad
+    \text{Возьмем } \theta = \theta^*(x) \text{ оценка макс правдоподобия} \implies 
+    \frac{\partial }{\partial \theta} L(x, \theta^*(x)) = 0 \implies \hat{\theta}_n(x) = \theta^*(x)
+\end{flalign*}

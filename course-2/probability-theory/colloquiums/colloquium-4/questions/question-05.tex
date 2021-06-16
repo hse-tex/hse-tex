@@ -1,0 +1,76 @@
+\section{Билет 5}
+
+\subsection{Построение точных доверительных интервалов для параметров нормального распределения.}
+
+\subsubsection{Матожидание.}
+
+Оцениваем параметры случайной величины $\sim \mathcal{N}(a, \sigma^2)$ по выборке $X_1, \dots, X_n$:
+\begin{enumerate}
+	\item $\sigma$ --- известно. Оцениваем матожидание $a$:
+	
+	Центрируем и нормируем случайную величину разности оценки и параметра:
+	\[ \sqrt{n}\,\frac{\overline{X_n} - a}{\sigma} \sim \mathcal{N}(0, 1) \text{ --- центральная статистика} \]
+	
+	Пусть для $t_{1-\frac{\alpha}2}$ верно, что $\Phi \left( t_{1 - \frac{\alpha}2} \right) = 1 - \frac{\alpha}2$, тогда 
+	\[ P_{\theta} \left( -t_{1 - \frac{\alpha}2} \le \frac{\sqrt{n}(\overline{X_n} - a)}{\sigma} \le t_{1 - \frac{\alpha}2} \right) = 
+	1 - \alpha \;\Leftrightarrow\; 
+	P_{\theta} \left( \underset{\hat\Theta_1(x)}{\underbrace{\overline{X_n} - \frac{t_{1 - \frac{\alpha}2} \sigma}{\sqrt{n}}}} \le a \le 
+	\underset{\hat\Theta_2(x)}{\underbrace{\overline{X_n} + \frac{t_{1 - \frac{\alpha}2} \sigma}{\sqrt{n}}}} \right) = 1 - \alpha \]
+	
+	\item $\sigma$ не известно.
+	
+	\begin{lemma*}
+		Пусть $X \!=\! (X_1, \dots, X_n) \sim \mathcal{N} \left( a, \text{diag}(\sigma^2) \right), \, \text{diag}(\sigma^2) \!=\! 
+		\left(\begin{matrix} \sigma^2 && 0 \\[-5 pt] & \!\!\!\!\!\ddots\!\!\!\!\! & \\[-5 pt] 0 && \sigma^2 \end{matrix}\right)\!\!, \, \{ X_j \}$ независимы, $\mathbb{D} X_j \!=\! \sigma^2\!, \, \mathbb{E} X_j \!=\! a$.
+		
+		Тогда $\overline{X_n}$ и $\sum_{j=1}^n (X_j - \overline{X_n})^2$ независимы.
+	\end{lemma*}
+	\begin{proof}
+		Не ограничивая общности, считаем, что $\mathbb{E} X_j = a = 0$.
+		
+		Рассмотрим $U = \left(\begin{matrix} \frac1{\sqrt{n}} & \dots & \frac1{\sqrt{n}} \\[-0 pt] \star & \dots & \star \\[-0 pt] \star & \dots & \star \end{matrix}\right)$ --- ортогональную, и случайную величину $u = UX \sim \mathcal{N}(0, \text{diag}(\sigma^2))$, 
+		\[ \left( U^{*} C_x U = U^{*}\text{diag}(\sigma^2)U = \sigma^2 U^{*} I U = \sigma^2 U^{*} U = \sigma^2 I = \text{diag}(\sigma^2) \right) \]
+		
+		$\{ u_{\sigma} \}$ --- незав., $\mathbb{E} u_j = 0, \, \mathbb{D} u_j = \sigma^2$.
+		
+		Далее $|u|$ --- вторая векторная норма, т.е. $|u| = \sqrt{u_1^2 + \ldots + u_n^2}$. К слову, вторая норма --- унитарно-инвариантна, поэтому $|u| = |UX| = |X|$ в силу ортогональности $U$.
+		
+		\[ \sum_{j=2}^n u_j^2 = |u|^2 - u_1^2 = |u|^2 - \left( \frac{\sum X_j}{\sqrt{n}} \right)^2 = |X|^2 - n\overline{X_n}^2 \text{ (т.к. $U$ --- орт.)} \]
+		\[ \sum_{j=1}^n (X_j - \overline{X_n})^2 = \sum_{j=1}^n X_j^2 - 2n \overline{X_n} \frac{1}{n} \sum_{j=1}^n X_j + n\overline{X_n}^2 = \sum_{j=1}^n X_j^2 - n\overline{X_n}^2 \]
+		\[ \sum_{j=2}^n u_j^2 = \sum_{j=1}^n (X_j - \overline{X_n})^2 \text{ --- независимо с } u_1 = \frac{X_1 + \ldots + X_n}{\sqrt{n}} = \sqrt{n}\ \overline{X_n} \]
+		
+		При этом $\sum_{j=2}^n u_j^2 = \sigma^2 \sum_{j=2}^n (\sigma^{-1} u_j)^2$, и $\sigma^{-1} u_j \sim \mathcal{N}(0, 1)$, то есть
+		\[ \chi_n^2 = \sum_{j=1}^n (X_j - \overline{X_n})^2 = \sum_{j=1}^n \xi_k^2, \, \{ \xi_k \} \text{ --- незав.}, \xi_k \sim \mathcal{N}(0, 1), \]
+		где $\chi_n^2$ --- распределение $\chi$-квадрат с $n$ степенями свободы, распределение величины $\sum_{j=1}^n \eta_j^2$, $\eta_j$ --- независимые нормально распределенные с параметрами 0 и 1 величины.
+		
+		В итоге $\overline{X_n}$ и $s^2 = \frac1{n-1} \sum_{j=1}^n (x_j - \overline{X_n})^2$ независимы и $\sigma^{-2}s^2 \sim \frac1{n-1}\,\chi_{n-1^2}$.
+	\end{proof}
+	
+	Так как $\sigma$ неизвестна, заменим ее на $\sqrt{s^2}$ и получим статистику:
+	\[ T_{n-1}(X) = \frac{\sqrt{n}(X_n - a)}{\sqrt{s^2}} = \frac{\frac{\sqrt{n}(X_n - a)}{\sigma}}{\sqrt{\sigma^2 s^2}} \sim \frac{\xi}{\sqrt{\frac1{n-1}\,\chi^2_{n-1}}}, \]
+	$\xi$ и $\chi$ независимы.
+	
+	$T_{n} = \frac{\xi}{\sqrt{\frac1n\,\chi_n^2}}$ --- распределение Стьюдента с $n$ степенями свободы.
+	
+	Его плотность:
+	\[ \varrho(x) = C_n \left( 1 + \frac{x^2}{n-1} \right)^{-n/2} \]
+ 	
+	Т.к. плотность симметрична, можем выбрать 1 квантиль:
+	\[ F_{T_{n-1}}(t_{1 - \frac{\alpha}2}) = 1 - \frac{\alpha}2, \, F_{T_{n-1}}(-t_{1 - \frac{\alpha}2}) = \frac{\alpha}2 \]
+	
+	Попадаем в случай 1 с известной дисперсией:
+	\[ P_{\theta} \left( -t_{1 - \frac{\alpha}2} \le \frac{\sqrt{n}(\overline{X_n} - a)}{\sqrt{s^2}} \le t_{1 - \frac{\alpha}2} \right) = 
+	1 - \alpha \;\Leftrightarrow\; 
+	P_{\theta} \left( \underset{\hat\Theta_1(x)}{\underbrace{\overline{X_n} - \frac{t_{1 - \frac{\alpha}2} \sqrt{s^2}}{\sqrt{n}}}} \le a \le 
+	\underset{\hat\Theta_2(x)}{\underbrace{\overline{X_n} + \frac{t_{1 - \frac{\alpha}2} \sqrt{s^2}}{\sqrt{n}}}} \right) = 1 - \alpha \]
+\end{enumerate}
+
+\subsubsection{Дисперсия.}
+
+Из доказательства леммы выше:
+\[ \sigma^{-2}(n - 1) S_n^2 \sim \chi_{n-1}^2 \]
+
+Выберем $x_{\alpha/2}$ и $x_{1-\alpha/2}$ такое, что $F_{\chi_{n-1}^2}(x_{\alpha/2}) = \alpha/2$ и $F_{\chi_{n-1}^2}(1-x_{\alpha/2}) = 1-\alpha/2$ ($F_{\chi_{n-1}^2}$ --- функция распределения случайной величины $\chi_{n-1^2}$). Тогда
+\[ P \left( x_{\alpha/2} \le \frac{(n-1) S_n^2}{\sigma^2} \le x_{1-\alpha/2} \right) = 1 - \alpha, \]
+и интервал уровня $1 - \alpha$ имеет вид 
+\[ \left( \frac{\sqrt{n-1}\,S_n}{\sqrt{x_{1-\alpha/2}}}, \; \frac{\sqrt{n-1}\,S_n}{\sqrt{x_{\alpha/2}}} \right). \] 

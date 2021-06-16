@@ -26,5 +26,5 @@ jobs:
       run: ./post-diff.sh
       env:
         PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
-        DRAFTABLE_API_ID: 'rOboyG'
-        DRAFTABLE_API_TOKEN: 'ee3a7df175367d4306c14e7fa39108fd'
+        DRAFTABLE_API_ID: 'eYprSo'
+        DRAFTABLE_API_TOKEN: 'dd396bbe2f09369914f04596bcb02973'
