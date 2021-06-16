@@ -130,76 +130,59 @@ $W(\theta)$ это некоторое матожидание. По ЗБЧ изв
 \begin{definition}
     Оценкой максимального правдоподобия параметра $\theta$ называется максимум функции $L(X, \theta)$.
 \end{definition}
-\begin{proposal} (Состоятельность оценки максимального правдоподобия.)
 
-    Пусть $\theta \in (a, b)$, и на этом отрезке функция $\theta \to L(X, \theta)$ имеет единственную точку локального максимума $\hat{\theta}$.
-    Тогда $\hat{\theta} \xrightarrow{P} \theta_0$.
+\begin{proposal}
+    Пусть $\theta \in(\alpha, \beta), \rho_{\theta}(x)$ непрерывна по $\theta$ и при каждом $x$ бункция $L(x, \theta)$ имеет ровно одну точку локального максимума $\theta_{n}(x)$ в $(\alpha, \beta) .$ Тогда $\theta_{n}(X)$ сходится по вероятности к $\theta_{0}$ (т.е. является состоятельной оценкой).
 \end{proposal}
-\begin{proof}
-    Будем пользоваться тем, что $\frac{1}{n}L(X, \theta) \xrightarrow{P} W(\theta)$. Хотим доказать, что $P(|\hat{\theta} - \theta_0| \geq \delta) \to 0\,
-    \forall\,\delta > 0$ (просто определение сходимости по вероятности). Рассмотрим точки $\theta_0 - \delta, \theta_0 + \delta$. Про эти точки известно
-    следующее:
-    \[
-        \begin{cases}
-            W(\theta_0) > W(\theta_0 - \delta) \xleftarrow{P} \cfrac{1}{n}L(X, \theta_0 - \delta)\\
-            W(\theta_0) > W(\theta_0 + \delta) \xleftarrow{P} \cfrac{1}{n}L(X, \theta_0 + \delta)\\
-        \end{cases}
-    \]
-    Можно ожидать, что при достаточно большом $n$, с вероятностью, близкой к $1$ будут выполнены неравенства
-    \[
-        \begin{cases}
-            \cfrac{1}{n}L(X, \theta_0) > \cfrac{1}{n}L(X, \theta_0 - \delta)\\
-            \cfrac{1}{n}L(X, \theta_0) > \cfrac{1}{n}L(X, \theta_0 + \delta)\\
-        \end{cases}
-    \]
-    Посмотрим теперь на функцию $\theta \to L(X, \theta)$:
-    \[
-        \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.0cm,y=1.0cm]
-            \draw[->,color=black] (-0.36,0) -- (5.33,0);
-            \clip(-0.36,-1.35) rectangle (5.33,2.34);
-            \begin{scriptsize}
-                \fill [color=BLUE,shift={(0.51,0)},rotate=270] (0,0) ++(0 pt,3.75pt) -- ++(3.25pt,-5.625pt)--++(-6.5pt,0 pt) -- ++(3.25pt,5.625pt);
-                \draw[color=BLUE] (0.5,-0.25) node {$\theta_0 - \delta$};
-                \fill [color=BLUE,shift={(3.51,0)},rotate=90] (0,0) ++(0 pt,3.75pt) -- ++(3.25pt,-5.625pt)--++(-6.5pt,0 pt) -- ++(3.25pt,5.625pt);
-                \draw[color=BLUE] (3.5,-0.25) node {$\theta_0 + \delta$};
-                \fill [color=BLACK] (2.01,0) circle (1.5pt);
-                \draw[color=BLACK] (2.05,-0.25) node {$\theta_0$};
-                \fill [color=BLACK] (0.51,1.04) circle (1.5pt);
-                \fill [color=BLACK] (3.51,0.54) circle (1.5pt);
-                \fill [color=BLACK] (2.01,2.04) circle (1.5pt);
-            \end{scriptsize}
-        \end{tikzpicture}
-    \]
-    Ясно, что на интервале $(\theta_0 - \delta, \theta_0 + \delta)$ сущетвует точка, значение в которой строго больше, чем на концах, а значит,
-    функция имеет на этом отрезке точку локального максимума. Т.е. для точки локального максимума $\hat{\theta}$ выполнено $|\hat{\theta} - \theta_0| < \delta$.
-    Чтобы завершить доказательство, нужно обосновать фразу ``при достаточно большом $n$, с вероятностью, близкой к $1$...''.
-    Другими словами, хотим доказать, что
-    \[
-        P\left( \frac{1}{n} L(X, \theta_0 - \delta) < \frac{1}{n} L(X, \theta_0) \right) \xrightarrow[n \to \infty]{} 1
-    \]
-    Положим $W(\theta_0) - W(\theta_0 - \delta) = \epsilon > 0$. Из ЗБЧ следует, что
-    \[
-        \begin{cases}
-            P\left(\left| \frac{1}{n} L(X, \theta_0 - \delta) - W(\theta_0 - \delta) \right| \geq \frac{\epsilon}{4} \right) \to 0\\
-            P\left( \left| \frac{1}{n} L(X, \theta_0) - W(\theta_0) \right| \geq \frac{\epsilon}{4} \right) \to 0
-        \end{cases}
-    \]
-    Поймём, почему из этого следует, что $P\left(\frac{1}{n} L(X, \theta_0 - \delta) \geq  \frac{1}{n} L(X, \theta_0)\right) \to 0 \, (*)$.
-    Пусть величины $\frac{1}{n} L(X, \theta_0 - \delta)$ и $W(\theta_0 - \delta)$ отличаются менее, чем на $\frac{\epsilon}{4}$. Аналогично для
-    $\frac{1}{n} L(X, \theta_0)$ и $W(\theta_0)$. Тогда верна следующая цепочка равенств:
-    \[
-        W(\theta_0) \leq \frac{1}{n}L_n(X, \theta_0) + \frac{\epsilon}{4} \overset{(1)}{\leq} \frac{1}{n}L_n(X, \theta_0 - \delta) + \frac{\epsilon}{4}
-        \leq W(\theta_0 - \delta) + \frac{\epsilon}{2}
-    \]
-    Переход $(1)$ следует из неравенства $(*)$. Тогда мы получаем, что $W(\theta_0) - W(\theta_0 - \delta) \leq \frac{\epsilon}{2}$. Но
-    $W(\theta_0) - W(\theta_0 - \delta) = \epsilon$, и получается противоречие. Значит, или
-    $\frac{1}{n} L(X, \theta_0 - \delta)$ и $W(\theta_0 - \delta)$ отличаются более, чем на $\frac{\epsilon}{4}$, или же величины
-    $\frac{1}{n} L(X, \theta_0)$ и $W(\theta_0)$. Но тогда мы получаем, что исход из события
-    $\{\frac{1}{n} L(X, \theta_0 - \delta) \geq  \frac{1}{n} L(X, \theta_0)\}$ лежит в объединении
-    \[
-        \{\left| \frac{1}{n} L(X, \theta_0 - \delta) - W(\theta_0 - \delta) \right| \geq \frac{\epsilon}{4}\}
-        \cup
-        \{\left| \frac{1}{n} L(X, \theta_0) - W(\theta_0) \right| \geq \frac{\epsilon}{4}\}
-    \]
-    А вероястность таких событий стремится к нулю. Теперь методом пристального взгляда можно заметить, что мы всё доказали.
+\begin{proof} \,
+    
+    Пусть $\delta>0$. Заметим, что $W\left(\theta_{0} \pm \delta\right)<W\left(\theta_{0}\right)$. Выберем $\alpha>0$ так, чтобы $W\left(\theta_{0}\right)-W\left(\theta_{0} \pm \delta\right)>2 \alpha$.
+    
+    Хотим оценить сверху $P_{\theta_{0}}(n^{-1}L(X,\theta_{0}\pm\delta)\geq n^{-1}L(X,\theta_{0}))$. Перейдём от множества (которое под знаком вероятности) к надмножеству из объединения нескольких удобных для анализа множеств:
+%    $$
+%    \begin{aligned}
+%    A&\subseteq A\cap\{|n^{-1}L(X,\theta_{0}\pm\delta)-W(\theta_{0}\pm\delta)|\geq\alpha\}\\&\cup A\cap\{|n^{-1}L(X,\theta_{0})-W(\theta_{0})|\geq\alpha\}\\&\cup A\cap\{|n^{-1}L(X,\theta_{0}\pm\delta)-W(\theta_{0}\pm\delta)|<\alpha\}\cap\{|n^{-1}L(X,\theta_{0})-W(\theta_{0})|<\alpha\}\\A&\subseteq\{|n^{-1}L(X,\theta_{0}\pm\delta)-W(\theta_{0}\pm\delta)|\geq\alpha\}\\&\cup\{|n^{-1}L(X,\theta_{0})-W(\theta_{0})|\geq\alpha\}\\&\cup\{n^{-1}L(X,\theta_{0}\pm\delta)\geq n^{-1}L(X,\theta_{0}),\ |n^{-1}L(X,\theta_{0}\pm\delta)-W(\theta_{0}\pm\delta)|<\alpha,\ |n^{-1}L(X,\theta_{0})-W(\theta_{0})|<\alpha\}\\A&\subseteq\{|n^{-1}L(X,\theta_{0}\pm\delta)-W(\theta_{0}\pm\delta)|\geq\alpha\}\\&\cup\{|n^{-1}L(X,\theta_{0})-W(\theta_{0})|\geq\alpha\}\\&\cup\{W(\theta_{0}\pm\delta)+\alpha\ge n^{-1}L(X,\theta_{0}\pm\delta)\geq n^{-1}L(X,\theta_{0})\ge W(\theta_{0})-\alpha\}\\A&\subseteq\{|n^{-1}L(X,\theta_{0}\pm\delta)-W(\theta_{0}\pm\delta)|\geq\alpha\}\\&\cup\{|n^{-1}L(X,\theta_{0})-W(\theta_{0})|\geq\alpha\}\\&\cup\{W(\theta_{0}\pm\delta)+\alpha\ge W(\theta_{0})-\alpha\}.
+%    \end{aligned}
+%    $$
+    \begingroup
+    \allowdisplaybreaks
+    \begin{align}
+    A&:=\{n^{-1}L(X,\theta_{0}\pm\delta)\geq n^{-1}L(X,\theta_{0})\}\\B&:=\{|n^{-1}L(X,\theta_{0}\pm\delta)-W(\theta_{0}\pm\delta)|\geq\alpha\}\\C&:=\{|n^{-1}L(X,\theta_{0})-W(\theta_{0})|\geq\alpha\}\\D&:=\overline{B\cup C}=\overline{B}\cap\overline{C}\\&\\A&=A\cap(B\cup C\cup D)\\&=A\cap B\cup A\cap C\cup A\cap D\\&\subseteq B\cup C\cup A\cap D\\A\cap D&=\{n^{-1}L(X,\theta_{0}\pm\delta)\geq n^{-1}L(X,\theta_{0})\}\\&\quad\cap\{|n^{-1}L(X,\theta_{0}\pm\delta)-W(\theta_{0}\pm\delta)|<\alpha\}\\&\quad\cap\{|n^{-1}L(X,\theta_{0})-W(\theta_{0})|<\alpha\}\\&\subseteq\{W(\theta_{0}\pm\delta)+\alpha\ge n^{-1}L(X,\theta_{0}\pm\delta)\geq n^{-1}L(X,\theta_{0})\ge W(\theta_{0})-\alpha\}\\&\subseteq\{W(\theta_{0}\pm\delta)+\alpha\ge W(\theta_{0})-\alpha\}\\&\\A&\subseteq B\cup C\cup A\cap D\\&=\{|n^{-1}L(X,\theta_{0})-W(\theta_{0})|\geq\alpha\}\\&\quad\cup\{|n^{-1}L(X,\theta_{0}\pm\delta)-W(\theta_{0}\pm\delta)|\geq\alpha\}\\&\quad\cup\{W(\theta_{0}\pm\delta)+\alpha\ge W(\theta_{0})-\alpha\}.
+    \end{align}
+    \endgroup
+    В итоге имеем
+    $$
+    \begin{aligned}
+    P_{\theta_{0}}\left(n^{-1} L\left(X, \theta_{0} \pm \delta\right)\right.&\left.\geq n^{-1} L\left(X, \theta_{0}\right)\right) \leq P_{\theta_{0}}\left(\left|n^{-1} L\left(X, \theta_{0} \pm \delta\right)-W\left(\theta_{0} \pm \delta\right)\right| \geq \alpha\right) \\
+    &+P_{\theta_{0}}\left(\left|n^{-1} L\left(X, \theta_{0}\right)-W\left(\theta_{0}\right)\right| \geq \alpha\right)+P_{\theta_{0}}\left(W\left(\theta_{0} \pm \delta\right)+\alpha \geq W\left(\theta_{0}\right)-\alpha\right),
+    \end{aligned}
+    $$
+    причем первые две вероятности стремятся к нулю по ЗБЧ, т. к. $n^{-1} L\left(X, \theta\right) \xrightarrow{P_\theta} W\left(\theta\right)$, а третья вероятность равна нулю, т.к. $W\left(\theta_{0}\right)-W\left(\theta_{0} \pm \delta\right)>2 \alpha$. Тем самым,
+    $$
+    P\left(n^{-1} L\left(X, \theta_{0} \pm \delta\right)<n^{-1} L\left(X, \theta_{0}\right)\right) \rightarrow 1
+    $$
+    Посмотрим теперь на функцию $\theta \mapsto L(X, \theta)$:
+    \begin{center}
+    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.0cm,y=1.0cm]
+        \draw[->,color=black] (-0.36,0) -- (5.33,0);
+        \clip(-0.36,-1.35) rectangle (5.33,2.34);
+        \begin{scriptsize}
+        \fill [color=BLUE,shift={(0.51,0)},rotate=270] (0,0) ++(0 pt,3.75pt) -- ++(3.25pt,-5.625pt)--++(-6.5pt,0 pt) -- ++(3.25pt,5.625pt);
+        \draw[color=BLUE] (0.5,-0.25) node {$\theta_0 - \delta$};
+        \fill [color=BLUE,shift={(3.51,0)},rotate=90] (0,0) ++(0 pt,3.75pt) -- ++(3.25pt,-5.625pt)--++(-6.5pt,0 pt) -- ++(3.25pt,5.625pt);
+        \draw[color=BLUE] (3.5,-0.25) node {$\theta_0 + \delta$};
+        \fill [color=BLACK] (2.01,0) circle (1.5pt);
+        \draw[color=BLACK] (2.05,-0.25) node {$\theta_0$};
+        \fill [color=BLACK] (0.51,1.04) circle (1.5pt);
+        \fill [color=BLACK] (3.51,0.54) circle (1.5pt);
+        \fill [color=BLACK] (2.01,2.04) circle (1.5pt);
+        \end{scriptsize}
+    \end{tikzpicture}
+    \end{center}
+    Если $L\left(x, \theta_{0} \pm \delta\right)<L\left(x, \theta_{0}\right)$, то на интервале $\left(\theta_{0}-\delta, \theta_{0}+\delta\right)$ есть точка локального максимума. По предположению теоремы это означает, что $\theta_{n}(x) \in\left[\theta_{0}-\delta, \theta_{0}+\delta\right]$. Таким образом, имеем
+    $$
+    \lim _{n \rightarrow \infty} P\left(\left|\theta_{n}(X)-\theta_{0}\right| \leq \delta\right)=1
+    $$
+    Теорема доказана.
 \end{proof}
+
