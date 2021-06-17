@@ -111,4 +111,52 @@ q = \frac{\partial f}{\partial x} \cdot \frac 12 + \frac{\partial f}{\partial y}
 \end{proof}	
 
 \subsubsection{Интегральная формула Коши.}
+\begin{theorem*}(Формула Коши--Грина)
+	Если функция $f$ непрерывно дифференцируема в замыкании $\overline{D}$ жордановой области $D$, граница области $L = \partial D$ -- кусочно--гладкая. Пусть $z_0 \in D$. Тогда $$	f(z_0) =\dfrac{1}{2\pi i} \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz - \dfrac{1}{\pi} \lim\limits_{\epsilon \to 0} \iint_{D_{\epsilon}} \dfrac{\partial f}{\partial \overline{z}} \cdot \dfrac{dx \wedge dy}{z - z_0}$$
+\end{theorem*}
+\begin{proof}
+	Рассмотрим функцию $\dfrac{f(z)}{z - z_0}$, она непрерывна в $\overline{D} \backslash \{z_0\}$. Рассмотрим область $D$ без окрестности точки $z_0$: если $U_{\epsilon}(z_0)$ -- круг $|z - z_0 |\leqslant \epsilon$, то рассматриваемая область $D_{\epsilon} = D \backslash U_{\epsilon}(z_0)$. Ее граница $L_{\epsilon} = \partial D_{\epsilon}$ получается объединением двух границ $\partial D$ и  $\partial U_{\epsilon}(z_0)$.
+	
+	Рассмотрим криволинейный интеграл по границе области $\partial D_{\epsilon}$:
+	\begin{align*}
+		\oint_{\partial D_{\epsilon}} \dfrac{f(z)}{z - z_0}\, dz  &= \begin{bmatrix}
+			(x, y) \to (z, \overline{z}) \\
+			df = \frac{\partial f}{\partial z}\, dz + \frac{\partial f}{\partial \overline{z}}\, d\overline{z}, dz \wedge dz = 0
+		\end{bmatrix}, \text{ и по формуле Грина } = \iint_{D_{\epsilon}} d \left(\dfrac{f(z)}{z - z_0}\right) \wedge dz	= \\
+		&=\iint_{D_{\epsilon}} \dfrac{\partial f/\partial \overline{z}}{z - z_0}\, d\overline{z} \wedge dz
+	\end{align*}
+Переходим к обычным переменным, вычисляя матрицу Якоби:
+ $$
+\dfrac{\partial(\overline{z}, z)}{\partial (x,y)} = \begin{pmatrix}
+1 & -i \\
+1 & i
+\end{pmatrix} \implies \operatorname{det} \dfrac{\partial(\overline{z}, z)}{\partial (x,y)} = 2i \implies  d\overline{z} \wedge dz = 2i dx\wedge dy
+$$
+Тогда получим следующее:
+\begin{align*}
+	\iint_{D_{\epsilon}} \dfrac{\partial f/\partial \overline{z}}{z - z_0}\, d\overline{z} \wedge dz = 2i \iint_{D_{\epsilon}} \dfrac{\partial f}{\partial \overline{z}} \cdot \dfrac{1}{z - z_0}\, dx\wedge dy
+\end{align*}
+С другой стороны:
+\begin{align*}
+	\oint_{L_{\epsilon}} =\varointctrclockwise_{L} + \varointclockwise_{|z - z_0| = \epsilon} = \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz - \varointctrclockwise_{|z - z_0| = \epsilon} \dfrac{f(z)}{z - z_0}\, dz
+\end{align*}
+Интеграл  по малой окружности (тот, что справа) можем посчитать. Представим $z = z_0 + \epsilon \cdot e^{i\varphi}, \varphi \in [0; 2\pi],$ тогда $f(z) = f(z_0 + \epsilon e^{i\varphi}) = f(z_0) + \overline{o}(1)$ при $\epsilon \to 0$. При этом,  $dz = \epsilon i e^{i\varphi}\, d\varphi$. Подставляя, получим:
+\begin{align*}
+	\oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz - \varointctrclockwise_{|z - z_0| = \epsilon} \dfrac{f(z)}{z - z_0}\, dz = \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz -  \int_{0}^{2\pi} \dfrac{f(z_0) + \overline{o}(1)}{\epsilon e^{i\varphi}} \cdot  \epsilon i e^{i\varphi}\, d\varphi &=\oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz -  i \int_{0}^{2\pi} f(z_0) + \overline{o}(1) \, d\varphi  = \\
+	&= \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz - 2\pi i f(z_0) + \overline{o}(1) 
+\end{align*}
+
+При устремлении  $\epsilon \to 0$ и приравнивая оба значения интеграла, получаем:
+\begin{align*}
+	f(z_0) =\dfrac{1}{2\pi i} \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz - \dfrac{1}{\pi} \lim\limits_{\epsilon \to 0} \iint_{D_{\epsilon}} \dfrac{\partial f}{\partial \overline{z}} \cdot \dfrac{dx \wedge dy}{z - z_0}
+\end{align*}
+\end{proof}
+
+\begin{comment}
+	$\lim\limits_{\epsilon \to 0} \iint_{D_{\epsilon}} \dfrac{\partial f}{\partial \overline{z}} \cdot \dfrac{dx \wedge dy}{z - z_0}$ называется  \textit{главным значением} несобственного интеграла.
+\end{comment}
+
+\begin{corollary} (Интегральная формула Коши)
+	
 	Если функция $f$ голоморфна в замыкании $\overline{D}$ жордановой области $D$, то $f(z_0) = \dfrac{1}{2\pi i} \oint_{\partial D} \dfrac{f(z)}{z - z_0}\, dz$.
+\end{corollary}

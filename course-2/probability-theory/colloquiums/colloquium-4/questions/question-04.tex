@@ -164,7 +164,7 @@ $\alpha \in (0, 1)$ и фиксированного $\varepsilon > 0$ знать
         
         $
             \alpha^{-\frac{1}{n}} - 1 \sim e^{-\frac{\ln \alpha}{n}} - 1 \sim \frac{-\ln{\alpha}}{n} = 
-            \underline{\text{O}}(\frac{1}{n}) \to \infty
+            \underline{\text{O}}(\frac{1}{n}) \to 0
         $
 
         Получается длина доверительного интервала с ростом количества элементов выборки стремится к нулю.
@@ -175,7 +175,7 @@ $\alpha \in (0, 1)$ и фиксированного $\varepsilon > 0$ знать
         поэтому достаточно показать что одно не зависит от $\theta$ --- тогда в силу независимости сумма тоже
         будет не зависеть от $\theta$:
 
-        $P_\theta(-\ln F_\theta(X_j) \leq) = P_\theta(F_\theta(X_j) \geq e^{-t}) =
+        $P_\theta(-\ln F_\theta(X_j) \leq t) = P_\theta(F_\theta(X_j) \geq e^{-t}) =
         P_\theta(X_j \geq F_\theta^{-1}(e^{-t})) = 1 - F_\theta(F_\theta^{-1}(e^{-t})) = 1 - e^{-t}$, а это
         экспоненциальное распределение. Сумма экспоненциальных распределений это Гамма распределение
         $\implies \text{V}(X, \theta) = \Gamma(n, 1)$

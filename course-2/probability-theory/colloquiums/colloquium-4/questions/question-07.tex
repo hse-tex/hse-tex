@@ -44,8 +44,8 @@
     Зададим критерий $K_t$ из теоремы Неймана-Пирсона (ничего в 0 не обращается --
     сразу можем поделить): \\ $K_t = \left\{\dfrac{f_1}{f_0} \geqslant t\right\} =
     \left \{exp \left( \dfrac{1}{2} \sum_{j = 1}^{n}[(X_j - \theta_0)^2 - (X_j - \theta_1)^2] \right) \geqslant t \right \}$ =
-    [логарифмируем, расскрываем скобки, умножаем на два]  = $\left \{\sum_{j = 1}^n[2X_j(\theta_1 - \theta_0) +
-     n(\theta_0^2 + \theta_1^2)] \geqslant 2\ln t \right \} =
+    [логарифмируем, расскрываем скобки, умножаем на два]  = $\left \{\sum_{j = 1}^n[2X_j(\theta_1 - \theta_0)] +
+     n(\theta_0^2 + \theta_1^2) \geqslant 2\ln t \right \} =
      \left \{(\theta_1 - \theta_0) \overline{X_n} \geqslant \dfrac{\ln t}{n} - \dfrac{(\theta_0^2 + \theta_1^2)}{2} \right \}$
      = [по условию $\theta_1 > \theta_0 \Rightarrow$ поделим] =
      $\left \{\overline{X_n} \geqslant \dfrac{\dfrac{\ln t}{n} - \dfrac{(\theta_0^2 + \theta_1^2)}{2}}{\theta_1 - \theta_0} \right \}$ \\

@@ -1,5 +1,7 @@
 \subsection{Аналитическая функция. Аналитичность голоморфной функции. Неравенство Коши для коэффициентов ряда. Радиус сходимости ряда как максимальный радиус круга, в котором функция голоморфна. Теорема Лиувилля.}
 
+\subsubsection{Аналитическая функция.}
+
 \begin{definition*}
     Функция называется аналитической в точке $z_0$, если $\exists \{c_n\} \in \CC$:
 
@@ -7,6 +9,8 @@
         f(z) = \sum_{k=0}^{\infty} c_k \cdot (z - z_0)^k \text{, } |z - z_0| < \delta
     \]
 \end{definition*}
+
+\subsubsection{Аналитичность голоморфной функции.}
 
 \begin{theorem*}
     Если функция $f$ голоморфна в окрестности $z_0$, то она аналитична в $z_0$.
@@ -29,6 +33,8 @@
     Так как $\dfrac{f(\zeta)}{(\zeta - z_0)^{k + 1}}$ голоморфна в кольце $\varepsilon_1 \leq |z - z_0| \leq \varepsilon_2$, то $\oint_{|z-z_0| = \varepsilon_2} \dfrac{f(\zeta)}{(\zeta - z_0)^{k + 1}}d\zeta - \oint_{|z - z_0| = \varepsilon_1} \dfrac{f(\zeta)}{(\zeta - z)^{k + 1}} d\zeta = 0 \implies c_k$ не зависит от $\varepsilon$.
 \end{proof}
 
+\subsubsection{Неравенство Коши для коэффициентов ряда.}
+
 \begin{corollary}
     (Неравенство Коши)
 
@@ -36,6 +42,8 @@
 
     $|c_k| \leq \dfrac{1}{\varepsilon^{k}} \cdot \sup_{|z - z_0| = \varepsilon} |f(z)|$  $\forall \varepsilon < \delta$
 \end{corollary}
+
+\subsubsection{Радиус сходимости ряда как максимальный радиус круга, в котором функция голоморфна.}
 
 \begin{theorem*}
     Пусть $f(z)$ голоморфна в $|z - z_0| < r$, но не является голоморфной в круге большего радиуса, $f(z) = \sum_{k=0}^{\infty} c_k(z - z_0)^k$, $|z - z_0| < R = \dfrac{1}{\overline{\lim_{k \to \infty}} \sqrt[k]{|c_k|}}$. Тогда $R = r$.
@@ -50,6 +58,8 @@
 
     Значит, $R = r$.
 \end{proof}
+
+\subsubsection{Теорема Лиувилля.}
 
 \begin{theorem*}
     (Лиувилля)
