@@ -40,14 +40,14 @@
 		\[ \sum_{j=2}^n u_j^2 = \sum_{j=1}^n (X_j - \overline{X_n})^2 \text{ --- независимо с } u_1 = \frac{X_1 + \ldots + X_n}{\sqrt{n}} = \sqrt{n}\ \overline{X_n} \]
 		
 		При этом $\sum_{j=2}^n u_j^2 = \sigma^2 \sum_{j=2}^n (\sigma^{-1} u_j)^2$, и $\sigma^{-1} u_j \sim \mathcal{N}(0, 1)$, то есть
-        \[ \chi_{n-1}^2 = \sum_{j=1}^{n} \frac{(X_j - \overline{X_n})^2}{\sigma^2} = \sum_{k=1}^{n-1} \xi_k^2, \, \{ \xi_k \} \text{ --- незав.}, \xi_k \sim \mathcal{N}(0, 1), \]
-        где $\chi_{n-1}^2$ --- распределение $\chi$-квадрат с $(n-1)$ степенями свободы, распределение величины $\sum_{j=1}^n \eta_j^2$, $\eta_j$ --- независимые нормально распределенные с параметрами 0 и 1 величины.
+        \[ \chi_{n-1}^2 = \sum_{j=2}^n \frac{u_j^2}{\sigma^2} = \sum_{j=1}^{n} \frac{(X_j - \overline{X_n})^2}{\sigma^2} = \sum_{k=1}^{n-1} \xi_k^2, \, \{ \xi_k \} \text{ --- незав.}, \xi_k \sim \mathcal{N}(0, 1), \]
+        где $\chi_{n-1}^2$ --- распределение $\chi$-квадрат с $(n-1)$ степенями свободы, распределение величины $\sum_{j=1}^{n-1} \xi_j^2$, $\xi_j$ --- независимые нормально распределенные с параметрами 0 и 1 величины.
 		
-		В итоге $\overline{X_n}$ и $s^2 = \frac1{n-1} \sum_{j=1}^n (x_j - \overline{X_n})^2$ независимы и $\sigma^{-2}s^2 \sim \frac1{n-1}\,\chi_{n-1^2}$.
+		В итоге $\overline{X_n}$ и $s^2 = \frac1{n-1} \sum_{j=1}^n (x_j - \overline{X_n})^2$ независимы и $\sigma^{-2}s^2 \sim \frac1{n-1}\,\chi_{n-1}^2$.
 	\end{proof}
 	
 	Так как $\sigma$ неизвестна, заменим ее на $\sqrt{s^2}$ и получим статистику:
-	\[ T_{n-1}(X) = \frac{\sqrt{n}(X_n - a)}{\sqrt{s^2}} = \frac{\frac{\sqrt{n}(X_n - a)}{\sigma}}{\sqrt{\sigma^2 s^2}} \sim \frac{\xi}{\sqrt{\frac1{n-1}\,\chi^2_{n-1}}}, \]
+    \[ T_{n-1}(X) = \frac{\sqrt{n}(X_n - a)}{\sqrt{s^2}} = \frac{\frac{\sqrt{n}(X_n - a)}{\sigma}}{\sqrt{\sigma^{-2} s^2}} \sim \frac{\xi}{\sqrt{\frac1{n-1}\,\chi^2_{n-1}}}, \]
 	$\xi$ и $\chi$ независимы.
 	
 	$T_{n} = \frac{\xi}{\sqrt{\frac1n\,\chi_n^2}}$ --- распределение Стьюдента с $n$ степенями свободы.
