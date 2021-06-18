@@ -22,4 +22,11 @@
     Выражение $\dfrac{\partial P}{\partial x} + \dfrac{\partial Q}{\partial y} + \dfrac{\partial R}{\partial z}$ называется \textit{дивергенцией} векторного поля. Обозначение: div$(P, Q, R)$
 \end{definition*}
 
-Более подробная запись формулы Остроградского-Гаусса: $\iint_{S} P dy \wedge dz + Q dz \wedge dx + R dx \wedge dy = \iiint_{D}\left(\dfrac{\partial P}{\partial x} + \dfrac{\partial Q}{\partial y} + \dfrac{\partial R}{\partial z}\right) dx \wedge dy \wedge dz$
+Более подробная запись формулы Остроградского-Гаусса: $$\iint_{S} P dy \wedge dz + Q dz \wedge dx + R dx \wedge dy = \iiint_{D}\left(\dfrac{\partial P}{\partial x} + \dfrac{\partial Q}{\partial y} + \dfrac{\partial R}{\partial z}\right) dx \wedge dy \wedge dz$$
+
+Рассмотрим случай $P = x,\ Q = y,\ R = z$, затим, что div$(x, y, z) = 3$, тогда мы можем вычислить обьем $D$:
+$$\mu(D) = \dfrac{1}{3} \iiint_{D} 3 dx \wedge dy \wedge dz = \dfrac{1}{3}\oiint_{\partial D} \left(x dy \wedge dz + y dz \wedge dx + z dx \wedge dy\right) = \dfrac{1}{3}\oiint_{\partial D} \langle \overline x, \overline n\rangle ds$$
+
+Где $\overline x = \begin{pmatrix}
+	x & y & z
+\end{pmatrix}^\top$.
