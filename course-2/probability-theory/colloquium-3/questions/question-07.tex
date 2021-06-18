@@ -1,0 +1,64 @@
+\subsection{Неравенство типа Хефдинга-Чернова. Пример применения.}
+
+\subsubsection{Неравенство типа Хедфинга-Чернова}
+\begin{theorem*}[Неравенство Хедфинга-чернова]
+    Пусть случайные величины $ X_1, \dots, X_n $ независимы и $ a_j \leq X_j \leq b_j. $ Тогда для случайной величины $S_n \coloneqq X_1 + \dots + X_n$ и для каждого $t > 0$ выполнено
+    \begin{equation*}
+        \P(|S_n - \mathbb{E}S_n| \geq t) \leq 2 exp(-\frac{t^2}{4\sum_{j=1}^{n}(b_j - a_j)^2})
+    \end{equation*}
+\end{theorem*}
+
+\begin{proof}
+    Пусть $Y_j = X_j - \mathbb{E}X_j.$ Тогда $|Y_j|\leq b_j - a_j,$ т.к. $X_j\in[a_j, b_j]$ и $\mathbb{E}\in[a_j, b_j].$ Заметим, что для каждого $\lambda > 0$
+    \begin{equation*}
+        \P(\sum\limits_{j=1}^{n}Y_j \geq t) = \P(e^{\lambda\sum_{j=1}^{n}Y_j} \geq e^{\lambda t}) \leq e^{-\lambda t}\mathbb{E}e^{\lambda\sum_{j=1}^{n} Y_j} = e^{-\lambda t}\prod_{j=1}^{n}\mathbb{E}e^{\lambda Y_j}
+    \end{equation*}
+    Оценим каждое ожидание из произведения:
+    \begin{equation*}
+        \mathbb{E}e^{\lambda Y_j} = 1 + \lambda\mathbb{E}Y_j + \frac{1}{2}\lambda^{2}\mathbb{E}Y_{j}^{2} + \sum\limits_{k = 3}^{\infty}\frac{1}{k!}\lambda^{k}\mathbb{E}Y_{j}^{k} \leq 1 + \frac{1}{2}\lambda^{2}(b_j - a_j)^{2} + \sum\limits_{k=3}^{\infty}\frac{1}{k!}\lambda^{k}(b_j - a_j)^{k}, 
+    \end{equation*}
+    здесь мы использовали $\mathbb{E}Y_j = 0.$ Докажем, что при $R > 0$ выполнена оценка
+    \begin{equation*}
+        1 + \frac{1}{2}R^2 + \sum\limits_{k=3}^{\infty}\frac{1}{k!}R^k \leq e^{R^2}
+    \end{equation*}
+    Действительно, если $R > 1$, то
+    \begin{equation*}
+        1 + \frac{1}{2}R^2 + \sum\limits_{k=3}^{\infty}\frac{1}{k!}R^k = 1 + \frac{1}{2}R^2 + \sum\limits_{m=2}^{\infty}\frac{1}{m!}R^{2m}[\frac{m!}{(2m - 1)!}R^{-1} + \frac{m!}{(2m)!}] \leq 1 + \frac{1}{2}R^2 + \sum\limits_{m=2}^{\infty}\frac{1}{m!}R^{2m}[\frac{2}{m + 1}] \leq 1 + R^2 + \sum\limits_{m=2}^{\infty}\frac{1}{m!}R^{2m} = e^{R^2}.
+    \end{equation*}
+    если же $R\leq 1$, то
+    \begin{equation*}
+        1 + \frac{1}{2}R^2 + \sum\limits_{k=3}^{\infty}\frac{1}{k!}R^k \leq 1 + \frac{1}{2}R^2+ \sum\limits_{k=3}^{\infty}\frac{1}{2^{k-1}}R^2 = 1 + R^2 \leq e^{R^2}.
+    \end{equation*}
+    Таким образом,
+    \begin{equation*}
+        \P(\sum\limits_{j=1}^{n}Y_j\geq t)\leq 2 exp(-\lambda t + \lambda^2\sum\limits_{j=1}^{n}(b_j - a_j)^2).
+    \end{equation*}
+    Взяв $\lambda = \frac{t}{2\sum_{j=1}^{n}(b_j - a_j)^2},$ получим оценку
+    \begin{equation*}
+        \P(S_n - \mathbb{E}S_n \geq t)\leq exp(-\frac{t^2}{4\sum_{j=1}^{n}(b_j - a_j)^2}).
+    \end{equation*}
+    Аналогично, рассматривая случайные величины $X_{j}^{'} \coloneqq -X_j$ получаем оценку
+    \begin{equation*}
+        \P(-S_n + \mathbb{E}S_n \geq t) \leq exp(-\frac{t^2}{4\sum_{j=1}^{n}(b_j - a_j)^2}).
+    \end{equation*}
+    объединяя полученные неравенства получаем оценку из формулировки теоремы
+\end{proof}
+
+\begin{theorem*}[следствие]
+    Пусть $X_j ~ Bern(p) $ -- набор независимых Бернуллевских случайных величин, $S_n = X_1 + \dots + X_n$, тогда
+    \begin{equation*}
+        \P(|\frac{S_n}{n} - p| \geq t) \leq 2e^{-\frac{nt^2}{4}}
+    \end{equation*}
+\end{theorem*}
+
+\subsubsection{Пример применения}
+\textbf{Пример}\\
+Пусть в ящике какое-то кол-во черных и белых шаров. Каким должен быть размер выборки, чтобы оценить долю белых шаров с малой погрешностью? Пусть $\xi_j $ -- бернуллевская случайная величина, равная 1, если шар белого цвета и 0, если цвет черный. Мы хотим оценить вероятность успеха p. По нер-ву выше
+
+\begin{equation*}
+    \P(|\frac{S_n}{n} - p| \geq t) \leq 2e^{-\frac{nt^2}{4}} < \varepsilon
+\end{equation*}
+Тогда при размере выборки $n = \Omega(\frac{log\varepsilon^{-1}}{t^2})$ выборочное среднее приближает реальную долю белых шаров с точностью t с вероятностью более $1 - \varepsilon$.
+
+
+

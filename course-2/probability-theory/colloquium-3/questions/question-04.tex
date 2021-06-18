@@ -1,0 +1,246 @@
+\subsection{Характеристические функции: определение и свойства. Вычисление характеристической функции нормальной случайной величины. Производные характеристических функций.}
+
+\subsubsection{Характеристические функции: определение и свойства.}
+
+\begin{definition*}
+    Пусть $X$ это случайная величина. Тогда характеристическая функция случайной величины $X$ это
+    \begin{equation*}
+        \phi_X(t) := \E[e^{itX}] = \E[\cos (t \cdot X)] + i \cdot \E[\sin (t \cdot X)].
+    \end{equation*}
+\end{definition*}
+
+\begin{theorem*}[Свойства характеристических функций]
+    У характеристической функции есть следующие свойства:
+    \begin{enumerate}
+    \item
+        Для любой случайной величины $X$ выполняется $\phi_X(0) = 1$.
+        
+    \item 
+        Для любой случайной величины и любого $t \in \RR$ выполняется $|\phi_X(t)| \leq 1$.
+
+    \item 
+        Для чисел $a$ и $b$ выполняется
+        \begin{equation*}
+            \phi_{aX + b}(t) = e^{itb} \cdot \phi_X(at).
+        \end{equation*}
+
+    \item 
+        Если $X_n$ это последовательность \textbf{независимых} случайных величин, то
+        \begin{equation*}
+            \phi_{X_1 + X_2 + \dots + X_n}(t) = \phi_{X_1}(t) \cdot \phi_{X_2}(t) \cdot \dots \cdot \phi_{X_n}(t).
+        \end{equation*}
+    \end{enumerate}
+\end{theorem*} 
+
+\begin{proof}
+    Для доказательства будем пользоваться следующей формулой:
+    \begin{equation*}
+        \phi_X(t) = \E[\cos (t \cdot X)] + i \cdot \E[\sin (t \cdot X)],
+    \end{equation*}
+    которая следует из формулы Эйлера $e^{ix} = \cos x + i \cdot \sin x$.
+
+    Докажем свойства:
+    \begin{enumerate}
+    \item
+        Для любой случайной величины $X$ выполняется $\phi_X(0) = 1$.
+
+        Проверяется подстановкой:
+        \begin{equation*}
+            \phi_X(0) = \E[e^{i \cdot 0 \cdot X}] = \E[e^0] = \E[1] = 1.
+        \end{equation*}
+        
+    \item 
+        Для любой случайной величины и любого $t \in \RR$ выполняется $|\phi_X(t)| \leq 1$.
+
+        Рассмотрим случайную величину $Y$. Знаем, что ее дисперсия неотрицательна, то есть $\D[Y] = \E[Y^2] - (\E[Y])^2 \geq 0$, откуда следует, что для любой случайной величины $Y$ справедливо $\E[Y^2] \geq (\E[Y])^2$.
+
+        Значение характеристической функции это комплексное число. Квадрат модуля комплексного числа это сумма квадратов его мнимой и действительной частей:
+        \begin{equation*}
+            |\phi_X(t)|^2 = (\E[\cos (t \cdot X)])^2 + (\E[\sin (t \cdot X)])^2.
+        \end{equation*}
+        
+        
+        С помощью знаний о $\E[Y^2] \geq (\E[Y])^2$ оценим квадрат модуля характеристической функции:
+        \begin{align*}
+            |\phi_X(t)|^2 
+            &= (\E[\cos (t \cdot X)])^2 + (\E[\sin (t \cdot X)])^2
+            \leq \E[\cos^2(t \cdot X)] + \E[\sin^2 (t \cdot X)]
+            = \E[\cos^2 (t \cdot X) + \sin^2 (t \cdot X)]
+            = \E[1]
+            = 1.
+        \end{align*}    
+
+    \item 
+        Для чисел $a$ и $b$ выполняется
+        \begin{equation*}
+            \phi_{aX + b}(t) = e^{itb} \cdot \phi_X(at).
+        \end{equation*}
+
+        Заметим, что если $y$ это некоторое число, то $\E[y \cdot X] = y \cdot \E[X]$ по линейности математического ожидания.
+
+        Запишем по определению:
+        \begin{align*}
+            \phi_{aX + b}(t)
+            = \E[e^{it \cdot aX + it \cdot b}]
+            = \E[e^{it \cdot aX} \cdot e^{it \cdot b}]
+            = e^{it \cdot b} \cdot \E[e^{it \cdot aX}]
+            = e^{it \cdot b} \cdot \phi_{aX}(t).
+        \end{align*}
+
+    \item 
+        Если $X_n$ это последовательность \textbf{независимых} случайных величин, то
+        \begin{equation*}
+            \phi_{X_1 + X_2 + \dots + X_n}(t) = \phi_{X_1}(t) \cdot \phi_{X_2}(t) \cdot \dots \cdot \phi_{X_n}(t).
+        \end{equation*}
+
+        Пусть $Y_n = e^{i \cdot t \cdot X_n}$. Тогда $Y_1, \dots Y_n$ это последовательность независимых случайных величин (в силу независимости $X_n$) и $\E[Y_1 \cdot \dots \cdot Y_n] = \E[Y_1] \cdot \dots \cdot \E[Y_n]$.
+
+        Запишем по определению:
+        \begin{equation*}
+            \phi_{X_1 + X_2 + \dots + X_n}(t)
+            = \E[e^{itX_1 + \dots + itX_n}]
+            = \E[e^{itX_1} \cdot \dots \cdot e^{itX_n}]
+            = \E[Y_1 \cdot \dots \cdot Y_n]
+            = \E[Y_1] \cdot \dots \cdot \E[Y_n]
+            = \phi_{X_1}(t) \cdot \dots \cdot \phi_{X_n}(t).
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\subsubsection{Вычисление характеристической функции нормальной случайной величины.}
+
+Хотим вычислить $\phi_{\xi}(t)$, где $\xi \sim \mathcal{N}(0, 1)$.
+
+Запишем по определению:
+\begin{equation*}
+    \phi_{\xi}(t) = \E[e^{it \xi}]
+    = \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} \cos (tx) \exp[-x^2/2] \dd x
+    + \dfrac{i}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} \sin (tx) \exp[-x^2/2] \dd x.
+\end{equation*}
+
+Заметим, что второе слагаемое $\dfrac{i}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} \sin (tx) \exp[-x^2/2] \dd x$ равно нулю, так как это интеграл нечетной функции по симметричному промежутку. Тогда
+\begin{equation*}
+    \phi_{\xi}(t) 
+    = \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} \cos (tx) \exp[-x^2/2] \dd x.
+\end{equation*}
+
+Возьмем производную по $t$ (считаем, что она берется):
+\begin{align*}
+    \phi_{\xi}'(t)
+    &= -\dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} x \cdot \sin (tx) \exp[-x^2/2] \dd x
+    = \dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} \sin (tx) \dd (\exp[-x^2/2]) \\
+    &= \dfrac{1}{\sqrt{2 \pi}} \sin (tx) \exp[-x^2/2]\Big|_{-\infty}^{+\infty} - \dfrac{t}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} \cos (tx) \exp[-x^2/2] \dd x \\
+    &= 0 - \dfrac{t}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} \cos (tx) \exp[-x^2/2] \dd x
+    = -t \cdot \phi_{\xi}(t).
+\end{align*}
+
+Пришли к дифференциальному уравнению:
+\begin{equation*}
+    \phi_{\xi}'(t) = -t \cdot \phi_{\xi}(t) \implies
+    \dfrac{\phi_{\xi}'(t)}{\phi_{\xi}(t)} = -t.
+\end{equation*}
+
+Интегрируем обе части:
+\begin{equation*}
+    \int \dfrac{\dd (\phi_{\xi}(t))}{\phi_{\xi}(t)} = \ln |\phi_{\xi}(t)| + C = \int -t \dd t = - \dfrac{t^2}{2}.
+\end{equation*}
+
+Теперь берем экспоненту от обеих частей:
+\begin{equation*}
+    \phi_{\xi}(t) = C' \cdot \exp[-t^2/2],
+\end{equation*}
+где $C'$ это некоторая константа. 
+
+Про характеристическую функцию мы знаем, что $\phi_{\xi}(0) = 1$. Тогда
+\begin{equation*}
+    \phi_{\xi}(0) = 1 = C' \cdot \exp[0] = C',
+\end{equation*}
+откуда находим $C' = 1$.
+
+Тогда характеристическая функция стандартной нормальной величины имеет следующий вид:
+\begin{equation*}
+    \phi_{\xi}(t) = \exp[-t^2/2].
+\end{equation*}
+
+\subsubsection{Производные характеристических функций.}
+
+\begin{theorem*}
+    Пусть $X$ это случайная величина с конечным $k$-ым моментом ($\E[|X|^k] < \infty$). Тогда $\phi_X$ $k$ раз дифференцируема в точке $0$ и
+    \begin{equation*}
+        \phi_{X}^{(k)}(0) = i^k \cdot \E[X^k].
+    \end{equation*}
+\end{theorem*}
+
+\begin{proof}
+    Докажем для $k = 1$, для остальных порядков аналогично.
+
+    Мы хотим найти производную:
+    \begin{align*}
+        \lim_{h_n \to 0} \dfrac{\phi_X(t + h_n) - \phi_X(t)}{h_n}
+        = \lim_{h_n \to 0} \dfrac{1}{h_n} \cdot \left(\E[e^{i (t + h_n) X}] - \E[e^{itX}]\right)
+        = \lim_{h_n \to 0} E \left[\dfrac{e^{i (t + h_n) X} - e^{itX}}{h_n}\right]
+        =: \lim_{h_n \to 0} E[g_n],
+    \end{align*}
+    то есть обозначили $g_n = \dfrac{e^{i (t + h_n) X} - e^{itX}}{h_n}$.
+
+    Поймем, что мы знаем про функцию $g_n$:
+    \begin{itemize}
+    \item 
+        У нее есть поточечный предел:
+        \begin{equation*}
+            \lim_{n \to \infty} g_n(X) = \left(e^{itX}\right)'_t = iX e^{itX}.
+        \end{equation*}
+
+    \item 
+        Надо как-то оценить $|g_n|$.
+
+        Знаем, что модуль комплексной экспоненты равен $1$, то есть $|e^{itX}| = 1$. Тогда
+        \begin{equation*}
+            |g_n(X)| 
+            = \left|\dfrac{e^{itX} \cdot (e^{ih_nX} - 1)}{h_n}\right|
+            = |e^{itX}| \cdot \left|\dfrac{e^{ih_nX} - 1}{h_n}\right|
+            = \left|\dfrac{e^{ih_nX} - 1}{h_n}\right|
+            = \left|\dfrac{e^{ih_nX} - e^{i \cdot 0 \cdot X}}{h_n}\right|
+            = \left(e^{itX}\right)'_t(\xi)
+            = \left|iX e^{i \xi X}\right|
+        \end{equation*}
+        для некоторого $\xi \in (0; h_n)$.
+
+        Предпоследний переход выполнен по теореме Лагранжа, которая гласит следующее:
+        \begin{equation*}
+            \exists \xi \in (a; b): \quad \dfrac{f'(b) - f'(a)}{b - a} = f'(\xi).
+        \end{equation*}
+
+        Опять же воспользуемся тем, что модуль комплексной экспоненты равен $1$:
+        \begin{equation*}
+            |g_n(X)| 
+            = \left|iX e^{i \xi X}\right|
+            = |i| \cdot |X| \cdot \left|e^{i \xi X}\right|
+            = 1 \cdot |X| \cdot 1
+            = |X|.
+        \end{equation*}
+    \end{itemize}
+
+    Мы получили, что
+    \begin{itemize}
+    \item 
+        $|g_n(X)| \leq |X|$ и $\E[|X|] < \infty$ (для этого и нужна конечность моментов);
+
+    \item 
+        $g_n(X) \xrightarrow{\text{п. н.}} i \cdot X \cdot e^{itX}$.
+    \end{itemize}
+
+    Тогда по теореме Лебега предел ожиданий есть ожидание предела:
+    \begin{equation*}
+        \lim_{n \to \infty} \E[g_n(X)] = \E[i \cdot X \cdot e^{itX}].
+    \end{equation*}
+
+    Возвращаемся в самое начало:
+    \begin{equation*}
+        \phi_X(t)' = \lim_{n \to \infty} \E[g_n] = i \cdot \E[X \cdot e^{itX}],
+    \end{equation*}
+    откуда получаем
+    \begin{equation*}
+        \phi_X(0)' = i \cdot \E[X \cdot e^{0}] = i \cdot \E[X].
+    \end{equation*}
+\end{proof} 

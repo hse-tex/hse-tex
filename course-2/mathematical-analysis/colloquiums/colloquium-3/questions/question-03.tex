@@ -1,6 +1,6 @@
 \subsection{Свойства равномерно сходящегося семейства функций. Теорема о предельном переходе. Теорема о непрерывности по параметру. Теорема об интегрировании по параметру. Теорема о дифференцировании по параметру.}
 
-\subsubsection{Теорема о пределльном переходе}
+\subsubsection{Теорема о предельном переходе}
 
 \begin{theorem*}[Теорем о предельном переходе] \ \\
     Пусть: 
@@ -13,7 +13,7 @@
 \end{theorem*}
 \begin{proof}
     Необходимо доказать, что $|g(y) - c|$ мала. \\
-    $|g(y) - c| \leqslant |g(y) - f(x, y)| + |f(x + y) - h(x)| + |h(x) - c|$ \\
+    $|g(y) - c| \leqslant |g(y) - f(x, y)| + |f(x, y) - h(x)| + |h(x) - c|$ \\
     \begin{itemize}
         \item $|g(y) - f(x, y)| < \dfrac{\epsilon}{3}$, при $ 0 < |x - a| < \delta_1, \ \forall y \in H$
         \item $|h(x) - c| < \dfrac{\epsilon}{3}$, при $0 < |x - a| < \delta_2$
@@ -41,7 +41,7 @@
         \item $|f(x, b) - g(b)| < \dfrac{\epsilon}{3}$ -- это частный случай предыдущего 
         пункта (так как $b \in H$ по условию теоремы)
         \item $|f(x, y) - f(x, b)| < \dfrac{\epsilon}{3}$ при фиксированном $x$ и, в виду непрерывности
-        $f(x, y)$ по $y$ в точки $y = b$ (условие теоремы), $|y - b| < \delta_2$
+        $f(x, y)$ по $y$ в точке $y = b$ (условие теоремы), $|y - b| < \delta_2$
     \end{itemize}
     Для $\delta = \delta_2: |g(y) - g(b)| < \dfrac{\epsilon}{3} + 
     \dfrac{\epsilon}{3} +  \dfrac{\epsilon}{3} = \epsilon$
@@ -67,7 +67,7 @@
     Пусть $\{H_i\}$ -- разбиение множества $H$. Тогда необходимо доказать: \\
     $\displaystyle \sum_{i} \sup_{y_1, y_2 \in H_i} |g(y_1) - g(y_2)| \mu(H_i) =
     \sum_{i} \omega_{g}(H_i) \mu(H_i) < \eps$, где $\mu(H_i)$ -- мера множества $H_i$. \\ 
-    $|g(y_1) - g(y_2) \leqslant |g(y_1) - f(x, y_1)| + |f(x, y_1) - f(x, y_2)| 
+    $|g(y_1) - g(y_2)| \leqslant |g(y_1) - f(x, y_1)| + |f(x, y_1) - f(x, y_2)| 
     + |f(x, y_2) - g(y_2)|$
     \begin{itemize}
         \item $|g(y_1) - f(x, y_1)| < \dfrac{\epsilon}{3 \mu(H)}$,
@@ -91,13 +91,13 @@
     
     Теперь докажем вторую часть утверждения -- научимся брать интеграл от функции $g$.\\
     $\displaystyle \left|\int_{H} (g(y) - f(x, y))dy\right| \leqslant
-    \int_{H} |(g(y) - f(x, y)|dy$ 
+    \int_{H} |g(y) - f(x, y)|dy$ 
     \begin{itemize}
-        \item $ |(g(y) - f(x, y)| < \epsilon$ при $ 0 < |x - a| < \delta$ и $\forall y \in H$
+        \item $ |g(y) - f(x, y)| < \epsilon$ при $ 0 < |x - a| < \delta$ и $\forall y \in H$
     \end{itemize}
     Следовательно, $\displaystyle \left|\int_{H} (g(y) - f(x, y))dy\right| < \epsilon \mu(H)$ \\
-    $\displaystyle \Rightarrow \int_{H} ((g(y) - f(x, y))dy \underset{x \to a}{\to 0}$ \\
-    $\displaystyle \int_{H} f(x,y)dy = \int_{H} g(y)dy + \int_{H} ((g(y) - f(x, y))dy 
+    $\displaystyle \Rightarrow \int_{H} (g(y) - f(x, y))dy \xrightarrow[x \to a]{} 0$ \\
+    $\displaystyle \int_{H} f(x,y)dy = \int_{H} g(y)dy + \int_{H} (g(y) - f(x, y))dy 
     \to \int_{H} g(y)dy$ 
 \end{proof}
 

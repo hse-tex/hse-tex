@@ -1,0 +1,115 @@
+\section{Билет 6}
+
+\begin{center}
+    \it
+    Проверка гипотез.
+    Ошибки 1-го и 2-го рода.
+    Уровень значимости и мощность статистического критерия.
+    Пример построения критерия с помощью доверительного интеграла.
+    Нижняя оценка суммы вероятностей ошибок 1-го и 2-го рода.
+\end{center}
+
+\subsection{Проверка гипотез}
+
+Пускай есть выборка $X_1,\ldots,X_n$ с распределением $P_{\theta}$.
+
+\begin{definition*}
+Предположения о значениях $\theta$ и называются статистическими гипотезами. 
+\end{definition*}
+\begin{example}
+$H_0\colon\theta\in\Theta_0~-~$ статистическая\ гипотеза
+\end{example}
+\begin{definition*}
+Простая гипотеза (одноточечная гипотеза)$~-~$гипотеза вида $H_{0}\colon\theta=\Theta_0$, где $\Theta=\{\theta_0\}$
+\end{definition*}
+\begin{definition*}Гипотеза $H_{1}\colon\theta=\Theta_1~-~$альтернативная гипотеза
+\end{definition*}
+\begin{example}
+$H_1\colon\theta=\overline{\Theta_0}~-~$ альтернативная\ гипотеза
+\end{example}
+
+Для проверки гипотез, строят критерий на основе критического множества как правило $\subset \mathbb{R}^n$, то есть действуют по такому принципу:
+
+Выделяют в области значения параметров критического множества $K$, так, что $\forall \theta \in\Theta_0,\ P_\theta((X_1\ldots X_n)\in K)~$ --- <<маленькая>>, тогда 
+$X_1\ldots X_n\in K\text{ свидетельствует против гипотезы}\ H_0$, то есть если $X=(X_1\ldots X_n)\in K\Rightarrow H_0$ отклоняется, иначе принимается.
+
+Далее $X=(X_1\ldots X_n)$ 
+\subsection{Ошибки 1-го и 2-го рода}
+Пусть у нас есть критическое множество $K$. При проверке гипотез мы могли совершить две ошибки:
+\begin{definition*}
+Ошибка первого рода: отклонение верной гипотезы $H_0$, то есть это $\underset{\theta\in\Theta_0}{P_\theta}(X\in K)$. В случае простой гипотезы $P_{\theta_0}(X\in K)$
+\end{definition*}
+\begin{definition*}
+Ошибка второго рода: принятие ложной гипотезы $H_0$, то есть это $\underset{\theta\in\Theta_1}{P_\theta}(X\notin K)$. В случае простой гипотезы $P_{\theta_1}(X\notin K)$
+\end{definition*}
+
+\subsection{Уровень значимости и мощность статистического критерия}
+\begin{definition*}
+Критерий $K$ имеет уровень значимости $\alpha$, если вероятность ошибки первого рода меньше либо равна $\alpha$, то есть $\underset{\theta\in\Theta_0}{P_\theta}(X\in K)\leq\alpha$.
+\end{definition*}
+
+\begin{definition*}
+Мощность критерия $K$ это величина, равная 1 - вероятность ошибки второго рода, то есть $\\ 1-\underset{\theta\in\Theta_1}{P_\theta}(X\notin K)=\underset{\theta\in\Theta_1}{P_\theta}(X\in K)$. В случае простой гипотезы величина $\beta=P_{\theta_1}(X\in K)~-~$мощность
+\end{definition*} 
+
+Если имеются два критерия $K,S$ уровня значимости $\alpha$, то $K$ более мощный, чем $S$ если $$\forall\theta\in\Theta_1\colon P_\theta(X\in K)\geq P_\theta(X\in S)$$
+\subsection{Пример построения критерия с помощью доверительного интеграла}
+\begin{example}
+Пускай $X_1,\ldots,X_n\sim\mathcal{N}(\theta,1)\\ H_0:\theta=\theta_0\\ H_1:\theta=\theta_1$
+
+Ранее при данных условиях мы получили следующий доверительный интервал:
+$$P_{\theta_0}\left(\overline{X_n}-\dfrac{Z_{1-\frac{\alpha}{2}}}{\sqrt{n}}\leq \theta_0\leq \overline{X_n}+\dfrac{Z_{1-\frac{\alpha}{2}}}{\sqrt{n}}\right)=P_{\theta_0}\left(\theta_0-\dfrac{Z_{1-\frac{\alpha}{2}}}{\sqrt{n}}\leq \overline{X_n}\leq \theta_0+\dfrac{Z_{1-\frac{\alpha}{2}}}{\sqrt{n}}\right)=1-\alpha$$
+
+Выберем критическое множество $K\colon \left\{X\colon
+\overline{X_n}>\theta_0+\dfrac{Z_{1-\frac{\alpha}{2}}}{\sqrt{n}}\right\}\cup\left\{X\colon \overline{X_n}<\theta_0-\dfrac{Z_{1-\frac{\alpha}{2}}}{\sqrt{n}}\right\}\\$
+Тогда $P_{\theta_0}(X\in K)=1-(1-\alpha)=\alpha$
+
+Найдем ошибку второго рода: 
+        \begin{align}
+            P_{\theta_1}(X\notin K)=P_{\theta_1}\left(\theta_0-\dfrac{Z_{1-\frac{\alpha}{2}}}{\sqrt{n}}\leq \overline{X_n}\leq \theta_0+\dfrac{Z_{1-\frac{\alpha}{2}}}{\sqrt{n}}\right)&=
+        \\
+        =P_{\theta_1}\Bigg(\sqrt{n}\left(\theta_0-\theta_1\right)-Z_{1-\frac{\alpha}{2}}\leq \underbrace{\sqrt{n}\left(\overline{X_n}-\theta_1\right)}_{\sim\mathcal{N}(0,1)}\leq \sqrt{n}\left(\theta_0-\theta_1\right)&+Z_{1-\frac{\alpha}{2}}\Bigg)=
+        \\
+        =\Phi\left(\sqrt{n}\left(\theta_0-\theta_1\right)+Z_{1-\frac{\alpha}{2}}\right)-\Phi\left(\sqrt{n}\left(\theta_0-\theta_1\right)-Z_{1-\frac{\alpha}{2}}\right)
+        \end{align}
+Посмотрим, что происходит при $n\rightarrow \infty$:
+\begin{enumerate}
+    \item $\theta_0>\theta_1\implies P_{\theta_1}(X\notin K)\rightarrow 0$
+    \item $\theta_0<\theta_1\implies P_{\theta_1}(X\notin K)\rightarrow 0$
+\end{enumerate}
+Таким образом, мы получили состоятельный критерий.
+
+\begin{definition*}
+	Критерий состоятелен, если с ростом объема выборки его мощность стремится к 1.
+\end{definition*}
+\end{example}
+
+\subsection{Нижняя оценка суммы вероятностей ошибок 1-го и 2-го рода}
+\begin{theorem*}
+Пусть у нас есть две гипотезы:
+\begin{enumerate}
+    \item $H_0:\rho=f_0$
+    \item $H_1:\rho=f_1$
+\end{enumerate}
+Сумма ошибки первого рода и ошибки второго рода больше либо равна $1-\dfrac{1}{2}\int\limits_{\mathbb{R}^n}|f_0-f_1|dx$
+\end{theorem*}
+\begin{proof}
+Найдем сумму ошибок первого и второго рода:
+        \begin{align}
+            P_{0}(X\in K)+P_{1}(X\notin K) =\int\limits_{K}f_0dx&+\underbrace{\int\limits_{\mathbb{R}^n\setminus K}f_1dx}_{1-\int\limits_K f_1dx}=1+\int\limits_{K}(f_0-f_1)dx\geq
+        \\
+        \text{Введем множество}&\ S=\{f_0\leq f_1\} 
+        \\
+        \geq 1+\int\limits_{K\cap S}(f_0-f_1)dx &\geq 1+\int\limits_{S}(f_0-f_1)dx
+        \end{align}
+Рассмотрим отдельно интеграл $\int\limits_{S}(f_0-f_1)dx$:
+\begin{align}
+            \int\limits_{S}(f_0-f_1)dx=\int\limits_{S}f_0dx-\int\limits_{S}f_1dx=1-\int\limits_{\mathbb{R}^n\setminus S}f_0\ dx-1+\int\limits_{\mathbb{R}^n\setminus S}f_1dx =\int\limits_{\mathbb{R}^n\setminus S}(f_1-f_0)dx
+        \end{align}
+В силу того, как мы выбрали множество $S$, можно увидеть, что
+\begin{enumerate}
+    \item $\int\limits_{S}(f_0-f_1)dx=-\int\limits_{S}|f_0-f_1|dx$
+    \item $\int\limits_{\mathbb{R}^n\setminus S}(f_1 -f_0)dx=-\int\limits_{\mathbb{R}^n\setminus S}|f_0-f_1|dx$
+\end{enumerate}
+Тогда мы получаем, что $$-\int\limits_{\mathbb{R}^n\setminus S}|f_0-f_1|dx=-\int\limits_{S}|f_0-f_1|dx=-\dfrac{1}{2}\int\limits_{\mathbb{R}^n}|f_0-f_1|dx\implies P_{0}(X\in K)+P_{1}(X\notin K)\geq 1-\dfrac{1}{2}\int\limits_{\mathbb{R}^n}|f_0-f_1|dx$$
+\end{proof}
