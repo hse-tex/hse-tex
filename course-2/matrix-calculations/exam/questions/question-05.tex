@@ -33,8 +33,11 @@ $$\frac{T_k\left(\frac{a + b - 2 \lambda}{a-b}\right)}{T_k\left(\frac{a + b}{a-b
 	p_k(\lambda) = \frac{T_{k-1}\left(\frac{\lambda_2 + \lambda_n - 2 \lambda}{\lambda_2-\lambda_n}\right)}{T_{k-1}\left(\frac{\lambda_2 + \lambda_n}{\lambda_2-\lambda_n}\right)}\left(1-\frac{\lambda}{\lambda_1}\right) \le 2\left(1-\frac{\lambda}{\lambda_1}\right)\left(\frac{\sqrt\frac{\lambda_2}{\lambda_n} - 1}{\sqrt\frac{\lambda_2}{\lambda_n} + 1}\right)^{k-1} \le 2\left(1-\frac{\lambda_n}{\lambda_1}\right)\left(\frac{\sqrt\frac{\lambda_2}{\lambda_n} - 1}{\sqrt\frac{\lambda_2}{\lambda_n} + 1}\right)^{k-1}
 \end{flalign}
 
-Осталось заметить, что $1-\frac{\lambda_n}{\lambda_1} \le 1$, тогда:
+Осталось заметить, что $\left| 1-\frac{\lambda_n}{\lambda_1} \right| \le 1$, тогда:
 $$p_k(\lambda) \le 2\left(1-\frac{\lambda_n}{\lambda_1}\right)\left(\frac{\sqrt\frac{\lambda_2}{\lambda_n} - 1}{\sqrt\frac{\lambda_2}{\lambda_n} + 1}\right)^{k-1} \le 2\left(\frac{\sqrt\frac{\lambda_2}{\lambda_n} - 1}{\sqrt\frac{\lambda_2}{\lambda_n} + 1}\right)^{k-1}$$
+
+Заметим, что:
+$$0\le 2\left(\frac{\sqrt\frac{\lambda_2}{\lambda_n} - 1}{\sqrt\frac{\lambda_2}{\lambda_n} + 1}\right)^{k-1} \implies |p_k(\lambda)| \le 2\left(\frac{\sqrt\frac{\lambda_2}{\lambda_n} - 1}{\sqrt\frac{\lambda_2}{\lambda_n} + 1}\right)^{k-1}$$
 
 Используя первое предложение можно сделать вывод:
 $$\|e_k\|_A \le 2\left(\frac{\sqrt\frac{\lambda_2}{\lambda_n} - 1}{\sqrt\frac{\lambda_2}{\lambda_n} + 1}\right)^{k-1}\|e_0\|_A$$
