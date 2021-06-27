@@ -8,6 +8,10 @@ $\dfrac{\norm{\widetilde{f}(x) - f(x)}}{\norm{f(x)}}$ --- прямая ошиб�
 $\dfrac{\norm{\widetilde{x} - x}}{\norm{x}}$ --- обратная ошибка,
 где $\widetilde{x}: f(\widetilde{x}) = \widetilde{f}(x)$
 
+Также вспомним, что такое число обусловленности:
+
+$\text{cond}(f, x) = \dfrac{\norm{f'(x)}}{\norm{f(x)}}\cdot\norm{x}$
+
 Предположим, что наша задача обратно устойчива, а именно: $f(\widetilde{x}) =
     \widetilde{f}(x), \frac{\|\widetilde{x} - x\|}{\|x\|} = \text{O}(\varepsilon_{machine})$
 
