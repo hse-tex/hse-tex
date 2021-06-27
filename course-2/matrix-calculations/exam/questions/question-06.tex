@@ -3,8 +3,8 @@
 Дано: $A$ --- диагонализуемая и $\lambda^{(1)}$ --- простое ($|\lambda^{(1)}| >
     |\lambda^{(2)}| \geq \dots \geq |\lambda^{(n)}|$).
 
-Доказать: отношение Релея $R(A x_k, x_k) = \dfrac{(A x_k, x_k)}{(x_k, x_k)}
-    = (A x_k, x_k)$ сходится к $\lambda^{(1)}$ --- старшему собственному значению.
+Доказать: отношение Релея $R(x_k) = \dfrac{(A x_k, x_k)}{(x_k, x_k)}
+    = [\text{потому что по построению икс нормы 1}] = (A x_k, x_k)$ сходится к $\lambda^{(1)}$ --- старшему собственному значению.
 
 \begin{proof}
     Поскольку $A$ диагонализуемая, то существует $n$ линейно независимых собственных
@@ -43,18 +43,14 @@
             (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right))))^T
         \cdot (e^{i\varphi} \cdot
         (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)))                   \\
-         & =(e^{i\varphi} \cdot
-        (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)))^T
-        A (e^{i\varphi} \cdot
+         & =
+        (e^{i\varphi} \cdot
+        (\lambda^{(1)} v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)))^T
+        (e^{i\varphi} \cdot
         (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)))                   \\
          & =
-        (e^{i\varphi} \cdot
-        (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)))^T
-        (e^{i\varphi} \cdot
-        (\lambda^{(1)}v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)))      \\
-         & =
         \lambda^{(1)} \cdot \norm[2]{e^{i\varphi} \cdot
-        (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right))}                   \\
+        (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right))}^2                 \\
          & = \lambda^{(1)} \cdot (1 + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right))
     \end{flalign*}
 \end{proof}
