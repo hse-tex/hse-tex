@@ -1,1 +1,87 @@
-\subsection{Эмпирическая функция распределения. Теорема Гливенко-Кантелли.}
+\section{Билет 8}
+
+\begin{center}
+    \it
+    Эмпирическая функция распределения.
+    Теорема Гливенко-Кантелли.
+\end{center}
+
+\subsection{Эмпирическая функция распределения}
+
+Говоря об эмпирическом распредлениии и эмпирической функции распределения, мы в качестве параметра $\theta$ рассматриваем как бы само распределение, $''\theta = P''$.
+
+\begin{definition*}
+    Пусть $X_1, \ldots , X_n$ - выборка из распредления с функцией распределения $F$. Эмпирическим распределением будем называть $P_{n}^{*}(B) = \frac{\#\{X_{j} \in B\}}{n} = \frac{1}{n} \sum_{j = 1}^{n} I_{\{X_j \in B\}}$, где $B$ - множество, $\#$ - обозначает $''$количество$''$.
+\end{definition*}
+
+\noindentСразу заметим, что:
+
+\begin{enumerate}
+    \item $\mathbb{E} \big[ P_{n}^{*}(B) \big] = \mathbb{E} \big[ I_{X_1 \in B} \big] = P(X_1 \in B)$
+    \item По УЗБЧ $P_{n}^{*}(B) = \frac{1}{n} \sum_{j = 1}^{n} I_{\{X_j \in B\}} \xrightarrow{\textrm{п.н.}} \mathbb{E} \big[ I_{X_1 \in B} \big] = P(X_1 \in B)$
+\end{enumerate}
+
+\noindentРассмотрев в определении эмпирического распределения луч вместо множества, получим эмпирическую функцию распределения.
+
+\begin{definition*}
+    Пусть $X_1, \ldots , X_n$ - выборка из распредления с функцией распределения $F$. Эмпирической функцией распределения будем называть случайную величину $F_{n}^{*}(t) = \frac{1}{n} \sum_{j = 1}^{n} I_{\{X_j \leq t\}}$
+\end{definition*}
+
+\noindentЗаметим:
+
+\begin{enumerate}
+    \item $\mathbb{E} \big[ F_{n}^{*}(t) \big] = \frac{1}{n} \sum_{j = 1}^{n} P(X_j \leq t) = P(X_1 \leq t) = F(t)$
+    \item По УЗБЧ $F_{n}^{*}(t) \xrightarrow{\textrm{п.н.}} F(t)$
+\end{enumerate}
+
+\subsection{Теорема Гливенко-Кантелли}
+
+\begin{theorem*}[Гливенко-Кантелли]
+    Пусть $X_1, \ldots , X_n$ - выборка из распредления с функцией распределения $F$. Тогда: $$\sup_{t} |F_{n}^{*}(t) - F(t)| \xrightarrow{\textrm{п.н.}} 0$$
+\end{theorem*}
+
+\begin{proof}
+    \text{}
+    
+    Докажем только для непрерывной F.
+    
+    Зафиксируем $N \in \mathbb{N}$ и выберем точки $t_0, t_1, \ldots , t_n$ такие, что
+    $$F(t_0) = 0, F(t_1) = \frac{1}{N}, \ldots , F(t_k) = \frac{k}{N}, \ldots , F(t_N) = 1$$
+    
+    Для определенности $t_0 = -\infty, t_N = +\infty$.
+    
+    Посмотрим, что происходит с разностью эмпирической и реальной функций распределения
+    
+    на промежутках вида $t \in [t_k, t_{k+1}]$.
+    
+    $$F_{n}^{*}(t) - F(t) \leq \Big[ \textrm{Оцениваем сверху. Хотим получить в $F_{n}^{*}$ значение побольше, а в $F$ - поменьше.}$$
+    $$\textrm{Поэтому, используя монотонность, подставляем соответствующие точки из промежутка} \Big] \leq F_{n}^{*}(t_{k + 1}) - F(t_{k}) =$$
+    $$= F_{n}^{*}(t_{k + 1}) - F(t_{k + 1}) + \frac{1}{N}$$
+    
+    Теперь оценим снизу.
+    
+    $$F_{n}^{*}(t) - F(t) \geq F_{n}^{*}(t_{k}) - F(t_{k + 1}) = F_{n}^{*}(t_{k}) - F(t_{k}) - \frac{1}{N}$$
+    
+    Получаем:
+    
+    $$F_{n}^{*}(t_{k}) - F(t_{k}) - \frac{1}{N} \leq F_{n}^{*}(t) - F(t) \leq F_{n}^{*}(t_{k + 1}) - F(t_{k + 1}) + \frac{1}{N} \textrm{,}$$
+    $$|F_{n}^{*}(t) - F(t)| \leq \max_{0 \leq k \leq N - 1} |F_{n}^{*}(t_k) - F(t_k)| + \frac{1}{N} \textrm{,}$$
+    $$\sup_{t}|F_{n}^{*}(t) - F(t)| \leq \max_{0 \leq k \leq N - 1} |F_{n}^{*}(t_k) - F(t_k)| + \frac{1}{N}$$
+    $$\textrm{ (Навесили слева супремум по $t$, т.к. правая часть от $t$ не зависит)}$$
+    
+    Введем множество $A_N = \Big\{ \omega: \forall k \in \{ 0, \ldots , N \} \textrm{ } F_{n}^{*}(t_k) \xrightarrow[n \rightarrow \infty]{(\omega)} F(t_k) \Big\}$ - пересечение конечного числа событий 
+    
+    вероятности 1 (т.к. по УЗБЧ $\forall t_k \textrm{ } F_{n}^{*}(t_k) \xrightarrow{\textrm{п.н.}} F(t_k)$), поэтому $P(A_N) = 1$.
+    
+    Если $\omega \in A_N$, то
+    $$\overline{\lim}_{n \to \infty} \sup_{t}|F_{n}^{*}(t) - F(t)| \leq \frac{1}{N}$$
+    
+    Теперь пересечем множества: $A = \bigcap_{N = 1}^{\infty}A_N \Rightarrow P(A) = 1$ - пересекли счетное число событий вероятности 1.
+    
+    Если $\omega \in A$, то
+    $$\overline{\lim}_{n \to \infty} \sup_{t}|F_{n}^{*}(t) - F(t)| \leq \frac{1}{N} \textrm{ } \forall N \in \mathbb{N} \textrm{,}$$
+    $$\Big[ \lim_{N \to \infty} \Big]$$
+    $$\overline{\lim}_{n \to \infty} \sup_{t}|F_{n}^{*}(t) - F(t)| \leq 0 \textrm{,}$$
+    $$0 \leq \underline{\lim}_{n \to \infty} \sup_{t}|F_{n}^{*}(t) - F(t)| \leq \overline{\lim}_{n \to \infty} \sup_{t}|F_{n}^{*}(t) - F(t)| \leq 0 \textrm{,}$$
+    $$\forall \omega \in A \textrm{ } \lim_{n \to \infty} \sup_{t}|F_{n}^{*}(t) - F(t)| = 0$$
+\end{proof}

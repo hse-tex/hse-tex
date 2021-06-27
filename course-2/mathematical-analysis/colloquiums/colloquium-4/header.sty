@@ -4,12 +4,10 @@
 %%% Работа с русским языком
 \usepackage{cmap}                   % поиск в PDF
 \usepackage{mathtext}               % русские буквы в фомулах
+\usepackage{indentfirst}            % Отступ первого параграфа
 \usepackage[T2A]{fontenc}           % кодировка
 \usepackage[utf8]{inputenc}         % кодировка исходного текста
 \usepackage[english,russian]{babel} % локализация и переносы
-
-%% Выключить нумерацию секций
-\setcounter{secnumdepth}{0}
 
 %% Кастомизация списокв
 \usepackage[inline]{enumitem}
@@ -17,10 +15,8 @@
 %%% Дополнительная работа с математикой
 \usepackage[intlimits]{amsmath}
 \usepackage{amsfonts,amssymb,amsthm,mathtools}
+\usepackage{esint} % для ориентированных интегралов
 \usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
-
-%% Стиль секций и заголовков
-\RequirePackage[center, medium]{titlesec}
 
 %% Номера формул
 \mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
@@ -128,12 +124,6 @@
 \DeclareMathOperator{\diag}{\mathop{\mathrm{diag}}}
 \DeclareMathOperator{\spec}{\mathop{\mathrm{Spec}}}
 
-\renewcommand{\P}{\operatorname{P}}
-\newcommand{\E}{\operatorname{E}}
-\newcommand{\D}{\operatorname{D}}
-\newcommand{\I}{\operatorname{I}}
-\newcommand{\cov}{\operatorname{cov}}
-
 %%% Теоремы
 \theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
 \newtheorem{theorem}{Теорема}[section]
@@ -199,6 +189,12 @@
 \DeclareSymbolFontAlphabet{\mathbbold}{bbold}
 \DeclareSymbolFontAlphabet{\mathbb}{AMSb}
 
+%% Жоские буквы для базисов
+\newcommand\E{\mathbbold{e}}
+\newcommand\F{\mathbbold{f}}
+\let\G\undefined
+\newcommand\G{\mathbbold{g}}
+
 %% Изоморфизм
 \newcommand*\MapsTo{%
   \xrightarrow[]{\raisebox{-0.25 em}{\smash{\ensuremath{\sim}}}}%
@@ -208,32 +204,6 @@
 \DeclareRobustCommand{\divby}{%
   \mathrel{\text{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}}%
 }
-
-% write text above symbols and draw a vertical arrow!
-% Syntax: \darrowwtextover{<text above>}{<arrow height>}{<math the arrow will point to>}
-\newcommand{\darrowwtextover}[3]{%
-\raisebox{0pt}[0pt][0pt]{%
-$\overset{\mathclap{\substack{#1\\\left\downarrow\vcenter{\hrule height #2}\right.}}}{#3}%
-$}%
-}
-
-% Симолы в кружочках
-\makeatletter
-\newcommand\incircbin
-{%
-  \mathpalette\@incircbin
-}
-\newcommand\@incircbin[2]
-{%
-  \mathbin%
-  {%
-    \ooalign{\hidewidth$#1#2$\hidewidth\crcr$#1\bigcirc$}%
-  }%
-}
-\newcommand{\oeq}{\incircbin{=}}
-\newcommand{\oneq}{\incircbin{\neq}}
-\makeatother
-
 
 \makeatletter
 \newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
@@ -274,3 +244,15 @@ $}%
 
 % Большие знаки суммы
 \everymath{\displaystyle} % math everywhere
+
+% Убрать отступ первой строки нового абзаца
+\setlength{\parindent}{0em}
+
+% Межстрочное расстояние
+\renewcommand{\baselinestretch}{1.3}
+
+\renewcommand{\P}{\operatorname{P}}
+\renewcommand{\E}{\operatorname{E}}
+\newcommand{\D}{\operatorname{D}}
+\newcommand{\I}{\operatorname{I}}
+\newcommand{\cov}{\operatorname{cov}}

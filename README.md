@@ -27,6 +27,7 @@
 - [Коллоквиум I [альтернативная версия]](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/DKozl50/Matan2-tex/master/Colloquiums/colloq1.pdf)
 - [Коллоквиум II](https://hse-tex.me/course-2/mathematical-analysis-colloquium-2.pdf)
 - [Коллоквиум III](https://hse-tex.me/course-2/mathematical-analysis-colloquium-3.pdf)
+- [Коллоквиум IV](https://hse-tex.me/course-2/mathematical-analysis-colloquium-4.pdf)
 
 ### Дискретная математика
 
@@ -39,6 +40,11 @@
 - [Коллоквиум II](https://hse-tex.me/course-2/probability-theory-colloquium-2.pdf)
 - [Коллоквиум II [первые 5 билетов, альтернативная версия]](https://hse-tex.me/course-2/probability-theory-colloquium-2-alternative.pdf)
 - [Коллоквиум III](https://hse-tex.me/course-2/probability-theory-colloquium-3.pdf)
+- [Коллоквиум IV](https://hse-tex.me/course-2/probability-theory-colloquium-4.pdf)
+
+### Основы матричных вычислений
+
+- [Экзамен, теоретические вопросы](https://hse-tex.me/course-2/matrix-calculations-exam.pdf)
 
 ## 1 курс
 
