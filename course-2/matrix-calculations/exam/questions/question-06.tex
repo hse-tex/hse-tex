@@ -18,7 +18,8 @@
         x_k & = \dfrac{A x_{k - 1}}{\norm[2]{A x_{k - 1}}} = \dfrac{A^k x_0}{\norm[2]{A^k x_0}} =
         \dfrac{\alpha_1 (\lambda^{(1)})^k v^{(1)} + \dots + \alpha_n (\lambda^{(n)})^k v^{(n)}}
         {\norm[2]{\alpha_1 (\lambda^{(1)})^k v^{(1)} + \dots + \alpha_n (\lambda^{(n)})^k v^{(n)}}}                           \\
-            & = \left(\dfrac{\lambda^{(1)}}{|\lambda^{(1)}|}\right)^k \cdot \dfrac{v^{(1)} +
+            & = \left(\dfrac{\lambda^{(1)}}{|\lambda^{(1)}|}\right)^k \cdot \left(\dfrac{\alpha_1}{|\alpha_1|}\right)^k
+        \cdot \dfrac{v^{(1)} +
             \dfrac{\alpha_2}{\alpha_1} \left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k v^{(2)} +
             \dots + \dfrac{\alpha_n}{\alpha_1} \left(\dfrac{\lambda^{(n)}}{\lambda^{(1)}}\right)^k v^{(n)}}
         {\norm[2]{v^{(1)} + \dfrac{\alpha_2}{\alpha_1} \left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k v^{(2)} +
