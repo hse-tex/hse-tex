@@ -17,21 +17,9 @@ $\text{cond}(f, x) = \dfrac{\norm{f'(x)}}{\norm{f(x)}}\cdot\norm{x}$
 
 \begin{flalign}
     \text{forward\_err}
-     & = \frac{\| \widetilde{f}(x) - f(x)\|}{\|f(x)\|}                                     \\
-     & = \frac{\|f(\widetilde{x}) - f(x)\|}{\|f(x)\|}                                      \\
-     & = \frac{\|f(x + \Delta x) - f(x)\|}{\|f(x)\|}                                       \\
-     & = \frac{\|f(x) + f'(x)\cdot \Delta x + \text{O}(\|\Delta x\|^2) - f(x)\|}{\|f(x)\|} \\
-     & = \frac{\|f'(x) \cdot \frac{\Delta x}{\|\Delta x\|} +
-    \text{O}(\|\Delta x\|)\|}{\|f(x)\|}\cdot \|\Delta x\|                                  \\
-     & \leq \frac{\|f'(x) \cdot \frac{\Delta x}{\|\Delta x\|}\| + \text{O}(\|\Delta x\|)
-    }{\|f(x)\|}\cdot \|\Delta x\|                                                          \\
-     & \leq \frac{\|f'(x)\| + \text{O}(\|\Delta x\|)}{\|f(x)\|} \cdot \|\Delta x\|         \\
-     & = \frac{\|f'(x)\| \cdot \|x\| + \text{O}(\|\Delta x\|)\cdot \|x\|}{\|f(x)\|}
-    \cdot \frac{\|\Delta x\|}{\|x\|}                                                       \\
-     & = \left(\frac{\|f'(x)\| \cdot \|x\|}{\|f(x)\|} +
-    \underbracket{\frac{\text{O}(\|\Delta x\|)
-    \cdot \|x\|}{\|f(x)\|}}_{\substack{=\text{O}(\|\Delta x\|) \text{ в силу}              \\ \text{фиксированности }x}}\right)\cdot \frac{\|\Delta x\|}{\|x\|} \\
-     & = (\text{cond}(f, x) + \text{O}(\|\Delta x\|)) \cdot \text{backward\_err}           \\
-     & = (\text{cond}(f, x) + \text{O}(\varepsilon_{machine})) \cdot \text{backward\_err}  \\
+     & = \frac{\| \widetilde{f}(x) - f(x)\|}{\|f(x)\|}                                    \\
+     & = \frac{\|f(\widetilde{x}) - f(x)\|}{\|f(x)\|}                                     \\
+     & \leq (\text{cond}(f, x) + \text{O}(\|\Delta x\|)) \cdot \text{backward\_err}       \\
+     & = (\text{cond}(f, x) + \text{O}(\varepsilon_{machine})) \cdot \text{backward\_err} \\
      & \approx \text{cond}(f, x) \cdot \text{backward\_err}
 \end{flalign}
