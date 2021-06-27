@@ -1,1 +1,31 @@
 \section{Критерий сходимости ряда Неймана.}
+
+Напомним определение спектрального радиуса
+$\rho(A) = \max_i |\lambda_i(A)| = \lim_{k \to \infty} \norm{A^k}^{1/k}$
+
+Критерий сходимости ряда Неймана: $\sum_{i=0}^k A^k$ сходится $\Longleftrightarrow \rho(A) < 1$.
+
+$\Oleftarrow \colon \quad A = U T U^{-1}$ — разложение Шура (здесь $T$ верхнетреугольная).
+
+Введем матрицу $D_\eps = \diag \left( 1, \eps, \dotsc, \eps^{n-1} \right)$. 
+Оказывается, что $(D_\eps^{-1} T D_\eps)_{ij} = \eps^{j-i} t_{ij}$, то есть каждый 
+элемент верхнего треугольника домножается на эпсилон в какой-то степени. Нижний треугольник — нули, так как 
+$T$ верхнетреугольная. Остаются $|t_{ii}|$ — но это модули собственных значений,
+а из $\rho(T) < 1$ следует что все меньше единицы.
+
+Из этого следует, что $\exists \eps: \norm{D^{-1}_\eps T D_\eps}_1 < 1$. То есть 
+$\sum_{k=0}^{\infty} \left( D_{\eps}^{-1} T D_{\eps} \right)^k = 
+\sum_{k=0}^{\infty} D_{\eps}^{-1} T^k D_{\eps}$ сходится. 
+
+Вынесем по матрице слева и справа, сходимость не сломается: $\sum_{k=0}^{\infty} T^k$ сходится. 
+
+Теперь занесем по матрице слева и справа, но уже другие, тогда
+$\sum_{k=0}^{\infty} U T^k U^{-1} = \sum_{k=0}^\infty \left( U T U^{-1} \right)^k$
+сходится.
+
+$\Orightarrow \colon \quad$ пусть $\rho(A) \geq 1 \implies \exists |\lambda_i| > 1$, но ряд сходится.
+
+$\exists \norm{x}_2 = 1: Ax = \lambda_i x \implies A^k x = \lambda_i^k x$.
+
+$\norm{A^k}_2 = \norm{A^k}_2 \norm{x}_2 \geq \norm{A^kx}_2 = \norm{\lambda^kx}_2 = |\lambda^k| \norm{x}_2 = 
+|\lambda^k| \geq 1$, то есть $\norm{A^k}_2 \nrightarrow 0$, получается ряд не сходится.
