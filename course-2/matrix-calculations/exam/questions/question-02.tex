@@ -13,7 +13,7 @@ $\Oleftarrow \colon \quad A = U T U^{-1}$ — разложение Шура (з
 $T$ верхнетреугольная. Остаются $|t_{ii}|$ — но это модули собственных значений,
 а из $\rho(T) < 1$ следует что все меньше единицы.
 
-Из этого следует, что $\exists \eps: \norm{D^{-1}_\eps T D_\eps}_1 < 1$. То есть 
+Из этого следует, что $\exists \eps: \norm[1]{D^{-1}_\eps T D_\eps} < 1$. То есть 
 $\sum_{k=0}^{\infty} \left( D_{\eps}^{-1} T D_{\eps} \right)^k = 
 \sum_{k=0}^{\infty} D_{\eps}^{-1} T^k D_{\eps}$ сходится. 
 
@@ -25,7 +25,7 @@ $\sum_{k=0}^{\infty} U T^k U^{-1} = \sum_{k=0}^\infty \left( U T U^{-1} \right)^
 
 $\Orightarrow \colon \quad$ пусть $\rho(A) \geq 1 \implies \exists |\lambda_i| > 1$, но ряд сходится.
 
-$\exists \norm{x}_2 = 1: Ax = \lambda_i x \implies A^k x = \lambda_i^k x$.
+$\exists \norm[2]{x} = 1: Ax = \lambda_i x \implies A^k x = \lambda_i^k x$.
 
-$\norm{A^k}_2 = \norm{A^k}_2 \norm{x}_2 \geq \norm{A^kx}_2 = \norm{\lambda^kx}_2 = |\lambda^k| \norm{x}_2 = 
-|\lambda^k| \geq 1$, то есть $\norm{A^k}_2 \nrightarrow 0$, получается ряд не сходится.
+$\norm[2]{A^k} = \norm[2]{A^k} \norm[2]{x} \geq \norm[2]{A^kx} = \norm[2]{\lambda^kx} = |\lambda^k| \norm[2]{x} = 
+|\lambda^k| \geq 1$, то есть $\norm[2]{A^k} \nrightarrow 0$, получается ряд не сходится.
