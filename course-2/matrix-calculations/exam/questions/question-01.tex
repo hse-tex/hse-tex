@@ -1,5 +1,13 @@
 \section{Связь прямой и обратной ошибок через число обусловленности.}
 
+Вспомним кто есть ошибки:
+
+$\dfrac{\norm{\widetilde{f}(x) - f(x)}}{\norm{f(x)}}$ --- прямая ошибка,
+где $f$ --- трушное решение, а $\widetilde{f}$ --- алгоритм
+
+$\dfrac{\norm{\widetilde{x} - x}}{\norm{x}}$ --- обратная ошибка,
+где $\widetilde{x}: f(\widetilde{x}) = \widetilde{f}(x)$
+
 Предположим, что наша задача обратно устойчива, а именно: $f(\widetilde{x}) =
     \widetilde{f}(x), \frac{\|\widetilde{x} - x\|}{\|x\|} = \text{O}(\varepsilon_{machine})$
 
