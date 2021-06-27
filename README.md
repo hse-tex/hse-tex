@@ -42,6 +42,10 @@
 - [Коллоквиум III](https://hse-tex.me/course-2/probability-theory-colloquium-3.pdf)
 - [Коллоквиум IV](https://hse-tex.me/course-2/probability-theory-colloquium-4.pdf)
 
+### Основы матричных вычислений
+
+- [Экзамен, теоретические вопросы](https://hse-tex.me/course-2/matrix-calculations-exam.pdf)
+
 ## 1 курс
 
 ### Алгебра
