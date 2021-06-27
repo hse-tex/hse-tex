@@ -255,6 +255,9 @@ $}%
 \makeatother
 
 
+\renewcommand{\norm}[2][]{{\left\lVert #2 \right\rVert}_{\scriptstyle #1}}
+
+
 % Syntax: \colorboxed[<color model>]{<color specification>}{<math formula>}
 \newcommand*{\colorboxed}{}
 \def\colorboxed#1#{%
@@ -276,3 +279,6 @@ $}%
 
 % Большие знаки суммы
 \everymath{\displaystyle} % math everywhere
+
+% Выключаем отступы у новых строк
+\setlength{\parindent}{0pt}
