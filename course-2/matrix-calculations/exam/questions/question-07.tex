@@ -1,1 +1,53 @@
 \section{Вывод двух основных свойств QR алгоритма.}
+
+\paragraph{$QR$-алгоритм для решения задачи поиска собственных значений}
+
+Хотим решить задачу поиска собственных значений и собственных векторов для заданной матрицы $A \in \mathbb{R}^{n \times n}$.
+Положим $A_{1} = A$.
+Тогда, для каждого $k = 1, 2, \dots$ найдем $QR$-разложение для $A_{k}$,
+\begin{equation} \label{q07::eq::1}
+    A_{k} = Q_{k} R_{k}.
+\end{equation}
+Затем положим
+\begin{equation} \label{q07::eq::2}
+    A_{k + 1} = R_{k} Q_{k}.
+\end{equation}
+Тогда матрица $A_{k}$ сходится к блочно верхнетреугольной матрице.
+
+\begin{properties}~
+    \begin{enumerate}
+        \item Все преобразования алгоритма над матрицей $A$ являются преобразованиями подобия, то есть
+        \[
+            A_{k + 1} = (Q_{1} \times \ldots \times Q_{k})^{T} A (Q_{1} \times \ldots \times Q_{k}),
+        \]
+        где $Q_{i}$ --- унитарная матрица.
+        \item
+        \[
+            A^{k} = (Q_{1} \times \ldots \times Q_{k}) (R_{1} \times \ldots \times R_{k}).
+        \]
+    \end{enumerate}
+\end{properties}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Рассмотрим матрицу $A_{k + 1}$.
+        Из \eqref{q07::eq::2} мы знаем, что $A_{k + 1} = R_{k} Q_{k}$, но, в тоже время, из \eqref{q07::eq::1} мы знаем, что $A_{k} = Q_{k} R_{k}$.
+        Воспользуемся унитарностью $Q_{k}$ и выразим $R_{k} = Q_{k}^{T} A_{k}$, тогда
+        \[
+            A_{k + 1} = R_{k} Q_{k} = Q_{k}^{T} A_{k} Q_{k}~ \oeq
+        \]
+        Раскроем рекурсивно для $A_{k}$, и получим
+        \[
+            \oeq~ (Q_{k}^{T} \times \ldots \times Q_{1}^{T}) A (Q_{1} \times \ldots \times Q_{k}) = (Q_{1} \times \ldots \times Q_{k})^{T} A (Q_{1} \times \ldots \times Q_{k})
+        \]
+        \item Заметим, что
+        \[
+            A^{k} = A_{1}^{k} = (Q_{1}R_{1})^{k} = Q_{1} \times (R_{1} \times Q_{1} \times \ldots \times R_{1} Q_{1}) ~\oeq
+        \]
+        Вспомним из \eqref{q07::eq::2}, что $A_{2} = R_{1} Q_{1}$.
+        Также, вспомним, что мы отщепили ровно одну матрицу $Q_{1}$ и одну матрицу $R_{1}$, поэтому
+        \[
+            \oeq~ Q_{1} A_{2}^{k - 1} R_{1} = [\text{продолжаем для $A_{2}$}] = Q_{1} Q_{2} A_{3}^{k - 2} R_{2} R_{1} = \ldots = (Q_{1} \ldots Q_{k}) A_{k}^{0} (R_{k} \ldots R_{1}) = (Q_{1} \ldots Q_{k}) (R_{k} \ldots R_{1}). \qedhere
+        \]
+    \end{enumerate}
+\end{proof}
