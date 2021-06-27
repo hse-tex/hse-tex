@@ -1,1 +1,59 @@
 \section{Сходимость степенного метода для диагонализуемых матриц.}
+
+Дано: $A$ --- диагонализуемая и $\lambda^{(1)}$ --- простое ($|\lambda^{(1)}| >
+    |\lambda^{(2)} \geq \dots \geq |\lambda^{(n)}$).
+
+Доказать: отношение Релея $R(A x_k, x_k) = \dfrac{(A x_k, x_k)}{(x_k, x_k)}
+    = (A x_k, x_k)$ сходится к $\lambda^{(1)}$ --- старшему собственному значению.
+
+\begin{proof}
+    Поскольку $A$ диагонализуемая, то существует $n$ линейно независимых собственных
+    векторов $v^{(i)}$, далее считаем, что $\|v^{(i)}\| = 1$.
+    В таком случае $x_0 = \alpha_1 v^{(1)} + \dots +
+        \alpha_n v^{(n)}$. \textbf{Ключевой момент:} считаем, что $\alpha_1 \neq 0$. Мы используем
+    это в доказательстве, а в противоположном случае метод вообще сойдётся не пойми
+    куда, но точно не туда, куда надо было.
+
+    \begin{flalign*}
+        x_k & = \dfrac{A x_{k - 1}}{\norm[2]{A x_{k - 1}}} = \dfrac{A^k x_0}{\norm[2]{A^k x_0}} =
+        \dfrac{\alpha_1 (\lambda^{(1)})^k v^{(1)} + \dots + \alpha_n (\lambda^{(n)})^k v^{(n)}}
+        {\norm[2]{\alpha_1 (\lambda^{(1)})^k v^{(1)} + \dots + \alpha_n (\lambda^{(n)})^k v^{(n)}}}                           \\
+            & = \left(\dfrac{\lambda^{(1)}}{|\lambda^{(1)}|}\right)^k \cdot \dfrac{v^{(1)} +
+            \dfrac{\alpha_2}{\alpha_1} \left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k v^{(2)} +
+            \dots + \dfrac{\alpha_n}{\alpha_1} \left(\dfrac{\lambda^{(n)}}{\lambda^{(1)}}\right)^k v^{(n)}}
+        {\norm[2]{v^{(1)} + \dfrac{\alpha_2}{\alpha_1} \left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k v^{(2)} +
+        \dots + \dfrac{\alpha_n}{\alpha_1} \left(\dfrac{\lambda^{(n)}}{\lambda^{(1)}}\right)^k v^{(n)}}}                      \\
+            & = e^{i\varphi} \cdot \dfrac{v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)}
+        {\norm[2]{v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)}}               \oeq     \\
+    \end{flalign*}
+    Знаменатель равен $1 + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)$,
+    разложим $\dfrac{1}{1 + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)}$ по Тейлору
+    и получим $1 + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)$, откуда:
+    \begin{flalign*}
+         & \oeq e^{i\varphi} \cdot (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right))
+        (1 + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right))                                  \\
+         & = e^{i\varphi} \cdot (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right))    \\
+    \end{flalign*}
+
+    Отсюда имеем:
+    \begin{flalign*}
+        \text{R}(x_k)
+         & = (Ax_k, x_k) = (A \cdot (e^{i\varphi} \cdot
+            (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right))))^T
+        \cdot (e^{i\varphi} \cdot
+        (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)))                   \\
+         & =(e^{i\varphi} \cdot
+        (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)))^T
+        A (e^{i\varphi} \cdot
+        (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)))                   \\
+         & =
+        (e^{i\varphi} \cdot
+        (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)))^T
+        (e^{i\varphi} \cdot
+        (\lambda^{(1)}v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right)))      \\
+         & =
+        \lambda^{(1)} \cdot \norm[2]{e^{i\varphi} \cdot
+        (v^{(1)} + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right))}                   \\
+         & = \lambda^{(1)} \cdot (1 + \text{O}\left(\left(\dfrac{\lambda^{(2)}}{\lambda^{(1)}}\right)^k\right))
+    \end{flalign*}
+\end{proof}
