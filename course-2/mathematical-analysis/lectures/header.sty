@@ -13,7 +13,9 @@
 \usepackage[inline]{enumitem}
 
 %%% Дополнительная работа с математикой
-\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage[intlimits]{amsmath}
+\usepackage{amsfonts,amssymb,amsthm,mathtools}
+\usepackage{esint} % для ориентированных интегралов
 \usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
 
 %% Номера формул
@@ -27,10 +29,17 @@
 %% Табличика там где хочецца
 \usepackage{float}
 
+%% Хочу зачеркивать всякие приколы
+\usepackage{centernot}
+
+%% Дифференциалы и все что с ними связано
+\usepackage{physics}
+
 %% Графички функций
 \usepackage{pgfplots}
 \usepackage{tikz}
 \pgfplotsset{every axis/.style={scale only axis}}
+\pgfplotsset{compat=1.16}
 
 %% Время
 \usepackage{datetime}
@@ -50,21 +59,21 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.95}
 
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
+    backgroundcolor=\color{backcolour},
     commentstyle=\color{codegreen},
     keywordstyle=\color{codeblue},
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codeorange},
     basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
     showstringspaces=false,
-    showtabs=false,                  
+    showtabs=false,
     tabsize=2
 }
 
@@ -124,13 +133,20 @@
 \theoremstyle{definition} % "Определение"
 \newtheorem{definition}{Определение}
 \newtheorem{designation}{Обозначение}
+\newtheorem{lemma}[theorem]{Лемма}
 \newtheorem*{properties}{Свойства}
+\newtheorem*{designation*}{Обозначение}
+\newtheorem*{comment}{Замечание}
 \newtheorem*{corollary}{Следствие}
 \newtheorem{problem}{Задача}[section]
-\newtheorem*{comment}{Замечание}
-\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem*{definition*}{Определение}
+\newtheorem*{exercise}{Упражнение}
 \newtheorem*{fact}{Очевидный факт}
+\newtheorem*{lemma*}{Лемма}
+\newtheorem*{properties}{Свойства}
 \newtheorem*{proposal}{Предложение}
+\newtheorem*{proposition*}{Утверждение}
+\newtheorem*{theorem*}{Теорема}
 \newtheorem*{convention}{Соглашение}
 \newtheorem*{exercise}{Упражнение}
 
@@ -147,6 +163,7 @@
 %% Более привычные греческие буквы
 \renewcommand{\phi}{\varphi}
 \renewcommand{\epsilon}{\varepsilon}
+\newcommand{\eps}{\varepsilon}
 
 %% Перенос знаков в формулах (по Львовскому)
 \newcommand*{\hm}[1]{#1\nobreak\discretionary{}
@@ -235,3 +252,10 @@
 
 % Большие знаки суммы
 \everymath{\displaystyle} % math everywhere
+
+
+\renewcommand{\P}{\operatorname{P}}
+\renewcommand{\E}{\operatorname{E}}
+\newcommand{\D}{\operatorname{D}}
+\newcommand{\I}{\operatorname{I}}
+\newcommand{\cov}{\operatorname{cov}}

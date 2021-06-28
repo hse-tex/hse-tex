@@ -15,6 +15,7 @@
 %%% Дополнительная работа с математикой
 \usepackage[intlimits]{amsmath}
 \usepackage{amsfonts,amssymb,amsthm,mathtools}
+\usepackage{esint} % для ориентированных интегралов
 \usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
 
 %% Номера формул
@@ -109,6 +110,7 @@
 
 %% Свои команды
 \DeclareMathOperator{\rk}{\mathop{\mathrm{rk}}}
+\DeclareMathOperator{\tr}{\mathop{\mathrm{tr}}}
 \DeclareMathOperator{\pr}{\mathop{\mathrm{pr}}}
 \DeclareMathOperator{\ort}{\mathop{\mathrm{ort}}}
 \DeclareMathOperator{\vol}{\mathop{\mathrm{vol}}}
@@ -132,11 +134,11 @@
 \newtheorem{definition}{Определение}
 \newtheorem{designation}{Обозначение}
 \newtheorem{lemma}[theorem]{Лемма}
-\newtheorem{problem}{Задача}[section]
+\newtheorem*{properties}{Свойства}
 \newtheorem*{designation*}{Обозначение}
 \newtheorem*{comment}{Замечание}
-\newtheorem*{convention}{Соглашение}
 \newtheorem*{corollary}{Следствие}
+\newtheorem{problem}{Задача}[section]
 \newtheorem*{definition*}{Определение}
 \newtheorem*{exercise}{Упражнение}
 \newtheorem*{fact}{Очевидный факт}
@@ -145,7 +147,8 @@
 \newtheorem*{proposal}{Предложение}
 \newtheorem*{proposition*}{Утверждение}
 \newtheorem*{theorem*}{Теорема}
-
+\newtheorem*{convention}{Соглашение}
+\newtheorem*{exercise}{Упражнение}
 
 \theoremstyle{remark} % "Примечание"
 \newtheorem*{example}{Пример}
@@ -219,6 +222,9 @@
 }
 \makeatother
 
+%% Команда для ||w||
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
 \makeatletter
 \let\oldnorm\norm
 \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
@@ -252,3 +258,9 @@
 
 % Межстрочное расстояние
 \renewcommand{\baselinestretch}{1.3}
+
+\renewcommand{\P}{\operatorname{P}}
+\renewcommand{\E}{\operatorname{E}}
+\newcommand{\D}{\operatorname{D}}
+\newcommand{\I}{\operatorname{I}}
+\newcommand{\cov}{\operatorname{cov}}
