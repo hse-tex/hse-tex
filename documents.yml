@@ -1,28 +1,26 @@
 # source -- .tex файл, который надо собрать
-# target -- путь к получившемуся .pdf файлу в сссылке
+# target -- путь к получившемуся .pdf файлу в ссылке
 # Например, target: course-1/algebra-exam.pdf  <=>  https://hse-tex.me/course-1/algebra-exam.pdf
 
 # Список документов, которые занимают целую директорию
 # Любое изменение файлов в той же директории, что и .tex файл, будут приводить к пересборке
 directory:
-- source: course-2/discrete-math-02/discrete-math-02-lecture-notes.tex
+- source: course-2/discrete-mathematics/discrete-math-02-lecture-notes.tex
   target: course-2/discrete-math-02-lecture-notes.pdf
 - source: course-2/probability-theory/colloquium-2/colloquium-2.tex
   target: course-2/probability-theory-colloquium-2.pdf
 - source: course-2/probability-theory/colloquium-3/colloquium-3.tex
   target: course-2/probability-theory-colloquium-3.pdf
-- source: course-2/probability-theory/colloquiums/colloquium-4/colloquium-4.tex
+- source: course-2/probability-theory/colloquium-4/colloquium-4.tex
   target: course-2/probability-theory-colloquium-4.pdf
 - source: course-2/mathematical-analysis/lectures/mathematical-analysis.tex
   target: course-2/mathematical-analysis.pdf
-- source: course-2/mathematical-analysis/colloquiums/colloquium-2/colloquium-2.tex
+- source: course-2/mathematical-analysis/colloquium-2/colloquium-2.tex
   target: course-2/mathematical-analysis-colloquium-2.pdf
-- source: course-2/mathematical-analysis/colloquiums/colloquium-3/colloquium-3.tex
+- source: course-2/mathematical-analysis/colloquium-3/colloquium-3.tex
   target: course-2/mathematical-analysis-colloquium-3.pdf
-- source: course-2/mathematical-analysis/colloquiums/colloquium-4/colloquium-4.tex
+- source: course-2/mathematical-analysis/colloquium-4/colloquium-4.tex
   target: course-2/mathematical-analysis-colloquium-4.pdf
-- source: course-2/archive/discrete-mathematics/discrete-mathematics-2.tex
-  target: course-2/archive/discrete-mathematics.pdf
 - source: course-2/matrix-calculations/exam/exam.tex
   target: course-2/matrix-calculations-exam.pdf
 - source: course-1/algebra/algebra-exam.tex
@@ -33,7 +31,7 @@ directory:
 # Список документов, которые полностью содержатся в одном файле (за исключением *header.sty)
 # Только изменение source файла (или хедеров) будет приводить к пересборке документа
 single:
-- source: course-2/mathematical-analysis/colloquiums/colloquium-1/colloquium-1.tex
+- source: course-2/mathematical-analysis/colloquium-1/colloquium-1.tex
   target: course-2/mathematical-analysis-colloquium-1.pdf
 - source: course-2/probability-theory/colloquium-1/colloquium-1.tex
   target: course-2/probability-theory-colloquium-1.pdf
