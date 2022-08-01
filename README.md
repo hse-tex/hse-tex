@@ -35,8 +35,8 @@
 - [Коллоквиум [от 195 группы]](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/DKozl50/Matan2-tex/master/Colloquiums/dm.pdf)
 
 ### Дискретная математика (Вялый М.Н.)
-- [Коллоквиум I](https://hse-tex.me/course-1/DM-1-Vyalyi-colloquim.pdf)
-- [Коллоквиум II](https://hse-tex.me/course-1/DM-1-Vyalyi-colloquim-2.pdf)
+- [Коллоквиум I](https://hse-tex.me/course-1/discrete-mathematics-1-Vyalyi-colloquim.pdf)
+- [Коллоквиум II](https://hse-tex.me/course-1/discrete-mathematics-1-Vyalyi-colloquim-2.pdf)
 
 ### Теория вероятностей и математическая статистика
 
