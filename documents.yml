@@ -55,7 +55,7 @@ single:
   target: course-1/discrete-mathematics-colloquium-1.pdf
 - source: course-1/discrete-mathematics/discrete-mathematics-colloquium-2.tex
   target: course-1/discrete-mathematics-colloquium-2.pdf
-- source: course-1/discrete-mathematics-1-Vyalyi/colloquium-1/main.tex
-  target: course-1/discrete-mathematics-1-Vyalyi-colloquim.pdf
-- source: course-1//discrete-mathematics-1-Vyalyi/colloquim-2/main.tex
-  target: course-1/discrete-mathematics-1-Vyalyi-colloquim-2.pdf
+- source: course-1/discrete-mathematics-Vyalyi/colloquium-1/main.tex
+  target: course-1/discrete-mathematics-Vyalyi-colloquium.pdf
+- source: course-1//discrete-mathematics-Vyalyi/colloquium-2/main.tex
+  target: course-1/discrete-mathematics-Vyalyi-colloquium-2.pdf
