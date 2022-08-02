@@ -34,9 +34,6 @@
 - [Конспект](https://hse-tex.me/course-2/discrete-math-02-lecture-notes.pdf)
 - [Коллоквиум [от 195 группы]](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/DKozl50/Matan2-tex/master/Colloquiums/dm.pdf)
 
-### Дискретная математика (Вялый М.Н.)
-- [Коллоквиум I](https://hse-tex.me/course-1/discrete-mathematics-1-Vyalyi-colloquium.pdf)
-- [Коллоквиум II](https://hse-tex.me/course-1/discrete-mathematics-1-Vyalyi-colloquium-2.pdf)
 
 ### Теория вероятностей и математическая статистика
 
@@ -55,6 +52,10 @@
 ### Алгебра
 
 - [Экзамен](https://hse-tex.me/course-1/algebra-exam.pdf)
+
+### Дискретная математика (Вялый М.Н.)
+- [Коллоквиум I](https://hse-tex.me/course-1/discrete-mathematics-1-Vyalyi-colloquium.pdf)
+- [Коллоквиум II](https://hse-tex.me/course-1/discrete-mathematics-1-Vyalyi-colloquium-2.pdf)
 
 ### Дискретная математика
 
