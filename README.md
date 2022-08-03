@@ -34,6 +34,7 @@
 - [Конспект](https://hse-tex.me/course-2/discrete-math-02-lecture-notes.pdf)
 - [Коллоквиум [от 195 группы]](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/DKozl50/Matan2-tex/master/Colloquiums/dm.pdf)
 
+
 ### Теория вероятностей и математическая статистика
 
 - [Коллоквиум I](https://hse-tex.me/course-2/probability-theory-colloquium-1.pdf)
@@ -51,6 +52,10 @@
 ### Алгебра
 
 - [Экзамен](https://hse-tex.me/course-1/algebra-exam.pdf)
+
+### Дискретная математика (Вялый М.Н.)
+- [Коллоквиум I](https://hse-tex.me/course-1/discrete-mathematics-1-Vyalyi-colloquium.pdf)
+- [Коллоквиум II](https://hse-tex.me/course-1/discrete-mathematics-1-Vyalyi-colloquium-2.pdf)
 
 ### Дискретная математика
 
@@ -82,6 +87,7 @@
 - Авдееву Роману Сергеевичу за прекрасный курс по линейной алгебре
 - Косову Егору Дмитриевичу за предоставленный исходный код записей с лекций
 - Рубцову Александру Александровичу за PDF с конспектом лекций
+- Вялому Михаилу Николаевичу за PDF с конспектом лекций
 
 ## Контрибьюторы
 
@@ -105,6 +111,9 @@
 - [Елизавета Орешонок](https://github.com/eaoresh)
 - [Алиса Вернигор](https://github.com/alisa-vernigor)
 - [Анастасия Смородинникова](https://github.com/AnaSomi)
+- [Артём Парфенов](https://github.com/dunno-o)
+- Сурен Элбакян
+- Вероника Аксененко
 
 
 Не стесняйтесь добавлять себя в этот список в pull request'ах.
