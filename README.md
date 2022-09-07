@@ -82,43 +82,76 @@
 <details>
   <summary>Конспекты от Евы Неудачиной</summary>
   
-  ## 1 курс
+  <h2>1 курс</h2>
 
-  ### Математический анализ
+  <h3>Математический анализ</h3>
 
-  - [Коллоквиум I](https://delicious-allium-341.notion.site/61981bf9e9744d478249aa951f5e491a)
-  - [Коллоквиум II](https://delicious-allium-341.notion.site/0cbf566e6d8740a89fa34eef0e839370)
-  - [Коллоквиум III](https://delicious-allium-341.notion.site/3-0d9e252d4f9a4bdf8f21556d08deb046)
-  - [Коллоквиум IV](https://delicious-allium-341.notion.site/4-4f574e934ce24467ba53eab016f7d454)
+  <ul>
+
+  <li><a href="https://delicious-allium-341.notion.site/61981bf9e9744d478249aa951f5e491a">Коллоквиум I</a></li>
+
+  <li><a href="https://delicious-allium-341.notion.site/0cbf566e6d8740a89fa34eef0e839370">Коллоквиум II</a></li>
+
+  <li><a href="https://delicious-allium-341.notion.site/3-0d9e252d4f9a4bdf8f21556d08deb046">Коллоквиум III</a></li>
+
+  <li><a href="https://delicious-allium-341.notion.site/4-4f574e934ce24467ba53eab016f7d454">Коллоквиум IV<a></li>
+
+  </ul>
  
-  ### Линейная алгебра и геометрия
+  <h3>Линейная алгебра и геометрия</h3>
 
-  - [Коллоквиум I](https://delicious-allium-341.notion.site/dcd152104e3f4795b4315fe70fd91750)
-  - [Коллоквиум II](https://delicious-allium-341.notion.site/f4ea8f433849497d8118fd0510e681ec)
- 
-  ### Дискретная математика
+  <ul>
   
-  - [Коллоквиум I](https://delicious-allium-341.notion.site/5eab5c65b50a41bf9348b6a8cbbfd714)
-  - [Коллоквиум II](https://delicious-allium-341.notion.site/30642c9c856b4e91bd38a21d20de857a)
+  <li><a href="https://delicious-allium-341.notion.site/dcd152104e3f4795b4315fe70fd91750">Коллоквиум I</a></li>
+
+ <li><a href="https://delicious-allium-341.notion.site/f4ea8f433849497d8118fd0510e681ec">Коллоквиум II<a></li>
+  </ul>
  
-  ### Алгебра
+  <h3>Дискретная математика</h3>
+
+  <ul>
   
-  - [Экзамен](https://delicious-allium-341.notion.site/f43d564d15d54ba4825d5effa95d131a)
+  <li><a href="https://delicious-allium-341.notion.site/5eab5c65b50a41bf9348b6a8cbbfd714">Коллоквиум I</a></li>
 
-  ## 2 курс
+  <li><a href="https://delicious-allium-341.notion.site/30642c9c856b4e91bd38a21d20de857a">Коллоквиум II</a></li>
 
-  ### Теория вероятностей и математическая статистика
-
-  - [Коллоквиум I](https://delicious-allium-341.notion.site/1-a1f45a75dcee49768a54ec25813fbfde)
-  - [Коллоквиум II](https://delicious-allium-341.notion.site/2-e08914c1a91c44d7abc746bb8e4236ac)
-  - [Коллоквиум III](https://delicious-allium-341.notion.site/3-28bb61080e254feebf94a30440fdcd2d)
-  - [Коллоквиум IV](https://delicious-allium-341.notion.site/4-ee4f4d1f8e2941b2b123117c4a5fcce6)
+  </ul>
  
- ### Математический анализ
+  <h3>Алгебра</h3>
 
-  - [Коллоквиум I](https://delicious-allium-341.notion.site/1-cb0aab54ec6e4144b8413cb53e39b7ad)
-  - [Коллоквиум II](https://delicious-allium-341.notion.site/2-b22e6e7fddbe430181d8d8473e3ed161)
-  - [Коллоквиум III](https://delicious-allium-341.notion.site/3-76f9d7da01274545b5991429c1ca2305)
+  <ul>
+  
+  <li><a href="https://delicious-allium-341.notion.site/f43d564d15d54ba4825d5effa95d131a">Экзамен</a></li>
+
+  </ul>
+
+  <h2>2 курс</h2>
+
+  <h3>Теория вероятностей и математическая статистика</h3>
+
+  <ul>
+
+  <li><a href="https://delicious-allium-341.notion.site/1-a1f45a75dcee49768a54ec25813fbfde">Коллоквиум I</a></li>
+
+  <li><a href="https://delicious-allium-341.notion.site/2-e08914c1a91c44d7abc746bb8e4236ac">Коллоквиум II</a></li>
+
+  <li><a href="https://delicious-allium-341.notion.site/3-28bb61080e254feebf94a30440fdcd2d">Коллоквиум III</a></li>
+
+  <li><a href="https://delicious-allium-341.notion.site/4-ee4f4d1f8e2941b2b123117c4a5fcce6">Коллоквиум IV</a></li>
+
+  </ul>
+ 
+  <h3>Математический анализ</h3>
+
+  <ul>
+
+  <li><a href="https://delicious-allium-341.notion.site/1-cb0aab54ec6e4144b8413cb53e39b7ad">Коллоквиум I</a></li>
+
+  <li><a href="https://delicious-allium-341.notion.site/2-b22e6e7fddbe430181d8d8473e3ed161">Коллоквиум II</a></li>
+
+  <li><a href="(https://delicious-allium-341.notion.site/3-76f9d7da01274545b5991429c1ca2305">Коллоквиум III</a></li>
+
+  </ul>
 
  </details>
 
