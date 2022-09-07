@@ -149,7 +149,7 @@
 
   <li><a href="https://delicious-allium-341.notion.site/2-b22e6e7fddbe430181d8d8473e3ed161">Коллоквиум II</a></li>
 
-  <li><a href="(https://delicious-allium-341.notion.site/3-76f9d7da01274545b5991429c1ca2305">Коллоквиум III</a></li>
+  <li><a href="https://delicious-allium-341.notion.site/3-76f9d7da01274545b5991429c1ca2305">Коллоквиум III</a></li>
 
   </ul>
 
