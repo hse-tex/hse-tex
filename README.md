@@ -177,7 +177,7 @@
 - [Денис Козлов](https://github.com/DKozl50)
 - [Сергей Лоптев](https://github.com/beastSL)
 - Даниил Казанцев
-- [Сергей Рахманов](https://github.com/shoraii)
+- [Сергей Рахманов](https://github.com/akulutka)
 - [Максим Николаев](https://github.com/maximkm)
 - [Сергей Пилипенко](https://github.com/territhing)
 - [Денис Болонин](https://github.com/BoloniniD)
