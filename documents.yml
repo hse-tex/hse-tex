@@ -27,6 +27,8 @@ directory:
   target: course-1/algebra-exam.pdf
 - source: course-1/linear-algebra/lectures/linear-algebra.tex
   target: course-1/linear-algebra.pdf
+- source: course-1/linear-algebra-2019/lectures/linear-algebra.tex
+  target: course-1/linear-algebra-2019.pdf
 
 # Список документов, которые полностью содержатся в одном файле (за исключением *header.sty)
 # Только изменение source файла (или хедеров) будет приводить к пересборке документа
