@@ -1,0 +1,245 @@
+\section{Лекция 9.09.2019}
+\subsection{Матрицы}
+\begin{definition}
+    \textit{Матрица размера $n \times m$} --- это прямоугольная таблица высоты $m$ и ширины $n$.
+\end{definition}
+
+\begin{equation*}
+    A = \begin{pmatrix}
+        a_{11}  & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \dots & a_{mn}
+    \end{pmatrix}
+\end{equation*}
+
+$a_{ij}$ -- элемент на пересечении $i$-й строки и $j$-го столбца
+
+Краткая запись -- $A = (a_{ij})$
+
+Множество всех матриц размера $m \times n$ с коэффициентами из $\RR$ (множество всех действительных чисел) --- $\text{Mat}_{n \times m}(\RR)$ или $\text{Mat}_{n \times m}$
+
+\begin{definition}
+    Две матрицы $A \in \text{Mat}_{n \times m}$ и $B \in \text{Mat}_{p \times q}$ называются \textit{равными}, если $m = p$, $n = q$, и соответствующие элементы равны
+\end{definition}
+
+\begin{example}
+    $\begin{pmatrix}
+       \circ & \circ & \circ \\ \circ & \circ & \circ
+    \end{pmatrix}
+    \neq
+    \begin{pmatrix}
+        \circ & \circ \\ \circ & \circ \\ \circ & \circ
+    \end{pmatrix}$
+\end{example}
+
+\subsection{Операции над матрицами}
+
+Для любых $A, B \in \text{Mat}_{m \times n}$
+\begin{itemize}
+    \item \emph{Сложение} $A + B := (a_{ij} + b_{ij}) = \begin{pmatrix}
+            a_{11} + b_{11} & a_{12} + b_{12} & \dots & a_{1n} + b_{1n} \\
+            a_{21} + b_{21} & a_{22} + b_{22} & \dots & a_{2n} + b_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} + b_{m1} & a_{m2} + b_{m2} & \dots & a_{mn} + b_{mn}
+        \end{pmatrix}$
+    \item \emph{Умножение на скаляр} $\lambda \in \RR \implies \lambda A := (\lambda a_{ij}) = \begin{pmatrix}
+            \lambda a_{11} & \lambda a_{12} & \dots & \lambda a_{1n} \\
+            \lambda a_{21} & \lambda a_{22} & \dots & \lambda a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            \lambda a_{m1} & \lambda a_{m2} & \dots & \lambda a_{mn}
+        \end{pmatrix}$
+\end{itemize}
+
+\textbf{Свойства суммы и произведения на скаляр}
+
+$\forall A, B, C  \in \text{Mat}_{m \times n} \quad \forall \lambda, \mu \in \RR$
+\begin{enumerate}[label=\arabic*), nosep]
+    \item $A + B = B + A$ (коммутативность)
+
+    \item $(A + B) + C = A + (B + C)$ (ассоциативность)
+
+    \item $A + 0 = 0 + A = A$, где 
+        \begin{equation*}
+            0 = \begin{pmatrix}
+                0 & 0 & \dots & 0 \\
+                0 & 0 & \dots & 0 \\
+                \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & \dots & 0
+            \end{pmatrix} \text{ --- нулевая матрица}
+        .\end{equation*}
+
+    \item $A + (-A) = 0$
+    
+        $-A = (-a_{ij})$ -- противоположная матрица
+
+    \item $(\lambda + \mu) A = \lambda A + \mu A$
+
+    \item $\lambda (A + B) = \lambda A + \lambda B$
+
+    \item $\lambda (\mu A) = \lambda (\mu A)$
+
+    \item $1 A = A$
+\end{enumerate}
+
+\bigskip
+\textit{\textbf{Упражнение на дом.} Доказать эти свойства.}
+
+\begin{comment}
+    Из свойств 1) -- 8) следует, что $\text{Mat}_{n \times m}(\RR)$ является векторным пространством над \( \RR \)
+\end{comment}
+
+
+\subsection{Пространство $\RR^n$, его отождествление с матрицами-столбцами высоты $n$}
+
+\noindent
+$\RR^n := \{(x_1, \dots, x_n) \mid x_i \in \RR \ \forall i = 1, \dots, n \}$
+
+$\RR$ -- числовая прямая
+
+$\RR^2$ -- плоскость
+
+$\RR^3$ -- трехмерное пространство
+
+\bigskip
+Договоримся отождествлять \( \RR^n \) со столбцами высоты \( n \)
+
+$(x_1, \dots, x_n) \leftrightarrow \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}$ -- \textit{вектор столбец}
+
+$\RR^n = \left\{\begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \mid x \in \RR \ \forall i = 1, \dots, n \right\} = \text{Mat}_{n \times 1}(\RR)$
+
+$\left[ x = \begin{pmatrix}
+    x_1 \\ \vdots \\ x_n
+\end{pmatrix} \in \RR^n, y = \begin{pmatrix}
+    y_1 \\ \vdots \\ y_n
+\end{pmatrix} \in \RR^n \right] \implies 
+\left[ x = y \iff x_i = y_i \ \forall i \right]$
+
+\( x + y := \begin{pmatrix}
+    x_1 + y_1 \\ \vdots \\ x_n + y_n
+\end{pmatrix} \)
+
+$\lambda \in \RR \implies \lambda x_i := (\lambda x_1, \dots, \lambda x_n)$
+
+
+\subsection{Транспонирование матриц, его простейшие свойства}
+
+\begin{align*}
+    A \in \text{Mat}_{m \times n} = &\begin{pmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \dots & a_{mn}
+    \end{pmatrix} \\
+    A^T \in \text{Mat}_{n \times m} := &\begin{pmatrix}
+        a_{11} & a_{21} & \dots & a_{m1} \\
+        a_{12} & a_{22} & \dots & a_{m2} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{1n} & a_{2n} & \dots & a_{mn}
+    \end{pmatrix} \text{ --- \textit{транспонированная матрица}}
+.\end{align*}
+
+\bigskip
+Свойства:
+\begin{enumerate}[label=\arabic*), nosep]
+    \item $(A^T)^T = A$
+    \item $(A + B)^T = A^T + B^T$
+    \item $(\lambda A)^T = \lambda A^T$
+\end{enumerate}
+
+\begin{example}
+    \( \begin{pmatrix}
+        x_1 & \dots & x_n
+    \end{pmatrix}^T = \begin{pmatrix}
+        x_1 \\ \vdots \\ x_n
+    \end{pmatrix} \)
+\end{example}
+\begin{example}
+    \( \begin{pmatrix}
+    x_1 \\ \vdots \\ x_n
+    \end{pmatrix}^T = \begin{pmatrix}
+    x_1 & \dots & x_n
+    \end{pmatrix} \)
+\end{example}
+\begin{example}
+    \( \begin{pmatrix}
+        1 & 2 \\ 3 & 4 \\ 5 & 6
+    \end{pmatrix}^T = \begin{pmatrix}
+        1 & 3 & 5 \\
+        2 & 4 & 6
+    \end{pmatrix} \)
+\end{example}
+
+\subsection{Умножение матриц}
+
+Пусть $A = (a_{ij}) \in \text{Mat}_{m \times n}$
+
+\bigskip
+
+$A_{(i)} = \begin{pmatrix} a_{i1}, a_{i2}, \dots, a_{in} \end{pmatrix} $ --- $i$-я строка матрицы $A$
+
+$A^{(j)} = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mn} \end{pmatrix} $ --- $j$-й  столбец матрицы $A$
+
+\begin{enumerate}[label=\arabic*)]
+    \item
+        Частный случай: умножение строки на столбец той же длинны
+
+        $\underbrace{(x_1, \dots, x_n)}_{1 \times n}
+        \underbrace{\begin{pmatrix}
+            y_1 \\ \vdots \\ y_n
+        \end{pmatrix}}_{n \times 1}
+        = x_1 \cdot y_1 + \dots + x_n \cdot y_n$
+
+    \item
+        Общий случай:
+
+        $A$ -- матрица размера $m \times \underline{n}$
+
+        $B$ -- матрица размера $\underline{n} \times p$
+
+        $AB := C \in \text{Mat}_{m \times p}$, где
+        \begin{equation*}
+            C_{ij} = A_{(i)} B^{(j)} = \sum_{k = 1}^{n} a_{ik} \cdot b_{kj}
+        .\end{equation*}
+
+        Количество столбцов матрицы $A$ равно количеству строк матрицы $B$ --- условие согласованности матриц.
+\end{enumerate}
+
+\begin{example}
+    \( \begin{pmatrix}
+        y_1 \\ \vdots \\ y_n
+    \end{pmatrix} 
+    \begin{pmatrix}
+        x_1 & \dots & x_n
+    \end{pmatrix}
+    := 
+    \begin{pmatrix}
+        x_1 y_1 & x_2 y_1 & \dots & x_n y_1 \\
+        x_1 y_2 & x_2 y_2 & \dots & x_n y_2 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        x_1 y_n & x_2 y_m & \dots & x_n y_m 
+    \end{pmatrix} \)
+\end{example}
+
+\begin{example}
+    $\begin{pmatrix}
+        1 & 0 & 2 \\
+        0 & -1 & 3
+    \end{pmatrix}
+    \times
+    \begin{pmatrix}
+        2 & -1 \\
+        0 & 5 \\
+        1 & 1
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1 \cdot 2 + 0 \cdot 0 + 2 \cdot 1 & 1 \cdot (-1) + 0 \cdot 5 + 2 \cdot 1 \\
+        0 \cdot 2 + (-1) \cdot 0 + 3 \cdot 1 & 0 \cdot (-1) + (-1) \cdot 5 + 3 \cdot 1
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        4 & 1 \\
+        3 & -2
+    \end{pmatrix}$
+\end{example}

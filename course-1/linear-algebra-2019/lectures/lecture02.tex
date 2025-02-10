@@ -1,0 +1,260 @@
+\section{Лекция 12.09.2019}
+
+\subsection{Отступление о суммах}
+
+Пусть $S_p, S_{p + 1}, \dots, S_q$ -- набор чисел.
+
+\bigskip
+Тогда, $\sum_{i = p}^q S_i := S_p + S_{p + 1} + \dots + S_q $ -- сумма по $i$ от $p$ до $q$
+
+\bigskip
+Например, $\sum_{i=1}^{100} i^2 = 1^2 + 2^2 + \dots + 100^2$
+
+\bigskip
+\textbf{Свойства сумм}:
+\begin{enumerate}
+    \item $\lambda \sum_{i=1}^n S_i = \sum_{i=1}^n \lambda S_i $
+    \item $\sum_{i=1}^n (S_i + T_i) = \sum_{i=1}^n S_i + \sum^n_{i=1} T_i $
+    \item $\sum_{i=1}^m \sum_{j=1}^n S_{ij} = \sum_{j=1}^n \sum_{i=1}^m S_{ij}$ --- сумма всех элементов матрицы $S = (S_{ij})$
+\end{enumerate}
+
+\subsection{Основные свойства умножения матриц}
+
+Пусть $A \in \text{Mat}_{m \times n}, \ B \in \text{Mat}_{n \times p}$
+
+\begin{enumerate}
+\item 
+    $\underbracket{A(B + C)}_x = \underbracket{AB + AC}_y$ --- левая дистрибутивность.
+   
+    \begin{proof}
+        \begin{align*}
+            x_{ij} = A_{(i)} (B + C)^{(j)}
+            &= \sum_{k = 1}^{n} a_{ik} (b_{kj} + c_{kj}) \\
+            &= \sum_{k = 1}^{n} (a_{ik} b_{kj} + a_{ik} c_{kj}) \\
+            &= \sum_{k = 1}^{n} a_{ik} b_{kj} + \sum_{k = 1}^{n} a_{ik} c_{kj} \\
+            &= A_{(i)} B^{(j)} + A_{(i)} C^{(j)} = y_{ij}
+        .\qedhere\end{align*}
+    \end{proof}
+
+\item $(A+B)C = AC + BC$ --- правая дистрибутивность, доказывается аналогично.
+
+\item $\lambda(AB) = (\lambda A) B = A (\lambda B)$
+
+\item $(AB)C = A(BC)$ --- ассоциативность.
+
+    \begin{proof}
+        $\underbracket{(AB)}_u C = x$, $A\underbracket{(BC)}_v = y$.
+
+        \begin{align*}
+            x_{ij}
+            &= \sum_{k = 1}^{n} u_{ik} \cdot c_{kj}
+            = \sum_{k = 1}^{n} \left(\sum_{l = 1}^{p} a_{il} b_{lk}\right) c_{kj}
+            = \sum_{k = 1}^{n} \sum_{l = 1}^{p} \left(a_{il} b_{lk} c_{kj}\right) \\
+            &= \sum_{l = 1}^{p} \sum_{k = 1}^{n} \left(a_{il} b_{lk} c_{kj}\right)
+            = \sum_{l = 1}^{p} a_{il} \sum_{k = 1}^{n} \left(b_{lk} c_{kj}\right)
+            = \sum_{l = 1}^{p} a_{il} v_{lj} = y_{ij}
+        .\qedhere\end{align*}
+    \end{proof}
+
+\item 
+    $\underbracket{(AB)^T}_x = \underbracket{B^T A^T}_y$.
+   
+    \begin{proof}
+        \begin{align*}
+            x_{ij} = [AB]_{ji} = A_{(j)} B^{(i)}
+            &= \sum_{k = 1}^n a_{jk} \cdot b_{ki} \\
+            &= \sum_{k = 1}^{n} b_{ki} \cdot a_{jk} = B^T_{(i)} (A^T)^{(j)} = y_{ij}
+        .\end{align*}
+    \end{proof}
+\end{enumerate}
+
+Умножение матриц не коммутативно.
+
+$A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, 
+B = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$
+
+$AB = \begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix}, 
+BA = \begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}$
+
+\bigskip
+\begin{definition}
+    $A \in \text{Mat}_{n \times n}$ называется \textit{квадратной матрицей} порядка $n$
+\end{definition}
+
+Обозначение $M_n := \text{Mat}_{n \times n}$
+
+$A \in M_n$
+
+\subsection{Диагональные матрицы}
+\begin{definition}
+    Матрица $A \in M_n$ называется \textit{диагональной} если все ее элементы вне главной диагонали равны нулю ($a_{ij} = 0$ при $i \neq j$)
+\end{definition}
+
+\begin{equation*}
+    A = \begin{pmatrix} 
+        a_1 & 0 & \dots & 0 \\
+        0 & a_2 & \dots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \dots & a_n
+    \end{pmatrix} \implies A = \diag(a_1, a_2, \dots, a_n)
+.\end{equation*}
+
+\begin{lemma}
+    $A = diag(a_1, \dots, a_n) \in M_n \implies$
+    \begin{enumerate}
+    \item $\forall B \in \text{Mat}_{n \times p} \implies AB = \begin{pmatrix}
+            a_1 B_{(1)} \\
+            a_2 B_{(2)} \\
+            \vdots \\
+            a_n B_{(n)} 
+        \end{pmatrix}$
+    \item $\forall B \in \text{Mat}_{m \times n} \implies BA = \begin{pmatrix} 
+            a_1 B^{(1)} & a_2 B^{(2)} & \dots & a_n B^{(n)}
+        \end{pmatrix}$ 
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}~
+    \begin{enumerate}
+    \item $[AB]_{ij} = \begin{pmatrix} 0 & \dots & 0 & a_i & 0 & \dots & 0\end{pmatrix} \begin{pmatrix} b_{1j} \\ b_{2j} \\ \vdots \\ b_{nj} \end{pmatrix} = a_i b_{ij} $
+    \item $[BA]_{ij} = \begin{pmatrix} b_{i1} & b_{i2} & \dots & b_{im} \end{pmatrix} \begin{pmatrix} \vdots \\ 0 \\ a_j \\ 0 \\ \vdots \end{pmatrix} = b_{ij} a_j$ 
+    \end{enumerate}
+\end{proof}
+
+\subsection{Единичная матрица и её свойства}
+\begin{definition}
+    Матрица $E = E_n = diag(1, 1, \dots, 1)$ называется \textit{единичной матрицей} порядка $n$. 
+
+    \begin{equation*}
+        E = \begin{pmatrix} 
+            1 & 0 & \dots & 0 \\
+            0 & 1 & \dots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \dots & 1
+        \end{pmatrix} 
+    \end{equation*}
+\end{definition}
+
+\textbf{Свойства}:
+\begin{enumerate}
+    \item $EA = A \quad \forall A \in \text{Mat}_{n \times p}$.
+    \item $AE = A \quad \forall A \in \text{Mat}_{p \times n}$.
+    \item $AE = EA = A \quad \forall A \in M_n$.
+\end{enumerate}
+
+\subsection{След квадратной матрицы и его свойства}
+\begin{definition}
+    \textit{Следом} матрицы $A \in M_n$ называется число $trA = a_{11} + a_{22} + \dots + a_{nn} = \sum_{i=1}^n a_{ii}$.
+\end{definition}
+
+\textbf{Свойства}:
+\begin{enumerate}
+\item $\tr(A + B) = \tr A + \tr B$.
+\item $\tr \lambda A = \lambda \tr A$.
+\item $\tr A^T = \tr A$.
+\item $\tr(AB) = \tr(BA)$.
+
+    $\forall A \in \text{Mat}_{m \times n}, B \in \text{Mat}_{n \times m}$.
+    \begin{proof}
+        $AB = x \in M_m$, $BA = y \in M_n$.
+        \begin{align*}
+            \tr x 
+            = \sum_{i = 1}^{m} x_{ii} 
+            &= \sum_{i = 1}^{m} \sum_{j = 1}^{n} \left(a_{ij} b_{ji}\right) \\
+            &= \sum_{j = 1}^{n} \sum_{i = 1}^{m} \left(b_{ji} a_{ij}\right) 
+            = \sum_{j = 1}^{n} y_{jj} 
+            = \tr y
+        .\qedhere\end{align*}
+    \end{proof}
+\end{enumerate}
+
+\begin{example}
+    $A = (1, 2, 3), B = \begin{pmatrix}4 \\ 5 \\ 6\end{pmatrix}$
+
+    $tr(AB) = tr(1 \cdot 4 + 2 \cdot 5 + 3 \cdot 6) = 32$
+
+    $tr(BA) = \tr \begin{pmatrix} 4 & 8 & 12 \\ 5 & 10 & 15 \\ 6 & 12 & 18 \end{pmatrix} = 4 + 10 + 18 = 32$
+\end{example}
+
+
+\subsection{Системы линейных уравнений.}
+
+\textit{Линейное уравнение}: $a_1 x_1 + \dots + a_n x_n = b$.
+
+$a_1, a_2, \dots, a_n, b \in \RR$ -- коэффициенты.
+
+$x_1, x_2, \dots, x_n$ -- неизвестные.
+
+\bigskip
+Система линейных уравнений (СЛУ):
+\begin{equation*}
+    \begin{cases}
+        \begin{aligned}
+            a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n &= b_1 \\
+            a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n &= b_2 \\
+            \hdotsfor{2} \\
+            a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n &= b_m \\
+        \end{aligned}
+    \end{cases}
+\end{equation*}
+m уравнений, n неизвестных
+
+\begin{definition}~
+    \begin{enumerate}
+    \item \textit{Решение одного уравнения} -- это такой набор значений неизвестных $x_1, x_2, \dots, x_n$, при подстановке которого в уравнение получаем тождество.
+    \item \textit{Решение СЛУ} -- такой набор значений неизвестных, который является решением каждого уравнения СЛУ.
+    \end{enumerate}
+\end{definition}
+
+Основная задача: решить СЛУ, т.е. найти все решения.
+
+\bigskip
+\begin{example}
+
+    $n = m = 1$
+
+    $ax = b$, $a, b \in \RR$, x -- неизвестная
+
+    \begin{enumerate}
+    \item $a \neq 0 \implies x = \frac{b}{a}$ -- единственное
+
+    \item $a = 0 \implies 0x = b$
+
+        $b \neq 0 \implies$ решений нет.
+
+        $b = 0 \implies x$ -- любое $\implies$ бесконечно много решений.
+    \end{enumerate}
+\end{example}
+
+\subsubsection{Совместные и несовместные системы}
+\begin{definition}
+    СЛУ называется
+
+    -- \textit{совместной}, если у нее есть хотя бы одно решение,
+
+    -- \textit{несовместной}, если решений нет.
+\end{definition}
+
+\subsubsection{Матричная форма записи СЛУ}
+
+$AX = B$.
+\begin{equation*}
+    A \in Mat_{m \times n}(R) = \begin{pmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \dots & a_{mn}
+    \end{pmatrix} \text{ --- матрица коэффициентов}
+\end{equation*}
+
+\begin{equation*}
+    B \in \text{Mat}_{m \times 1} = \begin{pmatrix}
+        b_1 \\ b_2 \\ \vdots \\ b_n
+    \end{pmatrix} \text{ --- столбец правых частей}
+\end{equation*}
+
+\begin{equation*}
+    X \in \text{Mat}_{m \times 1} = \begin{pmatrix}
+        x_1 \\ x_2 \\ \vdots \\ x_n
+    \end{pmatrix} \text{ --- столбец неизвестных}
+\end{equation*}

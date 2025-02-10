@@ -1,0 +1,332 @@
+\section{Лекция 23.01.2020}
+
+\subsection{Матрица линейного отображения}
+
+Пусть $V, W$ --- векторные пространства над $F$.
+
+$\E = (e_1, \dots, e_n)$ --- базис $V$,
+
+$\F = (f_1, \dots, f_m)$ --- базис $W$.
+
+\bigskip
+Пусть $\phi\colon V \to W$ --- линейное отображение.
+
+$\forall j = 1, \dots, n$
+
+$\phi(e_j) = a_{1j} f_1 + a_{2j} f_2 + \dots + a_{mj} f_m = (f_1, \dots, f_m) \begin{pmatrix} a_{1j} \\ a_{2j} \\ \dots \\ a_{mj} \end{pmatrix}$.
+
+Тогда, $(\phi(e_1), \dots, \phi(e_n)) = (f_1, \dots, f_m) \cdot A$, где $A = (a_{ij}) \in \text{Mat}_{m \times n} (F)$.
+
+\begin{definition}
+    $A$ называется матрицей линейного отображения $\phi$ в базисах $\E$ и $\F$.
+
+    Обозначение: $A = A(\phi, \E, \F)$.
+\end{definition}
+
+В $j$-м столбце матрицы $A$ стоят координаты вектора $\phi(e_j)$ в базисе $\F$.
+
+\begin{designation}
+    $\hom(V, W) := $ множество всех линейных отображений из $V$ в $W$.
+\end{designation}
+
+\begin{corollary}[из предложения \ref{lec16:propopop}]
+    При фиксированных базисах $\E$ и $\F$ отображение $\phi \mapsto A(\phi, \E, \F)$ является биекцией между $\hom(V, W)$ и $\text{Mat}_{m \times n}(F)$.
+\end{corollary}
+
+
+\subsection{Примеры}
+
+\begin{enumerate}[start=0]
+\item $\phi(v) = 0 \ \forall v \implies \forall \E, \F \ A(\phi, \E, \F) = \begin{pmatrix} 0 & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & 0 \end{pmatrix}$.
+\stepcounter{enumi}
+\stepcounter{enumi}
+\item $\RR^3 \to \RR^2$ --- проекция на $Oxy$.
+
+    \begin{math}
+        \left.
+            \begin{aligned}
+                \E \text{ --- стандартный базис в } \RR^3 \\
+                \F \text{ --- стандартный базис в } \RR^2
+            \end{aligned}
+        \right\} \implies A(\phi, \E, \F) = \begin{pmatrix} 
+            1 & 0 & 0 \\
+            0 & 1 & 0
+        \end{pmatrix}.
+    \end{math}
+
+\item $\Delta \colon \RR[x]_{\leq n} \to \RR[x]_{\leq n - 1}$, $f \to f'$.
+
+    $\E = (1, x, \dots, x^n)$, $\F = (1, x, \dots, x^{n - 1})$.
+
+    \begin{math}
+        A(\phi, \E, \F) = \begin{pmatrix} 
+            0 & 1 & 0 & 0 & \dots & 0 \\
+            0 & 0 & 2 & 0 & \dots & 0 \\
+            0 & 0 & 0 & 3 & \dots & 0 \\
+            \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & 0 & \dots & n
+        \end{pmatrix}
+    \end{math}
+
+\item $x_1 e_1 + \dots + x_n e_n \mapsto \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix}$.
+
+    \begin{math}
+        \left.
+        \begin{aligned}
+            \E &= (e_1, \dots, e_n) \\
+            \F &= \text{стандартный базис}
+        \end{aligned}
+        \right\} \implies A(\phi, \E, \F) = E.
+    \end{math}
+
+\item $\phi\colon F^n \to F^m$.
+
+    $\phi(x) = A \cdot x$, $A \in \text{Mat}_{m \times n}(F)$.
+
+    $\E = $ стандартный базис,
+
+    $\F = $ стандартный базис.
+
+    $A(\phi, \E, \F) = A$.
+\end{enumerate}
+
+
+\subsection{Связь координат вектора и его образа при линейном отображении}
+
+\begin{proposal}
+    Пусть $\phi \colon V \to W$ --- линейное отображение,
+
+    $\E = (e_1, \dots, e_n)$ --- базис $V$,
+
+    $\F = (f_1, \dots, f_m)$ --- базис $W$,
+
+    $A = A(\phi, \E, \F)$.
+
+    \begin{math}
+        \begin{aligned}
+            v \in V \implies &v = x_1 e_1 + \dots + x_n e_n, \\
+            &\phi(v) = y_1 f_1 + \dots + y_m f_m.
+        \end{aligned}
+    \end{math}
+
+    Тогда,
+    \begin{equation*}
+        \begin{pmatrix} y_1 \\ \vdots \\ y_m \end{pmatrix} = A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}
+    .\end{equation*}
+\end{proposal}
+
+\begin{proof}
+    $v = (e_1, \dots, e_n) \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}$.
+
+    Значит, 
+    \begin{align*}
+        \phi(v) &= (\phi(e_1), \dots, \phi(e_n)) \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = (f_1, \dots, f_m) \cdot A \cdot \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}
+    .\end{align*}
+
+    При этом, 
+    \begin{align*}
+        \phi(v) = (f_1, \dots, f_m) \begin{pmatrix} y_1 \\ \vdots \\ y_m \end{pmatrix}
+    .\end{align*}
+
+    Так как $f_1, \dots, f_m$ линейно независимы, то
+    \begin{equation*}
+        A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} y_1 \\ \vdots \\ y_m \end{pmatrix}
+    .\end{equation*}
+\end{proof}
+
+
+\subsection{Формула изменения матрицы линейного отображения между векторными пространствами $V$ и $W$ при замене их базисов}
+
+Пусть теперь $\E'$ --- другой базис в $V$, $\F'$ --- другой базис в $W$.
+
+$\E' = \E \cdot C_{\in M_n}$,
+
+$\F' = \F \cdot D_{\in M_m}$.
+
+$A = A(\phi, \E, \F)$,
+
+$A' = A(\phi, \E', \F')$.
+
+\begin{proposal}
+    $A' = D^{-1} A C$.
+\end{proposal}
+
+\begin{proof}
+    \begin{equation*}
+        (e'_1, \dots e'_n) = (e_1, \dots, e_n) \cdot C
+    .\end{equation*}
+    
+    Применим $\phi$, 
+    \begin{align*}
+        (\phi(e'_1), \dots, \phi(e'_n)) &= (\phi(e_1), \dots, \phi(e_n)) \cdot C = (f_1, \dots, f_m) \cdot A \cdot C
+    \end{align*}
+    
+    При этом,
+    \begin{align*}
+        (\phi(e'_1), \dots, \phi(e'_n)) &= (f'_1, \dots, f'_m) \cdot A' = (f_1, \dots, f_m) \cdot D \cdot A'
+    .\end{align*}
+
+    Отсюда,
+    \begin{equation*}
+        A \cdot C = D \cdot A' \implies A' = D^{-1} \cdot A \cdot C
+    .\qedhere\end{equation*}
+\end{proof}
+
+
+\subsection{Операции сложения и умножения на скаляр на множестве всех линейных отображений между двумя векторными пространствами}
+
+Пусть $\phi, \psi \in \hom(V, W)$, $\lambda \in F$.
+
+\begin{definition}~
+    \begin{enumerate}
+    \item \textit{Суммой} линейных отображений $\phi$ и $\psi$ называется линейное отображение $\phi + \psi \in \hom(V, W)$, \\ такое что ${(\phi + \psi)(v) := \phi(v) + \psi(v)}$.
+    \item Произведение $\phi$ на $\lambda$ --- это линейное отображение $\lambda \phi \in \hom(V, W)$, такое что $(\lambda\phi)(v) := \lambda \phi(v)$.
+    \end{enumerate}
+\end{definition}
+
+\begin{exercise}
+    $\phi + \psi$ и $\lambda \phi$ --- действительно линейные отображения.
+\end{exercise}
+
+\begin{exercise}
+    $\hom(V, W)$ с этими операциями является векторным пространством над $F$.
+\end{exercise}
+
+
+\subsection{Матрица суммы двух линейных отображений и произведения линейного отображения на скаляр}
+
+Зафиксируем базисы $\E = (e_1, \dots, e_n)$ в $V$ и $\F = (f_1, \dots, f_m)$ в $W$.
+
+\begin{proposal}~
+    \begin{enumerate}
+    \item
+        \begin{math}
+            \begin{aligned}[t]
+                \phi, \psi \in \hom(V, W), \
+                &A_\phi = A(\phi, \E, \F)& \\
+                &A_\psi = A(\psi, \E, \F)& \\
+                &A_{\phi + \psi} = A(\phi + \psi, \E, \F)& \implies A_{\phi + \psi} = A_\phi + A_\psi
+            \end{aligned}
+        \end{math}
+
+    \item
+        \begin{math}
+            \begin{aligned}[t]
+                \lambda \in F, \phi \in \hom(V, W), \
+                &A_\phi = A(\phi, \E, \F)& \\
+                &A_{\lambda \phi} = A(\lambda \phi, \E, \F)& \implies A_{\lambda \phi} = \lambda A_\phi
+            \end{aligned}
+        \end{math}
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}~
+    \begin{enumerate}
+    \item 
+        \begin{align*}
+            (f_1, \dots, f_m) \cdot A_{\phi + \psi}
+            &= ((\phi + \psi)(e_1), \dots, (\phi + \psi)(e_n)) \\
+            &= (\phi(e_1), \dots, \phi(e_n)) + (\psi(e_1), \dots, \psi(e_n)) \\
+            &= (f_1, \dots, f_m) A_\phi + (f_1, \dots, f_m) A_\psi \\
+            &= (f_1, \dots, f_m) (A_\phi + A_\psi)
+        .\end{align*}
+
+        Следовательно, $A_{\phi + \psi} = A_\phi + A_\psi$.
+
+    \item Аналогично. \qedhere
+    \end{enumerate}
+\end{proof}
+
+
+\subsection{Изоморфизм между пространством $\hom(V,W)$ и пространством $(m \times n)$-матриц, где $n = \dim V$, $m = \dim W$}
+
+\begin{corollary}
+    При фиксированном $\E$ и $\F$ отображение $\phi \mapsto A(\phi, \E, \F)$ является изоморфизмом между $\hom(V, W)$ и $\text{Mat}_{m \times n}(F)$.
+\end{corollary}
+
+\begin{proof}~
+    Биективность была выше.
+    Линейность --- из предыдущего предложения.
+\end{proof}
+
+\begin{corollary}
+    $\dim \hom(V, W) = m \cdot n$.
+\end{corollary}
+
+
+\subsection{Матрица композиции двух линейных отображений}
+
+Пусть $U \xrightarrow{\psi} V \xrightarrow{\phi} W$ --- цепочка линейных отображений, а $\phi \circ \psi : U \to W$ --- их композиция,
+
+$\E = (e_1, \dots, e_n)$ --- базис $V$,
+
+$\F = (f_1, \dots, f_m)$ --- базис $W$,
+
+$\G = (g_1, \dots, g_k)$ --- базис $U$.
+
+$A_{\phi} = A(\phi, \E, \F)$,
+
+$A_\psi = A(\psi, \G, \E)$,
+
+$A_{\phi \circ \psi} = A(\phi \circ \psi, \G, \F)$.
+
+Тогда, $A_{\phi \circ \psi} = A_\phi \cdot A_\psi$.
+
+\begin{proof}
+    $(\psi(g_1), \dots, \psi(g_k)) = (e_1, \dots, e_n) A_\psi$.
+    Тогда применяя $\phi$,
+    \begin{equation*}
+        \left(\phi\left(\psi(g_1)\right), \dots, \phi\left(\psi(g_k)\right)\right) = \left(\phi(e_1), \dots, \phi(e_n)\right) A_\psi = (f_1, \dots, f_m) A_\phi A_\psi
+    .\end{equation*}
+    С другой стороны,
+    \begin{equation*}
+        \left(\phi\left(\psi(g_1)\right), \dots, \phi\left(\psi(g_k)\right)\right) = (f_1, \dots, f_m) A_{\phi \circ \psi}
+    .\end{equation*}
+
+    Значит, $A_\phi \cdot A_\psi = A_{\phi \circ \psi}$.
+\end{proof}
+
+
+\subsection{Ядро и образ линейного отображения; утверждение о том, что они являются подпространствами в соответствующих векторных пространствах}
+
+Пусть $\phi \colon V \to W$.
+
+\begin{definition}
+    \textit{Ядро} линейного отображения $\phi$ --- это $\ker \phi := \{v \in V \mid \phi(v) = 0\} \subseteq V$.
+
+    \textit{Образ} линейного отображения $\phi$ --- это $\Im \phi := \phi(V) \subseteq W$.
+\end{definition}
+
+\begin{example}
+    $\Delta \colon \RR[x]_{\leq n} \to \RR[x]_{\leq n}, \ f \mapsto f'$,
+
+    $\ker \Delta = \{f \mid f = \text{const}\}$,
+
+    $\Im \Delta = \RR[x]_{\leq n - 1}$.
+\end{example}
+
+\begin{proposal}~
+    \begin{enumerate}
+    \item Ядро --- подпространство в $V$.
+    \item Образ --- подпространство в $W$.
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}~
+    \begin{enumerate}
+    \item 
+        \begin{enumerate}
+        \item $\phi(0_V) = 0_W$,
+        \item $v_1, v_2 \in \ker \phi \implies \phi(v_1 + v_2) = \phi(v_1) + \phi(v_2) = 0 + 0 = 0 \implies v_1 + v_2 \in \ker \phi$,
+        \item $\lambda \in F, v \in V \implies \phi(\lambda v) = \lambda \phi(v) = \lambda 0 = 0 \implies \lambda v \in \ker \phi$.
+        \end{enumerate}
+
+    \item
+        \begin{enumerate}
+        \item $0_W = \phi(0_V) \in \Im \phi$,
+        \item $w_1, w_2 \in \Im \phi \implies \exists v_1, v_2 : w_1 = \phi(v_1), w_2 = \phi(v_2) \implies w_1 + w_2 = \phi(v_1) + \phi(v_2) = \phi(v_1 + v_2) \in \Im \phi$,
+        \item $\phi \in F, w \in \Im \phi \implies \exists v \in V : w = \phi(v) \implies \lambda w = \lambda \phi(v) = \phi(\lambda v) \in \Im \phi$.
+            \qedhere
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}

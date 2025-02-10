@@ -1,0 +1,316 @@
+\section{Лекция 12.12.2019}
+
+\subsection{Миноры}
+
+Пусть $A \in \text{Mat}_{m \times n}(F)$.
+
+\begin{definition}
+    \textit{Минором} матрицы $A$ называется определитель всякой квадратной подматрицы в $A$.
+\end{definition}
+
+\begin{example}
+    \begin{equation*}
+        A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}
+    .\end{equation*}
+
+    \begin{itemize}
+    \item 6 миноров порядка 1,
+    \item 3 минора порядка 2
+
+        \begin{math}
+            \begin{vmatrix} 1 & 2 \\ 4 & 5 \end{vmatrix}, \quad
+            \begin{vmatrix} 1 & 3 \\ 4 & 6 \end{vmatrix}, \quad
+            \begin{vmatrix} 2 & 3 \\ 5 & 6 \end{vmatrix}
+        .\end{math}
+    \end{itemize}
+\end{example}
+
+
+\subsection{Теорема о ранге матрицы}
+
+\begin{theorem}
+    Для любой $A \in \text{Mat}_{m \times n}(F)$ следующие 3 числа равны:
+    \begin{enumerate}[label=(\arabic*),nosep]
+    \item \label{lec14:eq_thm:1} $\rk A$ (столбцовый ранг),
+    \item \label{lec14:eq_thm:2} $\rk A$ (строковый ранг),
+    \item \label{lec14:eq_thm:3} наибольший порядок ненулевого минора в $A$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \ref{lec14:eq_thm:1} $=$ \ref{lec14:eq_thm:2} -- уже знаем.
+
+    Пусть $S$ -- квадратная подматрица в $A$ порядка $r$ и $\det S \neq 0$.
+    Тогда $r = \rk S \leq \rk A$.
+    Отсюда, \ref{lec14:eq_thm:3} $\leq$ \ref{lec14:eq_thm:1}.
+
+    \bigskip
+    Пусть теперь $\rk A = r$. Найдем в $A$ ненулевой минор порядка $r$.
+
+    Так как $\rk A = r$, в $A$ есть $r$ линейно независимых столбцов $A^{(i_1)}, \dots, A^{(i_r)}$. 
+
+    Составим из них матрицу $B$. Тогда $\rk B = r$.
+
+    Так как \ref{lec14:eq_thm:1} $=$ \ref{lec14:eq_thm:2} для $B$, то в $B$ можно найти $r$ линейно независимых строк.
+
+    Пусть $S$ -- подматрица в $B$, составленная из этих строк. 
+
+    $S$ -- квадратная подматрица порядка $r$ и $\rk S = r \implies \det S \neq 0 \implies $ нашли. Значит, \ref{lec14:eq_thm:3} $\geq$ \ref{lec14:eq_thm:1}.
+
+    \bigskip
+    Итог: \ref{lec14:eq_thm:3} $=$ \ref{lec14:eq_thm:1}.
+\end{proof}
+
+
+\subsection{Приложения ранга матрицы к исследованию СЛУ}
+
+Пусть $A \in \text{Mat}_{m \times n}(F)$, $b \in F^m$, $x \in F^n$ -- столбец неизвестных.
+\begin{equation*}
+    \tag{$\star$}
+    \label{lec14:axb}
+    Ax = b
+.\end{equation*}
+
+$(A \mid b)$ -- расширенная матрица.
+
+\subsubsection{Теорема Кронекера-Капелли}
+
+\begin{theorem}[Кронекера-Капелли]
+    СЛУ \eqref{lec14:axb} совместна $\iff \rk (A \mid b) = \rk A$.
+\end{theorem}
+
+\begin{proof}
+    При элементарных преобразованиях строк
+    \begin{itemize}[nosep]
+        \item[--] сохраняется множество решений,
+        \item[--] сохраняются числа $\rk (A \mid b)$ и $\rk A$.
+    \end{itemize}
+
+    \bigskip
+    Следовательно, вопрос сводится к ситуации когда $A$ имеет ступенчатый вид.
+    
+    В ступенчатом виде СЛУ совместна тогда и только тогда, когда нет строк вида $(0, \dots, 0 \mid \underbrace{\star}_{\neq 0})$.
+
+    То есть матрицы $(A \mid b)$ и $A$ имеют одно и то же число ненулевых строк.
+
+    Значит, $\rk (A \mid b) = \rk A$.
+\end{proof}
+
+
+\subsubsection{Критерий существования единственного решения у совместной системы линейных уравнений в терминах ранга её матрицы коэффициентов}
+
+\begin{theorem}
+    Пусть СЛУ \eqref{lec14:axb} совместна. Тогда, она имеет единственное решение тогда и только тогда, когда~$\rk A = n$, где $n$ -- число неизвестных.
+\end{theorem}
+
+\begin{proof}
+    Снова все сводится к ситуации, когда $(A \mid b)$ имеет ступенчатый вид.
+
+    Тогда, единственное решение $\iff$ нет свободных неизвестных $\iff$ ступенек ровно $n$ $\iff$ $\rk A = n$.
+\end{proof}
+
+
+\subsubsection{Критерий существования единственного решения у системы линейных уравнений с квадратной матрицей коэффициентов в терминах её определителя}
+
+\begin{corollary}
+    Пусть $A$ квадратна (то есть $m = n$). Тогда СЛУ \eqref{lec14:axb} имеет единственное решение $\iff$ $\det A \neq 0$.
+\end{corollary}
+
+\begin{proof}
+    Единственное решение $\iff$ $\rk A = n$ $\iff$ $\det A \neq 0$.
+\end{proof}
+
+\begin{comment}
+    Это единственное решение равно $x = A^{-1}b$.
+\end{comment}
+
+
+\subsubsection{Размерность пространства решений однородной системы линейных уравнений в терминах ранга её матрицы коэффициентов}
+
+Пусть теперь СЛУ однородна, то есть $b = 0$.
+\begin{equation*}
+    \tag{$\star$}
+    \label{lec14:ax0}
+    Ax = 0
+.\end{equation*}
+Пусть $S \subseteq F^n$ -- множество её решений. Знаем, что $S$ -- подпространство в $F^n$.
+
+\begin{proposal}
+    $\dim S = n - \rk A$.
+\end{proposal}
+
+\begin{proof}
+    Пусть $r$ -- число ненулевых строк в ступенчатом виде матрицы $A$.
+    Тогда $r = \rk A$.
+
+    Мы уже строили ФСР для \eqref{lec14:ax0} из $n - r$ векторов.
+
+    Значит, $\dim S = n - r = n - \rk A$.
+\end{proof}
+
+
+\subsubsection{Реализация подпространства в $F^n$ в качестве множества решений однородной системы линейных уравнений}
+
+\bigskip
+Пусть $b_1, \dots, b_p \in F^{n}$,
+\begin{equation*}
+    B := (b_1, \dots, b_p) \in \text{Mat}_{n \times p}(F)
+.\end{equation*}
+
+Пусть $a_1, \dots, a_q \in F^{n}$ --- ФСР для ОСЛУ $B^{T}x = 0$.
+\begin{equation*}
+    A := (a_1, \dots, a_q) \in \text{Mat}_{n \times q}(F)
+.\end{equation*}
+
+\begin{proposal}
+    $\langle b_1, \dots, b_p \rangle$ есть множество решений ОСЛУ $A^T x = 0$.
+\end{proposal}
+
+\begin{proof}
+    Пусть $S = \{x \in F^n \mid A^T x = 0\}$.
+    \begin{align*}
+        \forall i = 1, \dots, q \quad B^T a_i = 0 &\implies B^T A = 0 \\
+        &\implies A^T B = 0 \implies A^T b_j = 0 \quad \forall j = 1, \dots, p
+    .\end{align*}
+
+    Значит, $b_j \in S \quad \forall j = 1, \dots, p$.
+
+    Но тогда, $\langle b_1, \dots, b_p \rangle \subseteq S$.
+
+    Пусть $r = \rk \{b_1, \dots, b_p\} = \dim \langle b_1, \dots, b_p \rangle = \rk B$.
+
+    При этом, $\rk A = q = n - r$.
+
+    Тогда, $\dim S = n - \rk A = n - (n - r) = r$.
+
+    Следовательно, $\langle b_1, \dots, b_p \rangle = S$.
+\end{proof}
+
+\begin{corollary}
+    Всякое подпространство в $F^n$ является решением некоторой ОСЛУ.
+\end{corollary}
+
+
+\subsection{Координаты вектора по отношению к фиксированному базису векторного пространства}
+
+Пусть $V$ --- векторное пространство, $\dim V = n$, \ $e_1, \dots, e_n$ --- базис.
+
+Знаем, что $\forall v \in V \ \exists! \alpha_1, \dots, \alpha_n \in F$, такие что, $v = \alpha_1 e_1 + \dots + \alpha_n e_n$.
+
+\begin{definition}
+    Скаляры $\alpha_1, \dots, \alpha_n$ называются координатами вектора $v$ в базисе $e_1, \dots, e_n$.
+\end{definition}
+
+\begin{example}
+    $V = F^n$.
+
+    $v = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix}$.
+
+    Тогда, $x_1, \dots, x_n$ -- координаты вектора $v$ в стандартном базисе пространства $F^n$.
+\end{example}
+
+
+\subsection{Описание всех базисов конечномерного векторного пространства в терминах одного базиса и матриц координат}
+
+Пусть теперь $e'_1, \dots, e'_n$ -- какой то другой набор векторов в $V$. Тогда,
+\begin{align*}
+    e'_1 &= c_{11} e_1 + c_{21} e_2 + \dots + c_{n1} e_n \\
+    e'_2 &= c_{12} e_1 + c_{22} e_2 + \dots + c_{n2} e_n \\
+    &\dots \\
+    e'_n &= c_{1n} e_1 + c_{2n} e_2 + \dots + c_{nn} e_n
+.\end{align*}
+\begin{equation*}
+    (e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C, \text{ где } C = (c_{ij})
+.\end{equation*}
+
+в $j$-м столбце матрицы $C$ стоят координаты вектора $e'_j$ в базисе $e_1, \dots, e_n$.
+
+\begin{proposal}
+    $(e'_1, \dots, e'_n)$ -- базис в $V$ $\iff$ $\det C \neq 0$.
+\end{proposal}
+
+\begin{proof}~
+    \begin{description}
+        \item[$\implies$] 
+            $e'_1, \dots, e'_n$ -- базис, значит $(e_1, \dots, e_n) = (e'_1, \dots, e'_n) \cdot C' = (e_1, \dots, e_n) \cdot C \cdot C'$.
+
+            Так как $e_1, \dots, e_n$ линейно независимы, то $C \cdot C' = E \implies \det C \neq 0$.
+
+        \item[$\impliedby$]
+            $\det C \neq 0 \implies \exists C^{-1}$.
+
+            Достаточно доказать, что $e'_1, \dots, e'_n$ линейно независимы.
+
+            Пусть
+            \begin{equation*}
+                \alpha_1 e'_1 + \dots + \alpha_n e'_n = 0
+            .\end{equation*}
+
+            Тогда,
+            \begin{equation*}
+                (e'_1, \dots, e'_n) \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_n \end{pmatrix} = 0
+                \implies (e_1, \dots, e_n) \cdot C \cdot \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_n \end{pmatrix} = 0
+            .\end{equation*}
+
+            Так как $e_1, \dots, e_n$ линейно независимы, то
+            \begin{equation*}
+                C \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_n \end{pmatrix} = 0
+            .\end{equation*}
+
+            Домножаем слева на $C^{-1}$, получаем
+            \begin{equation*}
+                \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_n \end{pmatrix} = \begin{pmatrix} 0 \\ \dots \\ 0 \end{pmatrix}
+            .\qedhere\end{equation*}
+    \end{description}
+\end{proof}
+
+
+\subsection{Матрица перехода от одного базиса конечномерного векторного пространства к другому}
+
+Пусть $(e_1, \dots, e_n)$ и $(e'_1, \dots, e'_n)$ --- два базиса в $V$,
+\begin{equation*}
+    (e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C
+,\end{equation*}
+при этом $\det C \neq 0$.
+
+\begin{definition}
+    Матрица $C$ называется \textit{матрицей перехода} от базиса $(e_1, \dots, e_n)$ к базису $(e'_1, \dots, e'_n)$.
+\end{definition}
+
+\begin{comment}
+    Матрица перехода от $(e'_1, \dots, e'_n)$ к $(e_1, \dots, e_n)$ --- это $C^{-1}$.
+\end{comment}
+
+
+\subsection{Формула преобразования координат вектора при замене базиса}
+
+Пусть $v \in V$, тогда
+\begin{align*}
+    v &= x_1 e_1 + \dots + x_n e_n \\
+    v &= x'_1 e'_1 + \dots + x'_n e'_n
+.\end{align*}
+
+\begin{proposal}
+    \begin{equation*}
+        \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} 
+        = C \cdot \begin{pmatrix} x'_1 \\ \dots \\ x'_n \end{pmatrix}
+    .\end{equation*}
+\end{proposal}
+
+\begin{proof}
+    Имеем
+    \begin{equation*}
+        v = (e_1, \dots, e_n) \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix}
+    \end{equation*} 
+
+    С другой стороны,
+    \begin{equation*}
+        v = (e'_1, \dots, e'_n) \begin{pmatrix} x'_1 \\ \dots \\ x'_n \end{pmatrix} = (e_1, \dots, e_n) \cdot C \begin{pmatrix} x'_1 \\ \dots \\ x'_n \end{pmatrix}
+    \end{equation*}
+
+    Так как $e_1, \dots, e_n$ линейно независимы, то
+    \begin{equation*}
+        \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix}
+        = C \begin{pmatrix} x'_1 \\ \dots \\ x'_n \end{pmatrix}
+    .\end{equation*}
+\end{proof}

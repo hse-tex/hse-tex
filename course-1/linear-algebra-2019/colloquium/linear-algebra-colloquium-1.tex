@@ -1,0 +1,2852 @@
+\documentclass[a4paper]{article}
+\usepackage{header}
+
+
+\newcommand\enumtocitem[3]{\item\textbf{#1}\addtocounter{#2}{1}\addcontentsline{toc}{#2}{\protect{\numberline{#3}} #1}}
+\newcommand\defitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
+\newcommand\proofitem[1]{\enumtocitem{#1}{subsubsection}{\thesubsubsection}}
+
+\newlist{colloq}{enumerate}{1}
+\setlist[colloq]{label=\textbf{\arabic*.}}
+
+
+\title{\HugeЛинейная алгебра, Коллоквиум \uppercase\expandafter{\romannumeral 1\relax}}
+\author{
+    Бобень Вячеслав \\
+    \href{https://teleg.run/darkkeks}{@darkkeks},
+    \href{https://github.com/LoDThe/hse-tex}{GitHub} \\
+    Благодарность выражается Левину Александру (\href{https://teleg.run/azerty1234567890}{@azerty1234567890}) \\
+    и Милько Андрею (\href{https://teleg.run/andrew_milko}{@andrew\_milko}) за видеозаписи лекций.
+}
+\date{2019 --- 2020}
+
+\begin{document}
+    \maketitle
+
+    \epigraph{
+        ``К коллоку можете даже не готовиться''.
+    }{\rightline{{\rm --- Роман Сергеевич Авдеев}}}
+
+    \tableofcontents
+
+    \newpage
+
+    \section{Определения и формулировки}
+
+    \begin{colloq}
+    % Лекция 1
+    \defitem{Сумма двух матриц, произведение матрицы на скаляр}
+
+        Для любых $A, B \in \text{Mat}_{m \times n}$
+        \begin{itemize}
+            \item \emph{Сложение} $A + B := (a_{ij} + b_{ij}) = \begin{pmatrix}
+                    a_{11} + b_{11} & a_{12} + b_{12} & \dots & a_{1n} + b_{1n} \\
+                    a_{21} + b_{21} & a_{22} + b_{22} & \dots & a_{2n} + b_{2n} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    a_{m1} + b_{m1} & a_{m2} + b_{m2} & \dots & a_{mn} + b_{mn}
+                \end{pmatrix}$
+            \item \emph{Умножение на скаляр} $\lambda \in \RR \implies \lambda A := (\lambda a_{ij}) = \begin{pmatrix}
+                    \lambda a_{11} & \lambda a_{12} & \dots & \lambda a_{1n} \\
+                    \lambda a_{21} & \lambda a_{22} & \dots & \lambda a_{2n} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    \lambda a_{m1} & \lambda a_{m2} & \dots & \lambda a_{mn}
+                \end{pmatrix}$
+        \end{itemize}
+
+    % Лекция 1
+    \defitem{Транспонированная матрица}
+        \begin{align*}
+            A \in \text{Mat}_{m \times n} = &\begin{pmatrix}
+                a_{11} & a_{12} & \dots & a_{1n} \\
+                a_{21} & a_{22} & \dots & a_{2n} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                a_{m1} & a_{m2} & \dots & a_{mn}
+            \end{pmatrix} \\
+            A^T \in \text{Mat}_{n \times m} := &\begin{pmatrix}
+                a_{11} & a_{21} & \dots & a_{m1} \\
+                a_{12} & a_{22} & \dots & a_{m2} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                a_{1n} & a_{2n} & \dots & a_{mn}
+            \end{pmatrix} \text{ --- \textit{транспонированная матрица}}
+        .\end{align*}
+
+    % Лекция 1
+    \defitem{Произведение двух матриц}
+        \begin{enumerate}[label=\arabic*)]
+            \item
+                Частный случай: умножение строки на столбец той же длинны
+
+                $\underbrace{(x_1, \dots, x_n)}_{1 \times n}
+                \underbrace{\begin{pmatrix}
+                    y_1 \\ \vdots \\ y_n
+                \end{pmatrix}}_{n \times 1}
+                = x_1 \cdot y_1 + \dots + x_n \cdot y_n$
+
+            \item
+                Общий случай:
+
+                $A$ - матрица размера $m \times \underline{n}$
+
+                $B$ - матрица размера $\underline{n} \times p$
+
+                $AB := C \in \text{Mat}_{m \times p}$, где
+                \begin{equation*}
+                    C_{ij} = A_{(i)} B^{(j)} = \sum_{k = 1}^{n} a_{ik} \cdot b_{kj}
+                .\end{equation*}
+
+                Количество столбцов матрицы $A$ равно количеству строк матрицы $B$ --- условие согласованности матриц.
+        \end{enumerate}
+
+    % Лекция 2
+    \defitem{Диагональная матрица, умножение на диагональную матрицу слева и справа}
+
+        \begin{definition}
+            Матрица $A \in M_n$ называется \textit{диагональной} если все ее элементы вне главной диагонали равны нулю ($a_{ij} = 0$ при $i \neq j$)
+        \end{definition}
+
+        \begin{lemma}
+            $A = diag(a_1, \dots, a_n) \in M_n \implies$
+            \begin{enumerate}
+            \item $\forall B \in \text{Mat}_{n \times p} \implies AB = \begin{pmatrix}
+                    a_1 B_{(1)} \\
+                    a_2 B_{(2)} \\
+                    \vdots \\
+                    a_n B_{(n)}
+                \end{pmatrix}$
+            \item $\forall B \in \text{Mat}_{m \times n} \implies BA = \begin{pmatrix}
+                    a_1 B^{(1)} & a_2 B^{(2)} & \dots & a_n B^{(n)}
+                \end{pmatrix}$
+            \end{enumerate}
+        \end{lemma}
+
+    % Лекция 2
+    \defitem{Единичная матрица, её свойства}
+
+        \begin{definition}
+            Матрица $E = E_n = diag(1, 1, \dots, 1)$ называется \textit{единичной матрицей} порядка $n$.
+
+            \begin{equation*}
+                E = \begin{pmatrix}
+                    1 & 0 & \dots & 0 \\
+                    0 & 1 & \dots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \dots & 1
+                \end{pmatrix}
+            \end{equation*}
+        \end{definition}
+
+        \textbf{Свойства}:
+        \begin{enumerate}
+            \item $EA = A \quad \forall A \in \text{Mat}_{n \times p}$
+            \item $AE = A \quad \forall A \in \text{Mat}_{p \times n}$
+            \item $AE = EA = A \quad \forall A \in M_n$
+        \end{enumerate}
+
+    % Лекция 2
+    \defitem{След квадратной матрицы и его поведение при сложении матриц, умножении матрицы на скаляр и транспонировании}
+
+        \begin{definition}
+            \textit{Следом} матрицы $A \in M_n$ называется число $trA = a_{11} + a_{22} + \dots + a_{nn} = \sum_{i=1}^n a_{ii}$
+        \end{definition}
+
+        \textbf{Свойства}:
+        \begin{enumerate}
+        \item $\tr(A + B) = \tr A + \tr B$
+        \item $\tr \lambda A = \lambda \tr A$
+        \item $\tr A^T = \tr A$
+        \end{enumerate}
+
+    % Лекция 2
+    \defitem{След произведения двух матриц}
+
+        $\tr(AB) = \tr(BA)$
+
+        $\forall A \in \text{Mat}_{m \times n}, B \in \text{Mat}_{n \times m}$
+
+    % Лекция 2
+    \defitem{Совместные и несовместные системы линейных уравнений}
+
+        \begin{definition}
+            СЛУ называется
+
+            -- \textit{совместной}, если у нее есть хотя бы одно решение,
+
+            -- \textit{несовместной}, если решений нет.
+        \end{definition}
+
+    % Лекция 3
+    \defitem{Эквивалентные системы линейных уравнений}
+
+        \begin{definition}
+            Две системы уравнений от одних и тех же неизвестных называются \textit{эквивалентными}, если они имеют одинаковые множества решений.
+        \end{definition}
+
+    % Лекция 3
+    \defitem{Расширенная матрица системы линейных уравнений}
+
+        Для СЛУ
+        \begin{equation*}
+            \begin{cases}
+                \begin{aligned}
+                    a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n &= b_1 \\
+                    a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n &= b_2 \\
+                    \hdotsfor{2} \\
+                    a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n &= b_m \\
+                \end{aligned}
+            \end{cases}
+        \end{equation*}
+
+        её \textit{расширенной матрицей} называется матрица
+        \begin{equation*}
+            \begin{pmatrix} A \mid b \end{pmatrix} = \begin{amatrix}{4}{1}
+            a_{11} & a_{12} & \dots & a_{1n} & b_1 \\
+            a_{21} & a_{22} & \dots & a_{2n} & b_2 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} & a_{m2} & \dots & a_{mn} & b_m
+            \end{amatrix}
+        \end{equation*}
+
+    % Лекция 3
+    \defitem{Элементарные преобразования строк матрицы}
+
+        \begin{tabular}{c|c|c}
+            тип & СЛУ & расширенная матрица \\
+            \hline
+            1. & K $i$-му уравнению прибавить $j$-ое, умноженное на $\lambda \in \RR \ (i \neq j)$ & $\text{Э}_1(i, j, \lambda)$ \\
+            2. & Переставить $i$-е и $j$-е уравнения $(i \neq j)$ & $\text{Э}_2(i, j)$ \\
+            3. & Умножить $i$-ое уравнение на $\lambda \neq 0$ & $\text{Э}_3(i, \lambda)$
+        \end{tabular}
+
+        \begin{enumerate}
+        \item
+            $\text{Э}_1(i, j, \lambda)$: к $i$-ой строке прибавить $j$-ую, умноженную на $\lambda$ (покомпонентно),
+
+            $a_{ik} \mapsto a_{ik} + \lambda a_{jk} \ \forall k = 1, \dots, n$,
+
+            $b_i \mapsto b_i + \lambda b_j$.
+
+        \item
+            $\text{Э}_2(i, j)$: переставить i-ую и j-ую строки.
+
+        \item
+            $\text{Э}_3(i, \lambda)$: умножить i-ю строку на $\lambda$ (покомпонентно).
+        \end{enumerate}
+
+        $\text{Э}_1, \text{Э}_2, \text{Э}_3$ называются \textit{элементарными преобразованиями строк расширенной матрицы}.
+
+    % Лекция 3
+    \defitem{Ступенчатый вид матрицы}
+
+        \begin{definition}
+            Строка $(a_1, a_2, \dots, a_n)$ называется \textit{нулевой}, если $a_1 = a_2 = \dots = a_n = 0$ и \textit{ненулевой} иначе ($\exists i : a_i \neq 0$).
+        \end{definition}
+
+        \begin{definition}
+            \textit{Ведущим элементом} ненулевой строки называется первый её ненулевой элемент.
+        \end{definition}
+
+        \begin{definition}
+            Матрица $M \in \text{Mat}_{m \times n}$ называется \textit{ступенчатой}, или имеет ступенчатый вид, если:
+            \begin{enumerate}
+            \item Номера ведущих элементов её ненулевых строк строго возрастают.
+            \item Все нулевые строки стоят в конце.
+            \end{enumerate}
+        \end{definition}
+        \begin{equation*}
+            M = \begin{pmatrix}
+                0 & \dots & 0 & \diamond & * & * & * & * & * & * \\
+                0 & \dots & 0 & 0 & \dots & \diamond & * & * & * & * \\
+                0 & \dots & 0 & 0 & \dots & 0 & 0 & \diamond & * & * \\
+                \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+                0 & \dots & 0 & 0 & \dots & 0 & 0 & 0 & \diamond & * \\
+                0 & \dots & 0 & 0 & \dots & 0 & 0 & 0 & 0 & \diamond \\
+                0 & \dots & 0 & 0 & \dots & 0 & 0 & 0 & 0 & 0
+            \end{pmatrix}
+        ,\end{equation*}
+        где $\diamond \neq 0$, $*$ -- что угодно.
+
+    % Лекция 3
+    \defitem{Улучшенный ступенчатый вид матрицы}
+
+        \begin{definition}
+            M имеет \textit{улучшенный ступенчатый вид}, если:
+
+            \begin{enumerate}[nosep]
+            \item M имеет обычный ступенчатый вид.
+            \item Все ведущие элементы равны 1.
+            \item В одном столбце с любым ведущим элементом стоят только нули.
+            \end{enumerate}
+        \end{definition}
+
+        \begin{equation*}
+            M = \begin{pmatrix}
+                0 & \dots & 0 & 1 & * & 0 & * & 0 & 0 & * \\
+                0 & \dots & 0 & 0 & \dots & 1 & * & 0 & 0 & * \\
+                0 & \dots & 0 & 0 & \dots & 0 & 0 & 1 & 0 & * \\
+                \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+                0 & 0 & 0 & \dots & \dots & \dots & \dots & 0 & 1 & * \\
+                0 & 0 & 0 & \dots & 0 & 0 & 0 & 0 & 0 & 0
+            \end{pmatrix}
+        .\end{equation*}
+
+    % Лекция 3
+    \defitem{Теорема о виде, к которому можно привести матрицу при помощи элементарных преобразований строк}
+
+        \begin{theorem}~
+            \begin{enumerate}[label=\arabic*),nosep]
+            \item Всякую матрицу элементарными преобразованиями можно привести к ступенчатому виду.
+            \item Всякую ступенчатую матрицу элементарными преобразованиями строк можно привести к улучшенному ступенчатому виду.
+            \end{enumerate}
+        \end{theorem}
+
+        \begin{corollary}
+            Всякую матрицу элементарными преобразованиями строк можно привести к \textbf{улучшенному} ступенчатому виду.
+        \end{corollary}
+
+    % Лекция 4
+    \defitem{Общее решение совместной системы линейных уравнений}
+
+        \begin{definition}
+            \textit{Общим решением исходной СЛУ} называется выражение главных неизвестных через свободные.
+        \end{definition}
+
+    % Лекция 4
+    \defitem{Сколько может быть решений у системы линейных уравнений с действительными коэффициентами?}
+
+        \begin{definition}
+            Всякая СЛУ с действительными коэффициентами:
+            \begin{itemize}
+            \item либо не имеет решений (несовместна)
+            \item либо имеет ровно одно решение
+            \item либо имеет бесконечно много решений
+            \end{itemize}
+        \end{definition}
+
+    % Лекция 4
+    \defitem{Однородная система линейных уравнений. Что можно сказать про её множество решений?}
+
+        \begin{definition}
+            СЛУ называется однородной (ОСЛУ), если все её правые части равны 0. Расширенная матрица: $(A \mid 0)$
+        \end{definition}
+
+        \begin{fact}
+            Всякая ОСЛУ имеет нулевое решение $(x_1 = x_2 = \dots = x_n = 0)$.
+        \end{fact}
+
+        \begin{corollary}
+            Всякая ОСЛУ либо имеет ровно 1 решение (нулевое), либо бесконечно много решений.
+        \end{corollary}
+
+    % Лекция 4
+    \defitem{Свойство однородной системы линейных уравнений, у которой число неизвестных больше числа уравнений}
+
+        \begin{corollary}
+            Всякая ОСЛУ, у которой число неизвестных больше числа уравнений, имеет ненулевое решение (бесконечно много ненулевых решений).
+        \end{corollary}
+
+    % Лекция 4
+    \defitem{Связь между множеством решений совместной системы линейных уравнений и множеством решений соответствующей ей однородной системы}
+
+        \begin{proposition}
+            Пусть $Ax = b$ -- совместная СЛУ,
+
+            $x_0$ -- частное решение $Ax = b$,
+
+            $S \subset \RR^n$ -- множество решений ОСЛУ $Ax = 0$,
+
+            $L \subset \RR^n $ -- множество решений $Ax = b$.
+
+            Тогда, $L = x_0 + S$, где $x_0 + S = \{x_0 + v \mid v \in S\}$
+        \end{proposition}
+
+    % Лекция 4
+    \defitem{Обратная матрица}
+
+        \begin{definition}
+            Матрица $B \in M_n$ называется \textit{обратной}, к $A$, если $AB = BA = E$.
+
+            Обозначение: $B = A^{-1}$.
+        \end{definition}
+
+    % Лекция 4
+    \defitem{Перестановки множества $\{1, 2, \dots , n\}$}
+
+        \begin{definition}
+            \textit{Перестановкой (подстановкой)} на множестве $\{1, 2, \dots, n\}$ называется всякое биективное (взаимно однозначное) отображение множества $\{1, 2, \dots, n\}$ в себя.
+            \begin{equation*}
+                \sigma : \{1, 2, \dots, n\} \to \{1, 2, \dots, n\}
+            .\end{equation*}
+
+            $S_n$ -- множество всех перестановок на множестве $\{1, 2, \dots, n\}$.
+        \end{definition}
+
+        Запись:
+        \begin{equation*}
+            \begin{pmatrix}
+                1 & 2 & 3 & \dots & n \\
+                \sigma(1) & \sigma(2) & \sigma(3) & \dots & \sigma(n)
+            \end{pmatrix} \text{ либо }
+            \begin{pmatrix} 
+                i_1 & i_2 & i_3 & \dots & i_n \\
+                \sigma(i_1) & \sigma(i_2) & \sigma(i_3) & \dots & \sigma(i_n)
+            \end{pmatrix} 
+        .\end{equation*}
+
+        Здесь, $\{i_1, i_2, \dots, i_n\} = \{1, 2, \dots, n\}$.
+
+    % Лекция 5
+    \defitem{Инверсия в перестановке. Знак перестановки. Чётные и нечётные перестановки}
+
+        Пусть $\sigma \in S_n$, $i, j \in \{1, 2, \dots, n\}$, $i \neq j$
+
+        \begin{definition}
+            Пара $\{i, j\}$ (неупорядоченная) образует \textit{инверсию} в $\sigma$, если числа $i - j$ и $\sigma(i) - \sigma(j)$ имеют разный знак (то есть либо $i < j$ и $\sigma(i) > \sigma(j)$, либо $i > j$ и $\sigma(i) < \sigma(j)$).
+        \end{definition}
+
+        \begin{definition}
+            \textit{Знак} перестановки $\sigma$ -- это  число $\sgn(\sigma) = (-1)^{<\text{число инверсий в }\sigma>}$.
+        \end{definition}
+
+        \begin{definition}
+            Перестановка $\sigma$ называется \textit{четной}, если $\sgn(\sigma)$ = 1 (четное количество инверсий), и \textit{нечетной} если $\sgn(\sigma) = -1$ (нечетное количество инверсий).
+        \end{definition}
+
+    % Лекция 5
+    \defitem{Произведение двух перестановок}
+
+        \begin{definition}
+            \textit{Произведением} (или \textit{композицией}) двух перестановок $\sigma, \rho \in S_n$ называется такая перестановка $\sigma \rho \in S_n$, что $(\sigma \rho)(x) := \sigma (\rho (x)) \quad \forall x \in \{1, \dots, n\}$.
+        \end{definition}
+
+    % Лекция 5
+    \defitem{Тождественная перестановка и её свойства. Обратная перестановка и её свойства}
+
+        \begin{definition}
+            Перестановка $id = \begin{pmatrix}
+                1 & 2 & \dots & n \\
+                1 & 2 & \dots & n
+            \end{pmatrix} \in S_n$ называется \textit{тождественной} перестановкой.
+        \end{definition}
+
+        \textbf{Свойства:}
+
+        $\forall \sigma \in S_n \quad id \cdot \sigma = \sigma \cdot id = \sigma$.
+
+        $\sgn(id) = 1$.
+
+        \begin{definition}
+            $\sigma \in S_n$, $\sigma = \begin{pmatrix}
+                1 & 2 & \dots & n \\
+                \sigma(1) & \sigma(2) & \dots & \sigma(n)
+            \end{pmatrix} \implies$ подстановка $\sigma^{-1} := \begin{pmatrix}
+                \sigma(1) & \sigma(2) & \dots & \sigma(n) \\
+                1 & 2 & \dots & n
+            \end{pmatrix}$ называется \textit{обратной} к $\sigma$ перестановкой.
+        \end{definition}
+
+        \textbf{Свойства:}
+        $\sigma \cdot \sigma^{-1} = id = \sigma^{-1} \cdot \sigma$
+
+    % Лекция 5
+    \defitem{Теорема о знаке произведения двух перестановок}
+
+        \begin{theorem}
+            $\sigma, \rho \in S_n \implies \sgn(\sigma \rho) = \sgn \sigma \cdot \sgn \rho$.
+        \end{theorem}
+
+    \defitem{Транспозиция. Знак транспозиции}
+
+        Пусть $i, j \in \{1, 2, \dots, n\}$, $i \neq j$.
+
+        Рассмотрим перестановку $\tau_{ij} \in S_n$, такую что
+
+        $\tau_{ij}(i) = j$.
+
+        $\tau_{ij}(j) = i$.
+
+        $\tau_{ij}(k) = k \ \forall k \neq i, j$.
+
+        \begin{definition}
+            Перестановки вида $\tau_{ij}$ называются \textit{транспозициями}.
+        \end{definition}
+
+        \begin{comment}
+            $\tau$ -- траспозиция $\implies \tau^2 = id, \tau^{-1} = \tau$.
+        \end{comment}
+
+        \begin{lemma}
+            $\tau \in S_n$ -- транспозиция $\implies \sgn(\tau) = -1$.
+        \end{lemma}
+
+    \defitem{Общая формула для определителя квадратной матрицы произвольного порядка}
+
+        \begin{definition}
+            Определителем матрицы $A \in M_n$ называется число
+            \begin{equation*}
+                \det A = \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2 \sigma(2)} \dots a_{n\sigma(n)}
+            .\end{equation*}
+
+            ($\sum_{\sigma \in S_n}$ -- сумма по всем перестановкам)
+        \end{definition}
+
+    % Лекция 5
+    \defitem{Определители 2-го и 3-го порядка}
+
+        \begin{itemize}
+        \item
+            $n = 2$
+
+            $S_2 = \left\{ \begin{pmatrix} 1 & 2 \\ 1 & 2 \end{pmatrix}, \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix} \right\}$
+
+            $\det A = \begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix} = a_{11} a_{22} - a_{12} a_{21}$
+
+        \item
+            $n = 3$
+
+            $S_3 = \left\{
+            \begin{pmatrix} 1 & 2 & 3 \\ 1 & 2 & 3 \end{pmatrix},
+            \begin{pmatrix} 1 & 2 & 3 \\ 2 & 3 & 1 \end{pmatrix},
+            \begin{pmatrix} 1 & 2 & 3 \\ 3 & 1 & 2 \end{pmatrix},
+            \begin{pmatrix} 1 & 2 & 3 \\ 3 & 2 & 1 \end{pmatrix},
+            \begin{pmatrix} 1 & 2 & 3 \\ 2 & 1 & 3 \end{pmatrix},
+            \begin{pmatrix} 1 & 2 & 3 \\ 1 & 3 & 2 \end{pmatrix} \right\}$
+
+            $\det A = \begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{vmatrix} = a_{11} a_{22} a_{33} + a_{12} a_{23} a_{31} + a_{13} a_{21} a_{32} - a_{13} a_{22} a_{31} - a_{12} a_{21} a_{33} - a_{11} a_{23} a_{32}$.
+        \end{itemize}
+
+    % Лекция 6
+    \defitem{Поведение определителя при разложении строки (столбца) в сумму двух}
+
+        Если $A_{(i)} = A_{(i)}^1 + A_{(i)}^2$, то $\det A = \det \begin{pmatrix}
+            A_{(1)} \\ \vdots \\ A_{(i)}^1 \\ \vdots \\ A_{(n)}
+        \end{pmatrix} + \det \begin{pmatrix}
+            A_{(1)} \\ \vdots \\ A_{(i)}^2 \\ \vdots \\ A_{(n)}
+        \end{pmatrix}$.
+
+        \bigskip
+        Пример:
+        \begin{equation*}
+            \begin{vmatrix}
+                a_1 & a_2 & a_3 \\
+                b_1 + c_1 & b_2 + c_2 & b_3 + c_3 \\
+                d_1 & d_2 & d_3
+            \end{vmatrix} = \begin{vmatrix}
+                a_1 & a_2 & a_3 \\
+                b_1 & b_2 & b_3 \\
+                d_1 & d_2 & d_3
+            \end{vmatrix} + \begin{vmatrix}
+                a_1 & a_2 & a_3 \\
+                c_1 & c_2 & c_3 \\
+                d_1 & d_2 & d_3
+            \end{vmatrix}
+        \end{equation*}
+
+        Аналогично, если $A^{(j)} = A^{(j)}_1 + A^{(j)}_2$, то $\det A = \det (A^{(1)} \cdots A^{(j)}_1 \cdots A^{(n)}) + \det (A^{(1)} \cdots A^{(j)}_2 \cdots A^{(n)})$.
+
+    % Лекция 6
+    \defitem{Поведение определителя при перестановке двух строк (столбцов)}
+
+        Если в $A$ поменять местами две строки или два столбца, то $\det A$ поменяет знак.
+
+    % Лекция 6
+    \defitem{Поведение определителя при прибавлении к строке (столбцу) другой, умноженной на скаляр}
+
+        Если к строке (столбцу) прибавить другую строку (столбец), умноженную на скаляр, то $\det A$ не изменится.
+
+    % Лекция 6
+    \defitem{Верхнетреугольные и нижнетреугольные матрицы}
+
+        \begin{definition}
+            Матрица называется \textit{верхнетреугольной}, если $a_{ij} = 0$ при $i > j$, \textit{нижнетреугольной}, если $a_{ij} = 0$ при $i < j$.
+        \end{definition}
+        \begin{equation*}
+            \begin{pmatrix}
+                a_{11} & a_{12} & a_{13} & \dots & a_{1n} \\
+                0 & a_{22} & a_{23} & \dots & a_{2n} \\
+                0 & 0 & a_{33} & \dots & a_{3n} \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & 0 & \dots & a_{mn}
+            \end{pmatrix} \text{ -- верхнетреугольная}
+        \end{equation*}
+
+        \begin{equation*}
+            \begin{pmatrix}
+                a_{11} & 0 & 0 & \dots & 0 \\
+                a_{21} & a_{22} & 0 & \cdots & 0 \\
+                a_{31} & a_{32} & a_{33} & \cdots & 0 \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                a_{m1} & a_{m2} & a_{m3} & \cdots & a_{mn}
+            \end{pmatrix} \text{ -- нижнетреугольная}
+        \end{equation*}
+
+    % Лекция 6
+    \defitem{Определитель верхнетреугольной (нижнетреугольной) матрицы}
+
+        Если $A$ верхнетреугольная или нижнетреугольная, то $\det A = a_{11} a_{22} \dots a_{nn}$.
+
+    % Лекция 6
+    \defitem{Определитель диагональной матрицы. Определитель единичной матрицы}
+
+        Так как матрица диагональна, она верхнетреугольна. Тогда, её определитель равен произведению элементов на диагонали:
+
+        $\det A = a_{11} \cdot a_{22} \cdot \dots \cdot a_{nn}$.
+
+        Значит, определитель единичной матрицы -- 1.
+
+        $\det E = 1 \cdot 1 \cdot \dots \cdot 1 = 1$.
+
+    % Лекция 7
+    \defitem{Матрица с углом нулей и её определитель}
+
+        \begin{proposal}
+            \begin{equation*}
+                A = \left(
+                    \begin{array}{c|c}
+                        P & Q \\
+                        \hline
+                        0 & R
+                    \end{array}
+                \right) \text{ или } A =
+                \left(
+                    \begin{array}{c|c}
+                        P & 0 \\
+                        \hline
+                        Q & R
+                    \end{array}
+                \right), \ P \in M_k, \ R \in M_{n-k} \implies \det A = \det P \det R
+            .\end{equation*}
+        \end{proposal}
+
+        Матрица с углом нулей:
+        \begin{equation*}
+        \left(
+        \begin{array}{c|ccc}
+          * & * & * & * \\
+          \hline
+          0 & * & * & * \\
+          0 & * & * & * \\
+          0 & * & * & *
+        \end{array}
+        \right)
+        \end{equation*}
+
+        НЕ матрица с углом нулей:
+        \begin{equation*}
+        \left(
+        \begin{array}{c|ccc}
+          * & * & * & * \\
+          * & * & * & * \\
+          \hline
+          0 & * & * & * \\
+          0 & * & * & *
+        \end{array}
+        \right)
+        \end{equation*}
+
+    % Лекция 7
+    \defitem{Определитель произведения двух матриц}
+
+        \begin{theorem}
+            $A, B \in M_n \implies \det(AB) = \det A \det B$.
+        \end{theorem}
+
+    % Лекция 7
+    \defitem{Дополнительный минор к элементу квадратной матрицы}
+
+        \begin{definition}
+            \textit{Дополнительным минором} к элементу $a_{ij}$ называется определитель $(n-1) \times (n-1)$ матрицы, получающейся из $A$ вычеркиванием $i$-ой строки и $j$-го столбца.
+
+            Обозначение: $\overline{M}_{ij}$.
+        \end{definition}
+
+    % Лекция 7
+    \defitem{Алгебраическое дополнение к элементу квадратной матрицы}
+
+        \begin{definition}
+            \textit{Алгебраическим дополнением к} элементу $a_{ij}$ называется число $A_{ij} = (-1)^{i+j} \overline{M}_{ij}$.
+        \end{definition}
+
+    % Лекция 7
+    \defitem{Формула разложения определителя по строке (столбцу)}
+
+        \begin{theorem}
+            При любом фиксированном $i \in \{1, 2, \dots, n\}$,
+            \begin{equation*}
+                \det A = a_{i1} A_{i1} + a_{i2} A_{i2} + \dots + a_{in} A_{in} = \sum_{j = 1}^n a_{ij} A_{ij} \text{ -- разложение по i-й строке}
+            .\end{equation*}
+
+            Аналогично, для любого фиксированного $j \in \{1, 2, \dots, n\}$,
+            \begin{equation*}
+                \det A = a_{1j} A_{1j} + a_{2j} A_{2j} + \dots + a_{nj} A_{nj} = \sum_{i = 1}^{n} a_{ij} A_{ij} \text{ -- разложение по j-у столбцу}
+            .\end{equation*}
+        \end{theorem}
+
+    % Лекция 7
+    \defitem{Лемма о фальшивом разложении определителя}
+
+        \begin{lemma}~
+            \begin{enumerate}
+            \item
+                При любых $i, k \in \{1, 2, \dots, n\} : i \neq k \implies \sum_{j = 1}^n a_{ij} A_{kj} = 0$,
+            \item
+                При любых $j, k \in \{1, 2, \dots, n\} : j \neq k \implies \sum_{i = 1}^n a_{ij} A_{ik} = 0$.
+            \end{enumerate}
+        \end{lemma}
+
+    % Лекция 7
+    \defitem{Невырожденная матрица}
+
+        \begin{definition}
+            Матрица $A \in M_n$ называется \textit{невырожденной}, если $\det A \neq 0$, и \textit{вырожденной} иначе (то есть $\det A = 0$).
+        \end{definition}
+
+    % Лекция 7
+    \defitem{Присоединённая матрица}
+
+        \begin{definition}
+            \textit{Присоединенной} к А матрицей называется матрица $\widehat{A} = (A_{ij})^T$.
+        \end{definition}
+
+    % Лекция 7
+    \defitem{Критерий обратимости квадратной матрицы}
+
+        \begin{theorem}
+            $A$ обратима (то есть $\exists A^{-1}$) $\iff$ $A$ невырождена ($\det A \neq 0$).
+        \end{theorem}
+
+    % Лекция 7
+    \defitem{Явная формула для обратной матрицы}
+
+        $A^{-1} = \frac{1}{\det A} \widehat{A}$
+
+    % Лекция 8
+    \defitem{Критерий обратимости произведения двух матриц. Матрица, обратная к произведению двух матриц}
+        \begin{corollary}
+            $A, B \in M_n \implies AB$ обратима $\iff$ обе $A$, $B$ обратимы. При этом $(AB)^{-1} = B^{-1} A^{-1}$.
+        \end{corollary}
+
+    % Лекция 8
+    \defitem{Формулы Крамера}
+
+        Пусть есть СЛУ $Ax = b (\star)$, $A \in M_n$, $x = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} \in \RR^n$, $b = \begin{pmatrix} b_1 \\ \dots \\ b_n \end{pmatrix} \in \RR^n$.
+
+        Также, $\forall i \in \{1, 2, \dots, n\}$, $A_i = (A^{(1)}, \dots, A^{(i - 1)}, b, A^{(i + 1)}, \dots, A^{(n)})$.
+
+        \begin{theorem}
+            Если $\det A \neq 0$, то СЛУ ($\star$) имеет единственное решение и его можно найти по формулам:
+            \begin{equation*}
+                x_i = \frac{\det A_i}{\det A}
+            .\end{equation*}
+        \end{theorem}
+
+    % Лекция 8
+    \defitem{Что такое поле?}
+
+        \begin{definition}
+            \textit{Полем} называется множество $F$, на котором заданы две операции ``сложение'' ($(a, b) \to a + b$) и ``умножение'' ($(a, b) \to a \cdot b$), причем $\forall a, b, c \in F$ выполнены следующие условия:
+
+            \begin{enumerate}[nosep]
+                \item $a + b = b + a$ (коммутативность сложения)
+                \item $(a + b) + c = a + (b + c)$ (ассоциативность сложения)
+                \item $\exists 0 \in F : 0 + a = a + 0 = a$ (нулевой элемент)
+                \item $\exists (-a) \in F: a+(-a)=(-a)+a=0$ (противоположный элемент)
+
+                    $\uparrow$ абелева группа $\uparrow$
+                \item $a(b+c) = ab + ac$ (дистрибутивность)
+                \item $ab=ba$ (коммутативность умножения)
+                \item $(ab)c=a(bc)$ (ассоциативность умножения)
+                \item $\exists 1 \in F \setminus \{0\} : 1 a = a 1 = a$ (единица)
+                \item Если $a \neq 0$, $\exists a^{-1} \in F : a a^{-1} = a^{-1} a = 1$ (обратный элемент)
+            \end{enumerate}
+        \end{definition}
+
+    % Лекция 8
+    \defitem{Алгебраическая форма комплексного числа. Сложение, умножение и деление комплексных чисел в алгебраической форме}
+
+        \begin{definition}
+            Представление числа $z \in \CC$ в виде $a + bi$, где $a, b \in \RR$ называется его \textit{алгебраической формой}.
+            Число $i$ называется \textit{мнимой единицей}.
+
+            $a =: Re(z)$ -- \textit{действительная} часть числа $z$.
+
+            $b =: Im(z)$ -- \textit{мнимая} часть числа $z$.
+        \end{definition}
+
+        \begin{description}
+        \item[Сложение] $(a_1 + b_1 i) + (a_2 + b_2 i) = (a_1 + a_2) + (b_1 + b_2)i$
+        \item[Умножение] $(a_1 + b_1 i) (a_2 + b_2 i) = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1)i$
+        \item[Деление] $\dfrac{a_1 + b_1 i}{a_2 + b_2 i} = \dfrac{a_1 a_2 + b_1 b_2}{a_2^2 + b_2^2} + \dfrac{a_2 b_1 - a_1 b_2}{a_2^2 + b_2^2}i$
+        \end{description}
+
+    % Лекция 8
+    \defitem{Комплексное сопряжение и его свойства: сопряжение суммы и произведения двух комплексных чисел}
+
+        \begin{definition}
+            Число $\overline{z} := a - bi$ называется \textit{комплексно сопряженным} к числу $z = a + bi$.
+
+            Операция $z \to \overline{z}$ называется \textit{комплексным сопряжением}.
+        \end{definition}
+
+        \paragraph{Свойства комплексного сопряжения}
+
+        \begin{itemize}[nosep]
+        \item $\overline{\overline{z}} = z$.
+        \item $\overline{z + w} = \overline{z} + \overline{w}$.
+        \item $\overline{zw} = \overline{z} \cdot \overline{w}$.
+        \end{itemize}
+
+    % Лекция 8
+    \defitem{Геометрическая модель комплексных чисел, интерпретация в ней сложения и сопряжения}
+
+        Числу $z = a + bi$ соответствует точка (или вектор) на плоскости $\RR^2$ с координатами $(a, b)$.
+        Сумме $z + w$ соответствует сумма соответствующих векторов.
+        Сопряжение $z \to \overline{z}$ -- это отражение $z$ относительно действительной оси.
+
+    % Лекция 9
+    \defitem{Модуль комплексного числа и его свойства: неотрицательность, неравенство треугольника, модуль произведения двух комплексных чисел}
+
+        \begin{definition}
+            Число $|z| = \sqrt{a^2 + b^2}$ называется \textit{модулем числа} $z = a + bi \in \CC$ (то есть длина соответствующего вектора).
+        \end{definition}
+
+        \textbf{Свойства}
+        \begin{enumerate}
+        \item $|z| \geq 0$, причем $|z| = 0 \iff z = 0$.
+        \item $|z + w| \leq |z| + |w|$ (неравенство треугольника).
+        \item $z \overline{z} = |z|^2$.
+        \item $|zw| = |z||w|$.
+        \end{enumerate}
+
+    % Лекция 9
+    \defitem{Аргумент комплексного числа}
+
+        \begin{definition}
+            \textit{Аргументом числа} $z = a + bi \in \CC \setminus \{0\}$ называется число $\phi \in \RR$, такое что
+            \begin{equation*}
+                \cos \phi = \frac{a}{|z|} = \frac{a} {\sqrt{a^2 + b^2}}
+            .\end{equation*}
+
+            \begin{equation*}
+                \sin \phi = \frac{b}{|z|} = \frac{b}{\sqrt{a^2 + b^2}}
+            .\end{equation*}
+
+            В геометрических терминах, $\phi$ есть угол между осью $Ox$ и соответствующим вектором.
+        \end{definition}
+
+    % Лекция 9
+    \defitem{Тригонометрическая форма комплексного числа. Умножение и деление комплексных чисел в тригонометрической форме}
+
+        \begin{definition}
+            Представление числа $z \in \CC$ в виде $z = |z|(\cos \phi + i \sin \phi)$ называется его \textit{тригонометрической формой}.
+        \end{definition}
+
+        \begin{proposal}
+            Пусть $z_1 = |z_1| (\cos \phi_1 + i \sin \phi_1)$ и $z_2 = |z_2| (\cos \phi_2 + i \sin \phi_2)$, тогда
+            \begin{equation*}
+                z_1 z_2 = |z_1| |z_2| (\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2))
+            .\end{equation*}
+        \end{proposal}
+
+        \begin{corollary}
+            В условиях предложения, предположим, что $z_2 \neq 0$.
+
+            Тогда $\frac{z_1}{z_2} = \frac{|z_1|}{|z_2|} (\cos (\phi_1 - \phi_2) + i \sin(\phi_1 - \phi_2))$.
+        \end{corollary}
+
+    % Лекция 9
+    \defitem{Формула Муавра}
+
+        Пусть $z = |z|(\cos \phi + i \sin \phi)$. Тогда $\forall n \in \ZZ$,
+        \begin{equation*}
+            z^n = |z|^n (\cos(n \phi) + i \sin(n \phi)) \text{ -- формула Муавра}
+        .\end{equation*}
+
+    % Лекция 9
+    \defitem{Извлечение корней из комплексных чисел}
+
+        Пусть $z \in \CC$, $n \in \NN$, $n \geq 2$.
+
+        \begin{definition}
+            \textit{Корнем степени n} (или \textit{корнем n-й степени)} из числа $z$ называется всякое число $w \in \CC$, что $w^n = z$.
+        \end{definition}
+
+        $\sqrt[n]{z} = \{w_0, w_1, \dots, w_{n-1} \}$, где $w_k = \sqrt[n]{|z|}\left(\cos \frac{\phi + 2 \pi k}{n} + i \sin \frac{\phi + 2 \pi k}{n}\right)$
+
+        \begin{comment}
+            Числа $w_0, w_1, \dots, w_{n-1}$ лежат в вершинах правильного n-угольника с центром в начале координат.
+        \end{comment}
+
+    % Лекция 9
+    \defitem{Основная теорема алгебры комплексных чисел}
+
+        \begin{theorem}
+            Всякий многочлен степени $\geq 1$ с комплексными коэффициентами имеет комплексный корень.
+        \end{theorem}
+
+    % Лекция 9
+    \defitem{Теорема Безу и её следствие}
+
+        Частный случай деления многочлена $f(x)$ на многочлен $g(x)$ с остатком: $g(x) = x - c$, $\deg g(x) = 1$:
+
+        $f(x) = q(x) (x - c) + r(x)$, где либо $r(x) = 0$, либо $\deg r(x) < g(x) = 1$
+
+        Значит, $r(x) \equiv r = const \in F$.
+
+        \begin{theorem}
+            $r = f(c)$.
+        \end{theorem}
+
+        \begin{corollary}
+            Элемент $c \in F$ является корнем многочлена $f(x) \in F[x]$ тогда и только тогда, когда $f(x)$ делится на $(x - c)$.
+        \end{corollary}
+
+    % Лекция 9
+    \defitem{Кратность корня многочлена}
+
+        \begin{definition}
+            \textit{Кратностью} корня $c \in F$ многочлена $f(x)$ называется наибольшее целое $k$ такое что, $f(x)$ делится на $(x - c)^k$.
+        \end{definition}
+
+    % Лекция 10
+    \defitem{Векторное пространство}
+
+        Фиксируем поле $F$ (можно считать, что $F = \RR$ или $\CC$)
+
+        \begin{definition}
+            Множество $V$ называется \textit{векторным (линейным) пространством} над полем $F$, если на $V$ заданы две операции
+            \begin{itemize}[nosep]
+            \item ``сложение'': $V \times V \to V$, $(x, y) \mapsto x + y$.
+            \item ``умножение на скаляр'': $F \times V$, $(\alpha \in F, x \in V) \mapsto \alpha x$.
+            \end{itemize}
+            а также, $\forall x, y, z \in V$ и $\alpha, \beta \in F$ выполнены следующие условия (называются \textit{аксиомами векторного пространства}):
+            \begin{enumerate}[nosep]
+            \item $x + y = y + x$.
+            \item $(x + y) + z = x + (y + z)$.
+            \item $\exists \overrightarrow{0} \in V : x + \overrightarrow{0} = \overrightarrow{0} + x = x$ (нулевой элемент).
+            \item $\exists -x : -x + x = x + (-x) = \overrightarrow{0}$ (противоположный элемент).
+            \item $\alpha(x + y) = \alpha x + \alpha y$.
+            \item $(\alpha + \beta)x = \alpha x + \beta x$.
+            \item $(\alpha \beta)x = \alpha(\beta x)$.
+            \item $1 \cdot x = x$.
+            \end{enumerate}
+        \end{definition}
+    
+    % Лекция 10
+    \defitem{Подпространство векторного пространства}
+
+        Пусть $V$ -- векторное пространство над $F$.
+
+        \begin{definition}
+            Подмножество $U \subseteq V$ называется \textit{подпространством} (в $V$), если
+            \begin{enumerate}[nosep]
+            \item $\overrightarrow{0} \in U$.
+            \item $x, y \in U \implies x + y \in U$.
+            \item $x \in U, \alpha \in F \implies \alpha x \in U$.
+            \end{enumerate}
+        \end{definition}
+
+    % Лекция 10
+    \defitem{Линейная комбинация конечного набора векторов векторного пространства}
+
+        Пусть $V$ -- векторное пространство над $F$ и $v_1, \dots, v_k \in V$ -- набор векторов.
+
+        \begin{definition}
+            \textit{Линейной комбинацией} векторов $v_1, \dots, v_k$ называется всякое выражение вида $\alpha_1 v_1 + \dots + \alpha_k v_k$, где $\alpha_i \in F$.
+        \end{definition}
+    
+    % Лекция 10
+    \defitem{Линейная оболочка подмножества векторного пространства}
+
+        Пусть $S \subseteq V$ -- подмножество векторного пространства.
+
+        \begin{definition}
+            \textit{Линейной оболочкой} множества $S$ называются множество всех векторов из $V$, представимых в виде линейной комбинации какого-то конечного набора векторов из $S$.
+
+            Обозначение: $\langle S \rangle$.
+        \end{definition}
+
+    % Лекция 11
+    \defitem{Две общих конструкции подпространств в пространстве $F^n$}
+
+        \begin{itemize}
+        \item
+            Пусть $U \subseteq F^n$ -- множество векторов, тогда $\langle U \rangle$ -- подпространство в $F^n$.
+        \item
+            Множество решений любой ОСЛУ $Ax = 0$ ($A \in \text{Mat}_{m \times n}(F)$, $x \in F^n$) является подпространством в $F^n$.
+        \end{itemize} 
+
+        Любое подпространство в $F^n$ можно задать любым из этих способов.
+
+    % Лекция 11
+    \defitem{Линейная зависимость конечного набора векторов}
+    \defitem{Линейная независимость конечного набора векторов}
+    
+        \begin{definition}~
+            \begin{enumerate}
+            \item 
+                Векторы $v_1, \dots, v_n \in V $ называются \textit{линейно зависимыми} если существует их нетривиальная линейная комбинация, равная $\overrightarrow{0}$ (то есть $\exists (\alpha_1, \dots, \alpha_n) \neq (0, \dots, 0)$, такие что $\alpha_1 v_1 + \dots + \alpha_n v_n = \overrightarrow{0}$) и \textit{линейно независимыми} иначе (то есть из условия $\alpha_1 v_1 + \dots\alpha_n v_n = \overrightarrow{0}$ следует $\alpha_1 = \dots = \alpha_n = 0$).
+
+            \item
+                Множество $S \subseteq V$ (возможно бесконечное, возможно с повторяющимися элементами) называется \textit{линейно зависимым} если существует конечное линейно зависимое подмножество, и \textit{линейно независимым} если любое конечное подмножество линейно независимо.
+            \end{enumerate}
+        \end{definition}
+    
+    % Лекция 11
+    \defitem{Критерий линейной зависимости конечного набора векторов}
+
+        \begin{proposal}
+            Пусть $v_1, \dots, v_n \in V$, $i \in \{1, \dots, n\}$, тогда следующие условия эквивалентны:
+            \begin{enumerate}
+                \item $\exists (\alpha_1, \dots, \alpha_n) \in F^n$, такой что $\alpha_1 v_1 + \dots + \alpha_n v_n = \overrightarrow{0} (\star) $ и $\alpha_i \neq 0$. 
+                \item $v_i \in \langle v_1, \dots, v_{i - 1}, v_{i + 1}, \dots, v_n \rangle$.
+            \end{enumerate}
+        \end{proposal}
+
+        \begin{corollary}
+            Векторы $v_1, \dots, v_n$ линейно зависимы тогда и только тогда, когда $\exists i \in \{1, \dots, n\}$, такое что $v_i \in \langle v_1, \dots, v_{i - 1}, v_{i + 1}, \dots, v_n \rangle$.
+        \end{corollary}
+    
+    % Лекция 11
+    \defitem{Основная лемма о линейной зависимости}
+
+        \begin{lemma}
+            Пусть есть две системы векторов $v_1, \dots, v_m$ и $w_1, \dots, w_n$, причем $m < n$ и $w_i \in \langle v_1, \dots, v_m \rangle \quad \forall i = 1, \dots, n$.
+
+            Тогда векторы $w_1, \dots, w_n$ линейно зависимы.
+        \end{lemma}
+
+        \begin{example}
+            Любые $n + 1$ векторов в $F^n$ линейно зависимы, так как $F^n = \langle e_1, \dots, e_n \rangle$.
+        \end{example}
+    
+    % Лекция 11
+    \defitem{Базис векторного пространства}
+
+        \begin{definition}
+            Подмножество $S \subseteq V$ называется \textit{базисом} пространства $V$, если
+            \begin{enumerate}[nosep]
+            \item $S$ линейно независимо,
+            \item $\langle S \rangle = V$.
+            \end{enumerate}
+        \end{definition}
+
+        \begin{example}
+            $e_1, \dots, e_n$ -- это базис в $F^n$. Он называется \textit{стандартным базисом} в $F^n$.
+        \end{example}
+    
+    % Лекция 11
+    \defitem{Конечномерные и бесконечномерные векторные пространства}
+
+        \begin{definition}
+            Векторное пространство $V$ называется \textit{конечномерным}, если в нем есть конечный базис, и \textit{бесконечномерным} иначе.
+        \end{definition}
+    
+    % Лекция 11
+    \defitem{Размерность конечномерного векторного пространства}
+
+        \begin{definition}
+            \textit{Размерностью} конечномерного векторного пространства называется число элементов в (любом) его базисе.
+
+            Обозначение: $\dim V$.
+        \end{definition}
+
+        \begin{example}~
+            \begin{enumerate}
+            \item $\dim F^n = n$,
+            \item $V = \{\overrightarrow{0}\} \implies \dim V = 0$ так как базисом $V$ будет $\varnothing$.
+            \end{enumerate}
+        \end{example}
+    
+    % Лекция 12
+    \defitem{Характеризация базисов конечномерного векторного пространства в терминах единственности линейного выражения векторов}
+
+        \begin{proposition}
+            Пусть $\dim V < \infty$, $e_1, \dots, e_n \in \langle V \rangle$.
+
+            $e_1, \dots, e_n$ --- базис $V$ тогда и только тогда, когда, $\forall v \in V$ единственным образом представим в виде
+            \begin{equation*}
+                v = x_1 e_1 + \dots + x_n e_n \quad x_i \in F
+            .\end{equation*}
+        \end{proposition}
+
+    % Лекция 12
+    \defitem{Фундаментальная система решений однородной системы линейных уравнений}
+
+        \begin{equation*}
+            \tag{$\star$}
+            \label{lec12:oslu_1}
+            Ax = 0 \text{ -- ОСЛУ}
+        .\end{equation*}
+
+        $A \in \text{Mat}_{m \times n}(F), x = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} \in F^n$.
+
+        $S \subseteq F^n$ -- множество решений.
+
+        Знаем, что $S$ -- подпространство в $F^n$.
+
+        \begin{definition}
+            \textit{Фундаментальной системой решений} (ФСР) для ОСЛУ \eqref{lec12:oslu_1} называется всякий базис пространства её решений.
+        \end{definition}
+
+        \begin{comment}
+            У одной ОСЛУ может быть много разных ФСР.
+        \end{comment}
+
+    % Лекция 12
+    \defitem{Лемма о добавлении вектора к конечной линейно независимой системе}
+
+        \begin{lemma}
+            Пусть $v, v_1, \dots, v_m \in V$ и $v_1, \dots, v_m$ линейно независимы, тогда либо $v, v_1, \dots, v_m$ линейно независимы, либо $v \in \langle v_1, \dots , v_m \rangle$.
+        \end{lemma}   
+
+    \end{colloq}
+
+    \section{Вопросы на доказательство}
+
+    \subsection{Операции над матрицами}
+    \begin{colloq}
+        \proofitem{Дистрибутивность произведения матриц по отношению к сложению}
+
+            $\underbracket{A(B + C)}_x = \underbracket{AB + AC}_y$ --- левая дистрибутивность.
+
+            \begin{proof}
+                \begin{align*}
+                    x_{ij} = A_{(i)} (B + C)^{(j)}
+                    &= \sum_{k = 1}^{n} a_{ik} (b_{kj} + c_{kj}) \\
+                    &= \sum_{k = 1}^{n} (a_{ik} b_{kj} + a_{ik} c_{kj}) \\
+                    &= \sum_{k = 1}^{n} a_{ik} b_{kj} + \sum_{k = 1}^{n} a_{ik} c_{kj} \\
+                    &= A_{(i)} B^{(j)} + A_{(i)} C^{(j)} = y_{ij}
+                .\qedhere\end{align*}
+            \end{proof}
+
+            Правая дистрибутивность доказывается аналогично.
+
+        \proofitem{Ассоциативность произведения матриц}
+
+            $(AB)C = A(BC)$
+
+            \begin{proof}
+                $\underbracket{(AB)}_u C = x$, $A\underbracket{(BC)}_v = y$.
+
+                \begin{align*}
+                    x_{ij}
+                    &= \sum_{k = 1}^{n} u_{ik} \cdot c_{kj}
+                    = \sum_{k = 1}^{n} \left(\sum_{l = 1}^{p} a_{il} b_{lk}\right) c_{kj}
+                    = \sum_{k = 1}^{n} \sum_{l = 1}^{p} \left(a_{il} b_{lk} c_{kj}\right) \\
+                    &= \sum_{l = 1}^{p} \sum_{k = 1}^{n} \left(a_{il} b_{lk} c_{kj}\right)
+                    = \sum_{l = 1}^{p} a_{il} \sum_{k = 1}^{n} \left(b_{lk} c_{kj}\right)
+                    = \sum_{l = 1}^{p} a_{il} v_{lj} = y_{ij}
+                .\qedhere\end{align*}
+            \end{proof}
+
+        \proofitem{Некоммутативность произведения матриц}
+
+            Умножение матриц не коммутативно.
+
+            $A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},
+            B = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$.
+
+            $AB = \begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix},
+            BA = \begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}$.
+
+        \proofitem{Транспонирование произведения двух матриц}
+
+            $\underbracket{(AB)^T}_x = \underbracket{B^T A^T}_y$
+            \begin{proof}
+                \begin{align*}
+                    x_{ij} = [AB]_{ji} = A_{(j)} B^{(i)} 
+                    &= \sum_{k = 1}^n a_{jk} \cdot b_{ki} \\
+                    &= \sum_{k = 1}^{n} b_{ki} \cdot a_{jk} = B^T_{(i)} (A^T)^{(j)} = y_{ij}
+                .\end{align*}            
+            \end{proof}
+
+        \proofitem{Умножение на диагональную матрицу слева и справа}
+
+            \begin{lemma}
+                $A = diag(a_1, \dots, a_n) \in M_n \implies$
+                \begin{enumerate}
+                \item $\forall B \in \text{Mat}_{n \times p} \implies AB = \begin{pmatrix}
+                        a_1 B_{(1)} \\
+                        a_2 B_{(2)} \\
+                        \vdots \\
+                        a_n B_{(n)}
+                    \end{pmatrix}$
+                \item $\forall B \in \text{Mat}_{m \times n} \implies BA = ( a_1 B^{(1)} \ a_2 B^{(2)} \ \dots \ a_n B^{(n)} )$
+                \end{enumerate}
+            \end{lemma}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item $[AB]_{ij} = ( 0 \ \dots \ 0 \ a_i \ 0 \ \dots \ 0 ) \begin{pmatrix} b_{1j} \\ b_{2j} \\ \vdots \\ b_{nj} \end{pmatrix} = a_i b_{ij} $
+                \item $[BA]_{ij} = \begin{pmatrix} b_{i1} & b_{i2} & \dots & b_{im} \end{pmatrix} \begin{pmatrix} \vdots \\ 0 \\ a_j \\ 0 \\ \vdots \end{pmatrix} = b_{ij} a_j$
+                \end{enumerate}
+            \end{proof}
+
+        \proofitem{След произведения двух матриц}
+
+            $\tr(AB) = \tr(BA)$
+
+            $\forall A \in \text{Mat}_{m \times n}$, $B \in \text{Mat}_{n \times m}$
+
+            \begin{proof}
+                $AB = x \in M_m$, $BA = y \in M_n$
+                \begin{align*}
+                    \tr x
+                    = \sum_{i = 1}^{m} x_{ii}
+                    &= \sum_{i = 1}^{m} \sum_{j = 1}^{n} \left(a_{ij} b_{ji}\right) \\
+                    &= \sum_{j = 1}^{n} \sum_{i = 1}^{m} \left(b_{ji} a_{ij}\right)
+                    = \sum_{j = 1}^{n} y_{jj}
+                    = \tr y
+                .\qedhere\end{align*}
+            \end{proof}
+    \end{colloq}
+
+    \subsection{Системы линейных уравнений}
+    \begin{colloq}
+        \proofitem{Эквивалентность систем линейных уравнений, получаемых друг из друга путём элементарных преобразований строк расширенной матрицы}
+
+            \begin{lemma}
+                Элементарные преобразования СЛУ не меняют множество решений
+            \end{lemma}
+
+            \begin{proof}
+                Пусть мы получили СЛУ$(\star\star)$ из СЛУ($\star$) путем применения элементарных преобразований.
+
+                \begin{enumerate}[nosep]
+                \item
+                    Всякое решение системы $(\star)$ является решением $(\star\star)$.
+                \item
+                    $(\star)$ получается из $(\star\star)$ путем элементарных преобразований.
+
+                    \begin{tabular}{c|c}
+                        $(\star) \to (\star\star)$ & $(\star\star) \to (\star)$ \\
+                        \hline
+                        $\text{Э}_1(i, j, \lambda)$ & $\text{Э}_1(i, j, -\lambda)$ \\
+                        $\text{Э}_2(i, j)$ & $\text{Э}_2(i, j)$ \\
+                        $\text{Э}_3(i, \lambda)$ & $\text{Э}_3(i, \frac{1}{\lambda})$
+                    \end{tabular}
+                \end{enumerate}
+
+                Следовательно, всякое решение ($\star\star$) является решением ($\star$) $\implies$ множества решений совпадают.
+            \end{proof}
+
+        \proofitem{Теорема о приведении матрицы к ступенчатому и улучшенному ступенчатому виду при помощи элементарных преобразований строк}
+
+            \begin{theorem}~
+                \begin{enumerate}[label=\arabic*),nosep]
+                \item Всякую матрицу элементарными преобразованиями можно привести к ступенчатому виду.
+                \item Всякую ступенчатую матрицу элементарными преобразованиями строк можно привести к улучшенному ступенчатому виду.
+                \end{enumerate}
+            \end{theorem}
+
+            \begin{corollary}
+                Всякую матрицу элементарными преобразованиями строк можно привести к \textbf{улучшенному} ступенчатому виду.
+            \end{corollary}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item
+                    Алгоритм. Если M - нулевая, то конец. Иначе:
+                    \begin{enumerate}[label=Шаг \arabic*:]
+                    \item Ищем первый ненулевой столбец, пусть $j$ --- его номер.
+                    \item Переставляем строки, если нужно, добиваемся того, что $a_{1j} \neq 0$
+                    \item
+                        Зануляем элементы в этом столбце используя первую строку --  $\text{Э}_1(2, 1, -\frac{a_{2j}}{a_{1j}}), \dots, \text{Э}_1(m, 1, -\frac{a_{mj}}{a_{1j}})$.
+
+                        В результате $a_{ij} = 0$ при $i = 2, 3, \dots m$.
+                    \end{enumerate}
+                    Дальше повторяем все шаги для подматрицы $M'$ (без первой строки и столбцов $1, \dots, j$).
+                \item
+                    Алгоритм. Пусть $a_{1j_1}, a_{2j_2}, \dots, a_{rj_r}$ -- ведущие элементы ступенчатой матрицы.
+                    \begin{enumerate}[label=Шаг \arabic*:]
+                    \item Выполняем $\text{Э}_3(1, \frac{1}{a_{1j_1}}), \dots, \text{Э}_3(r, \frac{1}{a_{rj_r}})$, в результате все ведущие элементы равны 1.
+                    \item Выполняем $\text{Э}_1(r - 1, r, -a_{r - 1, \; j_r}), \text{Э}_1(r - 2, r, -a_{r - 2, \; j_r}), \dots, \text{Э}_1(1, r, -a_{1, \; j_r})$. В результате все элементы над $a_{r j_r}$ равны 0.
+
+                        Аналогично обнуляем элементы над всеми остальными ведущими.
+                    \end{enumerate}
+                \end{enumerate}
+                Итог: матрица имеет улучшенный ступенчатый вид.
+            \end{proof}
+
+        \proofitem{Реализация элементарных преобразований строк матрицы при помощи умножения на подходящую матрицу}
+
+            Всякое элементарное преобразование строк матрицы реализуется умножением как умножение слева на подходящую ``элементарную матрицу''.
+
+            \begin{itemize}
+            \item
+                $\text{Э}_1(i, j, \lambda)$: $A \mapsto U_1(i, j, \lambda)A$, где
+                \begin{equation*}
+                    U_1(i, j, \lambda) = \bordermatrix{
+                        &   &   &   &   &   & j &   \cr
+                        & 1 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+                      i & 0 & 1 & 0 & \dots & 0 & \lambda & 0 \cr
+                        & 0 & 0 & 1 & \dots & 0 & 0 & 0 \cr
+                        & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \cr
+                        & 0 & 0 & 0 & \dots & 1 & 0 & 0 \cr
+                        & 0 & 0 & 0 & \dots & 0 & 1 & 0 \cr
+                        & 0 & 0 & 0 & \dots & 0 & 0 & 1
+                    }
+                \end{equation*}
+
+                (на диагонали стоят единицы, на $i$-м $j$-м месте стоит $\lambda$, остальные элементы нули)
+
+            \item
+
+                $\text{Э}_2(i, j)$: $A \mapsto U_2(i, j)A$, где
+                \begin{equation*}
+                    U_2(i, j) = \bordermatrix{
+                        &   & i &   &   &   & j &   \cr
+                        & 1 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+                      i & 0 & 0 & 0 & \dots & 0 & 1 & 0 \cr
+                        & 0 & 0 & 1 & \dots & 0 & 0 & 0 \cr
+                        & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \cr
+                        & 0 & 0 & 0 & \dots & 1 & 0 & 0 \cr
+                      j & 0 & 1 & 0 & \dots & 0 & 0 & 0 \cr
+                        & 0 & 0 & 0 & \dots & 0 & 0 & 1
+                    }
+                \end{equation*}
+
+                (на диагонали стоят единицы, кроме $i$-го и $j$-го столбца (на $i$-м $j$-м и $j$-м $i$-м местах стоит 1, остальные нули)
+
+            \item
+                $\text{Э}_3(i, \lambda)$: $A \mapsto U_3(i, \lambda)A$, где
+                \begin{equation*}
+                    U_3(i, \lambda) = \bordermatrix{
+                        &   & i &   &   &   &   &   \cr
+                        & 1 & 0 & 0 & \dots & 0 & 0 & 0 \cr
+                      i & 0 & \lambda & 0 & \dots & 0 & 0 & 0 \cr
+                        & 0 & 0 & 1 & \dots & 0 & 0 & 0 \cr
+                        & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \cr
+                        & 0 & 0 & 0 & \dots & 1 & 0 & 0 \cr
+                        & 0 & 0 & 0 & \dots & 0 & 1 & 0 \cr
+                        & 0 & 0 & 0 & \dots & 0 & 0 & 1
+                    }
+                \end{equation*}
+
+                (на диагонали стоят единицы, кроме i-го столбца, там $\lambda$, остальные элементы нули)
+            \end{itemize}
+
+            Элементарные преобразования столбцов --- умножение на соответствующую матрицу справа.
+
+        \proofitem{Метод Гаусса решения систем линейных уравнений}
+
+            Дана СЛУ с расширенной матрицей $(A \mid b)$.
+
+            Прямой ход метода Гаусса.
+
+            Выполняя элементарные преобразования строк в $(A | b)$, приведем $A$ к ступенчатому виду:
+
+            \begin{equation*}
+                \begin{amatrix}{7}{1}
+                    0 & \dots & 0 & a_{ij_1} & * & \dots & \dots & b_1 \\
+                    0 & \dots & 0 & 0 & a_{2j_2} & * & \dots & b_2 \\
+                    \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+                    0 & \dots & 0 & 0 & 0 & 0 & a_{rj_r} & b_r \\
+                    0 & \dots & 0 & 0 & 0 & 0 & 0 & b_{r + 1} \\
+                    0 & \dots & 0 & 0 & 0 & 0 & 0 & 0
+                \end{amatrix}
+            .\end{equation*}
+
+            \begin{description}
+            \item[Случай 1]
+                $\exists i \geq r + 1 : b_i \neq 0$ (в $A$ есть нулевая строка с $b_i \neq 0$)
+
+                Тогда в новой СЛУ $i$-е уравнение $0 \cdot x_1 + \dots + 0 \cdot x_n = b_i$, т.е. $0 = b_i \implies $ СЛУ несовместна.
+
+            \item[Случай 2]
+                либо $r = m$, либо $b_i = 0 \quad \forall i \geq r + 1$
+
+                Выполняя элементарные преобразования строк приводим матрицу к улучшенному ступенчатому виду -- обратный ход метода Гаусса
+                \begin{equation*}
+                    \begin{amatrix}{9}{1}
+                        0 & \dots & 0 & 1 & * & 0 & * & 0 & 0 & b_1 \\
+                        0 & \dots & 0 & 0 & \dots & 1 & * & 0 & 0 & b_2 \\
+                        0 & \dots & 0 & 0 & \dots & 0 & 0 & 1 & 0 & b_3 \\
+                        \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+                        0 & \dots & 0 & 0 & \dots & 0 & 0 & 0 & 1 & b_r \\
+                        0 & \dots & 0 & 0 & \dots & 0 & 0 & 0 & 0 & 0
+                    \end{amatrix}
+                \end{equation*}
+
+                Неизвестные $x_{j_1}$, $x_{j_2}$, $\dots$, $x_{j_r}$ называются \textit{главными}, а остальные \textit{свободными},
+                где $j_i$ -- индексы столбцов с ведущими элементами.
+
+                \begin{description}
+                \item[Подслучай 2.1] $r = n$, т.е. все неизвестные -- главные
+
+                    \begin{equation*}
+                        \begin{pmatrix}
+                            1 & 0 & \dots & 0 & b_1 \\
+                            0 & 1 & \dots & 0 & b_2 \\
+                            \vdots & \vdots & \ddots & \vdots & \vdots \\
+                            0 & 0 & \dots & 1 & b_r \\
+                            0 & 0 & \dots & 0 & 0
+                        \end{pmatrix} \leftrightarrow \begin{cases}
+                            \begin{aligned}
+                                x_1 &= b_1 \\
+                                x_2 &= b_2 \\
+                                \vdots \\
+                                x_r &= b_r
+                            \end{aligned}
+                        \end{cases} \text{ --- единственное решение}
+                    .\end{equation*}
+                \item[Подслучай 2.2] $r < n$, т.е. есть хотя бы одна свободная неизвестная.
+
+                    Перенесем в каждом уравнении все члены со свободными неизвестными в правую часть, получаем выражения всех главных неизвестных через свободные, эти выражения называется \textit{общим решением исходной СЛУ}.
+                \end{description}
+            \end{description}
+
+        \proofitem{Связь между множеством решений совместной системы линейных уравнений и множеством решений соответствующей ей однородной системы}
+
+            \begin{proposition}
+                Пусть $Ax = b$ -- совместная СЛУ.
+
+                $x_0$ -- частное решение $Ax = b$,
+
+                $S \subset \RR^n$ -- множество решений ОСЛУ $Ax = 0$,
+
+                $L \subset \RR^n $ -- множество решений $Ax = b$.
+
+                Тогда, $L = x_0 + S$, где $x_0 + S = \{x_0 + v \mid v \in S\}$
+            \end{proposition}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item
+                    Пусть $u \in L$ ($u$ -- решение $Ax = b$), положим $v = u - x_0$.
+
+                    Тогда, $Av = A(u - x_0) = Au - Ax_0 = b - b = 0 \implies v \in S \implies L \subseteq x_0 + S$.
+
+                \item
+                    Пусть $v \in S$ ($v$ -- решение $Ax = 0$), положим $u = x_0 + v$.
+
+                    Тогда, $Au = A(x_0 + v) = Ax_0 + Av = b + 0 = b \implies u \in L \implies x_0 + S \subseteq L$.
+                \end{enumerate}
+
+                Значит, $x_0 + S = L$.
+            \end{proof}
+
+        \proofitem{Общий метод решения матричных уравнений вида $AX = B$ и $XA = B$}
+
+            Два типа матричных уравнений:
+            \begin{enumerate}
+            \item $AX = B$
+
+                $A$ и $B$ известны,
+                $X$ -- неизвестная матрица.
+
+            \item $XA = C$
+
+                $A$ и $C$ известны,
+                $X$ -- неизвестная матрица.
+            \end{enumerate}
+
+            Из второго типа получается первый транспонированием матриц: $XA = C \iff A^T X^T = B^T$, то есть достаточно уметь решать только уравнения первого типа.
+
+            $\underset{n \times m}{A} \underset{m \times p}{X} = \underset{n \times p}{B}$ -- это уравнение равносильно системе
+            \begin{equation*}
+                \begin{cases}
+                    \begin{aligned}
+                        AX^{(1)} &= B^{(1)} \\
+                        AX^{(2)} &= B^{(2)} \\
+                        &\vdots \\
+                        AX^{(p)} &= B^{(p)} \\
+                    \end{aligned}
+                \end{cases}
+            \end{equation*}
+
+            Этот набор СЛУ надо решать одновременно методом Гаусса.
+
+            Записываем матрицу $(A \mid B)$ и элементарными преобразованиями строк с ней приводим $A$ к улучшенному ступенчатому виду.
+
+            Получаем $(A' \mid B')$, где $A'$ имеет улучшенный ступенчатый вид.
+
+            Остается выписать общее решение для каждой СЛУ
+            \begin{equation*}
+                \begin{cases}
+                    \begin{aligned}
+                        A' x^{(1)} &= B'^{(1)} \\
+                        A' x^{(2)} &= B'^{(2)} \\
+                        &\vdots \\
+                        A' x^{(p)} &= B'^{(p)}
+                    \end{aligned}
+                \end{cases}
+            \end{equation*}
+
+        \proofitem{Вычисление обратной матрицы при помощи элементарных преобразований}
+
+            Факты:
+            \begin{enumerate}
+            \item Если $\exists A^{-1}$, то она определена однозначно.
+
+                \begin{proof}
+                    Пусть $B, B'$ -- две матрицы, обратные к $A$. Тогда $B = B(AB') = (BA)B' = B'$.
+                \end{proof}
+
+            \item Если $AB = E$ для некоторой $B \in M_n$, то $BA = E$ автоматически и тогда $B = A^{-1}$.
+
+                \begin{proof}
+                    \begin{equation*}
+                        AB = E \implies \det A \det B = 1 \implies \det A \neq 0 \implies \exists A^{-1}
+                    .\end{equation*}
+                    \begin{equation*}
+                        BA = EBA = (A^{-1}A)BA = A^{-1}(AB)A = A^{-1}A = E
+                    .\qedhere\end{equation*}
+                \end{proof}
+            \end{enumerate}
+
+            \begin{corollary}
+                $A^{-1}$ является решение матричного уравнения $AX = E$ (если решение существует).
+            \end{corollary}
+
+    \end{colloq}
+
+    \subsection{Перестановки}
+    \begin{colloq}
+        \proofitem{Ассоциативность произведения перестановок}
+
+            \begin{proposition}
+                Умножение подстановок ассоциативно, то есть $\sigma (\tau \pi) = (\sigma \tau) \pi \ \forall \sigma, \tau, \pi \in S_n$.
+            \end{proposition}
+
+            \begin{proof}
+                $\forall i \in \{1, 2, \dots, n\}$ имеем
+
+                $[\sigma(\tau \pi)](i) = \sigma((\tau \pi)(i)) = \sigma(\tau(\pi(i)))$
+
+                $[(\sigma \tau) \pi](i) = (\sigma \tau)(\pi(i)) = \sigma(\tau(\pi(i)))$
+            \end{proof}
+
+        \proofitem{Некоммутативность произведения перестановок}
+
+            $\sigma = \begin{pmatrix}
+                1 & 2 & 3 & 4 \\
+                4 & 3 & 2 & 1
+            \end{pmatrix}$, $\rho = \begin{pmatrix}
+                1 & 2 & 3 & 4 \\
+                3 & 4 & 1 & 2
+            \end{pmatrix}$
+
+            $\sigma \rho = \begin{pmatrix}
+                1 & 2 & 3 & 4 \\
+                2 & 1 & 4 & 3
+            \end{pmatrix}$
+
+            $\rho \sigma = \begin{pmatrix}
+                1 & 2 & 3 & 4 \\
+                2 & 1 & 3 & 4
+            \end{pmatrix}$
+
+        \proofitem{Теорема о знаке произведения двух перестановок}
+
+            \begin{theorem}
+                $\sigma, \rho \in S_n \implies \sgn(\sigma \rho) = \sgn \sigma \cdot \sgn \rho$.
+            \end{theorem}
+
+            \begin{proof}
+                Для каждой пары $i < j$ введем следующие числа:
+
+                \begin{equation*}
+                    \alpha(i,j) = \begin{cases}
+                        1, &\text{если } \{i, j\} \text{ образует инверсию в } \rho \\
+                        0, &\text{иначе}
+                    \end{cases}
+                \end{equation*}
+                \begin{equation*}
+                    \beta(i,j) = \begin{cases}
+                        1, &\text{если }  \{\rho(i), \rho(j)\} \text{ образует инверсию в } \sigma \\
+                        0, &\text{иначе}
+                    \end{cases}
+                \end{equation*}
+                \begin{equation*}
+                    \gamma(i,j) = \begin{cases}
+                        1, &\text{если }  \{i, j\} \text{ образует инверсию в } \sigma \rho \\
+                        0, &\text{иначе}
+                    \end{cases}
+                \end{equation*}
+
+                \everymath{\displaystyle}
+
+                ``число инверсий в $\rho$'' $= \sum_{1 \leq i < j \leq n} \alpha(i, j) $
+
+                ``число инверсий в $\sigma \rho$'' $= \sum_{1 \leq i < j \leq n} \gamma(i, j) $
+
+                ``число инверсий в $\sigma$'' $= \sum_{1 \leq i < j \leq n} \beta(i, j)$ -- Почему?
+
+                Когда $\{i, j\}$ пробегает все неупорядоченные пары в $\{1, 2, \dots, n\}$, пара $\{\rho(i), \rho(j)\}$ тоже пробегает все неупорядоченные пары в $\{1, 2, \dots, n\}$.
+
+                \bigskip
+                Зависимость $\gamma(i,j)$ от $\alpha(i,j)$ и $\beta(i,j)$:
+                \begin{table}[!ht]
+                    \begin{center}
+                        \begin{tabular}{c|c|c|c|c}
+                            $\alpha(i,j)$ & 0 & 0 & 1 & 1 \\
+                            \hline
+                            $\beta(i,j)$ & 0 & 1 & 0 & 1 \\
+                            \hline
+                            $\gamma(i,j)$ & 0 & 1 & 1 & 0 \\
+                        \end{tabular}
+                    \end{center}
+                \end{table}
+
+                Вывод: $ \alpha(i, j) + \beta(i, j) \equiv \gamma(i,j) \pmod{2}$.
+
+                \bigskip
+                Тогда $\sgn(\sigma \rho) = (-1)^{\sum \gamma(i,j)} = (-1)^{\sum \beta(i,j) + \sum \alpha(i,j)} = (-1)^{\sum \alpha(i,j)} \cdot (-1)^{\sum \beta(i,j)} = \sgn \sigma \cdot \sgn \rho$.
+            \end{proof}
+
+        \proofitem{Знак обратной перестановки}
+
+            \begin{corollary}
+                $\sigma \in S_n \implies \sgn (\sigma^{-1}) = \sgn(\sigma)$.
+            \end{corollary}
+
+            \begin{proof}
+                $\sigma \sigma^{-1} = id \implies \sgn(\sigma \sigma^{-1}) = \sgn(id) \implies \sgn \sigma \sgn \sigma^{-1} = 1 \implies \sgn \sigma = \sgn \sigma^{-1}$.
+            \end{proof}
+
+        \proofitem{Знак транспозиции}
+
+            \begin{lemma}
+                $\tau \in S_n$ -- транспозиция $\implies \sgn(\tau) = -1$.
+            \end{lemma}
+
+            \begin{proof}
+                Пусть $\tau = \tau_{ij}$, можем считать, что $i < j$.
+                \begin{equation*}
+                    \tau := \begin{pmatrix}
+                        1 & \dots & i-1 & i & i + 1 & \dots &
+                        j - 1 & j & j + 1 & \dots \ n
+                        \cr
+                        1 & \dots & i-1 & j & i + 1 & \dots &
+                        j - 1 & i & j + 1 & \dots \ n
+                    \end{pmatrix}
+                \end{equation*}
+
+                Посчитаем инверсии:
+
+                $\{i, j\}$
+
+                $\{i, k\}$ при $i + 1 \leq k \leq j -1$, всего = $j-i-1$
+
+                $\{k, j\}$ при $i + 1 \leq k \leq j -1$, всего = $j-i-1$
+
+                Значит, всего инверсий $2(j-i-1) + 1 \equiv 1 \pmod{2} \implies \sgn(\tau) = -1$.
+            \end{proof}
+
+    \end{colloq}
+
+    \subsection{Определители}
+
+    \begin{equation}
+        \label{det:sum}
+        \tag{$\star$}
+        \det A = \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a_{n\sigma(n)}
+    .\end{equation}
+
+    \begin{colloq}
+        \proofitem{Определитель транспонированной матрицы}
+
+            $\det A = \det A^T$.
+
+            \begin{proof}
+                Пусть $B = A^T$, тогда $b_{ij} = a_{ji}$.
+                \begin{align*}
+                    \det A^T
+                    = \det B
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) b_{1\sigma(1)} b_{2 \sigma(2)} \dots b_{n\sigma(n)}
+                    = \sum_{\sigma \in S_n} \sgn(\sigma) a_{\sigma(1) 1} a_{\sigma(2) 2} \dots a_{\sigma(n)} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)^{-1}} a_{2\sigma(2)^{-1}} \dots a_{n\sigma(n)^{-1}}
+                    \quad \text{ /\!/ замена } \sigma^{-1} = \rho \text{ /\!/} \\
+                    &= \sum_{\rho \in S_n} \sgn(\rho) a_{1\rho(1)} a_{2\rho(2)} \dots a_{n\rho(n)} = \det A
+                .\qedhere\end{align*}
+            \end{proof}
+
+        \proofitem{Поведение определителя при умножении строки (столбца) на скаляр}
+
+            Если в $A$ все элементы одной строки или одного столбца домножить на одно и то же число $\lambda$, то $\det A$ тоже умножается на $\lambda$.
+
+            \begin{equation*}
+                \begin{vmatrix} * & * & \dots & * \\ \dots & \dots & \dots & \dots \\ \lambda * & \lambda * & \lambda * & \lambda * \\ \dots & \dots & \dots & \dots \\ * & * & \dots & * \end{vmatrix} = \lambda \begin{vmatrix} * & * & \dots & * \\ \dots & \dots & \dots & \dots \\  * &  * & * & * \\ \dots & \dots & \dots & \dots \\ * & * & \dots & * \end{vmatrix}
+            \end{equation*}
+
+            \begin{proof}
+                В связи со свойством T можно доказать только для строк.
+
+                $A_{(i)} \to \lambda A_{(i)} \implies a_{ij} \to \lambda a_{ij} \ \forall j \implies $ в \eqref{det:sum} каждое слагаемое умножается на $\lambda \implies \det A$ умножается на $\lambda$.
+            \end{proof}
+
+        \proofitem{Поведение определителя при разложении строки (столбца) в сумму двух}
+
+            Если $A_{(i)} = A_{(i)}^1 + A_{(i)}^2$, то $\det A = \det \begin{pmatrix}
+                A_{(1)} \\ \vdots \\ A_{(i)}^1 \\ \vdots \\ A_{(n)}
+            \end{pmatrix} + \det \begin{pmatrix}
+                A_{(1)} \\ \vdots \\ A_{(i)}^2 \\ \vdots \\ A_{(n)}
+            \end{pmatrix}$.
+
+            \bigskip
+            Пример:
+            \begin{equation*}
+                \begin{vmatrix}
+                    a_1 & a_2 & a_3 \\
+                    b_1 + c_1 & b_2 + c_2 & b_3 + c_3 \\
+                    d_1 & d_2 & d_3
+                \end{vmatrix} = \begin{vmatrix}
+                    a_1 & a_2 & a_3 \\
+                    b_1 & b_2 & b_3 \\
+                    d_1 & d_2 & d_3
+                \end{vmatrix} + \begin{vmatrix}
+                    a_1 & a_2 & a_3 \\
+                    c_1 & c_2 & c_3 \\
+                    d_1 & d_2 & d_3
+                \end{vmatrix}
+            \end{equation*}
+
+            Аналогично, если $A^{(j)} = A^{(j)}_1 + A^{(j)}_2$, то $\det A = \det (A^{(1)} \cdots A^{(j)}_1 \cdots A^{(n)}) + \det (A^{(1)} \cdots A^{(j)}_2 \cdots A^{(n)})$.
+
+            \begin{proof}
+                В связи со свойством T можно доказать только для строк.
+
+                Пусть $A_{(i)}^1 = (a_{i1}' a_{i2}' \cdots a_{in}')$, $A_{(i)}^2 = (a_{i1}'' a_{i2}'' \dots a_{in}'') \implies a_{ij} = a_{ij}' + a_{ij}''$.
+                \begin{align*}
+                    \det A
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a_{n\sigma(n)} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots (a'_{i\sigma(i)} + a''_{i\sigma(i)}) \dots a_{n \sigma(n)} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a'_{i\sigma(i)} \dots a_{n\sigma(n)} + \sum_{\sigma \in S_n} \sgn(\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a''_{i\sigma(i)} \dots a_{n\sigma(n)} \\
+                    &= \det A_1 + \det A_2
+                .\qedhere\end{align*}
+            \end{proof}
+
+        \proofitem{Определитель матрицы с двумя одинаковыми строками (столбцами)}
+
+            Если в А есть две одинаковые строки (столбца), то $\det A = 0$.
+            \begin{proof}
+                В связи со свойством T можно доказать только для строк.
+
+                При перестановке двух одинаковых строк (столбцов):
+
+                -- А не изменится $\implies \det A$ не изменится
+
+                -- по свойству 3: $\det A$ меняет знак
+
+                Значит, $\det A = -\det A \implies \det A = 0$.
+            \end{proof}
+
+        \proofitem{Поведение определителя при прибавлении к строке (столбцу) другой, умноженной на скаляр}
+
+            Если к строке (столбцу) прибавить другую строку (столбец), умноженный на скаляр, то $\det A$ не изменится.
+
+            \begin{proof}
+                В связи со свойством T можно доказать только для строк.
+
+                \begin{equation*}
+                    A \to A' = \begin{pmatrix}
+                        \dots \\ A_{(i)} + \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots
+                    \end{pmatrix}
+                \end{equation*}
+
+                \begin{equation*}
+                    |A'| = \begin{vmatrix}
+                        \dots \\ A_{(i)} \\ \dots \\ A_{(j)} \\ \dots
+                    \end{vmatrix} + \begin{vmatrix}
+                        \dots \\ \lambda A_{(j)} \\ \dots \\ A_{(j)} \\ \dots
+                    \end{vmatrix} = |A| + \lambda \begin{vmatrix}
+                        \dots \\ A_{(j)} \\ \dots \\ A_{(j)} \\ \dots
+                    \end{vmatrix} = |A| + \lambda 0 = |A|
+                .\end{equation*}
+            \end{proof}
+
+        \proofitem{Поведение определителя при перестановке двух строк (столбцов)}
+
+            Если в $A$ поменять местами две строки или два столбца, то $\det A$ поменяет знак.
+
+            \begin{proof}
+                В связи со свойством T можно доказать только для строк.
+
+                Пусть $A = (a_{ij}) \in M_n$, $B = (b_{ij}) \in M_n $ -- матрица, полученная из А перестановкой $p$-ой и $q$-ой строк.
+
+                Так же, $\tau = \tau_{pq}$.
+
+                \begin{equation*}
+                    b_{ij} = a_{\tau(i)j} = \begin{cases}
+                        a_{ij}, &\text{если } i \neq p, q  \\
+                        a_{qj}, &\text{если } i = p \\
+                        a_{pj}, &\text{если } i = q
+                    \end{cases}
+                \end{equation*}
+                \begin{align*}
+                    b_{ij} = a_{\tau(i)j} \implies b_{i\sigma(i)} = a_{\tau(i)\sigma(i)} = a_{\tau(i),(\sigma\tau\tau)(i)}
+                \end{align*}
+                \begin{align*}
+                    \det B
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) \cdot b_{1\sigma(1)} \cdot b_{2\sigma(2)} \dots b_{n\sigma(n)} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) \cdot a_{\tau(1), \sigma(1)} \cdot a_{\tau(2), \sigma(2)} \dots a_{\tau(n), \sigma(n)} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) \cdot a_{\tau(1),(\sigma\tau\tau)(1)} \cdot a_{\tau(2),(\sigma\tau\tau)(2)} \dots a_{\tau(n),(\sigma\tau\tau)(n)} \\
+                    &\quad \text{ /\!/ уберем } \tau(i) \text{, переупорядочив элементы в произведении /\!/} \\
+                    &= \sum_{\sigma \in S_n} \sgn(\sigma) \cdot a_{1, (\sigma\tau)(1)} \cdot a_{2, (\sigma\tau)(2)} \dots a_{n,(\sigma\tau)(n)} \\
+                    &= -\sum_{\sigma \in S_n} \sgn(\sigma\tau) \cdot a_{1, (\sigma\tau)(1)} \cdot a_{2, (\sigma\tau)(2)} \dots a_{n,(\sigma\tau)(n)} \\
+                    &\quad \text{ /\!/ замена } \rho = \sigma\tau \text{ /\!/} \\
+                    &= -\sum_{\rho \in S_n} \sgn(\rho) \cdot a_{1, \rho(1)} \cdot a_{2, \rho(2)} \dots a_{n, \rho(n)} \\
+                    &= -\det A
+                .\qedhere\end{align*}
+            \end{proof}
+
+        \proofitem{Определитель верхнетреугольной (нижнетреугольной) матрицы}
+
+            Если $A$ верхнетреугольная или нижнетреугольная, то $\det A = a_{11} a_{22} \dots a_{nn}$.
+
+            \begin{proof}
+                В связи со свойством T можно доказать только для строк.
+
+                Выделим в \eqref{det:sum} слагаемые, которые могут быть отличны от нуля.
+                \begin{equation*}
+                    a_{1, \sigma(1)} \dots a_{n - 1, \sigma(n - 1)} a_{n, \sigma(n)} \neq 0
+                \end{equation*}
+                \begin{equation*}
+                    \implies a_{n\sigma(n)} \neq 0 \implies \sigma(n) = n
+                .\end{equation*}
+                \begin{equation*}
+                    \implies a_{n - 1, \sigma(n - 1)} \neq 0 \implies \sigma(n - 1) \in \{n - 1, n\},
+                \end{equation*}
+
+                но $n$ уже занято, значит $\sigma(n - 1) = n - 1$, и так далее.
+
+                Рассуждая аналогично, получаем $\sigma(k) = k \ \forall k \implies \sigma = id$ -- это единственное слагаемое в \eqref{det:sum}, которое может быть не равно 0.
+                \begin{equation*}
+                    \sgn(id) = +1 \implies \det A = a_{11} a_{22} \dots a_{nn}
+                .\qedhere\end{equation*}
+            \end{proof}
+
+        \proofitem{Определитель с углом нулей}
+
+            \begin{proposal}
+                \begin{equation*}
+                    A = \left(
+                        \begin{array}{c|c}
+                            P & Q \\
+                            \hline
+                            0 & R
+                        \end{array}
+                    \right) \text{ или } A =
+                    \left(
+                        \begin{array}{c|c}
+                            P & 0 \\
+                            \hline
+                            Q & R
+                        \end{array}
+                    \right), \ P \in M_k, \ R \in M_{n-k} \implies \det A = \det P \det R
+                .\end{equation*}
+            \end{proposal}
+
+            Матрица с углом нулей:
+            \begin{equation*}
+                \left(
+                    \begin{array}{c|ccc}
+                        * & * & * & * \\
+                        \hline
+                        0 & * & * & * \\
+                        0 & * & * & * \\
+                        0 & * & * & *
+                    \end{array}
+                \right)
+            \end{equation*}
+
+            НЕ матрица с углом нулей:
+            \begin{equation*}
+                \left(
+                    \begin{array}{c|ccc}
+                        * & * & * & * \\
+                        * & * & * & * \\
+                        \hline
+                        0 & * & * & * \\
+                        0 & * & * & *
+                    \end{array}
+                \right)
+            \end{equation*}
+
+            \begin{proof}
+                В силу свойства T достаточно доказать для строк.
+
+                \begin{enumerate}
+                \item
+                    Элементарными преобразованиями строк в $A$, приведем $(P \mid Q)$ к виду $(P' \mid Q')$, в котором $P'$ имеет ступенчатый вид. При этом $\det A$ и $\det P$ умножаются на один и тот же скаляр $\alpha \neq 0$.
+
+                \item
+                    Элементарными преобразованиями строк в $A$, приведем $(0 \mid R)$ к виду $(0 \mid R')$, в котором $R'$ имеет ступенчатый вид. При этом $\det A$ и $\det R$ умножаются на один и тот же скаляр $\beta \neq 0$.
+                \end{enumerate}
+
+                $\begin{pmatrix} P' & Q' \\ 0 & R' \end{pmatrix} $ -- верхнетреугольная $\implies \det \begin{pmatrix} P' & Q' \\ 0 & R' \end{pmatrix} = \det P' \det R'$.
+
+                \begin{equation*}
+                    \alpha \beta \det A = \det \begin{pmatrix} P' & Q' \\ 0 & R' \end{pmatrix} = \det P' \det R' = (\alpha \det P) (\beta \det R) = \alpha \beta \det P \det R
+                .\qedhere\end{equation*}
+            \end{proof}
+
+        \proofitem{Определитель произведения двух матриц}
+
+            \begin{theorem}
+                $A, B \in M_n \implies \det(AB) = \det A \det B$.
+            \end{theorem}
+
+            \begin{proof}
+                Выполним с матрицей $A$ одно элементарное преобразование строк, получим матрицу $A'$.
+                \begin{equation*}
+                    A \leadsto A' = U A
+                .\end{equation*}
+
+                Такое же преобразование строк с $AB$.
+                \begin{equation*}
+                    AB \leadsto U(AB) = (UA)B = A'B
+                .\end{equation*}
+
+                Таким образом, сначала выполнив элементарное преобразование и домножив на матрицу $B$, либо домножив на $B$ и затем применив элементарное преобразование, получим тот же результат.
+
+                Тогда, цепочка элементарных преобразований строк:
+                \begin{equation*}
+                    A \leadsto C \text{ -- улучшенный ступенчатый вид}
+                .\end{equation*}
+
+                Так же цепочка для $AB$:
+                \begin{equation*}
+                    AB \leadsto CB
+                .\end{equation*}
+
+                При этом, $\det A$ и $\det AB$ умножились на один и тот же скаляр $\alpha \neq 0$
+                \begin{equation*}
+                    \det C = \alpha \det A
+                .\end{equation*}
+                \begin{equation*}
+                    \det CB = \alpha \det AB
+                .\end{equation*}
+
+                \begin{description}
+                \item[Случай 1]
+                    Последняя строка состоит из нулей:
+                    \begin{align*}
+                        &C_{(n)} = (0 \dots 0) \\
+                        &\implies [CB]_{(n)} = C_{(n)} B = (0 \dots 0) \\
+                        &\implies \det CB = 0 = 0 \cdot \det B = \det C \det B
+                    .\end{align*}
+
+                \item[Случай 2]
+                    Последняя строка ненулевая:
+                    \begin{equation*}
+                        \tag{$star$}
+                        C_{(n)} \implies C = E
+                    ,\end{equation*}
+                    так как матрица $C$ имеет улучшенный ступенчатый вид.
+
+                    Значит,
+                    \begin{equation*}
+                        \det CB = \det B = 1 \cdot \det B = \det C \cdot \det B
+                    .\end{equation*}
+                \end{description}
+
+                Из этих двух случаем следует, что $\det CB = \det C \det B$.
+
+                Сокращая $\alpha$ получаем,
+                \begin{equation*}
+                    \det CB = \det C \det B \implies \det AB = \det A \det B
+                .\qedhere\end{equation*}
+            \end{proof}
+
+        \proofitem{Разложение определителя по строке (столбцу)}
+        
+            \begin{lemma}
+                Пусть $a_{ik} = 0$ при всех $k \neq j$. Тогда $\det A = a_{ij} \cdot A_{ij}$.
+            \end{lemma}
+
+            \begin{proof}
+                \begin{equation*}
+                    A = \left(
+                        \begin{array}{c|c|c}
+                          P & U & Q \\
+                          \hline
+                          0 \dots 0 & a_{ij} & 0 \dots 0 \\
+                          \hline
+                          R & V & S
+                        \end{array}
+                    \right)
+                .\end{equation*}
+
+                Переставляя соседние строки $i - 1$ раз, вытолкнем $i$-ю строку наверх.
+
+                \begin{equation*}
+                    A' = \left(
+                        \begin{array}{c|c|c}
+                            0 \dots 0 & a_{ij} & 0 \dots 0 \\
+                            \hline
+                            P & U & Q \\
+                            \hline
+                            R & V & S
+                        \end{array}
+                    \right)
+                \end{equation*}
+
+                Переставляя соседние столбцы $j - 1$ раз, переместим $j$-й столбец на первое место.
+
+                \begin{equation*}
+                    A'' = \left(
+                        \begin{array}{c|c|c}
+                            a_{ij} & 0 \dots 0 & 0 \dots 0 \\
+                            \hline
+                            U & P & Q \\
+                            \hline
+                            V & R & S
+                        \end{array}
+                    \right)
+                \end{equation*}
+
+                $\det A'' = a_{ij} \det \left(
+                    \begin{array}{c|c}
+                        P & Q \\
+                        \hline
+                        R & S
+                    \end{array}
+                \right) = a_{ij} \overline{M}_{ij}$.
+
+                \bigskip
+                $\implies det A = (-1)^{i - 1 + j - 1} \det A'' = (-1)^{i + j} a_{ij} \overline{M}_{ij} = a_{ij} A_{ij}$.
+            \end{proof}
+
+            \begin{theorem}
+                При любом фиксированном $i \in \{1, 2, \dots, n\}$,
+                \begin{equation*}
+                    \det A = a_{i1} A_{i1} + a_{i2} A_{i2} + \dots + a_{in} A_{in} = \sum_{j = 1}^n a_{ij} A_{ij} \text{ -- разложение по i-й строке}
+                .\end{equation*}
+
+                Аналогично, для любого фиксированного $j \in \{1, 2, \dots, n\}$,
+                \begin{equation*}
+                    \det A = a_{1j} A_{1j} + a_{2j} A_{2j} + \dots + a_{nj} A_{nj} = \sum_{i = 1}^{n} a_{ij} A_{ij} \text{ -- разложение по j-у столбцу}
+                .\end{equation*}
+            \end{theorem}
+
+            \begin{proof}
+                В силу свойства T достаточно доказать для строк.
+                \begin{equation*}
+                    A_{(i)} = (a_{i1}, 0, \dots, 0) + (0, a_{i2}, 0, \dots, 0) + \dots + (0, \dots, 0, a_{in})
+                .\end{equation*}
+
+                Требуемое следует из свойства определителей (разложение строки в сумму двух) и леммы.
+            \end{proof}
+
+        \proofitem{Лемма о фальшивом разложении определителя}
+
+            \begin{lemma}~
+                \begin{enumerate}
+                \item
+                    При любых $i, k \in \{1, 2, \dots, n\} : i \neq k \implies \sum_{j = 1}^n a_{ij} A_{kj} = 0$.
+                \item
+                    При любых $j, k \in \{1, 2, \dots, n\} : j \neq k \implies \sum_{i = 1}^n a_{ij} A_{ik} = 0$
+                \end{enumerate}
+            \end{lemma}
+
+            \begin{proof}
+                В силу свойства T достаточно доказать для строк.
+
+                Пусть $B \in M_n$ -- матрица, полученная из $A$ заменой $k$-й строки на $i$-ю.
+
+                \begin{equation*}
+                    B = \begin{pmatrix}
+                        A_{(1)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(i)} \\ \dots \\ A_{(n)}
+                    \end{pmatrix}
+                \end{equation*}
+
+                В $B$ есть две одинаковые строки $\implies \det B = 0$.
+
+                Разлагая $\det B$ по $k$-й строке, получаем
+                \begin{equation*}
+                    \det B = \sum_{j = 1}^n b_{kj} B_{kj} = \sum_{j = 1}^n a_{ij} A_{kj}
+                .\qedhere\end{equation*}
+            \end{proof}
+
+        \proofitem{Единственность обратной матрицы}
+
+            Пусть дана $A \in M_n$.
+
+            \begin{definition}
+                Матрица $B \in M_n$ называется \textit{обратной} к $A$, если $AB = BA = E$.
+
+                Обозначение: $A^{-1}$.
+            \end{definition}
+
+
+            \begin{lemma}
+                Если $\exists A^{-1}$, то она единственна.
+            \end{lemma}
+
+            \begin{proof}
+                Пусть $B, C \in M_n$ такие, что $AB = BA = E$ и $AC = CA = E$. Тогда,
+                \begin{equation*}
+                    B = BE = B(AC) = (BA)C = EC = C \implies B = C
+                .\qedhere\end{equation*}
+            \end{proof}
+
+        \proofitem{Определитель обратной матрицы}
+
+            \begin{lemma}
+                Если $\exists A^{-1}$, то $\det A \neq 0$.
+            \end{lemma}
+
+            \begin{proof}
+                $AA^{-1} = E \implies \det(AA^{-1}) = \det E \implies \det A \det(A^{-1}) = 1$.
+            \end{proof}
+
+        \proofitem{Критерий обратимости квадратной матрицы и явная формула для обратной матрицы}
+
+            \begin{theorem}
+                $A$ обратима (то есть $\exists A^{-1}$) $\iff$ $A$ невырождена ($\det A \neq 0$), при этом $A^{-1} = \frac{1}{\det A} \widehat{A}$.
+            \end{theorem}
+
+            \begin{proof}
+                Утверждение в одну сторону следует из предыдущего пункта.
+
+                \bigskip
+                Пусть $\det A \neq 0$. Покажем, что $\frac{1}{detA} \widehat{A} = A^{-1}$.
+                Для этого достаточно доказать, что $A \widehat{A} = \widehat{A} A = \det A \cdot E$.
+
+                Для $X = A \widehat{A}$ имеем
+                \begin{equation*}
+                    x_{ij} = \sum_{k = 1}^n a_{ik} [\widehat{A}]_{kj} = \sum_{k = 1}^n a_{ik} A_{jk} = \begin{cases}
+                        detA, &\text{при }  i = j\\
+                        0, &\text{при } i \neq j \\
+                    \end{cases}
+                .\end{equation*}
+
+                Для $Y = \widehat{A} A$ имеем
+
+                \begin{equation*}
+                    y_{ij} = \sum_{k = 1}^n [\widehat{A}]_{ik} a_{kj} = \sum_{k = 1}^n A_{ki} a_{kj} = \begin{cases}
+                        detA, &\text{при }  i = j \\
+                        0, &\text{при } i \neq j \\
+                    \end{cases}
+                .\qedhere\end{equation*}
+            \end{proof}
+
+        \proofitem{Матрица, обратная к произведению двух матриц}
+
+            \begin{corollary}
+                $A, B \in M_n \implies AB$ обратима $\iff$ обе $A$, $B$ обратимы. При этом $(AB)^{-1} = B^{-1} A^{-1}$.
+            \end{corollary}
+
+            \begin{proof}
+                Эквивалентность ($\iff$) следует из условия $\det AB = \det A \det B$.
+
+                \begin{equation*}
+                    (AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = A A^{-1} = E
+                .\qedhere\end{equation*}
+            \end{proof}
+
+        \proofitem{Формулы Крамера}
+
+            Пусть есть СЛУ $Ax = b (\star)$, $A \in M_n$, $x = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} \in \RR^n$, $b = \begin{pmatrix} b_1 \\ \dots \\ b_n \end{pmatrix} \in \RR^n$.
+
+            Также, $\forall i \in \{1, 2, \dots, n\}$, $A_i = (A^{(1)}, \dots, A^{(i - 1)}, b, A^{(i + 1)}, \dots, A^{(n)})$.
+
+            \begin{theorem}
+                Если $\det A \neq 0$, то СЛУ ($\star$) имеет единственное решение и его можно найти по формулам:
+                \begin{equation*}
+                    x_i = \frac{\det A_i}{\det A}
+                .\end{equation*}
+            \end{theorem}
+
+            \begin{proof}
+                $\det A \neq 0 \implies \exists A^{-1} \implies (\star) \iff x = A^{-1}b$ -- единственное решение.
+
+                \begin{equation*}
+                    b = A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = x_1 A^{(1)} + x_2 A^{(2)} + \dots + x_n A^{(n)}
+                .\end{equation*}
+                \begin{align*}
+                    \det A_i &= \det \left(A^{(1)}, \dots, A^{(i - 1)}, x_1 A^{(1)} + \dots + x_n A^{(n)}, A^{(i + 1)}, \dots, A^{(n)}\right) \\
+                             &= x_1 \det \left(A^{(1)}, \dots, A^{(i - 1)}, A^{(1)}, A^{(i + 1)}, \dots A^{(n)}\right) \\
+                             & \quad + x_2 \det \left(A^{(1)}, \dots, A^{(i - 1)}, A^{(2)}, A^{(i + 1)}, \dots, A^{(n)}\right) \\
+                             & \quad + \dots + \\
+                             & \quad+ x_n \det \left(A^{(1)}, \dots, A^{(i - 1)}, A^{(n)}, A^{(i + 1)}, \dots, A^{(n)}\right) \\
+                             &= x_i \det A \quad \text{ /\!/ Все слагаемые кроме i-го равны 0}
+                .\qedhere\end{align*}
+            \end{proof}
+    \end{colloq}
+
+    \subsection{Комплексные числа}
+    \begin{colloq}
+        \proofitem{Построение поля комплексных чисел}
+
+            Цель --- построить поле $\CC$ комплексных чисел.
+
+            Неформально, $\CC$ -- это наименьшее поле со следующими свойставми:
+            \begin{enumerate}
+            \item $\CC \supset \RR$.
+            \item Многочлен $x^2 + 1$ имеет корень, то есть $\exists i : i^2 = -1$.
+            \end{enumerate}
+
+
+            \paragraph{Формальная конструкция поля $\CC$}
+            \begin{equation*}
+                \CC = \RR^2 = \{(a, b) \mid a, b \in \RR\}
+            .\end{equation*}
+
+            \begin{itemize}
+            \item $(a_1, b_1) + (a_2, b_2) = (a_1 + a_2, b_1 + b_2)$
+            \item $(a_1, b_1) (a_2, b_2) = (a_1 a_2 - b_1 b_2, a_1 b_2 + a_2 b_1)$
+            \end{itemize}
+
+            Неформально, каждой такой паре $(a, b)$ соответствует комплексное число $a + bi$:
+            \begin{itemize}
+            \item $(a, b) \iff a + bi$
+            \item $(a_1 + b_1 i) + (a_2 + b_2 i) = (a_1 + a_2) + (b_1 + b_2)i$
+            \item $(a_1 + b_1 i) (a_2 + b_2 i) = a_1 a_2 + a_1 b_2 i + a_2 b_1 i + b_1 b_2 \underbrace{i^2}_{= -1} = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1) i$
+            \end{itemize}
+
+            \paragraph{Проверка аксиом}
+
+            \begin{enumerate}
+            \item[1, 2.] Очевидны.
+            \setcounter{enumi}{2}
+            \item $0 = (0, 0)$.
+            \item $-(a, b) = (-a, -b)$.
+            \item Дистрибутивность
+                \begin{align*}
+                    (a_1 + b_1 i) ((a_2 + b_2 i) + (a_3 + b_3 i))
+                    &= (a_1 + b_1 i) ((a_2 + a_3) + (b_2 + b_3) i) \\
+                    &= (a_1 (a_2 + a_3) - b_1 (b_2 + b_3)) + (a_1 (b_2 + b_3) + b_1 (a_2 + a_3)) i \\
+                    &= a_1 a_2 + a_1 a_3 - b_1 b_2 - b_1 b_3 + (a_1 b_2 + a_1 b_3 + b_1 a_2 + b_1 a_3) i \\
+                    &= ((a_1 a_2 - b_1 b_2) + (a_1 b_2 + b_1 a_2)i) + ((a_1 a_3 + b_1 b_3) + (b_1 a_3 + a_1 b_3) i) \\
+                    &= (a_1 + b_1 i)(a_2 + b_2 i) + (a_1 + b_1 i)(a_3 + b_3 i)
+                \end{align*}
+            \item Коммутативность умножения -- из явного вида формулы.
+                \begin{equation*}
+                    (a_1 + b_1 i) (a_2 + b_2 i) = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1) i
+                \end{equation*}
+
+            \item Ассоциативность умножения
+                \begin{align*}
+                    (a_1, b_1)(a_2, b_2)(a_3, b_3)
+                    &= (a_1 a_2 - b_1 b_2, a_1 b_2 + a_2 b_1) (a_3, b_3) \\
+                    &= (a_1 a_2 a_3 - b_1 b_2 a_3 - a_1 b_2 b_3 - b_1 a_2 b_3, a_1 a_2 b_3 - b_1 b_2 b_3 + a_1 b_2 a_3 + b_1 a_2 a_3) \\
+                    &= (a_1, b_1)(a_2 a_3 - b_2 b_3, a_2 b_3 + b_2 a_3) \\
+                    &= (a_1, b_1)(a_2, b_2)(a_3, b_3)
+                .\end{align*}
+
+            \item $1 = (1, 0)$.
+
+            \item $(a, b) \neq 0 \implies a^2 + b^2 \neq 0$. Тогда, $(a, b)^{-1} = \left(\frac{a}{a^2 + b^2}, -\frac{b}{a^2 + b^2}\right)$.
+
+                $(a, b) \left(\frac{a}{a^2 + b^2}, \frac{-b}{a^2 + b^2}\right) = \left(\frac{a^2}{a^2 + b^2} + \frac{b^2}{a^2 + b^2}, \frac{-ab}{a^2 + b^2} + \frac{ba}{a^2 + b^2}\right) = (1, 0)$.
+            \end{enumerate}
+
+            Итак, $\CC$ -- поле.
+
+            \paragraph{Проверка свойств}
+            \begin{enumerate}
+            \item $a \in \RR \leftrightarrow (a, 0) \in \CC$.
+
+                $a + b \leftrightarrow (a, 0) + (b, 0) = (a + b, 0)$.
+
+                $ab \leftrightarrow (a, 0)(b, 0) = (ab, 0)$
+
+                Значит, $\RR$ отождествляется в $\CC$.
+
+            \item
+                $i = (0, 1) \implies i^2 = (0, 1)(0, 1) = (-1, 0) = -1$.
+            \end{enumerate}
+
+        \proofitem{Свойства комплексного сопряжения (для суммы и произведения)}
+
+            \begin{itemize}[nosep]
+            \item $\overline{\overline{z}} = z$.
+            \item $\overline{z + w} = \overline{z} + \overline{w}$.
+            \item $\overline{zw} = \overline{z} \cdot \overline{w}$.
+            \end{itemize}
+
+            \begin{proof}~
+                \begin{itemize}
+                \item $\overline{\overline{z}} = \overline{\overline{a + bi}} = \overline{a - bi} = a + bi = z$.
+                \item $\overline{z + w} = \overline{(a_1 + b_1 i) + (a_2 + b_2 i)} = \overline{(a_1 + a_2) + (b_1 + b_2) i} = (a_1 + a_2) - (b_1 + b_2)i = (a_1 - b_1 i) + (a_2 - b_2 i) = \overline{z} + \overline{w}$.
+                \item $\overline{z} \cdot \overline{w} = (a_1 - b_1 i) (a_2 - b_2 i) = (a_1 a_2 - b_1 b_2) - (a_1 b_2 + a_2 b_1) i = \overline{zw}$. \qedhere
+                \end{itemize}
+            \end{proof}
+
+        \proofitem{Свойства модуля комплексного числа: неотрицательность, неравенство треугольника (алгебраическое доказательство), модуль произведения двух комплексных чисел}
+
+            \begin{definition}
+                Число $|z| = \sqrt{a^2 + b^2}$ называется \textit{модулем числа} $z = a + bi \in \CC$ (то есть длина соответствующего вектора).
+            \end{definition}
+
+            \textbf{Свойства}
+            \begin{enumerate}
+            \item $|z| \geq 0$, причем $|z| = 0 \iff z = 0$.
+            \item $|z + w| \leq |z| + |w|$ (неравенство треугольника).
+
+                Пусть $z = a + bi$, $w = c + di$.
+                \begin{align*}
+                    |z + w| &\leq |z| + |w| \\
+                    \sqrt{(a + c)^2 + (b + d)^2} &\leq \sqrt{a^2 + b^2} + \sqrt{c^2 + d^2} \\
+                    (a + c)^2 + (b + d)^2 &\leq a^2 + b^2 + c^2 + d^2 + 2\sqrt{(a^2 + b^2)(c^2 + d^2)} \\
+                    ac + bd &\leq\sqrt{(a^2 + b^2)(c^2 + d^2)} \\
+                    ac + bd &\leq\sqrt{(ac)^2 + (ad)^2 + (bc)^2 + (bd)^2} \\
+                    (ac)^2 + (bd)^2 + 2acbd &\leq (ac)^2 + (ad)^2 + (bc)^2 + (bd)^2 \\
+                    2acbd &\leq (ad)^2 + (bc)^2 \\
+                    0 &\leq (ad)^2 + (bc)^2 - 2abcd \\
+                    0 &\leq (ad - bc)^2
+                \end{align*}
+            \item $z \overline{z} = |z|^2$.
+
+                $z \overline{z} = (a + bi)(a - bi) = a^2 - (bi)^2 = a^2 + b^2 = |z|^2$
+            \item $|zw| = |z||w|$
+
+                $|zw|^2 = (zw) \cdot (\overline{zw}) = z \cdot w \cdot \overline{z} \cdot \overline{w} = |z|^2 |w|^2$
+            \end{enumerate}
+
+        \proofitem{Умножение, деление и возведение в степень комплексных чисел в тригонометрической форме, формула Муавра}
+
+            \begin{proposal}
+                Пусть $z_1 = |z_1| (\cos \phi_1 + i \sin \phi_1)$ и $z_2 = |z_2| (\cos \phi_2 + i \sin \phi_2)$, тогда
+                \begin{equation*}
+                    z_1 z_2 = |z_1| |z_2| (\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2))
+                .\end{equation*}
+            \end{proposal}
+
+            \begin{proof}
+                \begin{align*}
+                    z_1 z_2 &= |z_1||z_2|(\cos \phi_1 + i \sin \phi_1)(\cos \phi_2 + i \sin \phi_2)  \\
+                            &= |z_1||z_2|((\cos \phi_1 \cos \phi_2 - \sin \phi_1 \sin \phi_2) + i(\cos \phi_1 \sin \phi_2 + \sin \phi_1 \cos \phi_2)) \\
+                            &= |z_1||z_2|(\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2)) \qedhere
+                .\end{align*}
+            \end{proof}
+
+            \begin{corollary}
+                В условиях предложения, предположим, что $z_2 \neq 0$.
+
+                Тогда $\frac{z_1}{z_2} = \frac{|z_1|}{|z_2|} (\cos (\phi_1 - \phi_2) + i \sin(\phi_1 - \phi_2))$.
+            \end{corollary}
+
+            \paragraph{Возведение в степень комплексных чисел в тригонометрической форме, формула Муавра}
+
+            \begin{corollary}
+                Пусть $z = |z|(\cos \phi + i \sin \phi)$. Тогда $\forall n \in \ZZ$,
+                \begin{equation*}
+                    z^n = |z|^n (\cos(n \phi) + i \sin(n \phi)) \text{ -- формула Муавра}
+                .\end{equation*}
+            \end{corollary}
+
+        \proofitem{Извлечение корней из комплексных чисел}
+
+            Пусть $z \in \CC$, $n \in \NN$, $n \geq 2$.
+
+            \begin{definition}
+                \textit{Корнем степени n} (или \textit{корнем n-й степени)} из числа $z$ называется всякое число $w \in \CC$, что $w^n = z$.
+            \end{definition}
+
+            Положим $\sqrt[n]{z} := \{w \in \CC \ | \ w^n = z \}$.
+
+            \bigskip
+            Опишем множество $\sqrt[n]{z}$.
+
+            $w = \sqrt[n]{z} \implies w^n = z \implies |w|^n = |z|$.
+
+            Если $z = 0$, то $|z| = 0 \implies |w| = 0 \implies w = 0 \implies \sqrt[n]{0} = \{0\}$.
+
+            \bigskip
+            Далее считаем, что $z \neq 0$.
+
+            $z = |z|(\cos \phi + i \sin \phi)$
+
+            $w = |w|(\cos \psi + i \sin \psi)$
+
+            $z = w^n = |w|^n (\cos (n \psi) + i \sin (n \psi))$
+
+            Отсюда,
+            \begin{equation*}
+                z = w^n \iff
+                \begin{cases}
+                    |z| = |w|^n  \\
+                    n \psi = \phi + 2 \pi k \text{, для некоторого } k \in \ZZ
+                \end{cases}
+                \iff
+                \begin{cases}
+                    |w| = \sqrt[n]{|z|}  \\
+                    \psi = \frac{\phi + 2 \pi k}{n} \text{, для некоторого } k \in \ZZ
+                \end{cases}
+            \end{equation*}
+
+            С точностью до $2 \pi l$, $l \in \ZZ$, получается ровно $n$ различных значений для $\psi$, при $k = 0, 1, \dots, n-1$.
+
+            В результате $\sqrt[n]{z} = \{w_0, w_1, \dots, w_{n-1} \}$, где $w_k = \sqrt[n]{|z|}\left(\cos \frac{\phi + 2 \pi k}{n} + i \sin \frac{\phi + 2 \pi k}{n}\right)$
+
+            \begin{comment}
+                Числа $w_0, w_1, \dots, w_{n-1}$ лежат в вершинах правильного n-угольника с центром в начале координат.
+            \end{comment}
+    \end{colloq}
+
+    \subsection{Векторные пространства}
+    \begin{colloq}
+        \proofitem{Понятие векторного пространства, шесть простейших следствий из аксиом}
+
+            Фиксируем поле $F$ (можно считать, что $F = \RR$ или $\CC$)
+
+            \begin{definition}
+                Множество $V$ называется \textit{векторным (линейным) пространством} над полем $F$, если на $V$ заданы две операции
+                \begin{itemize}[nosep]
+                \item ``сложение'': $V \times V \to V$, $(x, y) \mapsto x + y$.
+                \item ``умножение на скаляр'': $F \times V \to V$, $(\alpha \in F, x \in V) \mapsto \alpha x$.
+                \end{itemize}
+                а также, $\forall x, y, z \in V$ и $\alpha, \beta \in F$ выполнены следующие условия (называются \textit{аксиомами векторного пространства}):
+                \begin{enumerate}[nosep]
+                \item $x + y = y + x$.
+                \item $(x + y) + z = x + (y + z)$.
+                \item $\exists \overrightarrow{0} \in V : x + \overrightarrow{0} = \overrightarrow{0} + x = x$ (нулевой элемент).
+                \item $\exists -x : -x + x = x + (-x) = \overrightarrow{0}$ (противоположный элемент).
+                \item $\alpha(x + y) = \alpha x + \alpha y$.
+                \item $(\alpha + \beta)x = \alpha x + \beta x$.
+                \item $(\alpha \beta)x = \alpha(\beta x)$.
+                \item $1 \cdot x = x$.
+                \end{enumerate}
+            \end{definition}
+
+            \paragraph{Простейшие следствия из аксиом}
+            ~\\
+            
+            $\forall \alpha \in F, x \in V$.
+            \begin{enumerate}
+            \item Элемент $\overrightarrow{0}$ единственный.
+
+                Если $\overrightarrow{0}'$ -- другой такой ноль, то $\overrightarrow{0}' = \overrightarrow{0}' + \overrightarrow{0} = \overrightarrow{0}$.
+
+            \item Элемент $-x$ единственный.
+
+                Если $(-x)'$ -- другой такой противоположный элемент, то
+                \begin{equation*}
+                    (-x)' = (-x)' + \overrightarrow{0} = (-x)' + (x + (-x)) = ((-x)' + x) + (-x) = \overrightarrow{0} + (-x) = -x
+                .\end{equation*}
+                
+            \item $\alpha \overrightarrow{0} = \overrightarrow{0}$.
+
+                \newcommand{\zr}{\overrightarrow{0}}
+                Рассмотрим равенство $\zr + \zr = \zr$. Домножив на $\alpha$ получаем $\alpha(\zr + \zr) = \alpha\zr$.
+
+                Раскроем скобки, $\alpha\zr + \alpha\zr = \alpha\zr$. 
+
+                Прибавим к обоим частям обратный элемент к $\alpha\zr$, получим $\alpha\zr + \zr = \zr \implies \alpha\zr = \zr$.
+
+            \item $\alpha (-x) = -(\alpha x)$.
+
+                Рассмотрим равенство $x + (-x) = \overrightarrow{0}$.
+                \begin{align*}
+                    x + (-x) = \overrightarrow{0} \implies ax + a(-x) = 0 \implies a(-x) = -(ax)
+                .\end{align*}
+
+            \item $0 \cdot x = \overrightarrow{0}$.
+
+                Доказывается так же, как пункт 3, но с 0 вместо $\zr$.
+
+            \item $(-1) \cdot x = -x$.
+
+                Рассмотрим равенство $1 + (-1) = 0$. Домножив на $x$ получаем $(1 + (-1))x = 0x$.
+
+                Раскроем скобки и воспользуемся пунктом 5 --- $1x + (-1)x = 0$ или $x + (-1)x = 0$.
+
+                Прибавим к обоим частям $-x$, получим $0 + (-1)x = -x$ или $(-1)x = -x$.
+
+            \end{enumerate}
+
+        \proofitem{Утверждение о том, что множество решений однородной системы линейных уравнений является подпространством в соответствующем векторном пространстве}
+
+            \begin{proposal}
+                Множество решений любой ОСЛУ $Ax = 0$ ($A \in \text{Mat}_{m \times n}(F)$, $x \in F^n$) является подпространством в $F^n$.
+            \end{proposal}
+
+            \begin{proof}
+                Пусть $S$ -- множество решений ОСЛУ Ax = 0.
+                \begin{enumerate}
+                    \item $\overrightarrow{0} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix} \in S$.
+                    \item $x, y \in S \implies Ax = \overrightarrow{0}$ и $Ay = \overrightarrow{0} \implies A(x + y) = Ax + Ay = \overrightarrow{0} + \overrightarrow{0} = \overrightarrow{0} \implies x + y \in S$.
+                    \item $x \in S, \alpha \in F \implies Ax = \overrightarrow{0} \implies A(\alpha x) = \alpha (Ax) = \alpha \overrightarrow{0} = \overrightarrow{0} \implies \alpha x \in S$. \qedhere
+                \end{enumerate}
+            \end{proof}
+
+        \proofitem{Утверждение о том, что линейная оболочка произвольного подмножества векторного пространства является подпространством}
+
+            Пусть $V$ -- векторное пространство, $S \subseteq V$.
+
+            \begin{proposal}
+                $\langle S \rangle$ является подпространством в $V$.
+            \end{proposal}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item 
+                    Два случая:
+
+                    $S = \varnothing \implies \langle \varnothing \rangle = \{\overrightarrow{0}\} \implies \overrightarrow{0} \in \langle S \rangle$.
+
+                    $S \neq \varnothing \implies \exists V \in S \implies \underbracket{0 V}_{\in \langle S \rangle} = \overrightarrow{0} \implies \overrightarrow{0} \in \langle S \rangle$.
+
+                \item 
+                    Пусть $v, w \in \langle S \rangle$:
+
+                    $v = \alpha_1 v_1 + \dots + \alpha_m v_m$,
+
+                    $w = \beta_1 w_1 + \dots + \beta_n w_n$, где $v_i, w_i \in S$, $\alpha_i, \beta_i \in F$.
+
+                    Тогда, $v + w = \alpha_1 v_1 + \dots + \alpha_m v_m + \beta_1 w_1 + \dots + \beta_n w_n \in \langle S \rangle$.
+
+                    (если $v_i = w_j$, то $\alpha_i v_i + \beta_j w_j = (\alpha_i + \beta_j) w_j$)
+
+                \item
+                    $v \in \langle S \rangle$, $\alpha \in F \implies v = \alpha_1 v_1 + \dots + \alpha_m v_m$
+
+                    $\implies \alpha v = (\alpha \alpha_1) v_1 + \dots + (\alpha \alpha_m) v_m \in \langle S \rangle$. \qedhere
+                \end{enumerate}
+            \end{proof}
+
+        \proofitem{Критерий линейной зависимости конечной системы векторов}
+
+            \begin{proposal}
+                \label{lec11:proposal_a_i}
+                Пусть $v_1, \dots, v_n \in V$, $i \in \{1, \dots, n\}$, тогда следующие условия эквивалентны:
+                \begin{enumerate}
+                    \item $\exists (\alpha_1, \dots, \alpha_n) \in F^n$, такой что $\alpha_1 v_1 + \dots + \alpha_n v_n = \overrightarrow{0} (\star) $ и $\alpha_i \neq 0$. 
+                    \item $v_i \in \langle v_1, \dots, v_{i - 1}, v_{i + 1}, \dots, v_n \rangle$.
+                \end{enumerate}
+            \end{proposal}
+
+            \begin{proof}~
+                \begin{description}
+                    \item[$(1) \implies (2)$] $\alpha_i \neq 0$ в $(\star) \implies v_i = -\dfrac{\alpha_1}{\alpha_i} v_1 - \dots - \dfrac{\alpha_{i - 1}}{\alpha_i} v_{i - 1} - \dfrac{\alpha_{i + 1}}{\alpha_i} v_{i + 1} - \dots - \dfrac{\alpha_n}{\alpha_i} v_n \in \langle v_1, \dots v_{i - 1}, v_{i + 1}, \dots, v_n \rangle$.
+                    \item[$(2) \implies (1)$] 
+                        $v_i = \beta_1 v_1 + \dots + \beta_{i - 1} v_{i - 1} + \beta_{i + 1} v_{i + 1} + \dots + \beta_n v_n \implies $
+                        
+                        \begin{equation*}
+                            \beta_1 v_1 + \dots + \beta_{i - 1} v_{i - 1} + \underbrace{(-1)}_{\neq 0} v_i + \beta_{i + 1} v_{i + 1} + \dots + \beta_n v_n = \overrightarrow{0}
+                        .\end{equation*}
+
+                        (нетривиальная линейная комбинация с $i$-м скаляром $\neq 0$). \qedhere
+                \end{description}
+            \end{proof}
+
+            \begin{corollary}
+                Векторы $v_1, \dots, v_n$ линейно зависимы тогда и только тогда, когда $\exists i \in \{1, \dots, n\}$, такое что $v_i \in \langle v_1, \dots, v_{i - 1}, v_{i + 1}, \dots, v_n \rangle$.
+            \end{corollary}
+
+        \proofitem{Основная лемма о линейной зависимости}
+
+            \begin{lemma}
+                Пусть есть две системы векторов $v_1, \dots, v_m$ и $w_1, \dots, w_n$, причем $m < n$ и $w_i \in \langle v_1, \dots, v_m \rangle \quad \forall i = 1, \dots, n$.
+
+                Тогда векторы $w_1, \dots, w_n$ линейно зависимы.
+            \end{lemma}
+
+            \begin{proof}
+                \begin{align*}
+                    w_1 &= a_{11} v_1 + a_{21} v_2 + \dots + a_{m1} v_m = (v_1, \dots, v_m) \begin{pmatrix} a_{11} \\ a_{21} \\ \dots \\ a_{m1} \end{pmatrix} \\
+                    \dots\\
+                    w_n &= a_{1n} v_1 + a_{2n} v_2 + \dots + a_{mn} v_m = (v_1, \dots, v_m) \begin{pmatrix} a_{1n} \\ a_{2n} \\ \dots \\ a_{mn} \end{pmatrix}
+                .\end{align*}
+
+                \begin{equation*}
+                    \tag{$\star$}
+                    \label{v_times_A}
+                    \implies (w_1, \dots, w_n) = (v_1, \dots, v_m) A
+                ,\end{equation*}
+                где $A = (a_{ij}) \in \text{Mat}_{m \times n} (F)$.
+
+                Так как $m < n$, то ОСЛУ $Ax = \overrightarrow{0}$ имеет ненулевое решение $z = \begin{pmatrix} z_1 \\ \dots \\ z_n \end{pmatrix} \in F^n$.
+
+                Тогда умножим \eqref{v_times_A} справа на $z$:
+                \begin{equation*}
+                    (w_1, \dots, w_n) \cdot z = (v_1, \dots, v_m) \cdot \underbrace{A \cdot z}_{= \overrightarrow{0}} = (v_1, \dots, v_m) \begin{pmatrix} 0 \\ \dots \\ 0 \end{pmatrix} = \overrightarrow{0}
+                .\end{equation*}
+
+                \begin{equation*}
+                    \implies (w_1, \dots, w_n) \begin{pmatrix} z_1 \\ \dots \\ z_n \end{pmatrix} = \overrightarrow{0} \implies z_1 w_1 + \dots z_n w_n = \overrightarrow{0}
+                .\end{equation*}
+
+                Это нетривиальная линейная комбинация, так как $z \neq 0$.
+
+                Следовательно, $w_1, \dots, w_n$ линейно зависимы.
+            \end{proof}
+
+            \begin{example}
+                Любые $n + 1$ векторов в $F^n$ линейно зависимы, так как $F^n = \langle e_1, \dots, e_n \rangle$.
+            \end{example}
+
+        \proofitem{Независимость числа векторов в базисе конечномерного векторного пространства от выбора базиса}
+
+            \begin{proposal}
+                $V$ -- конечномерное векторное пространство. Тогда, все базисы в $V$ содержат одно и то же количество элементов.
+            \end{proposal}
+
+            \begin{proof}
+                $V$ конечномерно, тогда существует конечный базис $e_1, \dots, e_n$.
+
+                Пусть $S \subseteq V$ -- другой базис. 
+                Так как $\langle e_1, \dots, e_n \rangle = V$, то $\forall v \in S \implies v \in \langle e_1, \dots, e_n \rangle$. 
+                Тогда любые $n + 1$ векторов в $S$ линейно зависимы по основной лемме о линейной зависимости.  Но $S$ линейно независимо, значит $|S| \leq n$.
+
+                Пусть $S = \{e'_1, \dots, e'_m\}$, где $m \leq n$. Тогда $\forall i = 1, \dots, n \quad e_i \in \langle e'_1, \dots, e'_m \rangle$, по основной лемме о линейной зависимости получаем $n \leq m$.
+                
+                То есть $m = n$.
+            \end{proof}
+
+        \proofitem{Характеризация базисов конечномерного векторного пространства в терминах единственности линейного выражения векторов}
+
+            \begin{proposition}
+                Пусть $\dim V < \infty$, $e_1, \dots, e_n \in \langle V \rangle$.
+
+                $e_1, \dots, e_n$ --- базис $V$ тогда и только тогда, когда, $\forall v \in V$ единственным образом представим в виде
+                \begin{equation*}
+                    v = x_1 e_1 + \dots + x_n e_n \quad x_i \in F
+                .\end{equation*}
+            \end{proposition}
+
+            \begin{proof}~
+                \begin{description}
+                \item[$\implies$]
+                    Пусть есть два представления $v = x_1 e_1 + \dots x_n e_n = x'_1 e_1 + \dots + x'_n e_n$.
+
+                    Тогда, $(x_1 - x'_1)e_1 + \dots + (x_n - x'_n)e_n = \overrightarrow{0}$.
+
+                    Так как $e_1, \dots, e_n$ линейно независимы, то $(x_1 - x'_1) = \dots = (x_n - x'_n) = 0$.
+
+                    Значит, $x_i = x'_i \quad \forall i$.
+
+                \item[$\impliedby$]
+                    $\forall v \in V$ имеем $v \in \langle e_1, \dots, e_n \rangle$.
+
+                    Значит, $\langle e_1, \dots, e_n \rangle = V$.
+
+                    Для $v = \overrightarrow{0}$ существует единственное представление $\overrightarrow{0} = \lambda_1 e_1 + \dots + \lambda_n e_n$.
+
+                    Но мы знаем, что $\overrightarrow{0} = 0e_1 + \dots + 0e_n$.
+
+                    Следовательно $\alpha_1 = \dots \alpha_n = 0$, то есть $e_1, \dots, e_n$ линейно независимо.
+                \end{description}
+
+                Итог: $e_1, \dots, e_n$ -- базис $V$.
+            \end{proof}
+
+        \proofitem{Метод построения фундаментальной системы решений для однородной системы линейных уравнений}
+
+            Приведем матрицу к улучшенному ступенчатому виду элементарными преобразовиями строк.
+            \begin{equation*}
+                (A | \overrightarrow{0}) \rightsquigarrow (B | \overrightarrow{0}) \quad \leftarrow \text{ улучшенный ступенчатый вид}
+            .\end{equation*}
+
+            Пусть $r$ -- число ненулевых строк в $B$.
+
+            Тогда будет $r$ главных неизвестных и $n - r$ свободных.
+
+            Выполнив перенумерацию будем считать что,
+            \begin{align*}
+                x_1, \dots, x_r &\text{ -- главные неизвестные,} \\
+                x_{r + 1}, \dots, x_n &\text{ -- свободные}
+            .\end{align*}
+
+            Тогда, общее решение для $\eqref{lec12:oslu_1}$ имеет вид
+            \begin{align*}
+                &x_1 = c_{11} x_{r + 1} + c_{12}x_{r + 2} + \dots + c_{1, n - r} x_n \\
+                &x_2 = c_{21} x_{r + 1} + c_{22}x_{r + 2} + \dots + c_{2, n - r} x_n \\
+                &\dots \\
+                &x_r = c_{r1} x_{r + 1} + c_{r2}x_{r + 2} + \dots + c_{r, n - r} x_n
+            .\end{align*}
+
+            Предъявим некоторую систему решений
+            \begin{equation*}
+                u_1 = \begin{pmatrix} 
+                    c_{11} \\
+                    c_{21} \\
+                    \dots \\
+                    c_{r1} \\
+                    \underline{1} \\
+                    0 \\
+                    \dots \\
+                    0
+                \end{pmatrix}, \
+                u_2 = \begin{pmatrix} 
+                    c_{12} \\
+                    c_{22} \\
+                    \dots \\
+                    c_{r2} \\
+                    0 \\
+                    \underline{1} \\
+                    0 \\
+                    \dots \\
+                    0
+                \end{pmatrix}, \ \dots, \
+                u_{n - r} = \begin{pmatrix} 
+                    c_{1, n - r} \\
+                    c_{2, n - r} \\
+                    \dots \\
+                    c_{r, n - r} \\
+                    0 \\
+                    \dots \\
+                    0 \\
+                    \underline{1}
+                \end{pmatrix}
+            .\end{equation*}
+
+            $u_1, \dots, u_{n - r} \in S$
+
+            \begin{proposal}
+                $u_1, \dots, u_{n - r}$ -- это ФСР для ОСЛУ \eqref{lec12:oslu_1}.
+            \end{proposal}
+
+            \begin{proof}~
+                \begin{enumerate}
+                \item Линейная независимость.
+
+                    Пусть $\alpha_1 u_1 + \dots + \alpha_{n - r} u_{n - r} = \overrightarrow{0}$.
+
+                    При любом $k \in \{1, \dots, n - r\}$, ($r + k$)-я координата левой части равна $\alpha_k$, значит $\alpha_k = 0$.
+                    
+                    Следовательно $\alpha_1 = \dots = \alpha_{n - r} = 0$.
+
+                \item $\langle u_1, \dots, u_{n - r} \rangle = S$.
+
+                    \begin{description}
+                    \item[``$\subseteq$'']
+                        Верно, так как $u_1, \dots, u_{n - r} \in S$.
+
+                    \item[``$\supseteq$'']
+                        Пусть $u \in S$, тогда
+                        \begin{equation*}
+                            u = \begin{pmatrix} * \\ \dots \\ * \\ \alpha_1 \\ \alpha_2 \\ \dots \\ \alpha_{n - r} \end{pmatrix} \text{ для некоторых } \alpha_1, \dots, \alpha_{n - r} \in F
+                        .\end{equation*}
+
+                        Положим $v := u - \alpha_1 u_1 - \dots - \alpha_{n - r} u_{n - r}$.
+
+                        Тогда, $v \in S$, но
+                        \begin{equation*}
+                            v = \begin{pmatrix} * \\ \dots \\ * \\ 0 \\ \dots \\ 0 \end{pmatrix}
+                        .\end{equation*}
+
+                        Тогда формулы для общего решения дают $v = \overrightarrow{0}$.
+
+                        Поэтому $u = \alpha_i u_1 + \dots + \alpha_{n - r} u_{n - r}$.
+                    \end{description}
+                    Значит $\langle u_1, \dots, u_{n - r} \rangle = S$.
+                    \qedhere
+                \end{enumerate}
+            \end{proof}
+
+            \begin{example}
+                \begin{equation*}
+                    A = \begin{pmatrix} 
+                        1 & -3 & 0 & 1 \\
+                        0 & 0 & 1 & -2
+                    \end{pmatrix}
+                .\end{equation*}
+
+                Общее решение:
+                \begin{equation*}
+                    \begin{cases}
+                        x_1 = 3x_2 - x_4 \\
+                        x_3 = 2x_4
+                    \end{cases}
+                \end{equation*}
+
+                Тогда ФСР:
+                \begin{equation*}
+                    u_1 = \begin{pmatrix} 3 \\ 1 \\ 0 \\ 0 \end{pmatrix}, \
+                    u_2 = \begin{pmatrix} -1 \\ 0 \\ 2 \\ 1 \end{pmatrix}
+                .\end{equation*}
+            \end{example}
+
+        \proofitem{Существование подмножества конечной системы векторов, являющегося базисом её линейной оболочки}
+
+            Пусть $V$ -- векторное пространство над F.
+
+            Наблюдение: если $v, v_1, \dots, v_m \in V$ и $v \in \langle v_1, \dots, v_m \rangle$, тогда $\langle v, v_1, \dots, v_m \rangle = \langle v_1, \dots, v_m \rangle$
+
+            \begin{proposal}
+                Из всякой конечной системы векторов $S \subseteq V$ можно выбрать подсистему, которая является базисом в линейной оболочке $\langle S \rangle$.
+            \end{proposal}
+
+            \begin{proof}
+                Пусть $S = \{v_1, \dots, v_m\}$.
+
+                Индукция по $m$.
+
+                \begin{description}
+                \item[База]
+                    $m = 1$: $S = \{v_1\}$.
+
+                    Если $v_1 = \overrightarrow{0}$, то $\langle S \rangle = \{\overrightarrow{0}\}$, значит в качестве базиса берем $\varnothing$.
+
+                    Если $v_1 \neq 0$, то $S$ линейно независимо.
+
+                    Cледовательно $S$ -- базис в $\langle S \rangle$.
+
+                \item[Шаг]
+                    Пусть доказано для $< m$, докажем для $m$.
+
+                    Если $v_1, \dots, v_m$ линейно независимо, то $v_1, \dots, v_m$ -- это уже базис в $\langle S \rangle$.
+
+                    Иначе, $\exists i : v_i \in \langle S \setminus \{v_i\} \rangle$.
+
+                    Положим $S' := S \setminus \{v_i\}$.
+
+                    Тогда, $\langle S' \rangle = \langle S \rangle$.
+
+                    Так как $|S'| = m - 1 < m$, то по предположению индукции в $S'$ можно выбрать базис для $\langle S' \rangle = \langle S \rangle$.
+                    \qedhere
+                \end{description}
+            \end{proof}
+
+        \proofitem{Дополнение линейно независимой системы векторов до базиса конечномерного векторного пространства}
+
+            \begin{proposal}
+                Пусть $\dim V < \infty$, тогда всякую линейно независимую систему векторов в $V$ можно дополнить до базиса всего пространства $V$.
+            \end{proposal}
+
+            \begin{proof}
+                Пусть $v_1, \dots, v_m$ -- данная линейно независимая система.
+
+                Так как $\dim V < \infty$, в $V$ есть конечный базис $e_1, \dots, e_n$.
+
+                Рассмотрим систему векторов $v_1, \dots, v_m, e_1, \dots, e_n$.
+
+                Пройдемся по этим векторам слева направо и выбросим те, которые линейно выражаются через предыдущие (не выброшенные).
+
+                При этом:
+                \begin{enumerate}[nosep, label=\arabic*)]
+                \item линейная оболочка системы сохраняется и равна $\langle v_1, \dots, v_m, e_1, \dots, e_n \rangle = V$;
+                \item $v_1, \dots, v_m$ останутся в системе, так как они линейно независимы;
+                \item в новой системе никакой вектор линейно не выражается через предыдущие.
+                \end{enumerate}
+
+                Пусть новая система - это $S' = \{v_1, \dots, v_m, e_{i_1}, \dots, e_{i_t}\}$.
+
+                Докажем, что $S'$ -- базис в $V$.
+
+                По свойству 1) имеем, что $\langle S' \rangle = V$.
+
+                Осталось доказать, что $S'$ линейно независимо.
+
+                Пусть $\alpha_1 v_1 + \dots \alpha_n v_n + \beta_1 e_{i_1} + \dots + \beta_t e_{i_t} = \overrightarrow{0}$.
+
+                Предположим, что эта линейная комбинация нетривиальна.
+
+                Так как $v_1, \dots, v_m$ линейно независимы, то $\exists k : \beta_{i_k} \neq 0$.
+
+                Выберем $k$ максимальным с этим свойством.
+
+                Тогда, $e_{i_k}$ линейно выражается через предыдущие --- противоречие.
+            \end{proof}
+
+        \proofitem{Лемма о добавлении вектора к конечной линейно независимой системе}
+
+            \begin{lemma}
+                Пусть $v, v_1, \dots, v_m \in V$ и $v_1, \dots, v_m$ линейно независимы, тогда либо $v, v_1, \dots, v_m$ линейно независимы, либо $v \in \langle v_1, \dots , v_m \rangle$.
+            \end{lemma}
+
+            \begin{proof}
+                Пусть $v, v_1, \dots, v_m$ линейно зависимы, тогда $\exists (\alpha, \alpha_1, \dots, \alpha_m) \neq (0, \dots, 0)$, такой что
+                \begin{equation*}
+                    \alpha v + \alpha_1 v_1 + \dots + \alpha_m v_m = \overrightarrow{0}
+                .\end{equation*}
+                Но, так как $v_1, \dots, v_m$ линейно независимы, то $\alpha \neq 0$. Значит, $v \in \langle v_1, \dots, v_m \rangle$ по \hyperref[lec11:proposal_a_i]{предложению}.
+            \end{proof}
+
+    \end{colloq}
+\end{document}

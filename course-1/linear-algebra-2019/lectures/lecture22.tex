@@ -1,0 +1,280 @@
+\section{Лекция 27.02.2020}
+
+
+\begin{comment}
+    Всякое подпространство $U \subseteq E$ тоже является евклидовым пространством со скалярным произведением $(\bigcdot, \bigcdot) \big|_U \leftarrow$ ограничение на $U$.
+\end{comment}
+
+
+\subsection{Длина вектора евклидова пространства}
+
+\begin{definition}
+    \textit{Длина} вектора $x \in \EE$ --- это $|x| := \sqrt{(x, x)}$.
+
+    Свойство: 
+    $|x| \geq 0$, причем $|x| = 0 \iff x = 0$.
+\end{definition}
+
+\begin{example}
+    Если $\EE = \RR^n$ со стандартным скалярным произведением, то $|x| = \sqrt{x_1^2 + \dots + x_n^2}$.
+\end{example}
+
+\begin{comment}
+    Если $\EE = \text{Mat}_{m \times n}(\RR)$, $(A, B) = \tr(A^{T} B)$
+
+    Тогда, $|A| = \sqrt{\sum_{i = 1}^{m} \sum_{j = 1}^{n} a_{ij}^2} \leftarrow$ это обозначается как $\norm{A}_{F}$ и называется \textit{нормой Фробениуса}, \textit{фробениусовой нормой}.
+\end{comment}
+
+
+\subsection{Неравенство Коши–Буняковского}
+
+\begin{proposal}[неравенство Коши-Буняковского]
+    $\forall x, y \in \EE$ верно $|(x, y)| \leq |x| \cdot |y|$, причём равенство $\iff$ $x$, $y$ пропорциональны.
+\end{proposal}
+
+\begin{proof}
+    Случаи:
+    \begin{enumerate}
+    \item $x, y$ пропорциональны. Тогда, можно считать, что $y = \lambda x$, $\lambda \in \RR$.
+
+        $|(x, y)| = |(x, \lambda x)| = |\lambda| |(x, x)| = |\lambda| |x|^2 = |x| \cdot |\lambda x| = |x| \cdot |y|$.
+
+    \item $x, y$ не пропорциональны. Тогда $x, y$ линейно независимы.
+
+        Значит они образуют базис в $\left< x, y \right>$.
+
+        Получаем
+        \begin{equation*}
+            \begin{vmatrix} 
+                (x, x) & (x, y) \\
+                (y, x) & (y, y)
+            \end{vmatrix} > 0 \quad \text{(критерий Сильвестра)}
+        .\end{equation*}
+
+        Отсюда, $(x, x) \cdot (y, y) - (x, y)^2 > 0 \implies (x, y)^2 < |x|^2 \cdot |y|^2$.
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    Пусть $\EE = \RR^n$ со стандартным скалярным произведением, тогда
+    \begin{equation*}
+        |x_1 y_1 + \dots + x_n y_n| \leq \sqrt{x_1^2 + \dots + x_n^2} \cdot \sqrt{y_1^2 + \dots + y_n^2}
+    .\end{equation*}
+\end{example}
+
+
+\subsection{Угол между ненулевыми векторами евклидова пространства}
+
+Пусть $x, y \in \EE \setminus \{0\}$, тогда $-1 \leq \frac{(x, y)}{|x| \cdot |y|} \leq 1$.
+
+\begin{definition}
+    Угол между ненулевыми векторами $x, y \in \EE$, это такой $\alpha \in [0, \pi]$, что $\cos \alpha = \frac{(x, y)}{|x| \cdot |y|}$.
+
+    Тогда $(x, y) = |x| |y| \cos \alpha$.
+\end{definition}
+
+
+\subsection{Матрица Грама системы векторов евклидова пространства}
+
+Пусть $v_1, \dots, v_k$ --- произвольная система векторов.
+
+\begin{definition}
+    \textit{Матрица Грама} этой системы --- это
+    \begin{equation*}
+        G(v_1, \dots, v_k) = \begin{pmatrix}
+            (v_1, v_1) & (v_1, v_2) & \dots & (v_1, v_k) \\
+            (v_2, v_1) & (v_2, v_2) & \dots & (v_2, v_k) \\
+            \vdots & \vdots & \ddots & \vdots \\
+            (v_k, v_1) & (v_k, v_2) & \dots & (v_k, v_k)
+        \end{pmatrix}
+    .\end{equation*}
+\end{definition}
+
+\begin{example}
+    $\EE = \RR^n$ со стандартным скалярным произведением.
+
+    $a_1, \dots, a_k \in \RR^n \leadsto A := (a_1, \dots, a_k) \in \text{Mat}_{n \times k}(\RR)$.
+
+    Тогда, $G(a_1, \dots, a_k) = A^T \cdot A$.
+\end{example}
+
+
+\subsection{Определитель матрицы Грама: неотрицательность, критерий положительности}
+
+\begin{proposal}
+    $\forall v_1, \dots, v_k \in \EE \implies \det G(v_1, \dots, v_k) \geq 0$.
+
+    Более того, $\det G(v_1, \dots, v_k) > 0 \iff v_1, \dots, v_k$ линейно независимы. 
+\end{proposal}
+
+\begin{proof}
+    Пусть $G := G(v_1, \dots, v_k)$.
+    Случаи:
+    \begin{enumerate}
+    \item $v_1, \dots, v_k$ линейно независимы. Тогда, $G$ --- матрица билинейной формы $(\bigcdot, \bigcdot) \Big|_{\left< v_1, \dots, v_k \right>}$ в базисе $v_1, \dots, v_k$ подпространства $\left< v_1, \dots, v_k \right>$, а значит $\det G > 0$ по критерию Сильвестра.
+    
+    \item $v_1, \dots, v_k$ линейно зависимы. Тогда, $\exists (\alpha_1, \dots, \alpha_k) \in \RR^k \setminus \{0\}$, такие что $\alpha_1 v_1 + \dots + \alpha_k v_k = 0$.
+
+        А значит,  $\forall i = 1, \dots, k \implies \alpha_1 (v_1, v_i) + \dots + \alpha_k (v_k, v_i) = 0$.
+        
+        Отсюда, $a_1 G_{(1)} + \dots + \alpha_k G_{(k)} = 0 \implies$ строки в $G$ линейно зависимы $\implies \det G = 0$.
+        \qedhere
+    \end{enumerate}
+\end{proof}
+
+
+\subsection{Ортогональные векторы}
+
+\begin{definition}
+    Векторы $x, y \in \EE$ называются \textit{ортогональными}, если $(x, y) = 0$.
+\end{definition}
+
+
+\subsection{Ортогональное дополнение подмножества евклидова пространства}
+
+\begin{definition}
+    \textit{Ортогональное дополнение} множества $S \subseteq \EE$ --- это множество $S^{\perp} := \{x \in \EE \mid (x, y) = 0 \ \forall y \in S\}$.
+\end{definition}
+
+\begin{exercise}~
+    \begin{enumerate}
+    \item $S^{\perp}$ --- подпространство в $\EE$.
+    \item $S^{\perp} = \left< S \right>^{\perp}$.
+    \end{enumerate}
+\end{exercise}
+
+\subsection{Размерность ортогонального дополнения подпространства, ортогональное дополнение к ортогональному дополнению подпространства}
+\subsection{Разложение евклидова пространства в прямую сумму подпространства и его ортогонального дополнения}
+
+Далее считаем, что $\dim \EE = n < \infty$.
+
+\begin{proposal}
+    Пусть $S \subseteq \EE$ --- подпространство.
+    Тогда:
+    \begin{enumerate}
+    \item $\dim S^{\perp} = n - \dim S$.
+    \item $\EE = S \oplus S^{\perp}$.
+    \item $(S^{\perp})^{\perp} = S$.
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}~
+    \begin{enumerate}
+    \item 
+        Пусть $\dim S = k$ и $e_1, \dots, e_k$ --- базис $S$.
+        
+        Дополним $e_1, \dots, e_k$ до базиса $e_1, \dots, e_n$ всего $\EE$.
+
+        Тогда, $\forall x = x_1 e_1 + \dots + x_n e_n \in \EE$.
+
+        \begin{align*}
+            x \in S^{\perp} &\iff (x, e_i) = 0 \ \forall i = 1, \dots, k \\
+                            &\iff \begin{cases}
+                                (e_1, e_1) x_1 + \dots + (e_n, e_1) x_n = 0 \\
+                                (e_1, e_2) x_1 + \dots + (e_n, e_2) x_n = 0 \\
+                                \dots \\
+                                (e_1, e_k) x_1 + \dots + (e_n, e_k) x_n = 0
+                            \end{cases}
+        .\end{align*}
+
+        Это ОСЛУ с матрицей $G \in \text{Mat}_{k \times n}(\RR)$, причём левый $k \times k$ блок в $G$ --- это $\underbrace{G(e_1, \dots, e_k)}_{\det \neq 0}$.
+
+        Это означает, что $\rk G = k$.
+
+        Следовательно, пространство решений этой ОСЛУ имеет размерность $n - k$.
+
+        Отсюда, $\dim S^{\perp} = n - k = n - \dim S$.
+
+    \item
+        \begin{enumerate}
+        \item $\dim S + \dim S^{\perp} = k + (n - k) = n = \dim E$.
+        \item $v \in S \cap S^{\perp} \implies (v, v) = 0 \implies v = 0 \implies S \cap S^{\perp} = \{0\}$.
+        \end{enumerate}
+
+        А значит, $E = S \oplus S^{\perp}$.
+
+    \item
+        Заметим, что $S \subseteq (S^{\perp})^{\perp}$ (по определению).
+
+        $\dim (S^{\perp})^{\perp} = n - \dim S^{\perp} = n - (n - \dim S) = \dim S$.
+
+        Следовательно, $S = (S^{\perp})^{\perp}$.
+        \qedhere
+    \end{enumerate}
+\end{proof}
+
+
+\subsection{Ортогональная проекция вектора на подпространство, ортогональная составляющая вектора относительно подпространства}
+
+$S$ --- подпространство $ \implies \EE = S \oplus S^{\perp}$
+
+$\forall v \in \EE \ \exists! \ x \in S, y \in S^{\perp}$, такие что $x + y = v$.
+
+\begin{definition}~
+    \begin{enumerate}
+    \item 
+        $x$ называется \textit{ортогональной проекцией} вектора $v$ на подпространство $S$.
+
+        Обозначение: $x = \pr_S v$.
+
+    \item
+        $y$ называется \textit{ортогональной составляющей} вектора $v$ относительно подпространства $S$.
+
+        Обозначение: $y = \ort_S v$.
+    \end{enumerate}
+\end{definition}
+
+\subsection{Явная формула для ортогональной проекции вектора на подпространство в $\RR^n$, заданное своим базисом}
+
+Пусть $\EE = \RR^n$ со стандартным скалярным произведением.
+
+$S \subseteq \EE$ --- подпространство, $a_1, \dots, a_k$ --- базис $S$.
+
+Пусть $A := (a_1, \dots, a_k) \in \text{Mat}_{n \times k}(\RR)$, $A^{(i)} = a_i$.
+
+\begin{proposal}
+    $\forall v \in \RR^n \quad \pr_S v = A (A^{T} A)^{-1} A^{T} v$.
+\end{proposal}
+
+\begin{proof}
+    Корректность: $A^{T} A = G(a_1, \dots, a_k) \in M_k^{0}(\RR)$.
+
+    Положим $x := \pr_S v$, $y := \ort_S v$.
+
+    Так как $x \in S$, $x = A \cdot \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_k \end{pmatrix}$, $\alpha_i \in \RR$.
+
+    $y \in S^{\perp} \implies A^T y = 0$.
+
+    \begin{align*}
+    A (A^{T} A)^{-1} A^{T} v
+    &= A(A^{T}A)^{-1}A^{T} (x + y) \\
+    &= A\lefteqn{\underbracket{\phantom{(A^{T}A)^{-1}A^{T} A}}_E} (A^{T} A)^{-1} A^{T} \overbracket{A \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_k \end{pmatrix}}^{x} + A(A^{T} A)^{-1} \underbracket{A^{T} y}_{0} \\
+    &= A \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_k \end{pmatrix} = x = \pr_S v
+    .\end{align*}
+\end{proof}
+
+
+\subsection{Ортогональные и ортонормированные системы векторов}
+
+\begin{definition}
+    Система ненулевых векторов $v_1, \dots, v_k$ называется
+    \begin{enumerate}[nosep]
+        \item \textit{ортогональной}, если $(v_i, v_j) = 0 \ \forall i \neq j$ (то есть $G(v_1, \dots, v_k)$ диагональна),
+        \item \textit{ортонормированной}, если $(v_i, v_j) = 0 \ \forall i \neq j$ и $(v_i, v_i) = 1$ ($\iff |v_i| = 1$).
+            То есть $G(v_1, \dots, v_k) = E$.
+    \end{enumerate}
+\end{definition}
+
+\begin{comment}
+    Всякая ортогональная (и в частности ортонормированная) система векторов автоматически линейно независима.
+    \begin{equation*}
+        \det G(v_1, \dots, v_k) = |v_1|^2 \cdot |v_2|^2 \dotsm |v_k|^2 \neq 0
+    .\end{equation*}
+\end{comment}
+
+
+\subsection{Ортогональный и ортонормированный базис}
+
+\begin{definition}
+    Базис пространства называется \textit{ортогональным} (соответственно \textit{ортонормированным}), если он является ортогональной (ортонормированной) системой векторов.
+\end{definition}

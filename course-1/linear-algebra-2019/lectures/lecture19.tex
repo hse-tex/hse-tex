@@ -1,0 +1,294 @@
+\section{Лекция 6.02.2020}
+
+
+\subsection{Утверждение о том, что всякий базис сопряжённого пространства двойствен некоторому базису исходного пространства}
+
+$\epsilon_i (x_1 e_1 + \dots + x_n e_n) = x_i$, поэтому $\epsilon_i$ называется $i$-й координатной функцией в базисе $\E$.
+
+\begin{proposal}
+    Всякий базис пространства $V^*$ двойствен некоторому базису пространства $V$. 
+\end{proposal}
+
+\begin{proof}
+    Пусть $\epsilon = \begin{pmatrix} \epsilon_1 \\ \dots \\ \epsilon_n \end{pmatrix}$ --- базис пространства $V^*$.
+    Фиксируем какой-то базис $\E' = (e'_1, \dots, e'_n)$ пространства $V$, и пусть $\epsilon' = \begin{pmatrix} \epsilon'_1 \\ \dots \\ \epsilon'_n \end{pmatrix}$ --- соответствующий ему двойственный базис $V^*$.
+
+    Тогда, 
+    $\begin{pmatrix} \epsilon_1 \\ \dots \\ \epsilon_n \end{pmatrix} = C \cdot \begin{pmatrix} \epsilon'_1 \\ \dots \\ \epsilon'_n \end{pmatrix}$
+    для некоторой матрицы $C \in M^0_n(F)$.
+
+    \bigskip
+    Положим $(e_1, \dots, e_n) = (e'_1, \dots, e'_n) \cdot C^{-1}$.
+
+    Тогда, 
+    \begin{equation*}
+        \begin{pmatrix} \epsilon_1 \\ \dots \\ \epsilon_n \end{pmatrix} (e_1, \dots, e_n) = C \begin{pmatrix} \epsilon'_1 \\ \dots \\ \epsilon'_n \end{pmatrix} (e'_1, \dots, e'_n) C^{-1} = C E C^{-1} = E
+    .\end{equation*}
+
+    Значит, $\epsilon$ двойствен к $\E$.
+\end{proof}
+
+\begin{exercise}
+    $\E$ определён однозначно.
+\end{exercise}
+
+
+\subsection{Билинейные формы на векторном пространстве}
+
+Пусть $V$ --- векторное пространство над $F$.
+
+\begin{definition}
+    \textit{Билинейная форма} на $V$ --- это отображение $\beta \colon V \times V \to F$, линейное по каждому аргументу.
+\end{definition}
+
+\paragraph{Линейность по 1-му аргументу}
+\begin{itemize}[nosep]
+\item $\beta(x_1 + x_2, y) = \beta(x_1, y) + \beta(x_2, y) \quad \forall x_1, x_2, y \in V$,
+\item $\beta(\lambda x, y) = \lambda\beta(x, y) \quad \forall x, y \in V, \ \lambda \in F$.
+\end{itemize}
+
+\paragraph{Линейность по 2-му аргументу}
+\begin{itemize}[nosep]
+\item $\beta(x, y_1 + y_2) = \beta(x, y_1) + \beta(x, y_2) \quad \forall x, y_1, y_2 \in V$,
+\item $\beta(x, \lambda y) = \lambda\beta(x, y) \quad \forall x, y \in V, \ \lambda \in F$.
+\end{itemize}
+
+
+\subsection{Примеры}
+\label{lec19:bilinear_examples}
+
+\subsubsection{}
+
+$V = F^n$, $x = \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix}$, $y = \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix}$;
+
+$\beta(x, y) := x_1 y_1 + \dots + x_n y_n = (x_1 \dots x_n) \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} = x^{T} y$.
+
+\subsubsection{}
+
+$V = F^2$, $x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$, $y = \begin{pmatrix} y_1 \\ y_2 \end{pmatrix}$;
+
+$\beta(x, y) := \det \begin{pmatrix} x_1 & y_1 \\ x_2 & y_2 \end{pmatrix}$.
+
+\subsubsection{}
+
+$V = C[a, b];$
+
+$\beta(f, g) := \displaystyle\int^b_a f(x) g(x) \mathop{}\!d x$.
+
+
+\subsection{Матрица билинейной формы по отношению к фиксированному базису}
+
+Далее считаем, что $\dim V = n < \infty$.
+
+Пусть $\E = (e_1, \dots, e_n)$ --- базис $V$.
+
+\begin{definition}
+    Матрицей билинейной формы $\beta$ в базисе $\E$ называется такая матрица $B \in M_n$, что $b_{ij} = \beta(e_i, e_j)$.
+
+    Обозначение: $B(\beta, \E)$.
+\end{definition}
+
+\paragraph{Примеры}
+Матрицы билинейных форм из примеров \hyperref[lec19:bilinear_examples]{выше}:
+
+\begin{enumerate}
+\item Пусть $\E$ --- стандартный базис, тогда $B(\beta, \E) = E$.
+\item Пусть $\E$ --- стандартный базис, тогда $B(\beta, \E) = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$.
+\end{enumerate}
+
+\paragraph{Формула вычисления значений билинейной формы в координатах}~\\
+
+Пусть
+\begin{math}
+    \begin{aligned}[t]
+        x &= x_1 e_1 + \dots + x_n e_n, \\
+        y &= y_1 e_1 + \dots + y_n e_n.
+    \end{aligned}
+\end{math}
+
+Тогда,
+\begin{align*}
+    \beta(x, y)
+    &= \beta\left(\sum_{i = 1}^{n} x_i e_i, \ \sum_{j = 1}^{n} y_j e_j\right)
+    = \sum_{i = 1}^{n} x_i \cdot \beta\left(e_i, \ \sum_{j = 1}^{n} y_j e_j\right) \\
+    &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} x_i y_j \underbracket{\beta(e_i, e_j)}_{\beta_{ij}}
+    = \sum_{i = 1}^{n} \sum_{j = 1}^{n} x_i \beta_{ij} y_j  \\
+    &= (x_1, \dots, x_n) B \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix}
+.\end{align*}
+
+
+\subsection{Существование и единственность билинейной формы с заданной матрицей}
+
+\begin{proposal}
+    Пусть $\E$ --- фиксированный базис $V$.
+    \begin{enumerate}
+    \item Всякая билинейная форма $\beta$ на $V$ однозначно определяется матрицей $B(\beta, \E)$.
+    \item $\forall B \in M_n(F) \ \exists!$ билинейная форма $\beta$ на $V$, такая что $B(\beta, \E) = B$.
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}~
+    \begin{enumerate}
+    \item Следует из формулы выше.
+    \item Единственность следует из формулы выше. Докажем существование:
+
+        Определим $\beta$ по формуле выше.
+
+        Тогда $\beta$ --- билинейная форма на $V$ (упражнение).
+
+        \begin{equation*}
+            \beta(e_i, e_j) = \bordermatrix{
+                  &   &   &   & i &   &   &  \cr
+                  & 0 & \dots & 0 & 1 & 0 & \dots & 0
+            } \cdot B \cdot \begin{pmatrix} 
+                0 \\ \dots \\ 0 \\ 1 \\ 0 \\ \dots \\ 0
+            \end{pmatrix} \ j = \beta_{ij}
+        .\end{equation*}
+
+        Действительно, $B(\beta, \E) = B$.
+        \qedhere
+    \end{enumerate}
+\end{proof}
+
+
+\subsection{Формула изменения матрицы билинейной формы при переходе к другому базису}
+
+$B = B(\beta, \E)$.
+
+Пусть $\E' = (e'_1, \dots e'_n)$ --- другой базис $V$.
+
+$\E' = \E \cdot C$.
+
+$B' := B(\beta, \E')$.
+
+\begin{proposal}
+    $B' = C^{T} B C$.
+\end{proposal}
+
+\begin{proof}
+    \begin{equation*}
+        x = x_1 e_1 + \dots + x_n e_n = x'_1 e'_1 + \dots + x'_n e'_n
+    ,\end{equation*}
+
+    \begin{equation*}
+        y = y_1 e_1 + \dots + y_n e_n = y'_1 e'_1 + \dots + y'_n e'_n.
+    ,\end{equation*}
+
+    \begin{equation*}
+        \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = C \cdot \begin{pmatrix} x'_1 \\ \dots \\ x'_n \end{pmatrix} \quad \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} = C \cdot \begin{pmatrix} y'_1 \\ \dots \\ y'_n \end{pmatrix}
+    .\end{equation*}
+
+    Тогда,
+    \begin{align*}
+        \beta(x, y) &= (x_1 \dots x_n) B \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} = (x'_1 \dots x'_n) C^{T} B C \begin{pmatrix} y'_1 \\ \dots \\ y'_n \end{pmatrix} \\
+        \beta(x, y) &= (x'_1 \dots x'_n) B' \begin{pmatrix} y'_1 \\ \dots \\ y'_n \end{pmatrix}
+    .\end{align*}
+
+    Получаем, что $B' = C^{T} B C$.
+\end{proof}
+
+\begin{corollary}
+    Величина $\rk B$ не зависит от выбора базисов. 
+\end{corollary}
+
+
+\subsection{Ранг билинейной формы}
+
+\begin{definition}
+    Число $\rk B := \rk B(\beta, \E)$ называется \textit{рангом} билинейной формы $\beta$.
+\end{definition}
+
+
+\subsection{Симметричные билинейные формы}
+
+\begin{definition}
+    Билинейная форма $\beta$ называется \textit{симметричной}, если $\beta(x, y) = \beta(y, x) \ \forall x, y \in V$.
+\end{definition}
+
+
+\subsection{Критерий симметричности билинейной формы в терминах её матрицы в каком-либо базисе}
+
+Пусть $\E$ --- произвольный базис $V$.
+
+\begin{proposal}
+    $\beta$ симметрична $\iff B = B^{T}$.
+\end{proposal}
+
+\begin{proof}~
+    \begin{description}
+    \item[$\implies$] $b_{ji} = \beta(e_j, e_i) = \beta(e_i, e_j) = b_{ij}$, 
+    \item[$\impliedby$] 
+        \begin{math}
+            \begin{aligned}[t]
+                x &= x_1 e_1 + \dots + x_n e_n, \\
+                y &= y_1 e_1 + \dots + y_n e_n,
+            \end{aligned}
+        \end{math}
+
+        Тогда, 
+        \begin{equation*}
+            \beta(y, x) = (y_1 \dots y_n) B \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = (x_1 \dots x_n) B^{T} \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} = (x_1 \dots x_n) B \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} = \beta(x, y)
+        .\end{equation*}
+    \end{description}
+\end{proof}
+
+
+\subsection{Квадратичные формы на векторном пространстве}
+
+Пусть $\beta \colon V \times V \to F$ --- билинейная форма на $V$.
+
+\begin{definition}
+    Отображение $Q_\beta \colon V \to F$, $Q_\beta(x) = \beta(x, x)$, называется \textit{квадратичной формой}, ассоциированной с билинейной формой $\beta$.
+\end{definition}
+
+Пусть $\E$ --- базис $V$, $x = x_1 e_1 + \dots x_n e_n$, $B = B(\beta, \E)$.
+
+Тогда,
+\begin{equation*}
+    Q_\beta(x) = (x_1 \dots x_n) B \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = \sum_{i = 1}^{n} \sum_{j = 1}^{n} b_{ij} x_i x_j = \sum_{i = 1}^{n} b_{ii} x_i^2 + \sum_{1 \leq i < j \leq n}^{n} (b_{ij} + b_{ji}) x_i x_j
+.\end{equation*}
+
+
+\subsection{Примеры}
+
+\subsubsection{}
+
+$V = F^n$, $\beta(x, y) = x_1 y_1 + \dots + x_n y_n \implies Q_\beta(x) = x_1^2 + \dots + x_n^2$.
+
+\subsubsection{}
+
+$V = F^2$, $\beta(x, y) = 2x_1 y_2 \implies Q_\beta(x) = 2x_1 x_2$.
+
+Если $\E$ --- стандартный базис, то $B(\beta, \E) = \begin{pmatrix} 0 & 2 \\ 0 & 0 \end{pmatrix}$.
+
+\subsubsection{}
+
+$V = F^2$, $\beta(x, y) = x_1 y_2 + x_2 y_1 \implies Q_\beta(x) = 2x_1 x_2$.
+
+Если $\E$ --- стандартный базис, то $B(\beta, \E) = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$.
+
+
+\subsection{Соответствие между симметричными билинейными формами и квадратичными формами}
+
+\begin{proposal}
+    Пусть в поле $F$ выполнено условие $1 + 1 \neq 0$ (то есть в $F$ сложение двух единиц поля не даёт нам нулевой элемент поля). Тогда отображение $\beta \mapsto Q_\beta$ является биекцией между симметричными билинейными формами на $V$ и квадратичным формами на $V$.
+\end{proposal}
+
+
+\begin{proof}~
+    \begin{description}
+    \item[Сюръективность] $Q$ --- квадратичная форма $ \implies Q = Q_\beta$ для некоторой билинейной формы на $V$.
+
+        То есть $Q(x) = \beta(x, x) \ \forall x \in V$.
+
+        Положим $\sigma(x, y) = \frac{1}{2} \left[\beta(x, y) + \beta(y, x)\right]$, тогда $\sigma$ --- симметричная билинейная форма.
+        \begin{equation*}
+            \sigma(x, x) = \frac{1}{2}\left[\beta(x, x) + \beta(x, x)\right] = \beta(x, x)
+        .\end{equation*}
+
+    \item[Инъективность] $\beta$ --- симметричная билинейная форма на $V$.
+
+        $Q_\beta(x + y) = \beta(x + y, x + y) = \underbrace{\beta(x, x)}_{Q_\beta(x)} + \underbrace{\beta(x, y) + \beta(y, x)}_{\text{равны между собой}} + \underbrace{\beta(y, y)}_{Q_\beta(y)} \implies \beta(x, y) = \frac{1}{2} \left[Q_\beta(x + y) - Q_\beta(x) - Q_\beta(y)\right]$.
+    \end{description}
+\end{proof}
+

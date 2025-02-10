@@ -1,0 +1,270 @@
+\section{Лекция 23.04.2020} 
+
+Конспект полностью написан по
+\href{https://www.dropbox.com/s/ub0asegwgqxh16l/LA_19-20_osn_Lecture30.svg?dl=0}{снимку доски} и
+\href{https://www.youtube.com/watch?v=k49JHc6nCdU}{записи лекции},
+возможны баги при переписывании. Если хочется понять точно ли что-то правда, лучше смотреть туда.
+
+
+\subsection{Теорема о существовании у самосопряжённого оператора ортонормированного базиса из собственных векторов}
+
+\begin{theorem}
+    \label{lec30:th}
+    $\phi = \phi^* \implies $ в $\EE$ существует ортонормированный базис из собственных векторов.
+
+    В частности, $\phi$ диагонализуем над $\RR$ и $\chi_{\phi}(t)$ разлагается на линейные множители над $\RR$.
+\end{theorem}
+
+\begin{proof}Индукция по $n$:
+    \begin{description}
+    \item[\textbf{База}] $n = 1$ --- ясно.
+    \item[\textbf{Шаг}] $n > 1$. Тогда существует собственный вектор $v$ для $\phi$. Положим $e_1 = \dfrac{v}{|v|} \implies |e_1| = 1$.
+
+        $U = \left< e_1 \right>^{\perp}$ --- $\phi$-инвариантное подпространство, $\dim U < n \implies $ по предположению индукции в $U$ существует ортонормированный базис $(e_2, \dots, e_n)$ из собственных векторов. Тогда $(e_1, e_2, \dots, e_n)$ --- искомый базис.
+        \qedhere
+    \end{description}
+\end{proof}
+
+
+\subsection{Попарная ортогональность собственных подпространств самосопряжённого оператора}
+
+\begin{proposal}
+    $\phi = \phi^{*}$, $\lambda, \mu \in \spec \phi$, $\lambda \neq \mu \implies \EE_\lambda(\phi) \perp \EE_\mu(\phi)$.
+\end{proposal}
+
+\begin{proof}
+    \begin{equation*}
+        x \in \EE_\lambda(\phi), y \in \EE_\mu(\phi) \implies \lambda(x, y) = (\lambda x, y) = (\phi(x), y) = (x, \phi(y)) = (x, \mu y) = \mu (x, y)
+    .\end{equation*}
+
+    Так как $\lambda \neq \mu$, то $(x, y) = 0$.
+\end{proof}
+
+
+\subsection{Приведение квадратичной формы в евклидовом пространстве к главным осям}
+
+\begin{theorem}{(приведение квадратичной формы к главным осям)}
+    Для любой квадратичной формы $Q \colon \EE \to \RR$ существует ортонормированный базис $\E = (e_1, \dots, e_n)$, в котором $Q$ принимает канонический вид $Q(x) = \lambda_1 x_1^2 + \dots+ \lambda_n x_n^2$.
+    Более того, набор $\lambda_1, \dots, \lambda_n$ определен однозначно, с точностью до перестановки.
+\end{theorem}
+
+
+\begin{proof}
+    Пусть $\F = (f_1, \dots, f_n)$ --- какой-то ортонормированный базис. Рассмотрим линейный оператор $\phi \colon \EE \to \EE$, такой что $A(\phi, \F) = B(Q, \F)$ ($\phi = \phi^{*}$, так как $B(Q, \F)$ симметрична).
+
+    Если $\F' = (f_1', \dots, f_n')$ --- другой ортонормированный базис, то $\F' = \F \cdot C$, где $C$ --- ортонормированная матрица $(C^{T} C = \EE \iff C^{T} = C^{-1})$.
+    Тогда $A(\phi, \F') = C^{-1} A(\phi, \F) C = C^{T} B(Q, \F) C = B(Q, \F')$.
+
+    Значит, в любом ортонормированном базисе $\phi$ и $Q$ имеют одинаковые матрицы.
+
+    \medskip
+    По \hyperref[lec30:th]{теореме}, существует ортонормированный базис $\E$, такой что $A(\phi, \E) = \diag(\lambda_1, \dots, \lambda_n)$.
+
+    Тогда $B(Q, \E) = \diag(\lambda_1, \dots, \lambda_n)$.
+
+    Единственность для $ \{\lambda_i\}$ следует из того, что набор $\lambda_1, \dots, \lambda_n$ --- это спектр $\phi$ (с учетом кратностей).
+\end{proof}
+
+\begin{corollary}
+    $A = M_n(\RR), A = A^{T} \implies \exists $ ортогональная матрица $C \in M_n(\RR)$, такая что $C^{-1} A C = C^{T} A C = D = \diag(\lambda_1, \dots, \lambda_n)$, причем $\lambda_1, \dots, \lambda_n$ определены однозначно с точностью до перестановки.
+\end{corollary}
+
+
+\subsection{Ортогональные линейные операторы, пять эквивалентных условий}
+
+\begin{definition}
+    Линейный оператор $\phi \in L(\EE)$ называется \textit{ортогональным}, если $(\phi(x), \phi(y)) = (x, y) \quad \forall x, y \in \EE$ (то есть $\phi$ сохраняет скалярное произведение).
+\end{definition}
+
+\begin{theorem}
+    $\phi \in L(\EE) \implies $ следующие условия эквивалентны:
+    \begin{enumerate}[label=(\arabic*)]
+    \item \label{lec30:eq1} $\phi$ ортогонален.
+    \item \label{lec30:eq2} $\left|\phi(x)\right| = |x| \quad \forall x \in \EE$ (то есть $\phi$ сохраняет длины векторов).
+    \item \label{lec30:eq3} $\exists \phi^{-1}$ и $\phi^{-1} = \phi^{*}$ (то есть $\phi^{*} \phi = \phi \phi^{*} = \mathrm{Id}$).
+    \item \label{lec30:eq4} $\forall$ ортонормированного базиса $\E$ матрица $A(\phi, \E)$ ортогональна.
+    \item \label{lec30:eq5} $\forall$ ортонормированного базиса $\E = (e_1, \dots, e_n)$ векторы $(\phi(e_1), \dots, \phi(e_n))$ образуют ортонормированный базис.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}~
+    \begin{description}
+        \item[\ref{lec30:eq1}$\implies$\ref{lec30:eq2}] $\left|\phi(x)\right| = \sqrt{(\phi(x), \phi(x))} = \sqrt{(x, x)} = |x|$.
+        \item[\ref{lec30:eq2}$\implies$\ref{lec30:eq1}] 
+            \begin{math}
+                \begin{aligned}[t]
+                    (\phi(x), \phi(y)) &= \frac{1}{2} \left[(\phi(x + y), \phi(x + y)) - (\phi(x), \phi(x)) - (\phi(y), \phi(y))\right] \\
+                    &= \frac{1}{2} \left[|\phi(x + y)|^2 - |\phi(x)|^2 - |\phi(y)|^2\right] = \frac{1}{2} \left[|x + y|^2 - |x|^2 - |y|^2\right] = (x, y)
+                \end{aligned}
+            \end{math}
+
+        \item[\ref{lec30:eq1} \& \ref{lec30:eq2}$\implies$\ref{lec30:eq3}] $|\phi(x)| = 0 \implies |x| = 0 \implies x = 0 \implies \ker \phi = \{0\} \implies \exists \phi^{-1}$.
+
+            $(\phi^{-1}(x), y) = (\phi(\phi^{-1}(x)), \phi(y)) = (x, \phi(y)) \implies \phi^{-1} = \phi^{*}$.
+
+        \item[\ref{lec30:eq3}$\implies$\ref{lec30:eq4}] $\E$ --- ортонормированный базис, 
+            \begin{math}
+                A = A(\phi, \E) \implies
+                \begin{gathered}
+                    A(\phi^{-1}, \E) = A^{-1} \\
+                    A(\phi^{*}, \E) = A^{T}
+                \end{gathered}
+            \end{math}
+
+            Так как $\phi^{-1} = \phi^{*}$, то $A^{-1} = A^{T} \implies A$ ортогональная.
+
+        \item[\ref{lec30:eq4}$\implies$\ref{lec30:eq5}] $\E = (e_1, \dots, e_n)$ --- ортонормированный базис, $A = A(\phi, \E) \implies (\phi(e_1), \dots, \phi(e_n)) = (e_1, \dots, e_n) \cdot A$.
+
+            Так как $A$ ортогональная, то $(\phi(e_1), \dots, \phi(e_n))$ --- ортонормированный базис.
+
+        \item[\ref{lec30:eq5}$\implies$\ref{lec30:eq1}] $(e_1, \dots, e_n)$ --- ортонормированный базис $\implies (\phi(e_1), \dots, \phi(e_n))$ --- тоже ортонормированный базис.
+
+            \begin{equation*}
+                \begin{gathered}
+                    x = x_1 e_1 + \dots + x_n e_n \\
+                    y = y_1 e_1 + \dots + y_n e_n
+                \end{gathered} \quad \implies \quad
+                \begin{gathered}
+                    \phi(x) = x_1 \phi(e_1) + \dots + x_n \phi(e_n) \\
+                    \phi(y) = y_1 \phi(e_1) + \dots + y_n \phi(e_n)
+                \end{gathered} \quad \implies
+            \end{equation*}
+            \begin{equation*}
+                (\phi(x), \phi(y)) = (x_1, \dots, x_n) \cdot \underbrace{G (\phi(e_1), \dots, \phi(e_n))}_{ = E} \cdot \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} = (x_1, \dots, x_n) \cdot \underbrace{G(\E)}_{ = E} \cdot \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix} = (x, y)
+            .\qedhere\end{equation*}
+    \end{description}
+\end{proof}
+
+\begin{figure}[h]
+    \centering
+    \def\svgwidth{5cm}
+    \input{img/lecture30_proof.pdf_tex}
+\end{figure}
+
+
+\subsection{Описание ортогональных операторов в одномерном и двумерном евклидовых пространствах}
+
+\begin{enumerate}
+\item $\dim \EE = 1$.
+
+    $\phi$ ортогонально $\iff \phi = \pm \mathrm{Id}$.
+
+\item $\dim \EE = 2$, $\quad \E = (e_1, e_2)$ --- ортонормированный базис $ \implies \phi(e_1), \phi(e_2)$ --- тоже ортонормированный базис.
+
+    Два случая:
+    \begin{enumerate}
+    \item $\phi$ --- поворот на угол $\alpha$.
+
+        \begin{math}
+            A(\phi, \E) = \begin{pmatrix} \cos \alpha & - \sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}
+        \end{math}
+
+    \item $\phi$ --- поворот на угол $\alpha$ и отражение относительно $\left< \phi(e_1) \right>$.
+
+        \begin{math}
+            A(\phi, \E) = \begin{pmatrix} \cos \alpha & \sin \alpha \\ \sin \alpha & -\cos \alpha \end{pmatrix}
+        \end{math}
+
+
+        Если {\color{red}$l$} --- биссектриса угла $\angle(e_1, \phi(e_1))$, то 
+        \begin{math}
+            \begin{gathered}[t]
+                \phi(x) = x \quad \forall x \in l, \\
+                \phi(x) = -x \quad \forall x \in l^{\perp}.
+            \end{gathered}
+        \end{math}
+
+        \bigskip
+        $e'_1 \in l, e'_2 \in l^{\perp}, |e'_1| = |e'_2| = 1, \E' = (e'_1, e'_2) \implies A(\phi, \E') = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$.
+
+        Значит $\phi$ --- отражение относительно $l$.
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsection{Инвариантность ортогонального дополнения к подпространству, инвариантному относительно ортогонального оператора}
+
+\begin{proposal}
+    Если $\phi \in L(\EE)$ --- ортогональный оператор, $U \subseteq \EE$ --- $\phi$-инвариантное подпространство, то $U^{\perp}$ тоже $\phi$-инвариантно.
+\end{proposal}
+
+\begin{proof}
+    Пусть $\psi := \phi\big|_U$. Тогда $\psi$ --- ортогональный оператор в $U$, в частности $\psi$ обратим.
+
+    Хотим: $\phi(U^{\perp}) \subseteq U^{\perp} \quad \forall x \in U^{\perp} \ \forall y \in U$.
+    \begin{equation*}
+        (\phi(x), y) = (x, \phi^{*}(y) = (x, \phi^{-1}(y)) = (\underbrace{x}_{\in U^{\perp}}, \underbrace{\psi^{-1}(y)}_{\in U}) = 0
+    .\qedhere\end{equation*}
+\end{proof}
+
+
+\subsection{Теорема о каноническом виде ортогонального оператора}
+
+\begin{theorem}
+    Если $\phi \in L(\EE)$ --- ортогональный оператор, то существует ортонормированный базис $\E = (e_1, \dots, e_n)$, такой что 
+    \begin{equation*}
+        \label{lec30:zhopa}
+        \tag{$\star$}
+        A(\phi, \E) = \begin{pmatrix} 
+            \Pi(\alpha_1) & 0 & \dots & 0 & 0 & \dots & 0 & 0 & \dots & 0 \\ 
+            0 & \Pi(\alpha_2) & \dots & 0 & 0 & \dots & 0 & 0 & \dots & 0 \\
+            \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \dots & \Pi(\alpha_k) & 0 & \dots & 0 & 0 & \dots & 0 \\
+            0 & 0 & \dots & 0 & -1 & \dots & 0& 0 & \dots & 0\\
+            \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \dots & 0 & 0 & \dots & -1 & 0 & \dots & 0\\
+            0 & 0 & \dots & 0 & 0 & \dots & 0 & 1 & \dots & 0 \\
+            \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \dots & 0 & 0 & \dots & 0 & 0 & \dots & 1
+        \end{pmatrix},
+        \hspace{1cm}
+        \Pi(\alpha) = \begin{pmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}
+    .\end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Индукция по $n$:
+    \begin{description}
+    \item[$n = 1, 2$]  --- было.
+    \item[$n > 2$] Существует 1-мерное или 2-мерное $\phi$-инвариантное подпространство.
+        В нём требуемый базис найдется. 
+
+        Так как $U^{\perp}$ $\phi$-инвариантно и $\dim U^{\perp} < n$, то по предположению индукции в $U^{\perp}$ тоже найдется такой базис.
+
+        Объединяя эти базисы $U$ и $U^{\perp}$, получаем ортонормированный базис, в котором матрица $\phi$ имеет требуемый вид с точностью до перестановки блоков.
+        \qedhere
+    \end{description}
+\end{proof}
+
+
+\subsection{Классификация ортогональных операторов в трёхмерном евклидовом пространстве}
+
+\begin{corollary}
+    $\dim \EE = 3 \implies \exists$ ортонормированный базис $\E = (e_1, e_2, e_3)$, такой что
+    \begin{math}
+        A(\phi, \E) = \begin{blockarray}{(cc)}
+            \Pi(\alpha) & 0 \\
+            0 & 1
+        \end{blockarray}
+    \end{math}
+    или
+    \begin{math}
+        \begin{pmatrix} 
+            \Pi(\alpha) & 0 \\
+            0 & -1
+        \end{pmatrix}
+    \end{math}
+    для некоторого $\alpha$.
+\end{corollary}
+
+\begin{proof}
+    Применяя теорему, получаем \eqref{lec30:zhopa}. Если в \eqref{lec30:zhopa} есть блок $\Pi(\alpha)$, то ОК.
+
+    Иначе, $A(\phi, \E) = \begin{pmatrix} \pm 1 & 0 & 0 \\ 0 & \pm 1 & 0 \\ 0 & 0 & \pm 1 \end{pmatrix}$. Но $\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \Pi(0)$ и $\begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} = \Pi(\pi)$.
+\end{proof}
+
+\bigskip
+\begin{description}
+    \item[Тип 1] $\begin{pmatrix} \Pi(\alpha) & 0 \\ 0 & 1 \end{pmatrix}$ --- поворот на угол $\alpha$ вокруг прямой, натянутой на $\left< e_3 \right>$.
+    \item[Тип 2] $\begin{pmatrix} \Pi(\alpha) & 0 \\ 0 & -1 \end{pmatrix}$ --- тоже самое + отражение относительно плоскости относительно плоскости $\left< e_1, e_2 \right>$. \\(``зеркальный поворот'')
+\end{description}

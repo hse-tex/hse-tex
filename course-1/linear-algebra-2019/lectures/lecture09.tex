@@ -1,0 +1,278 @@
+\section{Лекция 7.11.2019}
+
+\subsection{Модуль комплексного числа, его свойства}
+
+\begin{definition}
+    Число $|z| = \sqrt{a^2 + b^2}$ называется \textit{модулем числа} $z = a + bi \in \CC$ (то есть длина соответствующего вектора).
+\end{definition}
+
+\textbf{Свойства}
+\begin{enumerate}
+\item $|z| \geq 0$, причем $|z| = 0 \iff z = 0$.
+\item $|z + w| \leq |z| + |w|$ (неравенство треугольника).
+
+    Пусть $z = a + bi$, $w = c + di$.
+    \begin{align*}
+        |z + w| &\leq |z| + |w| \\
+        \sqrt{(a + c)^2 + (b + d)^2} &\leq \sqrt{a^2 + b^2} + \sqrt{c^2 + d^2} \\
+        (a + c)^2 + (b + d)^2 &\leq a^2 + b^2 + c^2 + d^2 + 2\sqrt{(a^2 + b^2)(c^2 + d^2)} \\
+        ac + bd &\leq\sqrt{(a^2 + b^2)(c^2 + d^2)} \\
+        ac + bd &\leq\sqrt{(ac)^2 + (ad)^2 + (bc)^2 + (bd)^2} \\
+        (ac)^2 + (bd)^2 + 2acbd &\leq (ac)^2 + (ad)^2 + (bc)^2 + (bd)^2 \\
+        2acbd &\leq (ad)^2 + (bc)^2 \\
+        0 &\leq (ad)^2 + (bc)^2 - 2abcd \\
+        0 &\leq (ad - bc)^2
+    \end{align*}
+\item $z \overline{z} = |z|^2$.
+
+    $z \overline{z} = (a + bi)(a - bi) = a^2 - (bi)^2 = a^2 + b^2 = |z|^2$
+\item $|zw| = |z||w|$.
+
+    $|zw|^2 = (zw) \cdot (\overline{zw}) = z \cdot w \cdot \overline{z} \cdot \overline{w} = |z|^2 |w|^2$.
+\end{enumerate}
+
+\begin{comment}
+    Из 3) следует, что для $\forall z \neq 0$, $z^{-1} = \frac{\overline{z}}{|z|^2}$, то есть $(a + bi)^{-1} = \frac{a-bi}{a^2 + b^2}$
+\end{comment}
+
+
+\subsection{Аргумент комплексного числа}
+
+Пусть $z = a + bi \in \CC$, $z \neq 0$.
+
+Тогда, $z = |z| \left(\frac{a}{|z|} + \frac{b}{|z|}i\right)$, при этом $\left(\frac{a}{|z|}\right)^2 + \left(\frac{b}{|z|}\right)^2 = 1$
+
+Значит, $\frac{a}{|z|}$ и $\frac{b}{|z|}$ являются синусом и косинусом некоторого угла.
+
+\begin{definition}
+    \textit{Аргументом числа} $z = a + bi \in \CC \setminus \{0\}$ называется число $\phi \in \RR$, такое что
+    \begin{equation*}
+        \cos \phi = \frac{a}{|z|} = \frac{a} {\sqrt{a^2 + b^2}}
+    .\end{equation*}
+
+    \begin{equation*}
+        \sin \phi = \frac{b}{|z|} = \frac{b}{\sqrt{a^2 + b^2}}
+    .\end{equation*}
+
+    В геометрических терминах, $\phi$ есть угол между осью $Ox$ и соответствующим вектором.
+\end{definition}
+
+\begin{comment}
+    При $z \neq 0$, аргумент определен с точностью до $2 \pi k$, $k \in \ZZ$.
+\end{comment}
+
+\begin{comment}
+    При $z = 0$, удобно считать что любое $\phi$ является аргументом.
+\end{comment}
+
+
+\subsection{Тригонометрическая форма комплексного числа}
+
+$Arg(z) :=$ множество всех аргументов числа $z$.
+
+$arg(z) :=$ единственное значение из $Arg(z)$, лежащее в $[0; 2 \pi)$.
+
+$Arg(z) = arg(z) + 2 \pi k$, $k \in \ZZ$
+
+$Arg(z) = \{\phi \in \RR \mid \cos \phi = \frac{a}{|z|}, \sin \phi = \frac{b}{|z|}\}$
+
+Тогда, $\forall z \in \CC$, $z = |z| \left(\frac{a}{|z|} + \frac{b}{|z|} i\right) = |z| \left(\cos \phi + i \sin \phi\right)$, где $\phi \in Arg(z)$.
+
+\begin{definition}
+    Представление числа $z \in \CC$ в виде $z = |z|(\cos \phi + i \sin \phi)$ называется его \textit{тригонометрической формой}.
+\end{definition}
+
+
+\subsection{Умножение и деление комплексных чисел в тригонометрической форме}
+
+\begin{proposal}
+    Пусть $z_1 = |z_1| (\cos \phi_1 + i \sin \phi_1)$ и $z_2 = |z_2| (\cos \phi_2 + i \sin \phi_2)$, тогда
+    \begin{equation*}
+        z_1 z_2 = |z_1| |z_2| (\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2))
+    .\end{equation*}
+\end{proposal}
+
+\begin{proof}
+    \begin{align*}
+        z_1 z_2 &= |z_1||z_2|(\cos \phi_1 + i \sin \phi_1)(\cos \phi_2 + i \sin \phi_2)  \\
+                &= |z_1||z_2|((\cos \phi_1 \cos \phi_2 - \sin \phi_1 \sin \phi_2) + i(\cos \phi_1 \sin \phi_2 + \sin \phi_1 \cos \phi_2)) \\
+                &= |z_1||z_2|(\cos (\phi_1 + \phi_2) + i \sin(\phi_1 + \phi_2)) \qedhere
+    .\end{align*}
+\end{proof}
+
+\begin{corollary}
+    В условиях предложения, предположим, что $z_2 \neq 0$.
+
+    Тогда $\frac{z_1}{z_2} = \frac{|z_1|}{|z_2|} (\cos (\phi_1 - \phi_2) + i \sin(\phi_1 - \phi_2))$.
+
+    В частности, $\frac{1}{|z_2|}(\cos(- \phi_2) + i\sin(- \phi_2)) = \frac{1}{|z_2|}(\cos \phi_2 - i \sin \phi_2) = \frac{\overline{z}_2}{|z_2|^2}$.
+\end{corollary}
+
+\subsection{Возведение в степень комплексных чисел в тригонометрической форме, формула Муавра}
+
+\begin{corollary}
+    Пусть $z = |z|(\cos \phi + i \sin \phi)$. Тогда $\forall n \in \ZZ$,
+
+    \begin{equation*}
+        z^n = |z|^n (\cos(n \phi) + i \sin(n \phi)) \text{ -- формула Муавра}
+    .\end{equation*}
+\end{corollary}
+
+\begin{comment}
+    В комплексном анализе функция $\exp\colon \RR \to \RR$, $x \to e^x$, доопределяется до функции $\exp\colon \CC \to \CC$, $z \to e^z$ с сохранением всех привычных свойств.
+
+    Доказывается $e^{i \phi} = \cos \phi + i \sin \phi$, $\forall \phi \in \CC$ -- формула Эйлера.
+
+    Тогда $\forall z \in \CC$ представляется в виде $z = |z| e^{i \phi}$, где $\phi \in Arg(z)$ -- \textit{показательная форма}.
+\end{comment}
+
+\subsection{Извлечение корней из комплексных чисел}
+
+Пусть $z \in \CC$, $n \in \NN$, $n \geq 2$.
+
+\begin{definition}
+    \textit{Корнем степени n} (или \textit{корнем n-й степени)} из числа $z$ называется всякое число $w \in \CC$, что $w^n = z$.
+\end{definition}
+
+Положим $\sqrt[n]{z} := \{w \in \CC \ | \ w^n = z \}$.
+
+\bigskip
+Опишем множество $\sqrt[n]{z}$.
+
+$w = \sqrt[n]{z} \implies w^n = z \implies |w|^n = |z|$.
+
+Если $z = 0$, то $|z| = 0 \implies |w| = 0 \implies w = 0 \implies \sqrt[n]{0} = \{0\}$.
+
+\bigskip
+Далее считаем, что $z \neq 0$.
+
+$z = |z|(\cos \phi + i \sin \phi)$
+
+$w = |w|(\cos \psi + i \sin \psi)$
+
+$z = w^n = |w|^n (\cos (n \psi) + i \sin (n \psi))$
+
+Отсюда,
+\begin{equation*}
+    z = w^n \iff
+    \begin{cases}
+        |z| = |w|^n  \\
+        n \psi = \phi + 2 \pi k \text{, для некоторого } k \in \ZZ
+    \end{cases}
+    \iff
+    \begin{cases}
+        |w| = \sqrt[n]{|z|}  \\
+        \psi = \frac{\phi + 2 \pi k}{n} \text{, для некоторого } k \in \ZZ
+    \end{cases}
+\end{equation*}
+
+С точностью до $2 \pi l$, $l \in \ZZ$, получается ровно $n$ различных значений для $\psi$, при $k = 0, 1, \dots, n-1$.
+
+В результате $\sqrt[n]{z} = \{w_0, w_1, \dots, w_{n-1} \}$, где $w_k = \sqrt[n]{|z|}\left(\cos \frac{\phi + 2 \pi k}{n} + i \sin \frac{\phi + 2 \pi k}{n}\right)$
+
+\begin{comment}
+    Числа $w_0, w_1, \dots, w_{n-1}$ лежат в вершинах правильного n-угольника с центром в начале координат.
+\end{comment}
+
+Примеры.
+
+$\sqrt{1} = \{\pm 1\}$
+
+$\sqrt{-1} = \{\pm i\}$
+
+$\sqrt[3]{1} = \{1, -\frac{1}{2} \pm i \frac{\sqrt{3}}{2} \}$
+
+$\sqrt[4]{1} = \{ \pm 1, \pm i \}$
+
+
+\subsection{Основная теорема алгебры комплексных чисел (без доказательства)}
+
+$\sqrt[n]{z} = \{$ корни многочлена $x^n - z \}$.
+
+\begin{theorem}
+    Всякий многочлен степени $\geq 1$ с комплексными коэффициентами имеет комплексный корень.
+\end{theorem}
+
+Пусть $f = a_n z^n + a_{n - 1} z^{n - 1} + \dots + a_1 z_1 + a_0$, $n \geq 1$, $a_n \neq 0$, $a_i \in \CC$, тогда $\exists c \in \CC : f(c) = 0$.
+
+\begin{comment}
+    Свойство поля $\CC$, сформулированное в теореме, называется \textit{алгебраической замкнутостью}.
+\end{comment}
+
+\subsection{Деление многочленов с остатком}
+
+Пусть $\FF$ -- поле.
+
+$\FF[x] := $ все многочлены от переменной $x$ с коэффициентами из $\FF$.
+
+$f(x) = a_n x^n + \dots + a_1 x + a_0$, $a_n \neq 0 \implies \deg f = n$.
+
+$\deg(f \cdot g) = \deg f + \deg g$.
+
+\begin{definition}
+    Многочлен $f(x) \in F[x]$ \textit{делится} на $g(x) \in F[x]$, если $\exists h(x) \in F[x]$, такой что $f(x) = g(x) h(x)$.
+\end{definition}
+
+Если $f(x)$ не делится на $g(x)$, то можно поделить с остатком.
+
+\begin{proposal}[деление с остатком]
+    Если $f(x), g(x) \in F[x]$, $g(x) \neq 0$, то $\exists! q(x), r(x) \in F[x]$, такие что
+    \begin{equation*}
+        \begin{cases}
+            f(x) = q(x) g(x) + r(x) \\
+            \text{либо } r(x) = 0 \text{, либо } \deg r(x) < \deg g(x)
+        \end{cases}
+    \end{equation*}
+\end{proposal}
+
+\begin{example}
+    $f(x) = x^3 - 2x$, $g(x) = x + 1$.
+
+    $f(x) = (x^2 - x - 1)(x + 1) + 1$, $q(x) = (x^2 - x - 1)$, $r(x) = 1$.
+\end{example}
+
+
+\subsection{Теорема Безу}
+
+Частный случай деления многочлена $f(x)$ на многочлен $g(x)$ с остатком: $g(x) = x - c$, $\deg g(x) = 1$:
+
+$f(x) = q(x) (x - c) + r(x)$, где либо $r(x) = 0$, либо $\deg r(x) < g(x) = 1$
+
+Значит, $r(x) \equiv r = const \in F$.
+
+\begin{theorem}
+    $r = f(c)$.
+\end{theorem}
+
+\begin{proof}
+    Подставить $x = c$ в $f(x) = (x - c)g(x) + r(x)$.
+\end{proof}
+
+\begin{corollary}
+    Элемент $c \in F$ является корнем многочлена $f(x) \in F[x]$ тогда и только тогда, когда $f(x)$ делится на $(x - c)$.
+\end{corollary}
+
+
+\subsection{Кратность корня многочлена}
+
+\begin{definition}
+    \textit{Кратностью} корня $c \in F$ многочлена $f(x)$ называется наибольшее целое $k$ такое что, $f(x)$ делится на $(x - c)^k$.
+\end{definition}
+
+\subsection{Утверждение о том, что всякий многочлен степени n с комплексными коэффициентами имеет ровно n корней с учётом кратностей}
+
+\begin{corollary}
+    Пусть $f(z) \in F[z]$, $\deg f = n \geq 1$.
+
+    $f(x) = a_n z^n + \dots + a_1 z + a_0$.
+
+    $c_1, \dots c_s$ -- корни $f$, $k_1, \dots, k_s$ -- их кратности.
+
+    \bigskip
+    Любой многочлен с комплексными коэффициентами разлагается в произведение линейных множителей:
+    \begin{equation*}
+        f(x) = a_n (x - c_1)^{k_1} (x - c_2)^{k_2} \dots (x - c_s)^{k_s}
+    .\end{equation*}
+
+    Иными словами, $f(z)$ имеет ровно $n$ корней с учетом кратностей.
+\end{corollary}
