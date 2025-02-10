@@ -17,6 +17,7 @@ jobs:
       with:
         name: Documents
         path: .pdf/**/*.pdf
+        include-hidden-files: true
     - name: Checkout gh-pages
       uses: actions/checkout@v2
       with:
