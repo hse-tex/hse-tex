@@ -1,4 +1,4 @@
-\section{Лекция 6.02.2020}
+\section{Лекция 19}
 
 
 \subsection{Утверждение о том, что всякий базис сопряжённого пространства двойствен некоторому базису исходного пространства}
@@ -111,7 +111,7 @@ $\beta(f, g) := \displaystyle\int^b_a f(x) g(x) \mathop{}\!d x$.
     \beta(x, y)
     &= \beta\left(\sum_{i = 1}^{n} x_i e_i, \ \sum_{j = 1}^{n} y_j e_j\right)
     = \sum_{i = 1}^{n} x_i \cdot \beta\left(e_i, \ \sum_{j = 1}^{n} y_j e_j\right) \\
-    &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} x_i y_j \underbracket{\beta(e_i, e_j)}_{\beta_{ij}}
+    &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} x_i y_j \  \underbracket{\beta(e_i, e_j)}_{\beta_{ij}}
     = \sum_{i = 1}^{n} \sum_{j = 1}^{n} x_i \beta_{ij} y_j  \\
     &= (x_1, \dots, x_n) B \begin{pmatrix} y_1 \\ \dots \\ y_n \end{pmatrix}
 .\end{align*}
@@ -157,11 +157,14 @@ $B = B(\beta, \E)$.
 
 Пусть $\E' = (e'_1, \dots e'_n)$ --- другой базис $V$.
 
-$\E' = \E \cdot C$.
+$\E' = \E \cdot C$, где $C \in M^{0}_n(F)$.
+
+$\beta \colon V \times V \to F$ --- билинейная форма.
 
 $B' := B(\beta, \E')$.
 
 \begin{proposal}
+    \label{lec19:bilinear_basis_change}
     $B' = C^{T} B C$.
 \end{proposal}
 
@@ -232,10 +235,161 @@ $B' := B(\beta, \E')$.
     \end{description}
 \end{proof}
 
+\subsection{Теорема о диагонализации симметричной билинейной формы}
+
+Пусть в поле $F$ выполнено условие $1 + 1 \neq 0$ (то есть в $F$ сложение двух единиц поля не даёт нам нулевой элемент поля).
+
+\begin{theorem}
+    $\forall$ симметричной билинейной формы $\beta \colon V \times V \to F \ \exists$ базис $\E'$ в $V$, такой что матрица $B (\beta, \E')$ диагональна.
+\end{theorem}
+
+\begin{proof}
+    Фиксируем какой-нибудь базис $\E$ в $V$, пусть $B = B(\beta, \E)$. Тогда, согласно \hyperref[lec19:bilinear_basis_change]{предложению}, достаточно показать, что $\exists C \in M^{0}_n (F)$, такая что матрица $B' = C^{T} B C$ --- диагональная.
+
+    Это возможно для любой $B$ благодаря симметричному алгоритму Гаусса, который описан ниже.
+\end{proof}
+
+\subsection{Симметричные элементарные преобразования}
+    $B \overset{\text{одно эл.} \atop \text{преобр. строк}}{\leadsto} B' = \underbracket{U}_{\text{элементарная} \atop \text{матрица}} \cdot B \implies (B')^{T} = B^{T} \cdot U^{T} = B \cdot U^{T} $
+
+    То есть такое же элементарное преобразование, но уже столбцов, реализуется умножением матрицы билинейной формы на $U^{T}$ справа.  
+
+\begin{definition}
+    $B \leadsto B' = U B U^{T}$ --- симметричное элементарное преобразование.
+
+    Сначала выполняется элементарное преобразование строк, а затем ровно такое же элементарное преобразование столбцов, или наоборот, в силу ассоциативности.
+
+    Заметим, что согласно \hyperref[lec19:bilinear_basis_change]{предложению}, если мы применим симметричное элементарное преобразование к матрице симметричной билинейной формы, мы получим матрицу той же симметричной билинейной формы, но в другом базисе.
+\end{definition}
+
+\begin{designation}
+    $\widehat{\text{Э}}_{i} := \text{Э}_{i}  \ \& \ \text{Э}'_{i}$ --- симметричное элементарное преобразование, где 
+
+    $\text{Э}_{i}$ --- элементарное преобразование строк.
+
+    $\text{Э}'_{i}$ --- соответствующее элементарное преобразование столбцов.
+
+\end{designation}
+
+\subsection{Симметричный алгоритм Гаусса}
+
+\begin{description}
+    \item[Шаг 1:]
+    Если $B^{(1)} = 0 (\implies B_{(1)} = 0)$, то матрица имеет вид
+    $B = \left(
+        \begin{array}{c|c}
+            0 & 0 \\
+            \hline
+            \noalign{\vskip 0.5ex}
+            0 & \widetilde{B}
+        \end{array}
+    \right)$
+    $\implies$ идём на шаг 2.
+
+    \item[Иначе:]
+    \begin{description}
+        \item[Случай 1]
+        $b_{1 1} \neq 0$. 
+        
+        Тогда выполняем $\widehat{\text{Э}}_{1} (2, 1, - \frac{b_{21}}{b_{11}}), \dots, \widehat{\text{Э}}_{1} (n, 1, - \frac{b_{n 1}}{b_{11}}) $,
+        $B_{\text{новая}} = \left(
+            \begin{array}{c|c}
+                b_{1 1} & 0 \\
+                \hline
+                \noalign{\vskip 0.5ex}
+                0 & \widetilde{B}
+            \end{array} 
+        \right)$ 
+
+        \item[Случай 2]
+        $b_{1 1} = 0.$
+        \begin{description}
+            \item[Подслучай 2.1]
+            $\exists b_{i i} \neq 0 \implies
+            \left(
+            \begin{array}{c|ccc}
+                0 & \dots & * & \dots \\
+                \hline 
+                \vdots & \ddots & \vdots & \vdots \\
+                * & \dots & b_{i i} & \dots \\
+                \vdots & \vdots & \vdots & \dots
+            \end{array}
+            \right)$
+
+            Выполняем $\widehat{\text{Э}}_{2} (1, i)$, получаем $b_{1 1} \neq 0 \implies$ случай 1.
+
+            \item[Подслучай 2.2]  
+            $b_{i i} = 0 \ \forall i$, но $\exists j \colon b_{j 1} \neq 0 \implies
+            \left(
+                \begin{array}{c|ccccc}
+                    0 & * & \dots & b_{j 1} & \dots & * \\
+                    \hline
+                    * & 0 & \dots & * & \dots & * \\
+                    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+                    b_{j 1} & * & \dots & 0 & \dots & * \\
+                    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+                    * & * & \dots & * & \dots & 0
+                \end{array}
+            \right)
+            $
+
+            Выполняем $\widehat{\text{Э}}_{1} (1, j, 1) \implies$ на позиции $(1,1)$ возникает $2 \cdot b_{j 1} \neq 0$(ведь мы работаем с полем, где $2 \neq 0$) $ \implies$ случай 1.
+        \end{description}  
+    \end{description}
+    \item[Шаг 2:]
+    Новая матрица имеет вид 
+    $B = \left(
+            \begin{array}{c|c}
+                b_{1 1} & 0 \\
+                \hline
+                \noalign{\vskip 0.5ex}
+                0 & \widetilde{B}
+            \end{array} 
+        \right)$,
+
+    повторяем всё для $\widetilde{B}$.
+\end{description}
+
+
+В результате получаем цепочку элементарных матриц $U_{1}, \dots , U_{k}$, такую что матрица $B' = U_{k} \dots U_{1} B U^{T}_{1} \dots U^{T}_{k}$ --- диагональная.
+
+Положим $C = U^{T}_{1} \dots U^{T}_{k} \implies C^{T} = U_{k}, \dots , U_{1} \implies B' = C^{T} \cdot B \cdot C $.
+
+\begin{comment}
+    Матрицу C можно вычислить модифицировав алгоритм. Припишем единичную матрицу E справа от B и будем выполнять с ней только элементарные преобразования строк.
+
+    $(B \mid E) \leadsto (B' \mid P), P = U_{k} \dots U_{2} U_{1} = C^{T} \implies C = P^{T}$
+\end{comment}
+
+\begin{example}
+    \begin{equation*}
+         B = \left(
+            \begin{array}{cc|cc} 
+                0 & 1 & 1 & 0 \\ 
+                1 & -2 & 0 & 1
+            \end{array} 
+        \right) \leadsto
+        \left(
+            \begin{array}{cc|cc}
+                -2 & 0 & 0 & 1 \\
+                0 & \frac{1}{2} & 1 & \frac{1}{2}
+            \end{array}
+        \right)
+    \end{equation*}
+    Итог: $B' = \begin{pmatrix} -2 & 0 \\ 0 & \frac{1}{2} \end{pmatrix}, C = \begin{pmatrix} 0 & 1 \\ 1 & \frac{1}{2} \end{pmatrix}$
+
+    $B' = C^{T} \cdot B \cdot C$.
+\end{example}
+
+\begin{comment}
+    Базис $\E'$ в котором $B(\beta, \E')$ имеет диагональный вид определен неоднозначно.
+\end{comment}
+
 
 \subsection{Квадратичные формы на векторном пространстве}
 
 Пусть $\beta \colon V \times V \to F$ --- билинейная форма на $V$.
+
 
 \begin{definition}
     Отображение $Q_\beta \colon V \to F$, $Q_\beta(x) = \beta(x, x)$, называется \textit{квадратичной формой}, ассоциированной с билинейной формой $\beta$.
@@ -291,4 +445,3 @@ $V = F^2$, $\beta(x, y) = x_1 y_2 + x_2 y_1 \implies Q_\beta(x) = 2x_1 x_2$.
         $Q_\beta(x + y) = \beta(x + y, x + y) = \underbrace{\beta(x, x)}_{Q_\beta(x)} + \underbrace{\beta(x, y) + \beta(y, x)}_{\text{равны между собой}} + \underbrace{\beta(y, y)}_{Q_\beta(y)} \implies \beta(x, y) = \frac{1}{2} \left[Q_\beta(x + y) - Q_\beta(x) - Q_\beta(y)\right]$.
     \end{description}
 \end{proof}
-
