@@ -65,6 +65,7 @@
 ### Линейная алгебра
 
 - [Конспект](https://hse-tex.me/course-1/linear-algebra.pdf)
+- [Конспект (2019–2020)](https://hse-tex.me/course-1/linear-algebra-2019.pdf)
 - [Коллоквиум I](https://hse-tex.me/course-1/linear-algebra-colloquium-1.pdf)
 - [Коллоквиум II](https://hse-tex.me/course-1/linear-algebra-colloquium-2.pdf)
 - [Экзамен II: определения](https://hse-tex.me/course-1/linear-algebra-exam-definitions-2.pdf)
