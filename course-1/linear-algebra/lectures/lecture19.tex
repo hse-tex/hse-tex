@@ -236,6 +236,7 @@ $B' := B(\beta, \E')$.
 \end{proof}
 
 \subsection{Теорема о диагонализации симметричной билинейной формы}
+\label{lec19:symmetric_bilinear_form_diagonalization}
 
 Пусть в поле $F$ выполнено условие $1 + 1 \neq 0$ (то есть в $F$ сложение двух единиц поля не даёт нам нулевой элемент поля).
 
@@ -308,10 +309,10 @@ $B' := B(\beta, \E')$.
             $\exists b_{i i} \neq 0 \implies
             \left(
             \begin{array}{c|ccc}
-                0 & \dots & * & \dots \\
+                0 & \dots & \star & \dots \\
                 \hline 
                 \vdots & \ddots & \vdots & \vdots \\
-                * & \dots & b_{i i} & \dots \\
+                \star & \dots & b_{i i} & \dots \\
                 \vdots & \vdots & \vdots & \dots
             \end{array}
             \right)$
@@ -322,13 +323,13 @@ $B' := B(\beta, \E')$.
             $b_{i i} = 0 \ \forall i$, но $\exists j \colon b_{j 1} \neq 0 \implies
             \left(
                 \begin{array}{c|ccccc}
-                    0 & * & \dots & b_{j 1} & \dots & * \\
+                    0 & \star & \dots & b_{j 1} & \dots & \star \\
                     \hline
-                    * & 0 & \dots & * & \dots & * \\
+                    \star & 0 & \dots & \star & \dots & \star \\
                     \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
-                    b_{j 1} & * & \dots & 0 & \dots & * \\
+                    b_{j 1} & \star & \dots & 0 & \dots & \star \\
                     \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
-                    * & * & \dots & * & \dots & 0
+                    \star & \star & \dots & \star & \dots & 0
                 \end{array}
             \right)
             $
@@ -357,8 +358,9 @@ $B' := B(\beta, \E')$.
 
 \begin{comment}
     Матрицу C можно вычислить модифицировав алгоритм. Припишем единичную матрицу E справа от B и будем выполнять с ней только элементарные преобразования строк.
-
-    $(B \mid E) \leadsto (B' \mid P), P = U_{k} \dots U_{2} U_{1} = C^{T} \implies C = P^{T}$
+    \begin{equation}
+        (B \mid E) \leadsto (B' \mid P), P = U_{k} \dots U_{2} U_{1} = C^{T} \implies C = P^{T}
+    \end{equation}
 \end{comment}
 
 \begin{example}
@@ -382,66 +384,26 @@ $B' := B(\beta, \E')$.
 \end{example}
 
 \begin{comment}
-    Базис $\E'$ в котором $B(\beta, \E')$ имеет диагональный вид определен неоднозначно.
+    Базис $\E'$ в котором матрица билинейного отображения $\beta$ имеет диагональный вид, а также сам этот вид определены неоднозначно.
 \end{comment}
 
-
-\subsection{Квадратичные формы на векторном пространстве}
-
-Пусть $\beta \colon V \times V \to F$ --- билинейная форма на $V$.
-
-
-\begin{definition}
-    Отображение $Q_\beta \colon V \to F$, $Q_\beta(x) = \beta(x, x)$, называется \textit{квадратичной формой}, ассоциированной с билинейной формой $\beta$.
-\end{definition}
-
-Пусть $\E$ --- базис $V$, $x = x_1 e_1 + \dots x_n e_n$, $B = B(\beta, \E)$.
-
-Тогда,
-\begin{equation*}
-    Q_\beta(x) = (x_1 \dots x_n) B \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} = \sum_{i = 1}^{n} \sum_{j = 1}^{n} b_{ij} x_i x_j = \sum_{i = 1}^{n} b_{ii} x_i^2 + \sum_{1 \leq i < j \leq n}^{n} (b_{ij} + b_{ji}) x_i x_j
-.\end{equation*}
-
-
-\subsection{Примеры}
-
-\subsubsection{}
-
-$V = F^n$, $\beta(x, y) = x_1 y_1 + \dots + x_n y_n \implies Q_\beta(x) = x_1^2 + \dots + x_n^2$.
-
-\subsubsection{}
-
-$V = F^2$, $\beta(x, y) = 2x_1 y_2 \implies Q_\beta(x) = 2x_1 x_2$.
-
-Если $\E$ --- стандартный базис, то $B(\beta, \E) = \begin{pmatrix} 0 & 2 \\ 0 & 0 \end{pmatrix}$.
-
-\subsubsection{}
-
-$V = F^2$, $\beta(x, y) = x_1 y_2 + x_2 y_1 \implies Q_\beta(x) = 2x_1 x_2$.
-
-Если $\E$ --- стандартный базис, то $B(\beta, \E) = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$.
-
-
-\subsection{Соответствие между симметричными билинейными формами и квадратичными формами}
-
-\begin{proposal}
-    Пусть в поле $F$ выполнено условие $1 + 1 \neq 0$ (то есть в $F$ сложение двух единиц поля не даёт нам нулевой элемент поля). Тогда отображение $\beta \mapsto Q_\beta$ является биекцией между симметричными билинейными формами на $V$ и квадратичным формами на $V$.
-\end{proposal}
-
-
-\begin{proof}~
-    \begin{description}
-    \item[Сюръективность] $Q$ --- квадратичная форма $ \implies Q = Q_\beta$ для некоторой билинейной формы на $V$.
-
-        То есть $Q(x) = \beta(x, x) \ \forall x \in V$.
-
-        Положим $\sigma(x, y) = \frac{1}{2} \left[\beta(x, y) + \beta(y, x)\right]$, тогда $\sigma$ --- симметричная билинейная форма.
-        \begin{equation*}
-            \sigma(x, x) = \frac{1}{2}\left[\beta(x, x) + \beta(x, x)\right] = \beta(x, x)
-        .\end{equation*}
-
-    \item[Инъективность] $\beta$ --- симметричная билинейная форма на $V$.
-
-        $Q_\beta(x + y) = \beta(x + y, x + y) = \underbrace{\beta(x, x)}_{Q_\beta(x)} + \underbrace{\beta(x, y) + \beta(y, x)}_{\text{равны между собой}} + \underbrace{\beta(y, y)}_{Q_\beta(y)} \implies \beta(x, y) = \frac{1}{2} \left[Q_\beta(x + y) - Q_\beta(x) - Q_\beta(y)\right]$.
-    \end{description}
-\end{proof}
+\begin{example}
+    \begin{equation*}
+        B' = \begin{pmatrix}
+            b_{1} & \dots & 0 \\
+            \vdots & \ddots & \vdots \\
+            0 & \dots & b_{n}
+        \end{pmatrix}, \
+        C' = \begin{pmatrix}
+            c_{1} & \dots & 0 \\
+            \vdots & \ddots & \vdots \\
+            0 & \dots & c_{n}
+        \end{pmatrix} \in M^{0}_{n} \implies
+        B'' = C'^{T} \cdot B' \cdot C' =
+        \begin{pmatrix}
+            b_{1} c_{1}^{2} & \dots & 0 \\
+            \vdots & \ddots & \vdots \\
+            0 & \dots & b_{n} c_{n}^{2}
+        \end{pmatrix}
+    \end{equation*}
+\end{example}
