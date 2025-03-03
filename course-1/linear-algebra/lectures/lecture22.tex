@@ -133,130 +133,6 @@
 \end{definition}
 
 
-\subsection{Ортогональное дополнение подмножества евклидова пространства}
-
-\begin{definition}
-    \textit{Ортогональное дополнение} множества $S \subseteq \EE$ --- это множество $S^{\perp} := \{x \in \EE \mid (x, y) = 0 \ \forall y \in S\}$.
-\end{definition}
-
-\begin{exercise}~
-    \begin{enumerate}
-    \item $S^{\perp}$ --- подпространство в $\EE$.
-    \item $S^{\perp} = \left< S \right>^{\perp}$.
-    \end{enumerate}
-\end{exercise}
-
-\subsection{Размерность ортогонального дополнения подпространства, ортогональное дополнение к ортогональному дополнению подпространства}
-\subsection{Разложение евклидова пространства в прямую сумму подпространства и его ортогонального дополнения}
-
-Далее считаем, что $\dim \EE = n < \infty$.
-
-\begin{proposal}
-    Пусть $S \subseteq \EE$ --- подпространство.
-    Тогда:
-    \begin{enumerate}
-    \item $\dim S^{\perp} = n - \dim S$.
-    \item $\EE = S \oplus S^{\perp}$.
-    \item $(S^{\perp})^{\perp} = S$.
-    \end{enumerate}
-\end{proposal}
-
-\begin{proof}~
-    \begin{enumerate}
-    \item 
-        Пусть $\dim S = k$ и $e_1, \dots, e_k$ --- базис $S$.
-        
-        Дополним $e_1, \dots, e_k$ до базиса $e_1, \dots, e_n$ всего $\EE$.
-
-        Тогда, $\forall x = x_1 e_1 + \dots + x_n e_n \in \EE$.
-
-        \begin{align*}
-            x \in S^{\perp} &\iff (x, e_i) = 0 \ \forall i = 1, \dots, k \\
-                            &\iff \begin{cases}
-                                (e_1, e_1) x_1 + \dots + (e_n, e_1) x_n = 0 \\
-                                (e_1, e_2) x_1 + \dots + (e_n, e_2) x_n = 0 \\
-                                \dots \\
-                                (e_1, e_k) x_1 + \dots + (e_n, e_k) x_n = 0
-                            \end{cases}
-        .\end{align*}
-
-        Это ОСЛУ с матрицей $G \in \text{Mat}_{k \times n}(\RR)$, причём левый $k \times k$ блок в $G$ --- это $\underbrace{G(e_1, \dots, e_k)}_{\det \neq 0}$.
-
-        Это означает, что $\rk G = k$.
-
-        Следовательно, пространство решений этой ОСЛУ имеет размерность $n - k$.
-
-        Отсюда, $\dim S^{\perp} = n - k = n - \dim S$.
-
-    \item
-        \begin{enumerate}
-        \item $\dim S + \dim S^{\perp} = k + (n - k) = n = \dim E$.
-        \item $v \in S \cap S^{\perp} \implies (v, v) = 0 \implies v = 0 \implies S \cap S^{\perp} = \{0\}$.
-        \end{enumerate}
-
-        А значит, $E = S \oplus S^{\perp}$.
-
-    \item
-        Заметим, что $S \subseteq (S^{\perp})^{\perp}$ (по определению).
-
-        $\dim (S^{\perp})^{\perp} = n - \dim S^{\perp} = n - (n - \dim S) = \dim S$.
-
-        Следовательно, $S = (S^{\perp})^{\perp}$.
-        \qedhere
-    \end{enumerate}
-\end{proof}
-
-
-\subsection{Ортогональная проекция вектора на подпространство, ортогональная составляющая вектора относительно подпространства}
-
-$S$ --- подпространство $ \implies \EE = S \oplus S^{\perp}$
-
-$\forall v \in \EE \ \exists! \ x \in S, y \in S^{\perp}$, такие что $x + y = v$.
-
-\begin{definition}~
-    \begin{enumerate}
-    \item 
-        $x$ называется \textit{ортогональной проекцией} вектора $v$ на подпространство $S$.
-
-        Обозначение: $x = \pr_S v$.
-
-    \item
-        $y$ называется \textit{ортогональной составляющей} вектора $v$ относительно подпространства $S$.
-
-        Обозначение: $y = \ort_S v$.
-    \end{enumerate}
-\end{definition}
-
-\subsection{Явная формула для ортогональной проекции вектора на подпространство в $\RR^n$, заданное своим базисом}
-
-Пусть $\EE = \RR^n$ со стандартным скалярным произведением.
-
-$S \subseteq \EE$ --- подпространство, $a_1, \dots, a_k$ --- базис $S$.
-
-Пусть $A := (a_1, \dots, a_k) \in \text{Mat}_{n \times k}(\RR)$, $A^{(i)} = a_i$.
-
-\begin{proposal}
-    $\forall v \in \RR^n \quad \pr_S v = A (A^{T} A)^{-1} A^{T} v$.
-\end{proposal}
-
-\begin{proof}
-    Корректность: $A^{T} A = G(a_1, \dots, a_k) \in M_k^{0}(\RR)$.
-
-    Положим $x := \pr_S v$, $y := \ort_S v$.
-
-    Так как $x \in S$, $x = A \cdot \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_k \end{pmatrix}$, $\alpha_i \in \RR$.
-
-    $y \in S^{\perp} \implies A^T y = 0$.
-
-    \begin{align*}
-    A (A^{T} A)^{-1} A^{T} v
-    &= A(A^{T}A)^{-1}A^{T} (x + y) \\
-    &= A\lefteqn{\underbracket{\phantom{(A^{T}A)^{-1}A^{T} A}}_E} (A^{T} A)^{-1} A^{T} \overbracket{A \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_k \end{pmatrix}}^{x} + A(A^{T} A)^{-1} \underbracket{A^{T} y}_{0} \\
-    &= A \begin{pmatrix} \alpha_1 \\ \dots \\ \alpha_k \end{pmatrix} = x = \pr_S v
-    .\end{align*}
-\end{proof}
-
-
 \subsection{Ортогональные и ортонормированные системы векторов}
 
 \begin{definition}
@@ -281,3 +157,100 @@ $S \subseteq \EE$ --- подпространство, $a_1, \dots, a_k$ --- ба
 \begin{definition}
     Базис пространства называется \textit{ортогональным} (соответственно \textit{ортонормированным}), если он является ортогональной (ортонормированной) системой векторов.
 \end{definition}
+
+
+\begin{example}
+    $\EE = \RR^n$ со стандартным скалярным произведением.
+
+    Тогда, стандартный базис является ортонормированным.
+    \begin{equation*}
+        \begin{pmatrix} 1 \\ 0 \\ \dots \\ 0 \end{pmatrix},
+        \begin{pmatrix} 0 \\ 1 \\ \dots \\ 0 \end{pmatrix},
+        \dots,
+        \begin{pmatrix} 0 \\ 0 \\ \dots \\ 1 \end{pmatrix}
+    .\end{equation*}
+\end{example}
+
+
+\subsection{Координаты вектора в ортогональном (ортонормированном) базисе}
+
+Пусть $\EE$ --- евклидово пространство, $(e_1, \dots, e_n)$ --- ортогональный базис.
+
+$v \in \EE$.
+
+\begin{proposal}
+    $v = \dfrac{(v, e_1)}{(e_1, e_1)}e_1 + \dfrac{(v, e_2)}{(e_2, e_2)}e_2 + \dots + \dfrac{(v, e_n)}{(e_n, e_n)}e_n$.
+
+    В частности, если $e_1, \dots, e_n$ ортонормирован, то $v = (v, e_1)e_1 + \dots + (v, e_n) e_n$.
+\end{proposal}
+
+\begin{proof}
+    $v = \lambda_1 e_1 + \lambda_2 e_2 + \dots \lambda_n e_n$.
+
+    $\forall i = 1, \dots, n \quad (v, e_i) = \lambda_1 (e_1, e_i) + \dots + \lambda_n (e_n, e_i)$.
+
+    Так как базис ортогонален, то $(v, e_i) = \lambda_i (e_i, e_i) \implies \lambda_i = \dfrac{(v, e_i)}{(e_i, e_i)}$.
+\end{proof}
+
+
+\subsection{Теорема о существовании ортонормированного базиса}
+
+\begin{theorem}
+    Во всяком конечномерном евклидовом пространстве существует ортонормированный базис.
+\end{theorem}
+
+\begin{proof}
+    Следует из теоремы о приведении квадратичной формы $(x, x)$ к нормальному виду (который будет $E$ в силу положительной определённости).
+\end{proof}
+
+\begin{corollary}
+    Всякую ортогональную (ортонормированную) систему векторов можно дополнить до ортогонального (ортонормированного) базиса.
+\end{corollary}
+
+\begin{proof}
+    Пусть $e_1, \dots, e_k$ --- данная система. 
+
+    Пусть $e_{k + 1}, \dots, e_{n}$ --- это ортогональный (ортонормированный) базис в $\left< e_1, .., e_k \right>^{\perp}$.
+
+    Тогда $e_1, \dots, e_n$ --- искомый базис.
+\end{proof}
+
+
+
+\subsection{Метод ортогонализации Грама–Шмидта}
+
+Как построить ортогональный (ортонормированный) базис в $\EE$?
+
+Если $f_1, \dots, f_n$ --- ортогональный базис, то $\left(\frac{f_1}{|f_1|}, \dots, \frac{f_n}{|f_n|}\right)$ --- ортонормированный базис.
+
+Тогда, достаточно построить ортогональный базис.
+
+Пусть $e_1, \dots, e_k$ --- линейно независимая система векторов.
+
+$i$-й угловой минор в $G(e_1, \dots, e_k)$ --- это $\det G(e_1, \dots, e_k) > 0$.
+
+\bigskip
+Следовательно, применим метод Якоби:
+
+$\exists!$ система векторов $f_1, \dots, f_k$, такая что 
+\begin{align*}
+&f_1 = e_1, \\
+&f_2 \in e_2 + \left< e_1 \right>, \\
+&f_3 \in e_3 + \left< e_1, e_2 \right>, \\
+&\dots, \\
+&f_k \in e_k + \left< e_1, \dots, e_{k - 1} \right>
+\end{align*}
+
+
+И выполнены следующие свойства $\forall i = 1, \dots, k$:
+
+\begin{enumerate}[start=0,nosep]
+\item $f_1, \dots, f_k$ ортогональны.
+\item $\left< e_1, \dots, e_i \right> = \left< f_1, \dots, f_i \right>$.
+    \label{lec22:gram-schmidt_second_property}
+\item $f_i = e_i - \sum_{j = 1}^{i - 1} \dfrac{(e_i, f_j)}{(f_j, f_j)} f_j$ \customlabel{lec22:star}{($\star$)}.
+\item $\det G(e_1, \dots, e_i) = \det G(f_1, \dots, f_i)$ \customlabel{lec22:heart}{$(\heartsuit)$}.
+\end{enumerate}
+
+\bigskip
+Построение базиса $f_1, \dots, f_k$ по формулам \ref{lec22:star} называется методом (процессом) ортогонализации Грамма-Шмидта.
