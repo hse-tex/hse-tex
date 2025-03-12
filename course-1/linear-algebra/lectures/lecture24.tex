@@ -1,4 +1,4 @@
-\section{Лекция 12.03.2020} 
+\section{Лекция 24} 
 
 \subsection{Метод наименьших квадратов для несовместных систем линейных уравнений: постановка задачи и её решение}
 
@@ -69,13 +69,13 @@ $S \subseteq \EE$ --- подпространство, $e_1, \dots, e_k$ --- ба
     \begin{enumerate}
     \item $x \in S \implies \rho(x, S) = 0$:
 
-        так как $e_1, \dots, e_k$ линейно независимы, то $\det G(e_1, \dots, e_k, x) = 0$.
+        так как $e_1, \dots, e_k, x$ --- линейно зависимы, то $\det G(e_1, \dots, e_k, x) = 0$.
 
     \item $x \not\in S$.
 
         Ортогонализация Грама-Шмидта: $e_1, \dots, e_k, x \leadsto f_1, \dots, f_k, z$.
 
-        По свойству \ref{lec23:heart} получаем
+        По свойству \ref{lec22:heart} получаем
         \begin{equation*}
             \dfrac{\det G(e_1, \dots, e_k, x)}{\det G(e_1, \dots, e_k)} = \dfrac{\det G(f_1, \dots, f_k, z)}{\det G(f_1, \dots, f_k)} = \frac{|f_1|^2 \dots |f_k|^2 |z|^2}{|f_1|^2 \dots |f_k|^2} = |z|^2 = \rho(x, S)^2
         .\end{equation*}
@@ -93,13 +93,15 @@ $S \subseteq \EE$ --- подпространство, $e_1, \dots, e_k$ --- ба
 
     Основание: $P(a_1, \dots, a_{k - 1})$.
 
-    Высота: $h := |\ort_{\left< a_1, \dots, a_{k - 1} \right>} a_k|$.
+    Высота: $h := \ort_{\left< a_1, \dots, a_{k - 1} \right>} a_k$.
 \end{definition}
 
 \begin{example}~
+    {\tiny если у кого-то есть фото с доски в хорошем качестве или, что лучше, рисунок этого, напишите @nih3kwo}
     \begin{description}
-    \item[$k = 1$] $h = |a_1|$ {\tiny здесь картинка, тоже лень :(}
-    \item[$k = 2$] основание --- $P(a_1)$, высота --- $h$ {\tiny дада, люблю картинки делать}
+    \item[$k = 1 \colon$] \  $P(a_1)$ --- отрезок.
+    \item[$k = 2 \colon$] \ $P(a_1, a_2)$ --- параллелограмм. \  Основание --- $P(a_1)$, высота --- $|h|$.
+    \item[$k = 3 \colon$] \ $P(a_1, a_2, a_3)$ --- классический параллелепипед. \ Основние --- $P(a_1, a_2)$, высотка --- $|h|$. 
     \end{description}
 \end{example}
 
@@ -111,7 +113,7 @@ $S \subseteq \EE$ --- подпространство, $e_1, \dots, e_k$ --- ба
 
     \begin{description}
     \item[$k = 1$] $\implies \vol P(a_1) := |a_1|$.
-    \item[$k > 1$] $\implies \vol P(a_1, \dots, a_k) := \vol P(a_1, \dots, a_{k - 1}) \cdot h$.
+    \item[$k > 1$] $\implies \vol P(a_1, \dots, a_k) := \vol P(a_1, \dots, a_{k - 1}) \cdot |h|$.
     \end{description}
 \end{definition}
 
@@ -127,9 +129,9 @@ $S \subseteq \EE$ --- подпространство, $e_1, \dots, e_k$ --- ба
 
     \begin{description}
     \item[$k = 1:$] $|a_1|^2 = (a_1, a_1)$ --- верно.
-    \item[$k > 1:$] $\vol P(a_1, \dots, a_k)^2 = \vol P(a_1, \dots, a_{k - 1})^2 \cdot h^2 = \det G(a_1, \dots, a_{k - 1}) \cdot h^2 = (\star)$.
+    \item[$k > 1:$] $\vol P(a_1, \dots, a_k)^2 = \vol P(a_1, \dots, a_{k - 1})^2 \cdot |h|^2 = \det G(a_1, \dots, a_{k - 1}) \cdot |h|^2 = (\star)$.
 
-        Если $a_1, \dots, a_{k - 1}$ линейно независимы, то $h^2 = \dfrac{\det G(a_1, \dots, a_k)}{\det G(a_1, \dots, a_{k - 1})}$.
+        Если $a_1, \dots, a_{k - 1}$ линейно независимы, то $|h|^2 = \dfrac{\det G(a_1, \dots, a_k)}{\det G(a_1, \dots, a_{k - 1})}$.
         Тогда, $(\star) = \det G(a_1, \dots, a_k)$.
 
         Если же $a_1, \dots, a_{k - 1}$ линейно зависимы, то $\det G(a_1, \dots, a_{k - 1}) = 0 \implies (\star) = 0$. Но $a_1, \dots, a_k$ тоже линейно зависимы, а значит $\det G(a_1, \dots, a_k) = 0$.
@@ -162,7 +164,7 @@ $(a_1, \dots, a_n) = (e_1, \dots, e_n) \cdot A$, $A \in M_n(\RR)$.
 
 \begin{proof}
     \begin{equation*}
-        G(a_1, \dots, a_n) = A^{T} \cdot A \implies \vol P(a_1, \dots, a_n)^2 = \det (A^{T} A) = \left(\det A\right)^2
+        G(a_1, \dots, a_n) = A^{T} \cdot A \implies \vol P(a_1, \dots, a_n) = \sqrt{\det (A^{T} A)} = \sqrt{\left(\det A\right)^2} = |\det A|
         \qedhere
     .\end{equation*}
 \end{proof}
