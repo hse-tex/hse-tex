@@ -12,8 +12,9 @@
 
 \title{\HugeЛинейная алгебра, Коллоквиум \uppercase\expandafter{\romannumeral 2\relax}}
 \author{
-    Бобень Вячеслав \\
+    Бобень Вячеслав, Сиренева Ника \\
     \href{https://teleg.run/darkkeks}{@darkkeks},
+    \href{https://t.me/nih3kwo}{@nih3kwo},
     \href{https://github.com/LoDThe/hse-tex}{GitHub} \\
     Благодарность выражается Левину Александру (\href{https://teleg.run/azerty1234567890}{@azerty1234567890}) \\
     и Милько Андрею (\href{https://teleg.run/andrew_milko}{@andrew\_milko}) за видеозаписи лекций.
@@ -22,7 +23,7 @@
 \usepackage[yyyymmdd,hhmmss]{datetime}
 \settimeformat{xxivtime}
 \renewcommand{\dateseparator}{.}
-\date{Дата изменения: \today \ в \currenttime \\ 2019 --- 2020}
+\date{Дата изменения: \today \ в \currenttime \\ 2024 --- 2025}
 
 \begin{document}
     \maketitle
@@ -591,6 +592,66 @@
         .\end{equation*}
 
 
+    \defitem{Симметричные элементарные преобразования квадратной матрицы}
+
+        $B \overset{\text{одно эл.} \atop \text{преобр. строк}}{\leadsto} B' = \underbracket{U}_{\text{элементарная} \atop \text{матрица}} \cdot B \implies (B')^{T} = B^{T} \cdot U^{T} = B \cdot U^{T} $
+
+        То есть такое же элементарное преобразование, но уже столбцов, реализуется умножением матрицы билинейной формы на $U^{T}$ справа.  
+
+        \begin{definition}
+            $B \leadsto B' = U B U^{T}$ --- симметричное элементарное преобразование.
+
+            Сначала выполняется элементарное преобразование строк, а затем ровно такое же элементарное преобразование столбцов, или наоборот, в силу ассоциативности.
+
+            Заметим, что согласно формуле изменения матрицы билинейной формы при переходе к другому базису, если мы применим симметричное элементарное преобразование к матрице симметричной билинейной формы, мы получим матрицу той же симметричной билинейной формы, но в другом базисе.
+        \end{definition}
+
+        \begin{designation}
+            $\widehat{\text{Э}}_{i} := \text{Э}_{i}  \ \& \ \text{Э}'_{i}$ --- симметричное элементарное преобразование, где 
+
+            $\text{Э}_{i}$ --- элементарное преобразование строк.
+
+            $\text{Э}'_{i}$ --- соответствующее элементарное преобразование столбцов.
+
+        \end{designation}
+
+    \defitem{Угловые миноры квадратной матрицы}
+    
+        $G \in M_{n}, k \in \{1, \dots, n\} \leadsto G_{k}$ := левый верхний $k \times k$ блок матрицы $G$
+
+        \begin{definition}
+            Величина $\delta_k (G)$ := $\det G_{k}$ называется $k$-м угловым минором матрицы $G$    
+
+            \begin{equation*}
+            G = \begin{pmatrix}
+                    g_{11} & \vline & g_{12} & \vline & g_{13} & \vline & \dots \\ 
+                    \cline{1-1}
+                    g_{21} &        & g_{22} & \vline & g_{23} & \vline & \dots \\ 
+                    \cline{1-3}
+                    g_{31} &        & g_{32} &        & g_{33} & \vline & \dots \\
+                    \cline{1-5}
+                    \vdots &        & \vdots &        & \vdots &        & \ddots
+                \end{pmatrix}
+            \end{equation*}
+        \end{definition}
+
+    \defitem{Метод Якоби (формулировка теоремы)}
+        Пусть $\beta \colon V \times V \to F$ --- симметричная билинейная форма, $\E$ --- базис $V$, $B = B(\beta, \E), \delta_{k} = \delta_k(B)$
+
+        \begin{theorem}
+            Предположим, что $\delta_{k} \neq 0  \ \forall k = 1, \dots, n-1$, тогда $\exists C \in M^{0}_{n}$ вида
+            \begin{equation*}
+                C = \begin{pmatrix} 
+                    1 & \star & \dots & \star & \star \\
+                    0 & 1 & \ddots & \star & \star \\
+                    \vdots & \vdots & \ddots & \ddots & \vdots \\
+                    0 & 0 & \dots & 1 & \star \\
+                    0 & 0 & \dots & 0 & 1
+                \end{pmatrix}
+            \end{equation*}
+            Такая что матрица $B' = C^{T} B C$ имеет вид $B' = \diag\left(\delta_1, \frac{\delta_2}{\delta_1}, \dots, \frac{\delta_n}{\delta_{n - 1}}\right)$.
+        \end{theorem}
+
     \defitem{Соответствие между симметричными билинейными формами и квадратичными формами}
 
         \begin{proposal}
@@ -843,6 +904,137 @@
             Более того, $\det G(v_1, \dots, v_k) > 0 \iff v_1, \dots, v_k$ линейно независимы. 
         \end{proposal}
 
+    \defitem{Ортогональная система векторов евклидова пространства. Ортогональный базис}
+
+        $\Downarrow$
+
+
+    \defitem{Ортонормированная система векторов евклидова пространства. Ортонормированный базис}
+
+        \begin{definition}
+            Система ненулевых векторов $v_1, \dots, v_k$ называется
+            \begin{enumerate}[nosep]
+                \item \textit{ортогональной}, если $(v_i, v_j) = 0 \ \forall i \neq j$ (то есть $G(v_1, \dots, v_k)$ диагональна),
+                \item \textit{ортонормированной}, если $(v_i, v_j) = 0 \ \forall i \neq j$ и $(v_i, v_i) = 1$ ($\iff |v_i| = 1$).
+                    То есть $G(v_1, \dots, v_k) = E$.
+            \end{enumerate}
+        \end{definition}
+
+        \begin{comment}
+            Всякая ортогональная (и в частности ортонормированная) система векторов автоматически линейно независима.
+            \begin{equation*}
+                \det G(v_1, \dots, v_k) = |v_1|^2 \cdot |v_2|^2 \dotsm |v_k|^2 \neq 0
+            .\end{equation*}
+        \end{comment}
+
+        \begin{definition}
+            Базис пространства называется \textit{ортогональным} (соответственно \textit{ортонормированным}), если он является ортогональной (ортонормированной) системой векторов.
+        \end{definition}
+
+    \defitem{Формула для координат вектора в ортогональном и ортонормированном базисах евклидова пространства}
+
+        Пусть $\EE$ --- евклидово пространство, $(e_1, \dots, e_n)$ --- ортогональный базис.
+
+        $v \in \EE$.
+
+        \begin{proposal}
+            $v = \dfrac{(v, e_1)}{(e_1, e_1)}e_1 + \dfrac{(v, e_2)}{(e_2, e_2)}e_2 + \dots + \dfrac{(v, e_n)}{(e_n, e_n)}e_n$.
+
+            В частности, если $e_1, \dots, e_n$ ортонормирован, то $v = (v, e_1)e_1 + \dots + (v, e_n) e_n$.
+        \end{proposal}
+
+    \defitem{Описание всех ортонормированных базисов евклидова пространства в терминах одного такого базиса и матриц перехода}
+
+        Пусть $\E = (e_1, \dots, e_n)$ --- ортонормированный базис в $E$.
+
+        Пусть $\E' = (e'_1, \dots, e'_n)$ --- какой-то другой базис.
+
+        $(e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C$, $C \in M_n^{0}(\RR)$.
+
+        \begin{proposal}
+            $\E'$ --- ортонормированный базис $\iff C^{T} \cdot C = E$.
+        \end{proposal}
+
+    \defitem{Ортогональная матрица}
+
+        \begin{definition}
+            Матрица $C \in M_n(\RR)$ называется \textit{ортогональной} если $C^{T} C = E$.
+        \end{definition}
+
+        \begin{comment}
+            $C^{T} C = E \iff C C^{T} = E \iff C^{-1} = C^{T}$.
+        \end{comment}
+
+        \begin{properties}~
+            \begin{enumerate}
+            \item $C^{T} C = E \implies $ система столбцов $C^{(1)}, \dots, C^{(n)}$ --- это ортонормированный базис в $\RR^n$,
+            \item $C C^{T} = E \implies $ система строк $C_{(1)}, \dots, C_{(n)}$ --- это тоже ортонормированный базис в $\RR^n$,
+            \end{enumerate}
+            В частности, $|c_{ij}| \leq 1$.
+            \begin{enumerate}[resume]
+            \item $\det C = \pm 1$.
+            \end{enumerate}
+        \end{properties}
+
+        \begin{example}
+            $n = 2$.
+            Ортогональный матрицы:
+            \begin{equation}
+                \begin{gathered}
+                    \begin{pmatrix} 
+                        \cos \phi & -\sin \phi \\
+                        \sin \phi & \cos \phi
+                    \end{pmatrix} \\
+                    \det = 1
+                \end{gathered}
+                \hspace{1cm}
+                \begin{gathered}
+                    \begin{pmatrix} 
+                        \cos \phi & \sin \phi \\
+                        \sin \phi & -\cos \phi
+                    \end{pmatrix} \\
+                    \det = -1
+                \end{gathered}
+            .\end{equation}
+        \end{example}
+
+    \defitem{Метод ортогонализации Грама--Шмидта}
+
+        Как построить ортогональный (ортонормированный) базис в $\EE$?
+
+        Если $f_1, \dots, f_n$ --- ортогональный базис, то $\left(\frac{f_1}{|f_1|}, \dots, \frac{f_n}{|f_n|}\right)$ --- ортонормированный базис.
+
+        Тогда, достаточно построить ортогональный базис.
+
+        \bigskip
+        Пусть $e_1, \dots, e_k$ --- линейно независимая система векторов.
+
+        $i$-й угловой минор в $G(e_1, \dots, e_k)$ --- это $\det G(e_1, \dots, e_i) > 0$.
+
+        \medskip
+        Следовательно, применим метод Якоби:
+
+        $\exists!$ система векторов $f_1, \dots, f_k$, такая что 
+        \begin{align*}
+        &f_1 = e_1, \\
+        &f_2 \in e_2 + \left< e_1 \right>, \\
+        &f_3 \in e_3 + \left< e_1, e_2 \right>, \\
+        &\dots, \\
+        &f_k \in e_k + \left< e_1, \dots, e_{k - 1} \right>
+        \end{align*}
+
+
+        И выполнены следующие свойства $\forall i = 1, \dots, k$:
+
+        \begin{enumerate}[start=0,nosep]
+        \item $f_1, \dots, f_i$ ортогональны.
+        \item $\left< e_1, \dots, e_i \right> = \left< f_1, \dots, f_i \right>$.
+        \item $f_i = e_i - \sum_{j = 1}^{i - 1} \dfrac{(e_i, f_j)}{(f_j, f_j)} f_j$ \customlabel{lec23:star}{($\star$)}.
+        \item $\det G(e_1, \dots, e_i) = \det G(f_1, \dots, f_i)$ \customlabel{lec23:heart}{$(\heartsuit)$}.
+        \end{enumerate}
+
+        \bigskip
+        Построение базиса $f_1, \dots, f_k$ по формулам \ref{lec23:star} называется методом (процессом) ортогонализации Грамма-Шмидта.
 
     \defitem{Ортогональное дополнение подмножества евклидова пространства}
 
@@ -898,117 +1090,6 @@
             \end{enumerate}
         \end{definition}
 
-
-    \defitem{Формула для ортогональной проекции вектора на подпространство в $\RR^n$, заданное своим базисом}
-            
-        Пусть $\EE = \RR^n$ со стандартным скалярным произведением.
-
-        $S \subseteq \EE$ --- подпространство, $a_1, \dots, a_k$ --- базис $S$.
-
-        Пусть $A := (a_1, \dots, a_k) \in \text{Mat}_{n \times k}(\RR)$, $A^{(i)} = a_i$.
-
-        \begin{proposal}
-            $\forall v \in \RR^n \quad \pr_S v = A (A^{T} A)^{-1} A^{T} v$.
-        \end{proposal}
-
-    \defitem{Ортогональная система векторов евклидова пространства. Ортогональный базис}
-
-        $\Downarrow$
-
-
-    \defitem{Ортонормированная система векторов евклидова пространства. Ортонормированный базис}
-
-        \begin{definition}
-            Система ненулевых векторов $v_1, \dots, v_k$ называется
-            \begin{enumerate}[nosep]
-                \item \textit{ортогональной}, если $(v_i, v_j) = 0 \ \forall i \neq j$ (то есть $G(v_1, \dots, v_k)$ диагональна),
-                \item \textit{ортонормированной}, если $(v_i, v_j) = 0 \ \forall i \neq j$ и $(v_i, v_i) = 1$ ($\iff |v_i| = 1$).
-                    То есть $G(v_1, \dots, v_k) = E$.
-            \end{enumerate}
-        \end{definition}
-
-        \begin{comment}
-            Всякая ортогональная (и в частности ортонормированная) система векторов автоматически линейно независима.
-            \begin{equation*}
-                \det G(v_1, \dots, v_k) = |v_1|^2 \cdot |v_2|^2 \dotsm |v_k|^2 \neq 0
-            .\end{equation*}
-        \end{comment}
-
-        \begin{definition}
-            Базис пространства называется \textit{ортогональным} (соответственно \textit{ортонормированным}), если он является ортогональной (ортонормированной) системой векторов.
-        \end{definition}
-
-
-    \defitem{Описание всех ортонормированных базисов евклидова пространства в терминах одного такого базиса и матриц перехода}
-
-        Пусть $\E = (e_1, \dots, e_n)$ --- ортонормированный базис в $E$.
-
-        Пусть $\E' = (e'_1, \dots, e'_n)$ --- какой-то другой базис.
-
-        $(e'_1, \dots, e'_n) = (e_1, \dots, e_n) \cdot C$, $C \in M_n^{0}(\RR)$.
-
-        \begin{proposal}
-            $\E'$ --- ортонормированный базис $\iff C^{T} \cdot C = E$.
-        \end{proposal}
-
-
-    \defitem{Ортогональная матрица}
-
-        \begin{definition}
-            Матрица $C \in M_n(\RR)$ называется \textit{ортогональной} если $C^{T} C = E$.
-        \end{definition}
-
-        \begin{comment}
-            $C^{T} C = E \iff C C^{T} = E \iff C^{-1} = C^{T}$.
-        \end{comment}
-
-        \begin{properties}~
-            \begin{enumerate}
-            \item $C^{T} C = E \implies $ система столбцов $C^{(1)}, \dots, C^{(n)}$ --- это ортонормированный базис в $\RR^n$,
-            \item $C C^{T} = E \implies $ система строк $C_{(1)}, \dots, C_{(n)}$ --- это тоже ортонормированный базис в $\RR^n$,
-            \end{enumerate}
-            В частности, $|c_{ij}| \leq 1$.
-            \begin{enumerate}[resume]
-            \item $\det C = \pm 1$.
-            \end{enumerate}
-        \end{properties}
-
-        \begin{example}
-            $n = 2$.
-            Ортогональный матрицы:
-            \begin{equation}
-                \begin{gathered}
-                    \begin{pmatrix} 
-                        \cos \phi & -\sin \phi \\
-                        \sin \phi & \cos \phi
-                    \end{pmatrix} \\
-                    \det = 1
-                \end{gathered}
-                \hspace{1cm}
-                \begin{gathered}
-                    \begin{pmatrix} 
-                        \cos \phi & \sin \phi \\
-                        \sin \phi & -\cos \phi
-                    \end{pmatrix} \\
-                    \det = -1
-                \end{gathered}
-            .\end{equation}
-        \end{example}
-
-
-    \defitem{Формула для координат вектора в ортогональном и ортонормированном базисах евклидова пространства}
-
-        Пусть $\EE$ --- евклидово пространство, $(e_1, \dots, e_n)$ --- ортогональный базис.
-
-        $v \in \EE$.
-
-        \begin{proposal}
-            $v = \dfrac{(v, e_1)}{(e_1, e_1)}e_1 + \dfrac{(v, e_2)}{(e_2, e_2)}e_2 + \dots + \dfrac{(v, e_n)}{(e_n, e_n)}e_n$.
-
-            В частности, если $e_1, \dots, e_n$ ортонормирован, то $v = (v, e_1)e_1 + \dots + (v, e_n) e_n$.
-        \end{proposal}
-
-
     \defitem{Формула для ортогональной проекции вектора на подпространство в терминах его ортогонального базиса}
     
         Пусть $S \subseteq \EE$ --- подпространство.
@@ -1021,45 +1102,17 @@
             В частности, если $e_1, \dots, e_k$ ортонормирован, то $\pr_S v = \sum_{i = 1}^{k} (v, e_i) e_i$.
         \end{proposal}
 
+    \defitem{Формула для ортогональной проекции вектора на подпространство в $\RR^n$, заданное своим базисом}
+            
+        Пусть $\EE = \RR^n$ со стандартным скалярным произведением.
 
-    \defitem{Метод ортогонализации Грама--Шмидта}
+        $S \subseteq \EE$ --- подпространство, $a_1, \dots, a_k$ --- базис $S$.
 
-        Как построить ортогональный (ортонормированный) базис в $\EE$?
+        Пусть $A := (a_1, \dots, a_k) \in \text{Mat}_{n \times k}(\RR)$, $A^{(i)} = a_i$.
 
-        Если $f_1, \dots, f_n$ --- ортогональный базис, то $\left(\frac{f_1}{|f_1|}, \dots, \frac{f_n}{|f_n|}\right)$ --- ортонормированный базис.
-
-        Тогда, достаточно построить ортогональный базис.
-
-        \bigskip
-        Пусть $e_1, \dots, e_k$ --- линейно независимая система векторов.
-
-        $i$-й угловой минор в $G(e_1, \dots, e_k)$ --- это $\det G(e_1, \dots, e_i) > 0$.
-
-        \medskip
-        Следовательно, применим метод Якоби:
-
-        $\exists!$ система векторов $f_1, \dots, f_k$, такая что 
-        \begin{align*}
-        &f_1 = e_1, \\
-        &f_2 \in e_2 + \left< e_1 \right>, \\
-        &f_3 \in e_3 + \left< e_1, e_2 \right>, \\
-        &\dots, \\
-        &f_k \in e_k + \left< e_1, \dots, e_{k - 1} \right>
-        \end{align*}
-
-
-        И выполнены следующие свойства $\forall i = 1, \dots, k$:
-
-        \begin{enumerate}[start=0,nosep]
-        \item $f_1, \dots, f_i$ ортогональны.
-        \item $\left< e_1, \dots, e_i \right> = \left< f_1, \dots, f_i \right>$.
-        \item $f_i = e_i - \sum_{j = 1}^{i - 1} \dfrac{(e_i, f_j)}{(f_j, f_j)} f_j$ \customlabel{lec23:star}{($\star$)}.
-        \item $\det G(e_1, \dots, e_i) = \det G(f_1, \dots, f_i)$ \customlabel{lec23:heart}{$(\heartsuit)$}.
-        \end{enumerate}
-
-        \bigskip
-        Построение базиса $f_1, \dots, f_k$ по формулам \ref{lec23:star} называется методом (процессом) ортогонализации Грамма-Шмидта.
-
+        \begin{proposal}
+            $\forall v \in \RR^n \quad \pr_S v = A (A^{T} A)^{-1} A^{T} v$.
+        \end{proposal}
 
     \defitem{Теорема Пифагора в евклидовом пространстве}
 
@@ -1128,7 +1181,7 @@
 
             Основание: $P(a_1, \dots, a_{k - 1})$.
 
-            Высота: $h := \left| \ort_{\left< a_1, \dots, a_{k - 1} \right>} a_k \right|$.
+            Высота: $h :=  \ort_{\left< a_1, \dots, a_{k - 1} \right>} a_k$.
         \end{definition}
 
         \begin{definition}
@@ -1136,7 +1189,7 @@
 
             \begin{description}
             \item[$k = 1$] $\implies \vol P(a_1) := |a_1|$.
-            \item[$k > 1$] $\implies \vol P(a_1, \dots, a_k) := \vol P(a_1, \dots, a_{k - 1}) \cdot h$.
+            \item[$k > 1$] $\implies \vol P(a_1, \dots, a_k) := \vol P(a_1, \dots, a_{k - 1}) \cdot |h|$.
             \end{description}
         \end{definition}
 
@@ -1854,6 +1907,103 @@
             для некоторого $\alpha$.
         \end{corollary}
 
+    \defitem{Теорема о сингулярных базисах для линейного отображения евклидовых пространств}
+
+        Пусть 
+        \begin{math}
+            \begin{aligned}[t]
+                &\EE \text{ --- евклидово пространство со скалярным произведением } (\bigcdot, \bigcdot), \quad \dim \EE = n, \\
+                &\EE' \text{ --- другое евклидово пространство со скалярным произведением } (\bigcdot, \bigcdot)', \quad \dim \EE' = m, \\
+                &\phi \colon \EE \to \EE' \text{ --- линейное отображение}, r = \rk \phi (= \dim \Im \phi) 
+            \end{aligned}
+        \end{math}
+
+        \begin{theorem}
+            Существуют ортонормированные базисы $\E$ в $\EE$ и $\F$ в $\FF$, такие что
+            \begin{equation*}
+                A(\phi, \E, \F) =
+                \resizebox{6cm}{!}{
+                    \begin{math}
+                        \begin{blockarray}{cccccccccc}
+                            \begin{block}{(ccccc|ccccc)}
+                                \sigma_{1} & 0 & 0 & \dots & 0 & & & &\\
+                                0 & \sigma_{2} & 0 & \dots & 0 & & & &\\
+                                0 & 0 & \sigma_{3} & \dots & 0 & & & \scaleobj{2}{0} & &\\
+                                \vdots & \vdots & \vdots & \ddots & \vdots &\\
+                                0 & 0 & 0 & \dots & \sigma_{r} &\\
+                                \cline{1-10}
+                                & & & & & & & & &\\
+                                & & & & & & & & &\\
+                                & & \scaleobj{2}{0} & & & & & \scaleobj{2}{0} & &\\
+                                & & & & & & & & &\\
+                                & & & & & & & & &\\
+                            \end{block}
+                        \end{blockarray}
+                    \end{math}
+                }
+                = \Sigma
+            \end{equation*}
+
+            где $\sigma_{1} \geq \sigma_{2} \geq \dots \geq \sigma_{r} > 0$
+
+            Более того, числа $\sigma_{1}, \dots, \sigma_{r}$ определены однозначно.
+        \end{theorem}
+    
+        \begin{definition}
+            В условиях теоремы базисы $\E$ и $\F$ называются \textit{сингулярными базисами}, 
+            
+            векторы $e_i, f_j$ называются \textit{сингулярными векторами}, 
+            
+            числа $\sigma_1, \dots, \sigma_r$ --- \textit{сингулярныеми значениями} линейного отображения $\phi$
+        \end{definition}
+
+    \defitem{Утверждение о сингулярном разложении матрицы}
+
+        Пусть $A \in \text{Mat}_{m \times n}(\RR), \rk A = r \implies \exists$ ортогональные матрицы $U \in M_m (\RR)$ и $V \in M_n (\RR)$, такие что 
+        \begin{equation*}
+            A = U \Sigma V^T
+        \end{equation*}
+        где $\Sigma$ --- матрица из вида $\diag(\sigma_1, \dots, \sigma_r, 0, dots, 0)$, $\qquad \sigma_1 \geq \dots \geq \sigma_r > 0$. Более того, числа $\sigma_1, \dots, \sigma_r$ определны однозначно.
+
+    \defitem{Теорема о низкоранговом приближении}
+
+        $\text{Mat}_{m \times n} (\RR)$ --- евклидово пространство со скалярным произведением $(A, B) = \tr (A^T, B)$. В этом пространстве длина называется нормой Фробениуса.
+        \begin{equation*}
+            \norm{A} = \sqrt{\tr (A^T A)} = \sqrt{\tr (A A^T)} = \sqrt{\sum_{i=1}^m \sum_{j=1}^n a_{i j}^2}
+        \end{equation*}
+
+        \begin{theorem}
+            Пусть $A \in \text{Mat}_{m \times n}, \rk A = r$
+            
+            $A = U \cdot \Sigma \cdot V^T$ --- сингулярное разложением для $A$.
+
+            Тогда $\forall k < r$ минимум величины $\norm{A - B}$ среди всех матриц $B \in \text{Mat}_{m \times n} (\RR)$ с условием $\rk B \leq k$ достигается при 
+            
+            \begin{equation*}
+                B = U \cdot \Sigma_k \cdot V^T, \quad \text{где } \Sigma_k = 
+                \resizebox{6.5cm}{!}{
+                    \begin{math}
+                    \begin{blockarray}{ccccccccccc}
+                        \begin{block}{(cccccc|ccccc)}
+                        \sigma_{1} & \dots & 0 & 0 & \dots & 0 & & & & &\\
+                        \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & & & & &\\
+                        0 & \dots & \sigma_{k} & \vdots & \dots & 0 & & \scaleobj{2}{0} & & &\\
+                        0 & \dots & \dots & 0 & \dots & 0 & & & & &\\
+                        \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & & & & &\\
+                        0 & \dots & 0 & 0 & \dots & 0 & & & & &\\
+                        \cline{1-11}
+                        & & & & & & & & & &\\
+                        & & & & & & & & & &\\
+                        & & \scaleobj{2}{0} & & & & & \scaleobj{2}{0} & & &\\
+                        & & & & & & & & & &\\
+                        & & & & & & & & & &\\
+                        \end{block}
+                    \end{blockarray}
+                    \end{math}
+                    }
+            \end{equation*}
+            (То есть мы обнуляем все значения $\Sigma$ после $k$).
+        \end{theorem}
 
     \end{colloq}
 
@@ -2636,6 +2786,227 @@
                 \end{description}
             \end{proof}
 
+        \proofitem{Теорема о диагонализации симметричной билинейной формы. Симметричный алгоритм Гаусса}
+
+            Пусть в поле $F$ выполнено условие $1 + 1 \neq 0$ (то есть в $F$ сложение двух единиц поля не даёт нам нулевой элемент поля).
+
+            \begin{theorem}
+                $\forall$ симметричной билинейной формы $\beta \colon V \times V \to F \ \exists$ базис $\E'$ в $V$, такой что матрица $B (\beta, \E')$ диагональна.
+            \end{theorem}
+
+            \begin{proof}
+                Фиксируем какой-нибудь базис $\E$ в $V$, пусть $B = B(\beta, \E)$. Тогда, согласно формуле изменения матрицы билинейной формы при переходе к другому базису, достаточно показать, что $\exists C \in M^{0}_n (F)$, такая что матрица $B' = C^{T} B C$ --- диагональная.
+
+                Это возможно для любой $B$ благодаря симметричному алгоритму Гаусса, который описан ниже.
+            \end{proof}
+
+            \textbf{Симметричные элементарные преобразования}
+
+                $B \overset{\text{одно эл.} \atop \text{преобр. строк}}{\leadsto} B' = \underbracket{U}_{\text{элементарная} \atop \text{матрица}} \cdot B \implies (B')^{T} = B^{T} \cdot U^{T} = B \cdot U^{T} $
+
+                То есть такое же элементарное преобразование, но уже столбцов, реализуется умножением матрицы билинейной формы на $U^{T}$ справа.  
+
+            \begin{definition}
+                $B \leadsto B' = U B U^{T}$ --- симметричное элементарное преобразование.
+
+                Сначала выполняется элементарное преобразование строк, а затем ровно такое же элементарное преобразование столбцов, или наоборот, в силу ассоциативности.
+
+                Заметим, что согласно формуле изменения матрицы билинейной формы при переходе к другому базису, если мы применим симметричное элементарное преобразование к матрице симметричной билинейной формы, мы получим матрицу той же симметричной билинейной формы, но в другом базисе.
+            \end{definition}
+
+            \begin{designation}
+                $\widehat{\text{Э}}_{i} := \text{Э}_{i}  \ \& \ \text{Э}'_{i}$ --- симметричное элементарное преобразование, где 
+
+                $\text{Э}_{i}$ --- элементарное преобразование строк.
+
+                $\text{Э}'_{i}$ --- соответствующее элементарное преобразование столбцов.
+
+            \end{designation}
+
+            \textbf{Симметричный алгоритм Гаусса}
+
+            \begin{description}
+                \item[Шаг 1:]
+                Если $B^{(1)} = 0 (\implies B_{(1)} = 0)$, то матрица имеет вид
+                $B = \left(
+                    \begin{array}{c|c}
+                        0 & 0 \\
+                        \hline
+                        \noalign{\vskip 0.5ex}
+                        0 & \widetilde{B}
+                    \end{array}
+                \right)$
+                $\implies$ идём на шаг 2.
+
+                \item[Иначе:]
+                \begin{description}
+                    \item[Случай 1]
+                    $b_{1 1} \neq 0$. 
+                    
+                    Тогда выполняем $\widehat{\text{Э}}_{1} (2, 1, - \frac{b_{21}}{b_{11}}), \dots, \widehat{\text{Э}}_{1} (n, 1, - \frac{b_{n 1}}{b_{11}}) $,
+                    $B_{\text{новая}} = \left(
+                        \begin{array}{c|c}
+                            b_{1 1} & 0 \\
+                            \hline
+                            \noalign{\vskip 0.5ex}
+                            0 & \widetilde{B}
+                        \end{array} 
+                    \right)$ 
+
+                    \item[Случай 2]
+                    $b_{1 1} = 0.$
+                    \begin{description}
+                        \item[Подслучай 2.1]
+                        $\exists b_{i i} \neq 0 \implies
+                        \left(
+                        \begin{array}{c|ccc}
+                            0 & \dots & \star & \dots \\
+                            \hline 
+                            \vdots & \ddots & \vdots & \vdots \\
+                            \star & \dots & b_{i i} & \dots \\
+                            \vdots & \vdots & \vdots & \dots
+                        \end{array}
+                        \right)$
+
+                        Выполняем $\widehat{\text{Э}}_{2} (1, i)$, получаем $b_{1 1} \neq 0 \implies$ случай 1.
+
+                        \item[Подслучай 2.2]  
+                        $b_{i i} = 0 \ \forall i$, но $\exists j \colon b_{j 1} \neq 0 \implies
+                        \left(
+                            \begin{array}{c|ccccc}
+                                0 & \star & \dots & b_{j 1} & \dots & \star \\
+                                \hline
+                                \star & 0 & \dots & \star & \dots & \star \\
+                                \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+                                b_{j 1} & \star & \dots & 0 & \dots & \star \\
+                                \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+                                \star & \star & \dots & \star & \dots & 0
+                            \end{array}
+                        \right)
+                        $
+
+                        Выполняем $\widehat{\text{Э}}_{1} (1, j, 1) \implies$ на позиции $(1,1)$ возникает $2 \cdot b_{j 1} \neq 0$(ведь мы работаем с полем, где $2 \neq 0$) $ \implies$ случай 1.
+                    \end{description}  
+                \end{description}
+                \item[Шаг 2:]
+                Новая матрица имеет вид 
+                $B = \left(
+                        \begin{array}{c|c}
+                            b_{1 1} & 0 \\
+                            \hline
+                            \noalign{\vskip 0.5ex}
+                            0 & \widetilde{B}
+                        \end{array} 
+                    \right)$,
+
+                повторяем всё для $\widetilde{B}$.
+            \end{description}
+
+
+            В результате получаем цепочку элементарных матриц $U_{1}, \dots , U_{k}$, такую что матрица $B' = U_{k} \dots U_{1} B U^{T}_{1} \dots U^{T}_{k}$ --- диагональная.
+
+            Положим $C = U^{T}_{1} \dots U^{T}_{k} \implies C^{T} = U_{k}, \dots , U_{1} \implies B' = C^{T} \cdot B \cdot C $.
+
+            \begin{comment}
+                Матрицу C можно вычислить модифицировав алгоритм. Припишем единичную матрицу E справа от B и будем выполнять с ней только элементарные преобразования строк.
+                \begin{equation}
+                    (B \mid E) \leadsto (B' \mid P), P = U_{k} \dots U_{2} U_{1} = C^{T} \implies C = P^{T}
+                \end{equation}
+            \end{comment}
+
+            \begin{example}
+                \begin{equation*}
+                    B = \left(
+                        \begin{array}{cc|cc} 
+                            0 & 1 & 1 & 0 \\ 
+                            1 & -2 & 0 & 1
+                        \end{array} 
+                    \right) \leadsto
+                    \left(
+                        \begin{array}{cc|cc}
+                            -2 & 0 & 0 & 1 \\
+                            0 & \frac{1}{2} & 1 & \frac{1}{2}
+                        \end{array}
+                    \right)
+                \end{equation*}
+                Итог: $B' = \begin{pmatrix} -2 & 0 \\ 0 & \frac{1}{2} \end{pmatrix}, C = \begin{pmatrix} 0 & 1 \\ 1 & \frac{1}{2} \end{pmatrix}$
+
+                $B' = C^{T} \cdot B \cdot C$.
+            \end{example}
+
+            \begin{comment}
+                Базис $\E'$ в котором матрица билинейного отображения $\beta$ имеет диагональный вид, а также сам этот вид определены неоднозначно.
+            \end{comment}
+
+
+        \proofitem{Метод Якоби для симметричных билинейных форм}
+
+            Пусть $\beta \colon V \times V \to F$ --- симметричная билинейная форма, $\E$ --- базис $V$, $B = B(\beta, \E), \delta_{k} = \delta_k(B)$
+
+            \begin{theorem}
+                Предположим, что $\delta_{k} \neq 0  \ \forall k = 1, \dots, n-1$, тогда $\exists C \in M^{0}_{n}$ вида
+                \begin{equation*}
+                C = \begin{pmatrix} 
+                    1 & \star & \dots & \star & \star \\
+                    0 & 1 & \ddots & \star & \star \\
+                    \vdots & \vdots & \ddots    & \ddots & \vdots \\
+                    0 & 0 & \dots & 1 & \star \\
+                    0 & 0 & \dots & 0 & 1
+                \end{pmatrix}
+                \end{equation*}
+                Такая что матрица $B' = C^{T} B C$ имеет вид $B' = \diag\left(\delta_1, \frac{\delta_2}{\delta_1}, \dots, \frac{\delta_n}{\delta_{n - 1}}\right)$.
+            \end{theorem}
+
+            \begin{proof}
+                Анализ симметричного алгоритма Гаусса.
+
+                На каждой итерации в случае 1 все симметричные элементарные преобразования имеют вид $\text{Э}_{1}(i, j, \lambda)$, причём всегда при $i > j$. 
+                При этом все угловые миноры сохраняются. Благодаря условию $i > j$ это элементарные преобразования 1 типа, не меняющие определителя для каждой $G_{k}$
+
+                Если на какой-то итерации возник не случай 1, то получаем 
+                \begin{equation*}
+                    \begin{pmatrix}
+                        b_{11} & 0       & \dots  & 0       & 0       & \vline & \dots & 0 \\
+                        0       & b_{22} & \dots  & 0       & 0       & \vline & \dots & 0 \\
+                        \vdots  & \vdots  & \ddots & \vdots  & \vdots  & \vline & \dots & \vdots \\
+                        0       & 0       & \dots  & b_{k-1, k-1} & 0   & \vline & \dots & 0 \\
+                        0       & 0       & \dots  & 0       & 0       & \vline & \dots & 0 \\
+                        \cline{1-5}
+                        \vdots  & \vdots  & \dots  & \vdots  & \vdots  &        & \ddots & \vdots \\
+                        0       & 0       & \dots  & 0       & 0       &        & \dots & \star
+                        \end{pmatrix}
+                        k \leq n-1
+                    \end{equation*}
+
+                Но тогда $\delta_{k} = 0 \implies$ противоречие.
+
+                Итог: на всех итерациях возникает случай 1 $\implies$ алгоритм приводит к диагональному виду $B' = \diag(d_{1}, \dots, d_{n})$.
+                \begin{equation*}
+                    \delta_{k}(B') = d_{1} \cdot \dots \cdot d_{k} = \delta_{k}(B) \implies d_{k} = \frac{\delta_{k}}{\delta_{k - 1}} \implies B' = \diag(\delta_{1}, \frac{\delta_{2}}{\delta_{1}}, \dots, \frac{\delta_{n}}{\delta_{n - 1}})
+                \end{equation*}
+
+                Причём при $i > j, \ \widehat{\text{Э}}_{1} (i, j, \lambda) \colon B \mapsto U B U^{T}$, где U --- единичная матрица с $\lambda$ на $i$-ой строке в $j$-ом столбце.
+                \begin{equation*}
+                    C = U_{1}^{T} U_{2}^{T} \dots U_{S}^{T}
+                \end{equation*}
+
+                Очевидно, что перемножение матриц такого типа будет давать верхнюю унитреугольную матрицу $C$.
+            \end{proof}
+
+            \begin{comment}
+                Матрица вида 
+                $\begin{pmatrix}
+                    1 & \dots & \star \\
+                    \vdots & \ddots & \vdots \\
+                    0 & \dots & 1
+                \end{pmatrix}$
+                называется верхней унитреугольной
+            \end{comment}
+
+            \begin{comment}
+                В доказательстве не использовалось свойство $1 + 1 \neq 0$, то есть свойство работает для любого поля.
+            \end{comment}
+
 
         \proofitem{Соответствие между симметричными билинейными формами и квадратичными формами}
 
@@ -2660,234 +3031,6 @@
                     $Q_\beta(x + y) = \beta(x + y, x + y) = \underbrace{\beta(x, x)}_{Q_\beta(x)} + \underbrace{\beta(x, y) + \beta(y, x)}_{\text{равны между собой}} + \underbrace{\beta(y, y)}_{Q_\beta(y)} \implies \beta(x, y) = \frac{1}{2} \left[Q_\beta(x + y) - Q_\beta(x) - Q_\beta(y)\right]$.
                 \end{description}
             \end{proof}
-
-
-        \proofitem{Метод Лагранжа приведения квадратичной формы к каноническому виду}
-
-            \begin{theorem}
-                Всякую квадратичную форму путём замены базиса можно привести к каноническому виду.
-            \end{theorem}
-
-            \begin{proof}[Доказательство (метод Лагранжа)]
-                Индукция по $n$:
-                \begin{description}
-                \item[База] $n = 1 \implies Q(x) = b x_1^2$ --- канонический вид.
-                \item[Шаг] Пусть утверждение доказано для $< n$, докажем для $n$.
-
-                    Пусть $B = B(Q, \E)$ --- матрица квадратичной формы в исходном базисе $\E$.
-                    \begin{equation*}
-                        Q(x) = \sum_{i = 1}^{n} b_{ii} x_i^2 + \sum_{1 \leq i < j \leq n}^{n} 2 b_{ij} x_i x_j
-                    .\end{equation*}
-
-                    \begin{enumerate}[start=0,label=Случай \arabic*.]
-                    \item
-                        $b_{ij} = 0 \ \forall i, j$ --- доказывать нечего.
-                    \item
-                        $\exists i : b_{ii} \neq 0$. Сделав перенумерацию, считаем $b_{11} \neq 0$.
-
-                        Тогда,
-                        \begin{align*}
-                            Q(x_1, \dots, x_n)
-                            &= b_{11} x_1^2 + 2b_{12} x_1 x_2 + \dots + 2 b_{1n} x_1 x_n + Q_1(x_2, \dots, x_n) \\
-                            &= b_{11} \left(x_1^2 + 2\frac{b_{12}}{b_{11}} x_1 x_2 + \dots + 2\frac{b_{1n}}{b_{11}} x_1 x_n\right) + Q_1(x_2, \dots, x_n) \\
-                            &= b_{11} \Bigg(\underbrace{x_1 + \frac{b_{12}}{b_{11}} x_2 + \dots + \frac{b_{1n}}{b_{11}} x_n}_{x'_1}\Bigg)^2 \underbrace{ - b_{11} \left(\frac{b_{12}}{b_{11}}x_2 + \dots + \frac{b_{1n}}{b_{11}} x_n\right)^2 + Q_1(x_2, \dots, x_n)}_{Q_2(x'_2, \dots, x'_n)} \\
-                            &= b_{11} (x_1')^2 + Q_2 (x'_2, \dots, x'_n)
-                        ,\end{align*}
-                        где
-                        \begin{equation*}
-                            \begin{cases}
-                                x'_1 &= x_1 + \frac{b_{12}}{b_{11}} x_2 + \dots + \frac{b_{1n}}{b_{11}} x_n, \\
-                                x'_2 &= x_2, \\
-                                     &\vdots \\
-                                x'_n &= x_n.
-                            \end{cases}
-                        \end{equation*}
-
-                        Здесь важно проследить, что замена действительно соответствует замене базисов (то есть является невырожденной).
-
-                        Вспомним как происходит замена базиса:
-
-                        \begin{equation*}
-                            \boxed{
-                                \begin{aligned}
-                                    \E' &= \E \cdot C \\
-                                    \begin{pmatrix} x_1 \\ \dots \\ x_n \end{pmatrix} &= C \cdot \begin{pmatrix} x'_1 \\ \dots \\ x'_n \end{pmatrix}
-                                \end{aligned}
-                            }
-                        \end{equation*}
-
-                        Выразим $x$ через $x'$ и запишем матрицу перехода:
-                        \begin{equation*}
-                            \begin{cases}
-                                x_1 &= x'_1 - \frac{b_{12}}{b_{11}} x'_2 - \dots - \frac{b_{1n}}{b_{11}} x'_n, \\
-                                x_2 &= x'_2, \\
-                                    &\vdots \\
-                                x_n &= x'_n.
-                            \end{cases}
-                            \hspace{3cm}
-                            C = \begin{pmatrix} 
-                                1 & - \frac{b_{12}}{b_{11}} & \dots & -\frac{b_{1n}}{b_{11}} \\
-                                0 & 1 & \dots & 0 \\
-                                \vdots & \vdots & \ddots & \vdots \\
-                                0 & 0 & \dots & 1
-                            \end{pmatrix}
-                        \end{equation*}
-
-                        По предположению индукции, $Q_2$ можно привести к каноническому виду.
-
-                    \item
-                        $b_{ii} = 0 \ \forall i$, но $\exists i, j, i \neq j$, такие что $b_{ij} \neq 0$.
-
-                        Выполнив перенумерацию считаем, что $b_{12} \neq 0$.
-
-                        Сделаем замену и выпишем матрицу перехода:
-                        \begin{equation*}
-                            \begin{cases}
-                                x_1 &= x'_1 + x'_2, \\
-                                x_2 &= x'_1 - x'_2, \\
-                                x_3 &= x'_3, \\
-                                    &\vdots \\
-                                x_n &= x'_n.
-                            \end{cases}
-                            \hspace{3cm}
-                            C = \begin{pmatrix} 
-                                1 & 1 & 0 & \dots & 0 \\
-                                1 & -1 & 0 & \dots & 0 \\
-                                0 & 0 & 1 & \dots & 0 \\
-                                \vdots & \vdots & \vdots & \ddots & \vdots \\
-                                0 & 0 & 0 & \dots & 1
-                            \end{pmatrix}
-                        \end{equation*}
-
-                        Получаем $Q(x) = b_{12} x_1^2 - b_{12} x_2^2 + \underbrace{\dots\dots\dots\dots}_{\text{нет квадратов}}$, мы попали в случай 1.
-                        \qedhere
-                    \end{enumerate}
-                \end{description}
-            \end{proof}
-
-
-        \proofitem{Метод Якоби приведения квадратичной формы к каноническому виду}
-
-            Пусть $\E = (e_1, \dots, e_n)$ --- базис пространства $V$.
-
-            Рассмотрим систему векторов $e'_1, \dots, e'_n$ следующего вида:
-
-            $e'_1 = e_1$,
-
-            $e'_2 \in e_2 + \left< e_1 \right>$,
-
-            $e'_3 \in e_3 + \left< e_1, e_2 \right>$,
-
-            $\dots$
-
-            $e'_n \in e_n + \left< e_1, \dots, e_{n - 1} \right>$.
-
-            Для любого $k = 1 \dots n$ имеем $(e'_1, \dots, e'_k) = (e_1, \dots, e_k) \cdot C_k$, где
-            \begin{equation*}
-                C_k = \begin{pmatrix} 
-                    1 & \star & \dots & \star & \star \\
-                    0 & 1 & \ddots & \star & \star \\
-                    \vdots & \vdots & \ddots & \ddots & \vdots \\
-                    0 & 0 & \dots & 1 & \star \\
-                    0 & 0 & \dots & 0 & 1
-                \end{pmatrix} \in M_k(F)
-            .\end{equation*}
-
-            Так как $\det C = 1 \neq 0$, то $e'_1, \dots, e'_k$ линейно независимы и $\left< e_1, \dots, e_k \right> = \left< e'_1, \dots, e'_k \right>$.
-
-            В частности, $e'_1, \dots, e'_n$ --- базис $V$.
-
-            Заметим, что $C_k$ --- левый верхний $k \times k$ блок в $C_n$.
-
-            Пусть $Q \colon V \to F$ --- квадратичная форма, $\beta$ --- соответствующая симметричная билинейная форма.
-
-            $B := B(Q, \E)$.
-
-            $B_k$ --- левый верхний $k \times k$ блок в $B$.
-
-            $\delta_k := \delta_k(Q, \E) := \det B_k(Q, \E)$ --- $k$-й угловой минор матрицы $B$.
-
-            Для удобства, $\delta_0 := 1$.
-
-            \begin{lemma}
-                Пусть $(e'_1, \dots, e'_n) = \E'$ --- базис $V$ описанного выше вида и $\delta'_k = \delta_k(Q, \E')$. Тогда, $\delta'_k = \delta_k \ \forall k$.
-            \end{lemma}
-
-            \begin{proof}
-                Пусть $B' = B(Q, \E')$ и $B'_k = B_k(Q, \E')$.
-
-                Так как $\left< e'_1, \dots, e'_k \right> = \left< e_1, \dots, e_k \right>$, то $B'_k = C_k^T B_k C_k$.
-                Отсюда, $\delta'_k = \det B'_k = \underbrace{\det C_k^T}_1 \det B_k \underbrace{\det C_k}_1 = \det B_k = \delta_k$.
-            \end{proof}
-
-            \begin{theorem}
-                Пусть $\delta_k \neq 0 \ \forall k = 1, \dots, n$.
-
-                Тогда, $\exists!$ базис $\E' = (e'_1, \dots, e'_n)$ в $V$, такой что
-                \begin{enumerate}
-                \item $\E'$ имеет описанный выше вид;
-                \item В базисе $\E'$ $Q$ принимает канонический вид
-
-                    $Q(x'_1, \dots, x'_n) = \delta_1 x'^2_1 + \frac{\delta_2}{\delta_1} x'^2_2 + \dots + \frac{\delta_n}{\delta_{n - 1}} x'^2_n$.
-
-                    То есть $B(Q, \E') = \diag\left(\delta_1, \frac{\delta_2}{\delta_1}, \dots, \frac{\delta_n}{\delta_{n - 1}}\right)$
-                \end{enumerate}
-            \end{theorem}
-
-            \begin{proof}
-                Индукция по $n$.
-
-                \begin{description}
-                \item[База] $n = 1 \implies $ верно.
-                \item[Шаг] Пусть доказано для $< n$, докажем для $n$.
-
-                    Применяя предположение индукции к ограничению квадратичной формы на подпространство $\left< e_1, .., e_{n - 1} \right>$ получаем, что $\exists$ требуемый базис $e'_1, \dots, e'_{n - 1}$ в $\left< e_1, \dots, e_{n - 1} \right>$ нужного вида.
-
-                    Тогда, $B(Q, (e'_1, \dots, e'_{n - 1}, e_n))$ имеет вид 
-                    \begin{equation*}
-                        \left(\begin{array}{cccc|c}
-                            \delta_1 & 0 & \dots & 0 & \star \\
-                            0 & \frac{\delta_2}{\delta_1} & \dots & 0 & \star \\
-                            \vdots & \vdots & \ddots & \vdots & \vdots \\
-                            0 & 0 & \dots & \frac{\delta_{n - 1}}{\delta_{n - 2}} & \star \\
-                            \hline
-                            \star & \star & \dots & \star & \star
-                        \end{array}\right)
-                    .\end{equation*}
-
-                    Ищем $e'_n$ в виде
-                    \begin{equation*}
-                        e'_n = e_n + \lambda_1 e'_1 + \dots + \lambda_{n - 1} e'_{n - 1}
-                    .\end{equation*}
-
-                    Для любого $k = 1, \dots, n - 1$
-                    \begin{align*}
-                        \beta(e'_n, e'_k) &= \beta(e_n + \lambda_1 e'_1 + \dots + \lambda_{n - 1} e'_{n - 1}, e'_k) \\
-                        &= \beta(e_n, e'_k) + \lambda_1 \beta(e'_1, e'_k) + \dots + \lambda_{n - 1} \beta(e'_{n - 1}, e'_k) \\
-                        &= \beta(e_n, e'_k) + \lambda_k \beta(e'_k, e'_k) \\
-                        &= \beta(e_n, e'_k) + \lambda_k \frac{\delta_k}{\delta_{k - 1}}
-                    .\end{align*}
-
-                    Хотим, $\beta(e'_n, e'_k) = 0 \ \forall k = 1, \dots, n - 1 \iff \lambda_k = -\beta(e_n, e'_k) \frac{\delta_{k - 1}}{\delta_k}$.
-
-                    Тогда в базисе $\E' = (e'_1, \dots, e'_n)$ матрица $Q$ равна
-                    \begin{equation*}
-                        \begin{pmatrix} 
-                            \delta_1 & 0 & \dots & 0 & 0 \\
-                            0 & \frac{\delta_2}{\delta_1} & \dots & 0 & 0 \\
-                            \vdots & \vdots & \ddots & \vdots & \vdots \\
-                            0 & 0 & \dots & \frac{\delta_{n - 1}}{\delta_{n - 2}} & 0 \\
-                            0 & 0 & \dots & 0 & ?
-                        \end{pmatrix}
-                    .\end{equation*}
-
-                    По лемме, $\delta_n = \delta'_n = \delta_1 \cdot \frac{\delta_2}{\delta_1} \cdot \dots \cdot \frac{\delta_{n - 1}}{\delta_{n - 2}} \cdot ? = \delta_{n - 1} \cdot ? \implies ? = \frac{\delta_n}{\delta_{n - 1}}$.
-
-                    Единственность следует из явной формулы для $\lambda_k$.
-                    \qedhere
-                \end{description}
-            \end{proof}
-
 
         \proofitem{Существование нормального вида для квадратичной формы над $\RR$}
 
@@ -4300,6 +4443,122 @@
                 \end{description}
             \end{proof}
 
+        \proofitem{Теорема о сингулярных базисах для линейного отображения евклидовых пространств}
+        
+            Пусть 
+            \begin{math}
+                \begin{aligned}[t]
+                    &\EE \text{ --- евклидово пространство со скалярным произведением } (\bigcdot, \bigcdot), \quad \dim \EE = n, \\
+                    &\EE' \text{ --- другое евклидово пространство со скалярным произведением } (\bigcdot, \bigcdot)', \quad \dim \EE' = m, \\
+                    &\phi \colon \EE \to \EE' \text{ --- линейное отображение}, r = \rk \phi (= \dim \Im \phi) 
+                \end{aligned}
+            \end{math}
+
+            \begin{theorem}
+                Существуют ортонормированные базисы $\E$ в $\EE$ и $\F$ в $\FF$, такие что
+                \begin{equation*}
+                    \label{lec31:SVD_matrix}
+                    A(\phi, \E, \F) =
+                    \resizebox{6cm}{!}{
+                        \begin{math}
+                            \begin{blockarray}{cccccccccc}
+                                \begin{block}{(ccccc|ccccc)}
+                                    \sigma_{1} & 0 & 0 & \dots & 0 & & & &\\
+                                    0 & \sigma_{2} & 0 & \dots & 0 & & & &\\
+                                    0 & 0 & \sigma_{3} & \dots & 0 & & & \scaleobj{2}{0} & &\\
+                                    \vdots & \vdots & \vdots & \ddots & \vdots &\\
+                                    0 & 0 & 0 & \dots & \sigma_{r} &\\
+                                    \cline{1-10}
+                                    & & & & & & & & &\\
+                                    & & & & & & & & &\\
+                                    & & \scaleobj{2}{0} & & & & & \scaleobj{2}{0} & &\\
+                                    & & & & & & & & &\\
+                                    & & & & & & & & &\\
+                                \end{block}
+                            \end{blockarray}
+                        \end{math}
+                    }
+                    = \Sigma
+                \end{equation*}
+
+                где $\sigma_{1} \geq \sigma_{2} \geq \dots \geq \sigma_{r} > 0$
+
+                Более того, числа $\sigma_{1}, \dots, \sigma_{r}$ определены однозначно.
+            \end{theorem}
+
+            \begin{proof}
+                \begin{description}
+                    \item[Существование:] \mbox{}
+
+                    Пусть $\phi^{*} \colon \EE' \to \EE$ --- линейное отображание, сопряженное к $\phi$. Положим $\psi := \phi^{*} \cdot \phi$. Тогда $\psi$ --- линейный оператор на $\EE$.
+
+                    $\forall x, y \in \EE \quad (x, \psi(y)) = (x, \phi^{*} \phi(y)) = (\phi(x), \phi(y))'$
+
+                    В частности, $(x, \psi(y)) = (\psi(x), y) \implies \psi = \psi^{*}.$
+                
+                    Тогда $\exists$ ортнонормированный базис $\E = (e_1, \dots, e_n)$ в $\EE$, такой что $A(\psi, \E) = \diag(s_1, s_2, \dots, s_n)$. Тогда $\forall i = 1, \dots, n$ имеем
+                    \begin{equation*}
+                        \left.
+                            \begin{aligned}
+                            (e_i,\psi(e_i)) &= (\phi(e_i),\phi(e_i))' &\geq 0 \\
+                            (e_i,\psi(e_i)) &= (e_i, s_i e_i) = s_i(e_i,e_i) &= s_i
+                            \end{aligned}
+                        \right|
+                            \implies s_i \geq 0
+                    \end{equation*}
+
+                    Переставив векторы в $\E$, добьёмся того, что $s_1 \geq s_2 \geq \dots \geq s_n \geq 0.$
+
+                    Пусть $k \in \{1, \dots, n\}$ таково, что $s_k > 0, s_{k+1} = 0$. Тогда $\forall i \geq k+1$ имеем $0 = s_i = (\phi(e_i), \phi(e_i))' \implies \phi(e_i) = 0 \implies e_i \in \ker \phi$
+                    
+                    $\forall i = 1, \dots, k$ положим $\sigma_i = \sqrt{s_i}$ и $f_i = \frac{1}{\sigma_i} \phi(e_i)$. Тогда $\forall i, j = 1, \dots, k$ имеем
+
+                    \begin{align*}
+                        &(f_i, f_j)' = (\frac{1}{\sigma_i} \phi(e_i), \frac{1}{\sigma_j} \phi(e_j)) = \frac{1}{\sigma_i \sigma_j} (\phi(e_i), \phi(e_j)) =  \frac{1}{\sigma_i \sigma_j} (e_i, \phi^{*} \phi (e_j)) = \\
+                        &=  \frac{1}{\sigma_i \sigma_j} (e_i, \psi(e_j)) =  \frac{1}{\sigma_i \sigma_j} (e_i, (\sigma_j)^2 e_j ) =  \frac{\sigma_j}{\sigma_i} (e_i, e_j) = \delta_{i j} =
+                        \begin{cases}
+                            1, &i = j, \\
+                            0, &i \neq j.
+                        \end{cases}
+                    \end{align*}
+                    Итого: $f_1, \dots, f_k$ --- ортонормированная система в $\EE'$. Дополним эту систему до ортонормированного базиса $\F = (f_1, \dots, f_m)$ в $\EE'$.
+
+                    Тогда в $A(\phi, \E, \F)$:
+                    \begin{itemize}
+                        \item $i = 1, \dots, k \colon \phi(e_i) = \sigma_i f_i$
+                        \item $i \geq k + 1 \colon \phi(e_i) = 0$
+                    \end{itemize}
+
+                    Что и даёт нам \hyperref[lec31:SVD_matrix]{искомый вид} матрицы
+
+                    \bigskip
+                    Отсюда, в частности $\rk \phi = k \implies k = r$.
+
+                    \item[Единственность:] \mbox{}
+                    \item[] 
+                        Если $\E$ и $\F$ в $\EE$ и $\EE'$ и $A(\phi, \E, \F)$ имеет вид \hyperref[lec31:SVD_matrix]{$\Sigma$}, то $A(\psi, \E) = \Sigma^{T} \Sigma = \diag(\sigma_1^2, \dots, \sigma_r^2, 0, \dots, 0) $
+                        
+                        $\implies \sigma_1^2, \dots, \sigma_r^2$ --- ненулевые собственные значения оператора $\psi \implies$ они определены однозначно.
+            
+                \end{description}
+
+                \bigskip    
+                \begin{definition}
+                    В условиях теоремы базисы $\E$ и $\F$ называются \textit{сингулярными базисами}, 
+                    
+                    векторы $e_i, f_j$ называются \textit{сингулярными векторами}, 
+                    
+                    числа $\sigma_1, \dots, \sigma_r$ --- \textit{сингулярныеми значениями} линейного отображения $\phi$
+                \end{definition}
+
+                \begin{comment}
+                    \begin{enumerate} 
+                        \item Базисы $\E$ и $\F$ определены, вообще говоря, неоднозначно.
+                        \item Доказательство теоремы даёт алгоритм нахождения сингулярных значений и сингулярных базисов.
+                        \item Если $\E$ и $\F$ --- сингулярные базисы для линейного отображения $\phi$ и $A(\phi, \E, \F) = $ \hyperref[lec31:SVD_matrix]{$\Sigma$}, то $\E$ и $\F$ --- сингулярные базисы для линейного отображения $\phi^{*} = A(\phi, \F, \E) = \Sigma^T$
+                    \end{enumerate}
+                \end{comment}
+            \end{proof}
 
     \end{colloq}
 
