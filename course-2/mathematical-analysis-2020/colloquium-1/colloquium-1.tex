@@ -1,0 +1,1442 @@
+
+
+\documentclass[a4paper]{article}
+\usepackage{../header}
+
+% Use \begin{theorem*} instead of \begin{theorem}.
+% Use \iff instead of \Leftrightarrow.
+
+% Команды для ToC'a
+\newcommand\enumtocitem[3]{\item\textbf{#1}\addtocounter{#2}{1}\addcontentsline{toc}{#2}{\protect{\numberline{#3}} #1}}
+\newcommand\defitem[1]{\enumtocitem{#1}{subsection}{\thesubsection}}
+\newcommand\proofitem[1]{\enumtocitem{#1}{subsubsection}{\thesubsubsection}}
+
+\renewcommand{\o}{\operatorname{o}}
+
+\newlist{colloq}{enumerate}{1}
+\setlist[colloq]{label=\textbf{\arabic*.}}
+
+\title{\Huge Математический Анализ - 2 - Коллоквиум 1}
+\author{
+    Серёжа Рахманов | \href{https://t.me/akulutka}{telegram}, \href{https://github.com/akulutka}{website}
+    \\
+    Денис Болонин | \href{https://t.me/ultrakekul}{telegram}
+    \\
+    Максим Николаев | \href{https://t.me/MaximND}{telegram}
+}
+\date{Версия от {\ddmmyyyydate\today} \currenttime}
+
+\begin{document}
+    \maketitle
+
+
+    Спасибо ребятам из $195$-ой (и не только) группы за материалы из репозитория \href{https://github.com/DKozl50/Matan2-tex}{Matan2-tex}.
+
+    Спасибо Маевскому Евгению Валерьевичу и Колесниченко Елене Юрьевне за проведенные консультации.
+    
+    \tableofcontents
+
+    \newpage
+
+    \section{Вопросы}
+
+    \begin{colloq}
+
+    \defitem{Дайте определения: числовой ряд, частичная сумма ряда, сумма ряда, сходящийся ряд, расходящийся ряд. Рассмотрим ряд с общим членом $a_n$. Докажите, что если ряд сходится, то $a_n \to 0$.}
+        \begin{definition*}
+        Пусть $a_{n}$ -- последовательность, т.е. $\NN \to \RR$. Формальная бесконечная сумма: $a_1 + a_2 + a_3 + \dots = \sum_{n=1}^{\infty} a_n$ называется рядом.
+        $S_N = \sum_{n = 1}^{N} a_n$ -- частичная сумма, сумма ряда: $S = \lim_{N \to \infty} S_N$
+        \end{definition*}
+        
+        Возможны 3 случая:
+        \begin{enumerate}
+            \item $\exists S \in \RR$
+            \item $\exists S = \infty$
+            \item $\nexists S$
+        \end{enumerate}
+        
+        В первом случае говорят, что ряд сходится, иначе -- что ряд расходится.
+
+        \begin{comment}~
+            Если ряд сходится, то $a_n \to 0$
+        \end{comment}
+        \begin{proof}
+            $a_n = S_n - S_{n - 1} \to 0$, т.к. $S_n \to S$ и $S_{n - 1} \to S$
+        \end{proof}
+    
+    \defitem{Сформулируйте критерий Коши сходимости числовой последовательности. Сформулируйте и докажите критерий Коши сходимости числового ряда.}
+        \begin{definition*}
+            ${S_n}$ называется фундаментальной, если $\forall \epsilon > 0$  $\exists N: \forall n > m > N, |S_n - S_m| < \epsilon$
+        \end{definition*}
+        \begin{theorem*}
+            ${S_n}$ -- сходится $\iff {S_n}$ -- фундаментальная
+        \end{theorem*}
+        \begin{proof}
+            Сходимость числового ряда -- это сходимость последовательности $\{S_n\}$, его частичных сумм, а для сходимости последовательности $\{S_n\}$ необходимо и достаточно, чтобы она была фундаментальной.
+        \end{proof}
+
+    \defitem{Сформулируйте и докажите признак сравнения положительных числовых рядов, основанный на неравенстве $a_n \leq b_n$.}
+        
+        $0 \leq a_n \leq b_n$ при всех $n \geq n_0$
+	
+	    Ряд $\sum b_n$ сходится $\implies$ ряд $\sum a_n$ сходится
+	
+        Ряд $\sum a_n$ расходится $\implies$ ряд $\sum b_n$ расходится
+        
+        \begin{proof}
+        	На основании того, что отбрасывание конечного числа элементов ряда не отражается на его поведении, мы можем считать, что $0 \leq a_n \leq b_n$ при всех $n = 1, 2, 3, \dots$ Обозначив частные суммы через $A$ и $B$ соответственно, имеем $A_n \leq B_n$. Пусть ряд $\sum b_n$ сходится, тогда $B_n$ ограничена, $B_n \leq S, S = const, \forall n$. В таком случае $A_n$ также меньше либо равна некоторому $S$, что даёт нам ограниченность $\sum a_n$.
+        \end{proof}
+    
+    \defitem{Сформулируйте и докажите признак сравнения положительных числовых рядов, основанный на неравенстве $\frac{a_{n+1}}{a_n} \leq \frac{b_{n+1}}{b_n}$.}
+        
+        Ряд $\sum b_n$ сходится $\implies$ ряд $\sum a_n$ сходится
+	
+        Ряд $\sum a_n$ расходится $\implies$ ряд $\sum b_n$ расходится
+        
+        \begin{proof}~
+        
+        $a_{n_0+1} \leq \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + 1}$
+        
+        $a_{n_0+2} \leq \frac{a_{n_0 + 1}}{b_{n_0 + 1}}\cdot b_{n_0 + 2} \leq \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + 2}$
+        
+        $\vdots$
+        
+        $a_{n_0+k} \leq \frac{a_{n_0}}{b_{n_0}}\cdot b_{n_0 + k} \implies \sum_{n=n_0}^{N} a_n \leq \frac{a_{n_0}}{b_{n_0}}\cdot \sum_{n=n_0}^{N} b_n$
+        \end{proof}
+
+    \defitem{Сформулируйте и докажите признак сравнения положительных числовых рядов, основанный на пределе $\lim \frac{a_n}{b_n}$.}
+        
+        $\lim_{n \to \infty} \frac{a_n}{b_n} \in (0; +\infty) \implies$ сходимость $\sum a_n \iff$ сходимость $\sum b_n$
+        
+        \begin{proof}~
+            
+        $c = \lim_{n \to \infty} \frac{a_n}{b_n} > 0$
+        
+        $\forall \epsilon\ \exists n_0:\ c - \epsilon \leq \frac{a_n}{b_n} \leq c + \epsilon$, при $n \geq n_0$
+        
+        Возьмём $c - \epsilon > 0 \implies (c - \epsilon)\cdot b_n \leq a_n \leq (c + \epsilon)\cdot b_n$
+        
+        Сходимость следует из правой части неравенства, а расходимость из левой. 
+        \end{proof}
+
+    \defitem{Пусть последовательности $\{a_n\}$, $\{A_n\}$ таковы, что $a_n - (A_n - A_{n - 1}) = c_n$ и ряд $\sum c_n$ сходится.
+        Докажите, что существует $C$ такое, что $a_1 + a_2 + \dots + a_n = A_n + C + o(1)$.}
+        
+        \begin{proof}~
+        	
+        $\sum_{n=1}^{N} c_n = \sum_{n=1}^{N} a_n - \sum_{n=1}^{N} (A_n - A_{n-1}) = \sum_{n=1}^{N} a_n - A_N + A_{0} \implies a_1 + a_2 + \dots + a_n = A_n + \left(- A_{0} + \sum_{n=1}^{N} c_n \right)$.
+        
+        Получим требуемое, если возьмём $C = \lim_{N\to \infty} - A_{0} + \sum_{n=1}^{N} c_n$.
+		\end{proof}
+	
+    \defitem{Сформулируйте и докажите признак Лобачевского-Коши.}
+        \begin{proposal}
+            Пусть $a_n > 0$ и $a_n \downarrow$
+        
+            Тогда ряды $\sum a_n$ и $\sum 2^n \cdot a_{2^n}$ ведут себя одинаково
+        \end{proposal}
+        \begin{proof}
+            $a_1 + (a_2) + (a_3 + a_4) + (a_5 + \dots + a_8) + \dots$
+        
+            $a_2 \leq a_1$
+            
+            $a_2 \geq a_2$
+        
+            $a_3 + a_4 \leq 2a_2$
+            
+            $a_3 + a_4 \geq 2a_4$
+        
+            $a_5 + \dots + a_8 \leq 4a_4$
+        
+            $a_5 + \dots + a_8 \geq 4a_8$
+        
+        
+            $\dots$
+        
+            $a_1 + \dfrac{1}{2}\sum_{n=1}^{m} 2^n a_{2^n} \leq \sum_{n = 1}^{2^m} a_n \leq a_1 + \sum_{n=0}^{m-1} 2^n a_{2^n}$
+        
+        \end{proof}
+
+    \defitem{Сформулируйте теорему Штольца о пределе последовательности. Покажите на примере, как с помощью теоремы Штольца можно уточнить асимптотическую оценку для частичной суммы ряда. $\frac{p_n}{q_n}$, $p_n$, $q_n \to 0$.}
+
+        \begin{theorem*}
+            (Штольца.) Если $p_n, q_n \to 0, q_n \downarrow$ и $\exists \lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$, то
+            $\lim \dfrac{p_n}{q_n} = \lim \dfrac{p_{n + 1} - p_n}{q_{n + 1} - q_n}$
+        \end{theorem*}
+
+        \begin{example}
+            Дан ряд $\sum_{n = 1}^{\infty} \dfrac{1}{n^2}$. Пусть $S$ --- сумма соответствующего ряда. Необходимо доказать, что 
+            \begin{equation*}
+                S_N = S - \dfrac{1}{N} + \operatorname{o} \left( \dfrac{1}{N} \right).
+            \end{equation*}
+
+            Обозначим $x_n = S - S_n \to 0$ и $y_n = \dfrac{1}{n} \to 0$. Рассмотрим предел отношения разностей:
+            \begin{equation*}
+                \lim_{n \to \infty} 
+                = \dfrac{S - S_n - (S - S_{n - 1})}{\frac{1}{n} - \frac{1}{n - 1}}
+                = \dfrac{1}{n^2} \cdot n \cdot (n - 1) \to 1.
+            \end{equation*}
+
+            По теореме Штольца $\lim_{n \to \infty} \dfrac{x_n}{y_n} = 1$. То есть 
+            \begin{equation*}
+                \dfrac{x_n}{y_n} = 1 + \operatorname{o}(1) \implies x_n = y_n + \operatorname{o}(y_n).
+            \end{equation*}
+
+            Отсюда и получаем то, что было в условии:
+            \begin{equation*}
+                S_n = S - \dfrac{1}{n} + \operatorname{o} \left( \dfrac{1}{n} \right).
+            \end{equation*}
+        \end{example}
+
+    \defitem{Пусть $\sum a_n$, $\sum a_n'$ --- сходящиеся положительные ряды. Говорят, что ряд $\sum a_n'$ сходится быстрее ряда $\sum a_n$, если $a_n' = o(a_n)$. Докажите, что в этом случае также $r_n' = o(r_n)$, где $r_n$, $r_n'$ - остатки соответствующих рядов.}
+        
+        Рассмотрим остатки каждого из рядов;
+        \begin{itemize}
+        \item 
+            $r_n = S - S_N$, где $S_N$ - частичная сумма ряда $\sum a_n$ и $S_N \to S$.
+
+        \item 
+            Для $\sum a_n'$ аналогично $r_n' = S' - S_N'$, где $S_N'$ - частичная сумма ряда $\sum a_n'$ и $S_N' \to S'$.
+        \end{itemize}
+        
+        Знаем, что $r_n$ и $r_n'$ стремятся к $0$. Но так как ряд положительные, то $r_n$ и $r_n'$ еще и монотонно стремятся к $0$. Значит, мы можем воспользоваться теоремой Штольца:
+        \begin{equation*}
+            \lim \dfrac{r_n'}{r_n} = \lim \dfrac{r_n' - r_{n - 1}'}{r_n - r_{n - 1}} = \lim \dfrac{a_n'}{a_n} = 0.    
+        \end{equation*}
+
+        Первый переход получается из теоремы Штольца. Последнее равенство дано по условию. Получается, что $\lim \dfrac{r_n'}{r_n} = 0$, что и требовалось доказать.
+
+    \defitem{Пусть $\sum a_n$, $\sum a_n'$ - расходящиеся положительные ряды. Говорят, что ряд $\sum a_n'$ расходится медленнее ряда $\sum a_n$, если $a_n' = o(a_n)$. Докажите, что в этом случае также $S_n' = o(S_n)$, где $S_n$, $S_n'$ - частичные суммы соответствующих рядов.}
+
+        Здесь можно использовать ту же идею, что и в предыдущем пункте. Но придется использовать видоизмененную формулировку теоремы Штольца с \href{https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BE%D1%80%D0%B5%D0%BC%D0%B0_%D0%A8%D1%82%D0%BE%D0%BB%D1%8C%D1%86%D0%B0}{википедии}. Мы сможем применить её, так как последовательности из частичных сумм положительный и строго возрастает.
+
+        Рассмотрим предел отношения частичных сумм:
+        \begin{equation*}
+            \lim \dfrac{S_n'}{S_n} = \lim \dfrac{S_n' - S_{n - 1}'}{S_n - S_{n - 1}} = \lim \dfrac{a_n'}{a_n} = 0. 
+        \end{equation*}
+        
+        Получается, что $\lim \dfrac{S_n'}{S_n} = 0$, что и требовалось доказать.
+
+    \defitem{Пусть положительный ряд $\sum a_n$ сходится и $r_n$ --- его остаток. Докажите, что ряд $\sum (\sqrt{r_{n}} - \sqrt{r_{n+1}})$ также сходится, причём медленнее, чем ряд $\sum a_{n+1}$.}
+        
+        Вспомним, что $r_n = S - S_n$.
+
+        Докажем сходимость:
+        \begin{align*}
+            \sum_{n=1}^{N} (\sqrt{r_{n}} - \sqrt{r_{n+1}}) 
+            &= \sqrt{r_1} - \sqrt{r_2} + \sqrt{r_2} - \sqrt{r_3} + \dots + \sqrt{r_{N}} - \sqrt{r_{N+1}} \\
+            &= \sqrt{r_1} - \sqrt{r_{N+1}} \\
+            &= \sqrt{S} - \sqrt{r_{N+1}} \\
+            &\to \sqrt{S} \text{ (так как } r_{N+1} \to 0)
+        \end{align*}
+        	
+
+        Докажем, что ряд сходится медленнее:
+        \begin{equation*}
+            \frac{\sqrt{r_{n}} - \sqrt{r_{n+1}}}{a_{n+1}} = \frac{\sqrt{r_{n}} - \sqrt{r_{n+1}}}{r_{n} - r_{n+1}} = \frac{1}{\sqrt{r_{n}} + \sqrt{r_{n+1}}} \to \infty,
+        \end{equation*}
+        так как $\sqrt{r_{n}} \to 0$ и $\sqrt{r_{n+1}} \to 0$.
+        
+    \defitem{Пусть положительный ряд $\sum a_n$ расходится и $S_n$ его частичная сумма. Докажите, что ряд $\sum (\sqrt{S_{n+1}} - \sqrt{S_n})$ также расходится, причём медленнее, чем ряд $\sum a_{n+1}$.}
+
+        Докажем расходимость:
+        \begin{align*}
+            \sum_{n=0}^{N} (\sqrt{S_{n+1}} - \sqrt{S_n}) 
+            &= \sqrt{S_1} - \sqrt{S_0} + \sqrt{S_2} - \sqrt{S_1} + \dots + \sqrt{S_{N+1}} - \sqrt{S_{N}} \\
+            &= \sqrt{S_{N+1}} - \sqrt{S_0} \\
+            &= \sqrt{S_{N+1}} \to \sqrt{S}.
+        \end{align*}
+
+        Перейдем ко второй части вопроса:
+        \begin{align*}
+            \dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{a_{n+1}} 
+            &= \dfrac{\sqrt{S_{n+1}} - \sqrt{S_n}}{S_{n+1} - S_n} \\
+            &= \dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}},
+        \end{align*}
+        где $\sqrt{S_{n+1}} + \sqrt{S_n} \to \infty$. Это значит, что $\dfrac{1}{\sqrt{S_{n+1}} + \sqrt{S_n}}$ стремится к $0$. Тогда ряд $\sum (\sqrt{S_{n+1}} - \sqrt{S_n})$ расходится, причём медленнее, чем ряд $\sum a_{n+1}$.
+        
+    \defitem{Сформулируйте признак Даламбера для положительного ряда}
+        \begin{theorem*}
+            Признак Даламбера. Пусть $a_n > 0$.
+            
+            $\overline{\lim} \dfrac{a_{n+1}}{a_n} < 1 \implies $ ряд $\sum a_n$ сходится.
+            
+            $\underline{\lim} \dfrac{a_{n+1}}{a_n} > 1 \implies $ ряд $\sum a_n$ расходится.
+        \end{theorem*}
+
+    \defitem{Сформулируйте радикальный признак Коши для положительного ряда.}
+        \begin{theorem*}
+            Радикальный признак Коши. Пусть $a_n \geq 0$.
+            
+            $\overline{\lim} \sqrt[n]{a_n} < 1 \implies$ ряд $\sum a_n$ сходится.
+             
+            $\overline{\lim} \sqrt[n]{a_n} > 1 \implies$ ряд $\sum a_n$ расходится.
+        \end{theorem*}
+
+    \defitem{Докажите, что всякий раз, когда признак Даламбера даёт ответ на вопрос о сходимости ряда, то радикальный признак Коши даёт (тот же) ответ на этот вопрос.}
+        
+        Пусть $a_n > 0$. Тогда заметим, что
+
+        \begin{equation*}
+            \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}\dfrac{a_{n+1}}{a_n}.
+        \end{equation*}
+
+        Докажем правую часто неравенства, левая доказывается аналогично.
+
+        \begin{proof}
+            Пусть $q = \overline{\lim} \sqrt[n]{a_n}$ и $p = \overline{\lim} \dfrac{a_{n + 1}}{a_n}$. Тогда необходимо доказать, что $q \leq p$.
+
+            Докажем от противного. Предположим, что $p < q$. 
+
+            Так как мы берем верхний предел, то для любого $\eps > 0$ существует $\{n_k\}$, что $\sqrt[n_k]{a_{n_k}} \geq q - \eps \iff a_{n_k} \geq (q - \eps)^{n_k}$.
+
+            Из определения $p$ следует, что для любого $\eps > 0$ существует $n_0$, что $\dfrac{a_{n + 1}}{a_n} \leq p + \eps$ для любых $n \geq n_0$, что равносильно $a_{n_0 + m} \leq a_{n_0} \cdot (p + \eps)^m$.
+
+            Теперь взяв $a_{n_k}$ можем получить следующее:
+            \begin{equation*}
+                (q - \eps)^{n_k} \leq a_{n_k} \leq a_{n_0} \cdot (p + \eps)^{n_k - n_0} = a_{n_0} \cdot \dfrac{(p + \eps)^{n_k}}{(p + \eps)^{n_0}}.
+            \end{equation*}
+
+            Отсюда получаем, что $\dfrac{a_{n_0}}{(p + \eps)^{n_0}} \geq \left( \dfrac{q - \eps}{p + \eps} \right)^{n_k}$ при всех $k = 1, 2, \dots$. Но при малом $\eps$ мы имеем
+            \begin{equation*}
+                \dfrac{q - \eps}{p + \eps} > 1.
+            \end{equation*}
+
+            Тогда мы пришли к противоречию, так как в $\dfrac{a_{n_0}}{(p + \eps)^{n_0}} \geq \left( \dfrac{q - \eps}{p + \eps} \right)^{n_k}$ слева записано конечное число, а справа будет бесконечность.
+        \end{proof}
+
+        Если $\overline{\lim}\dfrac{a_{n+1}}{a_n} < 1 \implies \overline{\lim}{\sqrt[n]{a_n}} < 1$
+
+        Если $\underline{\lim}\dfrac{a_{n+1}}{a_n} > 1 \implies \underline{\lim} \sqrt[n]{a_n} > 1$
+
+        Если $\exists \lim \frac{a_{n+1}}{a_n}$, то $\overline{\lim} \frac{a_{n+1}}{a_n} = \underline{\lim} \frac{a_{n+1}}{a_n} \implies \exists \lim \sqrt[n]{a_n} = \lim \frac{a_{n+1}}{a_n}$
+
+    \defitem{Докажите, что если для положительного ряда $\sum a_n$ существует $\lim \frac{a_{n + 1}}{a_n} = q$, то существует и $\lim \sqrt[n]{a_n} = q$.}
+
+        Заметим, что
+        \begin{equation*}
+            \lim \frac{a_{n + 1}}{a_n} = q \iff 
+            \overline{\lim} \frac{a_{n + 1}}{a_n} = \underline{\lim} \frac{a_{n + 1}}{a_n}.
+        \end{equation*}
+
+        Вспомним неравенство из предыдущего пункта:
+        \begin{equation*}
+            \underline{\lim} \dfrac{a_{n+1}}{a_n} \leq \underline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}\dfrac{a_{n+1}}{a_n}.
+        \end{equation*}
+
+        Подставим известные значения:
+        \begin{equation*}
+            q \leq \underline{\lim}{\sqrt[n]{a_n}} \leq \overline{\lim}{\sqrt[n]{a_n}} \leq q.
+        \end{equation*}
+
+        То есть мы зажали предел с двух сторон с помощью $q$. Тогда
+        \begin{equation*}
+            \lim \sqrt[n]{a_n} = q.
+        \end{equation*}
+
+    \defitem{Приведите пример положительного ряда, вопрос о поведении которого не может быть решен с помощью признака Даламбера, но может быть решен с помощью радикального призанка Коши (с обоснованием).}
+
+        Выберем какие-то числа $a$ и $b$ такие, что $0 < a < 1$, $b > 1$ и $a \cdot b \neq 1$.
+
+        Рассмотрим следующий ряд:
+        \begin{equation*}
+            \sum_{n = 1}^{\infty} a^{[n / 2]} \cdot b^{[(n - 1) / 2]} = 1 + a + ab + a^2b + a^2b^2 + a^3b^2 + \dots.
+        \end{equation*}
+
+        Заметим, что мы не можем применять признак Даламбера:
+        \begin{itemize}
+        \item 
+            Пусть $n$ чётное. Тогда
+            \begin{equation*}
+                \overline{\lim} \dfrac{a_{n + 1}}{a_n} = b > 1.
+            \end{equation*}
+
+        \item 
+            Пусть $n$ нечётное. Тогда
+            \begin{equation*}
+                \underline{\lim} \dfrac{a_{n + 1}}{a_n} = a < 1.
+            \end{equation*}
+        \end{itemize}
+
+        Но в то же время ряд сходится по радикальному признаку Коши. Заметим следующее:
+        \begin{itemize}
+            \item 
+            Пусть $n$ чётное. Тогда
+            \begin{equation*}
+                \sqrt[n]{a_n} = \sqrt{a} \cdot b^{(n - 2) / 2n}.
+            \end{equation*}
+
+        \item 
+            Пусть $n$ нечётное. Тогда
+            \begin{equation*}
+                \sqrt[n]{a_n} = a^{(n - 1) / 2n} \cdot b^{(n - 1) / 2n}.
+            \end{equation*}
+        \end{itemize}
+
+        Отсюда получаем, что
+        \begin{equation*}
+            \lim \sqrt[n]{a_n} = \sqrt{ab}.
+        \end{equation*}
+
+    \defitem{Приведите пример ряда, который сходится медленнее любого ряда геометрической прогрессии, но быстрее любого обобщённого гармонического ряда (с обоснованием).}
+        
+        Докажем, что ряд $\sum_{n = 1}^{\infty} e^{-\sqrt{n}}$ подходит.
+        
+        \begin{itemize}
+        \item 
+            $\sum q^n$ --- ряд геометрической прогрессии, $0 < q < 1$; $q^n = e^{n * \ln q}$, где $\ln q < 0$.
+
+        \item 
+            $\sum \dfrac{1}{n^p}$ --- обобщённый гармонический ряд. $\dfrac{1}{n^p} = e^{-p \ln n}$, $p > 1$.
+        \end{itemize}
+
+        Заметим, что при любых $p$, $q$ и при любом $n \geq n_0$ выполняется
+        \begin{equation*}
+            p \ln n < \sqrt{n} < n \ln \dfrac{1}{q}.
+        \end{equation*}
+
+        Перейдем к доказательствам.
+        \begin{itemize}
+        \item 
+            Докажем, что выбранный ряд сходится медленнее геометрической прогрессии:
+            \begin{equation*}
+                \dfrac{e^{-\sqrt{n}}}{q^n} = e^{-\sqrt{n} + n \ln \frac{1}{q}} \to +\infty,
+            \end{equation*}
+            так как $-\sqrt{n} + n \ln \dfrac{1}{q} \to + \infty$.
+
+        \item 
+            Докажем, что выбранный ряд сходится быстрее гармонического ряда:
+            \begin{equation*}
+                \dfrac{e^{-\sqrt{n}}}{1 / n^p} = e^{-\sqrt{n} + p \ln n} \to 0,
+            \end{equation*}
+            так как $-\sqrt{n} + p \ln n \to -\infty$.
+        \end{itemize}
+        
+    \defitem{Сформулируйте признак Гаусса для положительного ряда. Приведите пример применения признака Гаусса.}
+
+        Если существует $\delta > 0$ и $p$ такие, что $\dfrac{a_{n+1}}{a_n} = 1 - \dfrac{p}{n} + \operatorname{O}\left(\dfrac{1}{n^{1 + \delta}}\right) $
+        то справедливо следующее:
+        \begin{itemize}
+        \item 
+            $p > 1 \implies$ ряд $\sum a_n$ сходится.
+        \item
+            $p \leq 1 \implies$ ряд $\sum a_n$ расходится.
+        \end{itemize}
+
+        \begin{example}
+            Исследуем на сходимость следующий ряд:
+            \begin{equation*}
+                \sum_{n = 1}^{\infty} \left( \dfrac{(2n - 1)!!}{(2n)!!} \right)^2.
+            \end{equation*}
+    
+            Выполним некоторые преобразования:
+            \begin{align*}
+                \dfrac{a_n}{a_{n + 1}} 
+                &= \left( \dfrac{(2n - 1)!!}{(2n!!)} \cdot \dfrac{(2n + 2)!!}{(2n + 1)!!} \right)^2
+                = \left( \dfrac{2n + 2}{2n + 1} \right)^2
+                = \left( \dfrac{1 + \frac{1}{n}}{1 + \frac{1}{2n}} \right)^2 \\
+                &\sim \left[ \dfrac{1}{1 + x} \sim 1 - x \right] 
+                \sim \left( 1 + \dfrac{1}{n} \right)^2 \cdot \left( 1 - \dfrac{1}{2n} \right)^2 \\
+                &\sim \left( 1 + \dfrac{2}{n} \right) \cdot \left( 1 - \dfrac{1}{n} \right)
+                = 1 + \dfrac{1}{n} + \dfrac{2}{n^2}
+            \end{align*}
+
+            Получили $p = 1$, $\gamma = 1$. Тогда ряд расходится.
+        \end{example}
+
+    \defitem{Приведите пример положительного ряда, вопрос о поведении которого не может быть решен с помощью признака Гаусса (с обоснованием).}
+
+        Анализируем положительный ряд $\sum_{n=1}^{\infty} \dfrac{1}{n \ln^p n}$ с общим членом $a_n = \dfrac{1}{n \ln^p n}$.
+
+        Рассмотрим отношение:
+        \begin{align*}
+            \dfrac{a_{n + 1}}{a_n} 
+            &= \dfrac{n \ln^p n}{(n + 1) \ln^p (n + 1)} \\
+            & = \dfrac{n}{n + 1} \cdot \dfrac{\ln^p n}{\ln^p (n + 1)} \\
+            &= \dfrac{1}{1 + 1/n} \cdot \dfrac{\ln^p n}{\left( \ln n + \ln (1/n)\right)^p} \\
+            &= \left[\text{ По формуле Тейлора для $(1+x)^{-1}$ и $\ln (1+x) \sim x$ }\right] \\
+            &= \left(1 - \dfrac{1}{n} + \dfrac{1}{n^2} + o\left(\dfrac{1}{n^2}\right)\right) \cdot \left(1 + \dfrac{1/n + \o(1/n)}{\ln n}\right)^{-p} \\
+            &= \left[\text{ Перешли к менее строгому приближению и  снова разложили $(1+x)^{-p}$ }\right] \\
+            &= \left(1 - \dfrac{1}{n} + \o\left(\dfrac{1}{n \ln n}\right)\right) \cdot \left(1 - \dfrac{p}{n \ln n} + \o\left(\dfrac{1}{n \ln n}\right)\right) \\
+            &= 1 - \dfrac{1}{n} - \dfrac{p}{n \ln n} + \o\left(\dfrac{1}{n \ln n}\right).
+        \end{align*}
+        
+        Для использования признака Гаусса должны получить приближение 
+        \begin{equation*}
+            1 - \dfrac{q}{n} + \operatorname{O}\left( \dfrac{1}{n^{1+\delta}} \right),
+        \end{equation*}
+        где $\delta > 0$.
+
+        Но при этом имеем
+        \begin{equation*}
+            - \dfrac{1}{n} - \dfrac{p}{n \ln n} + \o\left(\dfrac{1}{n \ln n}\right) \neq \operatorname{O}\left( \dfrac{1}{n^{1+\delta}} \right),
+        \end{equation*}
+        потому что 
+        $\dfrac{1}{\ln n} > \dfrac{1}{n^{\delta}}$ для любых $\delta > 0$ при $n$, стремящемся к $\infty$.
+
+    \defitem{Выведите двустороннюю оценку для частичной суммы ряда через определённый интеграл. Сформулируйте и докажите интегральный признак Коши-Маклорена}
+
+        Рассмотрим $f(x) \downarrow$ при $x \geq n_0 - 1$ и ряд $\sum_{n=n_0}^{\infty} a_n$, где $a_n = f(n)$:
+        \[\begin{gathered}
+            f(n + t) \leq a_n \leq f(n - 1 + t), t \in [0; 1].
+        \end{gathered}\]
+
+        Отсюда следует, что
+        \begin{equation*}
+            \int_{0}^{1} dt : \ \ \ \ \int_{n}^{n+1} f(x)dx \leq a_n \leq \int_{n-1}^{n} f(x)dx.
+        \end{equation*}
+
+        Просуммируем полученное:
+        \begin{equation*}
+            \int_{n_0}^{N+1} f(x)dx \leq \sum_{n=n_0}^{N} a_n \leq \int_{n_0-1}^{N} f(x)dx
+        \end{equation*}
+
+        Тогда $\sum a_n$ ведёт себя так же, как и несобственный интеграл $\int^{\infty}f(x)dx$.
+
+    \defitem{Что такое улучшение сходимости положительного ряда? Покажите на примере как можно улучшить сходимость ряда.}
+
+        Пусть у нас есть некоторый ряд $\sum a_n$ и он сходится медленно. В таких случаях для расчёта суммы ряда с необходимой точностью потребуется взять больше членов, что неудобно. Мы можем преобразовать наш ряд для улучшения сходимости, т.е. получить некоторый ряд $\sum a_n'$, который будет сходиться быстрее, чем исходный $\sum a_n$.
+       	\begin{example}
+            Пусть у нас есть ряд $S = \sum_{n = 1}^{\infty} \dfrac{1}{n^2 + 2} \approx \sum_{n = 1}^{\infty} \dfrac{1}{n^2}$. Воспользуемся  методом Куммера. Для улучшения сходимости будем брать ряды вида $\sum_{n = 1}^{\infty} \dfrac{1}{n(n+1)} = 1, \sum_{n = 1}^{\infty} \dfrac{1}{n(n+1)(n+2)} = \dfrac{1}{4}, \dots$. 
+            
+            В данном случае нам подойдёт первый ряд в этом списке, поскольку $\dfrac{1}{n^2} \sim \dfrac{1}{n(n+1)}$.
+            
+			$\sum_{n=1}^{\infty} \left(\frac{1}{n^2+2} - \frac{1}{n(n+1)}\right) = S - 1 \implies S = 1 + \sum_{n=1}^{\infty} \left(\frac{1}{n^2 + 2} - \frac{1}{n(n+1)}\right)$
+			
+			$\frac{1}{n^2+2} - \frac{1}{n(n+1)} = \frac{1}{n^2} \cdot \left(\frac{1}{1 + \frac{2}{n^2}} - \frac{1}{1 + \frac{1}{n}}\right) = \frac{1}{n^2} \cdot \left(1 - \frac{2}{n^2} + o\left(\frac{1}{n^2}\right) - \left(1 - \frac{1}{n} + \frac{1}{n^2} + o\left(\frac{1}{n^2}\right)\right)\right) = \frac{1}{n^3} + o\left(\frac{1}{n^3}\right)$.
+         
+            Получили ряд $\sum_{n = 1}^{\infty} \dfrac{1}{n^3}$, который сходится быстрее, $1 + \sum_{n = 1}^{\infty} \dfrac{1}{n^3} \approx \sum_{n = 1}^{\infty} \dfrac{1}{n^2 + 2}$.
+        \end{example}
+    
+    \defitem{Дайте определения: знакопеременный ряд, знакочередующийся ряд, абсолютно сходящийся ряд, условно сходящийся ряд, положительная часть ряда, отрицательная часть ряда.}
+    
+    	\begin{definition*}
+    		Пусть существует ряд $\sum a_n$. такой, что для любого $a_i$ может быть, как больше 0, так и меньше 0. В таком случае ряд $\sum a_n$ называется знакопеременным.
+    	\end{definition*}
+    		
+    	\begin{definition*}
+    		Пусть существует ряд $\sum a_n$. такой, что для любого $a_i \cdot a_{i+1} < 0$. В таком случае ряд $\sum a_n$ называется знакочередующимся.
+    	\end{definition*}
+    
+    	\begin{definition*}
+            Ряд $\sum\limits_{n = 1}^\infty {{a_n}}$ называется абсолютно сходящимся, если ряд $\sum\limits_{n = 1}^\infty {\left| {{a_n}} \right|}$ также сходится.
+            
+            Если ряд $\sum\limits_{n = 1}^\infty {{a_n}}$ сходится абсолютно, то он является сходящимся (в обычном смысле). Обратное утверждение неверно.
+   		\end{definition*}
+        
+        \begin{definition*}
+            Ряд $\sum\limits_{n = 1}^\infty {{a_n}}$ называется условно сходящимся, если сам он сходится, а ряд, составленный из модулей его членов, расходится.
+        \end{definition*}
+        
+   		\begin{definition*}
+   			Введем два ряда: $a_n^+ = \begin{cases}
+   			a_n, a_n > 0 \\
+   			0
+   			\end{cases}$ 
+   			и $a_n^- = \begin{cases}
+   			|a_n|, a_n < 0 \\
+   			0
+   			\end{cases}$.
+   			Тогда ряды $\sum a_n^+$ и $\sum a_n^-$ соответственно называются положительной и отрицательной частью ряда $\sum a_n$.
+   		\end{definition*}
+   	
+   		\defitem{Докажите, что ряд сходится абсолютно ровно в том случае, когда сходятся его положительная и отрицательная части.}
+   			
+   		\begin{proof}
+   		
+   			Рассмотрим ряд $\sum a_n$, дополнительный ряд $\sum |a_n|$, а также положительную и отрицательную части $\sum a_n^+$ и $\sum a_n^-$.
+   			
+   			1) Пусть ряд $\sum a_n$ сходится абсолютно. В таком случае ряд $\sum |a_n|$ сходится, а так как члены рядов $\sum a_n^+$ и $\sum a_n^-$ все содержатся в ряде $\sum |a_n|$, то для всех их частичных сумм справедливо следующее: $0 \leq P_k \leq A_n'$ и $0 \leq Q_m \leq A_n'$, где $P_k$ и $Q_m$ - частичные суммы положительной и отрицательной части соответственно, а $A_n'$ - частичная сумма дополнительного ряда и $A_n' = P_k + Q_m, n = m + k$. Это значит, что оба ряда $\sum a_n^+$ и $\sum a_n^-$ сходятся.
+   			
+   			2) Исходя из того, что $S_n = P_k - Q_m, n = m + k$ и положительных и отрицательных элементов в $\sum a_n$ бесконечное множество, мы получаем, что при $n \to \infty$ одновременно $m \to \infty$ и $k \to \infty$. Переходя к пределу получаем, что исходный ряд сходится абсолютно и его сумма будет равна $P - Q$.
+   			
+   			
+   		\end{proof}
+   	
+   		\defitem{Докажите, что если ряд сходится условно, то его положительная и отрицательная части расходятся (имеют бесконечные суммы).}
+   		
+   		\begin{proof}
+               Рассмотрим ряд $\sum a_n$, дополнительный ряд $\sum |a_n|$, а также положительную и отрицательную части $\sum a_n^+$ и $\sum a_n^-$. 
+               
+               Поскольку ряд $\sum a_n$ сходится условно, то $\sum |a_n|$ расходится. Рассмотри частичные суммы $\sum |a_n|$, $\sum a_n^+$ и $\sum a_n^-$ --- $A_n', P_k, Q_m$ соответственно. Для любого $n = m + k$, $A_n' = P_k + Q_m$. При $n \to \infty$, $m \to \infty$ и $k \to \infty$. 
+               
+               Так как ряд $\sum |a_n|$ расходится, то сумма $A_n' \to \infty$. Поскольку число положительных и отрицательных элементов бесконечна, то получаем $P_k \to \infty$ и $Q_m \to \infty$, а значит ряды $\sum a_n^+$ и $\sum a_n^-$ расходятся.
+   		\end{proof}
+           
+    \defitem{Сформулируйте мажорантный признак Вейерштрасса. Приведите пример применения признака.}
+        
+        \begin{theorem*}
+            Если $|a_n| \leq b_n$ при $n > n_0$ и положительный ряд $\sum b_n$ сходится,
+            то $\sum a_n$ сходится, причём абсолютно.
+        \end{theorem*}
+        
+        \begin{example}
+        $\sum_{n=1}^{\infty} \dfrac{\sin(nx)}{n^p}$, $p > 0$
+        
+        $|sin(nx)| \leq 1 \implies \left|\dfrac{sin(nx)}{n^P}\right| \leq \dfrac{1}{n^p}$
+        
+        $\sum \dfrac{1}{n^p} $ сходится $(p > 1) \implies \sum_{n=1}^{\infty} \dfrac{\sin(nx)}{n^p}$ сходится абсолютно.
+        \end{example}
+
+    \defitem{Что такое группировка членов ряда? Докажите, что любой ряд, полученный из сходящегося ряда группировкой его членов, сходится и имеет ту же сумму.}
+        
+        Говорят, что ряд $\sum b_k$ получен из $\sum a_n$ группировкой членов, если $\exists n_1 < n_2 < \dots$:
+
+        $b_1 = a_1 + a_2 + \dots + a_{n_1}$
+
+        $b_2 = a_{n_1 + 1} + a_{n_1 + 2} + \dots + a_{n_2}$
+
+        $\dots$
+
+        \begin{comment}
+            Если $\sum a_n$ сходится, то ряд $\sum b_k$ сходится к той же сумме.
+        \end{comment}
+
+        \begin{proof}
+        $\sum_{k=1}^{m} b_k = \sum_{n=1}^{n_m} a_n$
+        \end{proof}
+
+        \textit{Обратное утверждение неверно:} $(1 - 1) + (1 - 1) + \dots$
+
+    \defitem{Как с помощью группировки преобразовать знакопеременный ряд в знакочередующийся? Что можно утверждать о сходимости полученного знакочередующегося ряда?}
+        
+        Знакопеременный ряд при помощи группировки сводится к знакочередующемуся:
+
+        $a_1 \leq 0$, $\dots$, $a_{n_1} \leq 0$; $b_1 = \sum_{i=1}^{n_1} a_i \leq 0$
+
+        $a_{n_1+1} \geq 0$, $\dots$, $a_{n_2} \geq 0$; $b_2 = \sum_{i={n_1 + 1}}^{n_2} a_i \geq 0$
+
+        При такой группировке сходимость исходного ряда $\iff$ сходимость $\sum b_n$
+
+    \defitem{Приведите пример преобразования знакопеременного (но не знакочередующегося) ряда к знакочередующемуся.}
+
+        \begin{example}
+            $\sum_{n=1}^{\infty} \dfrac{(-1)^{[\ln n]}}{n}$
+
+            $\sum_{k=0}^{\infty} b_k$, где $b_k = (-1)^k \cdot \sum_{e^k \leq n < e^{k+1}} \dfrac{1}{n}$
+
+            $|b_k| = \sum_{n=[e^k] + 1}^{[e^{k+1}]} \dfrac{1}{n} \leq \dfrac{1}{[e^k] + 1} \cdot ([e^{k+1}]-[e^k]) \approx \dfrac{e^{k+1} - e^k}{e^k} \to e - 1 > 0$
+        \end{example}
+
+    \defitem{Для знакочередующегося ряда с убывающем по модулю общим членом сформулируйте оценку $n$-го остатка. Приведите пример применения этой оценки.}
+
+    \defitem{Сформулируйте признак Лейбница для знакочередующегося ряда. Приведите пример применения признака Лейбница.}
+        
+        \begin{theorem*}
+            Признак Лейбница. Если ряд имеет вид $\sum_{n=1}^{\infty}(-1)^n \cdot u_n$ и $u_n$ монотонно убывает к 0, то ряд сходится.
+            \end{theorem*}
+            
+            \begin{example}
+                $\sum_{n=1}^{\infty} \dfrac{(-1)^{n}}{n^p}$, $p > 0$
+            
+                $\dfrac{1}{n^p} \downarrow 0 \implies $ ряд сходится (при $\forall p > 0$)
+            \end{example}
+
+    \defitem{Покажите на примере, что к знакопеременным рядам неприменим предельный признак сравнения.}
+
+        Рассмотрим 2 ряда: $\sum_{n=1}^{\infty} \dfrac{(-1)^{n}}{\sqrt{n} - (-1)^{n}}$ и $\sum_{n=1}^{\infty} \dfrac{(-1)^{n}}{\sqrt{n}}$. Второй ряд сходится по признаку Лейбница.
+
+        $\dfrac{(-1)^{n}}{\sqrt{n} - (-1)^{n}} \approx \dfrac{(-1)^{n}}{\sqrt{n}}$
+
+        $\dfrac{(-1)^{n}}{\sqrt{n} - (-1)^{n}} - \dfrac{(-1)^{n}}{\sqrt{n}} = \dfrac{1}{\sqrt{n}(\sqrt{n} - (-1)^{n})} \approx \dfrac{1}{n}$ -- расходится
+
+        $\sum_{n=1}^{N} \dfrac{(-1)^{n}}{\sqrt{n} - (-1)^{n}} = \sum_{n=1}^{N} \dfrac{(-1)^{n}}{\sqrt{n}} + \sum_{n=1}^{N} \dfrac{1}{\sqrt{n}(\sqrt{n} - (-1)^{n})}$ -- расходится как сумма сходящегося и расходящегося ряда.
+        
+    \defitem{Покажите, что для любых числовых последовательностей $\{a_n\}$, $\{B_n\}$ справедлива формула суммирования по частям: $\sum_{n=m+1}^{N} a_n(B_n - B_{n-1}) = (a_NB_N-a_mB_m) - \sum_{n=m+1}^{N} (a_n - a_{n - 1}) B_{n-1}$.}
+        
+        Суммируем равенство по индексу $n$: 
+        \begin{equation*}
+            \sum_{n=m+1}^{N} a_n(B_n - B_{n-1}) = \sum_{n=m+1}^{N} (a_nB_n - a_{n-1}B_{n-1}) - \sum_{n=m+1}^{N} (a_n - a_{n-1})B_{n-1}.
+        \end{equation*}
+
+        Замечаем, что 
+        \begin{equation*}
+            \sum_{n=m+1}^{N} (a_nB_n - a_{n-1}B_{n-1}) = a_N B_N - a_m B_m.
+        \end{equation*}
+        
+        В итоге получаем
+        \begin{equation*}
+            \sum_{n=m+1}^{N} a_n(B_n - B_{n-1}) = (a_NB_N-a_mB_m) - \sum_{n=m+1}^{N} (a_n - a_{n - 1}) B_{n-1}.
+        \end{equation*}
+        
+    \defitem{Сформулируйте признак Дирихле. Приведите пример его применения.}
+        
+        $\sum_{n=1}^{\infty}a_n \cdot b_n$
+
+        \begin{theorem*}
+            Признак Дирихле. Если $a_n \downarrow 0$, а частичные суммы $\left| \sum_{n=1}^N b_n \right| \leq C$ ограничены,
+            то $\sum_{n=1}^{\infty}a_n \cdot b_n$ сходится.
+        \end{theorem*}
+
+        \begin{example}
+            $\sum_{n=1}^{\infty} \dfrac{\sin(nx)}{n^p}$, $p > 0$
+        
+            $a_n = \dfrac{1}{n^p} \downarrow 0$, $b_n = \sin nx$
+        
+            $b_1 + b_2 + b_3 + \dots + b_N = \sin x+ \sin 2x + \dots + \sin Nx = \dfrac{\cos \dfrac{x}{2} - \cos\left((N + 1/2)x\right)}{2 \sin \dfrac{x}{2}}$; $\left|\sum_{n=1}^{N}b_n\right| \leq \dfrac{2}{2\sin{\dfrac{x}{2}}} = \dfrac{1}{\sin{\dfrac{x}{2}}}$
+        
+            Ряд сходится по признаку Дирихле
+        \end{example}
+
+    \defitem{Сформулируйте признак Абеля. Выведите утверждение признака Абеля из признака Дирихле.}
+        
+        \begin{theorem*}
+            Признак Абеля. Если $a_n$ монотонна и ограничена, а ряд $\sum_{n=1}^{\infty}b_n$ сходится,
+            то $\sum_{n=1}^{\infty}a_n \cdot b_n$ сходится.
+        \end{theorem*}
+
+        Заметим, что частичные суммы $B_N$ ограничены. Так как последовательность $\{a_n\}$ монотонна и ограничена, у неё есть предел:
+        \begin{equation*}
+            \lim a_ n = a.
+        \end{equation*}
+
+        Тогда $\lim (a_n - a) = 0$. Заметим, что следующий ряд сходится по признаку Дирихле:
+        \begin{equation*}
+            \sum_{n = 1}^{\infty} (a_n - a) \cdot b_n.
+        \end{equation*}
+
+        Но тогда исходный ряд тоже сходится:
+        \begin{equation*}
+            \sum_{n = 1}^{\infty} a_n \cdot b_n = \sum_{n = 1}^{\infty} (a_n - a) \cdot b_n + a \cdot \sum_{n = 1}^{\infty} b_n = \sum_{n = 1}^{\infty} (a_n - a) \cdot b_n + C,
+        \end{equation*}
+        где $C$ --- некоторое конечное число.
+
+    \defitem{Что такое перестановка членов ряда? Приведите пример.}
+        
+        Пусть $f: \NN \to \NN$ -- биекция
+
+        Говорят, что ряд $\sum b_n$ получен из $\sum a_n$ перестановкой членов, если $b_n = a_{f(n)}$
+
+    \defitem{Сформулируйте свойство абсолютно сходящегося ряда, связанное с перестановкой членов.}
+
+        \begin{theorem*}
+            Если ряд $\sum a_n$ сходится абсолютно, то любой ряд, полученный из него перестановкой членов, сходится абсолютно к той же сумме.
+        \end{theorem*}
+
+    \defitem{Сформулируйте свойство условно сходящегося ряда, связанное с перестановкой членов (теорема Римана).}
+        
+        \begin{theorem*}
+            (Римана) Если ряд $\sum a_n$ сходится условно, то для $\forall S \in [-\infty; +\infty]$ то существует перестановка $f$ такая, что $\sum a_{f(n)} = S$
+        \end{theorem*}
+
+    \defitem{Приведите пример условно сходящегося ряда и перестановки, меняющей его сумму (с обоснованием).}
+
+        Рассмотрим следующий ряд:
+        \begin{equation*}
+            \sum_{n = 1}^{\infty} \dfrac{(-1)^n}{n} = -1 + \dfrac{1}{2} - \dfrac{1}{3} + \dfrac{1}{4} - \dots = -\ln{2}
+        \end{equation*}
+
+        Посмотрим, как выглядят положительная и отрицательная части:
+        \[\begin{gathered}
+            S_{2n}^{+} = \dfrac{1}{2} + \dfrac{1}{4} + \dots + \dfrac{1}{2n} = \dfrac{1}{2} \cdot (\ln{n} + \gamma) + \operatorname{o}(1); \\
+            S_{2n}^{-} = 1 + \dfrac{1}{3} + \dots + \dfrac{1}{2n - 1} = \ln{2} + \dfrac{1}{2} \cdot (\ln{n} + \gamma) + \operatorname{o}(1).
+        \end{gathered}\]
+        
+        Возьмём сначала $p$ положительных слагаемых, затем $\displaystyle q$ 
+        отрицательных и так далее. Тогда после $m$ таких действий получим следующее:
+        \[\begin{gathered}
+            S_{2mp}^+ = \dfrac{1}{2} + \dfrac{1}{4} + \dots + \dfrac{1}{2mp} = \dfrac{1}{2} \cdot (\ln{(mp)} + \gamma) + \operatorname{o}(1); \\
+            S_{2mq}^- = 1 + \dfrac{1}{3} + \dots + \dfrac{1}{2mq - 1} = \ln{2} + \dfrac{1}{2} \cdot (\ln{(mq)} + \gamma) + \operatorname{o}(1).
+        \end{gathered}\]
+
+        Теперь заметим, что мы получили, что после перестановки наш ряд сходится к другому числу:
+        \begin{equation*}
+            S_{2mp}^{+} - S_{2mq}^{-} = -\ln{2} + \dfrac{1}{2} \cdot \ln{\left(\dfrac{p}{q}\right)} + \operatorname{o}(1).
+        \end{equation*}
+
+    \defitem{Как определяется произведение рядов? Что можно утверждать о произведении абсолютно сходящихся рядов?}
+        
+        Если следующая сумма имеет предел при $K, M \to \infty$, не зависящий от порядка суммирования, то говорят, что определено произведение рядов.
+
+        \begin{equation*}
+            \left(\sum_{k=1}^{K} a_k\right) \cdot \left(\sum_{m=1}^{M} b_m \right) = \sum_{1 \leq k \leq K, 1 \leq m \leq M} a_k \cdot b_m = \sum_{n=1}^{\infty} c_n,\quad c_n = \sum_{k=1}^{n} a_k\cdot b_{n - k}
+        \end{equation*}
+
+        \begin{theorem*}
+        (Коши) Если $\sum a_k$, $\sum b_m$ сходятся абсолютно, то их произведение сходится абсолютно.
+        \end{theorem*}
+
+    \defitem{Что такое произведение рядов в форме Коши? Приведите пример вычисления такого произведения.}
+        
+        Произведение рядов по Коши:
+
+        $c_2 = a_1 \cdot b_1$
+
+        $c_3 = a_2 \cdot b_1 + a_1 \cdot b_2$
+
+        $c_4 = a_3 \cdot b_1 + a_2 \cdot b_2 + a_1 \cdot b_3$
+
+        $\dots$
+
+        $$\left(\sum_{k=1}^{\infty} a_k\right) \cdot \left(\sum_{m=1}^{\infty} b_m \right) = \sum_{n=2}^{\infty} c_n$$
+
+    \defitem{Дайте определения: бесконечное произведение, частичное произведение, сходящееся бесконечное произведение, расходящееся бесконечное произведение.}
+        
+        $\prod_{n=1}^{N} a_n = a_1 \cdot a_2 \cdot \dots \cdot a_N$ -- частичное произведение.
+
+        Бесконечным произведением называют формальную запись $\prod_{n=1}^{\infty} a_n$
+
+        Значением бесконечного произведения является предел частичного произведения:
+
+        $\prod_{n=1}^{\infty} a_n = \lim_{N \to \infty} \prod_{n=1}^{N} a_n$
+
+        Если предел существует и он конечен -- то бесконечное произведение сходится, иначе расходится.
+
+    \defitem{Сформулируйте и докажите необходимое условие сходимости бесконечного произведения.}
+
+        Если $P_N = \prod_{n=1}^N a_n$ сходится, то $a_n = \frac{P_n}{P_{n - 1}} \to 1$.
+
+        \begin{proof}
+            Так как бесконечное произведение сходится, имеем
+            \begin{equation*}
+                P_N \to \prod_{n = 1}^{\infty} a_n;
+                \quad\quad\quad
+                P_{N - 1} \to \prod_{n = 1}^{\infty} a_n.
+            \end{equation*}
+
+            Тогда заметим следующий факт:
+            \begin{equation*}
+                a_N = \dfrac{P_N}{P_{N - 1}} \to 1.
+            \end{equation*}
+        \end{proof}
+
+    \defitem{Пусть последовательности $\{a_n\}$, $\{A_n\}$, $A_n \neq 0$ таковы, что $a_n = \frac{A_n}{A_{n - 1}} \cdot c_n$ и бесконечное произведение $\prod c_n$ сходится. Докажите, что существует число $C \neq 0$, что $\prod_{n = 1}^N a_n = A_N \cdot (C + \operatorname{o}(1))$.}
+
+        Из условия знаем, что $\prod c_n$ сходится к числу $P \neq 0$. 
+        
+        Рассмотрим, чему равно частичное произведение:
+        \begin{equation*}
+            \prod_{n = 1}^N \dfrac{A_n}{A_{n - 1}} \cdot c_n = \dfrac{A_1}{A_0} \cdot c_1 \cdot \dfrac{A_2}{A_1} \cdot c_2 \cdot \dfrac{A_3}{A_2} \cdot c_3 \cdot \dots \cdot \dfrac{A_N}{A_{N - 1}} \cdot c_N = \dfrac{A_N}{A_0} \cdot P_N = A_N \cdot (C + \operatorname{o}(1)),
+        \end{equation*}
+        где $C = \dfrac{P}{A_0}$,
+
+    \defitem{Как определяется соответствующий бесконечному произведению ряд? Сформулируйте и докажите утверждение об их взаимосвязи.}
+        
+        $\prod_{n=1}^{N} a_n = e^{\ln \prod_{n=1}^{N} a_n} = e^{\sum_{n=1}^{N} \ln a_n}$
+
+        $\prod_{n=1}^{\infty} a_n = P \iff \sum_{n=1}^{\infty} \ln a_n = \ln P$ $(P \neq 0, a_n \to 1)$
+
+    \defitem{В каком случае бесконечное произведение называется сходящимся абсолютно? Сформулируйте и докажите критерий абсолютной сходимости бесконечного произведения.}
+        
+        $\prod_{n=1}^{\infty} a_n$ называется абсолютно сходящимся, если абсолютно сходится соответствующий ему ряд $\sum_{n=1}^{\infty} \ln a_n$.
+
+        \begin{proof}
+            Пусть $a_n = 1 + \alpha_n$, где $\{\alpha_n\}$ --- бесконечно малая последовательность, то есть $\alpha_n \to 0$.
+
+            Рассмотрим критерий:
+
+            $\prod_{n = 1}^{\infty} a_n$ сходится абсолютно тогда и только тогда, когда абсолютно сходится ряд $\sum_{n = 1}^{\infty} (a_n - 1)$. 
+
+            Заметим следующее:
+            \begin{equation*}
+                \ln a_n = \ln (\alpha_n + 1) = \alpha_n + \operatorname{o}(\alpha_n).
+            \end{equation*}
+
+            Отсюда получаем, что $|\ln a_n| = |\alpha_n| \cdot (1 + \operatorname{o}(1))$, то есть $|\ln a_n| \simeq |\alpha_n|$.
+        \end{proof}
+
+    \defitem{Напишите произведение Валлиса и его значение. Вычисление каких интегралов приводит к этой формуле?}
+
+        \begin{example}
+            (Произведение Валлиса)
+            $\prod_{n=1}^{\infty} \frac{4n^2}{4n^2 - 1} = \frac{\pi}{2}$ -- получается из анализа интегралов $\int_{0}^{\frac{\pi}{2}} \sin^n x dx$
+            
+            Прим. ред.: есть отличное \href{https://www.youtube.com/watch?v=8GPy_UMV-08}{видео} с интуитивно понятным доказательством.
+        \end{example}
+
+    \defitem{Дайте определение дзета-функции ($\zeta$-функция) Римана. Сформулируйте тождество Эйлера для $\zeta$-функции.}
+
+        \begin{example}
+            (Дзета-функция Римана) $\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}, s > 1$
+        
+            Тождество Эйлера:
+        
+            $\zeta(s) = \dfrac{1}{\prod_{n=1}^{\infty}(1 - \frac{1}{p_n^s})}$, где $p_1 = 2, p_2 = 3, p_3 = 5, \dots$
+        \end{example}
+    
+    \defitem{Дайте определения: функциональная последовательность, точка сходимости функциональной последовательности, область (множество) сходимости функциональной последовательности, поточечная сходимость функциональной последовательности на данном множестве.}
+	    
+	    \begin{definition*}
+	    	Функциональным рядом (последовательностью) называется такой ряд (последовательность), что его элементами являются не числа, а функции $f_n(x)$.
+	   	\end{definition*}
+   	
+   		\begin{definition*}
+   			Пусть $\forall n, n \in \mathbb{N}, f_n: D \rightarrow \mathbb{R}, D \subseteq \mathbb{R}$
+   			
+   			Говорят, что $a \in D$ - точка сходимости $\{f_n(x)\}$, если последовательность $\{f_n(a)\}$ сходится.
+   		\end{definition*}
+   	
+   		\begin{definition*}
+   			Множество всех точек сходимости называется множеством сходимости.
+   		\end{definition*}
+   	
+   		\begin{definition*}
+   			Говорят, что последовательность сходится на $D$ поточечно, если $D$ – множество сходимости.
+   		\end{definition*}
+
+		\defitem{Что такое равномерная норма? Покажите (исходя из определения нормы), что равномерная норма является нормой в соответствующем линейном пространстве (всех числовых функций, определённых на заданном множестве).}
+		
+		\begin{definition*}
+			Рассмотрим множество всех функций $f: D \rightarrow \mathbb{R}$. $||f||=\sup_{x \in D} |f(x)|$ - равномерная норма в пространстве $D$. 
+		\end{definition*}
+		
+		\defitem{Сформулируйте определения равномерной сходимости функциональной последовательности: в терминах нормы и на языке $\epsilon-\delta$.}
+		
+		\begin{definition*}
+			1) $f_n \overset{D}{\rightrightarrows} f \iff ||f_n - f|| \rightarrow 0$.
+			
+			2) $\sum f_n(x) \rightrightarrows S(x) \iff \forall \epsilon > 0, \exists N(\epsilon): \forall n \geqslant N(\epsilon), |S_n(x) - S(x)| < \epsilon$.
+		\end{definition*}
+	
+		\defitem{Докажите, что из равномерной сходимости следует поточечная сходимость на данном множестве.}
+		
+		\begin{proof}
+			Рассмотрим определения поточечной сходимости и равномерной сходимости:
+			
+			$\forall x \in E, \forall \epsilon > 0 \exists N = N(\epsilon, x): \forall n \geqslant N, |f_n(x) - f(x)| < \epsilon$ - поточечная сходимость.
+			
+			
+			$\forall \epsilon > 0 \exists N = N(\epsilon, x): \forall n \geqslant N, \forall x \in E ,|f_n(x) - f(x)| < \epsilon$ - равномерная сходимость.
+			
+			Заметим, что свойство равномерной сходимости не слабее, чем поточечной, а значит, из равномерной сходимости следует поточечная.
+		\end{proof}
+        
+    \defitem{Приведите пример функциональной последовательности, сходящейся поточечно, но не сходящейся равномерно (с обоснованием).}
+        
+        Рассмотрим последовательность функций вида $f_n(x) = arctg(nx)$. Поточечная сходимость в данном случае обусловлена тем, что при $n \rightarrow \infty$ $arctg(nx) \rightarrow 0$, если $x = 0$ и $|arctg(nx)| \rightarrow \dfrac{\pi}{2}$, если $|x| > 0$. Но при этом, так как при $n \rightarrow \infty$ на точке $x_0 = 0$ происходит разрыв, то функциональная последовательность $f_n(x) = arctg(nx)$ не сходится равномерно.
+        
+    \defitem{Приведите пример функциональной последовательности $\{f_n(x)\}$ (с нетривиальной зависимостью от $n$ и $x$), равномерно сходящейся на некотором множестве (с обоснованием)}
+
+        Нетривиальная зависимость означает, что общий член зависит как от $n$, так и от $x$.
+
+        \begin{example}
+            Пусть $D = [0; +\infty)$ и $f_n(x) = \dfrac{1}{n + x}$.
+
+            Докажем, что $f_n(x) \overset{D}{\rightrightarrows} 0$:
+            \begin{equation*}
+                \norm{f_n - 0} = \norm{f_n} = \sup_{x \in D} |f_n(x)| = \dfrac{1}{n} \to 0.
+            \end{equation*}
+        \end{example}
+
+    \defitem{Докажите, что если две функциональные последовательности сходятся равномерно к предельным функциям, то их сумма также сходится равномерно к сумме этих предельных функций.}
+
+        \begin{theorem*}
+            Пусть $f_n \overset{D}{\rightrightarrows} f$ и $g_n \overset{D}{\rightrightarrows} g$, тогда $(f_n + g_n) \overset{D}{\rightrightarrows} (f + g)$.
+        \end{theorem*}
+        
+        \begin{proof}
+            По определению равномерной сходимости:
+            \[\begin{gathered}
+                \forall \eps > 0 \; \exists N_1(\eps) : |f_n(x) - f(x)| < \dfrac{\eps}2 \;\;\; \forall n \ge N_1(\eps)\;\; \forall x \in D; \\
+                \forall \eps > 0 \; \exists N_2(\eps) : |g_n(x) - g(x)| < \dfrac{\eps}2 \;\;\; \forall n \ge N_2(\eps)\;\; \forall x \in D.
+            \end{gathered}\]
+
+            Тогда для любого $x$ из $D$ и для любого $n \geq \max\{N_1, N_2\}$:
+            \begin{equation*}
+                |(f_n(x) + g_n(x)) - (f(x) + g(x))|  = |(f_n(x) - f(x)) + (g_n(x) - g(x))| \le |f_n(x) - f(x)| + |g_n(x) - g(x)| < \dfrac{\eps}2 + \dfrac{\eps}2 = \eps.
+            \end{equation*}
+
+            Но тогда
+            \begin{equation*}
+                \forall \eps > 0 \; \exists N = \max\{N_1, N_2\} : |(f_n(x) + g_n(x)) - (f(x) + g(x))| < \eps \;\;\; n \ge N \;\; \forall x \in D,
+            \end{equation*}
+            то есть сумма $(f_n + g_n)$ равномерно сходится к $(f + g)$ на $D$.
+        \end{proof}  
+
+    \defitem{Докажите, что если две функциональные последовательности сходятся равномерно к ограниченным предельным функциям, то их произведение также сходится равномерно к произведению этих предельных функций.}
+
+        \begin{proof}
+            Пусть наши последовательности --- $\{f_n\}, \, \{g_n\};$, а их предельные функции --- $f, g$ соотв.
+            
+            Знаем: $\forall \; \eps_1, \eps_2 \; \exists \; N_1(\eps_1), \, N_2(\eps_2): |f_n(x) - f(x)| < \eps_1; \; |g_m(x) - g(x)| < \eps_2$ при $n \geq N_1(\eps_1), \;m \geq N_2(\eps_2).$
+            
+            Пусть $|f(x)|$ ограничен ограничен какой-нибудь константой $C_1$.
+            
+            Так как $|g(x)|$ ограничен, то $|g_n(x)|$ ограничен какой-нибудь константой $C_2$. Следовательно,
+            \begin{flalign}
+            & |f_n(x)\cdot g_n(x) - f(x)\cdot g(x)| = \\
+            & = |f_n(x)\cdot g_n(x) - f(x)\cdot g_n(x) + f(x)\cdot g_n(x) - f(x)\cdot g(x)| \leq \\
+            & \leq |f_n(x)\cdot g_n(x) - f(x)\cdot g_n(x)| + |f(x)\cdot g(x) - f(x)\cdot g_n(x)| =\\
+            & = |g_n(x)| \cdot |f_n(x) - f(x)| + |f(x)| \cdot |g(x) - g_n(x)| \leq C_2 \cdot \epsilon_1 + C_1 \cdot \epsilon_2 \text{ (начиная с $n = \max(N_1(\eps_1), N_2(\eps_2))$.}
+            \end{flalign}
+            Теперь возьмем произвольный $\eps > 0$, и положим $\eps_1 = \frac{\eps}{3 \cdot C_2}; \; \eps_2 = \frac{\eps}{3 \cdot C_1}.$  
+            
+            Начиная с $n = \max\{N_1(\eps_1), N_2(\eps_2)\}$ верно, что $|f_n(x) \cdot g_n(x) - f(x) \cdot g(x)| \leq \eps/3 + \eps/3 < \eps$.
+        \end{proof}
+
+    \defitem{Пусть функциональная последовательность $\{f_n\}$ сходится равномерно на множестве $D$ к предельной функции $f$, отделённой от нуля (т.е. $\inf_{x \in D} |f(x)| > 0$), то функциональная последовательность $\{f_n\}$ сходится равномерно на $D$ к $f$.}
+
+        \begin{proof}
+            \begin{flalign*}
+                & \norm{\frac{1}{f_n} - \frac{1}{f}} = \norm{\frac{f_n - f}{f_n \cdot f}} =
+                \sup_{x \in D}{\left|\frac{f_n - f}{f_n \cdot f}\right|} \leq \sup_{x \in D} \frac{\epsilon}{|f_n \cdot f|} \; \text{ при } n \geq N(\epsilon), \;  \text{т.к. } \norm{f_n - f} \leq \epsilon \text{ при } n \geq N(\epsilon).
+                \\ \\
+                & \inf |f(x)| = m > 0 \implies |f(x)| \geq m \; \forall \, x \in D. \\
+                \\
+                & |f_n| + |f_n - f| \geq |f_n - (f_n - f)|  = |f| \iff |f_n| \geq |f| - |f_n - f|. \text{ Поэтому если } \epsilon < m/2 \text{, то }\\ \\
+                & |f_n| \geq |f| - |f_n - f| > m - \epsilon > m - m/2 = m/2 \; \text{ при } n \geq N(\epsilon),  \; \text{ведь } |f| \geq m, \; |f_n - f| < \epsilon < m/2.\\
+                & |f_n| > m/2 \implies \frac{1}{|f_n|} < \frac{2}{m}; ~ |f| \geq m \implies \frac{1}{|f|} \leq \frac{1}{m}. \text{ Поэтому:} \\
+                &  \norm{\frac{1}{f_n} - \frac{1}{f}} \leq \sup_{x \in D} \frac{\epsilon}{|f_n \cdot f|} < \frac{\epsilon}{m/2 \cdot m} = \epsilon \cdot \frac{2 }{m^2} \; \; (\forall \, n \geq N(\epsilon))\\
+            \end{flalign*}
+            Так как $\frac{2}{m^2}$ - фиксированное число, а $\eps$ у нас --- сколь угодно малое, то это означает, что $\norm{\frac{1}{f_n} - \frac{1}{f}} \to 0,$ что является по определению равномерной сходимостью $f_n$ к  $f$.
+        \end{proof}
+
+    \defitem{Докажите, что равномерная сходимость последовательности на множестве $D = D_1 \cup D_2$ равносильно равномерной сходимости этой последовательности на $D_1$ и $D_2$ одновременно.}
+
+    \defitem{Пусть $\varphi$ : $G \to D$ -- биекция. Докажите, что равномерная сходимость функциональной последовательности $\{f_n\}$ на множестве $D$ равносильна равномерной сходимости функциональной последовательности $\{f_n \circ \varphi \}$ на множестве $G$.}
+
+    \defitem{Сформулируйте критерий Коши равномерной сходимости функциональной последовательности.}
+
+    \defitem{Докажите, что предел равномерно сходящейся последовательности непрерывных функций является непрерывной функцией.}
+
+        \begin{proof}
+            Пусть функция $s(x)$ $-$ предел некоторой последовательности непрерывных функций $s_n(x)$. Тогда непрерывность функции $s(x)$, которую нам нужно доказать, по определению будет заключаться в том, что в любой точке $x_0$ для любого $\eps > 0$ можно найти такое $\delta$, что из $|h| < \delta$ следует, что $|s(x_0 + h) - s(x_0)| < \eps$.
+
+            Для любых $x_0, h, n$ имеем
+            \begin{align*}
+                |s(x_0 + h) - s(x_0)| 
+                &= |s(x_0 + h) - s_n(x_0 + h) + s_n(x_0 + h) - s_n(x_0) + s_n(x_0) - s(x_0)| \\
+                &\leq |s(x_0 + h) - s_n(x_0 + h)| + |s_n(x_0 + h) - s_n(x_0)| + |s_n(x_0) - s(x_0)|.
+            \end{align*}
+
+            По определению равномерной сходимости мы можем взять такое $n$, что для любого $x_0$ будет выполняться неравенство $|s(x_0) - s_n(x_0)| < \frac{\eps}{3}$. Значит справедливы неравенства:
+            \[\begin{gathered}
+                |s(x_0 + h) - s_n(x_0 + h)| < \frac{\eps}{3}; \\
+                |s(x_0) - s_n(x_0)| < \frac{\eps}{3}.
+            \end{gathered}\]
+
+            Итак, пусть мы зафиксировали некоторое $n$, тогда, поскольку функция $s_n(x)$ монотонна по условию, найдётся такое $\delta$, что для любого $|h| < \delta$ выполняется неравенство $|s_n(x_0 + h) - s_n(x_0)| < \frac{\eps}{3}$. Таким образом
+            \begin{equation*}
+                |s(x_0 + h) - s(x_0)| \leq |s(x_0 + h) - s_n(x_0 + h)| + |s_n(x_0 + h) - s_n(x_0)| + |s_n(x_0) - s(x_0)| < \frac{\eps}{3} + \frac{\eps}{3} + \frac{\eps}{3} = \eps.
+            \end{equation*}
+        \end{proof}
+
+    \defitem{Сформулируйте теорему Дини о монотонной сходимости. Приведите пример её применения для доказательства равномерной сходимости функциональной последовательности (с обоснованием).}
+        
+        \begin{theorem*}
+            Пусть $f_n: [a, b] \to \RR, f_n(x)$ монотонна по $n$ при каждом $x \in [a, b]$, $f_n \to f$ на $[a, b]$ и $f$ непрерывна.
+
+            Тогда $f_n \overset{D}{\rightrightarrows} f$
+        \end{theorem*}
+
+        \begin{example}
+            См. №16-19 листка №4
+        \end{example}
+
+    \defitem{Приведите контрпример, показывающий, что в формулировке теоремы Дини о монотонной сходимости нельзя отказаться от условия непрерывности предельной функции (с обоснованием)}    
+
+        Рассмотрим функциональную последовательность $f_n(x) = \dfrac{1}{1 + nx}$ на множестве $D = [0;1]$. Поймём, что некоторые условия для теормы Дини выполняются:
+        \begin{itemize}
+        \item
+            $D$ --- компакт (ограниченное замкнутое множество).
+
+        \item 
+            $f_n$ монотонно убывает на $D$.
+
+        \item 
+            $f_n$ непрерывна на $D$.
+        \end{itemize}
+
+        Докажем, что не выполняется условие на непрерывность предельной функции.
+
+        Заметим, что
+        \begin{equation*}
+            f_n(x) \to^{n \to \infty} f(x) = \begin{cases}
+                1, &x = 0; \\
+                0, &x \neq 0.
+            \end{cases}
+        \end{equation*}
+        
+        То есть $f_n$ сходится неравномерно на $D$.
+    
+    \defitem{Покажите на примере как доказать неравномерность сходимости функциональной последовательности с помощью локализации особенности (с обоснованием).}
+
+        Надо рассмотреть $f_n = \dfrac{1}{x^n}$ на множестве $D = (1; +\infty)$.
+
+        Заметим, что $f_n \overset{D}{\to} f = 0 $, но при этом имеем
+        \begin{equation*}
+            f_n \to \begin{cases}
+                1, &x = 1; \\
+                0, &x > 1.
+            \end{cases}
+        \end{equation*}
+
+        Получили, что, если добавить точку, непрерывная функция стремится к разрывной. То есть локализовали особенность, а значит функциональная последовательность $f_n$ сходится неравномерно.
+
+    \defitem{Сформулируйте и докажите теорему о почленном переходе к пределу в функциональной последовательности.}
+
+        \begin{theorem*}
+            Если функциональная последовательность ${f_n(x)}$ сходится равномерно на множестве ${x}$ к предельной функции $f(x)$ и все элементы этой последовательности имеют предел в точке $x_0$, то и предельная функция  имеет предел в точке $x_0$, причём $\lim_{x \rightarrow x_0} f(x) = \lim_{x \rightarrow x_0}(\lim_{n \rightarrow \infty} f_n(x)) = \lim_{n \rightarrow \infty}(\lim_{x \rightarrow x_0} f_n(x))$, т.e. символ $\lim_{n \rightarrow \infty}$ предела последовательности и символ $\lim_{x \rightarrow x_0}$ предела функции можно переставлять местами (или, как говорят, к пределу при $x \rightarrow x_0$ можно переходить почленно).
+        \end{theorem*}
+
+    \defitem{Сформулируйте теорему о почленном дифференцировании функциональной последовательности.}
+
+        \begin{theorem*}
+            Пусть $a, b \in [-\infty; +\infty]$ и $D = (a; b)$ или $D = [a; b]$.
+
+            Пусть $f_n$ дифференцируема на множестве $D$, $f_n' \overset{D}{\rightrightarrows} g$ и существует точка $c \in D$, что $\{f_n(c)\}$ сходится.
+
+            Тогда существует такая предельная функция $f$, что $f_n \overset{D}{\to} f$. что $f$ дифференцируема и $f' = g$. И если $D$ ограничено, то $f_n \overset{D}{\rightrightarrows} f$.
+
+            Другими словами,
+            \begin{equation*}
+                \left( \lim_{n \to \infty} f_n(x) \right)' = \lim_{n \to \infty} f_n'(x).
+            \end{equation*}
+        \end{theorem*}
+
+    \defitem{Сформулируйте теорему о почленном интегрировании функциональной последовательности.}
+
+        \begin{theorem*}
+            Пусть $a, b \in [-\infty; +\infty]$ и $D = (a; b)$ или $D = [a; b]$.
+
+            Пусть $f_n$ непрерывна на $D$ и $f_n \overset{D}{\rightrightarrows} f$. Заметим, что из последнего условия следует непрерывность $f$ на $D$.
+
+            Тогда
+            \begin{equation*}
+                \int_a^x f_n(t) dt \overset{D}{\rightrightarrows} \int_a^x f(t) dt.
+            \end{equation*}
+
+            Или другими словами:
+            \begin{equation*}
+                \int_a^x \lim_{n \to \infty} f_n(t) dt = \lim_{n \to \infty} \int_a^x f_n(t) dt.
+            \end{equation*}
+        \end{theorem*}
+
+    \defitem{Как определяются множества абсолютной и условной сходимости функционального ряда? Как они связаны с множеством сходимости?}
+        
+        \begin{definition*}
+            Множество абсолютной сходимости -- множество всех тех значений $x$, при которых ряд сходится абсолютно.
+        \end{definition*}
+
+        \begin{definition*}
+            Множество условной сходимости -- множество всех тех значений $x$, при которых ряд сходится условно.
+        \end{definition*}
+
+        Объединение множеств абсолютной сходимости и условной сходимости образует множество сходимости.
+        
+    \defitem{Дайте определение равномерной сходимости функционального ряда.}
+
+        \begin{definition*}
+            Функциональный ряд называется равномерно сходящимся, если его частичная суммы $S_N(x)$ равномерно сходится.
+        \end{definition*}
+
+    \defitem{Сформулируйте и докажите необходимое условие равномерной сходимости функционального ряда.}
+        
+        \begin{theorem*}
+            Если $\sum_{n=1}^{\infty} a_n(x)$ равномерно сходится к сумме $S(x)$, то $a_n \overset{D}{\rightrightarrows} 0$
+        \end{theorem*}
+
+        \begin{proof}
+        $S_n(x) = a_1(x) + \dots + a_n(x)$, $a_n(x) = S_n(x) - S_{n-1}(x)$
+
+        $S_n \overset{D}{\rightrightarrows} S \implies a_n \overset{D}{\rightrightarrows} (S - S) = 0$
+        \end{proof}
+
+    \defitem{Сформулируйте критерий Коши равномерной сходимости функционального ряда.}
+
+        \begin{theorem*}
+            Функциональный ряд $\sum_{n=1}^{\infty} a_n(x)$ сходится равномерно на $D \iff$ $\forall \eps > 0$ $\exists N(\eps)$, $\forall n \geq N$, $\forall m$: 
+            $$||a_n + a_{n + 1} + \dots + a_{n + m}|| < \eps$$
+            
+            Т.е. $|a_n(x) + a_{n + 1}(x) + \dots + a_{n + m}(x)| < \eps$ $\forall x \in D$.
+        \end{theorem*}
+
+    \defitem{Сформулируйте следствие критерия Коши -- достаточное условие того, что функциональный ряд не является сходящимся равномерно.}
+        
+        \begin{corollary}
+            (Отрицание критерия Коши) Если $\exists \{x_n\} \subset D$, $\exists \{m_n\} \in \NN$, $\exists \eps_0$:
+            $$|a_n(x_n) + a_{n + 1}(x_n) + \dots + a_{m_n}(x_n)| > \eps_0$$            
+        \end{corollary}
+
+    \defitem{Приведите пример функционального ряда, сходящегося на некотором множестве поточечно, но не равномерно (с обоснованием).}
+
+    \defitem{Сформулируйте мажорантный признак Вейерштрасса абсолютной и равномерной сходимости функционального ряда.}
+        
+        \begin{theorem*}
+            (Признак Вейерштрасса) Если $|a_n(x)| \leq b_n$ при $\forall n \geq n_0$, $\forall x \in D$, а ряд $\sum b_n$ сходится, то $\sum a_n(x)$ сходится на $D$ абсолютно и равномерно.
+        \end{theorem*}
+
+    \defitem{Как применяются признаки Даламбера и Коши (радикальный) для исследования сходимости функционального ряда?}
+        
+        \begin{theorem*}
+            (Признак Даламбера) Если $\exists q < 1$: $|a_{n+1}(x)| \leq q \cdot |a_n(x)|$ при $\forall n \geq n_0$, $\forall x \in D$, причём $a_{n_0}(x)$ -- ограничена на $D$, то $\sum a_n(x)$ сходится на $D$ абсолютно и равномерно.
+        \end{theorem*}
+            
+        \begin{example}
+            $\sum_{n = 0}^{\infty} \dfrac{x^n}{n!}$, $D=[-r; r]$, $r > 0$
+            
+            $\left|\dfrac{x^{n + 1}}{(n + 1)!}\right| \leq q \cdot \left|\dfrac{x^n}{n!}\right|$
+            
+            $\left|\dfrac{x}{n + 1}\right| \leq q$. Пусть $n_0: \dfrac{r}{n_0 + 1} < 1$, берём $q = \dfrac{r}{n_0 + 1}$. Значит, ряд абсолютно и равномерно сходится.
+        \end{example}
+
+    \defitem{Сформулируйте неравенство для остатка знакочередуегося функционального ряда (и условия его применимости).}
+
+    \defitem{Сформулируйте признак Лейбница равномерной сходимости знакочередующегося функционального ряда.}
+        
+        \begin{theorem*}
+            (Признак Лейбница) Если $u_n(x) \downarrow_{(n)}$ и $u_n \overset{D}{\rightrightarrows} 0$, то ряд сходится равномерно.
+        \end{theorem*}
+
+    \defitem{Сформулируйте признак Дирихле равномерной сходимости функционального ряда.}
+
+        \begin{theorem*}
+            (Признак Дирихле) Если $a_n(x) \downarrow_{(n)}$ и $a_n \overset{D}{\rightrightarrows} 0$, а $||b_1 + \dots + b_n|| \leq C$ $\forall n$, то ряд равномерно сходится на $D$.
+        \end{theorem*}
+
+    \defitem{Сформулируйте признак Абеля равномерной сходимости функционального ряда.}
+
+        \begin{theorem*}
+            (Признак Абеля) Если $a_n(x)$ монотонна по $n$ (при $\forall x \in D$), и $||a_n|| \leq C$ при всех $n$, а ряд $\sum b_n(x)$ сходится равномерно, то ряд $\sum_{n=1}^{\infty} a_n(x) \cdot b_n(x)$ сходится равномерно.
+        \end{theorem*}
+
+    \defitem{Сформулируйте теорему о почленном переходе к пределу в функциональном ряде.}
+
+        \begin{theorem*}
+            $-\infty \leq a < b \leq +\infty$, $D= (a; b)$, $D = [a; b]$
+
+            Пусть функциональный ряд $\sum_{n=1}^{\infty} c_n(x)$ сходится равномерно на $D$, $x_0 \in D$, $\exists \lim_{x \to x_0} c_n(x) = y_n$ и $\exists \sum_{n=1}^{\infty} y_n = y$.
+
+            Тогда $\lim_{x \to x_0} \sum_{n = 1}^{\infty} c_n(x) = \sum_{n=1}^{\infty} \lim_{x \to x_0} c_n(x) = \sum_{n=1}^{\infty} y_n = y$
+        \end{theorem*}
+        
+    \defitem{Сформулируйте теорему о почленном дифференцировании функционального ряда.}
+
+        \begin{theorem*}
+            $-\infty \leq a < b \leq +\infty$, $D= (a; b)$, $D = [a; b]$
+
+            Пусть $c_n(x)$ дифференцируемы на $D$ и $\sum_{n=1}^{\infty} c'_n(x)$ сходится равномерно на $D$.
+
+            Тогда ряд $\sum_{n=1}^{\infty} c_n(x)$ сходится на $D$ (а если $D$ огр, то сходится равномерно), а его сумма будет дифференцируемой функцией на $D$ и $\left(\sum_{n=1}^{\infty} c_n(x)\right)' = \sum_{n=1}^{\infty} c'_n(x)$
+        \end{theorem*}
+
+    \defitem{Сформулируйте теорему о почленном интегрировании функционального ряда.}
+
+        \begin{theorem*}
+            $-\infty < a < b < +\infty$, $D= (a; b)$, $D = [a; b]$
+
+            $\int_{a}^{x}\left(\sum_{n=1}^{\infty} c_n(t)\right) dt = \sum_{n=1}^{\infty} \int_{a}^{x} c_n(t) dt$ -- сходится равномерно на $D$.
+        \end{theorem*}
+
+    \defitem{Что такое степенной ряд? Как определяются радиус и интервал сходимости степенного ряда? Что можно утверждать о характере сходимости ряда на интервале сходимости?}
+
+        \begin{definition*}
+            Степенной ряд -- $\sum_{n=0}^{\infty} c_n \cdot(x - x_0)^n$
+        \end{definition*}
+
+        \begin{definition*}
+            Пусть:
+
+            $R_{cv} = \sup \{|x - x_0|: \text{ряд сходится}\}$
+
+            $R_{dv} = \inf \{|x - x_0|: \text{ряд расходится}\} \text{ или} +\infty \text{, если ряд сходится всюду}$
+
+            $\exists R = R_{cv} = R{dv}$ -- радиус сходимости.
+        \end{definition*}
+
+        \begin{theorem*}
+            На интервале сходимости степенной ряд сходится абсолютно.
+        \end{theorem*}
+
+    \defitem{Что можно утверждать про равномерную сходимость степенного ряда?}
+
+        \begin{theorem*}
+            Если $R > 0$, то степенной ряд сходится равномерно при $|x - x_0| \leq r$, где $r < R$ (доказательство через признак Вейерштрасса).
+        \end{theorem*}
+
+    \defitem{Сформулируйте и докажите теорему Абеля о сходимости степенного ряда.}
+
+        \begin{theorem*}
+            (Абеля)
+            \begin{enumerate}
+                \item Если степенной ряд сходится в точке $x_1 \neq x_0$, то он сходится при всеx $x : |x - x_0| < |x_1 - x_0|$
+                \item Если степенной ряд расходится в точке $x_2 \neq x_0$, то он расходится при всеx $x : |x - x_0| > |x_2 - x_0|$
+            \end{enumerate}
+        \end{theorem*}
+            
+        \begin{proof}
+            \begin{enumerate}
+                \item $\left|\sum_{n = m}^{N} c_n (x - x_0)^n\right| = \left|\sum_{n = m}^{N} c_n \cdot (x_1 - x_0)^n \cdot \left(\frac{x-x_0}{x_1 - x_0}\right)^n\right| \leq 
+                \sum_{n = m}^{N} \left|c_n \cdot (x_1 - x_0)^n \right| \cdot \left|\left(\frac{x-x_0}{x_1 - x_0}\right)^n\right| \leq \eps (q^m + \dots + q^N) \leq \eps \cdot q^m \cdot \frac{1}{1-q} \to 0$
+            \end{enumerate}
+        \end{proof}
+
+    \defitem{Докажите, что если степенной ряд $\sum c_n \cdot (x - x_n)^n$ расходится в точке $x_1$, то он расходится во всех точках $x$, для которых $|x - x_0| > |x_1 - x_0|$.}
+
+        \begin{proof}
+            Докажем, что если $\displaystyle \sum c_n (x - x_0)^n$ сходится в точке $x_1$, то он сходится во всех точках $x$, для которых $|x - x_0| < |x_1 - x_0| \;  \circledast.$ Из этого будет следовать сформулированное выше утверждение (методом от противного).
+
+            Итак, доказываем $\circledast$. (Будем рассматривать нетривиальный случай $x_1 \neq x_0$, иначе очевидно).
+
+            $ \Bigg| \displaystyle \sum_{n = m}^{N} c_n (x - x_0)^n \Bigg| =
+            \Bigg| \sum_{n = m}^{N} c_n \cdot (x_1 - x_0)^n \cdot \left( \frac{x - x_0}{x_1 - x_0} \right)^n \Bigg| \leq
+            \sum_{n = m}^{N}  \big| c_n \cdot (x_1 - x_0)^n \big| \cdot \bigg| \frac{x - x_0}{x_1 - x_0} \bigg|^n = \bigstar$.
+
+            Заметим, что $\big| c_n \cdot (x_1 - x_0)^n \big| < \varepsilon $ при $m \geq n_0 (\varepsilon)$ (следствие из необходимого условия сходимости).
+
+            Далее, (при наших условиях) $\sum \bigg| \frac{x - x_0}{x_1 - x_0} \bigg|^n$ образуют геом. прогрессию, где $q = \bigg| \frac{x - x_0}{x_1 - x_0} \bigg| < 1.$
+
+            Так что $\bigstar \leq \varepsilon \cdot (q^m + \dots + q^n)
+            \leq \varepsilon \cdot  q^m \cdot \frac{1}{1 - q} \to 0.$ 
+
+            Почему к нулю? При $m \to \infty $ выражение $q^m \cdot \frac{1}{1 - q}$ остается ограниченным одной и той же константой, а $\varepsilon$ - это произвольная сколь угодно малая величина.
+
+            Итог: ряд сходится по критерию Коши.
+        \end{proof}
+
+    \defitem{Выведите формулу Коши-Адамара для радиуса сходимости степенного ряда.}
+
+        $\sum_{n=0}^{\infty} c_n \cdot(x - x_0)^n$
+
+        Применим радикальный признак Коши:
+
+        $\sqrt[n]{|a_n(x)|} = \sqrt[n]{|c_n|} \cdot |x - x_0|$
+
+        $\overline{\lim}\sqrt[n]{|a_n(x)|} = |x - x_0| \cdot \overline{\lim}\sqrt[n]{|c_n|}$
+
+        Если $|x - x_0| \cdot \overline{\lim}\sqrt[n]{|c_n|} < 1$, то ряд сходится
+
+        Если $|x - x_0| \cdot \overline{\lim}\sqrt[n]{|c_n|} > 1$, то ряд расходится
+
+        Введём $R = \frac{1}{\overline{\lim}\sqrt[n]{|c_n|}}$ -- формулу Коши-Адамара. Получаем, что при $|x - x_0| < R$ ряд сходится, при $|x - x_0| > R$ ряд расходится, и мы получили явную формулу радиуса сходимости.
+
+    \defitem{Приведите примеры степенных рядов, радиус сходимости $R$ которых: $R \in (0, +\infty)$, $R = 0$, $R = \infty$ (с обоснованием).}
+
+    \defitem{Пусть $R$ -- радиус сходимости степенного ряда. Сформулируйте и докажите теорему о равномерной сходимости степенного ряда на $[0; R]$.}
+
+        \begin{theorem*}
+            Пусть $\displaystyle \sum c_n R^n$ сходится. Тогда степенной ряд
+            $\displaystyle \sum c_n(x - x_0)^n$ сходится равномерно на $\displaystyle
+            [x_0, x_0 + R]$
+        \end{theorem*}
+        \begin{proof}
+            В начале доказательства хочу заметить,
+            что доказываю не совсем то, что в вопросе просят, однако это вроде 
+            ошибка Маевского, а не моя. Для того, чтобы всё было, как вопросе, возьмите
+            $\displaystyle x_0 = 0$.
+
+            $\displaystyle \sum_{n = 0}^{\infty}c_n(x - x_0)^n =
+            \sum_{n = 0}^{\infty}(c_nR^n)\cdot \left(\frac{x - x_0}{R}\right)^n$
+
+            $\displaystyle \sum_{n = 0}^{\infty}(c_nR^n)$ -- сходится равномерно 
+            (от $\displaystyle x$ не зависит)
+
+            $\displaystyle \sum_{n = 0}^{\infty}\left(\frac{x - x_0}{R}\right)^n 
+            \downarrow_{(n)}$ \ $\displaystyle \forall x \in [x_0, x_0 + R]$
+
+            $\displaystyle \Rightarrow \sum_{n = 0}^{\infty}c_n(x - x_0)^n$ -- сходится
+            равномерно на $\displaystyle
+            [x_0, x_0 + R]$
+            по признаку Абеля
+        \end{proof}
+
+    \defitem{Пусть $R$ -- радиус сходимости степенного ряда. В каком случае можно утверждать, что $\sum_{n = 0}^{\infty} c_n R^n = \lim_{x \to R - 0} \sum_{n = 0}^{\infty} c_n x^n$? Обоснуйте ответ.}
+
+        \begin{theorem*}
+            Пусть $\sum c_n R^n$ сходится. Тогда степенной ряд $\sum c_n (x - x_0)^n$ сходится равномерно.
+        \end{theorem*}
+
+        \begin{proof}
+            $\sum_{n = 0}^{\infty} c_n (x - x_0)^n = \sum_{n = 0}^{\infty} (c_n \cdot R^n) \cdot \left(\dfrac{x - x_0}{R}\right)^n$
+
+            $\sum_{n = 0}^{\infty} c_n \cdot R^n$ сходится $\implies$ сходится равномерно (не зависит от $x$)
+
+            $\left(\dfrac{x - x_0}{R}\right)^n \downarrow_{n}$ при $\forall x \in [x_0, x_0 + R]$
+
+            Значит, ряд $\sum_{n = 0}^{\infty} c_n (x - x_0)^n$ сходится равномерно по признаку Абеля.
+        \end{proof}
+
+        Так как ряд сходится равномерно, то $\sum_{n = 0}^{\infty} c_n R^n = \lim_{x \to x_0 + R - 0} \sum_{n = 0}^{\infty} c_n (x - x_0)^n$
+
+        Пусть теперь $\sum c_n R^n$ расходится. Тогда ряд $\sum c_n (x - x_0)^n$ не может сходиться равномерно на $[x_0, x_0 + R)$
+
+    \defitem{Пусть $R$ -- радиус сходимости степенного ряда. В каком случае можно утверждать, что степенной ряд сходится неравномерно на $[0; R)$? Обоснуйте ответ.}
+
+    \defitem{Что можно утверждать о радиусе сходимости степенного ряда, полученного почленным дифференцированием исходного ряда?}
+
+        Радиус сходимости при дифференцировании степенного ряда не изменяется.
+
+    \defitem{Что можно утверждать о радиусе сходимости степенного ряда, полученного почленным интегрировании исходного ряда?}
+
+        Радиус сходимости при интегрировании степенного ряда не изменяется.
+
+    \defitem{Сформулируйте и докажите теорему о почленном дифференцировании степенного ряда.}
+
+        \begin{theorem*}
+            $\left(\sum_{n=0}^{\infty}c_n\cdot (x - x_0)^n\right)' = \sum_{n=0}^{\infty} c_n \cdot n \cdot (x - x_0)^{n - 1} = \sum_{n=0}^{\infty} c_{n+1}(n+1)(x - x_0)^n$
+        \end{theorem*}
+
+    \defitem{Сформулируйте и докажите теорему о почленном интегрировании степенного ряда.}
+
+        \begin{theorem*}
+            $\int_{x_0}^{x}\left(\sum_{n=0}^{\infty}c_n(t - x_0)^n\right) dt = \sum_{n=0}^{\infty} \frac{c_n}{n+1} (x - x_0)^{n + 1}$
+        \end{theorem*}
+
+    \defitem{Запишите формулу Тейлора для бесконечно дифференцируемой функции с остаточным членом в формах Лагранжа и Коши.}
+
+        Если функция $f(x)$ бесконечно дифференцируема в точке $x_0$, то функции $f(x)$ можно сопоставить её ряд Тейлора:
+
+        $\sum_{n=0}^{\infty} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n$
+
+        При этом $f(x) = \sum_{n=0}^{N} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + r_N(x)$
+
+        $r_N(x) = \frac{f^{(N+1)}(x_0+\theta)(x - x_0)}{(N+1)!}(x - x_0)^{N+1}$, $\theta \in (0; 1)$ -- формула Лагранжа
+
+        $r_N(x) = \frac{f^{(N+1)}(x_0+\theta)(x - x_0)}{N!}(1-\theta)^N(x - x_0)^{N+1}$, $\theta \in (0; 1)$ -- формула Коши
+
+    \defitem{Сформулируйте и докажите утверждение о единственности разложения функции в степенной ряд.}
+
+        \begin{theorem*}
+            Если $f(x) = \sum_{n=0}^{\infty} c_n (x - x_0)^{n}$, $|x - x_0| < \delta$, то этот степенной ряд -- её ряд Тейлора.
+        \end{theorem*}
+
+        \begin{proof}
+            $f^{(k)}(x) = \sum_{n=k}^{\infty} c_n \cdot n(n-1) \cdot \dots \cdot (n - k + 1) \cdot (x - x_0)^{n - k}$
+
+            $f^{(k)}(x_0) = c_k \cdot k! \implies c_k = \dfrac{f^{(k)}(x_0)}{k!}$. Значит, степенной ряд -- ряд Тейлора.
+        \end{proof}
+
+    \defitem{Что такое функция, аналитическая в данной точке? Каково соотношение между понятиями бесконечно дифференцируемости и аналитичности?}
+
+        Функция называется аналитической в т.$x_0$, если она представима в окрестности этой точки в виде степенного ряда. Не всякая бесконечно дифференцируемая функция будет аналитической.
+
+    \defitem{Приведите пример бесконечно дифференцируемой функции, не являющейся аналитической.}
+
+        \begin{example}
+
+            $f(x) = \begin{cases}
+                  e^{-\frac{1}{x^2}}, x \neq 0 \\
+                  0, x = 0
+            \end{cases}$
+            
+            $f(0) = f'(0) = f''(0) = \dots = 0$, ряд Тейлора при $x_0 = 0$ равен 0
+        \end{example}
+
+    \defitem{Запишите разложения в степенной ряд с центром в нуле для функций $e^x$, $\sin x$, $\cos x$. Каково множество сходимости ряда? На каком множестве сумма ряда представляет собой исходную функцию?}
+    
+    \begin{enumerate}
+        \item $e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$, $R = \infty$
+
+                Докажем равенство. Оценим остаток по формуле Лагранжа.
+
+                $r_N(x) = \underbrace{e^{\Theta x}}_\text{const} \cdot \underbrace{\frac{x^{N+1}}{\left(N + 1\right)!}}_{\to 0 \text{ при }\forall x}$, $\Theta \in \left(0;\ 1\right)$
+            Множество сходимости~--- $\RR$, на множестве $\RR$ сумма ряда представляет собой исходную функцию.
+        \item Для $\cos x$ аналогично:
+            \begin{flalign*}
+                & \cos x = \sum_{n=0}^\infty \left(-1\right)^n \cdot \frac{x^{2n}}{\left(2n\right)!}, x \in \RR, R = \infty
+            \end{flalign*}
+        \item Для $\sin x$ аналогично:
+            \begin{flalign*}
+                & \sin x = \sum_{n=0}^\infty \left(-1\right)^n \cdot \frac{x^{2n+1}}{\left(2n+1\right)!} x \in \RR, R = \infty
+            \end{flalign*}
+    \end{enumerate}
+
+    \defitem{Запишите разложение в степенной ряд с центром в нуле для функции $(1+x)^p$. Каково множество сходимости ряда? На каком множестве сумма ряда представляет собой исходную функцию?}
+
+        $(1+x)^p = \sum_{n=0}^{\infty} \dfrac{(p)_n}{n!}x^n$, где $(p)_n = p(p-1)\dots(p - n + 1), R = 1$
+
+    \defitem{Получите разложение для $\ln (1 + x)$ интегрирование раложения для $\frac{1}{1 + x}$. Каково множество сходимости ряда? На каком множестве сумма ряда представляет собой исходную функцию? Обоснуйте ответ.}
+
+    \end{colloq}
+
+\end{document}

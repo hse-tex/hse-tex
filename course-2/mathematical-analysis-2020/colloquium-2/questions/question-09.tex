@@ -1,0 +1,44 @@
+% Здесь НЕ НУЖНО делать begin document, включать какие-то пакеты..
+% Все уже подрубается в головном файле
+% Хедер обыкновенный хсе-теха, все его команды будут здесь работать
+% Пожалуйста, проверяйте корректность теха перед пушем
+
+% Здесь формулировка билета
+\subsection{Докажите, что измеримые по Жордану множества образуют кольцо}
+
+\textbf{\underline{Утв.:} } Измеримые по Жордану множества образуют кольцо\\
+\textbf{\underline{Док-во:} } \\
+\begin{enumerate}
+    \item $\varnothing$ - пустое множество является простым, а значит измеримо.
+    \item $A, B$ - измеримы, $A \cup B$ - объединение измеримых множеств измеримо. \\
+Пусть $A_i \subseteq E_i$ и $\overline{\mu}(E_i\backslash A_i) < \frac{\varepsilon}{2}$, при $i = 1, 2$. \\
+Тогда так как 
+\[(E_1\cup E_2) \backslash (A_1\cup A_2) \subseteq (E_1\backslash A_1) \cup (E_2\backslash A_2) \]
+в силу монотонности имеем 
+\[\overline{\mu}((E_1\cup E_2) \backslash (A_1\cup A_2)) \leq \overline{\mu}((E_1\backslash A_1) \cup (E_2\backslash A_2)) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon \]
+а из этого следует, что объединение измеримо.
+    \item $A, B$ - измеримы, $A \cap B $ - пересечение измеримых множеств измеримо. \\
+Проведем рассуждения аналогично предыдущему пункту. \\
+Так как
+\[(E_1\cap E_2) \backslash (A_1\cap A_2) \subseteq (E_1\backslash A_1) \cup (E_2\backslash A_2) \]
+в силу монотонности имеем
+\[ \overline{\mu}((E_1\cap E_2) \backslash (A_1\cap A_2)) \leq \overline{\mu}((E_1\backslash A_1) \cup (E_2\backslash A_2)) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon \]
+а из этого следует, что пересечение измеримо.
+    \item $A, B$ - измеримы, $ A \backslash B$ - разность измеримых множеств измерима. \\
+Пусть $A_i \subseteq E_i$, при $i = 1, 2$ и простые множества $E_i$ таковы, что $\overline{\mu}(E_1\backslash A_1) < \frac{\varepsilon}{2}$, а $E_2 \backslash A_2 \subseteq E_2'$, где $\mu(E_2') < \frac{\varepsilon}{2}$. \\
+Обозначим
+\[A = A_1 \backslash A_2, \text{ и } E = (E_1\backslash E_2) \cup E_2'\]
+Докажем, что $A\subseteq E$. Из всех возможных вариантов рассмотрим следующий. Пусть $x \in A_1$ и $x \not\in A_2$. Тогда $x \in E_1$, а если $x\in E_2$, то $x \in E_2'$. Все прочие случаи тривиальны. \\
+Теперь докажем, что
+\[(E\backslash A) \subseteq (E_1\backslash A_1) \cup E_2'\]
+Снова из всех возможных вариантов рассмотрим следующее. Пусть $x \in E$ и $x \not\in A $. Отсюда пусть $x \in E_1$ и $x \not\in E_2$. Если $x \in A_1$, то либо $x \in A$, что противоречит первоначальному условию, либо $x \in A_1 \cap A_2$, что также невозможно, так как $x \not\in E_2$. Отсюда следует, что $x \not\in A_1$. Все прочие случаи тривиальны. \\
+Далее имеем
+\[\overline{\mu}(E\backslash A) \leq \overline{\mu}(E_1\backslash A_1) + \overline{\mu}(E_2') = \varepsilon\]
+Из чего следует, что разность измеримых множеств измерима.
+\end{enumerate}
+Все необходимые условия выполнены а это значит, что измеримые множества образуют кольцо. 
+\begin{flushright}
+$\blacksquare$
+\end{flushright}
+
+
