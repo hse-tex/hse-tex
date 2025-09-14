@@ -1,0 +1,42 @@
+% Здесь НЕ НУЖНО делать begin document, включать какие-то пакеты..
+% Все уже подрубается в головном файле
+% Хедер обыкновенный хсе-теха, все его команды будут здесь работать
+% Пожалуйста, проверяйте корректность теха перед пушем
+
+% Здесь формулировка билета
+\subsection{Сформулируйте и докажите утверждение о сведении интеграла по множеству с измеримыми слоями к повторному}
+Пусть $G \subset \mathbb{R}^k, H \subset\mathbb{R}^l, D\subset \mathbb{R}^{k + l}$
+
+
+$D = \bigcup_{y\in H}G_y\times \{y\}$
+
+где все $G_y\subset G$($G_y$ -- это как бы сечения). Пусть все $G_y, G, H, D$ -- жордановы
+
+\begin{theorem}
+	Пусть f -- ограничена и интегрируема на D. Пусть f(x, y)(y фиксируем)интегрируема по x на $G_y$ при каждом $y \in H$.
+	
+	Тогда 
+	\[g(y) = \int_{G_y}f(x, y)dy\]
+	интегрируема по $y \in H$. И
+	\[\iint_D f(x, y)dxdy = \int_H g(y)dy = \int_{H}dy\left(\int_{G_y}f(x, y)dx\right)\]
+\end{theorem}
+\begin{proof}
+	Нам нужно доопределить функцию на всем множестве G(мы доопределим нулем).
+	
+	
+	Пусть 
+	\begin{flalign}
+	\widetilde{f}(x, y) = 
+	\begin{cases}
+	f(x,y)&\text{ если }(x, y)\in D\\
+	0&\text{ если }(x, y)\in (G\times H)\backslash D
+	\end{cases}
+	\end{flalign}
+	\[\iint_Dfdxdy =(*) \iint_{G\times H}\widetilde{f}(x, y) dxdy = \int_{H}dy\int_{G}\widetilde{f}dx = (**)\int_{H}dy\int_{G_y}fdx\]
+	
+	(*) -- это таже самая область, но мы доопределили функцию.
+	
+	
+	(**) вне множества $G_y$ функция равна 0, а нутри $G_y$ равна f(x, y)
+\end{proof}
+

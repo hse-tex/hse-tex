@@ -1,0 +1,115 @@
+\section{Лекция 4 - 22.09.2020}
+
+\subsection{Умножение рядов}
+
+$\sum_{k=1}^{\infty} a_k$, $\sum_{m=1}^{\infty} b_m$
+
+$\left(\sum_{k=1}^{K} a_k\right) \cdot \left(\sum_{m=1}^{M} b_m \right) = \sum_{1 \leq k \leq K, 1 \leq m \leq M} a_k \cdot b_m$
+
+Если эта сумма имеет предел при $K, M \to \infty$, не зависящий от порядка суммирования, то говорят, что определено произведение рядов.
+
+\begin{theorem}
+(Коши) Если $\sum a_k$, $\sum b_m$ сходятся абсолютно, то определено их произведение.
+
+$\left(\sum_{k=1}^{\infty} a_k\right) \cdot \left(\sum_{m=1}^{\infty} b_m \right) = \sum_{n=1}^{\infty} a_{k_n} \cdot b_{m_n}$
+\end{theorem}
+
+Произведение рядов по Коши:
+
+$c_2 = a_1 \cdot b_1$
+
+$c_3 = a_2 \cdot b_1 + a_1 \cdot b_2$
+
+$c_4 = a_3 \cdot b_1 + a_2 \cdot b_2 + a_1 \cdot b_3$
+
+$\dots$
+
+$$\left(\sum_{k=1}^{\infty} a_k\right) \cdot \left(\sum_{m=1}^{\infty} b_m \right) = \sum_{n=2}^{\infty} c_n$$
+
+\subsection{Бесконечное произведение}
+
+\subsubsection{Основные понятия}
+
+$\prod_{n=1}^{N} a_n = a_1 \cdot a_2 \cdot \dots \cdot a_N$ -- частичное произведение.
+
+Бесконечным произведением называют формальную запись $\prod_{n=1}^{\infty} a_n$
+
+Значением бесконечного произведения является предел частичного произведения:
+
+$\prod_{n=1}^{\infty} a_n = \lim_{N \to \infty} \prod_{n=1}^{N} a_n$
+
+\subsubsection{Сходимость бесконечного произведения}
+
+Необходимое условие сходимости:
+
+Если $P_N = \prod_{n=1}^N a_n$ сходится, то $a_n = \frac{P_n}{P_{n - 1}} \to 1$
+
+$\prod_{n=1}^{N} a_n = e^{\ln \prod_{n=1}^{N} a_n} = e^{\sum_{n=1}^{N} \ln a_n}$
+
+$\prod_{n=1}^{\infty} a_n = P \iff \sum_{n=1}^{\infty} \ln a_n = \ln P$ $(P \neq 0, a_n \to 1)$
+
+Пусть $a_n \geq 1$. Тогда $\sum_{n=1}^{\infty} \ln a_n$ -- положительный ряд
+
+$\ln a_n =  (a_n - 1) + o(1)$, т. к. $a_n \to 1$
+
+$\sum_{n=1}^{\infty} \ln a_n$ сходится $\iff \sum_{n=1}^{\infty} (a_n - 1)$ сходится.
+
+\subsubsection{Абсолютная сходимость бесконечного произведения}
+
+$\prod_{n=1}^{\infty} a_n$ называется абсолютно сходящимся, если абсолютно сходится соответствующий ему ряд $\sum_{n=1}^{\infty} \ln a_n$
+
+\begin{comment}
+    $\prod_{n=1}^{\infty} a_n$ сходится абсолютно $\iff \sum_{n=1}^{\infty} (a_n - 1)$ сходится абсолютно.
+\end{comment}
+
+\begin{example}
+(Произведение Валлиса)
+$\prod_{n=1}^{\infty} \frac{4n^2}{4n^2 - 1} = \frac{\pi}{2}$ -- получается из анализа интегралов $\int_{0}^{\frac{\pi}{2}} \sin^n x dx$
+
+Прим. ред.: есть отличное \href{https://www.youtube.com/watch?v=8GPy_UMV-08}{видео} с интуитивно понятным доказательством.
+\end{example}
+
+\begin{example}
+    (Дзета-функция Римана) $\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}, s > 1$
+
+    Тождество Эйлера:
+
+    $\zeta(s) = \dfrac{1}{\prod_{n=1}^{\infty}(1 - \frac{1}{p_n^s})}$, где $p_1 = 2, p_2 = 3, p_3 = 5, \dots$
+\end{example}
+
+\subsection{Функциональные последовательности}
+
+\subsubsection{Поточечная и равномерная сходимость}
+
+Пусть при всех $n \in \NN$ функции $f_n: D \to \RR$, $D \subseteq \RR$
+
+Говорят, что $a \in D$ -- точка сходимости $\{f_n(x)\}$, если последовательность $\{f_n(a)\}$ сходится.
+
+Множество всех точек сходимости называется множеством сходимости.
+
+Говорят, что последовательность сходится на $D$ поточечно, если $D$ -- множество сходимости.
+
+Говорят, что $f_n(x)$ сходится к $f(x)$ равномерно на $D$, если $\sup|f_n(x) - f(x)| \to 0$
+
+\textbf{Свойства}
+
+\begin{enumerate}
+    \item $f_n \overset{D}{\rightrightarrows} f \implies f_n \overset{D}{\rightarrow} f$
+    \item Если $D = D_1 \cup D_2$, то:
+
+          $f_n \overset{D}{\rightrightarrows} f \iff (f_n \overset{D_1}{\rightrightarrows} f $ и $f_n \overset{D_2}{\rightrightarrows} f)$
+\end{enumerate}
+
+\subsubsection{Равномерная норма. Критерий Коши}
+
+Рассмотрим множество всех функций $D \to \RR$
+
+$||f|| = \sup_{x \in D} |f(x)|$
+
+Таким образом, $f_n \overset{D}{\rightrightarrows} f \iff ||f_n - f|| \to 0$
+
+\subsubsection{Теорема Дини}
+
+Пусть $f_n: [a, b] \to \RR, f_n(x)$ монотонна по $n$ при каждом $x \in [a, b]$, $f_n \to f$ на $[a, b]$
+
+Тогда $f_n \overset{D}{\rightrightarrows} f$

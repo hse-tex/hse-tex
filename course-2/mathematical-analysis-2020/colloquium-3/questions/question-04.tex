@@ -1,0 +1,180 @@
+\subsection{Равномерная сходимость несобственного интеграла. Определение. Критерий Коши равномерной сходимости несобственного интеграла. Мажорантный признак Вейерштрасса равномерной сходимости несобственного интеграла. Вторая интегральная теорема о среднем (для собственного интеграла). Признаки Дирихле и Абеля равномерной сходимости несобственного интеграла.}
+
+\subsubsection{Равномерная сходимость несобственного интеграла.}
+\begin{definition*}
+Несобственным интегралом, зависящим от параметра $y$ называется следующий интеграл:
+\begin{equation*}
+        \int\limits_a^\omega f(x,y)dx = \lim\limits_{t\to\omega} \int\limits_a^t f(x,y)dx=F(y)
+\end{equation*}
+где $\omega$ это либо $\infty$, либо точка в которой подынтегральная функция имеет особенность, то есть стремится к бесконечности, $f$ интегрируема на $[a;t]$ при $\forall t\in(a,\omega)$ и при $\forall y\in H$ 
+\end{definition*}
+\begin{definition*}
+Несобственный интеграл, зависящий от параметра $y$ называется сходящимся, если существует конечный предел из определения выше, то есть
+\begin{equation*}
+         \exists\lim\limits_{t\to\omega} \int\limits_a^t f(x,y)dx<\infty
+\end{equation*}
+\end{definition*}
+\begin{definition*}
+    Пусть несобственный интеграл, зависящий от параметра сходится $\forall y\in H$, тогда несобственный интеграл является равномерно сходящимся, если
+    \begin{equation*}
+        g(t,y)=\int\limits_a^t f(x,y)dx  \overset{y\in H}{\underset{t\to\omega}{\rightrightarrows}} F(y)
+    \end{equation*}
+\end{definition*}
+
+\subsubsection{Критерий Коши равномерной сходимости несобственного интеграла.}
+\begin{theorem*}
+    \begin{equation*}
+        \int\limits_a^\omega f(x,y)dx\ \text{сходится равномерно по }  y\in H\ \iff \forall \varepsilon > 0 \ \exists U_{\varepsilon}(\omega)\colon\ \forall t_1, t_2\in U_{\varepsilon}(\omega)\quad \Big|\int\limits_{t_1}^{t_2} f(x,y)dx \Big| < \varepsilon
+    \end{equation*}
+    где $U_{\varepsilon}(\omega)$ это некоторая окрестность $\omega$, зависящая от $\varepsilon$
+\end{theorem*}
+\begin{proof}
+    Рассмотрим семейство функций \begin{equation*}g(t,y)=\int\limits_a^t f(x,y)dx\overset{?}{\rightrightarrows} F(y)\end{equation*}
+    Знаем, что равномерная сходимость несобственного интеграла равносильна равномерной сходимости данного семейства функций, с другой стороны
+    \begin{equation*}
+        \int\limits_{t_1}^{t_2} f(x,y)dx=g(t_2, y)- g(t_1,y)\implies \Big|\int\limits_{t_1}^{t_2} f(x,y)dx \Big| < \varepsilon \iff |g(t_2, y)- g(t_1,y)| < \varepsilon
+    \end{equation*}
+    Заметим, что последнее неравенство это критерий Коши (условие Коши) для равномерной сходимости семейства функций при $t\to \omega$.
+    
+    $\textit{Немного пояснений}\colon$ Мы знаем, что критерием наличия равномерной сходимости является критерий (условие) Коши, который заключается в последнем неравенстве, которое в нашем случае эквивалентно неравентсву для соответствующего интеграла (интеграл равен разности), то есть критерий Коши для несобственного интеграла это просто критерий Коши для соответствующей первообразной.
+\end{proof}
+
+\subsubsection{Мажорантный признак Вейерштрасса равномерной сходимости несобственного интеграла.}
+\begin{theorem*}
+    Пусть $f(x,y)$ интегрируема по $x\in[a,t],\ \forall t\in(a,\omega),\ \forall y\in H$, и пусть $|f(x,y)|\leqslant g(x,y)$, где $(x,y)\in [a,\omega)\times H$ (в силу свойств несобственного интеграла можем требовать, чтобы неравенство выполнялось в сколь угодно близких точках по $x$ к $\omega$), причем $g(x,y)$ интегрируема по $x\in[a,\omega)$ в несобственном смысле при $\forall y\in H$ и $\int\limits_a^\omega g(x,y)dx$ сходится равномерно по $y$, тогда
+    \begin{equation*}
+        \int\limits_{a}^{\omega} f(x,y)dx\ \text{равномерно сходится и удовлетворяет неравенcтву } \Big|\int\limits_a^\omega f(x,y)dx\Big|\leqslant \int\limits_a^\omega g(x,y)dx
+    \end{equation*}
+\end{theorem*}
+\begin{proof}
+    В силу того, что $|f(x,y)|\leqslant g(x,y)$ верно, что
+   \begin{equation*}
+        \Big|\int\limits_{t_1}^{t_2} f(x,y)dx\Big|\leqslant \int\limits_{t_1}^{t_2} g(x,y)dx
+    \end{equation*}
+  так как $g(x,y)$, по условию, сходится равномерно, значит для него выполняется критерий Коши, то есть $\int\limits_{t_1}^{t_2} g(x,y)dx <\varepsilon$, тогда получаем, что
+    \begin{equation*}
+        \Big|\int\limits_{t_1}^{t_2} f(x,y)dx\Big|\leqslant \int\limits_{t_1}^{t_2} g(x,y)dx < \varepsilon\implies \Big|\int\limits_{t_1}^{t_2} f(x,y)dx\Big| < \varepsilon\  \implies[\text{по критерию Коши}] \  \int\limits_{a}^{\omega} f(x,y)dx\  \text{равномерно сходится}
+    \end{equation*}
+
+    Для доказателства неравенства, заметим, что для любой точки $t$ оно выполнено (по свойству интеграла), затем устремляем $t$ к $\omega$ и в пределе получаем нужное нам неравенсвто с $\omega$, а именно 
+    \begin{equation*}
+         \Big|\int\limits_a^\omega f(x,y)dx\Big|\leqslant \int\limits_a^\omega g(x,y)dx
+    \end{equation*}
+\end{proof}
+
+\subsubsection{Вторая интегральная теорема о среднем для собственного интеграла(частный случай).}
+\begin{theorem*} 
+    $\\$
+    Частный случай: Если функции $f(x)$, $g(x)$ интегрируемы на отрезке $[a,b]$ и функция $g(x)\geq 0,\ g(x)\downarrow$(невозрастает), то 
+    \begin{equation*}
+        \exists c\in [a,b]\colon\  \int\limits_a^b f(x)g(x)dx=g(a)\cdot \int\limits_a^c f(x)dx
+    \end{equation*}
+\end{theorem*}
+\begin{proof} $\\$
+        \begin{enumerate}
+        \item    $a=x_0<x_1..<x_n=b$
+        \begin{align*}
+                \int\limits_a^b f(x)g(x)dx
+                &= \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} f(x)g(x)dx
+                = \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} f(x)\Big(g(x)+\underbrace{g(x_{k-1})-g(x_{k-1})}_{\text{прибавили и вычли}}\Big)dx=\\
+                &=\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)\Big(g(x)-g(x_{k-1})\Big)\Big)dx + \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} f(x)\cdot\underbrace{g(x_{k-1})}_{\mathclap{\text{не зависит от x}}}dx=\\
+                &=\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)\Big(g(x)-g(x_{k-1})\Big)\Big)dx + \sum\limits_{k=1}^n\ g(x_{k-1}) \int\limits_{x_{k-1}}^{x_k} f(x)dx = \textcolor{blue}{(*)}
+        \end{align*}
+        $\bullet$ $f(x)$ интегрируема на отрезке, значит она ограничена, то есть $|f(x)|<const$
+        
+        $\bullet$ $|g(x)-g(x_{k-1})|\leqslant \omega$ (колебание функции $g$) на $[x_{k-1}, x_{k}]$
+        
+        $\bullet$ $g(x)$ интегрируема по условию, тогда по критерию Дарбу ($g$ интегрируема $\implies\sum\limits_{i=1}^n\omega_i\cdot\mu(D_i)<\varepsilon$) сумма произведения колебаний на отрезке на длинну отрезка сколь угодно мала ($<\varepsilon$)
+        
+        Тогда из выше сказанного следует, что 
+        \begin{equation*}
+            \Big|\sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k} \Big(f(x)\Big(g(x)-g(x_{k-1})\Big)\Big)dx\Big| <\varepsilon
+        \end{equation*}
+        Следовательно,
+        \begin{align*}
+            \textcolor{blue}{(*)} = \lim\limits_{\triangle\to 0}\sum\limits_{k=1}^n g(x_{k-1})\int\limits_{x_{k-1}}^{x_k} f(x)dx,\ \triangle - \text{диаметр разбиения}
+        \end{align*}
+        \item Рассмотрим эту сумму.
+        
+        Введем $F(t)=\int\limits_a^t f(x)dx,\ F(a)=0\quad$ Пусть $M=\max\limits_{x\in[a,b]}F(x),\ m=\min\limits_{x\in[a,b]}F(x)$
+        
+        Выражая $\int\limits_{x_{k-1}}^{x_k} f(x)dx$, как разность занчений $F$, мы можем записать, что
+        \begin{align*}
+            \sum\limits_{k=1}^n g(x_{k-1})\int\limits_{x_{k-1}}^{x_k} f(x)dx
+            &=\sum\limits_{k=1}^n g(x_{k-1})\cdot(F(x_k)-F(x_{k-1}))=\\
+            & [\text{распишем формулу суммирования по частям}]\\
+            &=\sum\limits_{k=1}^n \Big(g(x_{k})F(x_k)-g(x_{k-1})F(x_{k-1})\Big) - \sum\limits_{k=1}^n \Big((g(x_{k})-g(x_{k-1}))F(x_{k})\Big)=\textcolor{red}{(*)}
+        \end{align*}
+        Заметим, что первая сумма равна $F(x_n)\cdot g(x_n) - F(x_0)\cdot g(x_0) = F(b)\cdot g(b) - \underbrace{F(a)}_{0}\cdot g(a) = F(b)\cdot g(b)$
+        
+        Следовательно, 
+        \begin{align*}
+            \textcolor{red}{(*)} = F(b)\cdot g(b) - \sum\limits_{k=1}^n \Big((g(x_{k})-g(x_{k-1}))F(x_{k})\Big)
+        \end{align*}
+        
+        Оценим, нашу сумму $\sum\limits_{k=1}^n g(x_{k-1})\int\limits_{x_{k-1}}^{x_k} f(x)dx\colon$
+        \begin{equation*}
+        \begin{rcases*}
+           g(x)\downarrow\implies \ \forall k:\ g(x_{k})-g(x_{k-1}) \leqslant 0\\
+            \sum\limits_{k=1}^{n} g(x_{k})-g(x_{k-1}) = g(x_n)-g(x_0)=g(b)-g(a)\\
+            m\leqslant F(x_k)\leqslant M
+        \end{rcases*} \implies m\cdot g(a)\leqslant\sum\limits_{k=1}^n g(x_{k-1})\int\limits_{x_{k-1}}^{x_k} f(x)dx\leqslant M\cdot g(a)
+        \end{equation*}
+        Так как в полученном неравенстве нигде не фигурирует разбиение ортрезка $[a,b]$, то,  устремляя $\triangle$ к $0$, мы получим в пределе, что 
+        \begin{equation*} 
+         m\cdot g(a)\leqslant\int\limits_a^b f(x)g(x)dx\leqslant M\cdot g(a)
+        \end{equation*}
+        \item Рассмотрим подробнее полученное двойное неравенство $m\cdot g(a)\leqslant\int\limits_a^b f(x)g(x)dx\leqslant M\cdot g(a)$, возникает два случая:
+        
+        \begin{enumerate}
+            \item $g(a) = 0\implies \int\limits_a^b f(x)g(x)dx = 0 = g(a)\cdot \int\limits_a^cf(x)dx$
+            
+            \item $g(a) > 0 \implies$ поделим обе части неравенства на $g(a)$, получим $m\leqslant\dfrac{1}{g(a)}\int\limits_a^b f(x)g(x)dx\leqslant M$, так как $F(x)$ непрерывная функция, принимающая значения от $m$ до $M$, то $\exists c\colon\ F(c)=\dfrac{1}{g(a)}\int\limits_a^b f(x)g(x)dx$, а это и есть то, что нам надо доказать
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+\begin{theorem*} 
+    $\\$
+    Если функции $f(x)$, $g(x)$ интегрируемы на отрезке $[a,b]$ и функция $g(x)$ монотонная, то 
+    \begin{equation*}
+        \exists c\in [a,b]\colon\  \int\limits_a^b f(x)g(x)dx=g(a)\cdot \int\limits_a^c f(x)dx + g(b)\cdot \int\limits_c^b f(x)dx
+    \end{equation*}
+\end{theorem*}
+\begin{proof} 
+    Сведем наше докозательство к докозательству предыдущей теоремы(частного случая). Так как $g(x)$ монотонная, то возникает два случая:
+    \begin{enumerate}
+        \item $g(x)\uparrow$, тогда берем $G(x)=g(b)-g(x)$
+        \item $g(x)\downarrow$, тогда берем $G(x)=g(x)-g(b)$
+    \end{enumerate}
+    Заметим, что в обоих условиях функция $G(x)$ удовлетворяет условиям предыдущей теоремы. 
+\end{proof}
+
+\subsubsection{Признаки Дирихле и Абеля равномерной сходимости несобственного интеграла.}
+Рассмотрим $\int\limits_a^\omega f(x,y)g(x,y)dx$
+\begin{theorem*} 
+    Признак Дирихле.
+    
+    Если $\exists M\colon\ \forall b\in[a,\omega),\ \forall y\in H\ \Big|\int\limits_a^bf(x,y)dx\Big|\leqslant M$ и $\forall y\ g(x,y)$ монотонна по $x$ и $g(x,y)\overset{y\in H}{\underset{x\to\omega}{\rightrightarrows}}0$, то 
+        $\int\limits_a^\omega f(x,y)g(x,y)dx$ сходится равномерно
+\end{theorem*}
+\begin{proof} 
+    Рассмотрим $\int\limits_{t_1}^{t_2} f(x,y)g(x,y)dx$ 
+    
+    По второй теореме о среднем $\exists t\in [t_1,t_2]\colon\  \int\limits_{t_1}^{t_2} f(x,y)g(x,y)dx=\underbrace{g(t_1,y)}_{\overset{y\in H}{\underset{x\to\omega}{\rightrightarrows}}0}\cdot \underbrace{\int\limits_{t_1}^{t} f(x,y)dx}_{|\cdot|\leqslant M\ (\text{по усл.})} + \underbrace{g(t_2, y)}_{\overset{y\in H}{\underset{x\to\omega}{\rightrightarrows}}0}\cdot\underbrace{\int\limits_t^{t_2} f(x,y)dx}_{|\cdot|\leqslant M\ (\text{по усл.})}$
+    
+    Значит эта линейная комбинация может быть сделана сколь угодно малой, а значит по критерию Коши исходный интеграл сходится равномерно
+\end{proof}
+
+\begin{theorem*} 
+    Признак Абеля.
+    
+    Пусть $\int\limits_a^\omega f(x,y)dx$ сходится равномерно, $\forall y\ g(x,y)$ монотонна по $x$ и $\exists M\colon\ |g(x,y)|\leqslant M$, тогда 
+        $\int\limits_a^\omega f(x,y)g(x,y)dx$ сходится равномерно
+\end{theorem*}
+\begin{proof}
+    Рассмотрим $\int\limits_{t_1}^{t_2} f(x,y)g(x,y)dx$
+    
+    По второй теореме о среднем $\exists t\in [t_1,t_2]\colon\  \int\limits_{t_1}^{t_2} f(x,y)g(x,y)dx=\underbrace{g(t_1,y)}_{|\cdot|\leqslant M\ (\text{по усл.})}\cdot \int\limits_{t_1}^{t} f(x,y)dx + \underbrace{g(t_2, y)}_{|\cdot|\leqslant M\ (\text{по усл.})}\cdot\int\limits_t^{t_2} f(x,y)dx$
+    
+    Из равномерной сходимости $\int\limits_a^\omega f(x,y)dx$ следует, что по критерию Коши $\int\limits_{t_1}^{t} f(x,y)dx$ и $\int\limits_t^{t_2} f(x,y)dx$ можно сделать сколь угодго малыми, вне зависимости от $y$, а значит и всю сумму можно сделать сколь угодно малой, а значит по критерию Коши, исходный интеграл сходится (два раза подряд применили критерий Коши).
+\end{proof}

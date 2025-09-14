@@ -1,0 +1,28 @@
+% Здесь НЕ НУЖНО делать begin document, включать какие-то пакеты..
+% Все уже подрубается в головном файле
+% Хедер обыкновенный хсе-теха, все его команды будут здесь работать
+% Пожалуйста, проверяйте корректность теха перед пушем
+
+% Здесь формулировка билета
+\subsection{Сформулируйте и докажите основные свойства внешней меры Жордана: монотонность и полуаддитивность} 
+
+\textbf{\underline{Св-во:} } Монотонность внешней меры означает, что при $A \subseteq B$ выполняется $\overline{\mu}(A) \leq \overline{\mu}(B)$. \\
+\textbf{\underline{Док-во:} } Обозначим через $\mathcal{E}_A$ класс простых множеств, покрывающих заданное ограниченное множество $A$. Так как $A \subseteq B$, то класс $\mathcal{E}_A$ шире чем $\mathcal{E}_B$, а значит в нем найдется простое множество которое не больше любого из $\mathcal{E}_B$, а отсюда из определения внешней меры следует, что $\overline{\mu}(A) \leq \overline{\mu}(B)$
+\begin{flushright}
+$\blacksquare$
+\end{flushright}
+\textbf{\underline{Св-во:} } Полуаддитивностью внешней меры называется 
+$$\overline{\mu}(A\sqcup B) \leq \overline{\mu}(A) + \overline{\mu}(B),$$
+где $A$ и $B$ - произвольные ограниченные множества. \\
+\textbf{\underline{Док-во:} } Для любых $E_A$ и $E_B$ покрывающих $A$ и $B$ соответственно, верно что $E_A\cup E_B$ - покрывает $A\cup B$. По свойствам меры верно
+$$\mu(E_A\cup E_B) \leq \mu(E_A) + \mu(E_B)$$
+Далее по определению точной нижней грани, для любого $\varepsilon > 0$ найдутся такие $E_A$ и $E_B$, что 
+$$\mu(E_A) \leq \overline{\mu}(A) + \varepsilon, \ \ \ \ \mu(E_B) \leq \overline{\mu}(B) + \varepsilon$$
+Отсюда имеем
+$$\overline{\mu}(A\cup B) \leq \mu(E_A\cup E_B) \leq \overline{\mu}(A) + \overline{\mu}(B) + 2\varepsilon$$
+Переходя к пределу $\varepsilon \rightarrow 0$ имеем
+$$\overline{\mu}(A\cup B) \leq \overline{\mu}(A) + \overline{\mu}(B)$$
+(Искомое свойство выполняется как частный случай)
+\begin{flushright}
+$\blacksquare$
+\end{flushright}
