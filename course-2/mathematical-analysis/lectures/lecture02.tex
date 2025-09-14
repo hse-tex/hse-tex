@@ -1,0 +1,178 @@
+\section{Свойства кратных интегралов. Условия интегрирования. Лебегова мера}
+
+\subsection{Необходимое условие интегрирования.}
+\theorem Пусть $I$ — замкнутый брус. 
+\begin{equation*}
+    f\in \mathcal{R}(I) \implies f \text{ ограничена на } I
+\end{equation*}
+
+\proof От противного.
+
+\begin{enumerate}
+    \item $f\in \mathcal{R}(I) \implies \exists {A} \in n \R$, такая что $\forall \epsilon > 0$, а значит для $\epsilon = 1$ тоже:
+    \begin{equation}
+        \exists \delta > 0 \colon \forall (\T, \xi): \Delta_{\T} \leq \omega \text{ верно } \abs{\sigma(f, \T, \xi) - A} < 1
+    \end{equation}
+
+    Отсюда
+    \begin{equation}
+        A - 1 < \sigma < A + 1 \implies \sigma \text{ ограничена}
+    \end{equation}
+
+    \item С другой стороны, так как предположили, что $f$ --- неограничена на $I$
+    \begin{equation}
+        \forall \T = \{I_i\}^k_{i=1} \quad \exists i_0 \colon f \text{ неограничена на } I_{i_0}
+    \end{equation}
+    
+    Тогда рассмотрим интегральную сумму
+    \begin{equation}
+        \sigma(f, \T, \xi) = \sum_{i \neq i_0} f(\xi_i) \cdot \abs{I_i} + f(\xi_{i_0}) \cdot \abs{I_{i_0}}
+    \end{equation}
+
+    Выбором подходящего $\xi_{i_0}$ можно сделать $f(\xi_{i_0})$ сколь угодно большой $\implies \sigma$ тоже.
+\end{enumerate}
+
+Из противоречния пунктов 1 и 2 следует, что
+\begin{equation*}
+    f\in \mathcal{R}(I) \implies f \text{ ограничена на } I
+\end{equation*}
+\qed
+
+\subsection{Свойства интеграла Римана}
+
+\begin{enumerate}
+    \item \textbf{Линейность.}
+    \begin{equation*}
+        f, g \in \mathcal{R}(I) \implies (\alpha f + \beta g)\in \mathcal{R}(I)\ \forall \alpha, \beta \in \R
+    \end{equation*}
+    И верно, что:
+    \begin{equation*}
+            \int_I(\alpha f + \beta g)\d{x} = \alpha\int_I f\d{x} + \beta\int_Ig\d{x}
+    \end{equation*}
+
+\proof 
+
+\begin{equation*}
+\begin{aligned}
+    &f \in \mathcal{R}(I): \exists A_f, \text{что} \quad \forall \varepsilon > 0 \, \exists\delta_1>0\ \forall(\T,\xi)\colon \Delta_{\T} < \delta_1 &&\text{ верно }
+    \abs{\sigma(f, \T, \xi)  - \int_If\d{x}} =: \abs{\sigma_f - A_f} < \frac{\epsilon}{|\alpha| + |\beta| + 1}
+    \\
+    &g \in \mathcal{R}(I): \exists A_g, \text{что} \quad \forall \varepsilon > 0 \, \exists\delta_2>0\ \forall(\T,\xi)\colon \Delta_{\T} < \delta_2 &&\text{ верно }
+    \abs{\sigma(g, \T, \xi)  - \int_Ig\d{x}} =: \abs{\sigma_g - A_g} < \frac{\epsilon}{|\alpha| + |\beta| + 1}
+    \end{aligned}
+\end{equation*}
+Тогда $\forall (\T, \xi) \colon \Delta_{\T} < min(\delta_f, \delta_g) = \delta:$
+\begin{align}
+    \abs{\sigma(\alpha f+\beta g, \T, \xi) - \alpha A_f+ \beta A_g} &= \abs{\sum(\alpha f(\xi_i) + \beta g(\xi_i)) \cdot \abs{I_i} - \alpha A_f - \beta A_g} \leq \\
+    &\leq |\alpha|\cdot|\sigma_f - A_f| + |\beta|\cdot|\sigma_g-A_g| < (|\alpha|+|\beta|)\ve
+    % \left(|\alpha| + |\beta|\right) \frac{\varepsilon}{|\alpha|+|\beta|+1} < \varepsilon
+\end{align}
+\qed
+
+\item \textbf{Монотонность}
+\begin{equation*}
+    f, g\in \mathcal{R}(I);\ f \leq g \text{ на } I \implies \int_If\d{x} \leqslant \int_Ig\d{x}
+\end{equation*}
+\proof
+    \begin{equation*}
+        f\in \mathcal{R}(I) \implies \exists A_f\in \R \colon \forall \ve > 0\ \exists\delta: \forall(\T, \xi): \Delta_{\T} < \delta, \text{ выполняется } |\sigma_f - A_f| < \ve\
+    \end{equation*}
+    Аналогично для $g\in \mathcal{R}(I)$, тогда:
+    \begin{equation}
+    \begin{cases}
+        A_f - \epsilon < \sigma_1 < A_f + \epsilon \\
+        A_g - \epsilon < \sigma_2 < A_g + \epsilon \\
+        \sigma_f \leq \sigma_g
+    \end{cases}
+    \end{equation}
+    
+    Отсюда
+    \begin{equation*}
+    \begin{aligned}
+        A_f - \ve < \sigma_f \leqslant \sigma_g < A_g + \ve \implies
+        A_f - \epsilon < A_g + \epsilon \implies A_f < A_g + 2 \epsilon \qquad \forall \epsilon > 0
+    \end{aligned}
+    \end{equation*}
+    % Что верно для $\forall \ve > 0$, даже при $\ve \to 0 \implies A_f \le A_g$
+\qed
+\item \textbf{Оценка интеграла (сверху)}
+\begin{equation*}
+    f\in \mathcal{R}(I) \implies \left|\int_If\d{x}\right| \leqslant\sup\limits_{I}|f||I|
+\end{equation*}
+\proof
+По необходимому условию для интегрируемости функции (см. ниже)
+\begin{equation*}
+    \begin{aligned}
+        f\in \mathcal{R}(I) &\implies f \text{ Ограничена на } I\\
+        &\implies -\sup_I|f| \leqslant f \leqslant \sup_I|f|
+    \end{aligned}
+\end{equation*}
+Тогда,
+\begin{equation*}
+    \begin{aligned}
+        -\int_I\sup|f|\d{x} &\leqslant \int_If\d{x} &\leqslant\int_I\sup|f|dx\\
+        -\sup_I|f||I|&\leqslant \int_If\d{x}&\leqslant \sup_I|f||I|
+    \end{aligned}
+\end{equation*}
+\qed
+\end{enumerate}
+
+% \section{Лебегова мера}
+\subsection{Множество меры нуль по Лебегу}
+
+\definition Множество $M\subset\R^n$ будем называть \textbf{множеством меры 0 по Лебегу}, если $\forall\ve>0$ существует не более чем счетный набор (замкнутых) брусов $\{I_i\}$ и выполняются:
+\begin{enumerate}[label=\textbullet]
+    \item $M\subset \displaystyle\bigcup_iI_i$
+    \item $\displaystyle\sum_i|I_i| < \ve\,\, \quad \forall \ve < 0$
+\end{enumerate}
+
+\textbf{Пример:} $a \in \R$  --- точка.
+\begin{equation}
+    I = [a - \frac{\epsilon}{3}, a + \frac{\epsilon}{3}] \implies |I| = \frac{2 \epsilon}{3} < \epsilon \quad \forall \epsilon > 0 \implies a \text{ --- множество меры нуль по Лебегу}
+\end{equation}
+
+
+
+\subsection{Свойства множества меры нуль по Лебегу}
+\begin{enumerate}
+    \item Если в определении $\{I_i\}$ заменить на открытые брусы, то определение останется верным.
+    \item
+    \proof Пусть $\{I_i\}$ — открытые брусы, тогда $\forall \epsilon > 0 \ \exists$ не более чем счетный набор $\{I_i\}$:
+    $M\subset \displaystyle\bigcup_iI_i \ $ и $ \ \sum |I_i| < \epsilon$
+    
+    Пусть $\{\bar I_i\}$ — открытые брусы + границы = замкнутые брусы $I_i$, причём объем ``добавленных'' плоскостей нулевой
+    \begin{equation*}
+        \begin{aligned}
+            M\subset\bigcup_iI_i \subset\bigcup_i\bar I_i, \, |I_i| = |\bar I_i|
+        \end{aligned}
+    \end{equation*}
+    Если
+    \item
+
+    \begin{equation*}
+        \forall\ve\, \exists\{I_i\}: M \subset \bigcup_iI_i: \sum_i|I_i|<\ve
+    \end{equation*}
+    то
+    \begin{equation*}
+        \forall\ve\, \exists\{\bar I_i\}: M \subset \bigcup_i\bar I_i: \sum_i|\bar I_i|<\ve
+    \end{equation*}
+    \textbf{Докажем в обратную сторону.} Мы хотим увеличить замкнутый брус в два раза и увеличенный брус взять открытым.
+    
+    Пусть $\{I_i\}$ — набор замкнутых брусов
+    %сюда бы рисунок из конца 2 лекции но там в тикзе надо уметь рисовать...
+    \begin{equation*}
+        I_i = [a^1_i, b^1_i]\times\ldots\times[a^n_i, b^n_i], \quad V_i = \sum_i|I_i|<\frac{\ve}{2^n}
+    \end{equation*}
+    Так как $\left(\frac{a_i^k}{2}, \frac{b_i^k}{2}\right)$ --- центр $i$-го бруса в $k$-ом измерении, увеличить изначальный брус в два раза по этому измерению можно сдвинувшись от центра не на половину, а на целую сторону, то есть на $b_i^k - a_i^k$
+
+    Таким образом: 
+
+    \begin{equation*}
+        \tilde{I_i} = \left(\frac{a_i^1+b_i^1}{2} - (b_i^1-a_i^1) ; \frac{a_i^1 + b_i^1}{2} + (b_i^1 - a_i^1)\right) \times \ldots\times \left(\frac{a_i^n+b_i^n}{2} - (b_i^n-a_i^n) ; \frac{a_i^n + b_i^n}{2} + (b_i^n - a_i^n)\right)
+    \end{equation*}
+    $\implies V_2 = \displaystyle\sum_i|\tilde{I_i} | = 2^n \cdot V_1 < \ve$
+    \qed
+
+
+ \end{enumerate}
+
