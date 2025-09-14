@@ -23,6 +23,7 @@
 ### Математический анализ
 
 - [Конспект](https://hse-tex.me/course-2/mathematical-analysis.pdf)
+- [Конспект (2020-2021)](https://hse-tex.me/course-2/mathematical-analysis-2020.pdf)
 - [Коллоквиум I](https://hse-tex.me/course-2/mathematical-analysis-colloquium-1.pdf)
 - [Коллоквиум I [альтернативная версия]](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/DKozl50/Matan2-tex/master/Colloquiums/colloq1.pdf)
 - [Коллоквиум II](https://hse-tex.me/course-2/mathematical-analysis-colloquium-2.pdf)
