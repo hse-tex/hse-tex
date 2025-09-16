@@ -1,0 +1,148 @@
+\section{Кратные интегралы. Брусы. Интегрируемые функции по Риману}
+
+\subsection{Брус. Мера бруса}
+
+\definition Замкнутый брус (координатный промежуток) в $\mathbb{R}^n$ — множество, описываемое как
+
+\begin{equation*}
+\begin{aligned}
+    I&=\{x\in\mathbb{R}^n\ |\ a_i\leq x_i\leq q_i,\ i\in\{1,n\}\}\\
+    &=\left[a_1,b_1\right]\times\ldots\times\left[a_n,b_n\right]
+\end{aligned}
+\end{equation*}
+
+\comment $I=\{a_1,b_1\}\times\ldots\times\{a_n,b_n\}$, где $\{a_i, b_i\}$ может быть отрезком, интервалом и т.д.
+
+\definition Мера бруса — его объём:
+
+\begin{equation*}
+    \begin{aligned}
+        \mu(I)&=|I|
+        =\prod_{i=1}^{n} (b_i-a_i)
+    \end{aligned}
+\end{equation*}
+
+\subsection{Свойства меры бруса в $\R^n$}
+
+\begin{enumerate}
+    \item \textbf{Однородность:} $\mu(I_{\lambda a,\lambda b})=\lambda^n\cdot\mu(I_{a,b})$, где $\lambda\geq
+    0$
+    \item \textbf{Аддитивность:} Пусть $I, I_1, \ldots, I_k$ — брусы
+    
+    Тогда, если $\forall i, j\, I_i, I_j$ не имеют общих внтренних точек, и $\displaystyle\bigcup_{i=1}^kI_i = I$, то
+    $$|I| = \sum_{i=1}^k|I_i|$$
+    \item \textbf{Монотонность}: Пусть $I$ — брус, покрытый конечной системой брусов, то есть $I\subset \displaystyle\bigcup_{i=1}^kI_i$, тогда
+    $$|I| < \sum_{i=1}^k|I_i|$$
+\end{enumerate}
+
+\subsection{Разбиение бруса. Диаметр множества. Масштаб разбиения}
+
+\definition \label{1.3} $I$ — замкнутый, невырожденный брус и $\displaystyle\bigcup_{i=1}^kI_i = I$, где $I_i$ попарно не имеют общих внутренних точек. Тогда набор $\T = \{\T\}_{i=1}^k$ называется разбиением бруса $I$
+
+\definition \label{1.4} Диаметр произвольного ограниченного множества $M\subset\R^n$ будем называть 
+
+\begin{equation*}
+\begin{aligned}
+    d(M) = \displaystyle\sup_{1\leq i\leq k}\|x-y\|,\text{ где}\\
+    \|x-y\|=\sqrt{\sum_{i=1}^{n}\left(x_i-y_i\right)^2}
+\end{aligned}
+\end{equation*}
+
+\definition \label{1.5} Масштаб разбиения $\T=\{I_i\}_{i=1}^k$ — число $\lambda(\T) = \Delta_{\T} = \displaystyle\max_{1\le i\le k} d(I_i)$
+
+\definition \label{1.6} Пусть $\forall\ I_i$ выбрана точка $\xi_i\in I_i$. Тогда, набор $\xi = \{\xi_i\}_{i=1}^k$ будем называть \textbf{отмеченными точками}
+
+\definition \label{1.7} Размеченное разбиение — пара $(\T, \xi)$
+
+\subsection{Интегральная сумма Римана. Интегрируемость по Риману}
+Пусть $I$ — невырожденный, замкнутый брус, функция $f: I\rightarrow \R$ определена на $I$
+
+\definition \label{1.8} Интегральная сумма Римана функции $f$ на $(\T, \xi)$ — величина
+$$\sigma(f, \T, \xi) := \sum_{i=1}^kf(\xi_i)\cdot|I_i|$$
+
+\definition \label{1.9} Функция $f$ интегрируема (по Риману) на замкнутом брусе $I$ ($f:I\rightarrow\R$), если 
+
+\begin{equation*}
+\begin{aligned}
+    \exists A\in\R: \forall \varepsilon > 0\, \exists \delta > 0: \forall(\T, \xi): \Delta_{\T} < \delta:\\
+    |\sigma(f, \T, \xi)| - A| < \varepsilon
+\end{aligned}
+\end{equation*}
+
+Тогда 
+$$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d{x_1}\ldots \d{x_n}$$
+Обозначение: $f\in\mathcal{R}(I)$
+
+\subsection{Пример константной функции}
+
+Пусть у нас есть функция $f = \text{const}$
+\begin{equation*}
+\begin{aligned}
+    \forall(\T, \xi):\ \sigma(f, \T, \xi)&= \sum_{i = 1}^k \text{const}\cdot|I_i|\\
+    &= \text{const}\cdot|I| \Longrightarrow \int_I f(x)\d{x} = \text{const}\cdot|I|
+    \end{aligned}
+\end{equation*}
+
+\subsection{Неинтегрируемая функция}
+
+Имеется брус $I = [0, 1]^n$, а также определена функция, такая что
+\begin{equation*}
+    f = \begin{cases}
+        1,& \forall i = \overline{1,\ldots, n}\,\, x_i\in \mathbb{Q}\\
+        0,&\text{иначе}
+    \end{cases}
+\end{equation*}
+
+\proof $\forall \T$ можно выбрать $\xi_i\in \mathbb{Q}$, тогда для такой пары $(\T, \overline{\xi})$:
+
+\begin{equation*}
+    \sigma(f, \T, \overline{\xi}) = \sum_{i=1}^k1\cdot|I_i| = |I| = 1
+\end{equation*}
+
+В то же время, $\forall \T$ можно выбрать $\xi_i\notin \mathbb{Q}$, тогда для такой пары $(\T, \hat{\xi})$:
+\begin{equation*}
+    \sigma(f, \T, \hat{\xi}) = \sum_{i=1}^k0\cdot|I_i| = 0 \Longrightarrow f\notin\mathcal{R}(I)
+\end{equation*}
+
+\subsection{Вычисление многомерного интеграла}
+
+Вычислите интеграл
+$$\iint\limits_{\substack{0\leq x\leq 1\\ 0\leq y\leq 1}}xy\d{x}\d{y}$$
+рассматривая его как представление интегральной суммы при сеточном разбиении квадрата $$I = [0, 1]\times[0, 1]$$ на ячейки — квадраты со сторонами, длины которых равны $\frac{1}{n}$, выбирая в качестве точек $\xi_i$ нижние правые вершины ячеек
+
+\begin{minipage}{0.5\textwidth}
+Имеется функция $f = xy,\ |I| =\displaystyle\frac{1}{n^2}$
+\begin{equation*}
+    \begin{aligned}
+        \sigma(f, \T, \xi) &= \sum_{i=1}^n \sum_{j=0}^{n-1}\frac{i}{n}\cdot\frac{j}{n}\cdot\frac{1}{n^2}\\
+        &= \frac{1}{n^4}\sum_{i=1}^n\sum_{j=0}^{n-1} i\cdot j\\
+        &= \frac{1}{n^4}\sum_{i=1}^n i \sum_{j=0}^{n-1} j\\
+        &= \frac{n (n-1) }{n^4} \sum_{i=1}^ni\\
+        &= \frac{n^2 (n+1) (n-1)}{4n^4}
+        % \underset{n\to\infty}{\longrightarrow}\frac{1}{4}
+    \end{aligned}
+\end{equation*}
+Заметим, что $\lim\limits_{n\rightarrow\infty}\displaystyle \frac{n^2 (n+1) (n-1)}{4n^4}=\frac{1}{4}$
+\end{minipage}
+
+\begin{minipage}{0.5\textwidth}
+$$
+    \begin{tikzpicture}[scale=3]
+        \draw[step=0.25cm, gray, very thin] (0,0) grid (2,2);
+
+        \draw[thick] (0,0) rectangle (2,2);
+        
+        \node at (-0.1, -0.1) {$0$};
+        \node at (1, -0.3) {\text{$n$ штук}};
+        \node at (2.1, -0.1) {$1$};
+        \node at (-0.1, 2) {$1$};
+
+        \foreach \i in {0.25, 0.5, ..., 2} {
+        \foreach \j in {0, 0.25, ..., 1.75} {
+            \fill (\i,\j) circle (1pt);
+        }
+    }
+
+    \end{tikzpicture}
+$$
+\end{minipage}

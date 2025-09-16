@@ -13,8 +13,8 @@ directory:
   target: course-2/probability-theory-colloquium-3.pdf
 - source: course-2/probability-theory/colloquium-4/colloquium-4.tex
   target: course-2/probability-theory-colloquium-4.pdf
-#- source: course-2/mathematical-analysis/lectures/mathematical-analysis.tex
-#  target: course-2/mathematical-analysis.pdf
+- source: course-2/mathematical-analysis/lectures/mathematical-analysis.tex
+  target: course-2/mathematical-analysis.pdf
 - source: course-2/mathematical-analysis-2020/lectures/mathematical-analysis.tex
   target: course-2/mathematical-analysis-2020.pdf
 - source: course-2/mathematical-analysis-2020/colloquium-2/colloquium-2.tex
