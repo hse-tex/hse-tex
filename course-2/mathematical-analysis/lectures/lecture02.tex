@@ -1,3 +1,7 @@
+
+
+
+
 \section{Свойства кратных интегралов. Условия интегрирования. Лебегова мера}
 
 \subsection{Необходимое условие интегрирования.}
@@ -9,9 +13,9 @@
 \proof От противного.
 
 \begin{enumerate}
-    \item $f\in \mathcal{R}(I) \implies \exists {A} \in n \R$, такая что $\forall \epsilon > 0$, а значит для $\epsilon = 1$ тоже:
+    \item $f\in \mathcal{R}(I) \implies \exists {A} \in \R$, такая что $\forall \epsilon > 0$, а значит для $\epsilon = 1$ тоже:
     \begin{equation}
-        \exists \delta > 0 \colon \forall (\T, \xi): \Delta_{\T} \leq \omega \text{ верно } \abs{\sigma(f, \T, \xi) - A} < 1
+        \exists \delta > 0 \colon \forall (\T, \xi): \Delta_{\T} \leq \delta \text{ верно } \abs{\sigma(f, \T, \xi) - A} < 1
     \end{equation}
 
     Отсюда
@@ -29,7 +33,7 @@
         \sigma(f, \T, \xi) = \sum_{i \neq i_0} f(\xi_i) \cdot \abs{I_i} + f(\xi_{i_0}) \cdot \abs{I_{i_0}}
     \end{equation}
 
-    Выбором подходящего $\xi_{i_0}$ можно сделать $f(\xi_{i_0})$ сколь угодно большой $\implies \sigma$ тоже.
+    Выбором подходящего $\xi_{i_0}$ можно сделать $f(\xi_{i_0})$ сколь угодно большой $\implies \sigma$ будет не ограничена - \mbox{противоречние}
 \end{enumerate}
 
 Из противоречния пунктов 1 и 2 следует, что
@@ -64,8 +68,8 @@
 Тогда $\forall (\T, \xi) \colon \Delta_{\T} < min(\delta_f, \delta_g) = \delta:$
 \begin{align}
     \abs{\sigma(\alpha f+\beta g, \T, \xi) - \alpha A_f+ \beta A_g} &= \abs{\sum(\alpha f(\xi_i) + \beta g(\xi_i)) \cdot \abs{I_i} - \alpha A_f - \beta A_g} \leq \\
-    &\leq |\alpha|\cdot|\sigma_f - A_f| + |\beta|\cdot|\sigma_g-A_g| < (|\alpha|+|\beta|)\ve
-    % \left(|\alpha| + |\beta|\right) \frac{\varepsilon}{|\alpha|+|\beta|+1} < \varepsilon
+    &\leq |\alpha|\cdot|\sigma_f - A_f| + |\beta|\cdot|\sigma_g-A_g|
+    < \left(|\alpha| + |\beta|\right) \frac{\varepsilon}{|\alpha|+|\beta|+1} < \ve
 \end{align}
 \qed
 
@@ -140,10 +144,10 @@
     \proof Пусть $\{I_i\}$ — открытые брусы, тогда $\forall \epsilon > 0 \ \exists$ не более чем счетный набор $\{I_i\}$:
     $M\subset \displaystyle\bigcup_iI_i \ $ и $ \ \sum |I_i| < \epsilon$
     
-    Пусть $\{\bar I_i\}$ — открытые брусы + границы = замкнутые брусы $I_i$, причём объем ``добавленных'' плоскостей нулевой
+    Пусть $\{\bar I_i\}$ — открытые брусы + границы = замкнутые брусы $I_i$, причём объем ``добавленных'' плоскостей будет нулевой, так как объем бруса $n-1$ размерности, будет нулевым для объема бруса размерности $n$
     \begin{equation*}
         \begin{aligned}
-            M\subset\bigcup_iI_i \subset\bigcup_i\bar I_i, \, |I_i| = |\bar I_i|
+            M\subset\bigcup_iI_i \subset\bigcup_i\bar I_i, \ \text{при этом} \ |I_i| = |\bar I_i|
         \end{aligned}
     \end{equation*}
     Если
@@ -175,4 +179,6 @@
 
 
  \end{enumerate}
+
+
 
