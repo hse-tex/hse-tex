@@ -1,0 +1,33 @@
+
+
+\begin{tikzpicture}[
+    set/.style={dashed, thick},
+    arrow/.style={-{Stealth[scale=1.2]}, thick}
+]
+
+% Открытое множество (клякса)
+\draw[set] (0,0) to[out=30,in=150] (3,0.5)
+           to[out=-30,in=60] (4,-1)
+           to[out=-120,in=-30] (2,-2)
+           to[out=150,in=-120] (0,-1)
+           to[out=60,in=180] cycle;
+
+% Квадрат внутри множества
+\draw[thin] (1,-1) rectangle (2,0);
+\fill[red!] (1.5, -0.5) circle (0.85pt);
+\node at (1.7, -0.3) {$a$};
+
+\draw[set] (1.5, -0.5) circle (25pt);
+
+% Стрелка с подписью
+\draw[arrow] (2.75, -0.4) -- (2.4, -0.2);
+\node at (3.2, -0.5) {$B_{e} (a)$};
+
+% Стрелка с подписью
+\draw[arrow] (3.8,0.5) -- (3.4,0.3);
+\node at (4.2, 0.6) {$A_{\alpha_0}$};
+
+\node[align=center] at (2.2,-2.5) {Покрытие $A_{\alpha_0}$};
+
+\end{tikzpicture}
+

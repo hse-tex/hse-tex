@@ -1,0 +1,37 @@
+
+\begin{tikzpicture}[
+    set/.style={dashed, thick},
+    arrow/.style={-{Stealth[scale=1.2]}, thick}
+]
+
+% Открытое множество (клякса)
+\draw[thin] (0,0) to[out=30,in=150] (2,1.0)
+           to[out=-30,in=60] (3.5,-1.5)
+           to[out=-120,in=-30] (1,-2)
+           to[out=120,in=-120] (0.5,-1)
+           to[out=60,in=180] cycle;
+
+\fill (-2, -0.5) circle (0.75pt);
+\node[right] at (-2.0,-0.3) {$0$};
+
+\begin{scope}
+    \clip (-2.4, -2.8) rectangle(4.9, 1.6);
+
+    \draw[set] (-2, -0.5) circle (25pt);
+    \draw[set] (-2, -0.5) circle (65pt);
+    \draw[set] (-2, -0.5) circle (125pt);
+    \draw[set] (-2, -0.5) circle (175pt);
+
+    \node[right] at (-1.4,-1.2) {$B_{1}(0)$};
+    \node[right] at (-0.2,-2.0) {$B_{2}(0)$};
+    \node[right] at (2.0,-2.6) {$B_{3}(0)$};
+    \node[right] at (3.9,-2.2) {$B_{4}(0)$};
+\end{scope}
+
+% Стрелка с подписью
+\draw[arrow] (3.5,0.8) -- (3.2,0.1);
+\node[right] at (3.3,1) {$K$};
+
+\node[align=center] at (1.5,-3.3) {Пример покрытия $K$ вокруг точки $0$ с помощью шаров};
+
+\end{tikzpicture}

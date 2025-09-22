@@ -1,0 +1,44 @@
+
+
+\begin{tikzpicture}[
+    set/.style={dashed, thick},
+    arrow/.style={-{Stealth[scale=1.2]}, thick}
+]
+
+% Открытое множество (клякса)
+\draw[thin] (0,0) to[out=30,in=150] (0.5,0.3)
+           to[out=-30,in=60] (1.,-1.)
+           to[out=-120,in=-30] (0.3,-1.2)
+           to[out=120,in=-120] (-0.3,-0.2)
+           to[out=60,in=180] cycle;
+
+\fill (-0.75, -1.5) circle (0.75pt);
+\node[right] at (-0.75,-1.5) {$0$};
+
+\draw[set] (-0.75, -1.5) circle (68pt);
+
+\node at (1.5,0.3) {$B_{1}(0)$};
+
+\draw[thin] (-3.5, -4) rectangle (2, 1);
+\draw[arrow] (-0.72,-4.2) -- (1.95,-4.2);
+\draw[arrow] (-0.78,-4.2) -- (-3.45,-4.2);
+\node at (-2, -4.5) {$r$};
+\node at (0.7, -4.5) {$r$};
+
+\draw[arrow] (-3.7,-1.55) -- (-3.7,0.95);
+\draw[arrow] (-3.7,-1.65) -- (-3.7,-4.);
+\node at (-4, -2.75) {$r$};
+\node at (-4, -0.4) {$r$};
+
+\draw[set][red!] (-0.4, -0.4) circle (14pt);
+\draw[set][red!] (0.75, -0.6) circle (14pt);
+\draw[set][red!] (0.1, 0) circle (14pt);
+\draw[set][red!] (0.3, -1.0) circle (14pt);
+\draw[set][red!] (1, -1.2) circle (14pt);
+\node[red!] at (-1.0, 0.5) {$\{A_{\alpha}\}$};
+
+\node at (0.5,-0.5) {$K$};
+
+\node[align=center] at (-0.5,-5) {Строим замкнутый брус вокруг точки 0, пользуясь \\ существованием конечного покрытия покрываем наш компакт $K$};
+
+\end{tikzpicture}

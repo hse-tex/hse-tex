@@ -1,0 +1,90 @@
+
+
+
+\section{Топология в $\mathbb{R}^n$}
+\definition Пусть имеется $M\subset\mathbb{R}^n$. Точку $x_0\in M$ будем называть \textit{внутренней} точкой $M$, если $$\exists\ve>0:B_{\ve}(x_0)\subset M$$
+
+\definition Точку $x_0\in M$ будем называть \textit{внешней} точкой $M$, если $$\exists\ve>0:B_{\ve}(x_0)\subset (\mathbb{R}^n\setminus M)$$
+
+\ex $M=[0;1)$. тогда
+\begin{equation*}
+    \begin{cases}
+        x=0.5&\text{ — внутренняя}\\
+        x=0&\text{ — не внутренняя}\\
+        x=2&\text{ — внешняя}
+    \end{cases}
+\end{equation*}
+
+\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{граничной} точкой $M$, если $$\forall \ve>0:\ \left(B_{\ve}(x_0)\cap M\right)\ne\varnothing\wedge B_{\ve}(x_0)\cap(\mathbb{R}^n\setminus M)\ne\varnothing$$
+
+\mark $\partial M$ — множетсво всех граничных точек $M$
+
+\ex $M=[0;1)\Longrightarrow x=0;1$ — граничные
+
+\definition Точку $x_0\in M$ будем называть \textit{изолированной} точкой $M$, если $$\exists \ve>0:\ \stackrel{\circ}{B_{\ve}}(x_0)\cap M=\varnothing$$
+
+\ex $M=[0;1]\cup \{3\}\Longrightarrow x=3$ — изолированная
+
+\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{предельной} точкой $M$, если $$\forall \ve>0:\ \stackrel{\circ}{B_{\ve}}(x_0)\cap M\ne\varnothing$$
+
+\comment Из определения следует, что изолированные точки не являются предельными
+
+\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{точкой прикосновения} $M$, если $$\forall \ve>0:\ B_{\ve}(x_0)\cap M\ne\varnothing$$
+
+\comment Точки прикосновения = изолированные точки $\oplus$ предельные точки
+
+\definition Множество всех точек прикосновения $M$ называется \textit{замыканием} $M$ и обозначается как $\overline {M}$
+
+\ex $M=(0;1)\cup(1;2]\Longrightarrow\overline{M}=[0;2]$
+
+\ex $M=\{x\in[0;1]\colon x\in \mathbb{Q}\}\Longrightarrow\overline{M}=[0;1]$
+
+\definition Множество $M\subset\mathbb{R}^n$ называется \textit{открытым}, если все его точки внутренние
+
+\definition Множество $M\subset R^n$ называется замкнутым, если $\mathbb{R}^n\setminus M$ — открыто
+
+\ex $\begin{cases}
+    (0;1)&\text{ — открыто в $\mathbb{R}$}\\
+    [0;1]&\text{ — замкнуто, т.к. $(-\infty;0)\cup(1;+\infty)$ открыто в $\mathbb{R}$}\\
+    [0;1)&\text{ — ни открыто, ни замкнуто в $\mathbb{R}$}
+\end{cases}$
+
+\definition Множество $K\subset\R^n$ называется \textit{компактом}, если из $\forall$ его покрытия открытыми множествами можно выделить конечное подпокрытие
+
+\comment Если хотя бы для какого-то покрытия это не выполняется, то $K$ — не компакт
+
+\ex Пусть $M=(0,1)$ покроем $\left\{A_n=\left(0;1-\frac{1}{n}\right)\right\}_{n=1}^\infty$
+
+При $n\rightarrow\infty$ $M\subset \displaystyle\bigcup_{n=1}^\infty A_n$, но $\forall$ фиксированного $N$: $M\not\subset\displaystyle\bigcup_{n=1}^{\infty}\Longrightarrow$ не компакт
+
+\definition Множество $M\subset \mathbb{R}^n$ — называется \textit{ограниченным}, если $$\exists x_0\in\mathbb{R}^n\text{ и }\exists r>0\text{, такой что }M\subset B_{r}(x_0)$$
+
+\subsection{Критерий замкнутости}
+% Наличие социофобии
+
+\theorem $M$ — замкнуто $\Longleftrightarrow$ $M$ содержит \textbf{все} cвои предельные точки
+
+\proof Докажем необходимость и достаточность
+\begin{enumerate}
+    \item \textit{(Необходимость)} Докажем $\Longrightarrow$ от противного
+    \begin{itemize}
+        \item Пусть $x_0$ — предельная для $M$ и $x_0\notin M$. Тогда, $\forall\ve>0\ \stackrel{\circ}{B_{\ve}}(x_0)\cap M\ne\varnothing\text{ и }x_0\in\mathbb{R}^n$
+        \item По условию $M$ — замкнуто, то есть $\mathbb{R}^n\setminus M$ — открыто $\Longrightarrow$ все его точки внутренние и $\exists r>0$:
+        $$B_{r}(x_0)\subset\mathbb{R}^n\setminus M\Longrightarrow\stackrel{\circ}{B_r(x_0)}\subset\mathbb{R}^n\setminus M\text{ и }\stackrel{\circ}{B_r}(x_0)\cap M=\varnothing$$
+
+        Пришли к противоречию $\Longrightarrow$ $M$ содержит все свои предельные точки\qed
+    \end{itemize}
+    \item \textit{(Достаточность)} Докажем $\Longleftarrow$
+
+    Пусть $y_0$ — не является предельной для $M$, то есть $y_0\in\mathbb{R}^n\setminus M\Longrightarrow\exists r>0$:
+    \begin{equation*}
+        \begin{cases}
+            \stackrel{\circ}{B_{r}}(y_0)\cap M=\varnothing\\
+            y_0\in\mathbb{R}^n\setminus M
+        \end{cases}\Longrightarrow B_r(y_0)\subset \mathbb{R}^n\setminus M
+    \end{equation*}
+    $\Longrightarrow\mathbb{R}^n\setminus M$ — открытое и состоит из всех точек, не являющихся предельными $\Longrightarrow$ $M$ — замкнуто по определению\qed
+\end{enumerate}
+
+\newpage
+

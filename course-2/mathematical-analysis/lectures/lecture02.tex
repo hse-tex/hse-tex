@@ -1,7 +1,6 @@
 
 
 
-
 \section{Свойства кратных интегралов. Условия интегрирования. Лебегова мера}
 
 \subsection{Необходимое условие интегрирования.}
@@ -127,7 +126,7 @@
 \definition Множество $M\subset\R^n$ будем называть \textbf{множеством меры 0 по Лебегу}, если $\forall\ve>0$ существует не более чем счетный набор (замкнутых) брусов $\{I_i\}$ и выполняются:
 \begin{enumerate}[label=\textbullet]
     \item $M\subset \displaystyle\bigcup_iI_i$
-    \item $\displaystyle\sum_i|I_i| < \ve\,\, \quad \forall \ve < 0$
+    \item $\displaystyle\sum_i|I_i| < \ve\,\, \quad \forall \ve > 0$
 \end{enumerate}
 
 \textbf{Пример:} $a \in \R$  --- точка.
@@ -140,7 +139,7 @@
 \subsection{Свойства множества меры нуль по Лебегу}
 \begin{enumerate}
     \item Если в определении $\{I_i\}$ заменить на открытые брусы, то определение останется верным.
-    \item
+
     \proof Пусть $\{I_i\}$ — открытые брусы, тогда $\forall \epsilon > 0 \ \exists$ не более чем счетный набор $\{I_i\}$:
     $M\subset \displaystyle\bigcup_iI_i \ $ и $ \ \sum |I_i| < \epsilon$
     
@@ -151,7 +150,7 @@
         \end{aligned}
     \end{equation*}
     Если
-    \item
+
 
     \begin{equation*}
         \forall\ve\, \exists\{I_i\}: M \subset \bigcup_iI_i: \sum_i|I_i|<\ve
@@ -177,8 +176,30 @@
     $\implies V_2 = \displaystyle\sum_i|\tilde{I_i} | = 2^n \cdot V_1 < \ve$
     \qed
 
+    \item Если $M \subset \R^n$ - множество меры нуль по Лебегу, то из $L \subset M \implies L$ - множество меры нуль по Лебегу
 
- \end{enumerate}
+    \proof Докажем по транзитивности
+    \begin{equation*}
+        \forall\ve\ > 0, \ \exists \ \text{не более чем счетный набор} \ \{I_i\}: L \subset M \subset \bigcup_iI_i \implies L \subset \bigcup_iI_i
+    \end{equation*}
 
+    По условию нам дано, что для $M \subset \bigcup_iI_i$ верно $\sum_i |I_i| < \ve$, и тоже самое выполнено и для $L \subset \bigcup_iI_i$, тогда $L$ по определнию является множеством меры нуль по Лебегу
+    \qed
 
+    \item Не более чем счетное объединение множеств меры нуль по Лебегу, тоже является множеством меры нуль по Лебегу
+
+    \proof пусть $M = \bigcup_i^\infty M_k$ - объединение не более чем счетного числа множеств $\forall k \ M_k$ - множество меры нуль по Лебегу $\implies \forall k, \ \forall\ve>0 \ \exists\{I_i\}_{i=1}^{\infty}$ по определению множества меры нуль для них верно
+
+    \begin{enumerate}[label=\textbullet]
+        \item $M_k \subset \displaystyle\bigcup_i^\infty I_i^k$ \footnote{$I_i^k$ - это $i$-ый для $M_k$, а не степень}
+        \item $\displaystyle\sum_i|I_i| < \ve_k\,\, \quad \forall \ve_k > 0$
+    \end{enumerate}
+    Отсюда получаем $M = \displaystyle\bigcup_i^\infty M_k \subset \displaystyle\bigcup_i^\infty I_i^k$ и $\sum_{k=1}^{\infty}\sum_{i=1}^{\infty} |I_i^k| < \sum_{k=1}^{\infty}\ve_k$ - если теперь взять $\ve_k = \frac{\ve}{2^k}$, то мы получим
+    \begin{equation*}
+     \sum_{k=1}^{\infty}\ve_k = \sum_{k=1}^{\infty} \frac{\ve}{2^k} < \ve
+    \end{equation*}
+
+    \qed
+
+\end{enumerate}
 
