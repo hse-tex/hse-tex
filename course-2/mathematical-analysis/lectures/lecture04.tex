@@ -1,0 +1,89 @@
+
+\section{Компакты в $\mathbb{R}^n$}
+\subsection{Замкнутый брус — компакт}
+\theorem Пусть $I\subset\mathbb{R}^n$ — замкнутый брус $\Longrightarrow I$ — компакт
+
+\proof Пойдем от противного
+
+Пусть $I=[a_1;b_1]\times\ldots\times[a_n;b_n]$
+\begin{enumerate}
+    \item Положим, что $I$ — не компакт. Значит, существует его покрытие $\{A_{\alpha}\}$ — открытые множества, такие что $I\subset \{A_{\alpha}\}$, не допускающее выделения конечного подкпорытия
+    \item Поделим каждую сторону пополам. Тогда, $\exists I_1$, такой что не допускает конечного подпокрытия. Иначе, $I$ — компакт
+    \item Аналогично, повторим процесс и получим систему вложенных брусов: $$I\supset I_1\supset I_2\supset \ldots$$
+    То есть на каждой стороне возникает последовательность вложенных отрезков, которые стягиваются в точку $a=(a_1,\ldots,a_n)$
+
+    \begin{center}
+        \input{assets/lecture04/shrinking_rectangle}
+    \end{center}
+
+    При этом, $\exists a = \displaystyle\bigcap_{i=1}^{\infty}I_i$
+
+    \item $a\in I\Longrightarrow a\in \bigcup A_{\alpha}\Longrightarrow\exists \alpha_0:a\in \underbrace{A_{\alpha_0}}_{\text{открытое}}\Longrightarrow\exists \ve>0: B_{\ve}(a)\subset A_{\alpha_0}$
+
+    \begin{center}
+        \input{assets/lecture04/brus_in_open_set}
+    \end{center}
+
+
+    \item Из построения получили, что $I \supset I_1 \supset \ldots \supset a \Longrightarrow \exists N:\forall n > N\ I_n\subset B_{\ve}(a)\subset A_{\alpha_0}$
+
+    Получается, что $\forall n>N\ I_n$ покрывается одним лишь $A_{\alpha_0}$ из системы $\{A_{\alpha}\}$
+
+    Получаем противоречие тому, что любое $I_n$ не допускает конечного подпокрытия, а у нас получилось, что $I_n\in A_{\alpha_0}\forall n>N \Longrightarrow I - \text{компакт}$
+    \qed
+\end{enumerate}
+
+\comment Любое ограниченное множество можно вписать в замкнутый брус. Потому что можно вокруг него описать шарик, который точно можно вписать в брус
+
+\subsection{Критерий компактности}
+\theorem $K\subset \mathbb{R}^n$. $K$ — компакт $\Longleftrightarrow$ $K$ замкнуто и ограниченно
+
+\proof Докажем необходимость $(\Longrightarrow)$
+\begin{itemize}
+    \item \textit{Ограниченность.} $K$ — компакт $\Longrightarrow \forall \{A_\alpha\}_{\alpha\in\N}$ — можно выделить конечное подпокрытие $\Longrightarrow$
+
+    $\Longrightarrow$ Пусть $\{A_\alpha\}=\{B_n(0)\}_{n=1}^\infty$ $\Longrightarrow \exists N \in \N : \forall n > N ~ K \subset \displaystyle\bigcup_{n=1}^N B_n(0)$ и так как $B_n(0)$ — вложены шары $\Longrightarrow$
+
+    $\Longrightarrow K \subset B_N(0) \Longrightarrow$ по определению $K$ — ограничено
+
+    \begin{center}
+       \input{assets/lecture04/compact_in_spheres}
+    \end{center}
+
+
+    \item \textit{Замкнутость.} Пойдем от противного. $K$ — компакт, тогда возьмем $\{B_{\frac{\delta(x)}{2}}(0)\}_{x\in K}$ — покрытие открытыми шарами, где $\delta(x)=\rho(x,x_0)$. $x_0$ — предельная точка, которая $\notin K$ (или же $\in \mathbb{R}^n\setminus K$)
+
+    Так как $K$ — компакт, $\exists x_1,\ldots, x_s:K\subset\displaystyle\bigcup_{i=1}^{s} B_{\frac{\delta(x_i)}{2}}(x_i)$
+
+    Пусть $\delta=\min\limits_{1\leqslant i\leqslant s}{\delta(x_i)}$, тогда
+    \begin{equation*}
+        \begin{aligned}
+            B_{\frac{\delta}{2}}(x_0)\cap\bigcup_{i=1}^{s}B_{\frac{\delta(x_i)}{2}}(x_i)=\varnothing&\Longrightarrow B_{\frac{\delta}{2}}(x_0)\subset\mathbb{R}^n\setminus K\\
+            &\Longrightarrow\stackrel{\circ}{B}_{\frac{\delta}{2}}(x_0)\cap K=\varnothing
+        \end{aligned}
+    \end{equation*}
+
+    Значит, $x_0$ \textit{не является предельной точкой} $K$, что противоречит нашему предположению
+
+    \begin{center}
+        \input{assets/lecture04/min_delta_spheres}
+    \end{center}
+
+
+\end{itemize}
+
+\proof Докажем достаточность
+
+$K$ — замкнуто и ограничено $\Longrightarrow \exists r>0:B_r(0)\supset K\Longrightarrow\exists I$ — замкнутый брус, такой что
+$$K\subset I\text{ и }I=[-r;r]^n$$
+% тут позже будет картинка
+
+Пусть $\{A_{\alpha}\}_{\alpha\in\N}$ — произвольное покрытие открытыми множествами для $K$. Тогда, $I\subset \{A_{\alpha}\}\cup\underbrace{\{\mathbb{R}^n\setminus K\}}_{\text{открыто}}$. Так как $I$ — компакт, то $\exists $ конечное подпокрытие
+$$\{A_{\alpha_i}\}_{i=1}^m\cup\{\mathbb{R}^n\setminus K\}\supset I\supset K\text{ — покрытие для $I$}$$
+
+Значит, $K\subset\{A_{\alpha_i}\}_{i=1}^{m}$ — конечное и $\{A_{\alpha}\}$ — произвольное, тогда $K$ — компакт по определению\qed
+
+\begin{center}
+    \input{assets/lecture04/compact_in_square}
+\end{center}
+
