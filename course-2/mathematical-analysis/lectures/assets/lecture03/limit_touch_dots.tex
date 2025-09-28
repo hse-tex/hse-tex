@@ -1,0 +1,54 @@
+
+\begin{tikzpicture}[
+    set/.style={dashed, thick},
+    arrow/.style={-{Stealth[scale=1.2]}, thick}
+]
+\begin{scope}[scale=0.8]
+
+    % --- ЗЕЛЕНАЯ фигура (слева) ---
+    \fill [pattern = {Lines[angle = -45, line width = 1pt, distance = 10pt]},
+    pattern color = green]
+        (-6,0) to[out=30,in=150] (-3,1)
+               to[out=-30,in=90] (-2,-1)
+               to[out=-90,in=0] (-4,-2)
+               to[out=180,in=-120] cycle;
+
+    % Контур
+    \draw[set, green!]
+        (-6,0) to[out=30,in=150] (-3,1)
+               to[out=-30,in=90] (-2,-1)
+               to[out=-90,in=0] (-4,-2)
+               to[out=180,in=-120] cycle;
+
+    % Красные точки
+    \fill[red!] (-7, 0) circle (2pt);
+    \fill[red!] (-6, -2) circle (2pt);
+    \fill[red!] (-1.5, 0) circle (2pt);
+
+    % Подпись под зеленой
+    \node[align=center] at (-4,-3.5) {Пример точек \\ Красные - изолированные. Зелёные - предельные};
+
+
+    % --- СИНЯЯ фигура (справа) ---
+    \fill [pattern = {Lines[angle = -45, line width = 1pt, distance = 10pt]},
+    pattern color = blue]
+        (3,0) to[out=30,in=150] (6,1)
+              to[out=-30,in=90] (7,-1)
+              to[out=-90,in=0] (5,-2)
+              to[out=180,in=-120] cycle;
+
+    % Контур
+    \draw[set, blue!]
+        (3,0) to[out=30,in=150] (6,1)
+              to[out=-30,in=90] (7,-1)
+              to[out=-90,in=0] (5,-2)
+              to[out=180,in=-120] cycle;
+
+    \fill[blue!] (2, 0) circle (2pt);
+    \fill[blue!] (3, -2) circle (2pt);
+    \fill[blue!] (7.5, 0) circle (2pt);
+
+    % Подпись под синей
+    \node[align=center] at (5,-3.5) {Синие точки - точки прикосновения};
+\end{scope}
+\end{tikzpicture}

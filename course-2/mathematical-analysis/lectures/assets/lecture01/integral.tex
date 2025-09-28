@@ -1,0 +1,72 @@
+% \documentclass[tikz,border=5pt]{standalone}
+% \usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+% \usepackage[english,russian]{babel}
+
+% \begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+    view={120}{30}, % угол обзора
+    axis lines=center,
+    xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
+    ticks=none,
+    domain=0:1, y domain=0:1,
+    samples=31, samples y=31,
+    colormap/viridis,
+    zmax=0.8, zmin=0,
+    xmin=0, xmax=1.2,
+    ymin=0, ymax=1.2
+  ]
+
+  % поверхность f(x,y) = 0.4 + 0.2*sin(2*pi*x)*cos(2*pi*y)
+  \addplot3[surf, opacity=0.7]
+    {0.6 + 0.05*sin(deg(2*pi*x))*cos(deg(2*pi*y))};
+
+  % сетка внизу
+  \foreach \i in {0,0.2,...,1} {
+    \addplot3[black, thin] coordinates {(\i,0,0) (\i,1,0)};
+    \addplot3[black, thin] coordinates {(0,\i,0) (1,\i,0)};
+  }
+
+  % координаты выбранного квадратика
+  \pgfmathsetmacro{\xA}{0.4}
+  \pgfmathsetmacro{\xB}{0.6}
+  \pgfmathsetmacro{\yA}{0.4}
+  \pgfmathsetmacro{\yB}{0.6}
+
+  % значения функции в углах
+  \pgfmathsetmacro{\zA}{0.6 + 0.05*sin(2*pi*\xA r)*cos(2*pi*\yA r)}
+  \pgfmathsetmacro{\zB}{0.6 + 0.05*sin(2*pi*\xB r)*cos(2*pi*\yA r)}
+  \pgfmathsetmacro{\zC}{0.6 + 0.05*sin(2*pi*\xB r)*cos(2*pi*\yB r)}
+  \pgfmathsetmacro{\zD}{0.6 + 0.05*sin(2*pi*\xA r)*cos(2*pi*\yB r)}
+
+  % нижний квадратик (основание)
+  \addplot3[fill=red, opacity=0.2]
+    coordinates {(\xA,\yA,0) (\xB,\yA,0) (\xB,\yB,0) (\xA,\yB,0) (\xA,\yA,0)};
+
+  % верхний квадратик (на поверхности)
+  \addplot3[fill=red, opacity=0.3]
+    coordinates {(\xA,\yA,\zA) (\xB,\yA,\zB) (\xB,\yB,\zC) (\xA,\yB,\zD) (\xA,\yA,\zA)};
+
+  % вертикальные рёбра
+  \addplot3[red, thick, opacity=0.3] coordinates {(\xA,\yA,0) (\xA,\yA,\zA)};
+  \addplot3[red, thick, opacity=0.3] coordinates {(\xB,\yA,0) (\xB,\yA,\zB)};
+  \addplot3[red, thick, opacity=0.3] coordinates {(\xB,\yB,0) (\xB,\yB,\zC)};
+  \addplot3[red, thick, opacity=0.3] coordinates {(\xA,\yB,0) (\xA,\yB,\zD)};
+
+  % точка внутри квадратика внизу
+  \addplot3[only marks, mark=*, red] coordinates {(0.5,0.5,0)};
+
+  % точка на поверхности
+  \pgfmathsetmacro{\zP}{0.6 + 0.05*sin(2*pi*0.5 r)*cos(2*pi*0.5 r)}
+  \addplot3[only marks, mark=*, red] coordinates {(0.5,0.5,\zP)};
+
+  % соединение точек
+  \addplot3[dashed, red] coordinates {(0.5,0.5,0) (0.5,0.5,\zP)};
+
+  \end{axis}
+
+  \node[align=center] at (4.2,0) {Пример интегрирования в $\R^2$ по определению};
+
+\end{tikzpicture}
+% \end{document}

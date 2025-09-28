@@ -1,0 +1,50 @@
+\begin{tikzpicture}[
+    set/.style={dashed, thick},
+    arrow/.style={-{Stealth[scale=1.2]}, thick}
+]
+
+\begin{scope}[scale=1.8]
+
+
+\draw[set, red!] (-1.7,0) to[out=130,in=70] (-2.9,0.3)
+           to[out=-100,in=60] (-2.8,-1.)
+           to[out=-120,in=-100] (-1.8,-1.2)
+           to[out=60,in=-50] cycle;
+\fill [pattern = {Lines[angle = -45, line width = 1pt, distance = 10pt]},
+    pattern color = blue]
+        (-1.7,0) to[out=130,in=70] (-2.9,0.3)
+           to[out=-100,in=60] (-2.8,-1.)
+           to[out=-120,in=-100] (-1.8,-1.2)
+           to[out=60,in=-50] cycle;
+
+
+\draw[thin, red!] (0,0) to[out=30,in=150] (0.5,0.3)
+           to[out=-30,in=60] (1.,-1.)
+           to[out=-120,in=-30] (0.3,-1.2)
+           to[out=120,in=-120] (-0.3,-0.2)
+           to[out=60,in=180] cycle;
+\fill [pattern = {Lines[angle = -45, line width = 1pt, distance = 10pt]},
+    pattern color = blue]
+        (0,0) to[out=30,in=150] (0.5,0.3)
+           to[out=-30,in=60] (1.,-1.)
+           to[out=-120,in=-30] (0.3,-1.2)
+           to[out=120,in=-120] (-0.3,-0.2)
+           to[out=60,in=180] cycle;
+
+
+\fill[green!] (-1, 0.4) circle(1.25pt);
+\fill[green!] (-0.4, -0.7) circle(1.25pt);
+\fill[green!] (-1.2, -0.5) circle(1.25pt);
+\fill[green!] (-0.9, -1.2) circle(1.25pt);
+\fill[green!] (-0.7, -0.1) circle(1.25pt);
+\fill[green!] (-3.2, -0.8) circle(1.25pt);
+\fill[green!] (-3.4, 0.1) circle(1.25pt);
+\fill[green!] (1.5, -0.3) circle(1.25pt);
+
+\end{scope}
+
+
+\node[align=center] at (-1.5,-4) {Синяя область - пример множества внутренних точек \\ Зеленые - пример внешних (изображена часть точек) \\ Красные границы -  пример множества граничных точек (пример $\partial M$)};
+
+
+\end{tikzpicture}
