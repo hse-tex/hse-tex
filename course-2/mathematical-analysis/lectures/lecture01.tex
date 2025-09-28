@@ -4,14 +4,20 @@
 
 \definition Замкнутый брус (координатный промежуток) в $\mathbb{R}^n$ — множество, описываемое как
 
+
+
 \begin{equation*}
 \begin{aligned}
-    I&=\{x\in\mathbb{R}^n\ |\ a_i\leq x_i\leq q_i,\ i\in\{1,n\}\}\\
+    I&=\{x\in\mathbb{R}^n\ |\ a_i\leq x_i\leq b_i,\ i\in\{1,n\}\}\\
     &=\left[a_1,b_1\right]\times\ldots\times\left[a_n,b_n\right]
 \end{aligned}
 \end{equation*}
 
 \comment $I=\{a_1,b_1\}\times\ldots\times\{a_n,b_n\}$, где $\{a_i, b_i\}$ может быть отрезком, интервалом и т.д.
+
+\begin{center}
+    \input{assets/lecture01/examples_brus}
+\end{center}
 
 \definition Мера бруса — его объём:
 
@@ -48,6 +54,11 @@
 \end{aligned}
 \end{equation*}
 
+\begin{center}
+    \input{assets/lecture01/3_spheres}
+\end{center}
+
+
 \definition \label{1.5} Масштаб разбиения $\T=\{I_i\}_{i=1}^k$ — число $\lambda(\T) = \Delta_{\T} = \displaystyle\max_{1\le i\le k} d(I_i)$
 
 \definition \label{1.6} Пусть $\forall\ I_i$ выбрана точка $\xi_i\in I_i$. Тогда, набор $\xi = \{\xi_i\}_{i=1}^k$ будем называть \textbf{отмеченными точками}
@@ -73,6 +84,11 @@ $$\sigma(f, \T, \xi) := \sum_{i=1}^kf(\xi_i)\cdot|I_i|$$
 $$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d{x_1}\ldots \d{x_n}$$
 Обозначение: $f\in\mathcal{R}(I)$
 
+\begin{center}
+    \input{assets/lecture01/integral}
+\end{center}
+
+
 \subsection{Пример константной функции}
 
 Пусть у нас есть функция $f = \text{const}$
@@ -83,7 +99,7 @@ $$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d
     \end{aligned}
 \end{equation*}
 
-\subsection{Неинтегрируемая функция}
+\subsection{Пример неинтегрируемая функция}
 
 Имеется брус $I = [0, 1]^n$, а также определена функция, такая что
 \begin{equation*}
@@ -114,10 +130,10 @@ $$\iint\limits_{\substack{0\leq x\leq 1\\ 0\leq y\leq 1}}xy\d{x}\d{y}$$
 Имеется функция $f = xy,\ |I| =\displaystyle\frac{1}{n^2}$
 \begin{equation*}
     \begin{aligned}
-        \sigma(f, \T, \xi) &= \sum_{i=1}^n \sum_{j=0}^{n-1}\frac{i}{n}\cdot\frac{j}{n}\cdot\frac{1}{n^2}\\
-        &= \frac{1}{n^4}\sum_{i=1}^n\sum_{j=0}^{n-1} i\cdot j\\
-        &= \frac{1}{n^4}\sum_{i=1}^n i \sum_{j=0}^{n-1} j\\
-        &= \frac{n (n-1) }{n^4} \sum_{i=1}^ni\\
+        \sigma(f, \T, \xi) &= \sum_{i=1}^n \sum_{j=0}^{n-1}\frac{i}{n}\cdot\frac{j}{n}\cdot\frac{1}{n^2}
+        &= \frac{1}{n^4}\sum_{i=1}^n\sum_{j=0}^{n-1} i\cdot j
+        &= \frac{1}{n^4}\sum_{i=1}^n i \sum_{j=0}^{n-1} j
+        &= \frac{n (n-1) }{n^4} \sum_{i=1}^ni
         &= \frac{n^2 (n+1) (n-1)}{4n^4}
         % \underset{n\to\infty}{\longrightarrow}\frac{1}{4}
     \end{aligned}
@@ -125,24 +141,6 @@ $$\iint\limits_{\substack{0\leq x\leq 1\\ 0\leq y\leq 1}}xy\d{x}\d{y}$$
 Заметим, что $\lim\limits_{n\rightarrow\infty}\displaystyle \frac{n^2 (n+1) (n-1)}{4n^4}=\frac{1}{4}$
 \end{minipage}
 
-\begin{minipage}{0.5\textwidth}
-$$
-    \begin{tikzpicture}[scale=3]
-        \draw[step=0.25cm, gray, very thin] (0,0) grid (2,2);
-
-        \draw[thick] (0,0) rectangle (2,2);
-        
-        \node at (-0.1, -0.1) {$0$};
-        \node at (1, -0.3) {\text{$n$ штук}};
-        \node at (2.1, -0.1) {$1$};
-        \node at (-0.1, 2) {$1$};
-
-        \foreach \i in {0.25, 0.5, ..., 2} {
-        \foreach \j in {0, 0.25, ..., 1.75} {
-            \fill (\i,\j) circle (1pt);
-        }
-    }
-
-    \end{tikzpicture}
-$$
-\end{minipage}
+\begin{center}
+    \input{assets/lecture01/examples_how_choose_dots}
+\end{center}

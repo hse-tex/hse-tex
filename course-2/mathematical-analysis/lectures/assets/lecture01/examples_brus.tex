@@ -1,0 +1,64 @@
+% \documentclass[a4paper]{article}
+% \usepackage[english,russian]{babel}
+%
+%
+% \usepackage{tikz}
+\usetikzlibrary{arrows.meta, 3d, perspective}
+% \begin{document}
+
+\begin{tikzpicture}[
+    set/.style={dashed, thick},
+    arrow/.style={-{Stealth[scale=1.2]}, thick}
+]
+
+
+\def\a{2} % длина
+\def\b{2} % ширина
+\def\c{2} % высота
+
+    % Координаты вершин куба
+\coordinate (A) at (0,0,0);
+\coordinate (B) at (\a,0,0);
+\coordinate (C) at (\a,\b,0);
+\coordinate (D) at (0,\b,0);
+\coordinate (E) at (0,0,\c);
+\coordinate (F) at (\a,0,\c);
+\coordinate (G) at (\a,\b,\c);
+\coordinate (H) at (0,\b,\c);
+
+    % Рисуем невидимые ребра (пунктиром)
+\draw[dashed] (A) -- (D);
+\draw[dashed] (A) -- (B);
+\draw[dashed] (A) -- (E);
+
+    % Рисуем видимые ребра
+\draw (B) -- (C) -- (G) -- (F) -- (B);
+\draw (D) -- (H);
+\draw (C) -- (D);
+\draw (F) -- (G) -- (H) -- (E) -- (F);
+
+\draw[<->,thick] (0.2, 0, \c + 0.5) -- node[below] {$[a_1 ; b_1]$} (\a + 0.1, 0, \c + 0.5);
+
+\draw[<->,thick] (\a + 0.2, 0.1, 0) -- node[below,rotate=90] {$[a_3 ; b_3]$} (\a + 0.2, \b, 0);
+
+\draw[<->,thick] (\a + 0.2, 0, \c) -- node[below,sloped] {$[a_2 ; b_2]$} (\a + 0.2, 0, \c - 1.8);
+
+
+\draw (-5, -0.8) rectangle (-3, 1.2);
+\draw[<->,thick] (-5, -1) to (-3, -1);
+\node at (-4, -1.3) {$[a_1 ; b_1]$};
+\draw[<->,thick] (-2.8, 1.2) to (-2.8, -0.8);
+\node[rotate=90] at (-2.4, 0.2) {$[a_2 ; b_2]$};
+
+\draw[|-|] (-9, 0.2) to (-7, 0.2);
+\draw[<->,thick] (-9, -0.1) to (-7, -0.1);
+\node at (-8, -0.4) {$[a_1 ; b_1]$};
+
+
+
+\node[align=center] at (-4,-2) {Пример брусов размерности с 1 по 3};
+
+\end{tikzpicture}
+
+
+% \end{document}
