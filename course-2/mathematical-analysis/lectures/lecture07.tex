@@ -1,0 +1,172 @@
+% \documentclass[a4paper,10pt]{article}
+% \usepackage{../header}
+%
+% \usepackage[utf8]{inputenc}
+%
+% \begin{document}
+
+\section{Критерий Дарбу}
+
+\subsection{Интеграл Дарбу как предел сумм Дарбу}
+\theorem Пусть $I\subset \R^n$ — замкнутый брус, а $f: I \mapsto \R$ — ограничена. Тогда:
+\begin{equation*}
+    \oi = \lim_{\Delta_{\T}\to0}\os(f, \T) \qquad \text{и} \qquad \ui = \lim_{\Delta_{\T} \to 0} \us(f, \T)
+\end{equation*}
+
+\proof Докажем, что $\ui = \displaystyle\lim_{\Delta_{\T} \to 0} \us(f, \T) \quad (= \displaystyle\sup_{\T} \us (f, \T))$
+\begin{enumerate}
+    \item $f$-ограничена на $I \implies \exists C > 0: \forall x \in I\quad |f(x)| \leqslant C$
+    \item т.к. по определению $\underline{I} = \displaystyle\sup_{\T}\us(f, \T)$, то $\forall \ve > 0 \,\, \exists\T_1 = \{I_i^1\}_{i=1}^{m_1}:\ \ui-\ve < \us(f, \T_1) \leqslant \ui < \ui + \ve$
+    \item Пусть $G = \displaystyle\bigcup_{i=1}^{m_1}\partial I_i^1$ - объединение границ брусов $I^1_i \in \T_1$ (без повторов). Тогда $G$ множество меры нуль по Лебегу (т.к. границы --- мн-ва меры нуль по Лебегу)
+    \item Пусть $\T_2$ - произвольное разбиение $I: \,\, \T_2 = \{I_i^2\}_{i=1}^{m_2}$ \\
+    Рассмотрим два множества брусов:\\
+    \begin{equation*}
+    \begin{aligned}
+        A = \{I_i^2 \in \T_2: I_i^2 \cap G \ne \varnothing\} \qquad \text{и} \qquad B = \T_2\backslash A \implies\\
+        \forall \ve > 0 \,\, \exists \delta(\ve) > 0 : \forall \T_2: \Delta_{\T_2} < \delta \text{ верно, что } \sum_{I_i^2 \in A} |I_i^2| < \epsilon
+    \end{aligned}
+    \end{equation*}
+    т.к. наши брусочки $I^2_i$ по построению лежат в $G$, а по 3 пункту оно множество меры нуль.
+
+    \begin{center}
+        \input{assets/lecture07/example_for_7_1}
+    \end{center}
+
+
+    \item С другой стороны $\forall I_i^2 \in B$ верно, что $I_i^2 \in \T_1 \cap \T_2$
+\end{enumerate}
+
+Хотим рассмотреть
+\begin{equation*}
+\begin{aligned}
+    |\ui - \us(f, \T_2)| = |I-\us(f, \T_1\cap \T_2) + \us(f, \T_1\cap \T_2) -\us(f, \T_2)| &\leqslant \underbrace{|I-\us(f, \T_1\cap \T_2)|}_* + \underbrace{|\us(f, \T_1\cap \T_2) -\us(f, \T_2)|}_{**} \\
+    &< \ve + 2 C \ve = \ve(1 + 2C)
+\end{aligned}
+\end{equation*}\qed
+
+\begin{itemize}
+    \item[*] из пункта 2: $\ui - \ve < \us(f, \T_1) \leqslant \us(f, \T_1\cap \T_2) \leqslant \ui < \ui + \ve \implies |\ui - \us(f, \T_1\cap\T_2)| < \ve$\\
+    \item[**] Пояснение ниже \begin{equation*}
+        \begin{aligned}
+            \left|\us(f, \T_1\cap\T_2) - \us(f, \T_2)\right| &= \left|\sum_{I_i^2\in B}m_i|I_i^2| + \sum_{I_i\in \T_1\cap A}m_i|I_i^2| - \sum_{I_i^2\in B}m_i|I_i^2| - \sum_{I_i^2\in A}m_i|I_i^2|\right| ~~~ \textit{\text{Переход с равном по пункту 5}} \\
+            &\leqslant \left|\sum_{I_i\in \T_1\cap A}m_i|I_i^2|\right| + \left|\sum_{I_i^2\in A}m_i|I_i^2|\right|\\
+            &\leqslant 2\left|\sum_{I_i^2\in A}m_i|I_i^2|\right| ~~~ \textit{\text{Следующий переход по пункту 1}} \\
+            &\leqslant 2C\left|\sum_{I_i^2\in A}|I_i^2|\right| ~~~ \textit{\text{Следующий переход по пункту 4}} \\
+            & < 2C\ve
+        \end{aligned}
+    \end{equation*}
+\end{itemize}
+
+
+\subsection{Критерий Дарбу интегрируемости функции по Риману}
+$I\in\mathbb{R}^n\text{ — замкнутый брус, } f:I\mapsto \mathbb{R}, f\in \mathcal{R}(I)\Longleftrightarrow f$ — ограничена на $I$ и $\ui=\oi$
+
+\proof Необходимость
+\begin{itemize}
+    \item $f\in\riman{I}\Longrightarrow$ по необходимому условию интегрируемости функции по Риману на замкнутом брусе, $f$ — ограничена на $I$
+    \item Покажем, что $\underline{\mathcal{I}}=\mathcal{I},\overline{\mathcal{I}}=\mathcal{I}\Longrightarrow\underline{\mathcal{I}}=\overline{\mathcal{I}}$
+
+    \begin{enumerate}
+        \item $f\in\riman{I}\Longrightarrow\forall \ve >0\ \exists \delta >0\ \forall(\mathbb{T},\xi):\Delta_{\mathbb{T}}<\delta \ |\sigma(f,\mathbb{T},\xi)-\mathcal{I}|<\ve$
+        \item $\ui=\sup\limits_{\mathbb{T}}\us(f,\T)=\lim\limits_{\Delta\rightarrow 0}\us(f,\T) \Longrightarrow |\ui-\us|<\ve$
+
+        $\forall \ve>0\ \exists\delta\ \exists\mathbb{T}:\Delta_{\mathbb{T}}<\delta: |\ui-\us|<\ve$
+        \item $\us(\mathbb{T},\xi)=\inf\limits_{\xi}\sigma(f,\mathbb{T},\xi)$
+
+        $\forall\mathbb{T},\ \forall \ve>0\ \exists \xi:|\us-\sigma|<\ve$
+    \end{enumerate}
+\end{itemize}
+
+$|\mathcal{I}-\ui|\leqslant|\mathcal{I}-{\ui}-\sigma+\sigma+{\us}-\us|\leqslant|\mathcal{I}-\sigma|+|\ui-\us|+|\sigma-\us|<3\ve$\qed
+
+\proof Достаточность
+
+$f$ — ограничена и $\ui=\oi$. Имеем
+\begin{equation*}
+    \us(f,\mathcal{T})=\inf\limits_{\xi}\leqslant\sigma(f,\mathbb{T},\xi)\leqslant \sup\limits_{\xi}(f,\mathbb{T},\xi)=\os(f,\mathbb{T})
+\end{equation*}
+
+Тогда, при $\lim\limits_{\Delta_{\T}\rightarrow 0} \us=\ui,\ \lim\limits_{\Delta_{\T}\rightarrow0}\os=\oi$ получаем $\ui=\oi$(Условие ограниченнсоти $f$ даёт нам возможность применять неравенство выше)\qed
+
+
+\subsection{Интегрирование по допустимым множествам}
+
+\definition Множество $D\subset\mathbb{R}^n$ называется \textit{допустимым}, если
+
+\begin{itemize}
+    \item $D$ — ограниченно
+    \item $\partial D$ — множество меры нуль по Лебегу
+\end{itemize}
+
+\ex Допустимого и не допустимого множества\begin{enumerate}
+        \item $D_1 = (0, 1)$
+        \begin{itemize}
+            \item ограничено - да
+            \item $\partial D_1 = \{0\} \cup \{1\}$ - мн-во меры нуль - да
+        \end{itemize}
+        $D_1$ - допустимое множество
+
+        \item $D_2 = [0, 1] \cap \QQ$
+        \begin{itemize}
+            \item ограничено - да
+            \item $\partial D_2 = [0, 1]$ - мн-во меры нуль - нет
+        \end{itemize}
+        $D_2$ - не допустимое множество
+    \end{enumerate}
+
+
+\definition Пусть $D\subset\mathbb{R}^n, f:D\rightarrow\mathbb{R}$. Тогда, интегралом Римана $f$ по $D$ называется число $\mathcal{I}$:
+\begin{equation*}
+    \mathcal{I}=\int\limits_{D}f(\overline{x})\d{\overline{x}}=\int\limits_{I\supset D}f\cdot \chi_{D}(\overline{x})\d{\overline{x}}\text{, где }\chi_{D}=\begin{cases}
+        1,\overline{x}\in D\\
+        0,\overline{x}\in D
+    \end{cases}
+\end{equation*}
+
+Если $\mathcal{I} < \infty$, то $f \in\riman{D}$
+%
+% \textbf{Корректность определения.} Пусть $I_1\supset D, I_2\supset D$, тогда
+% \begin{equation*}
+%     \int\limits_{I_1} f\cdot\chi_D\d{x}\text{ и }\int\limits_{I_2}f\cdot\chi_{D}\d{x}
+% \end{equation*}
+%
+% либо существуют и равны, либо оба не существуют вообще
+%
+% Покажем существование
+% \begin{itemize}
+%     \item $f\cdot\chi_D\in\riman{I_1}\Longrightarrow$ по критерию Лебега $f\cdot\chi_D$ ограничена на $I_1\Longrightarrow$ $f\cdot\chi_D$ ограничена на $D\Longrightarrow f$ ограничена на $D\Longrightarrow f\cdot\chi_D$ ограничена на $I_2$
+%     \item $f\cdot\chi_D\in\riman{I_1}\Longrightarrow$ по критерию Лебега $f\cdot\chi_D$ непрерывна почти всюду на $I_1\Longrightarrow f\cdot\chi_D$ непрерынва почти всюду на $D\Longrightarrow $ в худшем случае для $f\cdot\chi_D$ на $I_2$ добавятся разрывы на $\partial D\Longrightarrow f\cdot\chi_D$ непрерынва почти всюду на $I_2$
+%     \item Тогда, $f\cdot\chi_D\in\riman{I_1}\Longleftrightarrow f\cdot\chi_D\in\riman{I_2}$
+% \end{itemize}
+%
+% Покажем равенство
+% \begin{itemize}
+%     \item Пусть $\mathbb{T}_i$ — разбиение на $I_i:\mathbb{T}_1$ и $\mathbb{T}_2$ совпадают на общей части $I_1\cap I_2$
+%     \item Пусть $\xi^i$ — отмеченные точки $I_i:$ совпадают на общей части
+%     \item $\sigma(f\chi_D,\mathbb{T}_1,\xi^1)=\sum_{j}f\chi_D(\xi^1_j)|I_j^1|=\sum_j f(\xi^1_j)|I^1_j|=\sum_j f(\xi^2_j)|I^2_j|=\sum_j f\chi_D(\xi_j^2)|I_j^2|=\sigma(f\chi_D, \mathbb{T}_2, \xi^2)$
+% \end{itemize}
+%
+% \comment Все свойства интеграла Римана и критерия Лебега для бруса справедливы и для других допустимых множеств
+%
+% \subsection{Теорема Фубини}
+% Пусть имеются $I_x\subset\mathbb{R}^n, I_y\subset\mathbb{R}^n, I_x\times I_y\subset \mathbb{R}^{m+n}$ — замкнутые брусы, $f:I_x\times I_y\rightarrow \mathbb{R}$, $f\in\riman{I_x\times I_y}$ и $\forall$ фиксированной $x\in I_x:f(x,y)\in\riman{I_y}\Longrightarrow$
+% \begin{equation*}
+%     \int\limits_{I_x\times I_y} f(\overline{x}, \overline{y})\d{\overline{x}}\d{\overline{y}}=\int\limits_{I_x}\left(\int\limits_{I_y}f(\overline{x},\overline{y})\d{\overline{y}}\right)\d{\overline{x}}=\int\limits_{I_x}\d{\overline{x}}\int\limits_{I_y}f(\overline{x}, \overline{y})\d{\overline{y}}
+% \end{equation*}
+%
+% \proof Воспользуемся тем, что $f\in\riman{I_x\times I_y},f\in\riman{I_y}$, а также Критерием Дарбу
+% \begin{itemize}
+%     \item $\mathbb{T}_x=\{I_i^x\}$ — разбиение на $I_x$, $\mathbb{T}_y=\{I_j^y\}$ — разбиение на $I_y$, $\mathbb{T}_{x,y}=\{I_i^x\times I^y_j\}=\{I_{ij}\}$ — разбиение на $I_x\times I_y$
+%     \item \begin{equation*}
+%         \begin{aligned}
+%             \us(f,\mathbb{T}_{x,y})=\sum_{i,j} \inf\limits_{(x,y)\in I_{ij}} f(x,y)|I_{ij}|&\leqslant \sum_{i,j} \inf\limits_{x\in I_i^x} \left(\inf\limits_{y\in I_j^y} f(x,y)\right)|I_i^x||I_j^y|=\sum_i \inf\limits_{I^x_i} \underbrace{\left(\sum_j \inf\limits_{I^y_j} f(x,y)|I_j^y|\right)}_{\us(f(y), \mathbb{T}_y)}|I_i^x|\\
+%             &\leqslant \sum_i \inf\limits_{I^x_i}\underbrace{\left(\int\limits_{I_y} f(x,y)\d{y}\right)}_{g(x)}|I_i^x|=\us(g(x),\mathbb{T}_x)\\
+%             % &\leqslant \os(g(x),\mathbb{T}_x)\leqslant\ldots\leqslant \os(f,\mathbb{T}_{x,y})
+%             &\leqslant \os(g(x),\mathbb{T}_x)
+%         \end{aligned}
+%     \end{equation*}
+%
+%     $\us(f,\mathbb{T}_{x,y})\leqslant \us(g(x),\mathbb{T}_x)\leqslant\os(g(x), \mathbb{T}_x)\leqslant\os(f,\mathbb{T}_{x,y})\Longrightarrow\exists \oi=\lim\limits_{\delta\rightarrow0} \us(g(x),\mathbb{T}_x)=I$
+% \end{itemize}\qed
+
+% \end{document}
