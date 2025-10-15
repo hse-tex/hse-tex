@@ -1,0 +1,53 @@
+%\documentclass[a4paper,10pt]{article}
+%\usepackage{../header}
+%\begin{document}
+
+
+
+\newpage
+\section{Лекция 6}
+\subsection{Нижняя и верхняя суммы Дарбу}
+\definition Пусть $I$ - замкнутый брус, $f: I\mapsto \R$, $\T = \{I_i\}_{i=1}^{K}$ -разбиение бруса $I$, $m_i = \displaystyle\inf_{I_i} (f)$, и $M_i = \displaystyle\sup_{I_i} (f)$. Тогда числа $\underline{S}(f, \T) = \sum_{i=1}^{K}m_i|I_i|$ и $\overline{S}(f, \T) = \sum_{i=1}^KM_i|I_i|$ будем называть \textbf{нижней и верхней суммой Дарбу} соответственно
+
+\subsection{Нижняя сумма Дарбу не больше верхней}
+\theorem \begin{equation*}
+    \us(f, \T) = \int_{\xi}\sigma(f, \T, \xi) \le \sup_{\xi}\sigma(f, \T, \xi) = \os(f, \T)
+\end{equation*}
+
+\proof
+\begin{equation*}
+    \begin{aligned}
+    &\us(f, \T) = \sum_{i=1}^{K}m_i|I_i| = \sum_{i}\inf_{\xi_i}(f(\xi_i))|I_i| = \inf_{\xi}\sum_{i}f(\xi_i)|I_i| = \inf_{\xi}\sigma(f, \T, \xi) \le\\
+    &\sup_{\xi}\sigma(f, \T, \xi) = \sum_i (f(\xi_i))|I_i| = \sum_{i}M_i|I_i| = \os(f, \T)
+    \end{aligned}
+    \end{equation*}
+
+\subsection{Монотонность сумм относительно измельчений разбиения}
+\theorem Пусть $\tilde{\T}$ — измельчение разбиения $\T$, тогда
+\begin{equation*}
+    \us(f, \T) \le \us(f, \tilde{\T}) \le \os(f, \tilde{\T}) \le \os(f, \T)
+\end{equation*}\qed
+
+\proof Если $L \subset M$, то $\inf L \ge \inf M$ и $\sup L \le \sup M$, тогда:
+\begin{equation*}
+    \us(f, \T) \le \us(f, \tilde{\T}) \underset{\text{по 6.2}}{\le} \os (f, \tilde{\T}) \le \os (f, \T)
+\end{equation*}\qed
+
+\subsection{Никакая нижняя сумма Дарбу не больше какой-либо верхней суммы на том же брусе}
+\theorem $\forall \T_1, \T_2 : \quad \us(f, \T_1) \le \os(f, \T_2)$
+
+\proof $\forall \T_1, \T_2$ рассмотрим $\tilde{\T} = \T_1 \cap \T_2$, тогда по 6.3:
+\begin{equation*}
+    \us(f, \T_1) \le \us(f, \tilde{\T}) \le \os(f, \tilde{\T}) \le \os(f, \T_2)
+\end{equation*} \qed
+
+\subsection{Верхние и нижние интегралы Дарбу}
+\definition \textbf{Верхним и нижним интегралом} Дарбу будем называть числа соответственно
+\begin{equation*}
+    \oi := \inf_{\T}\os(f, \T) \qquad \ui := \sup_{\T}\us(f, \T)
+\end{equation*}
+
+
+
+
+%\end{document}
