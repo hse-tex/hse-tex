@@ -1,0 +1,30 @@
+
+% \documentclass[tikz,border=10pt]{standalone}
+% \usepackage[utf8]{inputenc}         % кодировка исходного текста
+% \usepackage[english,russian]{babel}
+% \usetikzlibrary{decorations.pathmorphing}
+% \usetikzlibrary{arrows.meta, patterns, patterns.meta}
+
+% \begin{document}
+\begin{tikzpicture}[scale=2]
+
+    \draw (0, 0) rectangle (3, 2);
+    \node at (0.4, 0.4) { $I_1$ };
+
+    \draw (1.5, 1) rectangle (5, 2.5);
+    \node at (4.5, 2.1) { $I_2$ };
+
+
+    \draw[thin] (2, 1.8) to[out=0,in=110] (2.8,1.5)
+           to[out=-50, in=-30] (2.4,1.2)
+           to[out=110, in=-70] (1.8,1.1)
+           to[out=110, in=-180] cycle;
+    \node at (1.67, 1.8) { $I$ };
+    \node at (2.3, 1.5) { $D$ };
+
+    \node[align=center] at (2.3, -0.3) {Как выглядят наши множества $I_1, I_2, I, D$};
+
+\end{tikzpicture}
+% \end{document}
+%
+
