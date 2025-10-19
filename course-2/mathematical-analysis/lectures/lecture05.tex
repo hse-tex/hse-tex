@@ -57,7 +57,7 @@
 \subsection{Колебание функции на множестве}
 \definition Колебанием функции $f$ на множестве $M\subset \R^n$ будем называть число $\omega(f, M)$:
 \begin{equation*}
-    \omega(f, M) = \sup_{x, y\in M}|f(x) - f(y)| = \sup_{x\in M} - \inf_{y\in M} f(y)
+    \omega(f, M) = \sup_{x, y\in M}|f(x) - f(y)| = \sup_{x\in M} f(x) - \inf_{y\in M} f(y)
 \end{equation*}
 
 \subsection{Колебание функции в точке}
@@ -99,11 +99,22 @@
 
 \definition Если какое-то свойство не выполняется лишь на множестве меры нуль, то говорят, что это свойство выполняется почти всюду.
 
-\textbf{Пример:} $f(x) = \begin{cases}
-        1, x \in \R\backslash \mathbb{Z}\\
-        0, x \in \mathbb{Z}
-    \end{cases}$ --- непрерывна почти всюду на $\R$
+\textbf{Пример:} 
+\begin {enumerate}
+    \item
+    $f(x) = \begin{cases}
+            1, x \in \R\backslash \mathbb{Z}\\
+            0, x \in \mathbb{Z}
+        \end{cases}$ --- непрерывна почти всюду на $\R$
 
+    \item
+
+    $f(x) = \begin{cases}
+            1, x \in [0, 1] \cap \mathbb{Q}\\
+            0, x \notin [0, 1] \cap \mathbb{Q}
+        \end{cases}$ --- разрывна в любой точке $\implies$ НЕ является непрерывной почти всюду.
+
+\end {enumerate}
 \subsection{Пересечение разбиений бруса}
 \definition Пусть $\T_1 = \{I^1_k\}$ и $\T_2 = \{I^2_m\}$ — два разбиения бруса $I \subset \R^n$.
 
@@ -202,7 +213,10 @@ $\begin{cases}
 \end{itemize} \qed
 
 \subsection{Измельчение разбиения}
-\definition Разбиение $\T_1 = \{I^1_k\}$ будем называть измельчением разбиения $\T_2 = \{I^2_m\}$, если $\forall k \,\, \exists m: I_k^1 \in I_m^2 \implies \T = \T_1\cap \T_2$ является измельчением $\T_1$ и $\T_2$
+\definition Разбиение $\T_1 = \{I^1_k\}$ будем называть измельчением разбиения $\T_2 = \{I^2_m\}$, если $\forall k \,\, \exists m: I_k^1 \in I_m^2 \implies \T = \T_1\cap \T_2$ является измельчением $\T_1$ и $\T_2$ \\    
+
+\input{assets/lecture05/common_refinement.tex}
+
 
 
 
