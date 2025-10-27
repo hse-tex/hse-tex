@@ -1,0 +1,43 @@
+\begin{figure}[ht]
+\centering
+
+\begin{tikzpicture}[scale=1.1]
+  \def\W{5} \def\H{3}
+
+  % --------- левый прямоугольник: I_i ----------
+  \begin{scope}
+    \draw[thick,rounded corners=2pt] (0,0) rectangle (\W,\H);
+    \foreach \x in {1.25,2.5,3.75} {\draw[black!60] (\x,0)--(\x,\H);}
+    \foreach \y in {1,2}           {\draw[black!60] (0,\y)--(\W,\y);}
+    \path[fill=black!12,draw=black!60] (1.25,1) rectangle (2.5,2);
+    \node at (1.875,1.5) {$I_i$};
+  \end{scope}
+
+  % --------- правый прямоугольник: I_j ----------
+  \begin{scope}[xshift=7cm]
+    \draw[thick,rounded corners=2pt] (0,0) rectangle (\W,\H);
+    \foreach \x in {1,2,3,4}       {\draw[red!70] (\x,0)--(\x,\H);}
+    \foreach \y in {0.75,1.5,2.25} {\draw[red!70] (0,\y)--(\W,\y);}
+    \path[fill=red!20,draw=red!70] (2,0.75) rectangle (3,1.5);
+    \node at (2.5,1.125) {$I_j$};
+  \end{scope}
+
+  % --------- стрелки (диагонально к нижней картинке) ----------
+  % центр ячейки пересечения в нижнем прямоугольнике имеет глобальные координаты (5.75, -3.75)
+  \draw[-{Latex[length=3mm]}] (2.5,0) -- (4.5,-1.75);
+  \draw[-{Latex[length=3mm]}] (9.5,0) -- (7.5,-1.75);
+
+  % --------- нижний прямоугольник: пересечение I_{ij} ----------
+  \begin{scope}[yshift=-5cm,xshift=3.5cm]
+    \draw[thick,rounded corners=2pt] (0,0) rectangle (\W,\H);
+    \foreach \x in {1.25,2.5,3.75} {\draw[black!60] (\x,0)--(\x,\H);}
+    \foreach \y in {1,2}           {\draw[black!60] (0,\y)--(\W,\y);}
+    \foreach \x in {1,2,3,4}       {\draw[red!70] (\x,0)--(\x,\H);}
+    \foreach \y in {0.75,1.5,2.25} {\draw[red!70] (0,\y)--(\W,\y);}
+    \path[fill=red!40,draw=red!70] (2,1) rectangle (2.5,1.5);
+    \node at (2.25,1.25) {$I_{ij}$};
+  \end{scope}
+\end{tikzpicture}
+
+\caption{Пересечение разбиений $\T_1$ и $ \T_2$}
+\end{figure}

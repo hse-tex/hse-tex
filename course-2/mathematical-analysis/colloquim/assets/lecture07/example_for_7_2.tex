@@ -1,0 +1,23 @@
+
+\begin{tikzpicture}
+    % Рисуем полосатый прямоугольник
+    \fill[pattern=north east lines, opacity=0.4] (1,0) rectangle (5,3);
+
+    % Определяем гладкую кляксу (неправильной формы)
+    \begin{scope}
+        \clip (2,1.5) .. controls (2.5,2.5) and (3.5,2.8) .. (4,2)
+              .. controls (4.3,1.5) and (4,0.8) .. (3.5,0.5)
+              .. controls (2.8,0.2) and (1.8,0.7) .. (2,1.5) -- cycle;
+        \fill[white] (0,0) rectangle (6,4); % Закрашиваем кляксу белым
+    \end{scope}
+    \node at (1.7, 2.5) {$I$};
+
+    % Контуры для ясности
+    \draw (1,0) rectangle (5,3);
+    \draw (2,1.5) .. controls (2.5,2.5) and (3.5,2.8) .. (4,2)
+          .. controls (4.3,1.5) and (4,0.8) .. (3.5,0.5)
+          .. controls (2.8,0.2) and (1.8,0.7) .. (2,1.5) -- cycle;
+    \node at (3, 1.5) {$D$};
+
+    \node[align=center] at (2.9, -1) {Закрашенная область не вносит вклад в объем \\ так как $f(x)\cdot\chi_D=0$};
+\end{tikzpicture}

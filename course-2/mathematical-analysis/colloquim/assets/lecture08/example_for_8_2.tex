@@ -1,0 +1,64 @@
+
+\pgfplotsset{compat=1.17}
+\begin{tikzpicture}[scale=0.5]
+    \begin{axis}[
+        view={30}{30},
+        xlabel={$x$},
+        ylabel={$y$},
+        zlabel={$z$},
+        grid=major,
+        colormap/viridis,
+        width=10cm,
+        height=10cm,
+        zmin=0, zmax=4,
+        xmin=-2, xmax=2,
+        ymin=-2, ymax=2,
+        ]
+
+        % Воронка, направленная вниз
+        \addplot3[
+        surf,
+        domain=-2:2,
+        domain y=-2:2,
+        samples=40,
+        opacity=0.7,
+        ] {4 - 1/(0.3 + x^2 + y^2)};
+
+        % Плоскость сечения (x = 0.5)
+        \addplot3[
+        surf,
+        domain=-2:2,
+        domain y=0:4,
+        samples=2,
+        opacity=0.3,
+        color=gray,
+        ] (0.5, x, y);
+
+        % Линия пересечения
+        \addplot3[
+        thick,
+        red,
+        domain=-1.65:1.85,
+        samples=30,
+        smooth,
+        ] (0.5, x, {4 - 1/(0.3 + 0.25 + x^2)});
+
+        \addplot3[
+        only marks,
+        mark=*,
+        mark size=2,
+        color=blue
+        ] coordinates {(0.5, 0, {4 - 1/(0.3 + 0.25 + 0^2)})};
+
+        \addplot3[
+        only marks,
+        mark=*,
+        mark size=2,
+        color=blue
+        ] coordinates {(0, 0, {4 - 1 / 0.3})};
+
+
+    \end{axis}
+
+    \node[align=center] at (4, -1.5) {Если зафиксировать какой-то $x$ и искать $\inf$ по $y$ \\ то он всегда будет больше, чем $\inf$ на всей области};
+\end{tikzpicture}

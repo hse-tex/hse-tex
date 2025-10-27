@@ -1,0 +1,1491 @@
+\documentclass[a4paper]{article}
+\usepackage{../header}
+\begin{document}
+\title{\LARGE{Математический анализ—2}\\ Коллоквиум}
+\author{Лектор: Зароднюк Алёна Владимировна\\
+\href{https://github.com/vinerdanya/EDS-Study/blob/main/2nd\%20course/Calculus-2/Colloquim/Colloquim.pdf}{оригинальный \LaTeX\ }by Винер Даниил \href{https://t.me/danya_vin}{@danya\_vin}
+\\
+\\
+Авторы \href{https://hse-tex.me/course-2/mathematical-analysis.pdf}{текущего документа}:
+\\
+Жуков Андрей | \href{https://github.com/shiro-eden}{github} \qquad
+Мелисов Тимур | \href{https://github.com/coffecat46}{github}}
+\date{Версия от \today}
+\maketitle
+
+\tableofcontents
+\newpage
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{2mm}
+\setlist[itemize]{left=1cm}
+% \setlist[enumerate]{left=1cm}
+\section{Основные определения}
+\subsection{Определение (замкнутого) бруса (координатного промежутка, параллепипеда)}
+\definition Замкнутый брус (координатный промежуток) в $\mathbb{R}^n$ — множество, описываемое как
+\begin{equation*}
+\begin{aligned}
+    I&=\{x\in\mathbb{R}^n\ |\ a_i\leq x_i\leq b_i,\ i\in\{1,n\}\}\\
+    &=\left[a_1,b_1\right]\times\ldots\times\left[a_n,b_n\right]
+\end{aligned}
+\end{equation*}
+\comment $I=\{a_1,b_1\}\times\ldots\times\{a_n,b_n\}$, где $\{a_i, b_i\}$ может быть отрезком, интервалом и т.д.
+\begin{center}
+    \input{assets/lecture01/examples_brus}
+\end{center}
+
+\subsection{Определение меры (объема) бруса}
+\definition Мера бруса — его объём:
+\begin{equation*}
+    \begin{aligned}
+        \mu(I)&=|I|
+        =\prod_{i=1}^{n} (b_i-a_i)
+    \end{aligned}
+\end{equation*}
+
+
+\subsection{Определение разбиения бруса}
+\definition Пусть $I$ — замкнутый, невырожденный брус и $\displaystyle\bigcup_{i=1}^kI_i = I$, где $I_i$ попарно не имеют общих внутренних точек. Тогда набор $\T = \{I_i\}_{i=1}^k$ называется разбиением бруса $I$
+
+\subsection{Определение диаметра множества в $\mathbb{R}^n$}
+\definition Диаметр произвольного ограниченного множества $M\subset\R^n$ будем называть 
+\begin{equation*}
+\begin{aligned}
+    d(M) = \displaystyle\sup_{x,y\in M}\|x-y\|,\text{ где}\\
+    \|x-y\|=\sqrt{\sum_{i=1}^{n}\left(x_i-y_i\right)^2}
+\end{aligned}
+\end{equation*}
+
+\begin{center}
+    \input{assets/lecture01/3_spheres}
+\end{center}
+
+\subsection{Определение ограниченного множества в $\mathbb{R}^n$}
+\definition Множество $M\subset \mathbb{R}^n$ называется \textit{ограниченным}, если $$\exists x_0\in\mathbb{R}^n\text{ и }\exists r>0\text{, такой что }M\subset B_{r}(x_0)$$
+
+\subsection{Определение масштаба (диаметра) разбиения}
+\definition Масштаб разбиения $\T=\{I_i\}_{i=1}^k$ — число $\lambda(\T) = \Delta_{\T} = \displaystyle\max_{1\leqslant i\leqslant k} d(I_i)$
+
+\subsection{Определения отмеченных точек и размеченного разбиения}
+\definition Пусть $\forall\ I_i$ выбрана точка $\xi_i\in I_i$. Тогда, набор $\xi = \{\xi_i\}_{i=1}^k$ будем называть \textbf{отмеченными точками}
+
+\definition Размеченное разбиение — пара $(\T, \xi)$
+
+\subsection{Определение интегральной суммы Римана}
+Пусть $I$ — невырожденный, замкнутый брус, функция $f: I\rightarrow \R$ определена на $I$
+
+\definition \label{1.8} Интегральная сумма Римана функции $f$ на $(\T, \xi)$ — величина
+$$\sigma(f, \T, \xi) := \sum_{i=1}^kf(\xi_i)\cdot|I_i|$$
+
+\begin{center}
+    \input{assets/lecture01/integral}
+\end{center}
+
+\subsection{Определение интегрируемой по Риману функции на замкнутом брусе в $\mathbb{R}^n$}
+\definition Функция $f$ интегрируема по Риману на замкнутом брусе $I$ ($f:I\rightarrow\R$), если 
+\begin{equation*}
+    \exists A\in\R: \forall \varepsilon > 0\ \exists \delta > 0: \forall(\T, \xi): \Delta_{\T} < \delta:\text{ верно }|\sigma(f, \T, \xi) - A| < \varepsilon
+\end{equation*}
+Тогда $A$ называется \textit{кратным интегралом Римана} и 
+$$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d{x_1}\ldots \d{x_n}$$
+Обозначение: $f\in\mathcal{R}(I)$
+
+\subsection{Определение множества меры нуль по Лебегу}
+\definition Множество $M\subset\R^n$ будем называть \textbf{множеством меры 0 по Лебегу}, если $\forall\ve>0$ существует не более чем счетный набор (замкнутых) брусов $\{I_i\}$ и выполняются:
+\begin{enumerate}[label=\textbullet]
+    \item $M\subset \displaystyle\bigcup_iI_i$
+    \item $\displaystyle\sum_i|I_i| < \ve\,\, \quad \forall \ve > 0$
+\end{enumerate}
+
+% \ex $x_0\in\R^n$ — множество меры нуль по Лебегу в $\R^n$
+
+% \begin{minipage}{0.5\textwidth}
+%     \proof Пусть $x_0 = (x_{01}, \ldots, x_{0n})$.
+%     Покроем точку замкнутым брусом, причем $$I = [x_{01}-d, x_{01}+d] \times\ldots\times[x_{0n}-d, x_{0n}+d]$$
+%     $$\forall \ve > 0\,\,\exists I: |I| = (2d)^n<\ve \implies d < \frac{\sqrt[n]{\ve}}{2}$$
+% Значит, точка является множеством меры нуль по Лебегу
+% \end{minipage}
+% % \proof Пусть $x_0 = (x_{01}, \ldots, x_{0n})$.
+% % Покроем точку замкнутым брусом, причем $$I = [x_{01}-d, x_{01}+d] \times\ldots\times[x_{0n}-d, x_{0n}+d]$$
+% \begin{minipage}{0.5\textwidth}
+%     $$
+% \begin{tikzpicture}[scale=2]
+%     % Рисуем квадрат
+%     \draw[thick] (0,0) rectangle (2,2);
+%     \draw[black, thin] (0,1)node[black, left] {$d$} -- (1, 1);
+%     \draw[black, thin] (1, 0) node[black, below] {$d$} -- (1, 1);
+
+%     % % \node[black, above] (0.5,1) {$d$};
+%     % \node[black] (1,0.5) {$d$};
+%     % Рисуем точку в центре
+%     \fill (1,1) node[black, below right] {$x_0$} circle (1pt); % размер точки можно изменить, подбирая значение радиуса
+% \end{tikzpicture}
+% $$
+% \end{minipage}
+
+\subsection{Определение внутренней точки множества}
+\definition Пусть имеется $M\subset\mathbb{R}^n$. Точку $x_0\in M$ будем называть \textit{внутренней} точкой $M$, если $$\exists\ve>0:B_{\ve}(x_0)\subset M$$
+
+\subsection{Определение внешней точки множества}
+\definition Точку $x_0\in \mathbb{R}^n$ будем называть \textit{внешней} точкой $M$, если $$\exists\ve>0:B_{\ve}(x_0)\subset (\mathbb{R}^n\setminus M)$$
+
+\subsection{Определение граничной точки множества}
+\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{граничной} точкой $M$, если $$\forall \ve>0:\ \left(B_{\ve}(x_0)\cap M\right)\ne\varnothing\wedge B_{\ve}(x_0)\cap(\mathbb{R}^n\setminus M)\ne\varnothing$$ 
+
+\subsection{Определение изолированной точки множества}
+\definition Точку $x_0\in M$ будем называть \textit{изолированной} точкой $M$, если $$\exists \ve>0:\ \stackrel{\circ}{B_{\ve}}(x_0)\cap M=\varnothing$$ 
+
+\subsection{Определение предельной точки множества}
+\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{предельной} точкой $M$, если $$\forall \ve>0:\ \stackrel{\circ}{B_{\ve}}(x_0)\cap M\ne\varnothing$$ 
+
+\subsection{Определение точки прикосновения множества}
+\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{точкой прикосновения} $M$, если $$\forall \ve>0:\ B_{\ve}(x_0)\cap M\ne\varnothing$$ 
+
+\subsection{Определение открытого множества}
+\definition Множество $M\subset\mathbb{R}^n$ называется \textit{открытым}, если все его точки внутренние
+
+\subsection{Определение замкнутого множества}
+\definition Множество $M\subset R^n$ называется замкнутым, если $\mathbb{R}^n\setminus M$ — открыто
+
+\subsection{Определение компакта}
+\definition Множество $K\subset\R^n$ называется \textit{компактом}, если из $\forall$ его покрытия открытыми множествами можно выделить конечное подпокрытие
+
+\subsection{Определение колебания функции на множестве}
+\definition Колебанием функции $f$ на множестве $M\subset \R^n$ будем называть число $\omega(f, M)$:
+\begin{equation*}
+    \omega(f, M) = \sup_{x, y\in M}|f(x) - f(y)| = \sup_{x\in M} f(x) - \inf_{y\in M} f(y)
+\end{equation*}
+
+\subsection{Определение колебания функции в точке}
+\definition Колебанием функции $f$ в точке $x_0 \in M \subset\R^n$ будем называть число
+\begin{equation*}
+    \omega(f, x_0):= \lim_{r \to 0+} \omega(f, B_r^M(x_0)), \text{ где } B_r^M = B_r(x_0)\cap M
+\end{equation*}
+
+\subsection{Определение непрерывности функции в точке и на множестве}
+\definition Функция $f:M \subset \R^n; \ f \colon M \rightarrow\mathbb{R}$ \textit{непрерывна в точке} $x_0$, если
+\begin{enumerate}
+    \item \textbf{Через колебание:}
+    \begin{equation*}
+        f \text{ — непрерывна в точке } x_0 \iff \omega(f, x_0) = 0
+    \end{equation*}
+    \item \textbf{Классическое определение:}
+    \begin{equation*}
+        \forall \ve >0\ \exists\delta>0:\ \forall x\in M\text{ такого что } |x-x_0|<\delta\text{ верно } |f(x)-f(x_0)|<\ve
+    \end{equation*}
+\end{enumerate}
+\textbf{На множестве:}
+\begin{enumerate}
+    \item Непрервына на множестве всюду --- непрерывность в каждой точке.
+    \item Непрерывно на множестве почти всюду --- непрерывность выполняется везде кроме множества меры нуль.
+\end{enumerate}
+
+
+
+\subsection{Определение выполненения свойства почти всюду}
+\definition Если какое-то свойство не выполняется лишь на множестве меры нуль, то говорят, что это свойство выполняется почти всюду
+
+\subsection{Определение пересечения двух разбиений}
+\definition Пусть $\T_1 = \{I^1_k\}$ и $\T_2 = \{I^2_m\}$ — два разбиения бруса $I \subset \R^n$. 
+
+Пересечением разбиений $(\T_1 \cap \T_2)$ будем называть множество всех брусов $\{I_{ij}\}: \forall I_{ij}$ выполняется
+\begin{itemize}
+    \item $\exists k: I_{ij} \in \{I^1_k\}$
+    \item $\exists m: I_{ij} \in \{I^2_m\}$
+    \item $\{I_{ij}\}$ — разбиение бруса $I$
+\end{itemize}
+
+% ПОФИКСИТЬ ФОТО
+\subsection{Определение измельчения разбиения}
+\definition Разбиение $\T_1 = \{I^1_k\}$ будем называть измельчением разбиения $\T_2 = \{I^2_m\}$, если $\forall k\ \exists m: I_k^1 \in I_m^2 \implies \T = \T_1\cap \T_2$ является измельчением $\T_1$ и $\T_2$
+\input{assets/lecture05/common_refinement.tex}
+% ПОФИКСИТЬ ФОТО
+
+\subsection{Определение верхней и нижней суммы Дарбу}
+\definition Пусть $I$ — замкнутый брус, $f: I\mapsto \R$, $\T = \{I_i\}_{i=1}^{K}$ — разбиение бруса $I$, $m_i = \displaystyle\inf_{I_i} (f)$, и $M_i = \displaystyle\sup_{I_i} (f)$
+
+Тогда числа $\underline{S}(f, \T) = \sum_{i=1}^{K}m_i|I_i|$ и $\overline{S}(f, \T) = \sum_{i=1}^KM_i|I_i|$ будем называть \textit{нижней и верхней суммой Дарбу} соответственно
+
+\subsection{Определение верхнего и нижнего интеграла Дарбу}
+\definition \textbf{Верхним и нижним интегралом} Дарбу будем называть числа соответственно
+\begin{equation*}
+    \oi := \inf_{\T}\os(f, \T) \qquad \ui := \sup_{\T}\us(f, \T)
+\end{equation*}
+
+\subsection{Определение допустимого множества}
+\definition Множество $D\subset\mathbb{R}^n$ называется \textit{допустимым}, если
+\begin{itemize}
+    \item $D$ — ограниченно
+    \item $\partial D$ — множество меры нуль по Лебегу
+\end{itemize}
+
+\subsection{Определение интеграла Римана по допустимому множеству}
+\definition Пусть $D\subset\mathbb{R}^n \text{ --- допустимое множество}, f:D\rightarrow\mathbb{R}$. Тогда, интегралом Римана $f$ по $D$ называется число $\mathcal{I}$:
+\begin{equation*}
+    \mathcal{I}=\int\limits_{D}f(\overline{x})\d{\overline{x}}=\int\limits_{I\supset D}f\cdot \chi_{D}(\overline{x})\d{\overline{x}}\text{, где }\chi_{D}=\begin{cases}
+        1,\overline{x} \in D\\
+        0,\overline{x} \not\in D
+    \end{cases}
+\end{equation*}
+Если $\mathcal{I} < \infty$, то $f \in\riman{D}$
+\begin{center}
+    \input{assets/lecture07/example_for_7_2}
+\end{center}
+
+
+\subsection{Определение сходимости функциональной последовательности в точке}
+Пусть $X\subset\mathbb{R}$ и $f_n:X\rightarrow\mathbb{R}\ \forall n\in\mathbb{N}$.
+
+\definition Последовательность функций $\{f_n(x)\}_{n=1}^{\infty}$ \textit{сходится в точке} $x_0\in X$, если сходится соответствующая числовая последовательность $\{f_n(x_0)\}_{n=1}^{\infty}$:
+\begin{equation*}
+    x_0\in X,\ \forall\ve >0\ \exists N:\forall n>N\hookrightarrow|f_n(x_0)-a_{x_0}|<\ve\Longrightarrow a_{x_0}=\lim\limits_{n\to\infty} f_n{x_0}
+\end{equation*}
+
+\subsection{Определение множества сходимости функциональной последовательности}
+\definition Множество $D\subset X$ точек, в которых последовательность функций $\{f_n(x)\}_{n=1}^{\infty}$ сходится называется \textit{множеством сходимости}
+
+\subsection{Определение предельной функции функциональной последовательности}
+\definition Пусть $D\subset X$ — множество сходимости $\{f_n(x)\}_{n=1}^{\infty}$ и $\forall x\in D$ $f_n(x)\rightarrow f(x)$. Тогда, $f(x)=\lim\limits_{n\to\infty} f_n(x)$ будем называть \textit{предельной функцией} $\{f_n(x)\}$
+
+\subsection{Определение поточечной сходимости функциональной последовательности на множестве}
+\definition $D\subset \mathbb{R}, f,f_n:D\rightarrow\mathbb{R}$. Будем говорить, что $\{f_n(x)\}$ \textit{сходится поточечно} к $f(x)$ на $D$, если 
+\begin{equation*}
+    \forall x\in D,\ \forall\ve >0\ \exists N:\ \forall n>N\hookrightarrow|f_n(x)-f(x)|<\ve
+\end{equation*}
+
+Обозначение: $f_n(x)\overset{D}{\longrightarrow}f(x)$
+
+\subsection{Определение равномерной сходимости функциональной последовательности на множестве}
+\definition Пусть $D\subset\mathbb{R};\ f_n,f:D\longrightarrow\mathbb{R}$. Будем говорить, что $\{f_n(x)\}$ \textit{сходится равномерно} к $f(x)$ на $D$, Если
+\begin{equation*}
+    \forall\ve>0\ \exists N:\ \forall n>N,\ \forall x\in D\text{ такое, что }|f_n(x)-f(x)|<\ve
+\end{equation*}
+
+Обозначение: $f_n\overset{D}{\rightrightarrows} f$
+
+\subsection{Определение поточечной сходимости функционального ряда на множестве}
+Пусть $D\subset\mathbb{R}$, $f_n, S:D\to\mathbb{R}\ (\forall n\in\mathbb{N})$, а также $S_k(x)=\sum_{n=1}^{k}f_n(x)$ — частичные суммы функционального ряда
+\definition Если $\exists S(x): S_k\overset{D}{\longrightarrow}S$, то будем говорить, что функциональный ряд $\sum_{n=1}^{\infty}f_n(x)$ \textit{сходится поточечно} к $S(x)$ на $D$
+
+\subsection{Определение равномерной сходимости функционального ряда на множестве}
+Пусть $D\subset\mathbb{R}$, $f_n, S:D\to\mathbb{R}\ (\forall n\in\mathbb{N})$, а также $S_k(x)=\sum_{n=1}^{k}f_n(x)$ — частичные суммы функционального ряда
+\definition Если $\exists S(x): S_k\overset{D}{\rightrightarrows}S$, то будем говорить, что функциональный ряд $\sum_{n=1}^{\infty}f_n(x)$ \textit{сходится равномерно} к $S(x)$
+
+\subsection{Определение абсолютной сходимости сходимости функционального ряда на множестве}
+\definition Ряд $\sum_{n=1}^{\infty}f_n(x)$ \textit{сходится абсолютно}, если
+\begin{equation*}
+    \forall x_0\in \sum_{n=1}^{\infty}f_n(x_0)\text{ — сходится абсолютно}
+\end{equation*}
+
+
+\newpage
+\section{Основные формулировки}
+\subsection{Свойства меры бруса в $\mathbb{R}^n$}
+\begin{enumerate}
+    \item \textbf{Однородность:} $\mu(I_{\lambda a,\lambda b})=\lambda^n\cdot\mu(I_{a,b})$, где $\lambda\geqslant
+    0$
+    \item \textbf{Аддитивность:} Пусть $I, I_1, \ldots, I_k$ — брусы
+    
+    Тогда, если $\forall i, j\, I_i, I_j$ не имеют общих внтренних точек, и $\displaystyle\bigcup_{i=1}^kI_i = I$, то
+    \begin{equation*}
+        |I| = \sum_{i=1}^k|I_i|
+    \end{equation*}
+    \item \textbf{Монотонность}: Пусть $I$ — брус, покрытый конечной системой брусов, то есть $I\subset \displaystyle\bigcup_{i=1}^kI_i$, тогда
+    \begin{equation*}
+        |I| < \sum_{i=1}^k|I_i|
+    \end{equation*}
+\end{enumerate}
+
+\subsection{Необходимое условие интегрируемости функции по Риману}
+\theorem Пусть $I$ — замкнутый брус
+\begin{equation*}
+    f\in \mathcal{R}(I) \implies f \text{ ограничена на } I
+\end{equation*}
+
+\subsection{Свойства интеграла Римана}
+\begin{enumerate}
+    \item \textbf{Линейность.}
+    \begin{equation*}
+        f, g \in \mathcal{R}(I) \implies (\alpha f + \beta g)\in \mathcal{R}(I)\ \forall \alpha, \beta \in \R
+    \end{equation*}
+    И верно, что:
+    \begin{equation*}
+            \int_I(\alpha f + \beta g)\d{x} = \alpha\int_I f\d{x} + \beta\int_Ig\d{x}
+    \end{equation*}
+    \item \textbf{Монотонность}
+    \begin{equation*}
+        f, g\in \mathcal{R}(I);\ f|_I\leqslant g|_I \implies \int_If\d{x} \leqslant \int_Ig\d{x}
+    \end{equation*}
+    \item \textbf{Оценка интеграла (сверху)}
+    \begin{equation*}
+        f\in \mathcal{R}(I) \implies \left|\int_If\d{x}\right| \leqslant\sup\limits_{I}|f||I|
+    \end{equation*}
+\end{enumerate}
+
+\subsection{Свойства множества меры нуль по Лебегу}
+\begin{enumerate}
+    \item В определении множества меры нуль можно использовать \textit{открытые} брусы
+    \item $M$ — множество меры нуль, $L\subset M\Longrightarrow L$ — множество меры нуль
+    \item Не более чем счетное объединение множеств меры нуль является множеством меры нуль
+\end{enumerate}
+
+\subsection{Критерий замкнутости множества в $\mathbb{R}^n$}
+\theorem $M$ — замкнуто $\Longleftrightarrow$ $M$ содержит \textbf{все} cвои предельные точки
+
+\subsection{Теорема о компактности замкнутого бруса в $\mathbb{R}^n$}
+\theorem Пусть $I\subset\mathbb{R}^n$ — замкнутый брус $\Longrightarrow I$ — компакт
+
+\subsection{Критерий компактности в $\mathbb{R}^n$}
+\theorem Пусть $K\subset \mathbb{R}^n$. $K$ — компакт $\Longleftrightarrow$ $K$ замкнуто и ограниченно
+
+\subsection{Теорема Вейерштрасса о непрерывной функции на компакте}
+\theorem Пусть $K\subset \R^n$ — компакт и функция $f: K\mapsto \R$ - непрерывная. Тогда $f$ на $K$ достигает наибольшего и наименьшего значений
+
+\subsection{Теорема о связи непрерывности функции в точке с колебанием}
+\theorem Пусть $x_0 \in M \subset \R^n; \,\, f: M\mapsto\R$. $f$ — непрерывна в точке $x_0 \iff \omega(f, x_0) = 0$
+
+\subsection{Критерий Лебега интегрируемости функции по Риману}
+\theorem Если $I\subset \mathbb{R}^n$ — замкнутый невырожденный брус, $f: I\to\R$, то $f\in R(I) \iff f$ ограничена и непрерывна почти всюду на $I$
+
+\subsection{Свойства интегральных сумм Дарбу}
+\begin{enumerate}
+    \item \begin{equation*}
+        \us(f, \T) = \inf_{\xi}\sigma(f, \T, \xi) \le \sup_{\xi}\sigma(f, \T, \xi) = \os(f, \T)
+    \end{equation*}
+
+    \item Пусть $\tilde{\T}$ — измельчение разбиения $\T$, тогда
+    \begin{equation*}
+        \us(f, \T) \le \us(f, \tilde{\T}) \le \os(f, \tilde{\T}) \le \os(f, \T)
+    \end{equation*}
+
+    \item $\forall \T_1, \T_2:\ \us(f, \T_1) \le \os(f, \T_2)$
+\end{enumerate}
+
+\subsection{Теорема об интегралах Дарбу как пределах интегральных сумм Дарбу}
+\theorem Пусть $I\subset \R^n$ — замкнутый брус, а $f: I \mapsto \R$ — ограничена. Тогда:
+\begin{equation*}
+    \oi = \lim_{\Delta_{\T}\to0}\os(f, \T) \qquad \text{и} \qquad \ui = \lim_{\Delta_{\T} \to 0} \us(f, \T)
+\end{equation*}
+
+\subsection{Критерий Дарбу интегрируемости функции на замкнутом брусе}
+\theorem $I\in\mathbb{R}^n\text{ — замкнутый брус, } f:I\mapsto \mathbb{R}, f\in \mathcal{R}(I)\Longleftrightarrow f$ — ограничена на $I$ и $\ui=\oi$
+
+\subsection{Утверждение о независимости определения допустимого множества от выбора бруса}
+Пусть $I_1\supset D, I_2\supset D$, тогда 
+\begin{equation*}
+    \int\limits_{I_1} f\cdot\chi_D\d{x}\text{ и }\int\limits_{I_2}f\cdot\chi_{D}\d{x}
+\end{equation*}
+
+либо существуют и равны, либо оба не существуют вообще
+
+\subsection{Теорема Фубини о переходе к повторному интегралу}
+Пусть имеются $I_x\subset\mathbb{R}^n, I_y\subset\mathbb{R}^n, I_x\times I_y\subset \mathbb{R}^{m+n}$ — замкнутые брусы, $f:I_x\times I_y\rightarrow \mathbb{R}$, $f\in\riman{I_x\times I_y}$ и $\forall$ фиксированной $x\in I_x:f(x,y)\in\riman{I_y}\Longrightarrow$
+\begin{equation*}
+    \int\limits_{I_x\times I_y} f(\overline{x}, \overline{y})\d{\overline{x}}\d{\overline{y}}=\int\limits_{I_x}\left(\int\limits_{I_y}f(\overline{x},\overline{y})\d{\overline{y}}\right)\d{\overline{x}}=\int\limits_{I_x}\d{\overline{x}}\int\limits_{I_y}f(\overline{x}, \overline{y})\d{\overline{y}}
+\end{equation*}
+
+\subsection{Cупремальный критерий равномерной сходимости функциональной последовательности}
+\theorem $f_n\overset{D}{\rightrightarrows} f\Longleftrightarrow \lim\limits_{n\to\infty}\left(\sup\limits_{D} \left|f_n(x)-f(x)\right|\right)=0$
+
+\subsection{Критерий Коши равномерной сходимости функциональной последовательности}
+\theorem $f_n(x)\overset{D}{\rightrightarrows} f(x)\Longleftrightarrow\forall\ve>0\ \exists N:\ \forall n,m>N,\ \forall x\in D\hookrightarrow |f_n(x)-f_m(x)|<\ve$
+
+\comment Отрицание Критерия Коши: 
+\begin{equation*}
+    f_n(x)\not\overset{D}{\rightrightarrows} f(x)\Longleftrightarrow\exists\ve_0>0\ \forall N:\ \exists n,m>N,\ \exists x_0\in D\ |f_n(x)-f_m(x)|\geqslant\ve_0
+\end{equation*}
+
+\subsection{Теорема о почленном переходе к пределу для функциональной последовательности}
+\theorem Пусть $f_n,f: D\longrightarrow\mathbb{R},\ x_0\text{ — предельная точка } D,\ f_n\overset{D}{\rightrightarrows} f,\ \forall n\in\mathbb{N}\ \exists\lim\limits_{x\to x_0} f_n(x)=c_n$
+
+Тогда,
+\begin{equation*}
+    \begin{aligned}
+        &\exists\lim\limits_{n\to\infty} c_n=\lim\limits_{x\to x_0} f(x)\\
+        &\left(\text{или }\lim\limits_{n\to\infty} \left(\lim_{x\to x_0} f_n(x)\right)=\lim_{x\to x_0}\left(\lim_{n\to\infty} f_n(x)\right)\right)
+    \end{aligned}
+\end{equation*}
+
+\subsection{Теорема о непрерывности предельной функции}
+\theorem Пусть имеется $\left.\begin{aligned}
+    &f_n,f: D\longrightarrow\mathbb{R},\\
+    &f_n\overset{D}{\rightrightarrows} f,\\
+    &\forall n\in\mathbb{N}\ f_n\in C(D)
+\end{aligned}\right\}\Longrightarrow f\in C(D)$
+
+\subsection{Утверждение о неравномерной сходимости фун. послед. при наличии разрыва}
+\theorem Пусть имеется $\left.\begin{aligned}
+    &f_n\in C\left([a;b)\right),\\
+    &f\in C((a;b))+\text{разрыв в т.}a,\\
+    &f_n\overset{[a;b)}{\longrightarrow} f
+\end{aligned}\right\}\Longrightarrow f_n\overset{(a;b)}{\not\rightrightarrows} f$
+
+То есть будет поточечная сходимость, но не будет равномерной:
+\begin{equation*}
+    f_n\overset{(a;b)}{\longrightarrow}f,\text{ но не }f_n\overset{(a;b)}{\rightrightarrows} f
+\end{equation*}
+
+\subsection{Утверждение о неравномерной сходимости фун. послед. при наличии расходимости в точке}
+\theorem Пусть имеется $\left.\begin{aligned}
+    &f_n\in C\left([a;b)\right)\\
+    &f_n\overset{(a;b)}{\longrightarrow} f\\
+    &\not\exists \lim\limits_{n\to\infty}f_n(a)
+\end{aligned}\right\}\Longrightarrow f_n\overset{(a;b)}{\not\rightrightarrows} f$
+
+\subsection{Теорема о почленном интегрировании функциональной последовательности}
+\theorem Пусть имеется $\left.\begin{aligned}
+    &f_n,f:[a;b]\to\mathbb{R}\\
+    &f_n\overset{[a;b]}{\rightrightarrows}f\\
+    &f_n\in\riman{[a;b]}\forall n\in\mathbb{N}
+\end{aligned}\right\}\Longrightarrow f\in\riman{[a;b]}\text{ и }\lim\limits_{n\to\infty}\int\limits_{a}^b f_n(x)\d{x}=\int\limits_{a}^b f(x)\d{x}$
+
+\subsection{Теорема о почленном дифференцировании функциональной последовательности}
+\theorem Пусть имеется $\left.\begin{aligned}
+    &f_n,f,g:[a;b]\to\mathbb{R}\\
+    &f_n\in D([a;b])\\
+    &\exists c\in[a;b]:\exists \lim\limits_{n\to\infty} f_n(c)\\
+    &\exists g(x):\ f^{\prime}_n\overset{[a;b]}{\rightrightarrows}g(x)
+\end{aligned}\right\}\Longrightarrow \begin{aligned}
+    &\exists f:\ f_n\overset{[a;b]}{\rightrightarrows}f\\
+    &\oplus f^{\prime}(x)=g(x)
+\end{aligned}$
+
+\subsection{Критерий Коши равномерной сходимости функционального ряда}
+\theorem Пусть $f_n:D\to\mathbb{R}\ \forall n\in\mathbb{N}$, $\sum_{n=1}^{\infty}f_n(x)\overset{D}{\rightrightarrows}$ тогда и только тогда, когда
+\begin{equation*}
+    \forall \ve>0\ \exists N:\ \forall m>k>N\ \forall x\in D\hookrightarrow |S_m(x)-S_k(x)|=\left|\sum_{n=k+1}^{m}f_n(x)\right|<\ve
+\end{equation*}
+
+\subsection{Необходимое условие равномерной сходимости функционального ряда}
+\corollary Пусть $\left.\begin{aligned}
+   &f_n:D\to\mathbb{R}\ (\forall n\in\mathbb{N})\\
+   &\sum_{n=1}^{\infty}f_n(x)\overset{D}{\rightrightarrows}
+\end{aligned}\right\}\Longrightarrow f_n(x)\overset{D}{\rightrightarrows}0$
+
+\subsection{Сравнительный признак равномерной сходимости функционального ряда}
+\theorem Имеется $\quad \left.\begin{aligned}
+    &\sum_{n=1}^{\infty}a_n(x)\text{ и }\sum_{n=1}^{\infty}b_n(x):\\
+    &\exists N\ \forall n>N\ \forall x\in D\ |a_n(x)|\leqslant b_n(x)\\
+    &\sum_{n=1}^{\infty}b_n(x)\overset{D}{\rightrightarrows}
+\end{aligned}\right\}\Longrightarrow \sum_{n=1}^{\infty}a_n(x)\overset{D}{\rightrightarrows}\text{ и }\sum_{n=1}^{\infty}a_n(x)\text{ сходится абсолютно }D$
+
+\subsection{Мажорантный признак Вейерштрасса о равномерной сходимости функционального ряда}
+\corollary Из признака сравнения. $\quad \left.\begin{aligned}
+    &\sum_{n=1}^{\infty}a_n(x):\\
+    &\exists N\ \forall n>N\ \sup\limits_{D}|a_n(x)|\leqslant M_n\\
+    &\sum_{n=1}^{\infty} M_n\text{ — сходится}
+\end{aligned}\right\}\Longrightarrow \begin{aligned}
+    &\sum_{n=1}^{\infty}a_n\overset{D}{\rightrightarrows}\\
+    &\sum_{n=1}^{\infty}a_n\text{ сходится абсолютно на }D
+\end{aligned}$
+
+
+
+
+
+\newpage
+\section{Вопросы на доказательство}
+
+\subsection{Необходимое условие интегрирования.}
+\theorem Пусть $I$ — замкнутый брус. 
+\begin{equation*}
+    f\in \mathcal{R}(I) \implies f \text{ ограничена на } I
+\end{equation*}
+
+\proof От противного.
+
+\begin{enumerate}
+    \item $f\in \mathcal{R}(I) \implies \exists {A} \in \R$, такая что $\forall \epsilon > 0$, а значит для $\epsilon = 1$ тоже:
+    \begin{equation}
+        \exists \delta > 0 \colon \forall (\T, \xi): \Delta_{\T} \leq \delta \text{ верно } \abs{\sigma(f, \T, \xi) - A} < 1
+    \end{equation}
+
+    Отсюда
+    \begin{equation}
+        A - 1 < \sigma < A + 1 \implies \sigma \text{ ограничена}
+    \end{equation}
+
+    \item С другой стороны, так как предположили, что $f$ --- неограничена на $I$
+    \begin{equation}
+        \forall \T = \{I_i\}^k_{i=1} \quad \exists i_0 \colon f \text{ неограничена на } I_{i_0}
+    \end{equation}
+    
+    Тогда рассмотрим интегральную сумму
+    \begin{equation}
+        \sigma(f, \T, \xi) = \sum_{i \neq i_0} f(\xi_i) \cdot \abs{I_i} + f(\xi_{i_0}) \cdot \abs{I_{i_0}}
+    \end{equation}
+
+    Выбором подходящего $\xi_{i_0}$ можно сделать $f(\xi_{i_0})$ сколь угодно большой $\implies \sigma$ будет не ограничена - \mbox{противоречние}
+\end{enumerate}
+
+Из противоречния пунктов 1 и 2 следует, что
+\begin{equation*}
+    f\in \mathcal{R}(I) \implies f \text{ ограничена на } I
+\end{equation*}
+\qed
+
+
+\subsection{Свойства интеграла Римана}
+
+\begin{enumerate}
+    \item {\textbf{Линейность.}
+    \begin{equation*}
+        f, g \in \mathcal{R}(I) \implies (\alpha f + \beta g)\in \mathcal{R}(I)\ \forall \alpha, \beta \in \R
+    \end{equation*}
+    И верно, что:
+    \begin{equation*}
+            \int_I(\alpha f + \beta g)\d{x} = \alpha\int_I f\d{x} + \beta\int_Ig\d{x}
+    \end{equation*}
+
+\proof 
+
+\begin{equation*}
+\begin{aligned}
+    &f \in \mathcal{R}(I): \exists A_f, \text{что} \quad \forall \varepsilon > 0 \, \exists\delta_1>0\ \forall(\T,\xi)\colon \Delta_{\T} < \delta_1 &&\text{ верно }
+    \abs{\sigma(f, \T, \xi)  - \int_If\d{x}} =: \abs{\sigma_f - A_f} < \frac{\epsilon}{|\alpha| + |\beta| + 1}
+    \\
+    &g \in \mathcal{R}(I): \exists A_g, \text{что} \quad \forall \varepsilon > 0 \, \exists\delta_2>0\ \forall(\T,\xi)\colon \Delta_{\T} < \delta_2 &&\text{ верно }
+    \abs{\sigma(g, \T, \xi)  - \int_Ig\d{x}} =: \abs{\sigma_g - A_g} < \frac{\epsilon}{|\alpha| + |\beta| + 1}
+    \end{aligned}
+\end{equation*}
+Тогда $\forall (\T, \xi) \colon \Delta_{\T} < min(\delta_f, \delta_g) = \delta:$
+\begin{align}
+    \abs{\sigma(\alpha f+\beta g, \T, \xi) - \alpha A_f+ \beta A_g} &= \abs{\sum(\alpha f(\xi_i) + \beta g(\xi_i)) \cdot \abs{I_i} - \alpha A_f - \beta A_g} \leq \\
+    &\leq |\alpha|\cdot|\sigma_f - A_f| + |\beta|\cdot|\sigma_g-A_g|
+    < \left(|\alpha| + |\beta|\right) \frac{\varepsilon}{|\alpha|+|\beta|+1} < \ve
+\end{align}
+\qed
+    }
+\item {\textbf{Монотонность}
+\begin{equation*}
+    f, g\in \mathcal{R}(I);\ f \leq g \text{ на } I \implies \int_If\d{x} \leqslant \int_Ig\d{x}
+\end{equation*}
+\proof
+    \begin{equation*}
+        f\in \mathcal{R}(I) \implies \exists A_f\in \R \colon \forall \ve > 0\ \exists\delta: \forall(\T, \xi): \Delta_{\T} < \delta, \text{ выполняется } |\sigma_f - A_f| < \ve\
+    \end{equation*}
+    Аналогично для $g\in \mathcal{R}(I)$, тогда:
+    \begin{equation}
+    \begin{cases}
+        A_f - \epsilon < \sigma_1 < A_f + \epsilon \\
+        A_g - \epsilon < \sigma_2 < A_g + \epsilon \\
+        \sigma_f \leq \sigma_g
+    \end{cases}
+    \end{equation}
+    
+    Отсюда
+    \begin{equation*}
+    \begin{aligned}
+        A_f - \ve < \sigma_f \leqslant \sigma_g < A_g + \ve \implies
+        A_f - \epsilon < A_g + \epsilon \implies A_f < A_g + 2 \epsilon \qquad \forall \epsilon > 0
+    \end{aligned}
+    \end{equation*}
+    % Что верно для $\forall \ve > 0$, даже при $\ve \to 0 \implies A_f \le A_g$
+\qed
+}
+\item {\textbf{Оценка интеграла (сверху)}
+\begin{equation*}
+    f\in \mathcal{R}(I) \implies \left|\int_If\d{x}\right| \leqslant\sup\limits_{I}|f||I|
+\end{equation*}
+\proof
+По необходимому условию для интегрируемости функции (см. ниже)
+\begin{equation*}
+    \begin{aligned}
+        f\in \mathcal{R}(I) &\implies f \text{ Ограничена на } I\\
+        &\implies -\sup_I|f| \leqslant f \leqslant \sup_I|f|
+    \end{aligned}
+\end{equation*}
+Тогда,
+\begin{equation*}
+    \begin{aligned}
+        -\int_I\sup|f|\d{x} &\leqslant \int_If\d{x} &\leqslant\int_I\sup|f|dx\\
+        -\sup_I|f||I|&\leqslant \int_If\d{x}&\leqslant \sup_I|f||I|
+    \end{aligned}
+\end{equation*}
+\qed
+}
+\end{enumerate}
+
+\subsection{Свойства множества меры нуль по Лебегу}
+\begin{enumerate}
+    \item {Если в определении $\{I_i\}$ заменить на открытые брусы, то определение останется верным.
+
+    \proof Пусть $\{I_i\}$ — открытые брусы, тогда $\forall \epsilon > 0 \ \exists$ не более чем счетный набор $\{I_i\}$:
+    $M\subset \displaystyle\bigcup_iI_i \ $ и $ \ \sum |I_i| < \epsilon$
+    
+    Пусть $\{\bar I_i\}$ — открытые брусы + границы = замкнутые брусы $I_i$, причём объем ``добавленных'' плоскостей будет нулевой, так как объем бруса $n-1$ размерности, будет нулевым для объема бруса размерности $n$
+    \begin{equation*}
+        \begin{aligned}
+            M\subset\bigcup_iI_i \subset\bigcup_i\bar I_i, \ \text{при этом} \ |I_i| = |\bar I_i|
+        \end{aligned}
+    \end{equation*}
+    Если
+
+
+    \begin{equation*}
+        \forall\ve\, \exists\{I_i\}: M \subset \bigcup_iI_i: \sum_i|I_i|<\ve
+    \end{equation*}
+    то
+    \begin{equation*}
+        \forall\ve\, \exists\{\bar I_i\}: M \subset \bigcup_i\bar I_i: \sum_i|\bar I_i|<\ve
+    \end{equation*}
+    \textbf{Докажем в обратную сторону.} Мы хотим увеличить замкнутый брус в два раза и увеличенный брус взять открытым.
+    
+    Пусть $\{I_i\}$ — набор замкнутых брусов
+    %сюда бы рисунок из конца 2 лекции но там в тикзе надо уметь рисовать...
+    \begin{equation*}
+        I_i = [a^1_i, b^1_i]\times\ldots\times[a^n_i, b^n_i], \quad V_i = \sum_i|I_i|<\frac{\ve}{2^n}
+    \end{equation*}
+    Так как $\left(\frac{a_i^k}{2}, \frac{b_i^k}{2}\right)$ --- центр $i$-го бруса в $k$-ом измерении, увеличить изначальный брус в два раза по этому измерению можно сдвинувшись от центра не на половину, а на целую сторону, то есть на $b_i^k - a_i^k$
+
+    Таким образом: 
+
+    \begin{equation*}
+        \tilde{I_i} = \left(\frac{a_i^1+b_i^1}{2} - (b_i^1-a_i^1) ; \frac{a_i^1 + b_i^1}{2} + (b_i^1 - a_i^1)\right) \times \ldots\times \left(\frac{a_i^n+b_i^n}{2} - (b_i^n-a_i^n) ; \frac{a_i^n + b_i^n}{2} + (b_i^n - a_i^n)\right)
+    \end{equation*}
+    $\implies V_2 = \displaystyle\sum_i|\tilde{I_i} | = 2^n \cdot V_1 < \ve$
+    \qed
+    }
+    \item {Если $M \subset \R^n$ - множество меры нуль по Лебегу, то из $L \subset M \implies L$ - множество меры нуль по Лебегу
+
+    \proof Докажем по транзитивности
+    \begin{equation*}
+        \forall\ve\ > 0, \ \exists \ \text{не более чем счетный набор} \ \{I_i\}: L \subset M \subset \bigcup_iI_i \implies L \subset \bigcup_iI_i
+    \end{equation*}
+
+    По условию нам дано, что для $M \subset \bigcup_iI_i$ верно $\sum_i |I_i| < \ve$, и тоже самое выполнено и для $L \subset \bigcup_iI_i$, тогда $L$ по определнию является множеством меры нуль по Лебегу
+    \qed
+    }
+    \item {Не более чем счетное объединение множеств меры нуль по Лебегу, тоже является множеством меры нуль по Лебегу
+
+    \proof пусть $M = \bigcup_i^\infty M_k$ - объединение не более чем счетного числа множеств $\forall k \ M_k$ - множество меры нуль по Лебегу $\implies \forall k, \ \forall\ve>0 \ \exists\{I_i\}_{i=1}^{\infty}$ по определению множества меры нуль для них верно
+
+    \begin{enumerate}[label=\textbullet]
+        \item $M_k \subset \displaystyle\bigcup_i^\infty I_i^k$ \footnote{$I_i^k$ - это $i$-ый для $M_k$, а не степень}
+        \item $\displaystyle\sum_i|I_i| < \ve_k\,\, \quad \forall \ve_k > 0$
+    \end{enumerate}
+    Отсюда получаем $M = \displaystyle\bigcup_i^\infty M_k \subset \displaystyle\bigcup_i^\infty I_i^k$ и $\sum_{k=1}^{\infty}\sum_{i=1}^{\infty} |I_i^k| < \sum_{k=1}^{\infty}\ve_k$ - если теперь взять $\ve_k = \frac{\ve}{2^k}$, то мы получим
+    \begin{equation*}
+     \sum_{k=1}^{\infty}\ve_k = \sum_{k=1}^{\infty} \frac{\ve}{2^k} < \ve
+    \end{equation*}
+
+    \qed
+    }
+\end{enumerate}
+
+
+\subsection{Критерий замкнутости}
+% Наличие социофобии
+
+\theorem $M$ — замкнуто $\Longleftrightarrow$ $M$ содержит \textbf{все} cвои предельные точки
+
+\proof Докажем необходимость и достаточность
+\begin{enumerate}
+    \item \textit{(Необходимость)} Докажем $\Longrightarrow$ от противного
+    \begin{itemize}
+        \item Пусть $x_0$ — предельная для $M$ и $x_0\notin M$. Тогда, $\forall\ve>0\ \stackrel{\circ}{B_{\ve}}(x_0)\cap M\ne\varnothing\text{ и }x_0\in\mathbb{R}^n$
+        \item По условию $M$ — замкнуто, то есть $\mathbb{R}^n\setminus M$ — открыто $\Longrightarrow$ все его точки внутренние и $\exists r>0$:
+        $$B_{r}(x_0)\subset\mathbb{R}^n\setminus M\Longrightarrow\stackrel{\circ}{B_r(x_0)}\subset\mathbb{R}^n\setminus M\text{ и }\stackrel{\circ}{B_r}(x_0)\cap M=\varnothing$$
+
+        Пришли к противоречию $\Longrightarrow$ $M$ содержит все свои предельные точки\qed
+    \end{itemize}
+    \item \textit{(Достаточность)} Докажем $\Longleftarrow$
+
+    Пусть $y_0$ — не является предельной для $M$, то есть $y_0\in\mathbb{R}^n\setminus M\Longrightarrow\exists r>0$:
+    \begin{equation*}
+        \begin{cases}
+            \stackrel{\circ}{B_{r}}(y_0)\cap M=\varnothing\\
+            y_0\in\mathbb{R}^n\setminus M
+        \end{cases}\Longrightarrow B_r(y_0)\subset \mathbb{R}^n\setminus M
+    \end{equation*}
+    $\Longrightarrow\mathbb{R}^n\setminus M$ — открытое и состоит из всех точек, не являющихся предельными $\Longrightarrow$ $M$ — замкнуто по определению\qed
+\end{enumerate}
+
+\subsection{Теорема о компактности замкнутого бруса}
+\theorem Пусть $I\subset\mathbb{R}^n$ — замкнутый брус $\Longrightarrow I$ — компакт
+
+\proof Пойдем от противного
+
+Пусть $I=[a_1;b_1]\times\ldots\times[a_n;b_n]$
+\begin{enumerate}
+    \item Положим, что $I$ — не компакт. Значит, существует его покрытие $\{A_{\alpha}\}$ — открытые множества, такие что $I\subset \{A_{\alpha}\}$, не допускающее выделения конечного подкпорытия
+    \item Поделим каждую сторону пополам. Тогда, $\exists I_1$, такой что не допускает конечного подпокрытия. Иначе, $I$ — компакт
+    \item Аналогично, повторим процесс и получим систему вложенных брусов: $$I\supset I_1\supset I_2\supset \ldots$$
+    То есть на каждой стороне возникает последовательность вложенных отрезков, которые стягиваются в точку $a=(a_1,\ldots,a_n)$
+
+    \begin{center}
+        \input{assets/lecture04/shrinking_rectangle}
+    \end{center}
+
+    При этом, $\exists a = \displaystyle\bigcap_{i=1}^{\infty}I_i$
+
+    \item $a\in I\Longrightarrow a\in \bigcup A_{\alpha}\Longrightarrow\exists \alpha_0:a\in \underbrace{A_{\alpha_0}}_{\text{открытое}}\Longrightarrow\exists \ve>0: B_{\ve}(a)\subset A_{\alpha_0}$
+
+    \begin{center}
+        \input{assets/lecture04/brus_in_open_set}
+    \end{center}
+
+
+    \item Из построения получили, что $I \supset I_1 \supset \ldots \supset a \Longrightarrow \exists N:\forall n > N\ I_n\subset B_{\ve}(a)\subset A_{\alpha_0}$
+
+    Получается, что $\forall n>N\ I_n$ покрывается одним лишь $A_{\alpha_0}$ из системы $\{A_{\alpha}\}$
+
+    Получаем противоречие тому, что любое $I_n$ не допускает конечного подпокрытия, а у нас получилось, что $I_n\in A_{\alpha_0}\forall n>N \Longrightarrow I - \text{компакт}$
+    \qed
+\end{enumerate}
+
+\comment Любое ограниченное множество можно вписать в замкнутый брус. Потому что можно вокруг него описать шарик, который точно можно вписать в брус
+
+\subsection{Критерий компактности в $\mathbb{R}^n$}
+\theorem $K\subset \mathbb{R}^n$. $K$ — компакт $\Longleftrightarrow$ $K$ замкнуто и ограниченно
+
+\proof Докажем необходимость $(\Longrightarrow)$
+\begin{itemize}
+    \item \textit{Ограниченность.} $K$ — компакт $\Longrightarrow \forall \{A_\alpha\}_{\alpha\in\N}$ — можно выделить конечное подпокрытие $\Longrightarrow$
+
+    $\Longrightarrow$ Пусть $\{A_\alpha\}=\{B_n(0)\}_{n=1}^\infty$ $\Longrightarrow \exists N \in \N : \forall n > N ~ K \subset \displaystyle\bigcup_{n=1}^N B_n(0)$ и так как $B_n(0)$ — вложены шары $\Longrightarrow$
+
+    $\Longrightarrow K \subset B_N(0) \Longrightarrow$ по определению $K$ — ограничено
+
+    \begin{center}
+       \input{assets/lecture04/compact_in_spheres}
+    \end{center}
+
+
+    \item \textit{Замкнутость.} Пойдем от противного. $K$ — компакт, тогда возьмем $\{B_{\frac{\delta(x)}{2}}(0)\}_{x\in K}$ — покрытие открытыми шарами, где $\delta(x)=\rho(x,x_0)$. $x_0$ — предельная точка, которая $\notin K$ (или же $\in \mathbb{R}^n\setminus K$)
+
+    Так как $K$ — компакт, $\exists x_1,\ldots, x_s:K\subset\displaystyle\bigcup_{i=1}^{s} B_{\frac{\delta(x_i)}{2}}(x_i)$
+
+    Пусть $\delta=\min\limits_{1\leqslant i\leqslant s}{\delta(x_i)}$, тогда
+    \begin{equation*}
+        \begin{aligned}
+            B_{\frac{\delta}{2}}(x_0)\cap\bigcup_{i=1}^{s}B_{\frac{\delta(x_i)}{2}}(x_i)=\varnothing&\Longrightarrow B_{\frac{\delta}{2}}(x_0)\subset\mathbb{R}^n\setminus K\\
+            &\Longrightarrow\stackrel{\circ}{B}_{\frac{\delta}{2}}(x_0)\cap K=\varnothing
+        \end{aligned}
+    \end{equation*}
+
+    Значит, $x_0$ \textit{не является предельной точкой} $K$, что противоречит нашему предположению
+
+    \begin{center}
+        \input{assets/lecture04/min_delta_spheres}
+    \end{center}
+
+
+\end{itemize}
+
+\proof Докажем достаточность
+
+$K$ — замкнуто и ограничено $\Longrightarrow \exists r>0:B_r(0)\supset K\Longrightarrow\exists I$ — замкнутый брус, такой что
+$$K\subset I\text{ и }I=[-r;r]^n$$
+% тут позже будет картинка
+
+Пусть $\{A_{\alpha}\}_{\alpha\in\N}$ — произвольное покрытие открытыми множествами для $K$. Тогда, $I\subset \{A_{\alpha}\}\cup\underbrace{\{\mathbb{R}^n\setminus K\}}_{\text{открыто}}$. Так как $I$ — компакт, то $\exists $ конечное подпокрытие
+$$\{A_{\alpha_i}\}_{i=1}^m\cup\{\mathbb{R}^n\setminus K\}\supset I\supset K\text{ — покрытие для $I$}$$
+
+Значит, $K\subset\{A_{\alpha_i}\}_{i=1}^{m}$ — конечное и $\{A_{\alpha}\}$ — произвольное, тогда $K$ — компакт по определению\qed
+
+\begin{center}
+    \input{assets/lecture04/compact_in_square}
+\end{center}
+
+
+\subsection{Теорема Вейерштрасса о непрерывной функции на компакте}
+\theorem Пусть $K\in \R^n$ — компакт и функция $f: K\mapsto \R$ - непрерывная. Тогда $f$ на $K$ достигает наибольшее и наименьшее значения.
+
+\proof
+\begin{itemize}
+    \item \textit{Ограниченность.} От противного: пусть существует последовательность $\{x^k\} \subset K \,:\, |f(x^k)| > k$. Из ограниченности $K$ следует ограниченность последовательности $\{x^k\}$, и как следствие ограничены последовательности отдельных коордиант:
+    \begin{equation*}
+        |x_i^k| = \sqrt{|x_i^k|^2} \leqslant \sqrt{\sum_{i=1}^n|x_i^k|^2} = ||x^k|| \leqslant C \quad \text{для некоторого }C
+    \end{equation*}
+
+    По теореме Больцано-Вейерштрасса у $\{x_1^k\}$ существует сходящаяся подпоследовательность $x_1^{k_{j_1}} \to a_1, j_1 \to \infty$. Для последовательности $\{x_2^{k_{j_1}}\}$ существует сходящаяся последовательность $x_2^{k_{j_2}} \to a_2, j_2 \to \infty$. И т.д. Получаем сходящуюся подпоследовательность:
+    \begin{equation*}
+        x^{k_j} = (x_1^{k_j}, x_2^{k_J}, \ldots, x_n^{k_j})\to(a_1, a_2, \ldots, a_n) = a
+    \end{equation*}
+
+    Точка $a$ — предельная для $K$. В силу замкнутости $K$ т. $a\in K$. А из непрерывности функции $f$ получаем $f(x^{k_j}) \to f(a)$. А с другой стороны, $f(x^{k_j})\to\infty$ из выбора исходной последовательности. \textbf{противоречие}
+
+    \item \textit{Достижение наибольшего (наименьшего) значения.} Итак, мы доказали, что $f$ — ограничена на $K$. Выберем последовательность $\{x^k\}$:
+    \begin{equation*}
+        \sup_K f - \frac{1}{k_j} \le f(x^{k_j}) \le \sup_K f
+    \end{equation*}
+    в силу непрерывности $f$:
+    \begin{equation*}
+        \sup_K f \le f(a) \le \sup_K f
+    \end{equation*}
+    Получаем $f(a) = \displaystyle\sup_K f$, т.е. максимальное значение достиигается в точке $x = a$. Для $\displaystyle\inf_K f$ доказательство аналогично
+    \qed
+\end{itemize}
+
+\subsection{Теорема о связи непрерывности функции в точке с колебанием}
+\theorem Пусть $x_0 \in M \subset \R^n; \,\, f: M\mapsto\R$. $f$ — непрерывна в точке $x_0 \iff \omega(f, x_0) = 0$
+
+\proof
+\begin{itemize}
+    \item \textit{Необходимость}\\
+
+        $f$ — непрерывна в т. $x_0 \in M \implies \forall \ve > 0 \,\, \exists\delta > 0:\,\, \forall x \in B_{\delta}(x_0)\cap M = B_{\delta}^M(x_0) \implies |f(x) - f(x_0)| < \frac{\ve}{3}$\\
+        Рассмотрим $\omega(f, x_0) := \displaystyle\lim_{\delta\to0+} \omega(f, B_{\delta}^M(x_0))$:
+        \begin{equation*}
+            \begin{aligned}
+                \omega(f, B_{\delta}^M(x_0)) = \sup_{x, y \in B_{\delta}(x_0)}|f(x) - f(y)| \le \sup_{x\in B_{\delta}(x_0)} |f(x) - f(x_0)| + \sup_{y\in B_{\delta}(x_0)} |f(y) - f(x_0)| \le \frac{2\ve}{3} < \ve
+            \end{aligned}
+        \end{equation*}
+        При $\ve\to0 \implies \delta\to0$ и $\omega(f, B_{\delta}^M(x_0))\to0$, т.е. $\omega(f, x_0) = 0$
+
+    \item \textit{Достаточность}
+
+        Пусть $0 = \omega(f, x_0) := \displaystyle\lim_{\delta\to0+} \omega(f, B_{\delta}^M(x_0))$, т.е.
+        \begin{equation*}
+            \forall \ve > 0 \,\, \exists\delta > 0: \quad \forall x, y \in B_{\delta}^M(x_0) \quad \sup_{x, y\in B_{\delta}^M(x_0)} |f(x)-f(y)| < \ve
+        \end{equation*}
+        Получаем, что
+        \begin{equation*}
+            \forall \ve > 0 \,\, \exists \delta > 0: \forall x \in B_{\delta}^M(x_0) \implies |f(x)-f(x_0)| < \ve \implies
+        \end{equation*}
+\end{itemize}\qed
+
+\subsection{Свойства интегральных сумм Дарбу}
+\subsubsection{Нижняя сумма Дарбу не больше верхней}
+\theorem \begin{equation*}
+    \us(f, \T) = \int_{\xi}\sigma(f, \T, \xi) \le \sup_{\xi}\sigma(f, \T, \xi) = \os(f, \T)
+\end{equation*}
+
+\proof
+\begin{equation*}
+    \begin{aligned}
+    &\us(f, \T) = \sum_{i=1}^{K}m_i|I_i| = \sum_{i}\inf_{\xi_i}(f(\xi_i))|I_i| = \inf_{\xi}\sum_{i}f(\xi_i)|I_i| = \inf_{\xi}\sigma(f, \T, \xi) \le\\
+    &\sup_{\xi}\sigma(f, \T, \xi) = \sum_i (f(\xi_i))|I_i| = \sum_{i}M_i|I_i| = \os(f, \T)
+    \end{aligned}
+    \end{equation*}
+
+\subsubsection{Монотонность сумм относительно измельчений разбиения}
+\theorem Пусть $\tilde{\T}$ — измельчение разбиения $\T$, тогда
+\begin{equation*}
+    \us(f, \T) \le \us(f, \tilde{\T}) \le \os(f, \tilde{\T}) \le \os(f, \T)
+\end{equation*}\qed
+
+\proof Если $L \subset M$, то $\inf L \ge \inf M$ и $\sup L \le \sup M$, тогда:
+\begin{equation*}
+    \us(f, \T) \le \us(f, \tilde{\T}) \underset{\text{по 6.2}}{\le} \os (f, \tilde{\T}) \le \os (f, \T)
+\end{equation*}\qed
+
+\subsubsection{Никакая нижняя сумма Дарбу не больше какой-либо верхней суммы на том же брусе}
+\theorem $\forall \T_1, \T_2 : \quad \us(f, \T_1) \le \os(f, \T_2)$
+
+\proof $\forall \T_1, \T_2$ рассмотрим $\tilde{\T} = \T_1 \cap \T_2$, тогда по 6.3:
+\begin{equation*}
+    \us(f, \T_1) \le \us(f, \tilde{\T}) \le \os(f, \tilde{\T}) \le \os(f, \T_2)
+\end{equation*} \qed
+
+
+\subsection{Теорема об интегралах Дарбу как пределах интегральных сумм Дарбу}
+\theorem Пусть $I\subset \R^n$ — замкнутый брус, а $f: I \mapsto \R$ — ограничена. Тогда:
+\begin{equation*}
+    \oi = \lim_{\Delta_{\T}\to0}\os(f, \T) \qquad \text{и} \qquad \ui = \lim_{\Delta_{\T} \to 0} \us(f, \T)
+\end{equation*}
+
+\proof Докажем, что $\ui = \displaystyle\lim_{\Delta_{\T} \to 0} \us(f, \T) \quad (= \displaystyle\sup_{\T} \us (f, \T))$
+\begin{enumerate}
+    \item $f$-ограничена на $I \implies \exists C > 0: \forall x \in I\quad |f(x)| \leqslant C$
+    \item т.к. по определению $\underline{I} = \displaystyle\sup_{\T}\us(f, \T)$, то $\forall \ve > 0 \,\, \exists\T_1 = \{I_i^1\}_{i=1}^{m_1}:\ \ui-\ve < \us(f, \T_1) \leqslant \ui < \ui + \ve$
+    \item Пусть $G = \displaystyle\bigcup_{i=1}^{m_1}\partial I_i^1$ - объединение границ брусов $I^1_i \in \T_1$ (без повторов). Тогда $G$ множество меры нуль по Лебегу (т.к. границы --- мн-ва меры нуль по Лебегу)
+    \item Пусть $\T_2$ - произвольное разбиение $I: \,\, \T_2 = \{I_i^2\}_{i=1}^{m_2}$ \\
+    Рассмотрим два множества брусов:\\
+    \begin{equation*}
+    \begin{aligned}
+        A = \{I_i^2 \in \T_2: I_i^2 \cap G \ne \varnothing\} \qquad \text{и} \qquad B = \T_2\backslash A \implies\\
+        \forall \ve > 0 \,\, \exists \delta(\ve) > 0 : \forall \T_2: \Delta_{\T_2} < \delta \text{ верно, что } \sum_{I_i^2 \in A} |I_i^2| < \epsilon
+    \end{aligned}
+    \end{equation*}
+    т.к. наши брусочки $I^2_i$ по построению лежат в $G$, а по 3 пункту оно множество меры нуль.
+
+    \begin{center}
+        \input{assets/lecture07/example_for_7_1}
+    \end{center}
+
+
+    \item С другой стороны $\forall I_i^2 \in B$ верно, что $I_i^2 \in \T_1 \cap \T_2$
+\end{enumerate}
+
+Хотим рассмотреть
+\begin{equation*}
+\begin{aligned}
+    |\ui - \us(f, \T_2)| = |I-\us(f, \T_1\cap \T_2) + \us(f, \T_1\cap \T_2) -\us(f, \T_2)| &\leqslant \underbrace{|I-\us(f, \T_1\cap \T_2)|}_* + \underbrace{|\us(f, \T_1\cap \T_2) -\us(f, \T_2)|}_{**} \\
+    &< \ve + 2 C \ve = \ve(1 + 2C)
+\end{aligned}
+\end{equation*}\qed
+
+\begin{itemize}
+    \item[*] из пункта 2: $\ui - \ve < \us(f, \T_1) \leqslant \us(f, \T_1\cap \T_2) \leqslant \ui < \ui + \ve \implies |\ui - \us(f, \T_1\cap\T_2)| < \ve$\\
+    \item[**] Пояснение ниже \begin{equation*}
+        \begin{aligned}
+            \left|\us(f, \T_1\cap\T_2) - \us(f, \T_2)\right| &= \left|\sum_{I_i^2\in B}m_i|I_i^2| + \sum_{I_i\in \T_1\cap A}m_i|I_i^2| - \sum_{I_i^2\in B}m_i|I_i^2| - \sum_{I_i^2\in A}m_i|I_i^2|\right| ~~~ \textit{\text{Переход с равном по пункту 5}} \\
+            &\leqslant \left|\sum_{I_i\in \T_1\cap A}m_i|I_i^2|\right| + \left|\sum_{I_i^2\in A}m_i|I_i^2|\right|\\
+            &\leqslant 2\left|\sum_{I_i^2\in A}m_i|I_i^2|\right| ~~~ \textit{\text{Следующий переход по пункту 1}} \\
+            &\leqslant 2C\left|\sum_{I_i^2\in A}|I_i^2|\right| ~~~ \textit{\text{Следующий переход по пункту 4}} \\
+            & < 2C\ve
+        \end{aligned}
+    \end{equation*}
+\end{itemize}
+
+
+\subsection{Критерий Дарбу интегрируемости функции на замкнутом брусе}
+$I\in\mathbb{R}^n\text{ — замкнутый брус, } f:I\mapsto \mathbb{R}, f\in \mathcal{R}(I)\Longleftrightarrow f$ — ограничена на $I$ и $\ui=\oi$
+
+\proof Необходимость
+\begin{itemize}
+    \item $f\in\riman{I}\Longrightarrow$ по необходимому условию интегрируемости функции по Риману на замкнутом брусе, $f$ — ограничена на $I$
+    \item Покажем, что $\underline{\mathcal{I}}=\mathcal{I},\overline{\mathcal{I}}=\mathcal{I}\Longrightarrow\underline{\mathcal{I}}=\overline{\mathcal{I}}$
+
+    \begin{enumerate}
+        \item $f\in\riman{I}\Longrightarrow\forall \ve >0\ \exists \delta >0\ \forall(\mathbb{T},\xi):\Delta_{\mathbb{T}}<\delta \ |\sigma(f,\mathbb{T},\xi)-\mathcal{I}|<\ve$
+        \item $\ui=\sup\limits_{\mathbb{T}}\us(f,\T)=\lim\limits_{\Delta\rightarrow 0}\us(f,\T) \Longrightarrow |\ui-\us|<\ve$
+
+        $\forall \ve>0\ \exists\delta\ \exists\mathbb{T}:\Delta_{\mathbb{T}}<\delta: |\ui-\us|<\ve$
+        \item $\us(\mathbb{T},\xi)=\inf\limits_{\xi}\sigma(f,\mathbb{T},\xi)$
+
+        $\forall\mathbb{T},\ \forall \ve>0\ \exists \xi:|\us-\sigma|<\ve$
+    \end{enumerate}
+\end{itemize}
+
+$|\mathcal{I}-\ui|\leqslant|\mathcal{I}-{\ui}-\sigma+\sigma+{\us}-\us|\leqslant|\mathcal{I}-\sigma|+|\ui-\us|+|\sigma-\us|<3\ve$\qed
+
+\proof Достаточность
+
+$f$ — ограничена и $\ui=\oi$. Имеем
+\begin{equation*}
+    \us(f,\mathcal{T})=\inf\limits_{\xi}\leqslant\sigma(f,\mathbb{T},\xi)\leqslant \sup\limits_{\xi}(f,\mathbb{T},\xi)=\os(f,\mathbb{T})
+\end{equation*}
+
+Тогда, при $\lim\limits_{\Delta_{\T}\rightarrow 0} \us=\ui,\ \lim\limits_{\Delta_{\T}\rightarrow0}\os=\oi$ получаем $\ui=\oi$(Условие ограниченнсоти $f$ даёт нам возможность применять неравенство выше)\qed
+
+
+\subsection{Утверждение о независимости определения допустимого множества от выбора бруса}
+ Пусть $D \subset I_1 \subset \R^n, D \subset I_2 \subset \R^n$ - замкнутые брусы, тогда
+\begin{equation*}
+    \int\limits_{I_1} f\cdot\chi_D\d{x}\text{ и }\int\limits_{I_2}f\cdot\chi_{D}\d{x}
+\end{equation*}
+
+либо существуют и равны, либо оба не существуют вообще
+
+
+\begin{center}
+    \input{assets/lecture08/example_for_8_1}
+\end{center}
+
+
+
+\proof Введем $I = I_1 \cap I_2 \supset D$, $I$ не пустое по построению. Покажем существование
+\begin{itemize}
+    \item $f\cdot\chi_D\in\riman{I_1}\Longrightarrow$ по критерию Лебега $f\cdot\chi_D$ ограничена на $I_1\Longrightarrow$ $f\cdot\chi_D$ ограничена на $D\Longrightarrow f$ ограничена на $D\Longrightarrow f\cdot\chi_D$ ограничена на $I_2$
+    \item $f\cdot\chi_D\in\riman{I_1}\Longrightarrow$ по критерию Лебега $f\cdot\chi_D$ непрерывна почти всюду на $I_1\Longrightarrow f\cdot\chi_D$ непрерынва почти всюду на $D\Longrightarrow $ в худшем случае для $f\cdot\chi_D$ на $I_2$ добавятся разрывы на $\partial D\Longrightarrow f\cdot\chi_D$ непрерынва почти всюду на $I_2$
+    \item Тогда, $f\cdot\chi_D\in\riman{I_1}\Longleftrightarrow f\cdot\chi_D\in\riman{I_2}$
+\end{itemize}
+
+Покажем равенство
+\begin{itemize}
+    \item Пусть $\mathbb{T}_i$ — разбиение на $I_i:\mathbb{T}_1$ и $\mathbb{T}_2$ совпадают на $I$
+    \item Пусть $\xi^i$ — отмеченные точки для $\T_i$
+    \item $\sigma(f\chi_D,\mathbb{T}_1,\xi^1)=\sum_{j}f\chi_D(\xi^1_j)|I_j^1|=\sum_j f(\xi^1_j)|I^1_j|=\sum_j f(\xi^2_j)|I^2_j|=\sum_j f\chi_D(\xi_j^2)|I_j^2|=\sigma(f\chi_D, \mathbb{T}_2, \xi^2)$
+\end{itemize}\qed
+
+\comment Все свойства интеграла Римана и критерия Лебега для бруса справедливы и для других допустимых множеств
+ 
+\subsection{Теорема Фубини о переходе к повторному интегралу}
+Пусть имеются $I_x\subset\mathbb{R}^n, I_y\subset\mathbb{R}^m, I_x\times I_y\subset \mathbb{R}^{m+n}$ — замкнутые брусы, $f:I_x\times I_y\rightarrow \mathbb{R}$, $f\in\riman{I_x\times I_y}$ и $\forall$ фиксированного $x\in I_x \implies f(x,y)\in\riman{I_y}\Longrightarrow$
+\begin{equation*}
+    \int\limits_{I_x\times I_y} f(\overline{x}, \overline{y})\d{\overline{x}}\d{\overline{y}}=\int\limits_{I_x}\left(\int\limits_{I_y}f(\overline{x},\overline{y})\d{\overline{y}}\right)\d{\overline{x}}=\int\limits_{I_x}\d{\overline{x}}\int\limits_{I_y}f(\overline{x}, \overline{y})\d{\overline{y}}
+\end{equation*}
+
+\comment аналагочино, если взять для $\forall$ фиксированного $y\in I_y$
+
+\proof Воспользуемся тем, что $f\in\riman{I_x\times I_y}, \ f\in\riman{I_y}$, а также Критерием Дарбу
+\begin{itemize}
+    \item $\mathbb{T}_x=\{I_i^x\}$ — разбиение на $I_x$, $\mathbb{T}_y=\{I_j^y\}$ — разбиение на $I_y$, $\mathbb{T}_{x,y}=\{I_i^x\times I^y_j\}=\{I_{ij}\}$ — разбиение на $I_x\times I_y$, и при этом верно $|I_i^x| \cdot |I_j^y| = |I_{ij}|$
+    \item \begin{equation*}
+        \begin{aligned}
+            \us(f,\mathbb{T}_{x,y})=\sum_{i,j} \inf\limits_{(x,y)\in I_{ij}} f(x,y)|I_{ij}|& \underset{\text{рис. ниже}}\leqslant \sum_{i,j} \inf\limits_{x\in I_i^x} \left(\inf\limits_{y\in I_j^y} f(x,y) \cdot |I_j^y|\right)|I_i^x|=\sum_i \inf\limits_{I^x_i} \underbrace{\left(\sum_j \inf\limits_{I^y_j} f(x,y)|I_j^y|\right)}_{\us(f(y), \mathbb{T}_y)}|I_i^x|\\
+            &\leqslant \sum_i \inf\limits_{I^x_i}\underbrace{\left(\int\limits_{I_y} f(x,y)\d{y}\right)}_{g(x)}|I_i^x| \leqslant \us(g(x),\mathbb{T}_x)\\
+            % &\leqslant \os(g(x),\mathbb{T}_x)\leqslant\ldots\leqslant \os(f,\mathbb{T}_{x,y})
+            &\leqslant \os(g(x),\mathbb{T}_x)
+        \end{aligned}
+    \end{equation*}
+
+    $\us(f,\mathbb{T}_{x,y})\leqslant \us(g(x),\mathbb{T}_x)\leqslant\os(g(x), \mathbb{T}_x)\leqslant\os(f,\mathbb{T}_{x,y})\Longrightarrow\exists \oi=\lim\limits_{\delta\rightarrow0} \us(g(x),\mathbb{T}_x) = \int\limits_{I_x\times I_y} f(\overline{x}, \overline{y})\d{\overline{x}}\d{\overline{y}}$
+
+    \comment Последний знак неравенства, получен аналогичными действиями для длинного неравенства выше, просто развернув в обратную сторону знаки неравенства для $\sup$
+\end{itemize}\qed
+
+
+
+\subsection{Cупремальный критерий равномерной сходимости функциональной последовательности}
+\theorem $f_n\overset{D}{\rightrightarrows} f\Longleftrightarrow \lim\limits_{n\to\infty}\left(\sup\limits_{D} \left|f_n(x)-f(x)\right|\right)=0$
+
+\proof Докажем необходимость $(\Longrightarrow)$
+
+Заметим, что $\sup\limits_{D} \left|f_n(x)-f(x)\right|\geqslant 0$. Тогда,
+\begin{equation*}
+    \forall\ve >0\ \exists N:\ \forall n>N,\forall x\in D\hookrightarrow \sup\limits_D |f_n(x)-f(x)|<\ve
+\end{equation*}
+
+$f_n\overset{D}{\rightrightarrows} f\Longrightarrow \forall\ve>0\ \exists N:\forall n>N,\ \forall x\in D\hookrightarrow|f_n(x)-f(x)|<\frac{\ve}{2}$
+
+В худшем случае, $\sup\limits_{D} |f_n(x)-f(x)|\leqslant \frac{\ve}{2}<\ve$
+
+\proof Докажем достаточность $(\Longleftarrow)$
+
+$\forall \ve>0\ \exists N:\forall n>N\hookrightarrow\sup\limits_{D}|f_n(x)-f(x)|<\ve$, тем более $\forall x\in D\ \sup \geqslant |f_n(x)-f(x)|$ 
+
+Тогда, $f_n\overset{D}{\rightrightarrows} f$\qed 
+
+\comment $f\rightrightarrows f\Longrightarrow f_n\longrightarrow f$, но в обратную сторону это не работает
+
+
+\subsection{Критерий Коши равномерной сходимости функциональной последовательности}
+\theorem $f_n(x)\overset{D}{\rightrightarrows} f(x)\Longleftrightarrow\forall\ve>0\ \exists N:\ \forall n,m>N,\ \forall x\in D\hookrightarrow |f_n(x)-f_m(x)|<\ve$
+
+\proof $\Longrightarrow$ Докажем необходимость
+
+Так как $f_n(x)\overset{D}{\rightrightarrows} f(x)$, то
+\begin{equation*}
+    \forall\ve>0\ \exists N:\forall n>N\ \forall x\in D\hookrightarrow |f_n(x)-f(x)|<\frac{\ve}{2}
+\end{equation*}
+
+Рассмотрим $|f_n(x)-f_m(x)|\leqslant |f_n(x)-f(x)|+|f(x)-f_m(x)|<\frac{\ve}{2}+\frac{\ve}{2}=\ve$
+
+Таким образом, мы показали, что $\forall\ve>0\ \exists N:\ \forall n,m>N,\ \forall x\in D\hookrightarrow |f_n(x)-f_m(x)|<\ve$\qed
+
+\proof $\Longleftarrow$ Докажем достаточность
+
+Распишем определение равномерной сходимости:
+\begin{equation*}
+    \forall\ve>0\ \exists N:\ \forall n,m>N,\ \exists x\in D:\ |f_n(x)-f_m(x)|<\frac{\ve}{2}
+\end{equation*}
+
+Зафиксируем $x_0\in D\Longrightarrow\exists\lim\limits_{n\to\infty} f_n(x_0)=f(x_0)$\footnote[1]{по критерию Коши для числовой последовательности $f_n(x_0)$}
+\begin{equation*}
+    x_0\in D:\forall\ve>0\exists N:\forall n,m>N: |f_n(x_0)-f_m(x_0)|<\frac{\ve}{2}
+\end{equation*}
+
+В худшем случае, $\forall x\in D:\text{при $m\to\infty$ } |f_n(x)-f(x)|\leqslant\frac{\ve}{2}<\ve$
+
+Тогда,
+\begin{equation*}
+    \forall\ve>0\ \exists N:\ \forall n>N\ \forall x\in D\hookrightarrow|f_n(x)-f(x)|<\ve
+\end{equation*}\qed
+
+\comment Отрицание Критерия Коши: 
+\begin{equation*}
+    f_n(x)\not\overset{D}{\rightrightarrows} f(x)\Longleftrightarrow\exists\ve_0>0\ \forall N:\ \exists n,m>N,\ \exists x_0\in D\ |f_n(x)-f_m(x)|\geqslant\ve_0
+\end{equation*}
+
+
+\subsection{Теорема о почленном переходе к пределу для функциональной последовательности}
+\theorem Пусть $f_n,f: D\longrightarrow\mathbb{R},\ x_0\text{ — предельная точка } D,\ f_n\overset{D}{\rightrightarrows} f,\ \forall n\in\mathbb{N}\ \exists\lim\limits_{x\to x_0} f_n(x)=c_n$
+
+Тогда,
+\begin{equation*}
+    \begin{aligned}
+        &\exists\lim\limits_{n\to\infty} c_n=\lim\limits_{x\to x_0} f(x)\\
+        &\left(\text{или }\lim\limits_{n\to\infty} \left(\lim_{x\to x_0} f_n(x)\right)=\lim_{x\to x_0}\left(\lim_{n\to\infty} f_n(x)\right)\right)
+    \end{aligned}
+\end{equation*}
+
+\proof Сначала покажем, что $\exists\lim\limits_{n\to\infty }c_n=c$, а потом что $\exists c=\lim\limits_{n\to\infty }c_n$
+\begin{enumerate}
+    \item Рассмотрим $|c_n-c|\leqslant\underbrace{|c_n-f_n|}_{(a)}+\underbrace{|f_n-f_m|}_{(b)}+|\underbrace{f_m-c_m|}_{(c)}<\displaystyle\frac{\ve}{3}+\frac{\ve}{3}+\frac{\ve}{3}=\ve$
+    \begin{enumerate}
+        \item[(a), (c)] По условию, $\forall n\in\mathbb{N}\ \exists \lim\limits_{x\to x_0} f_n(x)=c_n$ получим 
+        \begin{equation*}
+            \forall\ve>0\ \exists\delta>0:\forall x\in \overset{\circ}{B_{\delta}}(x_0)\cap D\hookrightarrow|f_n(x)-c_n|<\frac{\ve}{3}
+        \end{equation*}
+        \item[(b)] $f_n\overset{D}{\rightrightarrows} f\Longrightarrow$ по Критерию Коши 
+        \begin{equation*}
+            \forall\ve>0\ \exists N:\forall n,m>N\ \forall x\in D\hookrightarrow|f_n(x)-f_m(x)|<\frac{\ve}{3}
+        \end{equation*}
+        Получаем, что $\forall x\in \overset{\circ}{B_{\delta}}(x_0)$
+    \end{enumerate}
+    Собираем: $\forall\ve>0\ \exists N:\forall n,m>N:\forall x\in \overset{\circ}{B_{\delta}}(x_0):|c_n-c_m|<\ve\Longrightarrow\exists c=\lim\limits_{n\to\infty} c_n$\qed
+
+    \item Теперь покажем, что $\exists\lim\limits_{x\to x_0}f(x)=c$, то есть $\forall\ve>0\exists\delta:\forall x\in \overset{\circ}{B_{\delta}}(x_0): |f(x)-c|<\ve$
+
+    Рассмотрим $|f(x)-c|\leqslant\underbrace{|f(x)-f_n(x)|}_{(a)}+\underbrace{|f_n(x)-c_n|}_{(b)}+\underbrace{|c_n-c|}_{(c)}$
+    \begin{enumerate}
+        \item $f_n\overset{D}{\rightrightarrows} f(x)\Longrightarrow\forall\ve>0\exists N_1:\forall n>N_1\forall x\in D:|f_n(x)-f(x)|<\frac{\ve}{3}$
+        \item $\forall n\in\mathbb{N}\ \exists\lim\limits_{x\to x_0}f_n(x)=c_n\Longrightarrow \forall \ve>0\ \exists\delta:\forall x\in \overset{\circ}{B_{\delta}}(x_0)\hookrightarrow|f_n(x)-c_n|<\frac{\ve}{3}$
+        \item По доказанному в п. 1 следует, что
+        \begin{equation*}
+            \exists\lim_{n\to\infty} c_n=c\Longrightarrow \forall\ve>0\ \exists N_2\ \forall n>N_2\hookrightarrow|c_n-c|<\frac{\ve}{3}
+        \end{equation*}
+    \end{enumerate}
+
+    Собираем: $\forall\ve>0\ (\exists N=\max(N_1,N_2))\ \exists\delta>0:\ \forall x\in\overset{\circ}{B_{\delta}}(x_0):|f(x)-c|<\ve$\qed
+\end{enumerate}
+
+
+\subsection{Теорема о непрерывности предельной функции}
+\theorem Пусть имеется $\left.\begin{aligned}
+    &f_n,f: D\longrightarrow\mathbb{R},\\
+    &f_n\overset{D}{\rightrightarrows} f,\\
+    &\forall n\in\mathbb{N}\ f_n\in C(D)
+\end{aligned}\right\}\Longrightarrow f\in C(D)$
+
+\proof Нужно доказать, что $f\in C(D)$. Значит, надо показать, что 
+\begin{equation*}
+    \forall x_0\in D: \forall\ve>0\ \exists\delta>0:\forall x\in B_{\delta}(x_0)\cap D\hookrightarrow|f(x)-f(x_0)|
+\end{equation*}
+
+Рассмотрим $|f(x)-f(x_0)|\leqslant\underbrace{|f(x)-f_n(x)|}_{(1)}+\underbrace{|f_n(x)-f_n(x_0)|}_{(2)}+\underbrace{|f_n(x_0)-f(x_0)|}_{(3)}<\frac{\ve}{3}+\frac{\ve}{3}+\frac{\ve}{3}=\ve$
+\begin{enumerate}
+    \item $f_n\overset{D}{\rightrightarrows} f:\forall\ve>0\ \exists N:\forall n>N,\ \forall x\in D\hookrightarrow|f_n(x)-f(x)|<\frac{\ve}{3}$
+    \item Так как $\forall n\in\mathbb{N}\ f_n\in C(D)\Longrightarrow\forall x_0\in D,\ \forall\ve>0\ \exists\delta>0:\forall x\in B_{\delta}(x_0)\cap D\hookrightarrow|f_n(x)-f_n(x_0)|<\frac{\ve}{3}$
+    \item $f_n\overset{D}{\rightrightarrows} f:\forall\ve>0\ \exists N:\forall n>N,\ \forall x_0\in D\hookrightarrow|f_n(x_0)-f(x_0)|<\frac{\ve}{3}$
+\end{enumerate}
+
+Тогда, собрав три части, получим, что $\forall x_0\in D$
+\begin{equation*}
+    \begin{aligned}
+        \forall\ve>0\ \exists \delta>0:(\exists N:\forall n>N)\ \forall x\in B_{\delta}(x_0)\cap D\hookrightarrow|f(x)-f(x_0)|<\ve&\Longrightarrow f(x)\in C(x_0)\ \forall x_0\in D\\
+        &\Longrightarrow f(x)\in C(D)
+    \end{aligned}
+\end{equation*}\qed
+
+
+\subsection{Утверждение о неравномерной сходимости фун. послед. наличии разрыва}
+\theorem Пусть имеется $\left.\begin{aligned}
+    &f_n\in C\left([a;b)\right),\\
+    &f\in C((a;b))+\text{разрыв в т.}a,\\
+    &f_n\overset{[a;b)}{\longrightarrow} f
+\end{aligned}\right\}\Longrightarrow f_n\overset{(a;b)}{\not\rightrightarrows} f$
+
+То есть будет поточечная сходимость, но не будет равномерной:
+\begin{equation*}
+    f_n\overset{(a;b)}{\longrightarrow}f,\text{ но не }f_n\overset{(a;b)}{\rightrightarrows} f
+\end{equation*}
+
+\proof От противного
+
+\begin{enumerate}
+    \item Пусть $f_n\overset{(a;b)}{\rightrightarrows} f\Longrightarrow \forall\ve>0\ \exists N:\forall n>N\ \forall x\in [a;b)\hookrightarrow|f_n(x)-f(x)|<\ve$
+    \item $f_n\overset{[a;b)}{\longrightarrow} f \Longrightarrow f_n(a)\longrightarrow f(a)\Longrightarrow\forall\ve>0\ \exists N_2:\forall n>N_2\hookrightarrow|f_n(a)-f(a)|<\ve$
+    \item $f_n\overset{[a;b)}{\rightrightarrows} f$, так как $\forall\ve>0\ \exists N=\max(N_1,N_2)\ \forall n>N,\ \forall x\in [a;b) \hookrightarrow|f_n(x)-f(x)|<\ve$
+    \item Получаем, что 
+    \begin{equation*}
+        \begin{cases}
+            f_n\overset{[a;b)}{\rightrightarrows} f\\
+            f_n\in C([a;b))
+        \end{cases}
+    \end{equation*}
+    Тогда, по теореме о непрерывности предельной функции следует, что $f\in C([a;b))$, но $f$ имеет разрыв в точке $a$. Противоречие
+\end{enumerate}\qed
+
+\subsection{Утверждение о неравномерной сходимости фун. послед. при наличии расходимости в точке}
+\theorem Пусть имеется $\left.\begin{aligned}
+    &f_n\in C\left([a;b)\right)\\
+    &f_n\overset{(a;b)}{\longrightarrow} f\\
+    &\not\exists \lim\limits_{n\to\infty}f_n(a)
+\end{aligned}\right\}\Longrightarrow f_n\overset{(a;b)}{\not\rightrightarrows} f$
+
+\proof От противного
+
+\begin{enumerate}
+    \item Пусть $f_n\overset{(a;b)}{\rightrightarrows} f\Longrightarrow \forall\ve>0\ \exists N:\forall n,m>N\ \forall x\in (a;b)\hookrightarrow|f_n(x)-f_m(x)|<\frac{\ve}{3}$
+    \item $f_n\in C([a;b))$, тогда
+    \begin{equation*}
+        \forall x_0\in[a;b):\ \forall\ve>0\ \exists\delta>0:\ \forall x\in B_{\delta}(x_0)\cap[a;b)\hookrightarrow|f_n(x)-f_n(x_0)|<\frac{\ve}{3}
+    \end{equation*}
+    В частности, это верно для $x_0=a$:
+    \begin{equation*}
+        \forall\ve>0\ \exists \delta>0:\forall x\in \overset{\circ}{B_{\delta}}(a)\cap(a;b)\footnote[2]{верно $\forall x\in B_{\delta}(a)\cap[a;b)$, а потому $a$ выколота}\hookrightarrow|f_n(x)-f_n(a)|<\frac{\ve}{3}
+    \end{equation*}
+    \item Рассмотрим
+    \begin{equation*}
+        |f_n(a)-f_m(a)|\leqslant \underbrace{|f_n(a)-f_n(x)|}_{\text{по п.2}}+\underbrace{|f_n(x)-f_m(x)|}_{\text{по п.1}}+\underbrace{|f_m(x)-f_m(a)|}_{\text{по п.2}}<\frac{\ve}{3}+\frac{\ve}{3}+\frac{\ve}{3}
+    \end{equation*}
+    получаем, что
+    \begin{equation*}
+        \forall\ve>0\ \exists N(\exists\delta>0):\ \forall n,m>N(\forall x\in \overset{\circ}{B_{\delta}}(a)\cap(a;b))\hookrightarrow|f_n(a)-f_m(a)|<\ve
+    \end{equation*}
+    то есть, по Критерию Коши для числовой последовательности $\exists\lim\limits_{n\to\infty}f_n(a)$, что противоречит условию, а значит $f_n\overset{(a;b)}{\not\rightrightarrows} f$\qed
+\end{enumerate}
+
+\subsection{Теорема о почленном интегрировании функциональной последовательности}
+\theorem Пусть имеется $\left.\begin{aligned}
+    &f_n,f:[a;b]\to\mathbb{R}\\
+    &f_n\overset{[a;b]}{\rightrightarrows}f\\
+    &f_n\in\riman{[a;b]}\forall n\in\mathbb{N}
+\end{aligned}\right\}\Longrightarrow f\in\riman{[a;b]}\text{ и }\lim\limits_{n\to\infty}\int\limits_{a}^b f_n(x)\d{x}=\int\limits_{a}^b f(x)\d{x}$
+
+\proof По Критерию Дарбу $f\in\riman{[a;b]}\Longleftrightarrow f$ — ограничена на $[a;b]$ и $\ui=\oi$
+
+\begin{itemize}
+    \item Покажем \textit{ограниченность}
+    \begin{enumerate}
+        \item $\forall n\in\mathbb{N}:\ f_n\in\riman{[a;b]}\Longrightarrow f_n$ ограничена на $[a;b]$ и 
+        \begin{equation*}
+            \forall n\in\mathbb{N}\ \exists M_n\geqslant 0\ \forall x\in[a;b]\hookrightarrow|f_n(x)|\leqslant M_n
+        \end{equation*}
+        \item $f_n\overset{[a;b]}{\rightrightarrows}f$, тогда $\forall\ve>0\ \exists N:\ \forall n>N\ \forall x\in[a;b]\hookrightarrow|f_n(x)-f(x)|<\ve$
+        
+        Рассмотрим $\ve=1$, тогда $\exists N_1=N:\ \forall x\in[a;b]\hookrightarrow|f_{N_1+1}(x)-f(x)|<1$
+
+        Тогда, для $f(x)$ верно $\forall x\in[a;b]$
+        \begin{equation*}
+            |f(x)|\leqslant|f(x)-f_{N_1+1}(x)|+|f_{N_1+1}(x)|<1+M_{N_1+1},
+        \end{equation*}
+        то есть $f(x)$ — ограничена 
+    \end{enumerate}
+
+    \item Покажем \textit{интегрируемость} 
+    
+    Напомним, что $\oi = \lim\limits_{\Delta_{\T}\to0}\os(f, \T) \text{ и } \ui = \lim\limits_{\Delta_{\T} \to 0} \us(f, \T)$
+
+    Рассмотрим $\T$ — разбиение $[a;b]$
+    \begin{equation*}
+        |\us(f,\T)-\os(f,\T)|\leqslant\underbrace{|\us(f,\T)-\us(f_n,\T)|}_{(1)}+\underbrace{|\us(f_n,\T)-\os(f_n,\T)|}_{(2)}+\underbrace{|\os(f_n,\T)-\os(f,\T)|}_{(3)}
+    \end{equation*}
+    \begin{enumerate}
+        \item[(1)] Распишем в виде неравенств
+        \begin{equation*}
+            |\us(f,\T)-\us(f_n,\T)|\leqslant\sum_{i}|\inf\limits_{I_i}(f)-\inf\limits_{I_i}(f_n)||I_i|\leqslant \sum_{i}\sup\limits_{I_i}|f-f_n|\cdot|I_i|\leqslant\sup\limits_{[a;b]}|f-f_n|\cdot|b-a|<\frac{\ve}{3}
+        \end{equation*}
+        Так как $f_n\overset{[a;b]}{\rightrightarrows}f$, то по супремальному критерию:
+        \begin{equation*}
+            \forall\ve>0\ \exists N:\ \forall n>N\hookrightarrow\sup\limits_{[a;b]}|f-f_n|<\frac{\ve}{3|b-a|}
+        \end{equation*}
+        \item[(2)] $f_n\in\riman{[a;b]}\Longrightarrow$
+        \begin{equation*}
+            \forall\ve>0\ \exists\delta>0:\ \forall\T:\ \Delta_{\T}<\delta\ |\us(f_n,\T)-\os(f_n,\T)|<\frac{\ve}{3}
+        \end{equation*}
+        \item[(3)] Аналогично (1): $|\os(f_n,\T)-\os(f,\T)|\leqslant\sup\limits_{[a;b]}|f-f_n|<\frac{\ve}{3}$
+    \end{enumerate}
+    Получаем, что
+    \begin{equation*}
+        \forall\ve>0\ \exists\delta>0\ (\exists N)\ \forall \T:\ \Delta_{\T}<\delta\ (\forall n>N)\hookrightarrow|\us(f,\T)-\os(f,\T)|<\frac{\ve}{3}+\frac{\ve}{3}+\frac{\ve}{3}=\ve
+    \end{equation*}
+    $\Longrightarrow f(x)\in\riman{[a;b]}$
+
+    \item Покажем, что $\lim\limits_{n\to\infty}\displaystyle\int\limits_{a}^b f_n(x)\d{x}=\int\limits_{a}^b f(x)\d{x}$
+    
+    Рассмотрим
+    \begin{equation*}
+        \left|\int\limits_{a}^b f_n(x)\d{x}-\int\limits_{a}^b f(x)\d{x}\right|\leqslant\int\limits_a^b|f_n(x)-f(x)|\d{x}\leqslant\sup\limits_{[a;b]}|f_n(x)-f(x)|\cdot|b-a|<\ve
+    \end{equation*}
+
+    Так как $f_n\overset{[a;b]}{\rightrightarrows}f$, то $\forall\ve>0\ \exists N:\ \forall n>N\ \sup\limits_{[a;b]}|f_n(x)-f(x)|<\displaystyle\frac{\ve}{|b-a|}$ и получаем, что 
+    \begin{equation*}
+        \forall \ve>0\ \exists N:\ \forall n>N\hookrightarrow \left|\int\limits_{a}^b f_n(x)\d{x}-\int\limits_{a}^b f(x)\d{x}\right|<\ve
+    \end{equation*}
+\end{itemize}\qed
+
+\subsection{Теорема о почленном дифференцировании функциональной последовательности}
+\theorem Пусть имеется $\left.\begin{aligned}
+    &f_n,f,g:[a;b]\to\mathbb{R}\\
+    &f_n\in D([a;b])\\
+    &\exists c\in[a;b]:\exists\lim\limits_{n\to\infty} f_n(c)\\
+    &\exists g(x):\ f^{\prime}_n\overset{[a;b]}{\rightrightarrows}g(x)
+\end{aligned}\right\}\Longrightarrow \begin{aligned}
+    &\exists f:\ f_n\overset{[a;b]}{\rightrightarrows}f\\
+    &\oplus f^{\prime}(x)=g(x)
+\end{aligned}$
+
+\proof Покажем \textit{существование}
+    
+\theorem (Лагранжа) $f\in C([a,b]),\ f\in D((a, b))\Longrightarrow\exists c\in(a,b):\ f(b)-f(a)=f'(c)(b-a)$
+\begin{enumerate}
+    \item Рассмотрим $\varphi(x)=f_n(x)-f_m(x)$
+    \item $\forall n\in\mathbb{N}\ f_n\in D([a;b])\Longrightarrow f_n\in C([a;b])\Longrightarrow \varphi(x)\in D([a;b])$ и $\varphi(x)\in C([a;b])$
+    \item Рассмотрим: для $c$ из условия теоремы Лагранжа $$\varphi(x)-\varphi(c)=\varphi^{\prime}(\xi)\cdot(x-c),\text{ где }\xi\in[c;x]\ ([x;c])$$
+    
+    Тогда, $\varphi(x)=\varphi^{\prime}(\xi)(c-x)+\varphi(x)$ %уточнить не надо ли тут \varphi^{\prime}(\xi)(x-c)
+    \item Оценим $|\varphi(x)|\leqslant |\varphi^{\prime}(\xi)|\cdot|c-x|+|\varphi(c)|=\underbrace{|f^{\prime}_n(\xi)-f^{\prime}_m(\xi)|}_{\star}\cdot|c-x|+\underbrace{|f_n(c)-f_m(c)|}_{\star\star}$
+    
+    $\star\ f^{\prime}_n\overset{[a;b]}{\rightrightarrows}g(x)\Longrightarrow\forall\ve>0\ \exists N_1:\ \forall n,m>N_1\ \forall x\in[a;b]\hookrightarrow|f^{\prime}_n(\xi)-f^{\prime}_m(\xi)|<\displaystyle\frac{\ve}{2|b-a|}$\\
+    $\star\star\ \exists\lim\limits_{n\to\infty}f_n(c)\Longrightarrow\forall\ve>0\ \exists N_2:\ \forall n,m>N_2\hookrightarrow|f_n(c)-f_m(c)|<\displaystyle\frac{\ve}{2}$
+
+    Тогда,
+    \begin{equation*}
+        |\varphi(x)|\leqslant |\varphi^{\prime}(\xi)|\cdot|c-x|+|\varphi(c)|=\underbrace{|f^{\prime}_n(\xi)-f^{\prime}_m(\xi)|}_{\star}\cdot|c-x|+\underbrace{|f_n(c)-f_m(c)|}_{\star\star}<\frac{\ve}{2|b-a|}\cdot|c-x|+\frac{\ve}{2}<\ve
+    \end{equation*}
+    то есть
+    \begin{equation*}
+        \forall\ve>0\ \exists N=\max\{N_1,N_2\}:\ \forall n,m >N\ \forall x\in[a;b]\hookrightarrow|\varphi(x)|=|f_n(x)-f_m(x)|<\ve\Longrightarrow\exists f: f_n\overset{[a;b]}{\rightrightarrows}f
+    \end{equation*}
+\end{enumerate}
+
+\proof Покажем, что $f^{\prime}(x)=g(x)$
+
+Пусть имеется $x_0\in[a;b]$, но он произвольный
+\begin{enumerate}
+    \item Рассмотрим $\psi_n(x)=\displaystyle\frac{f_n(x)-f_n(x_0)}{x-x_0}$
+    
+    Покажем по Критерию Коши, что $\psi_n(x)\overset{[a;b]}{\rightrightarrows}$
+    \begin{equation*}
+        \begin{aligned}
+            |\psi_n(x)-\psi_m(x)|&=\left|\frac{f_n(x)-f_n(x_0)-f_m(x)+f_m(x_0)}{x-x_0}\right|\\
+            &=\left|\frac{(f_n(x)-f_m(x))-(f_n(x_0)-f_m(x_0))}{x-x_0}\right|\\
+            &=\left|\frac{\varphi(x)-\varphi(x_0)}{x-x_0}\right|\\
+            &\exists\xi\in[x_0, x]\\
+            &=\frac{|\varphi'(\xi)||x-x_0|}{|x-x_0|}\\
+            &=|\varphi'(\xi)|\\
+            &=|f_n'(\xi)-f'_m(\xi)|<\ve
+        \end{aligned}
+    \end{equation*}
+    так как $f_n\overset{[a;b]}{\rightrightarrows}$, то есть 
+    \begin{equation*}
+        \forall\ve>0,\exists N,\forall n,m>N,\forall x\in[a,b]\hookrightarrow|f_n'(x)-f'_m(x)|<\ve
+    \end{equation*}
+    то $\psi\overset{[a;b]}{\rightrightarrows}$
+
+    \item $\forall n\in\mathbb{N},\exists\lim\limits_{x\to x_0}\psi_n(x)=\lim\limits_{x\to x_0}\displaystyle\frac{f_n(x)-f_n(x_0)}{x-x_0}=f_n'(x_0)$, так как $f_n\in D([a,b])$
+    
+    Получаем, что $\psi_n(x)\overset{[a, b]}{\rightrightarrows}$ и $\forall n\in\mathbb{N},\exists\lim\limits_{x\to x_0}\psi_n(x)=f'_n(x_0)$, тогда по теореме о почленном переходе к пределу
+    \begin{equation*}
+        \begin{aligned}
+            g(x_0)&=\lim_{n\to\infty}f'_n(x_0)\\
+            &=\lim_{n\to\infty}\lim_{x\to x_0}\psi_n(x)\\
+            &=\lim_{n\to\infty}\lim_{x\to x_0}\left(\frac{f_n(x)-f_n(x_0)}{x-x_0}\right)\\
+            &=\lim_{x\to x_0}\lim_{n\to\infty}\left(\frac{f_n(x)-f_n(x_0)}{x-x_0}\right)\\
+            &=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}\\
+            &=f'(x_0)
+        \end{aligned}
+    \end{equation*}
+\end{enumerate}\qed
+
+
+\subsection{Сравнительный признак равномерной сходимости функционального ряда}
+\theorem Имеется $\left.\begin{aligned}
+    &\sum_{n=1}^{\infty}a_n(x)\text{ и }\sum_{n=1}^{\infty}b_n(x):\\
+    &\exists N\ \forall n>N\ \forall x\in D\ |a_n(x)|\leqslant b_n(x)\\
+    &\sum_{n=1}^{\infty}b_n(x)\overset{D}{\rightrightarrows}
+\end{aligned}\right\}\Longrightarrow \sum_{n=1}^{\infty}a_n(x)\overset{D}{\rightrightarrows}\text{ и }\sum_{n=1}^{\infty}a_n(x)\text{ сходится абсолютно }D$
+
+\proof Докажем по критерию Коши
+\begin{equation*}
+    (\star)\quad |a_{m+1}(x)+\ldots+a_k(x)|\leqslant |a_{m+1}(x)|+\ldots+|a_k(x)|\underset{\forall m,k>N\forall x\in D}{\leqslant}b_{m+1}(x)+\ldots+b_{k}(x)\underset{\forall m, k>N_1 \forall x\in D}{<}\ve 
+\end{equation*}
+Получаем, что 
+\begin{equation*}
+    \forall\ve>0\ \exists \overset{\sim}{N}=\max\{N,N_1\}: \forall k>m>\overset{\sim}{N}\ \forall x\in D\hookrightarrow|a_{m+1}(x)+\ldots+a_k(x)|<\ve\Longrightarrow\sum_{n=1}^{\infty}a_n(x)\overset{D}{\rightrightarrows}
+\end{equation*}
+
+Так как $(\star)$ выполняется для любого $x\in D$, то $\forall x_0\in D$ выполняется 
+\begin{equation*}
+    \forall\ve>0\ \exists \overset{\sim}{N}=\max\{N,N_1\}: \forall k>m>\overset{\sim}{N}\hookrightarrow |a_{m+1}(x)|+\ldots+|a_k(x)|<\ve,
+\end{equation*}
+то есть $\sum_{n=1}^{\infty}|a_n(x_0)|$ — сходится, а значит сходится абсолютно $\forall x_0\in D$\qed
+
+\subsection{Мажорантный признак Вейерштрасса о равномерной сходимости функционального ряда}
+\corollary $\left.\begin{aligned}
+    &\sum_{n=1}^{\infty}a_n(x):\\
+    &\exists N\ \forall n>N\ \sup\limits_{D}|a_n(x)|\leqslant M_n\\
+    &\sum_{n=1}^{\infty} M_n\text{ — сходится}
+\end{aligned}\right\}\Longrightarrow \begin{aligned}
+    &\sum_{n=1}^{\infty}a_n\overset{D}{\rightrightarrows}\\
+    &\sum_{n=1}^{\infty}a_n\text{ сходится абсолютно на }D
+\end{aligned}$
+
+\proof Если в признаке сравнения принять, что $\forall n\in \mathbb{N}\ b_n(x)=M_n=\text{const}(n)$, то условие теоремы выполняется\qed 
+
+
+\subsection{[ПО ЖЕЛАНИЮ ВМЕСТО ВСЕГО ОСТАЛЬНОГО] Критерий Лебега интегрируемости функции по Риману}
+% FOR KIARA :)
+\theorem Если $I\subset \R^n$ — замкнутый невырожденный брус, $f: I\to\R$, то $f\in R(I) \iff f$ ограничена и непрерывна почти всюду на $I$
+
+\proof 
+\begin{itemize}
+    \item \textit{Необходимость}
+    
+     Если $f$ интегрируема, то она ограничена по необходимому условию интегрируемости. Осталось показать, что множества разрыва меры нуль. От противного: пусть это не так.
+
+    Обозначим множество всех точек разрыва ф-ии $f$ на $I$ за $T$ и заметим, что $T = \displaystyle\bigcup_{k\in\mathbb{N}}T_k$, где\\
+    $T_k = \{x\in I | \omega(f, x) \ge \frac{1}{k}\}$. Если $T$ не меры нуль, то существует $T_{k_0}$ не меры нуль (если они все меры нуль, то по свойству множеств меры нуль счетное объединение таких множеств тоже было бы меры нуль).
+
+    Для произвольного разбиения $\T = \{I_i\}_{i=1}^m$ бруска $I$ разобъем эти бруски на две кучи: первая $A = \{I_i | I_i\cap T_{k_0} \ne \varnothing, \omega(f, I_i) \ge \frac{1}{2k_0}\}$ и вторая $B = \T\backslash A$. Покажем что $A$ является покрытием множества $T_{k_0}$, т.е. $T_{k_0} \subset \displaystyle\bigcup_{i: I_i\in A} I_i$ любая точка $x\in T_{k_0}$ является либо
+    \begin{itemize}
+        \item[a)] внутренней для некоторого бруска $I_i$. В этом случае $\omega(f, I_i) \ge \omega(f, x) \ge \frac{1}{k_0} > \frac{1}{2k_0}$, т.е. $I_i \in A$, либо
+        \item[b)] точка $x$ лежит на границе некоторого количества брусков (не более чем $2^n$ штук). Тогда хотя бы на одном из них колебание $\omega(f, I_i) \ge \frac{1}{2k_0}$ (т.е. $I_i \in A$): если бы такого не нашлось, то в любой малой окрестности $B_{\ve}(x)$ выполняется следующее:
+        \begin{equation*}
+            \omega(f, x) \le \sup_{x', x''\in B_{\ve}(x)} |f(x')-f(x'')| \le \sup_{x'\in B_{\ve}(x)}|f(x')-f(x)| + \sup_{x''\in B_{\ve}(x)}|f(x)-f(x'')| < \frac{1}{2k_0} + \frac{1}{2k_0} = \frac{1}{k_0}
+        \end{equation*}
+        т.е. $x\not\in T_{k_0}$ --- \textbf{противоречие}.
+    \end{itemize}
+
+    Таким образом, каждая точка $x\in T_{k_0}$ покрывается некоторым бруском $I_i \in A$, т.е. $A$ - покрытие $T_{k_0}$. Тогда существует $c: \displaystyle\sum_{i:I_i\in A}|I_i| \ge c > 0$ для всех разбиений $\T$ (если бы меняя разбиения мы могли получить сумму объемов этих брусков сколь угодно маленькую, то получилось бы, что $T_{k_0}$ меры нуль)
+
+    Возьмем два набора отмеченных точек $\xi^1$ и $\xi^2$. На брусках из кучки $B$ будем их брать одинаковыми, т.е. для $I_i\in B \,\, \xi_i^1 = \xi_i^2$. А на брусках из кучки $A$ будем брать такие, чтобы 
+    \begin{equation*}
+        f(\xi_i^1) - f(\xi_i^2) \ge \frac{1}{3k_0} \text{ (у нас там колебания} \ge 1/2k_0, \text{ так что такие найдутся)}
+    \end{equation*}
+
+    Получаем:
+    \begin{equation*}
+        \begin{aligned}
+            |\sigma(f, \T, \xi^1) - \sigma(f, \T, \xi^2) &= \left|\sum_i(f(\xi_i^1) - f(\xi_i^2))|I_i|\right|\\
+            &= \left|\sum_{i: I_i\in A}(f(\xi_i^1) - f(\xi_i^2))|I_i| + \sum_{i:I_i\in B}(f(\xi_i^1) - f(\xi_i^2))|I_i|\right|\\
+            &= \left|\sum_{i: I_i\in A} (f(\xi_i^1) - f(\xi_i^2))|I_i|\right| \ge \frac{1}{3k_0} \sum_{i:I_i\in A}|I_i| \ge \frac{c}{3k_0} > 0
+        \end{aligned}
+    \end{equation*}
+    т.е. интегральные суммы не могут стремиться к одному и тому же числу, значит $f$ не интегрируема --- \textbf{противоречие}.
+
+    \item \textit{Достаточность}
+
+    Для любого $\ve > 0$ рассмотрим $T_{\ve} = \{x\in I| \omega(f, x) \ge \ve\}$. Покажем, что это множество - компакт. Ограниченность очевидна (подмножества бруска), а замкнутость проверим от противного. Пусть $a$ - предельная точка $T_{\ve}: \,\, a\not\in T_{\ve}$. Т.к. она предельная, то существует $\{x^k\}: x^k \in B_{\frac{1}{k}}(a)$. Т.к. $B_{\frac{1}{k}}$ - открытые шары, то наши точки лежат в них с окрестностями, т.е. сущесвтуют $\delta_k : B_{\delta_k}(x_K) \subset B_{\frac{1}{k}}(a)$. Тогда
+    \begin{equation*}
+        \omega(f, B_{\frac{1}{k}}(a)) \ge \omega(f, B_{\delta_k}(x_K)) \ge \omega(f, x_k) \ge \ve
+    \end{equation*}
+    Переходя к пределу $k\to\infty : \omega(f, a) \ge \ve$, т.е. $a\in T_{\ve}$ - противоречие. Значит $T_{\ve}$ - замкнуто, и, следовательно, компактно.
+
+    Множество $T_{\ve}$ - множество меры нуль (как подмножество множества меры нуль). Значит, его можно покрыть не более чем счетным объединением открытых брусков $I_i: \displaystyle\sum_i|I_i| < \ve$. Т.к. это открытое покрытие, а $T_{\ve}$ - компакт, то существует конечное подпокрытие: $T_{\ve} \subset \displaystyle\bigcup_{i=1}^m I_i$, при этом $\displaystyle\sum_{i=1}^m |I_i| < \ve$.
+
+    Обозначим три множества: $C_1 = \displaystyle\bigcup_{i=1}^mI_i, \quad C_2 = \displaystyle\bigcup_{i=1}^mI_i', C_3 = \displaystyle\bigcup_{i=1}^mI_i''$, где $I_i', I_i''$ - бруски, полученные гомотетией с центром в центре $I_i$ с коэффициентом 2 и 3 соответственно.
+
+    Заметим, что
+    \begin{itemize}
+        \item[a)] $|C_3| \le \displaystyle\sum_{i=1}^m|I_i''|| = 3^n \displaystyle\sum_{i=1}^m|I_i| < 3^n \ve$
+        \item[b)] расстояние $\rho(\partial C_2, \partial C_3) = \delta_1 > 0$ (теорема про расстояние между компактами)
+        \item[c)] Множество $K = I\backslash(C_2\backslash \partial C_2)$ - компакт. Кстати, любое множество с диаметром меньше $\delta_1$ либо польностью лежит в $C_3$, либо полностью в $K$.
+        \item[d)] $T_{\ve} \cap K = \varnothing$, т.к. $T_{\ve} \subset C_1 \subset C_2$. Следовательно, $\forall x\in K \,\, \omega(f, x) < \ve$. Тогда по теореме Кантора-Гейне $\exists \delta_2 > 0: \,\, \forall x\in K \,\, \omega(f, B_{\delta_2}(x)) < \ve + \ve = 2\ve$
+    \end{itemize}
+
+    Выберем $\delta = \min\{\delta_1, \delta_2\}$. Тогда для любых разбиений $\T_1 = \{I_k^1\}, \T_2 = \{I_i^2\}: \lambda{\T_1} < \delta, \lambda(\T_2) < \delta$
+
+    Рассмотрим пересечение этих разбиений $\T = \T_1 \cap \T_2$, т.е. такое разбиение $\T = \{I_{ik}\}$, что $I_k^1 = I_{i_1k} \bigsqcup\ldots\bigsqcup I_{i_mk}$ и $I_i^2 = I_{ik_1} \bigsqcup \ldots\bigsqcup I_{ik_l}$. Очевидно $\lambda(\T) < \delta$.
+
+    Для произвольных наборов отмеченных точек:
+    \begin{equation*}
+        |\sigma(f, \T_1, \xi^1) - \sigma(f, \T_2, \xi^2)| \le |\sigma(f, \T_1, \xi^1) - \sigma(f, \T, \xi)| + |\sigma(f, \T_2, \xi^2) - \sigma(f, \T, \xi)|
+    \end{equation*}
+
+    Рассмотрим отдельное слагаемое:
+    \begin{equation*}
+        \begin{aligned}
+            |\sigma(f, \T_1, \xi^1) - \sigma(f, \T, \xi)| = \left|\sum_{i, j}(f(\xi_i^1) - f(\xi_{ij}))|I_{ij}\right|\
+            \le \sum_{I_{ij}\in C_3}|f(\xi_i^1) - f(\xi_{ij})||I_{ij}| + \sum_{I_{ij\in K}}|f(\xi_i^1)-f(\xi_{ij})||I_{ij}|\le 2M\cdot e^n\ve + 2\ve |I| = \epsilon(2M\cdot 3^n + 2|I|)
+        \end{aligned}
+    \end{equation*}
+    т.к. $f$ ограничена некоторой константой $M$ и см пункты $a), d)$, то
+
+    Т.к. для $(\T_2, \xi^2)$ все выкладки аналогичные, то получаем:
+    
+    \begin{equation*}
+         |\sigma(f, \T_1, \xi^1) - \sigma(f, \T, \xi)| \le \epsilon(2M\cdot 3^n + 2|I|)
+    \end{equation*}
+
+        Следовательно, существует предел $\displaystyle\lim_{\lambda(\T)\to0}\sigma(f, \T, \xi)$ (Критерий Коши для функций)
+\end{itemize} \qed
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
