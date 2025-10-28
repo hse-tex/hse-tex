@@ -1,0 +1,53 @@
+%\documentclass[tikz,border=3.14mm]{standalone}
+%\usepackage[english,russian]{babel} % локализация и переносы
+%\usetikzlibrary{arrows.meta}
+
+% \begin{document}
+\begin{tikzpicture}[
+    set/.style={dashed, thick},
+    arrow/.style={-{Stealth[scale=1.2]}, thick}
+]
+
+% Открытое множество (клякса)
+\draw[thin] (0,0) to[out=30,in=150] (2,1.0)
+           to[out=-30,in=60] (3.5,-1.5)
+           to[out=-120,in=-30] (1,-2)
+           to[out=120,in=-120] (0.5,-1)
+           to[out=60,in=180] cycle;
+
+\path (-2, -0.5) node (point0) {};
+
+\fill (point0) circle (1.5pt);
+\node[right] at (-2.2,-0.2) {$x_0$};
+
+\draw[set][red!] (point0) circle (35pt);
+\node[right] at (-2.8,-2.1) {$B_{\frac{\delta}{2}}(x_0)$};
+
+
+% Стрелка с подписью
+\draw[arrow] (3.5,0.8) -- (3.2,0.1);
+\node[right] at (3.3,1) {$K$};
+
+\path (1, 0.5) node (point_x1) {};
+\draw[set] (point0) to (point_x1);
+\draw[set](point_x1) circle (44pt);
+\fill (point_x1) circle (1.5pt);
+\node[right] at (point_x1) {$x_1$};
+\node[right] at (2,1.8) {$B_{\frac{\delta_1}{2}}(x_1)$};
+\fill[blue!] (-0.5, -0) circle (2pt);
+\draw[blue!] (-0.65, 0.47) to (-0.34, -0.47);
+
+
+\path (1.2, -1.8) node (point_x2) {};
+\draw[set] (point0) to (point_x2);
+\draw[set](point_x2) circle (48pt);
+\fill (point_x2) circle (1.5pt);
+\node[right] at (point_x2) {$x_2$};
+\node[right] at (2.5,-2.8) {$B_{\frac{\delta_2}{2}}(x_2)$};
+\fill[blue!] (-0.4, -1.15) circle (2pt);
+\draw[blue!] (-0.21, -0.68) to (-0.58, -1.61);
+
+\node[align=center] at (0.4,-4.1) {Пример как мы строим $B_{\frac{\delta}{2}}$ вокруг точки $x_0$. \\ Синие точки - середины отрезков на которых они лежат};
+
+\end{tikzpicture}
+%\end{document}

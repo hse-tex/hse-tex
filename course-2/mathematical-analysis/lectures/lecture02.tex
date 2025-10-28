@@ -44,7 +44,7 @@
 \subsection{Свойства интеграла Римана}
 
 \begin{enumerate}
-    \item \textbf{Линейность.}
+    \item {\textbf{Линейность.}
     \begin{equation*}
         f, g \in \mathcal{R}(I) \implies (\alpha f + \beta g)\in \mathcal{R}(I)\ \forall \alpha, \beta \in \R
     \end{equation*}
@@ -71,8 +71,8 @@
     < \left(|\alpha| + |\beta|\right) \frac{\varepsilon}{|\alpha|+|\beta|+1} < \ve
 \end{align}
 \qed
-
-\item \textbf{Монотонность}
+    }
+\item {\textbf{Монотонность}
 \begin{equation*}
     f, g\in \mathcal{R}(I);\ f \leq g \text{ на } I \implies \int_If\d{x} \leqslant \int_Ig\d{x}
 \end{equation*}
@@ -98,7 +98,8 @@
     \end{equation*}
     % Что верно для $\forall \ve > 0$, даже при $\ve \to 0 \implies A_f \le A_g$
 \qed
-\item \textbf{Оценка интеграла (сверху)}
+}
+\item {\textbf{Оценка интеграла (сверху)}
 \begin{equation*}
     f\in \mathcal{R}(I) \implies \left|\int_If\d{x}\right| \leqslant\sup\limits_{I}|f||I|
 \end{equation*}
@@ -118,6 +119,7 @@
     \end{aligned}
 \end{equation*}
 \qed
+}
 \end{enumerate}
 
 % \section{Лебегова мера}
@@ -138,7 +140,7 @@
 
 \subsection{Свойства множества меры нуль по Лебегу}
 \begin{enumerate}
-    \item Если в определении $\{I_i\}$ заменить на открытые брусы, то определение останется верным.
+    \item {Если в определении $\{I_i\}$ заменить на открытые брусы, то определение останется верным.
 
     \proof Пусть $\{I_i\}$ — открытые брусы, тогда $\forall \epsilon > 0 \ \exists$ не более чем счетный набор $\{I_i\}$:
     $M\subset \displaystyle\bigcup_iI_i \ $ и $ \ \sum |I_i| < \epsilon$
@@ -175,8 +177,8 @@
     \end{equation*}
     $\implies V_2 = \displaystyle\sum_i|\tilde{I_i} | = 2^n \cdot V_1 < \ve$
     \qed
-
-    \item Если $M \subset \R^n$ - множество меры нуль по Лебегу, то из $L \subset M \implies L$ - множество меры нуль по Лебегу
+    }
+    \item {Если $M \subset \R^n$ - множество меры нуль по Лебегу, то из $L \subset M \implies L$ - множество меры нуль по Лебегу
 
     \proof Докажем по транзитивности
     \begin{equation*}
@@ -185,8 +187,8 @@
 
     По условию нам дано, что для $M \subset \bigcup_iI_i$ верно $\sum_i |I_i| < \ve$, и тоже самое выполнено и для $L \subset \bigcup_iI_i$, тогда $L$ по определнию является множеством меры нуль по Лебегу
     \qed
-
-    \item Не более чем счетное объединение множеств меры нуль по Лебегу, тоже является множеством меры нуль по Лебегу
+    }
+    \item {Не более чем счетное объединение множеств меры нуль по Лебегу, тоже является множеством меры нуль по Лебегу
 
     \proof пусть $M = \bigcup_i^\infty M_k$ - объединение не более чем счетного числа множеств $\forall k \ M_k$ - множество меры нуль по Лебегу $\implies \forall k, \ \forall\ve>0 \ \exists\{I_i\}_{i=1}^{\infty}$ по определению множества меры нуль для них верно
 
@@ -200,6 +202,6 @@
     \end{equation*}
 
     \qed
-
+    }
 \end{enumerate}
 

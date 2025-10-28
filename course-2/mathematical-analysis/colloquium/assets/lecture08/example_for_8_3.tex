@@ -1,0 +1,57 @@
+
+
+\begin{tikzpicture}[scale=2, every node/.style={inner sep=0,outer sep=0},
+    set/.style={dashed, thick},
+    arrow/.style={-{Stealth[scale=1.2]}, thick}]
+
+     \begin{scope}[shift={(0.3, 0.3)}]
+
+        \draw[blue, thick] (0,0) -- (1,0);
+        \draw[blue, thick] (0,0) -- (0,1);
+        \draw[blue, thick] (0,1) -- (1,1);
+        \draw[blue, thick] (1,0) -- (1,1);
+    \end{scope}
+
+     \begin{scope}
+
+        \draw[->] (0, 0) -- (1.5, 0) node[right] {$x$};
+        \draw[->] (0, 0) -- (0, 1.5) node[above] {$y$};
+    \end{scope}
+
+
+
+    \draw[arrow] (1.8, 0.5) -- (2.6, 0.5);
+    \node at (2.2, 0.35) {$\varphi$};
+
+    \draw[arrow] (2.6, 1) -- (1.8, 1);
+    \node at (2.3, 1.15) {$\varphi^{-1}$};
+
+
+
+
+    \begin{scope}[shift={(3.2, 0.3)}, rotate=10]
+
+        \draw[blue, thick] (0,0) .. controls (0.5, 0.1) .. (1,0);
+        \draw[blue, thick] (0,0) .. controls (0.1, 0.5) .. (0,1);
+        \draw[blue, thick] (0,1) .. controls (0.5, 1.1) .. (1,1);
+        \draw[blue, thick] (1,0) .. controls (1.1, 0.5) .. (1,1);
+    \end{scope}
+
+
+     \begin{scope}[shift={(3, 0)}, rotate=10]
+
+        \draw[->] (0, 0) -- (1.5, 0) node[right] {$u$};
+        \draw[->] (0, 0) -- (0, 1.5) node[above] {$v$};
+    \end{scope}
+
+     \begin{scope}[shift={(3, 0)}, opacity=0.3]
+
+        \draw[->] (0, 0) -- (1.5, 0) node[right] {$x$};
+        \draw[->] (0, 0) -- (0, 1.5) node[above] {$y$};
+    \end{scope}
+
+
+    \node[align=center] at (2.3, -0.3) {Отображение допустимого множества в новые координаты};
+
+\end{tikzpicture}
+
