@@ -754,7 +754,7 @@ $$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d
     \end{center}
 
 
-    \item \textit{Замкнутость.} Пойдем от противного. $K$ — компакт, тогда возьмем $\{B_{\frac{\delta(x)}{2}}(0)\}_{x\in K}$ — покрытие открытыми шарами, где $\delta(x)=\rho(x,x_0)$. $x_0$ — предельная точка, которая $\notin K$ (или же $\in \mathbb{R}^n\setminus K$)
+    \item \textit{Замкнутость.} Пойдем от противного. $K$ — компакт, тогда возьмем $\{B_{\frac{\delta(x)}{2}}(x)\}_{x\in K}$ — покрытие открытыми шарами, где $\delta(x)=\rho(x,x_0)$. $x_0$ — предельная точка, которая $\notin K$ (или же $\in \mathbb{R}^n\setminus K$)
 
     Так как $K$ — компакт, $\exists x_1,\ldots, x_s:K\subset\displaystyle\bigcup_{i=1}^{s} B_{\frac{\delta(x_i)}{2}}(x_i)$
 
@@ -870,13 +870,13 @@ $$\{A_{\alpha_i}\}_{i=1}^m\cup\{\mathbb{R}^n\setminus K\}\supset I\supset K\text
 
 \proof Если $L \subset M$, то $\inf L \ge \inf M$ и $\sup L \le \sup M$, тогда:
 \begin{equation*}
-    \us(f, \T) \le \us(f, \tilde{\T}) \underset{\text{по 6.2}}{\le} \os (f, \tilde{\T}) \le \os (f, \T)
+    \us(f, \T) \le \us(f, \tilde{\T}) \underset{\text{по 3.9.1}}{\le} \os (f, \tilde{\T}) \le \os (f, \T)
 \end{equation*}\qed
 
 \subsubsection{Никакая нижняя сумма Дарбу не больше какой-либо верхней суммы на том же брусе}
 \theorem $\forall \T_1, \T_2 : \quad \us(f, \T_1) \le \os(f, \T_2)$
 
-\proof $\forall \T_1, \T_2$ рассмотрим $\tilde{\T} = \T_1 \cap \T_2$, тогда по 6.3:
+\proof $\forall \T_1, \T_2$ рассмотрим $\tilde{\T} = \T_1 \cap \T_2$, тогда по 3.9.2:
 \begin{equation*}
     \us(f, \T_1) \le \us(f, \tilde{\T}) \le \os(f, \tilde{\T}) \le \os(f, \T_2)
 \end{equation*} \qed
