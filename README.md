@@ -196,6 +196,8 @@
 - Сурен Элбакян
 - Вероника Аксененко
 - [Ника Сиренева](https://github.com/nih3kwo)
+- [Арсений Чугунов](https://github.com/lotossoks)
+- [Дмитрий Кириченко](https://github.com/D1midr0sh)
 
 
 Не стесняйтесь добавлять себя в этот список в pull request'ах.
