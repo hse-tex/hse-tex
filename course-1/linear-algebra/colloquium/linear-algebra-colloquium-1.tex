@@ -15,6 +15,11 @@
     Бобень Вячеслав \\
     \href{https://teleg.run/darkkeks}{@darkkeks},
     \href{https://github.com/LoDThe/hse-tex}{GitHub} \\
+    Чугунов Арсений \\
+    \href{https://t.me/lotossoks}{@lotossoks},
+    \href{https://github.com/lotossoks}{GitHub} \\
+    Кириченко Дмитрий \\
+    \href{https://t.me/dimidrosh}{@dimidrosh}
     Благодарность выражается Левину Александру (\href{https://teleg.run/azerty0123456789}{@azerty1234567890}) \\
     и Милько Андрею (\href{https://teleg.run/andrew_milko}{@andrew\_milko}) за видеозаписи лекций.
 }
@@ -1097,7 +1102,17 @@
 
         \begin{lemma}
             Пусть $v, v_1, \dots, v_m \in V$ и $v_1, \dots, v_m$ линейно независимы, тогда либо $v, v_1, \dots, v_m$ линейно независимы, либо $v \in \langle v_1, \dots , v_m \rangle$.
-        \end{lemma}   
+        \end{lemma}
+    
+    \defitem{Утверждение о размерности подпространства конечномерного векторного пространства}
+
+        Пусть $V$ -- конечномерное векторное пространство.
+
+            \begin{proposal}
+                Если $U \subseteq V$ -- подпространство $V$, тогда $U$ тоже конечномерно, причем $\dim U \leq \dim V$. 
+
+                Кроме того, $\dim U = \dim V \iff U = V$.
+            \end{proposal}
 
     \end{colloq}
 
@@ -2529,6 +2544,7 @@
             \end{corollary}
 
         \proofitem{Основная лемма о линейной зависимости}
+        \label{lec11:osnovnaya_lemma_o_lin_zavisimosti}
 
             \begin{lemma}
                 Пусть есть две системы векторов $v_1, \dots, v_m$ и $w_1, \dots, w_n$, причем $m < n$ и $w_i \in \langle v_1, \dots, v_m \rangle \quad \forall i = 1, \dots, n$.
@@ -2835,6 +2851,7 @@
             \end{proof}
 
         \proofitem{Лемма о добавлении вектора к конечной линейно независимой системе}
+        \label{lec12:lemma}
 
             \begin{lemma}
                 Пусть $v, v_1, \dots, v_m \in V$ и $v_1, \dots, v_m$ линейно независимы, тогда либо $v, v_1, \dots, v_m$ линейно независимы, либо $v \in \langle v_1, \dots , v_m \rangle$.
@@ -2846,6 +2863,40 @@
                     \alpha v + \alpha_1 v_1 + \dots + \alpha_m v_m = \overrightarrow{0}
                 .\end{equation*}
                 Но, так как $v_1, \dots, v_m$ линейно независимы, то $\alpha \neq 0$. Значит, $v \in \langle v_1, \dots, v_m \rangle$ по \hyperref[lec11:proposal_a_i]{предложению}.
+            \end{proof}
+        
+        \proofitem{Утверждение о размерности подпространства конечномерного векторного пространства}
+
+            Пусть $V$ -- конечномерное векторное пространство.
+
+            \begin{proposal}
+                Если $U \subseteq V$ -- подпространство $V$, тогда $U$ тоже конечномерно, причем $\dim U \leq \dim V$. 
+
+                Кроме того, $\dim U = \dim V \iff U = V$.
+            \end{proposal}
+
+            \begin{proof}
+                Пусть $n = \dim V$.
+
+                Построим в $U$ конечный базис.
+
+                Если $U = \{\overrightarrow{0}\}$, то в качестве базиса берем $\varnothing$.
+
+                Далее считаем, что $U \neq \{\overrightarrow{0}\}$. 
+
+                Выберем $v_1 \in U \setminus \{\overrightarrow{0}\}$. Если $\langle v_1 \rangle = U$, то конец. Иначе, выберем $v_2 \in U \setminus \langle v_1 \rangle$.
+
+                Если $\langle v_1, v_2 \rangle = U$, то конец.
+
+                Иначе, выберем $v_3 \in U \setminus \langle v_1, v_2 \rangle$, и так далее.
+
+                Получаем систему векторов $v_1, v_2, \dots$. Она линейно независима по \hyperref[lec12:lemma]{лемме}.
+
+                \bigskip
+                По \hyperref[lec11:osnovnaya_lemma_o_lin_zavisimosti]{основной лемме о линейной зависимости} процесс закончится не позднее шага $n$, значит $U$ конечномерно и $\dim U \leq \dim V$.
+
+                Если $\dim U = n$, то $v_1, \dots, v_n$ -- базис $U$. 
+                По следствию, если $v_1, \dots, v_n$ -- базис $U$, то $U = V$.
             \end{proof}
 
     \end{colloq}
